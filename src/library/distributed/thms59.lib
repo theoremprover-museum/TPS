@@ -1,0 +1,14 @@
+(:name THM598
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Monday, July 22, 2002 at 15:27:42."
+:description "FORALL K(OI(OI)) FORALL L(OI(OI)).FORALL u(OI) FORALL v(OI) [u(OI) SUBSET(O(OI)(OI)) v(OI) IMPLIES K(OI(OI)) u(OI) SUBSET(O(OI)(OI)) K(OI(OI)) v(OI)] AND FORALL u(OI) FORALL v(OI) [u(OI) SUBSET(O(OI)(OI)) v(OI) IMPLIES L(OI(OI)) u(OI) SUBSET(O(OI)(OI)) L(OI(OI)) v(OI)] IMPLIES EXISTS w(OI).K(OI(OI)) w(OI) UNION(OI(OI)(OI)) L(OI(OI)) w(OI) =(O(OI)(OI)) w(OI)"
+:needed-objects   NIL
+:mhelp "another version of THM2 - with two set functions combined by union"
+:other-attributes NIL
+:other-remarks "
+")
+
+

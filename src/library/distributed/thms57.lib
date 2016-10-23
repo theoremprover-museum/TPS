@@ -1,0 +1,30 @@
+(:name THM571
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "S(O(OB)) SUBSET(O(O(OB))(O(OB))) [DDEDEKIND-CUT(O(OB)(OBB)) LESSEQ(OBB)] AND EXISTS x(OB) S(O(OB)) x(OB) AND EXISTS c(OB) [[DDEDEKIND-CUT(O(OB)(OBB)) LESSEQ(OBB)] c(OB) AND FORALL x(OB).S(O(OB)) x(OB) IMPLIES c(OB) SUBSET(O(OB)(OB)) x(OB)] IMPLIES GLB(O(OB)(O(OB))(O(OB)(OB))(O(OB))) [DDEDEKIND-CUT(O(OB)(OBB)) LESSEQ(OBB)] [LAMBDA x(OB) LAMBDA y(OB).x(OB) SUBSET(O(OB)(OB)) y(OB)] S(O(OB)).SETINTERSECT(OB(O(OB))) S(O(OB))"
+:needed-objects   (DDEDEKIND-CUT GLB LESSEQ)
+:mhelp "The idea of this theorem is that if a collection of real numbers (given by
+Dedekind Cuts) is bounded from below, then the inf of the collection is the glb."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM572
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "S(O(OB)) SUBSET(O(O(OB))(O(OB))) [DDEDEKIND-CUT(O(OB)(OBB)) LESSEQ(OBB)] AND EXISTS x(OB) S(O(OB)) x(OB) AND EXISTS c(OB) [[DDEDEKIND-CUT(O(OB)(OBB)) LESSEQ(OBB)] c(OB) AND FORALL x(OB).S(O(OB)) x(OB) IMPLIES c(OB) SUBSET(O(OB)(OB)) x(OB)] IMPLIES EXISTS u(OB) GLB(O(OB)(O(OB))(O(OB)(OB))(O(OB))) [DDEDEKIND-CUT(O(OB)(OBB)) LESSEQ(OBB)] [LAMBDA x(OB) LAMBDA y(OB).x(OB) SUBSET(O(OB)(OB)) y(OB)] S(O(OB)) u(OB)"
+:needed-objects   (DDEDEKIND-CUT GLB LESSEQ)
+:mhelp "every nonempty set of real numbers (given by Dedekind Cuts) which
+is bounded from below has a greatest lower bound."
+:other-attributes NIL
+:other-remarks "
+")
+
+

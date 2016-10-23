@@ -1,0 +1,23 @@
+(:name MODE-THM178-A
+:type MODE
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description (
+   (DEFAULT-MS MS91-6)
+   (MAX-MATES 1)
+   (MAX-PRIM-DEPTH 1)
+   (MAX-SEARCH-LIMIT NIL)
+   (MAX-SUBSTS-QUICK 6)
+   (MAX-SUBSTS-VAR 3)
+   (MIN-PRIM-DEPTH 1)
+   (NUM-OF-DUPS 0)
+   (SEARCH-TIME-LIMIT 30)) 
+:needed-objects   NIL
+:mhelp "Mode for THM178 found quickly by using UNIFORM-SEARCH."
+:other-attributes NIL
+:other-remarks "
+")
+
+

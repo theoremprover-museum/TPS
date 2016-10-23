@@ -1,0 +1,179 @@
+\chapter{TPS Structures}
+
+Notice that \TPS has a command \indexmexpr{TLIST} which outputs the
+same information as the Lisp command {\it plist}, but formatted more
+readably. So, for example, {\tt TLIST X2108} will show all of the slots 
+in the structure X2108 (which is a proof).
+ 
+\section{TPS Modules}
+
+See the introductory chapter for a discussion of what \TPS modules are.
+
+\subsection{The Tps3 Module Structure}
+
+All modules are defined in one central file, called {\wt DEFPCK}.
+You may want to look at this file to see examples of module definitions
+and also a current list of all module known to \tps.
+
+There is a partial order of
+modules in \tps.  One whole set of modules called {\tt BARE} is
+distinguished from the others.  All files in the module {\tt BARE} and all
+of its submodules must always be present in a {\tt TPS3} core image.
+
+When \TPS is built from {\bf Lisp}, some of the files in the {\tt BARE}
+module can not be loaded with a module-loading command, since
+it has not been defined.  Thus, even though every file for \TPS belongs
+to a proper module, not all modules are loaded the same way because of
+the ``bootstrapping'' problem.
+
+Another quirk should be mentioned here.  A module called {\tt WFFS}
+defines the basic operations of wffs.  The modules {\tt WFF-PRINT}
+and {\tt WFF-PARSE} depend on {\tt WFFS.}  The module {\tt WFFS,} however,
+cannot exist alone: the modules {\tt WFF-PRINT} and {\tt WFF-PARSE} must
+be present also, even though this fact can not be deduced from the
+module structure.
+
+
+\subsection{Defining a New Module}
+
+To define a new module for \tps, use the {\tt DEFMODULE} macro.
+Its format is
+
+\begin{verbatim}
+(defmodule {\it name}
+  (needed-modules {\it module} {\it module} ...)
+  (macro-files {\it mfile} {\it mfile} ...)
+  (files {\it file} {\it file} ...)
+  (mhelp "{\it help-string}"))
+\end{verbatim}
+
+\begin{description}
+\item [{\tt needed-modules}] These are all modules that must be loaded for the
+module {\it name} to work.  Because of the transitive structure of modules
+only the direct predecessors of the new module need to be listed.
+
+\item [{\tt macro-files}] These are the files the compiler needs, before it can
+compile any of the files in the module.  It is generally a good idea
+to make a file with all the macro definitions (e.g. argument types,
+flavors of labels, etc.) and separate it from the functions, commands,
+etc. in the module.  This means clearer program structure, but also
+minimal overhead for the compiler.
+
+\item [{\tt files}] These are the rest of the files in the module.  When the module
+is loaded, first the {\tt macro-files} are loaded, then the {\tt files.}
+\end{description}
+
+The new module should also be added into {\it defpck.lisp} at an appropriate point, and 
+should be added into whichever of {\it tps-build.lisp}, {\it tps-compile.lisp},
+{\it etps-build.lisp} and {\it etps-compile.lisp} are appropriate (these files are in the
+same directory as the {\it Makefile}, not the main TPS directory).
+
+\section{Categories}
+\label{categories}
+
+\TPS categories are in a sense data types. A category is a way to characterize a set of similar
+objects which have properties of the same types, use the same auxiliary functions, are acted on 
+by the same functions, etc.
+
+Categories are orthogonal to the package/module structure, i.e. a category may have members which are 
+defined in many different packages and modules. Categories group objects by functionality 
+(how they behave) whereas packages and modules group objects by purpose (why they exist).
+
+Categories are defined using the \indexother{defcategory} macro. For example, the 
+definition of the category of \TPS top levels is:
+%\begin{lispcode}
+\begin{verbatim}
+(defcategory toplevel
+  (define deftoplevel)
+  (properties
+   (top-prompt-fn singlefn)
+   (command-interpreter singlefn)
+   (print-* singlefn)
+   (top-level-category singlefn)
+   (top-level-ctree singlefn)
+   (top-cmd-interpret multiplefns)
+   (top-cmd-decode singlefn)
+   (mhelp single))
+  (global-list global-toplevellist)
+  (mhelp-line "top level")
+  (mhelp-fn princ-mhelp))
+\end{verbatim}
+%\end{lispcode}
+
+This shows a category whose individual members are defined with the {\tt deftoplevel} command, and
+whose properties include the prompting function, a command interpreter, and so on. There is a 
+global list called {\tt global-toplevellist} which will contain a list of all of the top levels 
+defined, and an mhelp line "top level" (so that when you type {\tt HELP MATE}, \TPS knows to respond
+"MATE is a top level".) The mhelp-fn is the function that will be used to print the help messages
+for all the objects in this category. (See chapter ~\ref{help} for more information.)
+
+The chapters of the facilities guide correspond to categories.
+Within each chapter, the sections correspond to contexts.
+In \tps, \indexother{global-categorylist} contains a list of all the
+currently defined categories.
+
+\section{Contexts}
+
+Contexts are used to provide better help messages for the user. Each context is used to partition
+the objects in a category into groups with similar tasks. For example, the objects in the 
+category {\tt MEXPR} are grouped into contexts such as {\tt PRINTING} and {\tt EQUALITY RULES}.
+(Contexts are themselves a category, of course: the definition is in {\it boot0.lisp}.)
+
+New contexts are defined with the \indexother{defcontext} command, and are invoked with the 
+single line {\tt (context {\it whatever}}) in the code (all this does is to set a variable 
+{\tt current-context} to {\it whatever}). 
+
+Here is a sample use of {\tt defcontext}:
+%\begin{lispcode}
+\begin{verbatim}
+(defcontext tactics
+  (short-id "Tactics")
+  (order 61.92)
+  (mhelp "Tactics and related functions."))
+\end{verbatim}
+%\end{lispcode}
+
+The only property which is not immediately self-explanatory is {\tt order}; this is used to sort
+the contexts into order before displaying them on the screen (or in manuals).
+
+Contexts are used in the facilities guide (for example) to divide
+chapters into sections. For example, the line
+{\tt (context unification)}
+occurs prior to the definition 
+{\tt (defflag max-utree-depth ...)}
+of the flag MAX-UTREE-DEPTH in the file {\it node.lisp},
+and so this flag occurs in the section on unification in the
+chapter on flags in the facilities guide.
+
+To see the contexts into which the commands for a given top-level
+are divided, just use the ? command at that top-level.
+Look at \indexother{global-contextlist} in \TPS to see all the contexts.
+
+\section{Flavors}
+\label{flavors}
+
+Some TPS structures (in particular, all expansion tree nodes, expansion variables, skolem terms and jforms) 
+are defined as \indexother{flavors}; see the file {\it flavoring.lisp} for 
+the details. These structures have many attached properties which allow 
+wffops to be used on them as though they were gwffs; for example, the flavor
+{\tt exp-var} in {\it etrees-exp-vars.lisp} has the properties
+%\begin{tpsexample}
+\begin{verbatim}
+  (type (lambda (gwff) (type (exp-var-var gwff))))
+  (gwff-p (lambda (gwff) (declare (ignore gwff)) T))
+\end{verbatim}
+%\end{tpsexample}
+which state that the type of an {\tt exp-var} structure is the type of its variable, and all {\tt exp-var}s 
+are gwffs. Errors of the form "Wff operation <wffop> cannot be applied to labels of flavor <label>" are almost always
+caused by attempting to use a wffop on a flavor for which the corresponding property is undefined; for example,
+if we deleted the lines above and recompiled TPS, any attempt to find the type of an expansion variable
+would result in the error "Wff operation TYPE cannot be applied to labels of flavor EXP-VAR".
+
+Flavors that are defined within TPS will also have the slot {\tt \indexother{bogus-slot}}; this slot is 
+tested for by TPS to confirm that the flavor was defined by TPS, but the contents of this slot are never 
+examined. This means that there is always one empty slot in each node of an expansion tree or jform which the
+programmer can use to store information while a program is being tested (whereas if you define a new slot, you have to 
+recompile all instances of a structure, which can be a nuisance). Obviously, once the new code is working,
+you should define a new slot, change all references to bogus-slot and recompile TPS!
+
+For examples of flavors of gwffs, see page \pageref{labels}.

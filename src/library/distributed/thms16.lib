@@ -1,0 +1,121 @@
+(:name THM160
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL p(OA) FORALL q(OA).FINITE1(O(OA)) p(OA) AND q(OA) SUBSET(O(OA)(OA)) p(OA) IMPLIES FINITE1(O(OA)) q(OA)"
+:needed-objects   (FINITE1)
+:mhelp "A subset of a finite set is finite"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM161
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL p(OA).FINITE1(O(OA)) p(OA) IMPLIES ~EXISTS q(OA).q(OA) PROPERSUBSET(O(OA)(OA)) p(OA) AND EXISTS f(AA) SURJECTION(O(OA)(OA)(AA)) f(AA) q(OA) p(OA)"
+:needed-objects   (FINITE1 PROPERSUBSET SURJECTION)
+:mhelp "There is no surjection of a proper subset of a finite set 
+onto that set."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM162
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL p(OI).FINITE1(O(OI)) p(OI) IMPLIES FORALL q(OI).FINITE1(O(OI)) q(OI) IMPLIES FORALL w(O(OII)).w(O(OII)) [LAMBDA u(I) LAMBDA v(I) FALSEHOOD] AND FORALL x(I) [p(OI) x(I) IMPLIES FORALL y(I).q(OI) y(I) IMPLIES FORALL s(OII).w(O(OII)) s(OII) IMPLIES w(O(OII)).ADDPAIR(OIIII(OII)) s(OII) x(I) y(I)] IMPLIES w(O(OII)).p(OI) PRODUCT(OII(OI)(OI)) q(OI)"
+:needed-objects   (FINITE1 ADDPAIR PRODUCT)
+:mhelp "If p and q are finite, and w is a collection
+of relations which contains the empty relation
+and is closed under the operation of
+adding pairs from pXq to its relations,
+then w contains pXq."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM162A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL p(OI).FINITE1(O(OI)) p(OI) IMPLIES FORALL q(OI).FINITE1(O(OI)) q(OI) IMPLIES FORALL w(O(OII)).w(O(OII)) [LAMBDA u(I) LAMBDA v(I) FALSEHOOD] AND FORALL x(I) FORALL y(I) FORALL s(OII) [w(O(OII)) s(OII) IMPLIES w(O(OII)).ADDPAIR(OIIII(OII)) s(OII) x(I) y(I)] IMPLIES w(O(OII)).p(OI) PRODUCT(OII(OI)(OI)) q(OI)"
+:needed-objects   (FINITE1 ADDPAIR PRODUCT)
+:mhelp "If p and q are finite, and w is a collection
+of relations which contains the empty relation
+and is closed under the operation of
+adding pairs to its relations,
+then w contains pXq."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM163
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:51."
+:description "FINITE1(O(OA)).LAMBDA x(A) FALSEHOOD"
+:needed-objects   (FINITE1)
+:mhelp "Direct consequence of the definition ofFINITE1"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM164
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:51."
+:description "FORALL r(OA) FORALL x(A).FINITE1(O(OA)) r(OA) IMPLIES FINITE1(O(OA)).r(OA) ADD1(OAA(OA)) x(A)"
+:needed-objects   (FINITE1 ADD1)
+:mhelp "Direct consequence of the definition of FINITE1"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM165
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS r(OAA) ENDLESS(O(OAA)) r(OAA) IMPLIES EXISTS R(O(OA)(OA)) ENDLESS(O(O(OA)(OA))) R(O(OA)(OA))"
+:needed-objects   (ENDLESS)
+:mhelp "Essentially the same as X6201."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM165-SUB
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA p(OA) LAMBDA q(OA).~EMPTY(O(OA)) q(OA) AND.EMPTY(O(OA)) p(OA) OR EXISTS u(A).p(OA) u(A) AND FORALL v(A).q(OA) v(A) IMPLIES r(OAA) u(A) v(A)"
+:needed-objects   (EMPTY)
+:mhelp "Crucial term for proof of THM165; depends on free variable r(OAA)"
+:other-attributes NIL
+:other-remarks "
+")
+
+

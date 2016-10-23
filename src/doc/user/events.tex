@@ -1,0 +1,630 @@
+\chapter{Events}
+\label{events}
+
+
+% \comment{\chapter{Teaching Records}\label{Teach}}
+% {\bf Make revisions to \$progdoc/teach.mss}
+% % \comment{EVENT-SIGNAL EVENTS REPORT}
+
+\section{Events in TPS}
+
+
+The primary purpose of events in {\TPS} is to collect information about
+the usage of the system.  That includes support of features such as
+automatic grading of exercises, keeping statistics on the application of
+inference rules, being informed about bugs in the system,
+and recording remarks made by the users of {\TPS}.  Other events are
+used to print informative messages to the user during mating search.
+
+Events, once defined and initialized, can be signalled from anywhere in
+{\TPS}.  Settings of flags, ordinarily collected into modes, control if,
+when, and where signalled events are recorded.
+
+In {\ETPS}, a basic set of events is predefined, and the events are signalled
+automatically whenever appropriate.  Whether these events are then recorded
+depends on your {\ETPS} profile.
+
+There are some restrictions on events that should be respected, if
+you plan to use {\tt REPORT} to extract statistics from the files recording
+events.  Most importantly: {\bf No two events should be written to the
+same file}.  If you would like to record different things into the
+same file, make one event with one template and allow several kinds of
+occurrences of the event.  For an example, see the event {\tt PROOF-ACTION}
+below.
+
+\subsection{Defining an Event}
+
+If you are using {\ETPS}, it is unlikely that you need to define an event
+yourself.  However, a lot of general information about events is given
+in the following description.
+
+Events are defined using the {\tt DEFEVENT} macro.
+Its format is
+
+\begin{tpsexample}
+(defevent {\it name}
+  (event-args {\it arg1} ... {\it argn})
+  (template {\it list})
+  (template-names {\it list})
+  (signal-hook {\it hook-function})
+  (write-when {\it write-when})
+  (write-file {\it file-parameter})
+  (write-hook {\it hook-function})
+  (mhelp {\it help-string}))
+\end{tpsexample}
+
+\begin{description}
+\item[{\tt event-args} ]	  list of arguments passed on by {\tt SIGNAL-EVENT} for any event
+	of this kind.
+
+\item[{\tt template} ]	  constructs the list to be written.
+        It is not assumed that every event is
+	time-stamped or has the user-id.  The template
+        must only contain globally evaluable forms and the arguments
+	of the particular event signalled.  It could be the source of
+        subtle bugs, if some variables are not declared special.
+
+\item[{\tt template-names} ]	  names for the individual entries in the template.
+These names are used by the {\tt REPORT} facility.  As general conventions,
+when the template form is a variable, use the same name for the
+template name (e.g. {\tt DPROOF}).  If the template form is {\tt (STATUS {\it statusfn})}
+use {\it statusfn} as the template name (e.g. {\tt DATE} for {\tt (STATUS DATE)} or
+{\tt USERID} for {\tt (STATUS USERID)}).
+
+\item[{\tt signal-hook} ]	  an optional function to be called whenever the
+	the event is signalled.  This should {\bf not} do the writing of
+	the information, but may be used to do something else.  If the
+        function does a {\tt THROWFAIL}, the calling {\tt SIGNAL-EVENT} will
+        return {\tt NIL}, which means failure of the event.  The arguments
+        of the function should be the same as {\tt EVENT-ARGS}.
+
+\item[{\tt write-when} ]	  one of {\tt IMMEDIATE}, {\tt NEVER}, or an integer {\it n}, which means
+     to write after an implementation dependent period of {\it n}.
+     At the moment this will write, whenever the number of inputs = {\it n}
+     * {\tt EVENT-CYCLE}, where {\tt EVENT-CYCLE} is a global variable, say 5.
+
+\item[{\tt write-file} ]	  the name of the global {\tt FLAG} with the filename of the
+     file for the message to be appended to.
+
+\item[{\tt write-hook} ]	  an optional function to be called whenever a number
+	(>0) of events are written.  Its first argument is the file it will
+        write to, if the write-hook returns.  Its second argument is the
+        list of evaluated templates to be written.  If an event is to be
+        written immediately, this will always be a list of length 1.
+
+\item[{\tt mhelp} ]	  The mhelp string for the event.
+\end{description}
+
+Remember that an event is ignored, until {\tt (INIT-EVENTS)} or {\tt (INIT-EVENT
+{\it event})} has been called.
+
+\subsection{Signalling Events}
+
+{\TPS} provides a function \indexfunction{signal-event}, which takes a variable number
+of arguments.  The first argument is the kind of event to be signalled,
+the rest of the arguments are the event-args for this particular event.
+\indexfunction{signal-event} will return {\tt T} or {\tt NIL}, depending on whether the action
+to be taken in case of the event was successful or not.  Note that when
+an event is disabled (see below), signalling the event will always be
+successful.  There are basically three cases in which an event will be
+considered unsuccessful: if the {\tt SIGNAL-HOOK} is specified and does a
+{\tt THROWFAIL}, if {\tt WRITE-WHEN} is {\tt IMMEDIATE} and either the {\tt WRITE-HOOK}
+(if specified) does a {\tt THROWFAIL}, or if for some reason the writing to
+the file fails (if the file does not exists, or is not accessible
+because it has the wrong protection, for example).
+
+It is the caller's responsibility to make use of the returned value of
+\indexfunction{signal-event}.  For example, the signalling of {\tt DONE-EXERCISE} below.
+
+If {\tt WRITE-WHEN} is a number, the evaluated templates will be collected
+into a list {\it event{\tt -LIST}}.  This list is periodically written out and
+cleared.  The interval is determined by \indexflag{EVENT-CYCLE}, a global flag
+(see description of {\tt WRITE-WHEN} above).  The list is also written out
+when the function {\tt EXIT} is called, but not if the user exits {\TPS} with
+{\tt \^C}.  Note that if events have been signalled, the writing is done
+without considering whether the event is disabled or not.  This ensures
+that events signalled are always recorded, except for the {\tt \^C} safety valve.
+
+Events may be disabled, which means that signalling them will always
+be successful, but will not lead to a recordable entry.  This is done
+by setting or binding the flag {\it event{\tt -ENABLED}} to {\tt NIL} (initially
+set to {\tt T}).  For example, the line {\tt (setq error-enabled nil)}
+in your {\tt .INI} file will make sure that no Lisp error will be recorded.
+For a maintainer using expert mode, this is probably a good idea.
+
+\subsection{Examples}
+
+Here are some examples taken from the file {\tt ETPS-EVENTS}.  Interspersed
+is also the code from the places where the events are signalled.
+
+\begin{tpsexample}
+
+(defflag error-file
+  (flagtype filespec)
+  (default ((tpsrec *) etps error))
+  (subjects events)
+  (mhelp `The file recording the events of errors.'))
+
+(defevent error
+  (event-args error-args)
+  (template ((status userid) (status subsys) error-args))
+  (template-names (userid subsys error-args))
+  (write-when immediate)
+  (write-file error-file)    ; a global variable, eg
+			     ; `((tpsrec: *) etps error)
+  (signal-hook count-errors) ; count errors to avoid infinite loops
+  (mhelp `The event of a MacLisp Error.'))
+
+{\rm 
+{\tt DT} is used to freeze the daytime upon invocation of {\tt DONE-EXC} so that the code is computed correctly.
+The code is computed by {\tt CODE-LIST}, implementing some ``trap-door function''.}
+
+(defvar computed-code 0)
+
+(defvar dt '(0 0 0))
+
+(defflag score-file
+  (flagtype filespec)
+  (default ((tpsrec *) tps scores))
+  (subjects events)
+  (mhelp `The file recording completed exercises.'))
+
+(defevent done-exc
+  (event-args numberoflines)
+  (template ((status userid) dproof numberoflines computed-code
+			     (status date) dt))
+  (template-names (userid dproof numberoflines computed-code date daytime))
+  (signal-hook done-exc-hook)
+  (write-when immediate)
+  (write-file score-file)
+  (mhelp `The event of completing an exercise.'))
+
+(defun done-exc-hook (numberoflines)
+  {\tt  The} done-exc-hook will compute the code written to the file.
+  (declare (special numberoflines))
+  {\tt  because} of the (eval `(list ..)) below.
+  (setq dt (status daytime))
+  {\tt  Freeze} the time of day right now.
+  (setq computed-code 0)
+  (setq computed-code (code-list (eval `(list ,j(get 'done-exc 'template))))))
+
+(defflag proof-file
+  (flagtype filespec)
+  (default ((tpsrec *) tps proof))
+  (subjects events)
+  (mhelp `The file recording started and completed proofs.'))
+
+(defevent proof-action
+  (event-args kind)
+  (template ((status userid) kind dproof
+			     (status date) (status daytime)))
+  (template-names (userid kind dproof date daytime))
+  (write-when immediate)
+  (write-file proof-file)
+  (mhelp `The event of completing any proof.'))
+
+(defflag remarks-file
+  (flagtype filespec)
+  (default ((tpsrec *) tps remarks))
+  (subjects events)
+  (mhelp `The file recording remarks.'))
+
+(defevent remark
+  (event-args remark-string)
+  (template ((status userid) dproof remark-string
+			     (status date) (status daytime)))
+  (template-names (userid dproof remark-string date time))
+  (write-when immediate)
+  (write-file remarks-file)
+  (mhelp `The event of a remark by the user.'))
+
+\end{tpsexample}
+
+Here is how the {\tt DONE-EXC} and {\tt PROOF-ACTION} are used in the code of
+the {\tt DONE} command.  We don't care if the {\tt PROOF-ACTION} was successful
+(it will usually be), but it's very important that the user knows
+when a {\tt DONE-EXC} was unsuccessful, since it is used for automatic
+grading.
+
+\begin{tpsexample}
+(defun done ()
+  ...
+  (when (funcall (get 'exercise 'testfn) dproof)
+	{\tt  here} we have an assigned exercise.
+	(do ()
+	    ((signal-event 'done-exc (length (get dproof 'lines)))
+	     (msgf `Score file updated.'))
+	  (msgf `Could not write score file.  Trying again... (abort with \^G)')
+	  {\tt  wait} for a bit, in case the problem was simultaneous access.
+	  (sleep 0.5)))
+  (signal-event 'proof-action 'done)
+  ...
+  )
+\end{tpsexample}
+
+\section{More on Events}
+
+Each command (mexpr) may have associated with
+it an EVENT-TYPE.  EVENTs could be PRINTING, INFERENCE, SYSTEM, FILEOP,
+ADVICE, STARTED-PROOF, DONE-PROOF, and perhaps more.  One may define for
+each event, how much information about the event is saved, and when, and
+if the operation is legal, if the information could not be saved.
+An event could be signalled whenever a command is executed (signal the
+associated event), or from within a function (say for an error) with
+the (event arg1 ... argn) LEXPR.
+For example:
+\begin{tpsexample}
+(defevent advice
+  (append-file advice-file)		;advice-file is a global var.
+  (append-when immediate)		;could be IMMEDIATE, NEVER, PERIODICAL.
+  (append-failed abort)			;could be ABORT, RETRY-LATER.
+					;ABORT means that operation must be
+					;aborted if recording of event failed.
+  (append-info '(time user exercise))	;a template
+  (mhelp `Event that occurs when advice is asked.'))
+
+(defevent inference
+  (append-file inference-file)
+  (append-when periodical)
+  (append-failed retry-later)
+  (append-info '(time user exercise legal-p wrong-defaults-count))
+					;legal-p and wrong-defaults-count
+					; are two args supplied to EVENT
+					; inside COMDECODE.
+  (mhelp `Event that occurs when an inference rule is applied.'))
+
+(defevent maclisp-error
+  (append-file error-file)
+  (append-when immediate)
+  (append-failed retry-later)
+  (append-info '(time current-command err-message))
+  (mhelp `An uncaught error condition.'))
+
+\end{tpsexample}
+The {\it .proof} and {\it .scores} files, run through REPORT,
+can be used to get a distribution of when people did their work, how long
+the average proof was etc.
+
+The report called SECURITY checks for lists
+with the wrong security code in a source file (tps:etps.rec). To run
+it:
+\begin{tpsexample}
+<\#>lload tn:report
+<\#>report
+MODE:....[nil]>             ;;hit return
+<rep1>security
+OUTFIL....[tty:]>
+SINCE....[(85 1 1)]>
+WHO......[(t *)]>
+WHAT.....[(t *)]>           ;;the t says the case fold is on. * matches
+                            ;;strings of any length (including zero).
+                            ;;? matches a single character.
+T
+<rep2>on security
+<rep3>run
+....
+<rep4>exitrep
+<\#>
+\end{tpsexample}
+REMARK, GRADE-FILE and EXER-TABLE also work in a similar manner.
+
+Remarks are sent to the file {\it etps.remarks} (in addition to
+{\it etps.rec})
+
+\begin{enumerate}
+\item A category of EVENT.  Every event has a few properties:
+\begin{description}
+\item[MHELP]	 the obvious
+
+\item[EVENT-ARGS]	 list of arguments passed on by SIGNAL for any event
+	of this kind.
+
+\item[TEMPLATE]	 constructs the list to be written.  Contrary to what
+	we had before, we will not assume that every event is
+	time-stamped or has the user-id.  The template
+        must only contain globally evaluable forms and the arguments
+	of the particular event signalled.
+
+\item[WRITE-WHEN]	 one of IMMEDIATE, NEVER, or an integer n, which means
+    	write after a period of n inputs.
+
+\item[WRITE-FILE]	 the filename of the file for the message to be
+        appended to.
+
+\item[SIGNAL-HOOK]	 an optional function to be called whenever the
+	the event is signalled.  This should NOT to the writing of
+	the information, but may be used to do something else.
+
+\item[WRITE-HOOK]	 an optional function to be called whenever a number
+	(>0) of events are written.
+\end{description}
+
+\item A macro or function SIGNAL-EVENT, whose first argument is the
+    kind of even to be signalled, the rest of the arguments are the
+    event-args for this particular event.  SIGNAL-EVENT will return
+    T or NIL, depending on whether the action to be taken in case of
+    the even was successful or not.  It is the caller's responsibility
+    to act accordingly.  E.g. if (SIGNAL-EVENT COSTLY-ADVICE 'X2106)
+    returns NIL, the advice should not be given (of course at the moment
+    we don't charge for advice).
+\end{enumerate}
+Examples:
+\begin{tpsexample}
+(defevent maclisp-error
+  (event-args error-args)
+  (template ((status userid) dproof current-command error-args))
+  (write-when 5)
+  (write-file error-file)    ; a global variable, eg
+			     ; `((tpsrec: *) etps error)
+  (signal-hook count-errors) ; count errors to avoid infinite loops
+  (mhelp `The event of a MacLisp Error.'))
+
+(defevent tps-complain
+  (event-args complain-msglist)
+  (template ((status userid) complain-msglist))
+  (write-when 10)
+  (write-file complain-file)
+  (mhelp `The event of an error message given by TPS.'))
+
+{\rm The event tps-complain could be ``hard-wired'' into the COMPLAIN macro, so that every time COMPLAIN is
+executed, the event is signalled.}
+
+(defevent advice-asked
+  (event-args)
+  (template ((status userid) dproof)
+  (write-when immediate)
+  (write-file advice-file)
+  (mhelp `Event of user asking for advice.'))
+
+\end{tpsexample}
+
+The definition of EVENTS now includes TEMPLATE-NAMES, which is
+a list for the entries in the events.  some general conventions:
+(status userid) => userid
+(status date)   => date
+(status daytime)=> daytime
+If an event-arg appears directly in the template, use that same name as
+the TEMPLATE-NAME.
+
+% \begin{comment}
+% Is there a way of disabling certain events, that is, to stop recording
+% the information which an event would otherwise record, without having
+% to rebuild the image (and leaving the undesired events undefined)?
+% Do we have a variable indicating which events are enabled?
+% [This may be another property of a process (instance of a top-level)]
+% \end{comment}
+\section{The Report Package}
+
+The REPORT package in {\TPS} allows the processing of data
+from EVENTS. Each report draws on a single event, reading
+its data from the record-file of that event. The execution
+of a report begins with its BEGIN-FN being run. Then
+the DO-FN is called repetitively on the value of the EVENTARGS
+in each record from the record-file of the event, until that
+file is exhausted or the special variable DO-STOP is given a non-NIL
+value. Finally, the END-FN is called. The arguments
+for the report command are given to the BEGIN-FN and END-FN.
+The DO-FN can only access these values if they are assigned to
+certain PASSED-ARGS, in the BEGIN-FN. Also, all updated values
+which need to be used by later iterations of the DO-FN or by
+the END-FN should be PASSED-ARGS initialized (if the default NIL
+is not acceptable in the BEGIN-FN.
+
+NOTE: The names of PASSED-ARGS should be different from
+other arguments (ARGNAMES and EVENTARGS). Also, they should
+be different from other variables in those functions where
+you use them and from the variables which DEFREPORT2 always
+introduces into the function for the report: FILE, INP and DO-STOP.
+
+The definition of the category of REPORTCMD, follows:
+
+\begin{tpsexample}
+
+(defcategory reportcmd
+  (define defreport1)	      ; DEFREPORT defines a function and a command
+  (properties                 ; (MEXPR), as well as a REPORTCMD.
+   (source-event single)
+   (eventargs multiple)   ;; selected variables in the var-template of event
+   (argnames multiple)
+   (argtypes multiple)
+   (arghelp multiple)
+   (passed-args multiple) ;; values needed by DO-FN (init in BEGIN-FN)
+   (defaultfns multiple)
+   (begin-fn single)    ;; args = argnames
+   (do-fn single)       ;; args = eventargs
+   (end-fn single)      ;; args = argnames
+   (mhelp single))
+  (global-list global-reportlist)
+  (mhelp-line `report')
+  (mhelp-fn princ-mhelp)
+  (cat-help `A task to be done by REPORT.'))
+
+\end{tpsexample}
+
+	The creation of a new report consists of a DEFREPORT statement
+and the definition of the BEGIN-FN, DO-FN and END-FN. Any PASSED-ARGS
+used in these functions should be declared special. It is suggested
+that most of the computation be done by general functions which are more
+readily usable by other reports. In keeping with this philosophy,
+the report EXER-TABLE uses the general function MAKE-TABLE. The latter
+takes three arguments as input:  a list of column-indices, a list of
+indexed entries (row-index, column-index, entry) and the maximum printing size
+of row-indices. With these, it produces a table of the entries.
+EXER-TABLE merely calls this on data it extracts from the record file
+for the DONE-EXC event. The definition for EXER-TABLE follows:
+
+\begin{tpsexample}
+
+(defreport exer-table
+  (source-event done-exc)
+  (eventargs userid dproof numberoflines date)
+  (argtypes date)
+  (argnames since)
+  (passed-args since1 bin exerlis maxnam)
+  (begin-fn exertable-beg)
+  (do-fn exertable-do)
+  (end-fn exertable-end)
+  (mhelp `Constructs table of student performance.'))
+
+(defun exertable-beg (since)
+  (declare (special since1 maxnam))	; the only passed-args initialized
+  (setq since1 since)                   ; to non-Nil values
+  (setq maxnam 1))
+
+(defun exertable-do (userid dproof numberoflines date)
+  (declare (special since1 bin exerlis maxnam))
+  (if (greatdate date since1)
+      (progn
+       (setq bin (cons (list userid dproof numberoflines) bin))
+       (setq exerlis
+	     (if (member dproof exerlis) exerlis (cons dproof exerlis)))
+       (setq maxnam (max (flatc userid) maxnam)))))
+
+(defun exertable-end (since)
+  (declare (special bin exerlis maxnam))
+  (if bin
+      (progn
+       (make-table exerlis bin maxnam)         ;; exerlis --> column headers
+       (msg t `On exercises completed since ') ;; bin --> row headers, entries
+       (write-date since)                      ;; maxnam =
+       (msg `.' t))                            ;; max \{size x : x a row header\}
+      (progn
+       (msg t `No exercises completed since ')
+       (write-date since)                      ;; prints date in English
+       (msg `.' t))))
+
+\end{tpsexample}
+% \begin{comment}
+% \section{More on Report}
+% 
+% The new efficient REPORT is ready. The passing of arguments is handled
+% through the PASSED-ARGS property.
+% NOTE: The only arguments to the DO-FN are the EVENTARGS. If you wish
+% to use the arguments from the MEXPR (i.e. the ARGNAMES), you must
+% make PASSED-ARGS with different names and initialize them
+% in the BEGIN-FN. Any PASSED-ARGS used should be declared special.
+% Of course, this means that no PASSED-ARGS should bear the same name
+% as any of the other arguments (ARGNAMES and EVENTARGS).
+% 
+% REPORT now uses WITH-OPEN-FILE, which is defined for MacLisp in MACSYS.
+% Also, REPORT has a new special variable DO-STOP. If it is set to
+% a non-NIL value, it will terminate the reading from the events file.
+% 
+% There is a command file and a work file which in conjunction makes it
+% very easy to evaluate the students progress on TF, while logged in
+% on the C.  Here is how to use it:
+% 
+% \begin{text}
+% 
+%  jFTP TF
+%  ..>LOGIN user-name
+%  ..>TAKE TPS:TF.CMD
+% \end{text}
+% 
+%  Next run ETPS and do
+% 
+% \begin{text}
+% 
+%  <1>EXECUTE-FILE TPS:TF NO NUL:
+%  <2>REPORT
+%  <Rep1>
+% \end{text}
+% 
+%  then type a ? for a list of available reports.  Among them is
+%  EXER-TABLE and a way to get a list of remarks.
+% 
+% In the SECURITY report, set
+% the code to 0 and include it in the list, then compute the code.
+% There is a flag SINCE-DEFAULT for the DEFAULTFN
+% of all the reports which take a SINCE argument.  The default date
+% is (80 1 1).
+% 
+% Changed filename HACK to
+% EVENT-SIGNAL-UTILS and made it part of a new package EVENT-SIGNAL.
+% Both OTLNL and REPORT have the latter as a needed-package.
+% 
+%    `STATUS ' is now `STATUS-' in file TL:ETPS-EVENTS.Lsp. The 3
+% macros (STATUS-USERID), (STATUS-DATE), (STATUS-DAYTIME) are defined in
+% file MACSYS-3.
+% 
+% You changed the file TPS:ETPS-EVENTS.LSP
+% and left the file TCL:ETPS-EVENTS.CLISP unchanged.  Therefore the new
+% ETPS core image I built turned out to be rotten, since STATUS-USERID (etc)
+% were undefined functions!
+% Anyway, I changed them to be functions in TPS3 - no reason for the duplication
+% of code everywhere it is called.  Also, it returns a string - the old
+% function returned a list (eg. (10 30 86)), but that was an easy fix.
+% 
+% Should have built events into grader.
+% 
+% ;;; This file contains all the REMARKS sent to the instructor.
+% ;;; Format: (userid dproof remark-string date daytime)
+% (TK06 X5207 `string?' (86 3 14) (10 22 52))
+% (PB99 ***** `just checking the remarks facility on tf.' (86 3 15) (0 26 23))
+% (TK06 X5207 `
+% 
+% \section{Mail Messages}
+% 
+% I have made a command file and a work file which in conjunction make it
+% very easy to evaluate the students progress on TF, while logged in
+% on the C.  Here is how to use it:
+% 
+% \begin{tpsexample}
+% jFTP TF
+%  ..>LOGIN user-name
+%  ..>TAKE TPS:TF.CMD
+% \end{tpsexample}
+% 
+%  Next run ETPS and do
+% 
+% \begin{tpsexample}
+%  <1>EXECUTE-FILE TPS:TF NO NUL:
+%  <2>REPORT
+%  <Rep1>
+% \end{tpsexample}
+% 
+%  then type a ? for a list of available reports.  Among them is Carl's
+%  EXER-TABLE and a way to get a list of remarks.
+% 
+% \heading{The Old Report Package}
+% 
+% 	The REPORT package provides a general framework for the running
+% of reports. It is accessed through the REPORT command in BTPS. This brings
+% the user into the REPORT top-level.
+% 	Once in the REPORT top-level, the user establishes the parameters
+% for his reports by running:
+% 
+% SOURCE      :sets the list of input file(s)
+% 
+% <reportname>:sets the parameters for <reportname>
+% 
+% RUN         :runs the active reports on the SOURCE file(s)
+% 
+% 	Reports may be disabled by using the OFF command and enabled using
+% the ON command.
+% 	The current command strings for each report are saved in their
+% Environ properties. These may be labelled at any time using the SETMODE
+% command. These modes are accessible during the remainder of the session.
+% When the user EXITs REPORT, the modes and the time of the last run of
+% each report are saved in the REPORT.INI file on the users account. When
+% report is run again, this file is loaded and the modes are available.
+% 	The full syntax of the REPORT command is:
+% 	REPORT <modename>
+% Since SETMODE also allows commands to be added to the ones which establish
+% the mode's report-environment, REPORT can be called without any visible
+% interaction with its top-level, viz. by adding RUN and EXIT to the mode.
+% 
+% 
+% \end{comment}
+re accessible during the remainder of the session.
+% When the user EXITs REPORT, the modes and the time of the last run of
+% each report are saved in the REPORT.INI file on the users account. When
+% report is run again, this file is loaded and the modes are available.
+% 	The full syntax of the REPORT command is:
+% 	REPORT {\tt\char`\<}modename{\tt\char`\>}
+% Since SETMODE also allows commands to be added to the ones which establish
+% the mode's report-environment, REPORT can be called without any visible
+% interaction with its top-level, viz. by adding RUN and EXIT to the mode.
+% 
+% 
+% \end{comment}

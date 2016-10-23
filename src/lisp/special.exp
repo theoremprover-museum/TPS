@@ -1,0 +1,169 @@
+(in-package :CORE)
+;;; Miscellaneous Exported Symbols, which are not discovered by the
+;;; EXPORT function.
+
+;;; Irregular package cross-reference listed first.
+
+;;; Function in file OTL-RULEP (Lisp package CORE)
+;;; explicitly calls AUTO:VALID-P.  
+;;; Function WRITE-EDWFF (file EDTOP-3) explicitly calls
+;;; AUTO:DISPLAY-VPD and uses the value of AUTO:VPD-FILENAME.
+
+;;; Tags for THROW and CATCH. (file BOOT0)
+(EXPORT '(FAIL))
+#+:allegro-v4.3
+(export '(memq))
+
+(export '(defconstnt))
+
+(export '(unabbreviated-type category))
+
+;;; Special keywords for the MSG macro. (file BOOT0)
+(EXPORT '(F TX))			; E, L already exported in TOPS-20.
+#-(or tops-20 :sbcl :cmu :clisp)(EXPORT '(E)) ; E already exported in :CMU
+#+:clisp(shadow 'E)                   ; clisp exports :E, which seems to cause
+                                      ; conflicts on some systems
+#-tops-20(export '(L))
+#-(or :sbcl :cmu) (export '(PC))
+#-(or tops-20 lucid :sbcl :cmu kcl ibcl :allegro :excl)
+(EXPORT '(MEMQ ?))
+#+:sbcl (export '(MEMQ))
+
+#+(or :sbcl :cmu ibcl :allegro :excl akcl)
+(EXPORT '(?))
+
+;;; same as above, but other files:
+#-tops-20
+(EXPORT '(P HELP S OK R ^))
+;#+(or ibcl kcl)
+#+kcl
+(shadowing-import 'CL-USER::EXIT)
+
+; NOTE: clisp means Gnu Common Lisp (http://clisp.cons.org/)
+;#-(or tops-20 kcl ibcl)
+#-(or tops-20 kcl :allegro :excl :clisp)
+(EXPORT '(EXIT))
+
+#-(or tops-20 :sbcl :cmu )
+(EXPORT '(PPRINC))
+#-(or tops-20 :sbcl :cmu ibcl )
+(EXPORT '(SAVE))
+
+;;; Property names for categories used in macro DEFCATEGORY. (file BOOT0)
+;;; define is already exported by Lucid's 2.1 LISP package.  Avoid conflict
+;;; In lucid 3.0, define moved to lucid-runtime-support package, so need to 
+;;; export it
+(EXPORT '(#+(or (not  Lucid) :lcl3.0) DEFINE
+	   PROPERTIES OTHER-PROP GLOBAL-LIST MHELP-LINE
+	   MHELP-FN CAT-HELP))
+
+;;; Keywords used as properties when defining categories. (file BOOT0)
+(EXPORT '(SINGLE MULTIPLE))
+
+;;; Extensions of files
+#+(and (or :sbcl :cmu) :new-compiler)(unintern 'cl-user::lisp (find-package "CL-USER"))
+(EXPORT '(LSP CLISP #-(or :allegro :ergo :excl) LISP))
+
+#-(or (and lucid (not :lcl3.0)) ibcl kcl)
+(export 'structurep)
+
+;;; Property for packages used in CORE and MAINT  (file BOOT1)
+(EXPORT '(LOADED-P))
+
+;;; Property used for flavors of labels.
+(EXPORT '(DEFAULT-BOOLEAN-RESULT))
+
+;;; Specially bound variables inside REROUTE-OUTPUT (file MACSYS-3)
+(EXPORT '(WRITTEN-FILE EXISTENT-FILE))
+
+;;; For the parser and printer of wffs: (file WFFIN-3)
+(EXPORT '(\[ \] \. \  \( \) \~ \`))
+
+;;; For the printer of wffs: the ellipses character (file PRT)
+;;; This should probably be a global variable anyways, rather
+;;; than a fixed constant.
+(EXPORT '(&))
+
+;;; As a special `keyword' for list types. (file ARGTYP)
+(EXPORT '(ALL OTHER-KEYS ALL-))
+
+;;; Some special tokens used for marking things (file TOP)
+(EXPORT '(NONE CMD))
+
+;;; Special keywords for the command interpreter (file TPSTOP)
+(EXPORT '($ ??)) ; *, ? are already exported by Lisp.
+
+#-:clisp
+(EXPORT '(! times)) 
+
+#+(and allegro-version>= (version>= 5 0))(export '(memq))
+
+;;; Special, but not proclaimed, variables (file TPSTOP)
+(EXPORT '(STRONG-DEFAULTLIST GLOBAL-TYPE POLYTYPEVARLIST))
+
+;;; Special, but not proclaimed variables from outlines (file ???)
+(EXPORT '(RULE-HUPPER RULE-HLOWER))
+
+;;; Property names for lines.
+(EXPORT '(LINENUMBER HYPOTHESES JUSTIFICATION ASSERTION))
+
+;;; Property anmes for hints and priority of suggested rules
+(EXPORT '(HINT))
+
+; mkaminski 9/13/2005 - newer versions of clisp export PRIORITY,
+;                       GAMMA and COPY-FILE
+#-:clisp
+(export '(priority gamma copy-file))
+
+#+:clisp
+(shadow '(priority gamma copy-file))
+
+;;; Property names from hacked macro DEFRULEWFFS (file OTL-CMDDEF)
+(EXPORT '(META-ASSERTION RESTR-CALL))
+
+; ceb 5/27/2004 - clisp has symbols LOCAL, GC, etc. in EXT
+#+:clisp
+(progn
+ (import '(ext::local ext::gc ext::! ext::times ext::exit))
+ (export '(ext::local ext::gc ext::! ext::times ext::exit)))
+
+;;; Same here, some keywords used in the MACRO-DO macro (file OTL-CMDDEF).
+(EXPORT '( #-:clisp LOCAL
+            QUOTED UNQUOTED CONTENTS UNIQUE-LINES UNIQUE-RESTRICTIONS
+		UNIQUE-JUSTIFICATIONS))
+
+
+#-:ergo (export '(BOOLEAN))
+
+#-:AIX32 (export '(date))
+
+;;; Symbol with empty print name for achieving non-output print's.
+(EXPORT '(||))
+
+;;; Two special variables which are used by different packages, but
+;;; not proclaimed special.
+(EXPORT '(WFFBINDINGS PROPSYMALIST))
+
+;;; Special keyword used for the RESULT-> property of an EDOP (file EDTOP).
+(EXPORT '(EDWFF))
+;;; Jan 27, 87 - SI  THEOREM-MAC.CLISP
+ 
+(export '(book))
+
+;;;Sep 18, 87
+
+(export '(hatomalist))
+
+;;;
+;;;--------------------------------------------------
+;;; Now begins the automatically generated part
+;;; unedited, for now.
+;;;--------------------------------------------------
+;;;
+
+(in-package :auto)
+
+;;VPFORMS-MACROS
+
+(export '(slides scribe-sail))
+

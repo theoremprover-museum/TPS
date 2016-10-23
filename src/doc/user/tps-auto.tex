@@ -1,0 +1,116 @@
+\subsection{An Example Using DIY}
+
+\begin{tpsexample}
+{\it Comments are in italics.}
+<1>save-work workfile
+{\it We create a file called workfile.work which will record the commands used.
+This is optional.}
+<2>prove theorem-name
+{\it We could also use the `exercise' command if the theorem to be proved is
+an exercise in ETPS.}
+<3>diy
+\end{tpsexample}
+
+\subsection{An Example Using MATE and ETREE-NAT}
+
+
+\begin{tpsexample}
+{\it Alternatively, we may proceed as follows:}
+<1>save-work workfile
+<2>prove theorem-name
+<3>mate
+<4>go
+<5>merge-tree
+{\it You will be prompted for this when leaving the mate top level.}
+<6>etree-nat
+{\it To convert the proof to natural deduction style.}
+<7>daterec
+{\it To store the timing information in the library.}
+{\it You may also want to go into the library to store a mode recording the
+current flags.}
+<8>texproof
+{\it To produce printable output.}
+\end{tpsexample}
+
+
+\subsection{A  Longer Example Using MATE and ETREE-NAT}
+\label{MATE-then-ETREE-NAT}
+
+To make the formulas easier to read, we have left off the type information.
+Note that `\% f x' denotes the image of the set `x' under the function `f'.
+
+\begin{tpsexample}
+<8>exercise x5203
+(100)        !  \% f [x INTERSECT y] SUBSET \% f x INTERSECT \% f y           PLAN1
+
+{\it We call mating-search directly.}
+
+<9>mate
+GWFF (GWFF0): gwff [No Default]>x5203
+POSITIVE (YESNO): Positive mode [No]>!
+
+{\it We call the automatic proof search.}
+<Mate1>go
+...
+Displaying VP diagram ...
+
+|                    LEAF7                     |
+|                    x T0                      |
+|                                              |
+|                    LEAF8                     |
+|                    y T0                      |
+|                                              |
+|                    LEAF6                     |
+|                  X0 = f T0                   |
+|                                              |
+|LEAF12      LEAF13       LEAF15      LEAF16   |
+|\(\sim\)x t21 OR \(\sim\)X0 = f t21 OR \(\sim\)y t22 OR \(\sim\)X0 = f t22| 
+..*.+1.*.+2.*.+3.*.+4..
+Trying to unify mating:(4 3 2 1)
+Substitution Stack:
+
+t21   ->   T0
+t22   ->   T0..
+{\it Return to the main top-level.}
+<Mate2>leave
+Merging the expansion tree.  Please stand by.
+****
+T
+{\it Begin the translation process using the expansion proof just constructed
+in the mating-search top-level.}
+<9>etree-nat
+PREFIX (SYMBOL): Name of the Proof [X5203]>
+NUM (LINE): Line Number for Theorem [100]>
+TAC (TACTIC-EXP): Tactic to be Used [COMPLETE-TRANSFORM-TAC]>
+MODE (TACTIC-MODE): Tactic Mode [AUTO]>
+
+{\it We elide the output from the translation.}
+
+<0>pall
+
+(1)   1      !  EXISTS t18 .x t18 AND y t18 AND x4 = f t18                   Hyp
+(2)   1,2    !  x t18 AND y t18 AND x4 = f t18                       Choose: t18
+(3)   1,2    !  x t18                                                   RuleP: 2
+(4)   1,2    !  y t18                                                   RuleP: 2
+(5)   1,2    !  x4 = f t18                                              RuleP: 2
+(88)  1,2    !  x t18 AND x4 = f t18                                  RuleP: 3 5
+(89)  1,2    !  EXISTS t19 .x t19 AND x4 = f t19                    EGen: t18 88
+(93)  1,2    !  y t18 AND x4 = f t18                                  RuleP: 4 5
+(94)  1,2    !  EXISTS t20 .y t20 AND x4 = f t20                    EGen: t18 93
+(95)  1,2    !      EXISTS t19 [x t19 AND x4 = f t19]
+                 AND EXISTS t20 .y t20 AND x4 = f t20               RuleP: 89 94
+(96)  1      !      EXISTS t19 [x t19 AND x4 = f t19]
+                 AND EXISTS t20 .y t20 AND x4 = f t20                RuleC: 1 95
+(97)         !          EXISTS t18 [x t18 AND y t18 AND x4 = f t18]
+                 IMPLIES     EXISTS t19 [x t19 AND x4 = f t19]
+                         AND EXISTS t20 .y t20 AND x4 = f t20         Deduct: 96
+(98)         !  FORALL x4 .        EXISTS t18 [x t18 AND y t18 AND x4 = f t18]
+                            IMPLIES     EXISTS t19 [x t19 AND x4 = f t19]
+                                    AND EXISTS t20 .y t20 AND x4 = f t20
+                                                                     UGen: x4 97
+(99)         !  FORALL x4 .        EXISTS t18 [x t18 AND y t18 AND x4 = f t18]
+                            IMPLIES     EXISTS t19 [x t19 AND x4 = f t19]
+                                    AND EXISTS t20 .y t20 AND x4 = f t20
+                                                                    Equality: 98
+(100)        !  \% f [x INTERSECT y] SUBSET \% f x INTERSECT \% f y   EquivWffs: 99
+\end{tpsexample}

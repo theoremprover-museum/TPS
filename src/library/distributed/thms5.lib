@@ -1,0 +1,196 @@
+(:name THM50
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, April 29, 1999 at 14:06:40."
+:description "P(O) EQUIV Q(O) EQUIV R(O) EQUIV.P(O) EQUIV.Q(O) EQUIV R(O)"
+:needed-objects   NIL
+:mhelp "Associativity of equivalence"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM50-11
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, April 29, 1999 at 14:06:41."
+:description "~P(O) AND [Q(O) AND ~R(O) OR ~Q(O) AND R(O)] IMPLIES.P(O) AND Q(O) OR ~P(O) AND ~Q(O) IMPLIES R(O)"
+:needed-objects   NIL
+:mhelp "Simple formula for debugging"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM50-HALF
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, April 29, 1999 at 14:06:42."
+:description "[P(O) EQUIV Q(O) EQUIV R(O)] IMPLIES.P(O) EQUIV.Q(O) EQUIV R(O)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM52
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, April 29, 1999 at 14:06:43."
+:description "[P(O) EQUIV Q(O) EQUIV R(O)] IMPLIES.P(O) EQUIV.Q(O) EQUIV R(O)"
+:needed-objects   NIL
+:mhelp "Asociativity of equivalence"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM57
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Monday, July 20, 1998 at 17:03:38."
+:description "EXISTS X(I) FORALL Y(I) [P(OI) X(I) EQUIV P(OI) Y(I)] EQUIV [EXISTS X(I) Q(OI) X(I) EQUIV FORALL Y(I) P(OI) Y(I)] EQUIV.EXISTS X(I) FORALL Y(I) [Q(OI) X(I) EQUIV Q(OI) Y(I)] EQUIV.EXISTS X(I) P(OI) X(I) EQUIV FORALL Y(I) Q(OI) Y(I)"
+:needed-objects   NIL
+:mhelp "Same as x2129.
+CHALLENGE NO. 1 FOR FIFTH CONFERENCE ON AUTOMATED DEDUCTION"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM51
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL P(O) FORALL Q(O) FORALL R(O) EXISTS S(O).[P(O) EQUIV Q(O) EQUIV R(O)] IMPLIES.P(O) EQUIV.Q(O) EQUIV S(O)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM53
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:28."
+:description "FORALL X(I) [P(OI) X(I) EQUIV EXISTS Y(I) P(OI) Y(I)] EQUIV.FORALL X(I) P(OI) X(I) EQUIV EXISTS Y(I) P(OI) Y(I)"
+:needed-objects   NIL
+:mhelp "DISTRIBUTES QUANTIFIER OVER EQUIVALENCE  
+GENERATES 30 CLAUSES  "
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM54
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:29."
+:description "INJECTIVE(O(AB)) F(AB) IMPLIES INJECTIVE(O(AB)) F(AB)"
+:needed-objects   (INJECTIVE)
+:mhelp "1979 -JAN-8 LONG ATTEMPT MET BUG AT 56 SECONDS  
+NOWHERE NEAR CORRECT MATING  
+ 
+1980-FEB-12 COMPLETE AUTOMATIC PROOF ON SYSTEM 3 IN 22 SECONDS  
+ 
+ 
+DATES  "
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM55
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:29."
+:description "EXISTS X(I) FORALL Y(I) [P(OI) X(I) EQUIV P(OI) Y(I)] EQUIV.EXISTS X(I) P(OI) X(I) EQUIV FORALL Y(I) P(OI) Y(I)"
+:needed-objects   NIL
+:mhelp "DISTRIBUTES QUANTIFIERS OVER AN EQUIVALENCE  
+YIELDS 24 CLAUSES  
+YIELDS 8 CLAUSES AND 64 PATHS WHEN NO. CLAUSES IS MINIMIZED  
+YIELDS 8 PATHS AND 64 CLAUSES WHEN NO. PATHS IS MINIMIZED  
+REQUIRES QUANTIFIER DUPLICATION YIELDING 16 PATHS  "
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM55A
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:29."
+:description "EXISTS X(I) R(OII) X(I) X(I) IMPLIES FORALL Y(I) R(OII) Y(I) Y(I) IMPLIES EXISTS U(I) FORALL V(I).R(OII) U(I) U(I) IMPLIES R(OII) V(I) V(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM56
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:30."
+:description "FORALL X(I) [P(OI) X(I) EQUIV FORALL Y(I) P(OI) Y(I)] EQUIV.EXISTS X(I) P(OI) X(I) EQUIV FORALL Y(I) P(OI) Y(I)"
+:needed-objects   NIL
+:mhelp "DISTRIBUTES QUANTIFIER OVER AN EQUIVALENCE  
+REQUIRES NO QUANTIFIER DUPLICATION "
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM58
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:32."
+:description "X(OA) INTERSECT(OA(OA)(OA)) Y(OA) UNION(OA(OA)(OA)) Z(OA) EQUIVS(O(OA)(OA)) [X(OA) UNION(OA(OA)(OA)) Z(OA)] INTERSECT(OA(OA)(OA)).Y(OA) UNION(OA(OA)(OA)) Z(OA)"
+:needed-objects   NIL
+:mhelp "TRIVIAL THEOREM  
+12 PATHS 24 CLAUSES WHEN MINIMIZE NO. PATHS "
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM59
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:33."
+:description "X(OA) INTERSECT(OA(OA)(OA)) Y(OA) UNION(OA(OA)(OA)) Z(OA) EQUIVS(O(OA)(OA)) [X(OA) UNION(OA(OA)(OA)) Z(OA)] INTERSECT(OA(OA)(OA)).Y(OA) UNION(OA(OA)(OA)) Z(OA)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+

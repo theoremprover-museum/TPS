@@ -1,0 +1,443 @@
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2011.4.11)  19 MAY 2011 16:50
+entering extended mode
+ %&-line parsing enabled.
+**manual
+(./manual.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, loaded.
+(/usr/share/texmf-texlive/tex/latex/base/book.cls
+Document Class: book 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texmf-texlive/tex/latex/base/bk10.clo
+File: bk10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texmf-texlive/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2009/06/22 v3.00
+
+(/usr/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\@emptytoks=\toks14
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+))
+(/usr/share/texmf-texlive/tex/latex/base/latexsym.sty
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
+)
+(/usr/share/texmf-texlive/tex/latex/base/makeidx.sty
+Package: makeidx 2000/03/29 v1.0m Standard LaTeX package
+)
+(/usr/share/texmf-texlive/tex/latex/tools/verbatim.sty
+Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks15
+\verbatim@line=\toks16
+\verbatim@in@stream=\read1
+)
+(/usr/share/texmf-texlive/tex/latex/base/alltt.sty
+Package: alltt 1997/06/16 v2.0g defines alltt environment
+)
+(/home/theorem/tps/doc/lib/tps.tex
+\hypbox=\box26
+\turnstylelength=\dimen103
+\formulabox=\box27
+\formulawd=\dimen104
+\processname=\box28
+\realtime=\box29
+\inruntime=\box30
+\gctime=\box31
+\igctime=\box32
+\processnamewd=\dimen105
+\realtimewd=\dimen106
+\inruntimewd=\dimen107
+\gctimewd=\dimen108
+\igctimewd=\dimen109
+\diffwd=\dimen110
+\ndiffwd=\dimen111
+\tempa=\box33
+\tempb=\box34
+\tempc=\dimen112
+\tempd=\box35
+\gappremises=\box36
+) (/home/theorem/tps/doc/lib/tpsdoc.tex
+\c@definition=\count88
+)
+\@indexfile=\write3
+\openout3 = `manual.idx'.
+
+
+Writing index file manual.idx
+(./manual.aux (./refs.aux) (./proving.aux) (./flags.aux) (./wffs.aux)
+(./library.aux) (./ms-guide.aux) (./unification.aux) (./rewrite.aux)
+(./translations.aux) (./models.aux) (./output.aux) (./events.aux) (./rules.aux)
+(./set-up.aux))
+\openout1 = `manual.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+ [1
+
+
+
+] [2
+
+] (./manual.toc
+LaTeX Font Info:    Try loading font information for U+msa on input line 2.
+
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 2.
+
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for U+lasy on input line 2.
+
+(/usr/share/texmf-texlive/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+) [3] [4] [5])
+\tf@toc=\write4
+\openout4 = `manual.toc'.
+
+ [6]
+Chapter 1.
+[1
+
+
+] [2]
+\openout2 = `refs.aux'.
+
+ (./refs.tex)
+\openout2 = `proving.aux'.
+
+ (./proving.tex
+Chapter 2.
+(./auto-mode.tex
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [3
+
+
+
+
+]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 65.
+
+(/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 65.
+) (./tps-auto.tex [4]
+[5])
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6]
+[7] [8] [9]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [10]
+[11] [12] [13]) [14]
+\openout2 = `flags.aux'.
+
+ (./flags.tex
+Chapter 3.
+(./testtop.tex [15
+
+
+
+] [16] [17]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [18]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [19]
+[20]) (./searchanalysis.tex [21] [22]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [23]
+[24]
+Overfull \hbox (219.2851pt too wide) in paragraph at lines 308--309
+[]                      \OT1/cmtt/m/n/10 /-------------------------------------
+------                       |                                           |[] 
+ []
+
+
+LaTeX Warning: Float too large for page by 73.62556pt on input line 357.
+
+
+Overfull \hbox (219.2851pt too wide) in paragraph at lines 383--384
+[]                      \OT1/cmtt/m/n/10 /-------------------------------------
+------                       |                                           |[] 
+ []
+
+
+Overfull \hbox (219.2851pt too wide) in paragraph at lines 457--458
+[]                      \OT1/cmtt/m/n/10 /-------------------------------------
+------                       |                                           |[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 467--468
+[]                      \OT1/cmtt/m/n/10 |                                /----
+-----------------
+ []
+
+[25] [26] [27] [28])) [29]
+\openout2 = `wffs.aux'.
+
+ (./wffs.tex [30
+
+
+
+]
+Chapter 4.
+) [31]
+\openout2 = `library.aux'.
+
+ (./library.tex [32
+
+
+
+]
+Chapter 5.
+[33] [34] [35] [36] [37]
+Underfull \hbox (badness 10000) in paragraph at lines 445--449
+
+ []
+
+[38]) [39]
+\openout2 = `ms-guide.aux'.
+
+ (./ms-guide.tex [40
+
+
+
+]
+Chapter 6.
+[41] [42] [43] [44] [45] [46] (./mtree.tex [47] [48] [49] [50] [51] [52]
+Overfull \hbox (145.78574pt too wide) in paragraph at lines 440--441
+[]                    \OT1/cmtt/m/n/10 /-------------------------------------- 
+                    |                                      |[] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [53]
+Overfull \hbox (145.78574pt too wide) in paragraph at lines 508--509
+[]                    \OT1/cmtt/m/n/10 /-------------------------------------- 
+                    |                                      |[] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [54]
+Overfull \hbox (145.78574pt too wide) in paragraph at lines 551--552
+[]                    \OT1/cmtt/m/n/10 /-------------------------------------- 
+                    |                                      |[] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [55]))
+[56]
+\openout2 = `unification.aux'.
+
+ (./unification.tex
+Chapter 7.
+[57
+
+
+
+] [58] [59] [60] [61]) [62]
+\openout2 = `rewrite.aux'.
+
+ (./rewrite.tex
+Chapter 8.
+[63
+
+
+
+] [64]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [65]
+[66] (./rewrite-top.tex [67]
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 132.
+ [68] [69] [70] [71] [72]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [73]
+[74] [75])) [76]
+\openout2 = `translations.aux'.
+
+ (./translations.tex
+Chapter 9.
+(./tactics.tex [77
+
+
+
+]
+LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 101
+.
+ (/usr/share/texmf/tex/latex/R/omscmtt.fd
+File: omscmtt.fd 
+)
+LaTeX Font Info:    Font shape `OMS/cmtt/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 101.
+ [78] [79]
+[80]) (./natetr.tex [81])) [82]
+\openout2 = `models.aux'.
+
+ (./models.tex
+Chapter 10.
+) [83
+
+
+
+]
+\openout2 = `output.aux'.
+
+ (./output.tex [84
+
+
+
+]
+Chapter 11.
+[85] (./monitor.tex [86] [87]
+Overfull \hbox (51.28656pt too wide) in paragraph at lines 83--83
+[]\OT1/cmtt/m/n/10 When the current mating is : ((LEAF36 . LEAF38) (LEAF51 . LE
+AF49) (LEAF57 . LEAF55) (LEAF58 . LEAF40))[] 
+ []
+
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [88]
+[89] [90]) [91]
+\openout2 = `events.aux'.
+
+ (./events.tex [92
+
+
+
+]
+Chapter 12.
+[93] [94]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [95]
+[96] [97] [98] [99]) [100]
+\openout2 = `rules.aux'.
+
+ (./rules.tex
+Chapter 13.
+[101
+
+
+
+] [102] (./rule-example.tex [103] [104])) [105]
+\openout2 = `set-up.aux'.
+
+ (./set-up.tex [106
+
+
+
+]
+Chapter 14.
+[107] [108] [109]
+Overfull \hbox (252.78552pt too wide) in paragraph at lines 299--299
+ []\OT1/cmtt/m/n/10 call `C:$\OMS/cmsy/m/n/10 n$\OT1/cmtt/m/n/10 <lisppath>$\OM
+S/cmsy/m/n/10 n$\OT1/cmtt/m/n/10 alisp.exe' -I `C:$\OMS/cmsy/m/n/10 n$\OT1/cmtt
+/m/n/10 Program Files$\OMS/cmsy/m/n/10 n$\OT1/cmtt/m/n/10 TPS$\OMS/cmsy/m/n/10 
+n$\OT1/cmtt/m/n/10 tps3.dxl' -- -javainterface java -classpath `C:$\OMS/cmsy/m/
+n/10 n$\OT1/cmtt/m/n/10 Program Files$\OMS/cmsy/m/n/10 n$\OT1/cmtt/m/n/10 TPS$\
+OMS/cmsy/m/n/10 n$\OT1/cmtt/m/n/10 java' TpsStart[] 
+ []
+
+[110] [111]
+Overfull \hbox (229.785pt too wide) in paragraph at lines 550--550
+[] \OT1/cmtt/m/n/10 %xterm -geometry 80x48+4+16 '#+963+651' -fn vtsingle -fb vt
+symbold  -n Tps3jCOMPUTERNAME -T Tps3jCOMPUTERNAME -sb -e lisp -I tps3.dxl &[] 
+
+ []
+
+[112]
+Overfull \hbox (250.78482pt too wide) in paragraph at lines 564--564
+[] \OT1/cmtt/m/n/10 %xterm -geometry 82x33+0+0 '#+963+651' -fn gallant.r.19 -fb
+ galsymbold  -n Tps3jCOMPUTERNAME -T Tps3jCOMPUTERNAME -sb -e lisp -I tps3.dxl 
+&[] 
+ []
+
+[113]
+Overfull \hbox (40.78665pt too wide) in paragraph at lines 686--686
+[]     \OT1/cmtt/m/n/10 -other -maxChars 50000 -rightOffset 20 -bottomOffset 30
+ -screenx 900 -screeny 500 > /dev/null &[] 
+ []
+
+[114] [115] [116]
+Overfull \hbox (30.28674pt too wide) in paragraph at lines 913--913
+[]\OT1/cmtt/m/n/10 (<TPSname> [DIY|BASIC-DIY] <procname> <servcomms> <proofoutl
+ine> <TPSmode> <DEFAULT-MS> <timeout>)[] 
+ []
+
+[117] [118]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [119]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [120]
+[121] [122] [123] [124] [125]) [126] (./manual.bbl [127
+
+
+] [128]) [129]
+(./manual.ind [130
+
+] [131] [132] [133] [134] [135] [136] [137] [138] [139]
+[140] [141] [142]) (./manual.aux (./refs.aux) (./proving.aux) (./flags.aux)
+(./wffs.aux) (./library.aux) (./ms-guide.aux) (./unification.aux)
+(./rewrite.aux) (./translations.aux) (./models.aux) (./output.aux)
+(./events.aux) (./rules.aux) (./set-up.aux)) ) 
+Here is how much of TeX's memory you used:
+ 1272 strings out of 495062
+ 13509 string characters out of 1182644
+ 117792 words of memory out of 3000000
+ 4327 multiletter control sequences out of 15000+50000
+ 15299 words of font info for 62 fonts, out of 3000000 for 9000
+ 28 hyphenation exceptions out of 8191
+ 27i,8n,24p,598b,301s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+Output written on manual.dvi (148 pages, 561132 bytes).

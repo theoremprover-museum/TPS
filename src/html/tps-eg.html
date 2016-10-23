@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>TPS examples</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+<H1>Examples of TPS Automatic Proofs</H1>  <p></p>
+<hr>
+These examples date from 1996; more recent examples are available in our <a href="tps-papers.html">papers</a>. 
+<hr>
+<p></p>
+<img ALT="*" WIDTH=13 HEIGHT=13 src="gr_arr.gif"> <b>X5305</b> is Cantor's Theorem; it says that there is no mapping 
+<i>g</i> from a set <i>s</i> onto its power set: <p></p>
+<center><img src="tps-x5305.gif" alt="FORALL s(OA).~EXISTS g(OAA) FORALL f(OA).f SUBSET s IMPLIES EXISTS j(A).s j AND g j = f"></center><p></p>
+TPS finds the diagonal argument without any prior knowledge, and proves the theorem in under half a second, before 
+translating the proof into a natural deduction format (which takes an additional one and a half seconds). Total time: 
+2.05 seconds.
+<p></p><hr>
+<p></p>
+<img ALT="*" WIDTH=13 HEIGHT=13 src="gr_arr.gif"> <b>THM15B</b> states that if <i>g</i> is an iterate of <i>f</i>, and <i>g</i> 
+has a unique fixed point, then 
+<i>f</i> has a fixed point:<p></p>
+<center><img src="tps-thm15b.gif" alt="FORALL f(II).EXISTS g(II) [ITERATE+ f g AND EXISTS x(I).g x = x AND FORALL z(I).g z = z IMPLIES z = x] IMPLIES EXISTS y(I).f y = y"></center>
+<p></p>
+TPS independently decides to prove a lemma stating that all iterates of a function commute with the function, and then
+proves the theorem from that.
+The <A HREF="tps-papers.html">JAR paper</A> discusses this theorem in some detail; recent improvements in the 
+unification procedures have reduced the time taken to prove this theorem from 2.5 hours (at the time of writing the 
+paper) to 52 seconds, plus approximately five seconds to translate the proof into natural deduction style.
+<p></p>
+<hr><p></p>
+<img ALT="*" WIDTH=13 HEIGHT=13 src="gr_arr.gif"> <b>THM48</b> states that the composition of injective functions is injective:<p></p>
+<center><img src="tps-thm48.gif" alt="FORALL F(AB) FORALL G(BC).INJECTIVE F AND INJECTIVE G IMPLIES INJECTIVE.F COMPOSE G"></center>
+<p></p>
+The equalities which are contained in the definition of INJECTIVE are not actually needed for the proof, and the time 
+taken to prove this theorem depends on whether the equalities are instantiated or not. If they are instantiated, the 
+search for a proof takes 90 seconds; if not, the proof can be found in 0.05 seconds. The time required for translation
+into natural deduction format is approximately one second in either case.<p></p><hr><p></p>
+
+<img ALT="*" WIDTH=13 HEIGHT=13 src="gr_arr.gif"> <b>X2129</b> is a challenge problem presented by Andrews at the Fourth Workshop on 
+Automated Deduction in 1979:<p></p>
+<center><img src="tps-x2129.gif" alt="EXISTS x(I) FORALL y(I) [P(OI) x EQUIV P y] EQUIV [EXISTS x Q(OI) x EQUIV FORALL y P y] EQUIV.EXISTS x FORALL y [Q x EQUIV Q y] EQUIV.EXISTS x P x EQUIV FORALL y Q y"></center><p></p>
+ TPS found a refutation proof for this problem in 0.14 seconds, using path-focused duplication. The merging (see the 
+<A HREF="tps-mans.html">manuals</A> for a description of merging) and translation processes then took about 70 seconds
+to transform the proof into natural deduction style.
+<p></p>
+
+<hr>
+<p></p>
+<A HREF="whatsnew.html"><IMG ALT="Prev" WIDTH=30 HEIGHT=30 SRC="docsleft.gif"></A><A HREF="tps.html"><IMG ALT="Top" WIDTH=30 HEIGHT=30 SRC="docsupar.gif"></A><A HREF="tps-links.html"><img ALT="Next" WIDTH=30 HEIGHT=30 src="docsrigh.gif"></A><A HREF="whatsnew.html"><IMG ALT="NEW!" WIDTH=30 HEIGHT=30 SRC="newbut.gif"></A><img ALT="  " WIDTH=30 HEIGHT=30 src="empty.gif"><A HREF="mailto:andrews+@cs.cmu.edu"><IMG ALT="Mail" WIDTH=30 HEIGHT=30 SRC="mailbut.gif"></A>
+</body>
+</html>

@@ -1,0 +1,180 @@
+;;; -*- Mode:LISP; 
+;;; ******************************************************************* ;;;
+;;;         (c) Copyrighted 1988 by Carnegie Mellon University.         ;;;
+;;;                        All rights reserved.                         ;;;
+;;;         This code was written as part of the TPS project.           ;;;
+;;;   If you want to use this code or any part of TPS, please contact   ;;;
+;;;               Peter B. Andrews (Andrews@CS.CMU.EDU)                 ;;;
+;;; ******************************************************************* ;;;
+;;; Updated contexts 7/20/87 DAN
+
+(part-of MATH-LOGIC-2-RULES)
+
+(context rules-2-prop)
+
+(defirule disj-imp-l
+  (lines (d1 (h) () "A or B")
+	 (d2 (h) () "~A implies B" ("Disj-Imp-L" () (d1))))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Line with Disjunction")
+	     (d2 "Line with Implication")
+	     ("A(O)" "Antecedent of Implication")
+	     ("B(O)" "Succedent of Implication"))
+  (mhelp "Rule to replace a disjunction by an implication."))
+
+(defirule disj-imp-r
+  (lines (d1 (h) () "A or B")
+	 (d2 (h) () "~B implies A" ("Disj-Imp-R" () (d1))))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Line with Disjunction")
+	     (d2 "Line with Implication")
+	     ("A(O)" "Antecedent of Implication")
+	     ("B(O)" "Succedent of Implication"))
+  (mhelp "Rule to replace a disjunction by an implication."))
+
+(defirule imp-disj-l
+  (lines (d1 (h) () "~A implies B")
+	 (d2 (h) () "A or B" ("Imp-Disj-L" () (d1))))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Line with Implication")
+	     (d2 "Line with Disjunction")
+	     ("A(O)" "Antecedent of Implication")
+	     ("B(O)" "Succedent of Implication"))
+  (mhelp "Rule to replace an implication by a disjunction."))
+
+(defirule imp-disj-r
+  (lines (d1 (h) () "~B implies A")
+	 (d2 (h) () "A or B" ("Imp-Disj-R" () (d1))))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Line with Implication")
+	     (d2 "Line with Disjunction")
+	     ("A(O)" "Antecedent of Implication")
+	     ("B(O)" "Succedent of Implication"))
+  (mhelp "Rule to replace an implication by a disjunction."))
+
+(defirule cases3
+  (lines (d1 (h) () "A or B or C")
+	 (h2 (h) (h2) "A" ("Case 1" () (d1)))
+	 (p3 (h) (h2) "D")
+	 (h4 (h) (h4) "B" ("Case 2" () (d1)))
+	 (p5 (h) (h4) "D")
+	 (h6 (h) (h6) "C" ("Case 3" () (d1)))
+	 (p7 (h) (h6) "D")
+	 (p8 (h) () "D" ("Cases" () (d1 p3 p5 p7))))
+  (itemshelp
+   (d1 "Line with Disjunction")
+   (h2 "Line with Assumption for Case 1 (Left Disjunct)")
+   (p3 "Conclusion in Case 1")
+   (h4 "Line with Assumption for Case 2 (Middle Disjunct)")
+   (p5 "Conclusion in Case 2")
+   (h6 "Line with Assumption for Case 3 (Right Disjunct)")
+   (p7 "Conclusion in Case 3")
+   (p8 "Conclusion for All Three Cases")
+   ("A(O)" "Left Disjunct")
+   ("B(O)" "Middle Disjunct")
+   ("C(O)" "Right Disjunct")
+   ("D(O)" "Conclusion"))
+  (support-transformation ((p8 d1 'ss)) ((p3 h2 'ss) (p5 h4 'ss) (p7 h6 'ss)))
+  (mhelp "Rule of Cases."))
+
+
+(defirule cases4
+  (lines (d1 (h) () "A or B or C or D")
+	 (h2 (h) (h2) "A" ("Case 1" () (d1)))
+	 (p3 (h) (h2) "E")
+	 (h4 (h) (h4) "B" ("Case 2" () (d1)))
+	 (p5 (h) (h4) "E")
+	 (h6 (h) (h6) "C" ("Case 3" () (d1)))
+	 (p7 (h) (h6) "E")
+	 (h8 (h) (h8) "D" ("Case 4" () (d1)))
+	 (p9 (h) (h8) "E")
+	 (p10 (h) () "E" ("Cases" () (d1 p3 p5 p7 p9))))
+  (itemshelp
+   (d1 "Line with Disjunction")
+   (h2 "Line with Assumption for Case 1")
+   (p3 "Conclusion in Case 1")
+   (h4 "Line with Assumption for Case 2")
+   (p5 "Conclusion in Case 2")
+   (h6 "Line with Assumption for Case 3")
+   (p7 "Conclusion in Case 3")
+   (h8 "Line with Assumption for Case 4")
+   (p9 "Conclusion in Case 4")
+   (p10 "Conclusion for All Four Cases")
+   ("A(O)" "Disjunct One")
+   ("B(O)" "Disjunct Two")
+   ("C(O)" "Disjunct Three")
+   ("D(O)" "Disjunct Four")
+   ("E(O)" "Conclusion"))
+  (support-transformation ((p10 d1 'ss)) ((p3 h2 'ss) (p5 h4 'ss) (p7 h6 'ss) (p9 h8 'ss)))
+  (mhelp "Rule of Cases."))
+
+(defirule assoc-left
+  (lines (d1 (h) () "P(O)")
+	 (d2 (h) () "`(ASSOC-L P(O))" ("Assoc" () (d1))))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Line to reassociate to the left")
+	     (d2 "Line after reassociation.")
+	     ("P(O)" "Wff of original line")
+	     (ASSOC-L "Wff of reassociated line"))
+  (mhelp "Rule to associate a support line leftwards. Use before
+calling CASES3 or CASES4."))
+
+(context rules-4-quant)
+
+(defirule rulec1
+  (lines (d1 (h) () "exists x(A). B")
+	 (h2 (h) (h2) "B"
+	     ("Choose" ("x(A)") (d1)))
+	 (d3 (h) (h2) "A")
+	 (p4 (h) () "A" ("RuleC" () (d1 d3))))
+  (support-transformation ((p4 d1 'ss)) ((d3 h2 'ss)))
+  (restrictions (not-free-in-hyps "x(A)")
+		(is-variable "x(A)")
+		(not-free-in "x(A)" "A(O)"))
+  (itemshelp (d1 "Existentially Quantified Line")
+	     (h2 "Hypothesis with Chosen Variable")
+	     (d3 "Conclusion with Additional Hypothesis")
+	     (p4 "Conclusion without Additional Hypothesis")
+	     ("x(A)" "Existentially Quantified Variable")
+	     ("B(O)" "Scope of Existential Quantifier")
+	     ("A(O)" "Conclusion to be Proven Using Existentially Quantified Line"))
+  (mhelp "RuleC1 -- the special case of RULEC where the chosen
+variable has the same name as the bound variable."))
+
+(context rules-2-prop)
+
+(defirule idisj-left
+  (lines (p1 (h) () "A")
+	 (p2 (h) () "A or B" ("Idisj-L" () (p1))))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (itemshelp (p1 "Line without disjunction")
+	     (p2 "Line containing disjunction")
+             ("B(O)" "Wff to right of disjunction"))
+  (mhelp "Introduce a disjunction (left version)."))
+
+(defirule idisj-right
+  (lines (p1 (h) () "A")
+	 (p2 (h) () "B or A" ("Idisj-R" () (p1))))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (itemshelp (p1 "Line without disjunction")
+	     (p2 "Line containing disjunction")
+             ("B(O)" "Wff to left of disjunction"))
+  (mhelp "Introduce a disjunction (right version)."))
+
+(defirule subst-equiv
+  (lines (p1 (h) () "P(O)")
+	 (d2 (h) () "s(O) EQUIV t(O)")
+	 (d3 (h) () "R(O)" ("Sub-equiv" () (p1 d2))))
+  (support-transformation (('pp d2 'ss)) ((p1 'ss) ('pp d3 'ss p1 d2)))
+  (itemshelp (p1 "Line before Substituting Some Occurrences")
+	     (d2 "Line with Equivalence")
+	     (d3 "Line after Substituting Some Occurrences")
+	     ("P(O)" "Formula Before Substitution")
+	     ("R(O)" "Formula After Substitution")
+	     ("s(O)" "Left-Hand Side of Equivalence")
+	     ("t(O)" "Right-Hand Side of Equivalence"))
+  (restrictions (same-modulo-equality  "P(O)" "R(O)" "s(O)" "t(O)"))
+  (mhelp "Substitution of Equivalence.  Usable when R and P are the same modulo
+the equivalence s EQUIV t."))
+
+

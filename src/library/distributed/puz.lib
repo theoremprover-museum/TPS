@@ -1,0 +1,32 @@
+(:name PUZ031-1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "~.FORALL X(I) [animal(OI) X(I) OR ~wolf(OI) X(I)] AND FORALL X(I) [animal(OI) X(I) OR ~fox(OI) X(I)] AND FORALL X(I) [animal(OI) X(I) OR ~bird(OI) X(I)] AND FORALL X(I) [animal(OI) X(I) OR ~caterpillar(OI) X(I)] AND FORALL X(I) [animal(OI) X(I) OR ~snail(OI) X(I)] AND wolf(OI) a_wolf(I) AND fox(OI) a_fox(I) AND bird(OI) a_bird(I) AND caterpillar(OI) a_caterpillar(I) AND snail(OI) a_snail(I) AND grain(OI) a_grain(I) AND FORALL X(I) [plant(OI) X(I) OR ~grain(OI) X(I)] AND FORALL A(I) FORALL P(I) FORALL S(I) FORALL O(I) [eats(OII) A(I) P(I) OR eats(OII) A(I) S(I) OR ~animal(OI) A(I) OR ~plant(OI) P(I) OR ~animal(OI) S(I) OR ~plant(OI) O(I) OR ~msmaller(OII) S(I) A(I) OR ~eats(OII) S(I) O(I)] AND FORALL C(I) FORALL B(I) [msmaller(OII) C(I) B(I) OR ~caterpillar(OI) C(I) OR ~bird(OI) B(I)] AND FORALL S(I) FORALL B(I) [msmaller(OII) S(I) B(I) OR ~snail(OI) S(I) OR ~bird(OI) B(I)] AND FORALL B(I) FORALL F(I) [msmaller(OII) B(I) F(I) OR ~bird(OI) B(I) OR ~fox(OI) F(I)] AND FORALL F(I) FORALL W(I) [msmaller(OII) F(I) W(I) OR ~fox(OI) F(I) OR ~wolf(OI) W(I)] AND FORALL F(I) FORALL W(I) [~wolf(OI) W(I) OR ~fox(OI) F(I) OR ~eats(OII) W(I) F(I)] AND FORALL W(I) FORALL G(I) [~wolf(OI) W(I) OR ~grain(OI) G(I) OR ~eats(OII) W(I) G(I)] AND FORALL B(I) FORALL C(I) [eats(OII) B(I) C(I) OR ~bird(OI) B(I) OR ~caterpillar(OI) C(I)] AND FORALL B(I) FORALL S(I) [~bird(OI) B(I) OR ~snail(OI) S(I) OR ~eats(OII) B(I) S(I)] AND FORALL C(I) [plant(OI) [cf(II) C(I)] OR ~caterpillar(OI) C(I)] AND FORALL C(I) [eats(OII) C(I) [cf(II) C(I)] OR ~caterpillar(OI) C(I)] AND FORALL S(I) [plant(OI) [sf(II) S(I)] OR ~snail(OI) S(I)] AND FORALL S(I) [eats(OII) S(I) [sf(II) S(I)] OR ~snail(OI) S(I)] AND FORALL A(I) FORALL E(I) FORALL G(I).~animal(OI) A(I) OR ~animal(OI) E(I) OR ~grain(OI) G(I) OR ~eats(OII) A(I) E(I) OR ~eats(OII) E(I) G(I)"
+:needed-objects   NIL
+:mhelp "PUZ031 in the TPTP library;
+Schubert's Steamroller Problem; 
+See Stickel, JAR 2 (1986), 89-101."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PUZ031-2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "~.FORALL X(I) [animal(OI) X(I) OR ~wolf(OI) X(I)] AND FORALL X(I) [animal(OI) X(I) OR ~fox(OI) X(I)] AND FORALL X(I) [animal(OI) X(I) OR ~bird(OI) X(I)] AND FORALL X(I) [animal(OI) X(I) OR ~snail(OI) X(I)] AND wolf(OI) a_wolf(I) AND fox(OI) a_fox(I) AND bird(OI) a_bird(I) AND snail(OI) a_snail(I) AND grain(OI) a_grain(I) AND FORALL X(I) [plant(OI) X(I) OR ~grain(OI) X(I)] AND FORALL A(I) FORALL P(I) FORALL S(I) FORALL O(I) [eats(OII) A(I) P(I) OR eats(OII) A(I) S(I) OR ~animal(OI) A(I) OR ~plant(OI) P(I) OR ~animal(OI) S(I) OR ~plant(OI) O(I) OR ~msmaller(OII) S(I) A(I) OR ~eats(OII) S(I) O(I)] AND FORALL S(I) FORALL B(I) [msmaller(OII) S(I) B(I) OR ~snail(OI) S(I) OR ~bird(OI) B(I)] AND FORALL B(I) FORALL F(I) [msmaller(OII) B(I) F(I) OR ~bird(OI) B(I) OR ~fox(OI) F(I)] AND FORALL F(I) FORALL W(I) [msmaller(OII) F(I) W(I) OR ~fox(OI) F(I) OR ~wolf(OI) W(I)] AND FORALL F(I) FORALL W(I) [~wolf(OI) W(I) OR ~fox(OI) F(I) OR ~eats(OII) W(I) F(I)] AND FORALL W(I) FORALL G(I) [~wolf(OI) W(I) OR ~grain(OI) G(I) OR ~eats(OII) W(I) G(I)] AND FORALL B(I) FORALL S(I) [~bird(OI) B(I) OR ~snail(OI) S(I) OR ~eats(OII) B(I) S(I)] AND FORALL S(I) [plant(OI) [sf(II) S(I)] OR ~snail(OI) S(I)] AND FORALL S(I) [eats(OII) S(I) [sf(II) S(I)] OR ~snail(OI) S(I)] AND FORALL A(I) FORALL E(I) FORALL G(I).~animal(OI) A(I) OR ~animal(OI) E(I) OR ~grain(OI) G(I) OR ~eats(OII) A(I) E(I) OR ~eats(OII) E(I) G(I)"
+:needed-objects   NIL
+:mhelp "PUZ031 in the TPTP library, edited to remove unnecessary references to
+caterpillars; Schubert's Steamroller Problem; 
+See Stickel, JAR 2 (1986), 89-101."
+:other-attributes NIL
+:other-remarks "
+")
+
+

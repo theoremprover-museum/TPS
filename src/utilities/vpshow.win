@@ -1,0 +1,4 @@
+#!/bin/csh
+gawk -f /afs/cs/project/tps/tps/utilities/vpshow.gawk $1 /afs/cs/project/tps/tps/utilities/vpshow.charfix
+csh -i
+

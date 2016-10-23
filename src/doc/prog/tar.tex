@@ -1,0 +1,160 @@
+\subsubsection{Making a tar file for Distribution} 
+
+You can execute
+{\tt /afs/andrew/mcs/math/TPS/admin/tps-dist/make-tar.exe}
+from {\tt /home/theorem/project/dist}
+(The date is computed automatically.)
+The tar file is placed in /home/ftp/pub.
+
+\begin{verbatim}
+			KEY STEPS:
+     Login to gtps as root (so that you can write a file in /home/ftp/pub).
+su
+     (You may need to do a klog, e.g., 
+klog pa01 -c andrew.cmu.edu
+      or 
+klog cebrown -c andrew.cmu.edu
+         so you appropriate permissions.)
+cd /home/theorem/project/dist
+/afs/andrew/mcs/math/TPS/admin/tps-dist/make-tar.exe
+
+    [This does
+     tar cvhf /home/ftp/pub/tps3-date.tar .
+     gzip /home/ftp/pub/tps3-date.tar
+     ln -sf /home/ftp/pub/tps3-date.tar.gz /home/httpd/html/tps3.tar.gz
+      ]
+    (It's important that the tar file is not put into the same directory
+      as is being tarred, or it will try to work on itself.)
+
+cd /home/ftp/pub
+move old tar file to the subdirectory old. Delete the older one.
+
+\end{verbatim}
+
+
+
+%% description of what make-tps.exe does.
+% \subsubsection{Distribution of \TPS via ftp} \\
+%
+%To make a tar file for distribution via ftp:
+%\begin{enumerate}
+%
+%\item Login to gtps.math.cmu.edu.
+%Delete any old tar files in /home/ftp/pub, or move them to
+%/home/ftp/pub/old.
+%
+%\item {\tt cd /home/theorem/project/dist}.
+%
+%\item Clean up /home/theorem/project/dist and its subdirectories by deleting
+%each backup, postscript, or dvi file.
+%% @comment[See /afs/cs/usr/andrews/clean.hlp if you want to automate this.]
+%
+%\item While in the directory /home/theorem/project/dist,
+%execute the following command at the Unix prompt:
+%{\tt tar cvhf /home/ftp/pub/tps3-date.tar .}
+%(where {\tt date} is the current date).
+%A list of file names should pass by on the screen.  Just watch until
+%you get a new Unix prompt.
+%
+%\item {\tt cd /home/ftp/pub}.
+%
+%\item If you wish to check the tar file, enter
+%{\tt tar tvf tps3-date.tar}.
+%The same list of file names should pass by.  These are the names of
+%the files which are now in the tar file.
+%
+%\item {\tt compress tps3-date.tar}. This will create the file
+%tps3-date.tar.Z, which is ready for people to transfer using ftp.
+%
+%\end{enumerate}
+%
+%     To see what files are in the tar file do:
+%      gunzip -c tps3-date.tar.gz | tar tvf -
+
+\subsubsection{Distribution of \TPS via http}
+
+There is a perl script {\tt /home/httpd/cgi-bin/tpsdist.pl}
+which is used to distribute \TPS via the gtps web site.
+This perl script displays the distribution agreement
+and asks for information from the remote user (name, email, etc.).
+Once this information is given, the perl script updates
+the log file {\verb+/home/theorem/tps-dist-logs/tpsdist_log+}.
+(For this to work, {\tt apache} should be the owner of this log file.)
+Then, the perl script outputs instructions and a link to the tar file.
+
+
+\subsubsection{Obsolete Information about Making tar tapes of \TPS}
+
+To make a tar archive onto a big round mag tape (the kind that is seen
+in science fiction movies of the sixties and seventies, always
+spinning aimlessly, supposedly to suggest the immense computing power
+of some behemoth machine):
+\begin{enumerate}
+\item Go to the CS operator's room on the third floor, at the end of the
+Wean Hall 3600 hallway.  
+
+\item Tell the operator that you wish to write a tar tape from the machine
+K.GP.  Give her the tape and go back to the terminal room. 
+
+\item Log in on the K.
+
+\item At the Unix prompt, enter {\tt assign mt}.  This gives you control of
+the mag tape units.  
+
+\item Enter {\tt cd /home/theorem/project/dist}.  This puts you in the proper
+directory.
+
+\item Clean up /home/theorem/project/dist and its subdirectories by deleting
+each backup, postscript, or dvi file.
+
+\item Determine which device {\it devname} you wish to use.  This depends on the 
+density which you wish to write.  For 6250 bpi, let {\it devname} be
+{\tt /dev/rmt16}, for 1600 bpi, let {\it devname} be {\tt /dev/rmt8}, and
+for 800 bpi, let {\it devname} be {\tt /dev/rmt0}.  Generally, you can go
+for 6250 bpi unless the intended recipient has indicated otherwise.
+
+\item Execute the following command at the Unix prompt:
+{\tt tar rvhf {\it devname} .}
+
+\item A list of file names should pass by on the screen.  Just watch until
+you get a new Unix prompt.
+
+\item To check the tape, enter
+{\tt tar tvf {\it devname}}.
+The same list of file names should pass by.  These are the names of
+the files which are now on the tape.  If there were already files on
+the tape, you will see all of them listed as well.
+
+\item If all is well, call the operator and tell them that you are done with
+the tape and that they can dismount it.  Then execute {\tt exit} at the
+Unix prompt, to give up control of the tape drive, and log out as usual.
+
+\item Go back to the operator's room and pick up the tape.
+
+\end{enumerate}
+
+To make a tar archive onto a Sun cartridge tape:
+\begin{enumerate}
+\item Take the tape to the CS operator, and ask her to put it on the machine
+O.GP.  That is a Sun3 running Mach.  Go back to a terminal and log in on
+any machine.  Again, you want to be in the directory /home/theorem/project/dist.
+
+\item Now, you need to make sure that you can write to the O's tape drive.
+You want to check the owner of the file /../o/dev/rst8, and make sure it's
+{\tt rfsd}.  If not, call the CS operator and ask them to assign it to rfsd so
+that you can make the tar tape.  
+
+\item Now, execute the following command at the Unix prompt:
+{\tt tar cvhf /../o/dev/rst8 .}
+
+\item A list of file names should pass by on the screen.  It will be very slow.
+
+\item After you get a new Unix prompt, wait a few seconds for the tape to rewind, 
+then check it by entering
+{\tt tar tvf /../o/dev/rst8}.
+The same list of file names should pass by.  These are the names of
+the files which are now on the tape.  
+
+\item Go back to the operator and ask for the tape.
+
+\end{enumerate}

@@ -1,0 +1,92 @@
+\subsection{Refining the Output: the Monitor}
+
+The monitor is intended to help users to obtain more useful output from the various mating-search procedures.
+It acts in a way like the flag \indexflag{QUERY-USER}, which also allows the user to interact with
+the search procedure (see the help flag for more information).
+
+There are three monitor commands available, these are \indexmexpr{MONITOR}, \indexmexpr{NOMONITOR}
+and \indexmexpr{MONITORLIST}. The first two turn the monitor on and off, respectively (this can also
+be done by setting the flag \indexflag{MONITORFLAG}), and also
+print out the details of the current monitor function. The latter lists all the available monitor functions.
+
+As well as typing {\tt MONITOR} to turn the monitor on, the user must also type the name of a monitor
+function. This may prompt for more input, and will then store the responses until they are needed.
+
+If the monitor is switched on, then at intervals throughout the mating search  the current monitor
+function will be called. This function might, for example, check to see if a particular mating has been
+reached, and if it has then change the settings of some of the flags (so one could start a long search with
+MATING-VERBOSE set to MIN and UNIFY-VERBOSE set to NIL, and switch these to MAX and T when the desired mating
+appeared).
+
+This is made much clearer by the following example:
+
+\begin{tpsexample}
+<51>mode mode-x5305
+<52>mate x5305
+<Mate53>ms88
+{\it several pages of output, at the end of which we have a complete mating}
+<Mate54>show-mating
+Active mating: (LEAF58 . LEAF40)  (LEAF57 . LEAF55)  (LEAF51 . LEAF49)
+(LEAF36 . LEAF38) is complete.
+<Mate55>mating-verbose silent
+<Mate56>unify-verbose nil
+<Mate57>monitorlist
+PUSH-MATING FOCUS-OTREE* FOCUS-OTREE FOCUS-OSET* FOCUS-OSET FOCUS-MATING
+FOCUS-MATING* MONITOR-CHECK
+
+To change the current monitor function to one of these functions,
+just type the name of the required monitor function as a command from either
+the main top level or the mate top level.
+
+<Mate58>help focus-mating*
+FOCUS-MATING* is a monitor function.
+Reset some flags when a particular mating is reached. Differs
+from FOCUS-MATING in that it returns the flags to their original
+settings afterwards. The default mating is the mating that
+is current at the time when this command is invoked (so the user
+can often enter the mate top level, construct the mating manually and
+then type FOCUS-MATING*). Otherwise, the mating should be typed in the form
+((LEAFa . LEAFb) (LEAFc . LEAFd) ...)
+The values used for the `original' flag settings will also
+be those that are current at the time when this command is invoked.
+The command format for FOCUS-MATING* is:
+
+<n>FOCUS-MATING*       MATING         FLAGLIST     VALUELIST
+                  `MATINGPAIRLIST' `TPSFLAGLIST' `SYMBOLLIST'
+
+<Mate59>focus-mating*
+MATING (MATINGPAIRLIST): Mating to watch for [((LEAF36 . LEAF38) (LEAF51 . LEAF49)
+(LEAF57 . LEAF55) (LEAF58 . LEAF40))]>
+FLAGLIST (TPSFLAGLIST): Flags to change [No Default]>mating-verbose unify-verbose
+VALUELIST (SYMBOLLIST): New values for these flags [No Default]>max t
+I can't find a leaf called LEAF36, but I'll continue anyway.
+I can't find a leaf called LEAF38, but I'll continue anyway.
+I can't find a leaf called LEAF51, but I'll continue anyway.
+I can't find a leaf called LEAF49, but I'll continue anyway.
+I can't find a leaf called LEAF57, but I'll continue anyway.
+I can't find a leaf called LEAF55, but I'll continue anyway.
+I can't find a leaf called LEAF58, but I'll continue anyway.
+I can't find a leaf called LEAF40, but I'll continue anyway.
+{\it A lot has happened here. Notice that the current active-mating appeared as the default list of mating pairs;
+we could type in any other list instead. Note also that (because we have completed the mating) none of the
+leaves can be found. This doesn't matter; we are allowed to specify non-existent leaves, so as to allow for
+leaves that are generated during mating search. If the search will be with path-focused duplication, the
+matingpairlist should not specify which copy of which literal is to be used (i.e. it should be in exactly the
+same format as the above). Also note that if the connections were specified in a different order, or the
+order of the literals in a pair were reversed, this would make no difference at all to the monitor function.}
+<Mate60>leave
+<64>mate x5305
+{\it We leave and re-enter, and will try to cut down the output this time around}
+<Mate65>monitor
+The monitor is now ON.
+The current monitor function is FOCUS-MATING*
+When the current mating is : ((LEAF36 . LEAF38) (LEAF51 . LEAF49) (LEAF57 . LEAF55) (LEAF58 . LEAF40))
+The following flags will be changed to the given new values :
+(UNIFY-VERBOSE . T)(MATING-VERBOSE . MAX)
+and afterwards, they will be changed back to the values :
+(UNIFY-VERBOSE . NIL)(MATING-VERBOSE . SILENT)
+
+<Mate66>ms88
+{\it less than half a page of output, all relating to the above mating}
+\end{tpsexample}
+

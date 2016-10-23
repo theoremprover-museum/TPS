@@ -1,0 +1,608 @@
+
+[PHOTO:  Recording initiated  Sun 21-Jul-85 12:03PM]
+
+ CMU Tops-20 Command Processor 5.1(1546)-2
+"C&~!kz[Concept-HDS V]
+Hindsight shows you how a mistake looks from the rear.
+@connect (to directory) td:
+@grader
+
+GRADER for ISSAR, version from 7-21-85
+File PS:<TPS.DOC>COURSE.TEMP possibly contains grades that you started to
+enter, but didn't finish entering. 
+Do you want to resume that process? [Yes]>QUIT
+
+[Command aborted.]
+<1>reset*
+Unknown Command.
+<1>^C
+@reset*
+@delete (files) couRSE.*
+ Course.Grades.1 [OK]
+ Course.Temp.1 [OK]
+@reset*
+@delete (files) vicTORIA.*
+ Victoria.Grades.1 [OK]
+ Victoria.Temp.1 [OK]
+@grader
+
+GRADER for ISSAR, version from 7-21-85
+
+
+<Gr1>chg-VARS 
+The current value of some of the variables is:
+1   Course-Name             COURSE
+2   Grade-File              PS:<TPS.DOC>COURSE.GRADES
+3   Totals-Grade-File       PS:<TPS.DOC>COURSE.TOTALS
+4   Old-Grade-File          PS:<TPS.DOC>COURSE.XGRADES
+5   Old-Totals-Grade-File   PS:<TPS.DOC>COURSE.XTOTALS
+6   Letter-grade-file       PS:<TPS.DOC>COURSE.LETTER
+7   ETPS-file               PS:<TPS>ETPS.REC
+8   Statistical-options     (-MEAN- -MEDIAN- -SDEV-)
+9   print-n-digits          0
+10  cal-percentage          NIL
+11  letter-grade-flag       T
+12  new-item                NIL
+13  drop-min                NIL
+14  due-date-flag           T
+15  default-penalty-fn      NO-PENALTY
+
+Please type one of the numbers in the first column, or 16 to look at the
+variables, or 17 to exit[Default:17]:
+
+<Gr2>gr-rEVIEW 
+
+<R1>subJECTS 
+GR-FILENAMES GR-MISC 
+T
+<R2>updatE 
+SUBJECTLIST (SUBJECTLIST):  [No Default]>gr-misc
+Subject: GR-MISC
+CAL-PERCENTAGE [NIL]>
+COURSE-NAME [COURSE]>victoria
+DEFAULT-PENALTY-FN [NO-PENALTY]>
+DROP-MIN [NIL]>
+DUE-DATE-FLAG [T]>
+LETTER-GRADE-FLAG [T]>
+NEW-ITEM [NIL]>
+PRINT-N-DIGITS [0]>
+STATISTICAL-OPTIONS [(-MEAN- -MEDIAN- -SDEV-)]>
+T
+<R3>leavE 
+
+[Left REVIEW.]
+<Gr3>creATE-GRADEFILE 
+Please enter the name of file containing list of students
+(default: PS:<TPS.DOC>STUDENT.LST): victoria
+PS:<TPS.DOC>VICTORIA.LST doesn't exist. Please try again: victorians
+Creating file PS:<TPS.DOC>VICTORIA.GRADES.
+New grade file PS:<TPS.DOC>VICTORIA.GRADES created.
+T
+<Gr4>^C
+@type (file) viCTORIA.GRADES.2 
+(
+(NAME                ID)
+(TYPE                **)
+(--MAX--             **)
+(-MEAN-              **)
+(-MEDIAN-            **)
+(-SDEV-              **)
+(-WEIGHT-            **)
+(ARNOLD-MATTHEW    MA24)
+(CARLYLE-THOMAS    TC32)
+(DICKENS-CHARLES   CD51)
+(DISRAELI-BENJAMIN BD79)
+(GASKELL-ELIZABETH EG21)
+(RUSKIN-JOHN       JR03)
+)
+(;;;Record of late assignments: 
+()
+;;;Record of penalty functions and due-dates: 
+()
+;;;List of actual names
+NIL)
+@cont
+
+
+<Gr4>inserT-GRADES 
+Please enter the names of the exercises, e.g.,HW1 EXAM1 LETTER1: 
+essay1
+ESSAY1 
+Please enter 1 items specifying the type of each exercise: 
+hw
+--MAX-- : 60
+ARNOLD-MATTHEW : 57
+CARLYLE-THOMAS : (* 9 6)
+DICKENS-CHARLES : *
+DISRAELI-BENJAMIN : (+ 4 (* 6 7))
+GASKELL-ELIZABETH : (+ 25 23 1)
+RUSKIN-JOHN : 52
+The old file PS:<TPS.DOC>VICTORIA.GRADES has been renamed to
+PS:<TPS.DOC>VICTORIA.XGRADES.
+Creating new copy of file PS:<TPS.DOC>VICTORIA.GRADES.
+<Gr5>^C
+@^T
+
+-1:
+@type (file) viCTORIA.GRADES.2 
+(
+(NAME                ID ESSAY1)
+(TYPE                **     HW)
+(--MAX--             **     60)
+(-MEAN-              **     52)
+(-MEDIAN-            **     52)
+(-SDEV-              **      4)
+(-WEIGHT-            **      1)
+(ARNOLD-MATTHEW    MA24     57)
+(CARLYLE-THOMAS    TC32     54)
+(DICKENS-CHARLES   CD51      *)
+(DISRAELI-BENJAMIN BD79     46)
+(GASKELL-ELIZABETH EG21     49)
+(RUSKIN-JOHN       JR03     52)
+)
+(;;;Record of late assignments: 
+()
+;;;Record of penalty functions and due-dates: 
+()
+;;;List of actual names
+NIL)
+@cont
+
+
+<Gr5>modiFY-GRADE 
+Please type names of the students whose grades need to be modified: 
+dicKENS-CHARLES gaSKELL-ELIZABETH 
+DICKENS-CHARLES
+Please type the names of the grades that you want to change:
+essaY1 
+DICKENS-CHARLES's scores are: (ESSAY1 . *)
+Please enter the new scores: score1 score2 ...:
+53
+GASKELL-ELIZABETH
+Please type the names of the grades that you want to change:
+essay1
+GASKELL-ELIZABETH's scores are: (ESSAY1 . 49)
+Please enter the new scores: score1 score2 ...:
+51
+The old file PS:<TPS.DOC>VICTORIA.GRADES has been renamed to
+PS:<TPS.DOC>VICTORIA.XGRADES.
+Creating new copy of file PS:<TPS.DOC>VICTORIA.GRADES.
+<Gr6>late-EXERCISES 
+
+Please type the names of the students: dicKENS-CHARLES 
+
+DICKENS-CHARLES
+    Please enter the names of the exercises: essay1
+
+Please specify days late: 
+ESSAY1: 3
+The old file PS:<TPS.DOC>VICTORIA.GRADES has been renamed to
+PS:<TPS.DOC>VICTORIA.XGRADES.
+Creating new copy of file PS:<TPS.DOC>VICTORIA.GRADES.
+<Gr7>due-DATES 
+ID ESSAY1 
+Please type the names of the exercises(exe1 exe2 ...): diplo1
+
+Please specify the due-date: 
+DIPLO1: 85 5 8
+The old file PS:<TPS.DOC>VICTORIA.GRADES has been renamed to
+PS:<TPS.DOC>VICTORIA.XGRADES.
+Creating new copy of file PS:<TPS.DOC>VICTORIA.GRADES.
+<Gr8>displAY 
+Please type the name of the student(s) [Type ALL if you want to look at 
+all the students][Default: ALL]: 
+ID ESSAY1 DIPLO1 
+Please select the items that you want to look at [Type ALL if you
+want to look at all the scores][Default: ALL]:
+
+NAME                ID ESSAY1 DIPLO1 
+--MAX--             **     60    NIL 
+ARNOLD-MATTHEW    MA24     57    NIL 
+CARLYLE-THOMAS    TC32     54    NIL 
+DICKENS-CHARLES   CD51     53    NIL 
+DISRAELI-BENJAMIN BD79     46    NIL 
+GASKELL-ELIZABETH EG21     51    NIL 
+RUSKIN-JOHN       JR03     52    NIL 
+<Gr9>namelist
+
+(NAME ID ESSAY1 DIPLO1)
+<Gr10>setq namelist (nreverese (cdr (nreverse namelist)))
+
+;NREVERESE UNDEFINED FUNCTION OBJECT
+
+MacLisp error in ETPS.
+[Command aborted.]
+<Gr1>9
+<Gr1>namelist
+
+(NAME ID ESSAY1 DIPLO1)
+<Gr2>(setq namelist (delete 'diplo1 namelist)
+<<Gr2>>)
+
+(NAME ID ESSAY1)
+<Gr3>display
+Please type the name of the student(s) [Type ALL if you want to look at 
+all the students][Default: ALL]: 
+ID ESSAY1 
+Please select the items that you want to look at [Type ALL if you
+want to look at all the scores][Default: ALL]:
+
+NAME                ID ESSAY1 
+--MAX--             **     60 
+ARNOLD-MATTHEW    MA24     57 
+CARLYLE-THOMAS    TC32     54 
+DICKENS-CHARLES   CD51     53 
+DISRAELI-BENJAMIN BD79     46 
+GASKELL-ELIZABETH EG21     51 
+RUSKIN-JOHN       JR03     52 
+<Gr4>insERT-GRADES 
+Please enter the names of the exercises, e.g.,HW1 EXAM1 LETTER1: 
+diplo1
+DIPLO1 
+Please enter 1 items specifying the type of each exercise: 
+et
+--MAX-- : 40
+ARNOLD-MATTHEW : 40
+CARLYLE-THOMAS : *
+DICKENS-CHARLES : *
+DISRAELI-BENJAMIN : 40
+GASKELL-ELIZABETH : *
+RUSKIN-JOHN : 40
+The old file PS:<TPS.DOC>VICTORIA.GRADES has been renamed to
+PS:<TPS.DOC>VICTORIA.XGRADES.
+Creating new copy of file PS:<TPS.DOC>VICTORIA.GRADES.
+<Gr5>dispLAY 
+Please type the name of the student(s) [Type ALL if you want to look at 
+all the students][Default: ALL]: 
+ID ESSAY1 DIPLO1 
+Please select the items that you want to look at [Type ALL if you
+want to look at all the scores][Default: ALL]:
+
+NAME                ID ESSAY1 DIPLO1 
+--MAX--             **     60     40 
+ARNOLD-MATTHEW    MA24     57     40 
+CARLYLE-THOMAS    TC32     54      * 
+DICKENS-CHARLES   CD51     53      * 
+DISRAELI-BENJAMIN BD79     46     40 
+GASKELL-ELIZABETH EG21     51      * 
+RUSKIN-JOHN       JR03     52     40 
+<Gr6>due-DATES 
+ID ESSAY1 DIPLO1 
+Please type the names of the exercises(exe1 exe2 ...): diplO1 
+
+Please specify the due-date: 
+DIPLO1: 85 5 8
+The old file PS:<TPS.DOC>VICTORIA.GRADES has been renamed to
+PS:<TPS.DOC>VICTORIA.XGRADES.
+Creating new copy of file PS:<TPS.DOC>VICTORIA.GRADES.
+<Gr7>^C
+@^t
+
+-1:
+@type (file) viCTORIA.GRADES.2 
+(
+(NAME                ID ESSAY1 DIPLO1)
+(TYPE                **     HW     ET)
+(--MAX--             **     60     40)
+(-MEAN-              **     52     40)
+(-MEDIAN-            **     53     40)
+(-SDEV-              **      3      0)
+(-WEIGHT-            **      1      1)
+(ARNOLD-MATTHEW    MA24     57     40)
+(CARLYLE-THOMAS    TC32     54      *)
+(DICKENS-CHARLES   CD51     53      *)
+(DISRAELI-BENJAMIN BD79     46     40)
+(GASKELL-ELIZABETH EG21     51      *)
+(RUSKIN-JOHN       JR03     52     40)
+)
+(;;;Record of late assignments: 
+((DICKENS-CHARLES ESSAY1 3 ))
+;;;Record of penalty functions and due-dates: 
+(DIPLO1 NONE (85 5 8))
+;;;List of actual names
+NIL)
+@cont
+
+
+<Gr7>add-STUDENTS 
+Please type a list of students and their grades, e.g., 
+(student1 grade1 grade2)(student2 grade1 grade2) etc.:
+(wilde-oscar ow36 59 40)
+
+Inserting  WILDE-OSCAR.
+The old file PS:<TPS.DOC>VICTORIA.GRADES has been renamed to
+PS:<TPS.DOC>VICTORIA.XGRADES.
+Creating new copy of file PS:<TPS.DOC>VICTORIA.GRADES.
+<Gr8>delETE-STUDENT 
+Please type the names of the  students: 
+carLYLE-THOMAS gaSKELL-ELIZABETH 
+
+Deleted CARLYLE-THOMAS.
+Deleted GASKELL-ELIZABETH.
+The old file PS:<TPS.DOC>VICTORIA.GRADES has been renamed to
+PS:<TPS.DOC>VICTORIA.XGRADES.
+Creating new copy of file PS:<TPS.DOC>VICTORIA.GRADES.
+<Gr9>^C
+@^t
+
+-1:
+@type (file) viCTORIA.GRADES.2 
+(
+(NAME                ID ESSAY1 DIPLO1)
+(TYPE                **     HW     ET)
+(--MAX--             **     60     40)
+(-MEAN-              **     53     40)
+(-MEDIAN-            **     53     40)
+(-SDEV-              **      4      0)
+(-WEIGHT-            **      1      1)
+(ARNOLD-MATTHEW    MA24     57     40)
+(DICKENS-CHARLES   CD51     53      *)
+(DISRAELI-BENJAMIN BD79     46     40)
+(RUSKIN-JOHN       JR03     52     40)
+(WILDE-OSCAR       OW36     59     40)
+)
+(;;;Record of late assignments: 
+((DICKENS-CHARLES ESSAY1 3 ))
+;;;Record of penalty functions and due-dates: 
+(DIPLO1 NONE (85 5 8))
+;;;List of actual names
+NIL)
+@cont
+
+
+<Gr9>aliASES 
+ID ESSAY1 DIPLO1 
+Please type the (short) names of the exercises: diplo1 
+Please specify the alias (the actual name): 
+DIPLO1: bulgarian-atrocities
+The old file PS:<TPS.DOC>VICTORIA.GRADES has been renamed to
+PS:<TPS.DOC>VICTORIA.XGRADES.
+Creating new copy of file PS:<TPS.DOC>VICTORIA.GRADES.
+<Gr10>infO-EXERCISES 
+
+Please type the names of the exercises: diPLO1 
+DIPLO1:
+     Alias:              BULGARIAN-ATROCITIES
+     Maximum Score:      40
+     Mean:               40
+     Median:             40
+     Standard Dev:       0
+     Penalty Function:   NO-PENALTY
+     Due-Date:           (85 5 8)
+<Gr1>commENT 
+Please enter the comment (enclosed in double-quotes): 
+"We are not amused."
+
+Comment added to file PS:<TPS.DOC>VICTORIA.GRADES.
+<Gr2>chg-VARS 
+The current value of some of the variables is:
+1   Course-Name             VICTORIA
+2   Grade-File              PS:<TPS.DOC>VICTORIA.GRADES
+3   Totals-Grade-File       PS:<TPS.DOC>VICTORIA.TOTALS
+4   Old-Grade-File          PS:<TPS.DOC>VICTORIA.XGRADES
+5   Old-Totals-Grade-File   PS:<TPS.DOC>VICTORIA.XTOTALS
+6   Letter-grade-file       PS:<TPS.DOC>VICTORIA.LETTER
+7   ETPS-file               PS:<TPS>ETPS.REC
+8   Statistical-options     (-MEAN- -MEDIAN- -SDEV-)
+9   print-n-digits          0
+10  cal-percentage          NIL
+11  letter-grade-flag       T
+12  new-item                NIL
+13  drop-min                NIL
+14  due-date-flag           T
+15  default-penalty-fn      NO-PENALTY
+
+Please type one of the numbers in the first column, or 16 to look at the
+variables, or 17 to exit[Default:17]:
+
+<Gr3>2
+<Gr3>chg-VARS 
+The current value of some of the variables is:
+1   Course-Name             VICTORIA
+2   Grade-File              PS:<TPS.DOC>VICTORIA.GRADES
+3   Totals-Grade-File       PS:<TPS.DOC>VICTORIA.TOTALS
+4   Old-Grade-File          PS:<TPS.DOC>VICTORIA.XGRADES
+5   Old-Totals-Grade-File   PS:<TPS.DOC>VICTORIA.XTOTALS
+6   Letter-grade-file       PS:<TPS.DOC>VICTORIA.LETTER
+7   ETPS-file               PS:<TPS>ETPS.REC
+8   Statistical-options     (-MEAN- -MEDIAN- -SDEV-)
+9   print-n-digits          0
+10  cal-percentage          NIL
+11  letter-grade-flag       T
+12  new-item                NIL
+13  drop-min                NIL
+14  due-date-flag           T
+15  default-penalty-fn      NO-PENALTY
+
+Please type one of the numbers in the first column, or 16 to look at the
+variables, or 17 to exit[Default:17]:12
+Please type the new item(s): (home-study hw 1.5)
+Do you want to change another variable,or look at their values? [No]>
+
+<Gr4>calCULATE-GRADE 
+Creating file PS:<TPS.DOC>VICTORIA.TOTALS.
+<Gr5>^C
+@type (file) viCTORIA.tOTALS.1 
+NAME              HOME-STUDY TOTAL ET HW
+-SDEV-                     7    17 16  4
+
+--MAX--                   90   100 40 60
+-MEAN-                    80    85 32 53
+-MEDIAN-                  80    92 40 53
+ARNOLD-MATTHEW            86    97 40 57
+DICKENS-CHARLES           80    53  0 53
+DISRAELI-BENJAMIN         69    86 40 46
+RUSKIN-JOHN               78    92 40 52
+WILDE-OSCAR               89    99 40 59
+
+HOME-STUDY:
+   (HW 1.5)
+@cont
+
+
+<Gr5>penALTY-FNS 
+ID ESSAY1 DIPLO1 
+Please type the names of the exercises: dipLO1 
+Please specify the penalty-fn: 
+DIPLO1: penalty%10
+The old file PS:<TPS.DOC>VICTORIA.GRADES has been renamed to
+PS:<TPS.DOC>VICTORIA.XGRADES.
+Creating new copy of file PS:<TPS.DOC>VICTORIA.GRADES.
+<Gr6>^C
+@type (file) viCTORIA.gRADES.2 
+(
+(NAME                ID ESSAY1 DIPLO1)
+(TYPE                **     HW     ET)
+(--MAX--             **     60     40)
+(-MEAN-              **     53     40)
+(-MEDIAN-            **     53     40)
+(-SDEV-              **      4      0)
+(-WEIGHT-            **      1      1)
+(ARNOLD-MATTHEW    MA24     57     40)
+(DICKENS-CHARLES   CD51     53      *)
+(DISRAELI-BENJAMIN BD79     46     40)
+(RUSKIN-JOHN       JR03     52     40)
+(WILDE-OSCAR       OW36     59     40)
+)
+(;;;Record of late assignments: 
+((DICKENS-CHARLES ESSAY1 3 ))
+;;;Record of penalty functions and due-dates: 
+(DIPLO1 PENALTY%10 (85 5 8))
+;;;List of actual names
+(DIPLO1 BULGARIAN-ATROCITIES))
+
+We are not amused.
+@cont
+
+
+<Gr6>calcULATE-GRADE 
+The old file PS:<TPS.DOC>VICTORIA.TOTALS has been renamed to
+PS:<TPS.DOC>VICTORIA.XTOTALS.
+Creating new copy of file PS:<TPS.DOC>VICTORIA.TOTALS.
+<Gr7>^C
+@type (file) viCTORIA.tOTALS.1 
+NAME              HOME-STUDY TOTAL ET HW
+-SDEV-                     7    17 16  4
+
+--MAX--                   90   100 40 60
+-MEAN-                    80    85 32 53
+-MEDIAN-                  80    92 40 53
+ARNOLD-MATTHEW            86    97 40 57
+DICKENS-CHARLES           80    53  0 53
+DISRAELI-BENJAMIN         69    86 40 46
+RUSKIN-JOHN               78    92 40 52
+WILDE-OSCAR               89    99 40 59
+
+HOME-STUDY:
+   (HW 1.5)
+@cont
+
+
+<Gr7>sort-FN 
+HW ET TOTAL HOME-STUDY NAME ESSAY1 DIPLO1 
+Please choose the field: total
+Do you want a display with increments? [Yes]>
+ID ESSAY1 DIPLO1 HOME-STUDY TOTAL ET HW 
+Please select the items to be displayed (in addition to TOTAL)
+[Default: NONE]: home-study
+The maximum and minimum scores on TOTAL are 100 and 53 respectively.
+Please specify an increment for the display[Default:5]: 10
+[Updating PS:<TPS.DOC>VICTORIA.TOTALS]
+
+[Done.]
+Do you want to sort the grades using another field? [No]>y
+HW ET TOTAL HOME-STUDY NAME ESSAY1 DIPLO1 
+Please choose the field: essaY1 
+ID ESSAY1 DIPLO1 HOME-STUDY TOTAL ET HW 
+Please select the items to be displayed (in addition to ESSAY1)
+[Default: NONE]: diplO1 
+The maximum and minimum scores on ESSAY1 are 60 and 46 respectively.
+Please specify an increment for the display[Default:5]: 
+[Updating PS:<TPS.DOC>VICTORIA.TOTALS]
+
+[Done.]
+Do you want to sort the grades using another field? [No]>
+
+<Gr8>^C
+@type (file) vicTORIA.tOTALS.1 
+NAME              HOME-STUDY TOTAL ET HW
+-SDEV-                     7    17 16  4
+
+--MAX--                   90   100 40 60
+-MEAN-                    80    85 32 53
+-MEDIAN-                  80    92 40 53
+ARNOLD-MATTHEW            86    97 40 57
+DICKENS-CHARLES           80    53  0 53
+DISRAELI-BENJAMIN         69    86 40 46
+RUSKIN-JOHN               78    92 40 52
+WILDE-OSCAR               89    99 40 59
+
+HOME-STUDY:
+   (HW 1.5)
+
+Grades sorted on the basis of TOTAL
+     NAME              TOTAL HOME-STUDY
+     
+
+
+100  --MAX--             100         90
+     WILDE-OSCAR          99         89
+     ARNOLD-MATTHEW       97         86
+     -MEDIAN-             92         80
+     RUSKIN-JOHN          92         78
+90   DISRAELI-BENJAMIN    86         69
+     -MEAN-               85         80
+80
+70
+60   DICKENS-CHARLES      53         80
+
+Grades sorted on the basis of ESSAY1
+     NAME              ESSAY1 DIPLO1
+     
+
+
+60   --MAX--               60     40
+     WILDE-OSCAR           59     40
+     ARNOLD-MATTHEW        57     40
+55   -MEDIAN-              53     40
+     -MEAN-                53     40
+     DICKENS-CHARLES       53      *
+     RUSKIN-JOHN           52     40
+50   DISRAELI-BENJAMIN     46     40
+@cont
+
+
+<Gr8>lettER-GRADE 
+Please type the name for the new letter grade: midsem
+Please type 1 if you want to add a letter grade to PS:<TPS.DOC>VICTORIA.GRADES,
+       type 2 if you want to add a letter grade to PS:<TPS.DOC>VICTORIA.TOTALS,
+       type 3 if you want to add a letter grade to both: 2
+ESSAY1 DIPLO1 HOME-STUDY TOTAL ET HW 
+Please choose the field: total
+Please type a list of letter grades and the corresponding minimum scores,
+e.g., (a 90)(b+ 80)(a- 85)(b 75)...(r 0):
+(c 70)(a 90)(b 80)(r 55)
+Unable to decide grade for DICKENS-CHARLES. Assigned *.
+Unable to decide grade for -SDEV-. Assigned *.
+Creating file PS:<TPS.DOC>VICTORIA.LETTER.
+Updating file PS:<TPS.DOC>VICTORIA.TOTALS
+DONE
+<Gr9>^C
+@type (file) viCTORIA.lETTER.1 
+ARNOLD-MATTHEW         A
+DICKENS-CHARLES        *
+DISRAELI-BENJAMIN      B
+RUSKIN-JOHN            A
+WILDE-OSCAR            A
+@cont
+
+
+<Gr9>sort-FN 
+MIDSEM HW ET TOTAL HOME-STUDY NAME ESSAY1 DIPLO1 
+Please choose the field: midsem
+Do you want a display with increments? [Yes]>
+[Command aborted.]
+<Gr10>^C
+@pop
+
+[PHOTO:  Recording terminated  Sun 21-Jul-85 12:22PM]

@@ -1,0 +1,2 @@
+#csh -f
+lisp -I /whatever/tps/tps3.dxl -- -grader

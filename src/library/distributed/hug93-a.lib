@@ -1,0 +1,42 @@
+(:name PARNAS-FIG3
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "TRANSITIVE-LAW AND IRREFLEXIVE-LAW IMPLIES FORALL x(R).~.less(ORR) x(R) 0(R) AND x(R) =(ORR) 0(R) OR less(ORR) x(R) 0(R) AND less(ORR) 0(R) x(R) OR less(ORR) 0(R) x(R) AND x(R) =(ORR) 0(R)"
+:needed-objects   (IRREFLEXIVE-LAW TRANSITIVE-LAW)
+:mhelp "Theorem suggested by Figure 3 in Parnas' HUG93 paper on theorems to prove"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PARNAS-FIG3-A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "IRREFLEXIVE-LAW IMPLIES FORALL x(R).~.less(ORR) x(R) 0(R) AND x(R) =(ORR) 0(R)"
+:needed-objects   (IRREFLEXIVE-LAW)
+:mhelp "Part of theorem suggested by Figure 3 in Parnas' HUG93 paper on theorems to prove"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PARNAS-FIG3-B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "TRANSITIVE-LAW AND IRREFLEXIVE-LAW IMPLIES FORALL x(R).~.less(ORR) x(R) 0(R) AND less(ORR) 0(R) x(R)"
+:needed-objects   (IRREFLEXIVE-LAW TRANSITIVE-LAW)
+:mhelp "Part of theorem suggested by Figure 3 in Parnas' HUG93 paper on theorems to prove"
+:other-attributes NIL
+:other-remarks "
+")
+
+

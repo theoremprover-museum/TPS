@@ -1,0 +1,120 @@
+
+
+
+\subsection{Implementation of tactics and tacticals}
+
+\begin{enumerate}
+\item Main files (in order of importance): tactics-macros, tacticals,
+tacticals-macros, tactics-aux.  These files contain tactic-related functions 
+of a general nature.  Most tactics are actually contained in other Lisp packages.
+
+\item When a tactic is executed, two global variables affect its
+execution: tacuse (the tactic's use), and tacmode (the current mode).
+Tacuse determines for what reason the tactic is being called.  Current
+uses are etree-nat (translation of \indexother{eproof} to natural deduction) and
+nat-ded (construction of a natural deduction proof without any mating
+information).  A single tactic may be defined for more than one use.
+Tacmode can have the value of either auto or interactive.  Each tactic
+should take this value into account during operation.  In general,
+this means that when the value is interactive, the user should be
+advised that the tactic is about to be applied and should be allowed
+to abort it.  When the value is auto, the tactic should just be
+carried out if applicable.  
+
+\item For each use, a number of auxiliary functions needed by the
+tacticals must be defined.
+
+\begin{enumerate}
+\item get-tac-goal: if a goal has not been specified, get the next one,
+e.g., the active planned line.
+
+\item copy-tac-goal: copy the current goal into a new goal, so that subsequent
+actions can be performed without destroying the current goal.  Allows
+later backtracking if necessary.
+
+\item save-tac-goal: put the current goal into a form suitable for
+saving.  This is not actually used by current tactics.
+
+\item restore-tac-goal: backtrack to the previous goal. 
+This is not actually used by current tactics.
+
+\item update-tac-goal: given the old (saved) goal, and the new goal on which
+some progress has been made, update the old goal to reflect the
+progress made.
+\end{enumerate}
+
+Tacticals must be independent of the value of tacuse.  
+They cannot make any assumptions
+about the structure of the goals, etc.
+
+The main function used in applying tactics is apply-tactic.  This
+is a function that takes a tactic as argument, and allows keyword
+arguments of :goal, :use and :mode.  If not specified, the use and
+mode default to the global values of tacuse and tacmode.
+If they are specified,
+the values given then override the global values of tacuse and tacmode.
+apply-tactic and (every tactic) returns four values.  
+ The first is a
+list of goals, the second a string with some kind of message, the
+third a token which indicates the result of the tactic and the fourth
+a validation, which, if non-nil, should be a function which specifies
+how solutions to the returned goals can be combined to solve the original goal.
+
+apply-tactic works as follows:
+
+\begin{enumerate}
+\item  Checks that tactic is a valid tactic.
+
+\item If a goal has not been specified, calls get-tac-goal.
+
+\item If the tactic is an atom:
+  \begin{enumerate}
+\item     gets the tactic's definition for the use.
+
+\item     if the definition is primitive, and the goal is nil, return
+(nil "Goals exhausted." 'complete nil).  If the goal is non-nil, apply the 
+tactic to the goal.
+
+\item     if the definition is compound, call apply-tactical on the
+definition and the goal.
+  \end{enumerate}
+
+\item  If the tactic's definition begins with a tactic, call apply-tactic
+recursively,  using those optional arguments.
+
+\item  If the tactic begins with a tactical, call apply-tactical.
+\end{enumerate}
+
+ Whenever a tactic begins with a tactical, the function
+apply-tactical is used.  It takes two arguments, a goal and a tactic.
+It is assumed that the tactic begins with a tactical.  
+apply-tactical works as follows:
+
+
+\begin{enumerate}
+\item Get the definition for the tactical.
+
+\item If the definition is primitive (a lambda expression), funcall the
+definition on the goal and the remainder (cdr) of the tactic. 
+
+\item If the definition is compound (i.e., is defined in terms of other
+tacticals and begins with tac-lambda), expand the definition,
+substituting the arguments provided in the tactic's definition for the
+dummy  arguments in the tactical's definition.  Then call
+apply-tactical recursively.
+
+\item Otherwise abort, returning abort as the token (third value
+returned).
+\end{enumerate}
+
+\item  Validations:  Though the validation mechanism is in place, no use
+is made of them in the current tactic uses, since any changes in the
+constructed proofs are made immediately, not saved.  Validations must
+be modified as tacticals are executed, since during their execution,
+the order of goals may be changed.  For example, a tactical may
+repeatedly apply a tactic to a goal, then to all the new goals
+created, etc., until it fails on all of them.  When it succeeds on a
+successor goal, the validation returned must be integrated into the validation
+which was returned for the first application of the tactic on the
+original goal.  The function make-validation is used for this purpose.
+\end{enumerate}

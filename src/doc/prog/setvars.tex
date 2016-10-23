@@ -1,0 +1,1178 @@
+\chapter{Set Variables}
+
+Inductively, a set type is either the type of propositions
+$\greeko$ or a function type $\alpha\beta$ where $\alpha$
+is a set type and $\beta$ is any type.  A term of a set type
+represents either a proposition, a set, or a relation.
+
+When we refer to set variables, we generally mean
+an expansion variable of a set type.  To find
+an expansion proof with expansion variables we
+may need to instantiate these variables.
+Propositional variables are relatively easy to instantiate,
+since there are only two possible truth values, $\top$ and $\bot$.
+It is far more difficult to instantiate set variables which
+are not of propositional type.  Semantically, these set types
+may correspond to infinite domains.  Syntactically, we have
+logical constants and quantifiers which can be used to create
+terms of set types.
+In some cases, but certainly not in all cases, the instantiations
+can be find using higher-order unification.  For instantiations which require
+logical constants or quantifiers, the original method used by
+\TPS is that of PRIMSUBS (see section~\ref{setvars:primsubs}).
+
+For references on PRIMSUBS, see ~\cite{Andrews89}, ~\cite{Andrews95b}, and ~\cite{Andrews99}.
+Some work regarding instantiating set variables in other
+contexts include   % put Felty's paper in logictex.bib
+~\cite{Bledsoe77}, ~\cite{Bledsoe79}, ~\cite{Bledsoe83}, ~\cite{Bledsoe93}, 
+and ~\cite{Bailin93}.
+The SCAN algorithm (see ) % put scan papers in logictex.bib
+reduces some second-order formulas
+to equivalent first-order formulas, avoiding the need
+to instantiate the set variables.
+
+\section{Primitive Substitutions}\label{setvars:primsubs}
+
+Set variables can be instantiated in a pre-processing stage
+using Primitive Substitutions.  This depends on the value
+of several flags.  There is a subject PRIMSUBS.
+The command \verb+LIST PRIMSUBS+ in \TPS will list
+the relevant flags.  Some of the main flags that determine
+if and how primitive substitutions are generated are
+\indexflag{DEFAULT-MS}, \indexflag{DEFAULT-EXPAND},
+and \indexflag{PRIMSUB-METHOD}.
+
+Some examples, in principle, might require applying primsubs
+beneath primsubs.  An example discussed in ~\cite{Andrews00a}
+is the injective version of Cantor's Theorem, {\bf X5309}.
+
+\section{Using Unification to Compute Setsubs}\label{setvars:pr00}
+
+If \indexflag{DEFAULT-MS} is set to \indexother{MS98-1},
+\indexflag{MS98-INIT} is set to 2 or 3, and
+\indexflag{PRIMSUB-METHOD} is set to \indexother{PR00},
+then unification is used to compute instantiations
+during pre-processing.
+% Explain the difference between setsubs and primsubs + dissolution + example
+
+\section{Set Constraints}\label{setvars:constraints}
+
+An alternative to instantiating set variables in a pre-processing
+step is to intertwine instantiating set variables with the mating search.
+
+% Say more here - do mating search on the rigid part, then
+% find set variable constraints, then solve some of these, iterate.
+
+Let $v$ be a set variable occurring at the head of some literal.
+
+We write constraints in sequent form.  A constraint is, in practice,
+a list of positive and negative literals (or expansion tree nodes).
+Usually, positive literals are written on the left of the sequent and negative
+literals are written on the right.  In some cases, we write
+a positive literal on the right or a negative literal on the left 
+and interpret it as the negation of the literal.
+A sequent corresponds to a subset of a vertical path on a jform.
+
+Minimal constraints for $v$ are a collection of sequents (these correspond
+to subsets of vertical paths in the jform) of the form
+$$\Psi | \Gamma(v)\rightarrow [v\, \overline{t}]$$
+where $\Gamma(v)$ is a collection of literals 
+are not negative literals with $v$ at the head,
+and $\Psi$ is a list of selection variables which occur
+in the sequent and are banned from occurring in the instantiation
+for $v$ (see section~\ref{acyclicity}).
+In general, $v$ can occur inside the body of the
+literals in $\Gamma$, and this case will be discussed below.
+We do not allow $v$ to occur in the argument terms $\overline{t}$.
+
+Maximal constraints can be defined and handled in a dual way. 
+We concentrate on minimal constraints for the present.  % say more
+
+It is very easy to see that any collection of minimal constraints
+can be simultaneously solved, since $v = \lambda \overline{z} \top$
+is a solution.  In interesting cases, this instantiation will fail
+other conditions we might need $v$ to satisfy.  What we would prefer
+to have is an ``optimal'' solution to the constraints.  In the case of minimal
+constraints, ``optimal'' means a minimal solution.
+
+First, consider the case of a single minimal constraint of the form
+$$\Psi | \Gamma \rightarrow [v\, \overline{z}].$$
+where the arguments $\overline{z}$ are distinct variables
+that occur in $\Psi$.  Also, assume that there are no
+other variables in $\Psi$.
+In this case, we can directly define
+the minimal solution as an intersection:
+$$\lambda \overline{z} \bigwedge{\Gamma}.$$
+The notation $\bigwedge(\Gamma)$ means
+$A_1 \wedge\cdots\wedge A_n$
+where each $A_j$ is either a positive literal
+in $\Gamma$ or $A_j$ is $\lnot B_j$ where
+$B_j$ is a negative literal in $\Gamma$.
+The case where $\Psi = \overline{z},\overline{w}$
+for some extra selected variables $\overline{w}$
+is only slightly more complicated.  We can directly
+define the minimal solution in this case as
+$$\lambda \overline{z} \exists \overline{w} \bigwedge{\Gamma}.$$
+This is a legal instantiation for $v$ since all the variables
+in $\Psi$ are bound.
+
+Next, consider the more general case in which the minimal constraint is of the form
+$$\Psi | \Gamma \rightarrow [v\, \overline{t}]$$
+where the arguments $\overline{t}$ need not be distinct 
+variables from $\Psi$.  Let $n$ be the length of $\overline{t}$.
+In this case, the easiest way to directly define the minimal solution
+is
+$$\lambda x^1\cdots \lambda x^n \exists \overline{w} . 
+x^1 = t^1 \wedge \cdots \wedge x^n = t^n \wedge \bigwedge(\Gamma)$$
+for new variables $x^j$ of the same type as $t^j$,
+and $\overline{w} = \Psi$.
+However, in practice it is easier if we distinguish between
+arguments $t^j$ which are actually variables in $\Psi$ and those which are not.
+So, let us write $\Psi = \overline{z},\overline{w}$
+where each $z\in\overline{t}$.  
+For each $j=1,\ldots, n$, 
+if $t^j\in\overline{z}$ and
+$t^k\neq t^j$ for $k<j$, then let $x^j = t^j$.  Otherwise,
+let $x^j$ be a new variable of the same type as $t^j$.
+Let $Eqns = \{x^j = t^j | t^j \mbox{ is not the variable } x^j\}$.
+In this case, we can directly define the minimal solution as
+$$\lambda x^1\cdots \lambda x^n \exists \overline{w} .
+   \bigwedge(Eqns) \wedge \bigwedge(\Gamma).$$
+Clearly, if $\overline{t}$ actually is the list $\overline{z}$, then this
+solution is
+$$\lambda \overline{z} \exists \overline{w} . \bigwedge(\Gamma)$$
+as before.
+
+Now, consider the case in which there are several minimal constraints of the form
+$$\Psi_i | \Gamma_i \rightarrow [v\, \overline{t^i}]$$
+for $i=1,\ldots,n$.  Again, we assume $v$ does not occur in $\Gamma_i$,
+so we can directly define the minimal solution.
+First, let $M_i$ be the minimal solution for each of the
+constraints individually defined as above:
+$$\lambda \overline{x_i} \exists \overline{w_i} .
+   \bigwedge(Eqns_i) \wedge \bigwedge(\Gamma_i).$$
+Then we take the union of these
+$$\lambda \overline{x} \bigvee_i [M_i \overline{x}]$$
+to get the minimal solution for the combined constraints.
+
+Rather than diving into the general case in which $v$ may occur in $\Gamma$,
+first consider a familiar example in which we have the two constraints
+$$\rightarrow [v\, 0]$$
+and
+$$w | [v\, w] \rightarrow [v\, [S\, w]].$$
+The minimal solution to this is the least set containing
+$0$ and closed under the function $S$.  Since we have the
+full power of higher-order logic, we can define such a solution
+by
+$$\lambda x \forall p \, .\, [[p\, 0]\,\land\,[\forall z\, . [v\, z] \limplies [v\, [S\, z]]]]
+\,\limplies\, p x.$$
+
+It should be clear at this point that the terms defining these
+solutions can become quite large.  Making such instantiations
+can be prohibitive in theorem proving, because we may need
+to perform unification with the solution in some other part
+of the problem.  This suggests it may be simpler to use
+the instantiation to prove there is a set satisfying the
+conditions we want.  Then using this lemma, the set that
+exists is represented by a selected variable (a {\it very}
+small term).  Another motivation for using such lemmas
+is that we gain more control over what properties of the
+sets are included in the lemma.
+See section~\ref{exp-pf-lemmas} for more on the implementation
+of expansion proofs using lemmas.
+
+Suppose we have a general set of minimal constraints
+$$\Psi_i | \Gamma_i(v)\rightarrow [v\, \overline{t_i}].$$
+Consider what properties of $v$ an existence lemma should include.
+The most obvious is the condition $C_i(v)$:
+$$\forall \overline{w_i} . \Gamma_i(v)\rightarrow [v\, \overline{t_i}]$$
+where $\Psi_i = \overline{w_i}$.  Of course, as mentioned above,
+$C_i(\lambda \overline{x} \top)$, so we certainly need to include more
+conditions.  Two other conditions are {\it inversion principles} and
+{\it inductive principles}.  An inversion principle for the set of
+constraints would be of the form
+$$\forall \overline{x} . v \overline{x} \limplies D(v,\overline{x})$$
+for some formula $D$.  In words, this principle says that any
+element $\overline{x}$ of $v$ must be of a form satisfying $D(v,\overline{x})$.
+An induction principle is a statement that the solution really is minimal.
+This would be a higher-order statement of the form
+$$\forall \overline{p} . \bigwedge_i(C_i'(p))\,\limplies\, v\subseteq p$$
+where $C_i'$ is a condition similar to $C_i$ defined above.
+The general case below will explain the difference between $C_i'$
+and $C_i$.
+
+Consider the minimal constraints
+$$y | [A\, y] \rightarrow [v\, y]$$
+and
+$$z | [B\, z] \rightarrow [v\, z].$$
+Here $C_1(u)$ is 
+$$\forall y \, . \, [A\, y]\, \limplies [v\, y]$$
+and $C_2(u)$ is
+$$\forall z \, . \, [B\, z]\, \limplies [v\, z].$$
+The inversion principle here would be
+$$\forall x\, . [v\, x]\, \limplies\, .\,[A\, x]\, \lor\, [B\, x].$$
+The induction principle here would be
+$$\forall p\, . C_1(p)\,\land\, C_2(p)\,\limplies\, v\subseteq p.$$
+In such cases where none of the minimal constraints are of the
+form
+$$\Psi | \Gamma(v) \rightarrow [v\, \overline{t}]$$
+where $v$ {\it does} occur in $\Gamma$,
+the set is fully determined by the conjunction of the
+$C_i$ constraints and the inversion principle, since these
+amount to an extensional definition of $v$.
+In the general case, the induction principle determines the set.
+Though the inversion principle follows from the induction principle,
+it may be helpful to have the inversion principle when we are
+trying to use the lemma to prove the theorem.
+The flag \indexflag{INCLUDE-INDUCTION-PRINCIPLE} controls
+whether the induction principle is included in set existence lemmas.% at least for now!
+
+Let us return to the familiar example of the constraints
+$$\rightarrow [v\, 0]$$
+and
+$$w | [v\, w] \rightarrow [v\, [S\, w]].$$
+In this case, $C_1(v)$ is $[v\, 0]$, and $C_2(v)$ is
+$\forall w\,.\, [v\, w]\,\limplies\, [v\, [S\, w]]$.
+The inversion principle is the familiar statement
+$$\forall x\,.\, [v\, x]\,\limplies\, [[x = 0]\, \lor\,
+\exists w\,.\, [x = [S\, w]]\,\land\, [v\, w]].$$
+The induction principle is the equally familiar statement
+$$\forall p\,.\, [[p\, 0] \land [\forall w\,.\, [p\, w]\,\limplies\, [p\, [S\, w]]]]\,
+\limplies \forall w \, .\, [v\, w]\,\limplies\, [p\, w].$$
+The inversion principle follows from the induction principle
+by instantiating $p$ with
+$$\lambda x\,.\, [[x = 0]\, \lor\,
+\exists w\,.\, [x = [S\, w]]\,\land\, [v\, w]],$$
+but it is clearly easier, if we need the inversion principle,
+to have it in the lemma rather than needing to prove it
+by instantiating the new set variable $p$.
+
+In the general case in which some constraints
+contain a $\Gamma(v)$ with $v$ free in $\Gamma(v)$,
+we need machinery to show that there is a solution $v$
+satisfying the constraints, the inversion principle,
+and the induction principle.  This machinery is provided
+by the Knaster-Tarski Fixed Point Theorem.
+
+\subsection{Knaster-Tarski Fixed Point Theorem}\label{knaster-tarski}
+
+The Knaster-Tarski Fixed Point Theorem states that monotone
+set functions have fixed points.  There are also versions
+showing there are least and greatest fixed points (in fact,
+there are a lattice of such fixed points).  % ref Dana Scott & other domain theory sources
+
+{\bf Definitions:}  Suppose $K:\wp(A)\rightarrow \wp(A)$
+for a power set $\wp(A)$.  A {\it pre-fixed point} of $K$ is a set $v$ such
+that $K(v)\subseteq v$.  A {\it post-fixed point} of $K$ is a set $v$ such
+that $v\subseteq K(v)$.  A {\it fixed point} of $K$ is a set $v$ satisfying $K(v) = v$.
+
+{\bf Knaster-Tarski Fixed Point Theorem:}  Suppose $K:\wp(A)\rightarrow \wp(A)$
+for a power set $\wp(A)$.  Further suppose $K$ is monotone function in
+the sense that for every $v\subseteq w\subseteq A$, $K(v) \subseteq K(w)$.
+Then there is a fixed point $u$ of $K$.
+
+{\bf Proof:}  Let $u = \bigcap\{v\in\wp(A) | K(v) \subseteq v\}$.
+That is, we define $u$ to be the intersection of all the pre-fixed points of $K$.
+We need to show $K(u)\subseteq u$ and $u\subseteq K(u)$.
+
+First, we show $K(u)\subseteq u$.  Suppose $z\in K(u)$.  To show $z\in u$,
+we need to show $z\in v$ for every pre-fixed point $v$.  Let $v$ be a
+pre-fixed point.  By the definition of $u$, we have $u\subseteq v$.
+Since $K$ is monotone, $K(u)\subseteq K(v)$, so $z\in K(v)$.  But
+$v$ is a pre-fixed point, so $z\in K(v)\subseteq v$.  Thus, $u$ is
+itself a pre-fixed point.  (In fact, it is clearly the least pre-fixed point.)
+
+Since $u$ is a pre-fixed point and $K$ is monotone,
+we have $K(K(u)) \subseteq K(u)$.  So, $K(u)$ is a pre-fixed point.
+Since $u$ is the least pre-fixed point, we have $u\subseteq K(u)$.
+$\Box$
+
+This proof actually shows the following form of the theorem:
+
+{\bf Knaster-Tarski Fixed Point Theorem (Least):}  Suppose $K:\wp(A)\rightarrow \wp(A)$
+for a power set $\wp(A)$.  Further suppose $K$ is monotone function in
+the sense that for every $v\subseteq w\subseteq A$, $K(v) \subseteq K(w)$.
+There is a least pre-fixed point $u$ of $K$ which is also a fixed point of $K$.
+
+A dual proof shows
+
+{\bf Knaster-Tarski Fixed Point Theorem (Greatest):}  Suppose $K:\wp(A)\rightarrow \wp(A)$
+for a power set $\wp(A)$.  Further suppose $K$ is monotone function in
+the sense that for every $v\subseteq w\subseteq A$, $K(v) \subseteq K(w)$.
+There is a greatest post-fixed point $u$ of $K$ which is also a fixed point of $K$.
+
+These statements and proofs have a straightforward representation in
+type theory.  The same proof idea works regardless of the arity of the
+set type of $u$.  The functions \indexfunction{make-knaster-tarski-lemma},
+\indexfunction{make-knaster-tarski-negf}, 
+\indexfunction{make-knaster-tarski-leastfp-lemma},
+\indexfunction{make-knaster-tarski-leastfp-negf}, 
+\indexfunction{make-knaster-tarski-gfp-lemma},
+\indexfunction{make-knaster-tarski-gfp-negf},
+and others with similar names,
+construct (an ftree representation of) an expansion proof of
+these different versions of the Knaster-Tarski Theorem
+for a given set type.
+A proof of the Knaster-Tarski Theorem for the set type of $u$ can be used as a lemma
+to show a set existence lemma for $u$ which includes the constraint properties,
+the inversion principle, and the induction principle.
+
+{\bf THM2} in \TPS is a version of the Knaster-Tarksi Theorem.
+
+When we apply the Knaster-Tarski theorem, we need to instantiate
+$K$ with a set function we know is monotone.  This can be ensured
+syntactically.
+
+{\bf Definition:}  We can define a set of terms {\it positive} and
+{\it negative} with respect to $u$ by induction.
+\begin{itemize}
+\item $[u\,\overline{t}]$ is positive with respect to $u$, so long as
+$u$ does not occur free in $\overline{t}$.
+\item $P_1 \lor P_2$ is positive (negative) with respect to $u$ if both $P_1$ and $P_2$ are.
+\item $P_1 \land P_2$ is positive (negative) with respect to $u$ if both $P_1$ and $P_2$ are.
+\item $P_1 \limplies P_2$ is positive (negative) with respect to $u$ if $P_1$ 
+is negative (positive) with respect to $u$ and $P_2$
+is positive (negative) with respect to $u$.
+\item $\lnot P$ is positive (negative) with respect to $u$ if
+$P$ is negative (positive) with respect to $u$.
+\item $\forall x P$ is positive (negative) with respect to $u$ if
+$P$ is, or if $x$ is the same variable as $u$.
+\item $\exists x P$ is positive (negative) with respect to $u$ if
+$P$ is, or if $x$ is the same variable as $u$.
+\end{itemize}
+
+{\bf Proposition:} Suppose $P$ is positive with respect to $u$.
+Then $\lambda u\lambda \overline{z} P(u,\overline{z})$
+represents a monotone function of $u$.
+
+{\bf Proof:}  We can prove this by induction on $P$.
+% fill this in
+$\Box$
+
+The function \indexfunction{mon-fn-negf} generates an expansion
+proof that a particular $\lambda u\lambda \overline{z} P(u,\overline{z})$
+is monotone where $P$ is positive with respect to $u$.
+This function returns an ftree and pushes new connections
+on the special variable \indexother{clist}.
+
+We will solve some constraints by building a monotone function $K$
+from the constraints.  Some constraints do not directly give a monotone
+function of the set variable.  In these cases, we may want to find
+a best approximating.
+
+{\bf Definition:}  Given a function $F:\wp(A)\rightarrow\wp(A)$, let
+$K_F:\wp(A)\rightarrow\wp(A)$ and $K^F:\wp(A)\rightarrow\wp(A)$ be
+defined by 
+$$K_F(u) = \{z | \forall w\, [u\subseteq w\, \limplies \,z\in F(w)]\}$$
+and
+$$K^F(u) = \{z | \exists w\, [w\subseteq u \,\land \,z\in F(w)]\}.$$
+
+{\bf Proposition:}  $K_F$ and $K^F$ are monotone set functions.
+For all $u$, $K_F(u)\subseteq F(u)\subseteq K^F(u)$.  Futhermore,
+if $L:\wp(A)\rightarrow\wp(A)$ is a montone set function and
+forall $u$, $L(u)\subseteq F(u)$, then forall $u$, $L(u)\subseteq K_F(u)$.
+Similarly, if $R:\wp(A)\rightarrow\wp(A)$ is a montone set function and
+forall $u$, $F(u)\subseteq R(u)$, then forall $u$, $K^F(u)\subseteq R(u)$.
+So, $K_F$ and $K^F$ are the best monotone upper and lower aproximations of $F$.
+
+{\bf Proof:}  Suppose $u\subseteq v$ and $z\in K_F(u)$.  We need to show
+that $z\in F(w)$ for every $w\supseteq v$.  Given such a $w$,
+apply the definition
+of $K_F$ to the set $w$ to obtain $[u\subseteq w]\,\limplies\, z\in F(w)$.
+Since $u\subseteq v\subseteq w$, we have $z\in F(v)$.  So, $K_F$ is monotone.  Similarly,
+suppose $u\subseteq v$ and $z\in K^F(u)$.  Apply the definition of $K^F(u)$
+to obtain a set $w\subseteq u$ with $z\in w$.  Now, since
+$w\subseteq u\subseteq v$, this $w$ can be used
+to witness that $z\in K^F(v)$.  So, $K^F$ is monotone.
+
+Let $u\in\wp(A)$ be given.  We need to show $K_F(u)\subseteq F(u)$
+and $F(u)\subseteq K^F(u)$.  Suppose $z\in K_F(u)$.  Apply the definition
+of $K_F$ to $u$.  Since $u\subseteq u$, we have $z\in F(u)$.
+Next, suppose $z\in F(u)$.  Then $u$ can witness that $z\in K^F(u)$.
+
+Now suppose $L$ is a monotone function such that for every $u\in\wp(A)$,
+$L(u)\subseteq F(u)$.  We need to show for every $u\in\wp(A)$, $L(u)\subseteq K_F(u)$.
+Let $u\in\wp(A)$ be given and suppose $z\in L(u)$.  Since $L$ is monotone,
+for every $w\supseteq u$, $z\in L(w)$.  So, $z\in F(w)$.  This shows $z\in K_F(u)$
+and we are done.
+
+Now suppose $R$ is a monotone function such that for every $u\in\wp(A)$,
+$F(u)\subseteq R(u)$.  We need to show for every $u\in\wp(A)$, $K^F(u)\subseteq R(u)$.
+Let $u\in\wp(A)$ be given and suppose $z\in K^F(u)$.  So, there is a $w\subseteq u$
+with $z\in F(w)$.  So, $z\in R(w)$.  Since $R$ is monotone and $w\subseteq u$,
+we have $z\in R(u)$ and we are done.
+$\Box$
+
+\subsection{Tracing Through An Example}
+
+Consider again the two minimal constraints
+$$\rightarrow [v\, 0]$$
+and
+$$w | [v\, w] \rightarrow [v\, [S\, w]]$$
+where $v$ has type $\greeko\greeki$.
+Let us name the literals
+\begin{itemize}
+\item [L1] $v\, 0$
+\item [L2] $v\, w$
+\item [L3] $v\, [S\, w]$
+\end{itemize}
+In the function \indexfunction{ftree-solve-constraint-set},
+consider some of the local variables:
+\begin{itemize}
+\item \verb+f+ is an ftree containing the nodes L1, L2, and L3,
+and the expansion variable $v$.
+\item \verb+constrs+ has the value ((L1) (L3 L2))
+\item \verb+v+ has the value $v$.
+\item \verb+vsel+ is a new variable $v^1$ of the same type as $v$.
+\item \verb+f3+ is \verb+f+ with $v^1$ (not an expansion variable)
+substituted for the expansion variable $v$.
+\item \verb+banned-occurs+ ends up having the value (($w$) NIL),
+representing $\Psi_1$ and $\Psi_2$.
+\item \verb+misc-occurs+ is NIL, assuming $S$ and $0$ are constants.
+\item \verb+paths+: ((LF3 LF2) (LF1)) where each LFi
+is the ftree node in \verb+f3+ corresponding to Li.
+\end{itemize}
+
+Then \indexfunction{make-ftree-setvar-soln} is called with
+\begin{itemize}
+\item \verb+vsel+: $v^1$
+\item \verb+kind+: MIN
+\item \verb+paths+: ((LF3 LF2) (LF1))
+\item \verb+banned-occurs+: (($w$) NIL)
+\item \verb+misc-occurs+: NIL
+\item \verb+rec-flag+: T
+\end{itemize}
+A special dynamic variable \verb+clist+ is used to collect connections
+created in the process of building the lemma.
+The function \indexfunction{make-min-inv-princ} constructs the inversion principle
+$$\forall \,x . \,v^1 \,x \supset \exists \,w [ \,x \,= \,S \,w \land \,v^1 \,w] \lor \,x \,= \,0.$$
+Next, \indexfunction{make-min-setvar-lemma-posf} constructs the full lemma \
+\begin{center}
+\begin{tabular}{r}
+$ \exists \,v^2 . [\forall \,w^1 [ \,v^2 \,w^1 \supset \,v^2 . \,S \,w^1 ] \land \,v^2 \,0]$ \\
+$\land\,\forall \,x^1 [ \,v^2 \,x^1 \supset \exists \,w [ \,x^1 \,= \,S \,w \land \,v^2 \,w ] \lor \,x^1 \,= \,0 ]$ \\
+$\land \forall p\, .\, [\forall \,w^1 [ \,p \,w^1 \supset \,p . \,S \,w^1 ] \land \,p \,0]
+\limplies\, \forall x^2\, . \, [v^1\, x^2]\,\limplies\, [p\, x^2].$  \\
+\end{tabular}
+\end{center}
+and the positive ftree that will correspond to how the lemma can be used.
+In particular, connections to the nodes LF1, LF2, and LF3 are created
+which solve the constraints (i.e., block every verticle path through LF1,
+and every vertical path through LF2 and LF3).
+
+In simpler examples which do not require a recursive definition
+using the Knaster-Tarski Fixed Point Theorem,
+the function \indexfunction{make-min-setvar-lemma-negf}
+constructs an ftree proof of the lemma.
+In this case, the lemma does require a recursive definition,
+so the function \indexfunction{make-clos-setvar-lemma-negf}
+is called.  If \indexflag{INCLUDE-INDUCTION-PRINCIPLE} is T,
+we need a strong form of the Knaster-Tarski Theorem, in which
+we know the set $u$ is the least pre-fixed point.
+The function \indexflag{make-knaster-tarski-leastfp-lemma}
+is called to construct an ftree proof for this lemma.
+Otherwise, \indexflag{make-knaster-tarski-lemma}
+gives an ftree proof of the simpler version.
+The function \indexflag{make-clos-setvar-lemma-negf-0}
+uses the Knaster-Tarski lemma to prove the set existence lemma.
+
+Now, let us examine each of these steps in more detail.
+
+\begin{enumerate}
+\item {\bf \indexfunction{make-min-inv-princ}}  Given $v^1$, the paths
+(LF1 (LF3 LF2)), and the banned variable information
+(($w$) NIL), use the type of $v^1$ to create a formula
+$$\forall \,x . \, [v^1\, x] \, \limplies\, InvP_2$$
+where $InvP_2$ is formed by \indexfunction{make-min-inv-princ-2}.
+$InvP_2$ needs to be positive with respect to $v^1$ so that
+we can apply the Knaster-Tarski Theorem later.
+
+\begin{itemize}
+\item {\bf \indexfunction{make-min-inv-princ-2}}  Given the bound list
+(\verb+zl+) ($x$), the atomic formula (\verb+vzl+) $v x$, as well as
+the information above, form a disjunction of inversion principles
+corresponding to each path:
+$$InvP_4^{(LF3\, LF2)} \, \lor\, InvP_4^{(LF1)}$$
+where each $InvP_4$ formula (positive with respect to $v^1$) is constructed by a call to 
+\indexfunction{make-min-inv-princ-3}.
+
+\item {\bf \indexfunction{make-min-inv-princ-3}}  Given one of the constraints,
+construct equations and a substitution sending some banned variables (those occurring
+as an argument of the main literal of the constraint) to the variables
+constructed by \indexfunction{make-min-inv-princ} (in this case, $x$).
+In this case we have two constraints.  
+
+First consider, (LF1), i.e., $v^1\, 0$.  In this case we only have one literal,
+the main literal of the constraint.  Since $0$ is a constant, and not a banned
+selected variable, we make an equation $x = 0$ between the argument of $v^1\, x$
+and the argument of the main constraint literal $v^1\, 0$.  In general, there
+may be several arguments, giving several equations.  Given these equations,
+\indexfunction{make-min-inv-princ-4} constructs the formula $InvP_4^{(LF1)}$.
+
+Second consider, (LF3 LF2), i.e., $w|v^1\, w \rightarrow v^1 \, [S\, w]$.
+In this case, the main literal is $v^1\, [S\, w]$.  If the argument $[S\, w]$
+were $w$, we could replace $w$ by $x$ in the constraint for the purpose
+of computing the inversion principle.
+Instead, we make an equation $x = [S\, w]$ and call
+\indexfunction{make-min-inv-princ-4} to construct the formula $InvP_4^{(LF3\, LF2)}$.
+
+\item {\bf \indexfunction{make-min-inv-princ-4}}  Constructs a formula
+existentially binding the remaining banned variables in the constraint.
+Since (LF1) has no banned variables, $InvP_4^{(LF1)}$ is $InvP_5^{(LF1)}$
+constructed by \indexfunction{make-min-inv-princ-5}.  Since (LF3 LF2)
+has the banned variable $w$, $InvP_4^{(LF3\, LF2)}$ is of the form
+$$\exists w\, . \, InvP_5^{(LF3\, LF2)}$$
+where $InvP_5^{(LF3\, LF2)}$ is constructed by \indexfunction{make-min-inv-princ-5}.
+
+\item {\bf \indexfunction{make-min-inv-princ-5}}  Constructs a conjunct of
+the equations generated in \indexfunction{make-min-inv-princ-3} corresponding
+to the constraint.  
+
+For the constraint (LF1), $InvP_5^{(LF1)}$ is $x=0$.
+Since in this constraint, the constraint has no literals in this
+constraint other than the main literal LF1, \indexfunction{make-min-inv-princ-6}
+makes no contributation.
+
+For the constraint (LF3 LF2), $InvP_5^{(LF3\, LF2)}$ is
+$x=[S\, w]\,\land\, InvP_6^{(LF2)}$
+where $InvP_6^{(LF2)}$ is constructed by \indexfunction{make-min-inv-princ-6}
+using the extra literals of the constraint, in this case (LF2).
+
+\item {\bf \indexfunction{make-min-inv-princ-6}}  Constructs a conjunct of
+formulas for each extra literal of the constraint.  In this case, there is
+the one literal LF2, giving $InvP_6^{(LF2)}$ as $v^1\, w$.
+
+In the general case, when a literal LF does not contain the set selected
+variable (\verb+vsel+) $v^1$, $InvP_6^{(LF\, .\, <LIST>)}$ will be of
+the form $A\,\lor\, InvP_6^{<LIST>}$ where $A$ is the shallow formula
+of LF or its negation (if LF is negative).  This will also be
+the form if LF is a positive literal only containing $v^1$ at the head.
+
+The more complicated case is when $v^1$ occurs inside the body of the
+literal.  Suppose $A(v^1)$ is the shallow formula of such a literal LF
+(or its negation if the literal is negative).
+Since we will want a formula which is positive with respect to $v^1$,
+we let $InvP_6^{(LF\, . \, LEAF)}$ be of a form such as
+$$\exists w^i_{\greeko\greeki}\, [[\forall x\, .\, [w^i\, x]\,\limplies\, [v^1_{\greeko\greeki}\, x]]\,\land\, A(w^i)].$$
+Of course, in general $\greeko\greeki$ may be any set type and $x$ may be
+a list of variables.
+See section~\ref{knaster-tarski} for a semantic description of this
+as a least monotone upper approximation.
+{\bf THM2} is an example where such an approximation is necessary.
+\end{itemize}
+
+In the end, we have constructed the inversion principle as follows:
+$$\forall \,x . \, [v^1\, x] \, \limplies\, InvP_2$$
+$$\forall \,x . \, [v^1\, x] \, \limplies\, .\,InvP_4^{(LF3\, LF2)} \, \lor\, InvP_4^{(LF1)}$$
+$$\forall \,x . \, [v^1\, x] \, \limplies\, .\,\exists w\, InvP_5^{(LF3\, LF2)} \, \lor\, InvP_5^{(LF1)}$$
+$$\forall \,x . \, [v^1\, x] \, \limplies\, .\,\exists w\, [x=[S\, w]\,\land\, InvP_6^{(LF2)}] \, \lor\, [x=0]$$
+$$\forall \,x . \, [v^1\, x] \, \limplies\, .\,\exists w\, [x=[S\, w]\,\land\, [v^1\, w]] \, \lor\, [x=0].$$
+
+\item {\bf \indexfunction{make-min-setvar-lemma-posf}}  Constructs the set
+existence lemma \
+\begin{center}
+\begin{tabular}{r}
+$ \exists \,v^2 . \forall \,w^1 [ \,v^2 \,w^1 \supset \,v^2 . \,S \,w^1 ] \land \,v^2 \,0$ \\
+$\land \, \forall \,x^1 [ \,v^2 \,x^1 \supset \exists \,w [ \,x^1 \,= \,S \,w \land \,v^2 \,w ] \lor \,x^1 \,= \,0 ]$ \\
+$\land \forall p\, .\, [\forall \,w^1 [ \,p \,w^1 \supset \,p . \,S \,w^1 ] \land \,p \,0]
+\limplies\, \forall x^2\, . \, [v^2\, x^2]\,\limplies\, [p\, x^2].$ \\
+\end{tabular}
+\end{center}
+and a positive ftree used to solve the constraints.
+In general, this would start by universally quantifying
+any extra expansion variables and selected variables occurring in the constraints
+(\verb+misc-occurs+).  In this case, there are none.  We create a fresh variable
+(\verb+v2+) $v^2$ to play the role of the set variable in the formula.
+\indexfunction{make-min-setvar-lemma-posf-1} is called to construct
+a positive ftree $POSF_1$.  The shallow formula of $POSF_1$ is $LEM_1(v^1)$ the body of
+the set existence lemma, using the selected variable $v^1$.
+So, we return a selected node $POSF$ with shallow $\exists v^2\,.\, LEM_1(v^2)$
+and child $POSF_1$.
+
+\begin{itemize}
+\item {\bf \indexfunction{make-min-setvar-lemma-posf-1}}
+The main part of the lemma we need to construct is the part that
+solves the constraints.  The function \indexfunction{make-min-setvar-lemma-posf-3}
+returns a postive ftree $POSF_2$ with shallow formula $Main(v^1)$.  It also
+adds connections between literals in $POSF_2$ and the literals LF1, LF2, and LF3
+of the constraints.
+
+We have already constructed the inversion principle $InvP$.
+If \indexflag{INCLUDE-INDUCTION-PRINCIPLE} is NIL, we construct a positive
+ftree for $Main(v^1)\, \land \, InvP$.
+If \indexflag{INCLUDE-INDUCTION-PRINCIPLE} is T, we construct a positive
+ftree for $Main(v^1)\, \land \, [InvP\,\land\, IndP]$ where $IndP$ is an
+induction principle.  In this case, the induction principle is
+$$\forall p\, .\, Main(p)\,\limplies\, \forall x^2\, . \, [v^1\, x^2]\,\limplies\, [p\, x^2].$$
+The positive ftrees for the inversion principle and the induction principle
+are simply constructed by expanding the formula as an ftree, duplicating
+the outermost quantifier \indexflag{NUM-OF-DUPS} times.  These are combined
+using conjunction nodes with $POSF_2$.
+
+\item {\bf \indexfunction{make-min-setvar-lemma-posf-2}}  For each constraint $P$,
+we make a conjunction of $POSF_3^P$ obtained by
+calling \indexfunction{make-min-setvar-lemma-posf-3}.  In this case, we have a conjunction of
+$POSF_3^{(LF3\, LF2)}$ and $POSF_3^{(LF1)}$.
+
+\item {\bf \indexfunction{make-min-setvar-lemma-posf-3}}  If there are
+banned variables in the constraint, we will make an expansion node.
+In this case, we will have one child that corresponds expanding using
+the banned variables (so we can mate to the literals in the constraints).
+In case we will later want to use this part of the lemma elsewhere in the
+proof, we also duplicate \indexflag{NUM-OF-DUPS} times.
+
+The constraint (LF1) does not contain any banned variables and has
+no extra literals.  So, we simply let $POSF_3^{(LF1)}$ be a positive
+leaf with shallow $[v^1\, 0]$ (the same shallow as LF1).
+This leaf is connected to the negative node LF1, solving this constraint.
+
+The constraint (LF3 LF2) contains the banned variable $w$.
+So, $POSF_3^{(LF3\, LF2)}$ is an expansion node.  
+(We create a fresh variable $w^1$ to use as the bound variable in the shallow formula.)
+One child of this expansion node
+is $POSF_4^{(LF3\, LF2)}$ with expansion term $w$.  This child is constructed
+and is used to solve the constraint by calling
+\indexfunction{make-min-setvar-lemma-posf-4}.  If \indexflag{NUM-OF-DUPS} is
+greater than $0$, we also have \indexflag{NUM-OF-DUPS} many other children
+of $POSF_3^{(LF3\, LF2)}$ expanded using expansion variables.  These children
+could be used in the proof of the theorem.
+
+\item {\bf \indexfunction{make-min-setvar-lemma-posf-4}}  This function
+creates more expansion nodes corresponding to the rest of the banned variables
+of the constraint.  Since (LF3 LF2) only has one banned variable, we
+skip directly to constructing an implication node $POSF_4^{(LF3\, LF2)}$
+where the first child is a negative ftree $POSF_5^{(LF2)}$ and the second
+child is a positive leaf with shallow formula $[v^1\, [S\, w]]$ (the
+same as LF3).  This is connected to the node LF3.
+The negative ftree $POSF_5^{(LF2)}$ is constructed by
+\indexfunction{make-min-setvar-lemma-posf-5}
+and used to block LF2.
+
+\item {\bf \indexfunction{make-min-setvar-lemma-posf-5}}  This function constructs
+a conjunction corresponding to the extra literals in a given constraint.
+In this case, we only have the one extra literal LF2.  So, $POSF_5^{(LF2)}$
+is $POSF_6^{LF2}$ constructed by \indexfunction{make-min-setvar-lemma-posf-6}.
+
+\item {\bf \indexfunction{make-min-setvar-lemma-posf-6}}  Given a literal in
+a constraint, this creates a corresponding leaf and mates it to the literal
+in the constraint.  Since LF2 is positive, $POSF_6^{LF2}$ is a negative leaf
+with shallow formula $[v^1\, w]$ and this is mated to LF2.
+\end{itemize}
+
+So, to sum up, we created a positive ftree for the lemma along with
+connections to the nodes in the constraints.  We can follow the construction
+by the noting that the construction of the shallow formulas proceeded
+as
+$$\exists v^2\,.\, LEM_1(v^2)$$
+$$Main(v^1)\,\land\, InvP\,\land\, IndP$$
+where $Main(v^1)$ was constructed as
+$$Sh(POSF_3^{(LF3\, LF2)})\, \land \, Sh(POSF_3^{(LF1)})$$
+$$\forall w^1 Sh(POSF_4^{(LF3\, LF2)})\, \land \, [v^1\, 0]$$
+$$\forall w^1 [Sh(POSF_5^{(LF2)})\,\limplies\, [v^1\, [S\, w^1]]]\, \land \, [v^1\, 0]$$
+$$\forall w^1 [[v^1\, w^1]\,\limplies\, [v^1\, [S\, w^1]]]\, \land \, [v^1\, 0]$$
+(where $Sh(N)$ means the shallow formula of the node $N$).
+
+\item {\bf \indexfunction{make-clos-setvar-lemma-negf}}  This produces
+a negative ftree with connections giving the proof of the set existence lemma.
+Let us assume \indexflag{INCLUDE-INDUCTION-PRINCIPLE} is set to T.
+The function \indexfunction{make-knaster-tarski-leastfp-lemma} constructs
+an ftree proof $Knaster-Tarski^-$ of the least fixed point version of the
+Knaster-Tarski Theorem for the type of the set variable $v$.
+In this case, $v$ has type $\greeko\greeki$, so the Knaster Tarski Theorem
+generated is \
+\begin{center}
+\begin{tabular}{r}
+$\forall K_{\greeko\greeki(\greeko\greeki)} \, . \,
+\forall u_{\greeko\greeki}\forall v_{\greeko\greeki} 
+[\forall z \, . \, u\, z \,\limplies\, v\, z]$ \\
+$\limplies\, \exists u_{\greeko\greeki} \, . \, \forall z\, [K\, u\, z\, \limplies \, u\, z]
+\,\land \,\forall z\, [u\, z\, \limplies \, K \, u\, z]$ \\
+$\forall v_{\greeko\greeki}\, . \, \forall z\, [K\, v\, z\, \limplies \, v\, z]
+\,\limplies\, \forall z\, .\, u\, z\, \limplies \, v\, z$ \\
+\end{tabular}
+\end{center}
+The function \indexfunction{make-clos-setvar-lemma-negf-0}
+does the work of constructing the negative ftree node $NEGF$ giving
+the proof of the set existence lemma.  The special variable
+\verb+expf+ is set to a positive ftree $Knaster-Tarski^+$ for the Knaster-Tarski
+Lemma which is used to prove the set existence lemma.
+Then we return the ftree
+$$\econj{}{}{Knaster-Tarski^-}{\eimp{}{}{Knaster-Tarski^+}{NEGF_0^-}}$$
+The new connections are added to the dynamic variable \verb+clist+.
+
+\begin{itemize}
+\item {\bf \indexfunction{make-clos-setvar-lemma-negf-0}}
+Our goal is to construct a negative ftree $NEGF_0^-$ for the set existence lemma
+\begin{center}
+\begin{tabular}{r}
+$ \exists \,v^2 . \forall \,w^1 [ \,v^2 \,w^1 \supset \,v^2 . \,S \,w^1 ] \land \,v^2 \,0$ \\
+$\land \, \forall \,x^1 [ \,v^2 \,x^1 \supset \exists \,w [ \,x^1 \,= \,S \,w \land \,v^2 \,w ] \lor \,x^1 \,= \,0 ]$ \\
+$\land \forall p\, .\, [\forall \,w^1 [ \,p \,w^1 \supset \,p . \,S \,w^1 ] \land \,p \,0]
+\limplies\, \forall x^2\, . \, [v^2\, x^2]\,\limplies\, [p\, x^2].$ \\
+\end{tabular}
+\end{center}
+In general, the set existence lemma universally binds the variables
+in \verb+misc-occurs+.  In this case there are no such variables.
+We also need to construct the positive $Knaster-Tarski^+$ node (\verb+expf+)
+and add connections to \verb+clist+ between nodes in these two ftrees.
+
+We proceed to the most important step, instantiating the $K$ in
+the Knaster-Tarski Theorem.  The monotone function we want can
+be extracted from the inversion principle.  The inversion principle (\verb+inv-princ+)
+is
+$$\forall x . \,v^1 \,x \supset \exists \,w [ \,x \,= \,S \,w \land \,v^1 \,w] \lor \,x \,= \,0.$$
+and we construct the monotone function (\verb+monfn+):
+$$\lambda v^1 \lambda x\, . \exists \,w [ \,x \,= \,S \,w \land \,v^1 \,w] \lor \,x \,= \,0.$$
+Let us write $\lambda v^1\lambda x\, . \, P(v^1,x)$ for this term.
+Note that $P(v^1,x)$ is positive with respect to $v^1$, so the function will be monotone.
+We substitute this for $K$ so that $Knaster-Tarski^+$ is an expansion node
+$$\uexpnode{}{\mbox{Knaster-Tarksi}}{\lambda v^1\lambda x\, . \, P(v^1,x)}{\erew{}{\lambda}{}{\eimp{}{}{MONNEGF^-}{EUF^+}}}$$
+with one child using the monotone function as the expansion term.
+The child of this node is a $\lambda$-rewrite passing to the normal form.
+Below this is an implication node with two children $MONNEGF^-$ providing
+a proof that $\lambda v^1\lambda x\, . \, P(v^1,x)$ is monotone and $EUF^+$ a positive node with shallow formula (\verb+eu+)
+\begin{center}
+\begin{tabular}{r}
+$\exists u_{\greeko\greeki} \, . \, \forall z\, [P(u,z)\, \limplies \, u\, z]
+\,\land \,\forall z\, [u\, z\, \limplies \, P(u,z)]$ \\
+$\forall v_{\greeko\greeki}\, . \, \forall z\, [P(v,z)\, \limplies \, v\, z]
+\,\limplies\, \forall z\, .\, u\, z\, \limplies \, v\, z.$ \\
+\end{tabular}
+\end{center}
+The node $MONNEGF^-$ is constructed by the function \indexfunction{mon-fn-negf}.
+This function implements the proof that set functions defined by positive formulas
+are monotone.
+
+Let $u^1$ be a new selected variable to use in the selection node $EUF^+$:
+$$\sel{}{EU}{u^1}{\econj{}{}{Kuuf^+}{\econj{}{}{uKuf^+}{lff^+}}}$$
+where $EU$ is the right side of the top implication of the Knaster-Tarski Theorem.
+The node $Kuuf^+$ is has shallow formula $Kuu$:
+$$\forall z\, .\, [\exists \,w [ \,z \,= \,S \,w \land \,u^1 \,w] \lor \,z \,= \,0]
+\,\limplies\, u^1\, z$$
+and is constructed during the process of constructing $NEGF_0^-$ below.
+We start with $Kuuf^+$ as a leaf.
+The node $uKuf^+$ is a leaf that corresponds directly to
+the inversion principle in the set existence lemma
+$$\forall z\, [u^1\, z\, \limplies \, \exists \,w [ \,z \,= \,S \,w \land \,u^1 \,w] \lor \,z \,= \,0.$$
+Finally, we will construct a node $lff^+$ has shallow formula \
+\begin{center}
+\begin{tabular}{r}
+$\forall p\, \forall z\, [[\exists \,w [ \,z \,= \,S \,w \land \,u^1 \,w] \lor \,z \,= \,0]
+\,\limplies\, u^1\, z]$ \\
+$\limplies\, \forall z\, .\, u^1\, z\,\limplies\, p\, z$ \\
+\end{tabular}
+\end{center}
+obtained from the fact that $u^1$ is the least pre-fixed point.
+
+The selected variable $u^1$ is used as the expansion term $NEGF_0^-$
+we want to construct for the set existence lemma.  So, $NEGF_0^-$
+will have the form
+$$\uexpnode{}{\mbox{Set Existence}}{u^1}{\econj{}{}{NEGF_1^-}{\econj{}{}{InvF^-}{IndF^-}}}$$
+where $NEGF_1^-$ (\verb+f+)
+is constructed by \indexfunction{make-clos-setvar-lemma-negf-1},
+$InvF^-$ (\verb+l+) is a leaf corresponding to the inversion principle,
+and $IndF^-$ (\verb+indf+) constructed by \indexfunction{make-clos-setvar-ind-negf}
+corresponds to the induction principle.
+The leaves $InvF^-$ and $uKuf^+$ are mated on \verb+clist+.
+
+\item {\bf \indexfunction{make-clos-setvar-lemma-negf-1}}  This function
+constructs $NEGF_1^-$ with shallow formula
+$$\forall \,w [ \,u^1 \,w \supset \,u^1 . \,S \,w ] \land \,u^2 \,0.$$
+Along with this, we will construct $Kuuf^+$ and put connections onto \verb+clist+.
+So, we build $NEGF_1^-$ as a conjunction 
+$NEGF_2^{(LF3\, LF2)}\land NEGF_2^{(LF1)}$
+where $NEGF_2^{(LF3\, LF2)}$ and $NEGF_2^{(LF1)}$
+corresponding to the two constraints is constructed by
+\indexfunction{make-clos-setvar-lemma-negf-2}.
+We also use an integer \verb+n+ to keep up with which constraint we
+are considering.
+
+\item {\bf \indexfunction{make-clos-setvar-lemma-negf-2}}
+Given a constraint $C$ (\verb+paths+), this function builds
+a negative ftree $NEGF_2^C$ and changes $Kuuf^+$ and \verb+clist+.
+
+First, consider the constraint (LF1).  The shallow formula of
+$NEGF_2^{(LF1)}$ should be $u^1\, 0$.  Here, we let
+\indexfunction{make-clos-setvar-lemma-negf-3} do the work
+of constructing an ftree which will be merged with $Kuuf^+$.
+Then \indexfunction{make-clos-setvar-lemma-negf-4} creates
+the negative leaf $NEGF_2^{(LF1)}$ mated with part of
+the ftree generated in \indexfunction{make-clos-setvar-lemma-negf-4}.
+
+The second constraint we need $NEGF_2^{(LF3\, LF2)}$ to have shallow
+formula
+$$\forall w \, . \, u^1\, w\,\limplies\, u^1\, . \, S\, w.$$
+First, we create a new selected variable $w^2$ and let $NEGF_2^{(LF3\, LF2)}$
+be 
+$$\sel{}{\forall w \, . \, u^1\, w\,\limplies\, u^1\, . \, S\, w}{w^2}{\eimp{}{}{NEGF_3^{(LF2)}}{LEAF3}}$$
+where $NEGF_3^{(LF2)}$ is constructed by \indexfunction{make-clos-setvar-lemma-negf-3}
+(along with an ftree to be merged with $Kuuf^+$)
+and $LEAF3$ is a negative leaf with shallow $u^1\, . \, S\, w^2$
+(mated to part of the new part of $Kuuf^+$).
+
+\item {\bf \indexfunction{make-clos-setvar-lemma-negf-3}}  Suppose we are
+given a constraint $C$ ($\Gamma\rightarrow A$) and the arguments (\verb+args+) of the main literal of the constraint.
+This function constructs three positive ftrees.  The first is an ftree $Kuuf_3^C$
+which will be merged with $Kuuf^+$.  The second is $NEGF_3^\Gamma$ where $L$
+is the list of extra literals $L$ of the constraint, or NIL if there are no extra
+literals.  If $NEGF_3^\Gamma$ is not nil, it is
+a positive ftree corresponding to a conjunct of the extra literals $L$ of the constraint.
+The third is a leaf inside the first ftree which will be used in the mating.
+
+Recall that $Kuu$ is
+$$\forall z\, .\, [\exists \,w [ \,z \,= \,S \,w \land \,u^1 \,w] \lor \,z \,= \,0]
+\,\limplies\, u^1\, z,$$
+and this will be the shallow formula of $Kuuf_3^C$.
+The third ftree returned will be the leaf corresponding to $u^1\, z$
+beneath $Kuuf_3^C$.
+
+In the first constraint (LF1), the args are $(0)$.  We use the list of
+arguments as expansion terms to create $Kuuf_3^{(LF1)}$.  Here, $Kuuf_3^{(LF1)}$ will be
+$$\uexpnode{}{Kuu}{0}{\eimp{}{}{Kuuf_5^{(LF1)}}{LEAF:u^1\, 0^+}}$$
+where $LEAF:u^1\, 0^+$ will be the third ftree returned.
+$Kuuf_5^{(LF1)}$ is a negative ftree constructed by
+\indexfunction{make-clos-setvar-lemma-negf-5}.
+In this case there are no extra literals, so the second return value is NIL.
+
+In the second constraint (LF3 LF2), the one argument is $S\, w^2$.
+In this case, $Kuuf_3^{(LF3\, LF2)}$ is 
+$$\uexpnode{}{Kuu}{S\, w^2}{\eimp{}{}{Kuuf_5^{(LF3\, LF2)}}{u^1\, . \,S\, w^2}}$$
+where $Kuuf_5^{(LF3\, LF2)}$ is constructed
+along with $NEGF_3^{(LF2)}$
+by \indexfunction{make-clos-setvar-lemma-negf-5}.
+
+\item {\bf \indexfunction{make-clos-setvar-lemma-negf-4}}  This simply makes
+a negative leaf and mates it to a given positive leaf.
+
+\item {\bf \indexfunction{make-clos-setvar-lemma-negf-5}}  Given a constraint
+$C$ ($\Gamma\rightarrow A$),
+this function returns two values.  The first is a negative ftree 
+$Kuuf_5^C$, and the second is a positive ftree $NEGF_8^\Gamma$ (or NIL if $\Gamma$ is empty)
+constructed later.
+
+For the constraint (LF1) $Kuu_5^{(LF1)}$ should have shallow formula
+$$[\exists \,w [ \,z \,= \,S \,w \land \,u^1 \,w] \lor \,0 \,= \,0].$$
+So, is $Kuu_5^{(LF1)}$ of the form
+$$\edisj{}{}{UNUSEDLEAF}{Kuu_6^{(LF1)}}$$
+where $Kuu_6^{(LF1)}$ is constructed by \indexfunction{make-clos-setvar-lemma-negf-6}.
+
+For the constraint (LF3 LF2) $Kuu_5^{(LF3\, LF2)}$ should have shallow formula
+$$[\exists \,w [ S\, w^2 \,= \,S \,w \land \,u^1 \,w] \lor \,[S\,w^2] \,= \,0].$$
+In this case, $Kuu_5^{(LF3\, LF2)}$ is of the form
+$$\edisj{}{}{Kuu_6^{(LF3\, LF2)}}{UNUSEDLEAF}$$
+where $Kuu_6^{(LF3\, LF2)}$ is constructed by \indexfunction{make-clos-setvar-lemma-negf-6}
+(along with $NEGF_8^{(LF2)}$).
+
+\item {\bf \indexfunction{make-clos-setvar-lemma-negf-6}}  This function
+constructs $Kuu_6^C$ using the selected variables created in
+\indexfunction{make-clos-setvar-lemma-negf-2} as expansion terms,
+then calls \indexfunction{make-clos-setvar-lemma-negf-7} to construct
+the rest of $Kuu_6^C$ and $NEGF_8^C$.  At this step we distinguish
+between arguments (\verb+args2+) that correspond to these selected variables,
+and remove one of the arguments corresponding to each such selected variable.
+The arguments sent to \indexfunction{make-clos-setvar-lemma-negf-7} correspond
+to equations in the formula \verb+wff+ (originating with the inversion principle).
+
+Since the constraint (LF1) has not banned variables, $Kuu_6^{(LF1)}$ 
+is constructed as $Kuu_7^{(LF1)}$ 
+by \indexfunction{make-clos-setvar-lemma-negf-7}.
+
+The constraint (LF3 LF2) has the single banned variable $w$.
+The corresponding selected variable $w^2$ is used to create $Kuu_6^{(LF3\, LF2)}$ as
+$$\uexpnode{}{[\exists \,w [ S\, w^2 \,= \,S \,w \land \,u^1 \,w] \lor \,[S\,w^2] \,= \,0]}{w^2}{Kuu_7^{(LF3\, LF2)}}$$
+where $Kuu_7^{(LF3\, LF2)}$ by \indexfunction{make-clos-setvar-lemma-negf-7}
+(along with $NEGF_8^{(LF2)}$).
+
+\item {\bf \indexfunction{make-clos-setvar-lemma-negf-7}}
+The arguments that are sent to this function are those from the main
+literal which were not the first argument corresponding to the selected
+variables generated in \indexfunction{make-clos-setvar-lemma-negf-2}.
+These arguments correspond to a conjunction of reflexive equations.  
+If there is more than one literal in the constraint,more
+conjuncts are formed when \indexfunction{make-clos-setvar-lemma-negf-8}
+is called.
+
+The first constraint (LF1) has no extra literals, so when this function is
+called $Kuu_7^{(LF1)}$ with shallow (\verb+wff+) $0=0$
+is simply constructed as
+$$\erew{}{REFL=}{0 = 0}{\truenode{}}$$
+
+The second constraint (LF3 LF2) does have the extra literal LF2.
+When this is called $Kuu_7^{(LF3\, LF2)}$ which shallow (\verb+wff+)
+$$[[S\, w^2]\, = \, [S\, w^2]]\,\land\, [u^1\, w^2]$$
+is constructed as
+$$\econj{}{}{\erew{}{REFL=}{}{\truenode{}}}{Kuu_8^{(LF2)}}$$
+where $Kuu_8^{(LF2)}$ is constructed by
+\indexfunction{make-clos-setvar-lemma-negf-8}.
+
+\item {\bf \indexfunction{make-clos-setvar-lemma-negf-8}}
+Given the left side $\Gamma$ of a constraint, a negative
+ftree $Kuu_8^\Gamma$ and positive ftree $NEGF_8^\Gamma$ 
+are constructed along with connections between them.
+These are constructed as conjuncts for each literal in $\Gamma$
+using \indexfunction{make-clos-setvar-lemma-negf-9} to
+construct the children of the conjuncts.
+
+In our example, $Kuu_8^{(LF2)}$ is simply $Kuu_9^{LF2}$ since there
+is only one literal.  Similarly, $NEGF_8^{(LF2)}$ is $NEGF_9^{LF2}$.
+
+\item {\bf \indexfunction{make-clos-setvar-lemma-negf-9}}
+Usually this function is given two wffs which are $\alpha$-equal.
+A positive leaf and a negative leaf are created, mated, and returned.
+Another case is when set variable occurs embedded in the literal of the constraint.
+In this case, the first wff \verb+wff1+ is of the form
+$$\exists w^i_{\greeko\greeki}\, [[\forall \overline{x}\, .\, [w^i\, \overline{x}]\,\limplies\, [u^1_{\greeko\greeki}\, \overline{x}]]\,\land\, A(w^i)].$$
+where the second wff \verb+wff2+ is $A(u^1)$.  In this case, we create
+a positive ftree of the form
+$$\uexpnode{}{\exists w^i_{\greeko\greeki}\, [[\forall \overline{x}\, .\, [w^i\, \overline{x}]\,\limplies\, [u^1_{\greeko\greeki}\, \overline{x}]]\,\land\, A(w^i)]}{u^1}{\econj{}{}
+{\sel{}{\forall \overline{x}\, .\, [w^i\, \overline{x}]\,\limplies\, [u^1_{\greeko\greeki}\, \overline{x}]}{\overline{a}}{\eimp{}{}{LEAF1:[u^1\, \overline{a}]}{LEAF2:[u^1\, \overline{a}]}}}
+{LEAF3:A(u^1)}}$$
+and a negative leaf with shallow formula $A(u^1)$ which we mate to $LEAF3$.
+Also, $LEAF1$ and $LEAF2$ are mated.
+These two ftrees are returned.
+
+In our example, the literal is LF2.  The formulas are both $u^1\, w^2$,
+so we create $Kuu_9^{LF2}$ as a positive leaf and $NEGF_9^{LF2}$
+as a negative leaf.  The two are mated and returned.
+
+\item {\bf \indexfunction{make-clos-setvar-ind-negf}}  This function
+is called with the least pre-fixed point property formula (\verb+lfwff+),
+the induction property formula (\verb+indwff+), and the list of constraints (\verb+paths+).
+The goal is to prove the induction property from the pre-fixed point
+property by constructing a negative ftree $IndF^-$
+for the induction property, a positive ftree $lff^+$
+for the least pre-fixed point property,
+and a complete set of connections between nodes in them.
+The dynamic variable \verb+lff+ is set to $lff^+$.
+$IndF^-$ is returned.
+
+In our example, the least pre-fixed property is
+$$\forall v_{\greeko\greeki}\, . \, \forall z\, [[\exists \,w [ \,x \,= \,S \,w \land \,v \,w] \lor \,x \,= \,0]
+\, \limplies \, v\, z]
+\,\limplies\, \forall z\, .\, u^1\, z\, \limplies \, v\, z$$
+and the induction property is
+$$\forall p\, .\, [\forall \,w^1 [ \,p \,w^1 \supset \,p . \,S \,w^1 ] \land \,p \,0]
+\limplies\, \forall x^2\, . \, [u^1\, x^2]\,\limplies\, [p\, x^2].$$
+The first thing we do is choose a new selected variable $p^1_{\greeko\greeki}$
+(\verb+p+).
+Let $P_1$ (\verb+lfpre+) be
+$$\forall z\, [[\exists \,w [ \,z \,= \,S \,w \land \,p^1 \,w] \lor \,z \,= \,0]
+\, \limplies \, p^1\, z],$$
+$P_2$ be
+$$\forall z\, .\, u^1\, z\, \limplies \, p^1\, z,$$
+$I_1$ (\verb+indhyp+) be
+$$\forall \,w^1 [ \,p^1 \,w^1 \supset \,p^1 . \,S \,w^1 ] \land \,p^1 \,0,$$
+and $I_2$ be
+$$\forall x^2\, . \, [u^1\, x^2]\,\limplies\, [p^1\, x^2].$$
+We construct the positive ftree $lff^+$ as
+$$\uexpnode{}{\mbox{Least Pre-fixed Point}}{p^1}
+{\eimp{}{}{lff_1:P_1^-}{LEAF1:P_2^+}}$$
+and the negative ftree $IndF^-$ as
+$$\sel{}{\mbox{Induction Principle}}{p^1}
+{\eimp{}{}{IndF_1:I_1^+}{LEAF2:I_2^-}}$$
+where $lff_1$ and $IndF_1$ are constructed by \indexfunction{make-clos-setvar-ind-negf}.
+Since $P_2$ and $I_2$ are $\alpha$-equal, we can mate $LEAF1$ and $LEAF2$.
+
+\item {\bf \indexfunction{make-clos-setvar-ind-negf-1}}
+We start with two wffs: \verb+wff1+ of the form
+$C_1\,\land \cdots \land C_n$
+\verb+wff2+ of the form
+$$\forall \overline{z} \, . \, [D_1(\overline{z})\,\lor\,\cdots\,\lor\, D_n(\overline{z})]\,\limplies\, [p\, \overline{z}].$$
+where $n$ is the number of constraints.
+Let $\overline{a}$ be new selected variables and $LEAF1$ be a negative literal
+with shallow formula $[p\, \overline{a}]$.  We return two values, 
+a negative ftree of the form
+$$\sel{}{\forall \overline{z} \, . \, [D_1(\overline{z})\,\lor\,\cdots\,\lor\, D_n(\overline{z})]\,\limplies\, [p\, \overline{z}]}
+{\overline{a}}{NF_2}$$
+and a positive ftree $PF_2$ with shallow formula \verb+wff1+
+where $PF_2$ and $NF_2$ are constructed by
+\indexfunction{make-clos-setvar-ind-negf-2}.
+
+In our example, \verb+wff1+ is
+$$\forall \,w^1 [ \,p^1 \,w^1 \supset \,p^1 . \,S \,w^1 ] \land \,p^1 \,0,$$
+and \verb+wff2+ is
+$$\forall z\, [[\exists \,w [ \,z \,= \,S \,w \land \,p^1 \,w] \lor \,z \,= \,0]
+\, \limplies \, p^1\, z].$$
+We choose a new selected variable $z^1_\greeki$ and create a negative leaf
+$LEAF1:p^1\, z^1$.
+We call \indexfunction{make-clos-setvar-ind-negf-2} with
+$$\forall \,w^1 [ \,p^1 \,w^1 \supset \,p^1 . \,S \,w^1 ] \land \,p^1 \,0,$$
+$$\exists \,w [ \,z^1 \,= \,S \,w \land \,p^1 \,w] \lor \,z^1 \,= \,0,$$
+and $LEAF1$ to get two positive ftrees, $PF_3^1$ and $PF_3^2$.
+We return the positive ftree
+$PF_3^1$ and the negative ftree
+$$\eimp{}{}{PF_3^2}{LEAF1}$$
+
+\item {\bf \indexfunction{make-clos-setvar-ind-negf-2}}
+We start with $n$ constraints (given by \verb+paths+ and \verb+banned-occurs+),
+and two wffs, one (\verb+wff1+) of the form
+$C_1\,\land \cdots \land C_n$,
+and the other (\verb+wff2+) of the form
+$$D_1(\overline{z})\,\lor\,\cdots\,\lor\, D_n(\overline{z}).$$
+We consider each constraint
+$$\Psi_1|\Gamma_i\rightarrow A_i,$$
+conjunct $C_i$ and disjunct $D_i$.
+We distinguish between variables $z\in\Psi_i$ which
+occur as arguments in $A_i$ and those $w\in\Psi_i$ which do not.
+When $z\in\Psi_1$ occurs as an argument in $A_i$,
+the corresponding argument in the shallow formula of $LEAF1$
+is a variable $a$ created in the previous step.
+Let $\theta_1$ (\verb+psi-z-assoc+) be the substitution sending $\theta(z)=a$
+for each such $z$ and $a$.
+Those $w\in\Psi_i$ which do not occur as
+arguments are stored on $\Psi^0_i$.  This information is passed
+to \indexfunction{make-clos-setvar-ind-negf-3}
+which returns two positive ftrees $PF_{D_i}$ and
+$PF_{C_i}$ and returns
+$$\econj{}{}{PF_{C_1}}{\econj{}{}{PF_{C_2}}{\etra{\cdots}{PF_{C_n}}}}$$
+and
+$$\edisj{}{}{PF_{D_1}}{\edisj{}{}{PF_{D_2}}{\etra{\cdots}{PF_{D_n}}}}$$
+
+In our example, the two constraints are of the form
+$$v^1\, 0$$
+and
+$$w|v^1\, w\rightarrow v^1\, [S\, w].$$
+Neither $0$ nor $[S\, w]$ is a variable in the corresponding $\Psi$'s,
+so $\theta_1$ is empty.  $\Psi^0$ is NIL in one case
+and ($w$) in the other.
+
+\item {\bf \indexfunction{make-clos-setvar-ind-negf-3}}
+Given two wff's $C$ (\verb+wff1+) and $D$ (\verb+wff2+) and $\Psi^0 = \overline{w}$
+where \verb+wff2+ is of the form
+$\exists \overline{w^1} D'(\overline{w^1})$, we create new selected variables
+$\overline{w^2}$.  Let $\theta_2$ (\verb+psi-w-assoc+) send each $w$ to $w^2$.
+We call \indexfunction{make-clos-setvar-ind-negf-4}
+with $C$ and $D'(\overline{w^2})$ to obtain
+two positive ftrees $PF_4^1$ and $PF_4^2$ with shallow formulas
+$C$ and $D'(\overline{w^2})$.  We then return $PF_4^1$ and 
+$$\sel{}{\exists \overline{w^1} D'(\overline{w^1})}{\overline{w^2}}{PF_4^2}$$
+
+The constraint $\emptyset |\cdot\rightarrow v^1\, 0$ has an empty $\Psi$,
+so we proceed directly to \indexfunction{make-clos-setvar-ind-negf-4}
+with
+$\,p^1 \,0$
+and
+$\,z^1 \,= \,0$ to get the two positive ftrees.
+
+The constraint $w |v^1\, w\rightarrow v^1\, . \, S\, w$ has the variable $w$
+in $\Psi$, and $D$ is
+$$\exists w [ \,z^1 \,= \,S \,w \land \,p^1 \,w].$$
+We create a new selected variable $w^2$ and call 
+\indexfunction{make-clos-setvar-ind-negf-4}
+with
+$$\forall \,w^1 [ \,p^1 \,w^1 \supset \,p^1 . \,S \,w^1 ]$$
+and 
+$$z^1 \,= \,S \,w^2 \land \,p^1 \,w^2.$$
+The second positive ftree $PF_4^2$ constructed has
+shallow $z^1 \,= \,S \,w^2 \land \,p^1 \,w^2$.  We return the
+first positive ftree along with
+$$\sel{}{\exists w [ \,z^1 \,= \,S \,w \land \,p^1 \,w]}{w^2}{PF_4^2}$$
+
+\item {\bf \indexfunction{make-clos-setvar-ind-negf-4}}
+We are given a constraint $\Psi|\Gamma\rightarrow A$ and two wff's $C$ and $D$
+where $C$ is of the form
+$\forall \overline{y} C' \limplies A'$
+(or $\forall \overline{y} A'$ if $\Gamma$ is empty)
+where $\Psi=\overline{y'}$.  Define a substitution $\theta$ with $dom(\theta) = \overline{y}$
+as follows.
+Either $y'\in\overline{y'}$ is a $z\in\Psi$ which occurs as an argument in $A$,
+and so is in the domain of $\theta_1$ (\verb+psi-z-assoc+), or
+$y$ is a $w\in\Psi$ in the domain of $\theta_2$ (\verb+psi-w-assoc+).
+In the first case, let $\theta(y) = \theta_1(y')$.  In the second case,
+let $\theta(y) = \theta_2(y')$.
+We use these association lists to determine
+the expansion term for $y$.  
+Then \indexfunction{make-clos-setvar-ind-negf-5}
+is called with $\theta(C')$ (or NIL) (\verb+hyp+) and $\theta(A')$ (\verb+conc+).
+This constructs two positive ftrees, 
+$PF_5^1$ with shallow $\theta(C'\limplies A')$
+and a positive ftree $PF_5^2$ with shallow $D$.
+We return
+$$\uexpnode{}{C}{\theta(\overline(y))}{PF_5^1}$$
+and $PF_5^2$.
+
+Again, the constraint $\emptyset |\cdot\rightarrow v^1\, 0$ has an empty $\Psi$,
+so we proceed directly to \indexfunction{make-clos-setvar-ind-negf-5}
+with
+$p^1 \,0$
+and
+$z^1 \,= \,0$ to get the two positive ftrees.
+
+For the constraint $w |v^1\, w\rightarrow v^1\, . \, S\, w$,
+$C$ is
+$$\forall \,w^1 [ \,p^1 \,w^1 \supset \,p^1 . \,S \,w^1 ].$$
+$\theta(w^1) = \theta(w) = w^2$ by definition.
+\indexfunction{make-clos-setvar-ind-negf-5} then constructs
+two positive ftrees, $PF_5^1$ with shallow formula
+$[ \,p^1 \,w^2 \supset \,p^1 . \,S \,w^2 ]$
+and $PF_5^2$ with shallow formula 
+$z^1 \,= \,S \,w^2 \land \,p^1 \,w^2$.
+We return
+$$\uexpnode{}{\forall \,w^1 [ \,p^1 \,w^1 \supset \,p^1 . \,S \,w^1 ]}{w^2}{PF_5^1}$$
+and $PF_5^2$.
+
+\item {\bf \indexfunction{make-clos-setvar-ind-negf-5}}
+This function starts with the negative leaf $LEAF1$ (\verb+leaf+)
+constructed in \indexfunction{make-clos-setvar-ind-negf-1}.
+This function compares the arguments in the shallow formula
+$p(b_1,\ldots,b_n)$ of $LEAF1$ \verb+leaf+
+and the given formula $p(a_1,\ldots,a_n)$ (\verb+conc+).  
+
+We recursively compare the arguments.  Suppose we have a negative
+leaf \verb+leaf+ with shallow formula
+$p(a_1,\ldots,a_{i-1},b_i,\ldots,b_n)$
+If $b_i$ and $a_i$ are syntactically equal,
+then these correspond to some $z\in\Psi$.  Otherwise,
+there should be an equation at the beginning of \verb+wff2+.
+That is, either \verb+wff2+ is $[b_i\, =\,a_i]$ or $[b_i\,=\,a_i]\,\land \,D'.$
+The function \indexfunction{make-ftree-subst} creates a positive ftree
+with shallow $[b_i\, = \, a_i]$, a negative leaf $LEAF2$ with
+shallow formula $p(a_1,\ldots,a_i,b_{i+1},\ldots,b_n)$
+(and some new connections to add to the connection list).
+Let $EQ_{i_j}$ be these positive ftrees for these equations.
+
+So, after $n$ steps, we have a negative leaf (\verb+leaf+) with shallow formula
+$p(a_1,\ldots,a_n)$.  We create a positive leaf $LEAF2$ (\verb+leaf2+) with this shallow
+and mate the two leaves.  If $\Gamma$ is empty, we return 
+this positive ftree along with the positive ftree
+$$\econj{}{}{EQ_{i_1}}{\etra{\cdots}{\econj{}{}{EQ_{i_{m-1}}}{EQ_{i_m}}}}$$
+If $\Gamma$ is nonempty, then the rest of $D$ (after removing the equations)
+should be $\alpha$-equal to $C$ (\verb+hyp+).  We
+create a negative leaf $LEAF3$ and a positive leaf $LEAF4$ with these shallows
+and return the positive ftrees
+$$\eimp{}{}{LEAF4}{LEAF2}$$
+and the positive ftree
+$$\econj{}{}{EQ_{i_1}}{\etra{\cdots}{\econj{}{}{EQ_{i_m}}{LEAF3}}}$$
+
+In the constraint (LF1), $\Gamma$ is empty and $D$ is
+$z^1 \,= \,0$.  The shallow formula of $LEAF1$ is $p^1 z^1$.
+We construct $EQ_1$ as
+$$\erew{}{z^1\,=\, 0}{Leibniz=}
+{\erew{}{[\lambda x\,\forall y\, .\forall q\,.\,q\,x\,\limplies\,q\,y]\, z^1\, 0}{\lambda}
+{\uexpnode{}{\forall q\,.\,q\,z^1\,\limplies\,q\,0}{\lambda x\,.\,\lnot\,[p^1\,x]}
+{\erew{}{[\lambda x\,.\,\lnot\,[p^1\,x]]\,z^1\,\limplies\,[\lambda x\,.\,\lnot\,[p^1\,x]]\,0}
+{\lambda}
+{\eimp{}{}{\eneg{}{}{LEAF3^{+}}}
+{\eneg{}{}{{LEAF1'}^{-}}}
+}}}}$$
+where $LEAF3^+$ mates to $LEAF1^-$.  
+We also create a positive leaf $LEAF2$ with shallow formula $p^1\, 0$
+and mate this to ${LEAF1'}^-$.  We return $LEAF2$ and $EQ_1$.
+
+In the constraint (LF3 LF2), $D$ is 
+$z^1 \,= \,S \,w^2 \land \,p^1 \,w^2$.
+As above, a positive ftree $EQ_2$ for the equation $z^1\, = \, S\, w^2$
+giving a mate for $LEAF1^-$ and a negative leaf $LEAF3^-$ with shallow
+formula $p^1\, .\, S\, w^2$.  We also create a positive leaf $LEAF2^+$
+to mate with $LEAF3$.  The ``leftover'' part of $D$, $p^1\, w^2$ corresponds
+to $\Gamma$.  We create positive and negative leaves $LEAF4^+$ and $LEAF5^-$
+with this shallow formula and mate the two.  We return the two positive ftrees
+$$\eimp{}{}{LEAF5^-}{LEAF2^+}$$
+and
+$$\econj{}{}{EQ_2}{LEAF4^+}.$$
+
+\end{itemize}
+
+\item {\bf \indexfunction{make-knaster-tarski-leastfp-lemma}}
+
+\end{enumerate}

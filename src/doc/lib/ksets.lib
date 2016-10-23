@@ -1,0 +1,137 @@
+@Marker(Library,KSets,Dover)
+@Begin(Comment)
+@Case{KsetSize,
+	14 <@Define(FixWidth, Use Format, Rightmargin -0.25inches,
+			LongLines Wrap, 
+			Font BodyFont, FaceCode U , EOFOK)
+		@Modify(Verbatim, FaceCode U, LongLines Wrap)>,
+	18 <@Define(FixWidth, Use Format, Rightmargin -0.25inches, 
+			LongLines Wrap,
+			Font LargeBodyFont, FaceCode U , EOFOK)
+		@Modify(Verbatim, FaceCode U, LongLines Wrap)>,
+	else <@Define(FixWidth, Use Format, RightMargin -0.25inches, 
+			LongLines Wrap, FaceCode F, EOFOK)
+		@Modify(Verbatim, LongLines Wrap)>}
+@End(Comment)
+
+@Begin(Comment)
+@Case{KSetSize,
+	8 <@SpecialFont(	F0="SAILA   8",
+				F1="SAILA   6",
+				F2="Math    8",
+				F3="Hippo   8",
+				F4="GACHA8BRR",
+				F5="CMSY10S8",
+				F6="Hippo   6",
+				F8="Math    6",
+				F9="CMathX10S8")>,
+	12 <@SpecialFont(	F0="SAILA  12",
+				F1="SAILA   8",
+				F2="Math   12",
+				F3="Hippo  12",
+				F4="GACHA12BRR",
+				F5="CMSY12S10",
+				F6="Hippo   8",
+				F8="Math    8",
+				F9="CMathX12S10")>,
+	14 <@SpecialFont(	F0="SAILA  14",
+				F1="SAILA  10",
+				F2="Math   14",
+				F3="Hippo  14",
+				F4="GACHA14BRR",
+				F5="CMSY15S10",
+				F6="Hippo  10",
+				F8="Math   10",
+				F9="CMathX14S10")>,
+	18 <@SpecialFont(	F0="SAILA  18",
+				F1="SAILA  14",
+				F2="Math   18",
+				F3="Hippo  18",
+				F4="GACHA18BRR",
+				F5="CMSY20S10",
+				F6="Hippo  14",
+				F8="Math   14",
+				F9="CMathX18S10")>,
+	else <@SpecialFont(	F0="SAILA  10",
+				F1="SAILA   8",
+				F2="Math   10",
+				F3="Hippo  10",
+				F4="GACHA10BRR",
+				F5="CMSY10S10",
+				F6="Hippo   8",
+				F8="Math    8",
+				F9="CMathX10S10")>}
+@End(Comment)
+
+@Define(FixWidth, Use Format, RightMargin -0.25inches, 
+		LongLines Wrap, FaceCode F, EOFOK)
+@Modify(Verbatim, LongLines Wrap)
+
+@SpecialFont( F0="SAILA  10",
+				F1="SAILA   8",
+				F2="Math   10",
+				F3="Hippo  10",
+				F4="GACHA10BRR",
+				F5="CMSY10S10",
+				F6="Hippo   8",
+				F8="Math    8",
+				F9="CMathX10S10")
+
+@TextForm(	F10="@+{@F1{@parm{text}}}",
+		F11="@-{@F1{@parm{text}}}",
+		F12="@-{@F6{@parm{text}}}",
+		F13="@ovp(/)@F2{@parm{text}}")
+
+
+@Marker(Library,KSets,Postscript)
+
+@Define(FixWidth, Use Format, RightMargin -0.25inches, 
+		LongLines Wrap, FaceCode F, EOFOK)
+@Modify(Verbatim, LongLines Wrap)
+
+@DefineFont(BodyFont,
+        A=<Typecase "Mathematics10">,
+        I=<RawFont "TimesItalic">,
+        B=<RawFont "TimesBold">,
+        R=<RawFont "TimesRoman">,
+        F=<RawFont "Courier">,
+        G=<TypeCase "PsGreek">,
+        Y=<TypeCase "PsPubsSerif">,
+        J=<TypeCase "PsSymbol1">,
+        K=<TypeCase "PsSymbol2">,
+        Z=<RawFont "TimesItalic">,
+        P=<RawFont "TimesBoldItalic">,
+        T=<RawFont "Courier">,
+        S=<RawFont "AccentTimesRoman">,
+        V=<RawFont "AccentTimesBold">,
+	D=<RawFont "ZapfDingbats">,
+	E=<TypeCase "ZapfDingbats">,
+        W=<RawFont "AccentTimesItalic">)
+
+
+
+@Define(T, FaceCode F)
+
+
+@specialfont(F1="Helvetica",
+	     F2="Symbol",
+             F6="Symbol",
+	     F5="HelveticaBold",
+         )
+
+@define(F3, facecode J, size +2)
+@define(F8, facecode J, size -2)
+@define(F9, facecode E)
+@define(F7, facecode D)
+@modify(F6, size -2)
+@modify(F1, size -2)
+
+@TextForm(F4="@F5{@parm{text}}",
+	  F10="@+{@F1{@parm{text}}}",
+	  F11="@-{@F1{@parm{text}}}",
+	  F12="@-{@F6{@parm{text}}}",
+	  F13="@ovp(/)@jsym{@parm{text}}",
+          overlinecap="@ovp<@parm(text)>@~
+                        @begin(transparent,script 1line)@~
+                        @ux<@hsp(1 quad)>@end(transparent)",
+)

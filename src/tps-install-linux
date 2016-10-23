@@ -1,0 +1,16 @@
+#!/bin/tcsh
+echo "\nChecking and installing core images"
+cd /whatever/tps/
+if (-f "tps3") then
+	    if (-f "tps3.dxl") then
+		mv tps3.dxl tps3.dxl.bak
+		echo "\nMoving old tps3.dxl to tps3.dxl.bak"
+	    else
+		echo "\nOld tps3.dxl does not exist; not creating .bak file"
+	    endif
+	    mv tps3 tps3.dxl
+            chgrp tpsusers tps3.dxl
+	    echo "\nInstalled new allegro tps3."
+else
+        echo "\nNew allegro core image is not there"
+endif

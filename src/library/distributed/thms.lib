@@ -1,0 +1,14 @@
+(:name CANTOR-PROBLEM
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "~Q(O(OI)) [G(OII).J(I(OI)) F(OI)] OR Q(O(OI)) F(OI)"
+:needed-objects   NIL
+:mhelp "Skolemized matrix of simple Cantor Theorem"
+:other-attributes NIL
+:other-remarks "
+")
+
+

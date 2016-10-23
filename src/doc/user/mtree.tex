@@ -1,0 +1,609 @@
+\section{The Matingstree Procedure}\label{mtree}
+
+Note: The ideas and resources described in this chapter are
+experimental and not well developed. Most users of TPS should
+probably ignore them.
+
+\subsection{A Brief Overview}
+
+The matingsearch procedures already described take a vpform, enumerate all possible
+paths through it, and attempt to block them all one by one. This is not the way that
+a human operator, attempting the same problem, would proceed, and the matingstree
+top level is an attempt to approach the problem in a more natural way. For example,
+suppose that a vpform contains a conjunct (B OR C) and a single literal A. Then if
+A is mated with B on some path, this closes all extensions of that path through B, but
+creates an obligation to `do something' about C - which is to say, to block off
+all variants of the path that go through C instead of through B. The matingstree
+procedure is an attempt to formalize this notion of `obligation' and so to direct the proof
+search.
+
+
+\subsection{A Detailed Plan of the Matingstree Top Level}
+
+	While TPS currently has a number of search procedures, they
+all construct matings by searching paths through the formula in a very
+systematic way.  This allows TPS to keep track of where it is in its
+search process in a very economical way, so that TPS can run for weeks
+without running out of memory. However, this very economical use of
+space limits our ability to implement various search heuristics within
+the context of current search procedures. In particular, we would like
+to develop methods of searching for expansion proofs which closely
+mimic attempts to construct natural deduction proofs.
+
+	We shall describe a much more general way of organizing the
+search process which, at the cost of using additional space, will
+enable us to choose links to add to matings in arbitrary order, to
+keep track of where we are in the search process, and to
+simultaneously build up many matings (thus using a mixture of
+breadth-first and depth-first search).  Information will be stored
+which will enable TPS to know when it has spanned all paths without
+actually searching through them all.  We need to avoid searching all
+paths (since there are generally too many), and we need to construct a
+mating in such a way that at a certain point we know without further
+checking that we have an acceptable mating.  We ignore parts of the
+wff (or potentially relevant lemmas which are not part of the wff)
+until we explicitly make them part of the search process.
+
+	We would like to avoid backtracking, which is troublesome and
+time-consuming. By keeping more information, we can just abandon certain
+parts of the search and turn our attention to others.
+
+	We would like expansions of the jform (quantifier duplications
+and applications of primitive projections and substitutions, plus
+subformula substitutions for predicate variables) to be motivated by
+the needs of the matingsearch process. Thus, this procedure should
+incorporate some of the key advantages of path-focused duplication
+(but will be `literal-focused' duplication rather than `path-focused'
+duplication).
+
+	The emphasis will be on being smart rather than fast. We will
+try to compute whatever information is necessary to limit the size of
+the search space, and give first priority to exploring those parts of
+the search space which seem (according to our heuristics) to be most
+likely to yield success. However, we will try to do this computation
+efficiently. Sometimes a `partial computation' will suffice to make it
+clear whether the complete computation is worth doing.
+
+	We will try to manage our use of space effectively. When we
+reach a stage where we are ready to discard certain structures, we
+will do so in a way that will permit the space to be reclaimed by the
+garbage collector. Some structures could be regenerated if necessary.
+It would be nice to assign priorities to structures, and have a
+mechanism for discarding those of low priority when more space is
+needed.
+
+
+	We shall sometimes speak loosely and call any set of connections
+a mating, although officially a mating must have an associated
+substitution which makes mated pairs complementary.
+
+	As the search process progresses, we build up a tree of
+matings, or matingstree (MST). By making use of the tree structure, we
+can hope to store the information economically.  Each node in this
+tree represents a step in the search process. In general, a node
+represents a mating which was obtained by adding a link to the mating
+of its parent node.  Each node has a number of attributes:
+\begin{itemize}
+\item its mating;
+
+\item a set of obligations (see below);
+
+\item auxiliary information about items such as:
+
+\item free variables,
+
+\item the unification tree for the mating,
+
+\item potential mates for various literals.
+\end{itemize}
+
+Definition: A literal L is on some extension of the path P in the
+jform W iff no disjunction of W contains L in one of its scopes (left
+or right) and some literal which is on P in the other scope (right or
+left).
+
+	An obligation consists of a path and a node of the jform on
+that path in the jform. When all the obligations for a node of the MST
+are fulfilled, the mating will be complete (i.e., span every path).
+Thus, we seek to construct a node of the MST which has an empty set of
+obligations.
+
+
+We shall have to consider how obligations can be represented
+economically.  It seems that the nodes of the path of an obligation
+are all literals in links of the mating associated with the node of
+the mst where the obligation first appeared. Perhaps such paths can
+be represented implicitly. (For the case where the wff is in cnf and
+in fol, compare with the model-elimination procedure.)
+
+
+	The initial node of the MST has an empty mating, and one
+obligation: the node is the entire wff to be refuted, and the path
+contains only that node.
+
+	We express the process of constructing a mating in terms of
+`blocking' a node N of an expansion tree relative to a path P
+containing that node. We imagine an abstract little creature called a
+`spoiler' trying to run through the expansion tree (or the jform
+corresponding to it), and we must block all its attempts.
+
+A node can be blocked in various ways (and
+heuristics will help us decide which tasks to work on first):
+
+\begin{itemize}
+\item To block a conjunction, block any of its conjuncts.
+One way to do this is to mate two of its conjuncts with each other.
+
+\item To block an expansion node, block any of its expansions.
+
+\item To block a disjunction, block all of its disjuncts.
+
+\item To block a definition or selection node, block its
+unique child in the tree.
+
+\item To block a literal N, mate it with some literal of that path.
+
+\item To block a literal N, mate it with some literal L not yet on the
+path P but on some extension of it
+and establish the set of subtasks
+$\{<M, P \union{M}> | M is a literal on some horizontal path through L\}$.
+(This amounts to blocking the disjunction node D  containing L
+relative to the path $P \union{L}$.) The literal L may be generated
+by making a new instantiation of some expansion node.
+This might be a quantifier duplication or a primitive substitution
+or a sequence of primitive substitutions.
+
+\item A contradictory node (which might arise by instantiating a
+predicate variable with FALSEHOOD) is blocked.
+
+\item Another way to block a node is to use equations to mate it
+with another node as above, or to reduce it to $ \not{ C = C}$.
+Thus we implement equational matings. (Of course, our present
+translation command etree-nat won't work on such matings.)
+
+\end{itemize}
+
+We visualize the root of the matingstree (i.e., the empty mating)
+as being at the top of the tree.
+
+CGRAPHS
+
+In principle, there should be a connection graph (cgraph)
+associated with each node of the matingstree which is obtained from
+cgraphs of nodes higher in the matingstree by deleting links which are
+not compatible with the mating for that node. Thus, the unifying
+substitution (to non-branching depth) associated with the mating
+should be used in computing the cgraph.  We don't actually compute
+these cgraphs completely; we just put into them information which is
+computed as it is needed. Also, instead of computing certain cgraphs
+we may just use cgraphs associated with higher nodes in the tree.
+In addition, we may associate with each node of the tree
+a set of links which are incompatible with the mating at that node.
+We call these links `negative'.
+Thus, one obtains the cgraph for that node by deleting from the
+original cgraph (the cgraph for the root node) all the `negative
+links' associated with nodes at or above that node in the matingstree.
+(As one adds links to the mating, one also accumulates more negative
+links.)
+
+When we try to add a link to a mating and find that it is
+incompatible with it, we add that link to the set of negative links
+for that node of the matingstree, and thus delete that link from the
+positive cgraph for that node.
+
+Eventually, we should compute and represent these cgraphs in as
+sophisticated way as possible. Instead of blindly checking all links
+which occur in the parent cgraph to see whether they can be deleted,
+we should consider which variables are actually constrained by the
+relevant links of the mating, and which literals these variables
+actually occur in. Review for relevant ideas the paper
+Robert Kowalski, `A Proof Procedure Using
+ Connection Graphs', Journal of the ACM 22 (1975), 572-595.
+
+We find how we can satisfy obligations by looking in the cgraph.
+
+A node (mating) fails if:
+it is found not to be unifiable, or
+it is found that there is no way to satisfy one of its obligations.
+When a node fails, we delete the link that created it from the
+cgraph of the node above it. If this eliminates the last possible
+way of fulfilling some obligation of that node, it will also fail.
+
+The search process consists of performing tasks. A task consists of
+creating a new node N2 of the MST which is a son of an existing node
+N1, and fulfills an obligation of N1. N2 inherits all the obligations
+of N1 except for the one it fulfilled, and it may also have additional
+obligations.
+
+Each task has a priority (which may change as the search progresses?),
+and the priorities determine in what order tasks are performed. If
+many processors are available, they each choose the next available task of
+of highest priority.
+
+At each stage we can ask questions:
+What node (mating) should I work on?
+What obligation should I work on?
+How shall I try to satisfy that obligation?
+Heuristics can be used to answer each of these questions.
+If one has even very naive ways to answer all of these questions,
+one has an automatic search procedure.
+
+Search heuristics are generally expressed as ways of setting the priorities.
+One heuristic: when we do things which create obligations, check quickly
+whether those obligations can be simultaneously satisfied.
+Another: concentrate on satisfying obligations which can be
+satisfied only in a small number of ways (ideally one).
+
+We may need some way to prevent the same mating from being generated on
+different nodes of the MST. This is analogous to the subsumption problem
+in resolution, and we may have to deal with it explicitly. Perhaps it will help
+to order the obligations of a node, have this ordering be inherited by
+descendant nodes, and insist that obligations be filled in this order.
+
+Compare this procedure with model-elimination (etc.) when it is applied
+to wffs of fol in cnf.
+This procedure seems to incorporate the key idea in the resolution
+set-of-support strategy.
+
+        This procedure should be designed to deal with the following
+problem:
+
+	TPS can't prove THM120F because it doesn't apply apply
+unifying substitutions to the jform as it proceeds. Thus projections
+for head variables which which could produce contradictions on a path
+don't actually get applied during the matingsearch process. Of course,
+pure projections eventually get generated and applied as part of
+mating-search, but for THM120F we have a literal r[p v $\sim$p]Q, and for
+r we substitute [lambda u. lambda v .$\sim$u] in order to deal with other
+pairs of literals. If this were actually applied to the jform, it would
+yield a contradiction, but it is not applied.
+
+	Note that this is a complicated issue which is not easy to
+deal with, since at each stage we have a whole unification tree
+associated with the current mating, and we do not have any one
+current substitution to apply.
+
+	We need to consider how to economically keeping track of what
+we've tried with matingstree procedure. Ideas for possible solutions:
+\begin{itemize}
+\item Attach heuristic weights to various things we might try, and order
+them by weight.
+
+\item Whatever algorithm generates possibilities essentially enumerates
+them. Just keep a list of numbers (under this enumeration) of
+possibilities already explored.
+\end{itemize}
+
+\subsection{How to Use the Mtree Top Level}
+
+The mtree top level is entered with the command \indexmexpr{MTREE}. This is
+deliberately designed to be as similar to the {\tt MATE} top level as possible,
+in order not to be too confusing. The \indexcommand{LEAVE} command leaves the top level
+again, and will prompt the user about merging the expansion tree if it detects that the
+proof has been finished. Everything uses the MS88 notation and MS88-style unification.
+
+For brevity, we will refer to the matingstree as `the mtree', and an obligation tree
+as `an otree'. There are many otrees (one for each node of the mtree); if we refer to `the otree'
+this is to be interpreted as `the obligation tree associated to the current node of the
+matingstree'. An obligation which is satisfied is also said to be `closed'; obligations
+which are not closed are, naturally, referred to as `open'. A node of the mtree is said
+to be `closed' if it has no open obligations left in its otree.
+
+There are a wide variety of printing commands, since we have a lot of structures present.
+\indexcommand{PM-NODE} prints the current node of the mtree in full detail; \indexcommand{POB-NODE}
+does the same for the current obligation of the otree (there are potentially many open obligations
+in an otree; the `current' one will be defined by the setting of the flag \indexflag{DEFAULT-OB}).
+\indexcommand{POB} prints the current obligation in minimal detail.
+
+\indexcommand{PMTR}, \indexcommand{PMTR*} and \indexcommand{PMTR-FLAT} print the matingstree, starting from
+the current node (by default; they can also all take a node as an optional argument and start from that node instead)
+and working downwards towards the leaves, in varying formats and degrees of detail.
+
+\indexcommand{POTR}, \indexcommand{POTR-FLAT} and \indexcommand{POTR*-FLAT} do the same for the otree.
+
+\indexcommand{PPATH} and \indexcommand{PPATH*} print all the obligations from the given (leaf) obligation
+to the root of the obligation tree.
+
+\indexcommand{CONNS-ADDED} shows which connections have already been added to this mtree node, if any.
+\indexcommand{LIVE-LEAVES} shows which leaves of the tree are not marked as dead (the search procedure will mark a
+node as dead if it has open obligations but they cannot be satisfied, or if it has decided to give up on it for
+some other reason).
+\indexcommand{SHOW-MATING} shows the mating associated with the current mtree node and \indexcommand{SHOW-SUBSTS}
+shows the substitution stack at the current node (built up as the connections are unified).
+
+There are also a collection of commands for moving about in the mtree; \indexcommand{UP} and \indexcommand{DOWN}
+are fairly clear; \indexcommand{SIB} goes to the next sibling of the current mtree node, and \indexcommand{GOTO}
+goes to a node by name. \indexcommand{INIT} starts a new mtree, with a single root node and nothing else.
+\indexcommand{KILL} marks a node as dead; \indexcommand{RESURRECT} unmarks it. \indexcommand{PRUNE} removes
+all dead nodes below the current node; \indexcommand{REM-NODE} removes a single node.
+
+\indexcommand{ADD-CONN} adds a connection, as in the {\tt MATE} top level; this will generate a new mtree node,
+with a new otree; this mtree node will become the current node.
+
+Each time a new connection is added, new copies of all the expansion nodes involved are made, and the connection
+is made between these new copies rather than between the original literals. This allows the whole mtree to refer to
+a unique master expansion tree, rather than lots of smaller expansion trees. It also means that, at any given node, most
+of the master expansion tree will be irrelevant; when a closed
+mtree node is reached, the \indexcommand{CHOOSE-BRANCH} command discards all other branches of the tree and
+trims the expansion tree down to just those parts that are relevant to the closed node. This allows us to use the same
+merging functions as in the {\tt MATE} top level.
+
+\subsection{Automatic Searches with the Mtree Top Level}
+
+First, we have some semi-automatic commands: \indexcommand{QRY} takes a literal and an obligation as arguments,
+and returns all possible mates for them. \indexcommand{ADD-ALL-LIT} uses {\tt QRY} to simply add all these possible
+mates as sons of the current mtree node. \indexcommand{ADD-ALL-OB} does {\tt ADD-ALL-LIT} for every literal
+in a given obligation, and \indexcommand{EXPAND-LEAVES} does {\tt ADD-ALL-OB} at every leaf node of the mtree.
+
+It is clear that, time and space being no object, \indexcommand{EXPAND-LEAVES} is complete, in the sense
+that if it possible to arrive at a proof in the mtree top level at all, then repeating {\tt EXPAND-LEAVES} will eventually
+get you to a closed mtree node. (Notice that the mtree top level does not currently support primitive substitutions,
+so not everything that is provable in {\tt MATE} is provable in {\tt MTREE}.)
+The automatic procedure MT94-11 does exactly this. (As in {\tt MATE}, you can call this either directly
+with \indexcommand{MT94-11}, or indirectly by setting \indexflag{DEFAULT-MS} to {\tt MT94-11} and calling
+\indexcommand{GO}. The same applies to the other searches.)
+
+\indexcommand{MT94-12} is a restricted version of \indexcommand{MT94-11}; for each leaf node of the tree,
+using the integer flag
+\indexflag{MT94-12-TRIGGER}, it decides whether the current obligation has more or fewer literals than
+the current setting of this flag. If more, it just applies \indexcommand{ADD-ALL-LIT} to whichever single
+literal has the fewest possible mates. If fewer, it applies \indexcommand{ADD-ALL-OB}.
+
+\indexcommand{MT95-1} is still further restricted; it chooses the mtree node with the fewest open obligations,
+and then applies {\tt MT94-12} to that node only, and repeats the process.
+
+\subsection{The Mtree Subsumption Checker}
+
+There are a number of approaches to subsumption checking in the mtree top level; the possible benefits
+are very great, since not only the number of leaves in
+the mtree but also the size of the expansion tree can be kept down by killing off mtree
+nodes that are effectively duplicates of existing nodes.
+
+The subsumption checker is governed by the flag \indexflag{MT-SUBSUMPTION-CHECK}. Setting this flag to {\tt NIL}
+will turn off subsumption checking altogether.
+
+The weakest subsumption check is {\tt SAME-TAG}; this uses the flags \indexflag{TAG-CONN-FN} and \indexflag{TAG-LIST-FN}
+to generate a number corresponding to the connections in the mating at the current node. A new node is
+then rejected if its tag is the same as that of some existing node. This method is very quick, it is also
+obviously unsound unless one can guarantee that no two different nodes can get the same tag. Nonetheless, it
+will probably be correct almost all the time...
+
+The next strongest is {\tt SAME-CONNS}; this first checks as in {\tt SAME-TAG}, but then if the tags match, it actually
+checks the matings to make sure they really are the same. This is sound, but possibly not restrictive enough,
+since (e.g.) connection (leaf3 . leaf7.1) may effectively be the same as (leaf3 . leaf7.2), depending on
+what other literals are contained in the same expansions as leaf 7.1 or 7.2 (which are copies of each other,
+in standard {\TPS} notation), and whether any of them are mated to anything else.
+The more accurate subsumption check, which takes this into account, has yet to be written. Meanwhile, {\tt SAME-CONNS}
+will never wrongly reject a node, but may accept nodes that could have been rejected.
+
+The strongest of all is {\tt SUBSET-CONNS}; this checks whether the new node contains a subset of the
+connections at some other node, and rejects it if it does. This is much too strong for any search except {\tt MT94-11},
+because only {\tt MT94-11} generates all possible successors to a given node all at once. (Example: Suppose the
+first connection we added was A, and we are now at a stage where
+we have (somehow) got a node that contains connections ABC, and we are about to generate one containing just AB, and the
+correct mating is in fact ABD. Then rejecting the new node would seem to be wrong; it's only all right in MT94-11
+because we know that node AD has already been generated elsewhere in the tree.)
+
+\subsection{An Interactive Session in the Mtree Top Level}
+
+\begin{tpsexample}
+<4>mtree x2106 !
+{\it We choose a simple example; X2106 says that, for all x, if (Rx implies Px} and ((not Qx) implies Rx),
+then for all x either Px or Qx is true.)
+<Mtree:5>pob
+
+OB0
+
+|FORALL x^2         |
+| |LEAF6     LEAF7| |
+| |\(\sim\)R x^2 OR P x^2| |
+|                   |
+|FORALL x^3         |
+| |LEAF11    LEAF10||
+| |Q x^3  OR R x^3 ||
+|                   |
+|      LEAF13       |
+|      \(\sim\)P X^1       |
+|                   |
+|      LEAF14       |
+|      \(\sim\)Q X^1       |
+
+{\it This command prints the current obligation at the current node of the
+matingstree. Each node of the mtree has an associated obligation tree,
+which may have many open obligations; which of these is the `current'
+obligation is determined by the flag DEFAULT-OB. At this point, the
+mtree has exactly one node, and the otree at that node contains exactly
+one obligation, which is the entire formula}
+
+<Mtree:6>add-conn
+LITERAL1 (LEAFTYPE):  [No Default]>6
+OBLIG1 (SYMBOL-OR-INTEGER):  [OB0]>
+LITERAL2 (LEAFTYPE):  [No Default]>10
+OBLIG2 (SYMBOL-OR-INTEGER):  [OB0]>
+Adding new connection: (LEAF6.1 . LEAF10.1)
+MSTREE1
+
+{\it We have added a connection between leaf6 and leaf10, both in obligation
+number 0. This has created a new mtree node, MSTREE1. We have also moved
+down the tree to this new node, which has become the current node.}
+
+<Mtree:7>potr
+
+Numbers in round brackets are open obligations; those in square
+brackets are closed. Branches with *'s denote nodes that are
+being omitted for lack of space.
+
+
+                                     MSTREE1
+                                      (OB0)
+                                        |
+                    /--------------------------------------\
+                    |                                      |
+                  (OB1)                                  (OB2)
+                    |                                      |
+          /-------------------\
+          |                   |
+        (OB3)               [OB4]
+
+{\it Here is the obligation tree at the new node MSTREE1. We started from
+the obligation OB0, above. Adding that one connection first broke up the
+disjunction of leaf6 and leaf7, to form OB1 and OB2. We then connected leaf6
+to leaf10, so the disjunction of leaf10 and leaf11 was also broken up to
+create OB3 and OB4 on the path going through leaf6; we satisfied OB4 by
+connecting leaf10 to leaf6, but OB3 is still open.}
+
+<Mtree:8>pob
+
+OB3
+LEAF11.1
+ Q x^5
+
+{\it Our current obligation is OB3. However, this doesn't show what we can
+mate it to, so we try a different command.}
+
+<Mtree:9>ppath*
+
+OB3
+LEAF11.1
+ Q x^5
+
+OB1
+LEAF6.1
+\(\sim\)R x^4
+
+OB0
+|FORALL x^2         |
+| |LEAF6     LEAF7| |
+| |\(\sim\)R x^2 OR P x^2| |
+|                   |
+|FORALL x^3         |
+| |LEAF11    LEAF10||
+| |Q x^3  OR R x^3 ||
+|                   |
+|      LEAF13       |
+|      \(\sim\)P X^1       |
+|                   |
+|      LEAF14       |
+|      \(\sim\)Q X^1       |
+
+{\it This shows the branch of the obligation tree that leads to our current obligation.
+It seems clear that we can connect the single literal of OB3 to leaf14 in OB0 to close
+off this path, so that's what we'll do.}
+
+<Mtree:10>add-conn
+LITERAL1 (LEAFTYPE):  [No Default]>11.1
+OBLIG1 (SYMBOL-OR-INTEGER):  [OB3]>
+LITERAL2 (LEAFTYPE):  [No Default]>14
+OBLIG2 (SYMBOL-OR-INTEGER):  [OB0]>
+Adding new connection: (LEAF11.1 . LEAF14)
+MSTREE2
+
+{\it Again, we have created a new node of the mtree. Let's look at the
+obligation tree again and see what's left to do.}
+
+<Mtree:11>potr
+                                     MSTREE2
+                                      (OB0)
+                                        |
+                    /--------------------------------------\
+                    |                                      |
+                  [OB1]                                  (OB2)
+                    |                                      |
+          /-------------------\
+          |                   |
+        [OB3]               [OB4]
+
+{\it Notice that OB3 is now closed, and hence so is OB1. We are left with OB2
+as our current, and only, obligation.}
+
+<Mtree:12>ppath*
+
+OB2
+LEAF7.1
+ P x^4
+
+OB0
+|FORALL x^2         |
+| |LEAF6     LEAF7| |
+| |\(\sim\)R x^2 OR P x^2| |
+|                   |
+|FORALL x^3         |
+| |LEAF11    LEAF10||
+| |Q x^3  OR R x^3 ||
+|                   |
+|      LEAF13       |
+|      \(\sim\)P X^1       |
+|                   |
+|      LEAF14       |
+|      \(\sim\)Q X^1       |
+
+<Mtree:13>add-conn 7.1
+OBLIG1 (SYMBOL-OR-INTEGER):  [OB2]>
+LITERAL2 (LEAFTYPE):  [No Default]>13
+OBLIG2 (SYMBOL-OR-INTEGER):  [OB0]>
+Adding new connection: (LEAF7.1 . LEAF13)
+MSTREE3
+
+<Mtree:14>potr
+                                     MSTREE3
+                                      [OB0]
+                                        |
+                    /--------------------------------------\
+                    |                                      |
+                  [OB1]                                  [OB2]
+                    |                                      |
+          /-------------------\
+          |                   |
+        [OB3]               [OB4]
+
+{\it All the obligations are closed. Let's look at the matingstree itself.}
+
+<Mtree:15>pmtr* 0
+
+Numbers in round brackets are open obligations. If the brackets
+end in `..', there are too many open obligations to fit
+under the mstree label. Leaves underlined with \(\wedge\)'s are
+closed matingstrees. Matingstrees enclosed in curly brackets are
+marked as dead. Branches with *'s denote nodes that are being
+omitted for lack of space.
+
+
+                                    [MSTREE0]
+                                      (OB0)
+                                        |
+                                        |
+                                        |
+                                    [MSTREE1]
+                                    (3 2 1 0)
+                                        |
+                                        |
+                                        |
+                                    [MSTREE2]
+                                      (2 0)
+                                        |
+                                        |
+                                        |
+                                    [MSTREE3]
+                                   \(\wedge\wedge\wedge\wedge\wedge\wedge\wedge\wedge\wedge\)
+
+{\it A very boring matingstree, not branching at all. This is because each literal
+had exactly one possible mate; if there had been several mates for a literal, the
+tree might have branched. Now we're ready to translate our proof into ND form.}
+
+<Mtree:16>leave
+Choose branch? [Yes]>
+Merge the expansion tree? [Yes]>
+
+{\it `Choose branch?' allows you to prune the expansion tree to contain only those
+expansions which were actually part of the branch leading to the final node. In an
+mtree with many branches, this is an essential part of preprocessing before the
+standard merge routines are called.}
+
+<17>etree-nat
+PREFIX (SYMBOL): Name of the Proof [*****]>x2106
+NUM (LINE): Line Number for Theorem [100]>
+TAC (TACTIC-EXP): Tactic to be Used [COMPLETE-TRANSFORM-TAC]>
+MODE (TACTIC-MODE): Tactic Mode [AUTO]>
+
+{\it Finally, we translate the proof into natural deduction form.}
+\end{tpsexample}

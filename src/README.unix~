@@ -1,0 +1,269 @@
+	NOTES ON SETTING THINGS UP FOR UNIX SYSTEMS
+                  (INCLUDING LINUX)
+
+		Compiling TPS
+
+TPS has been compiled in several versions of Common Lisp: Allegro
+Common Lisp (version 3.1 or higher); Lucid Common Lisp; CMU Common
+Lisp; Kyoto Common Lisp; Austin Kyoto Common Lisp; Ibuki Common Lisp,
+a commercial version of Kyoto Common Lisp; and DEC-20 Common Lisp.
+Several source files contain compiler directives (#+) which use different
+definitions of variables and functions for different versions of lisp.
+Allegro Lisp now exists in several versions (case sensitive, case insensitive, etc.).
+We currently claim only that TPS runs under the case insensitive version alisp8.
+(If you are not using one of these lisps, see TROUBLESHOOTING below.)
+
+If you don't have Lisp on your machine, you may be able to download
+CMU Common Lisp for your machine from http://www.cons.org/cmucl/.
+See the file cmucl.hlp in this distribution for more information.
+
+For the time being, we assume you are compiling on a Unix system using
+one of the versions of Lisp given above. If you are not using Unix,
+considerably more work will be required. Directions for compiling on
+other setups are given later. 
+
+To compile and build tps, proceed as follows:
+
+1.  The bin directory should be empty when you start this process.
+If you have previously built tps or etps, start by removing
+all files from the bin directory (rm -f bin/*).
+
+2.  Read and follow the directions which are presented as comments in
+the Makefile. In general, this will just mean
+changing the Makefile to show the correct pathname
+for your version of Lisp (and possibly java), changing the Makefile to show where remarks
+by TPS users should be sent and which users are allowed "expert"
+privileges.
+
+3.  Issue the command "make tps" or "make etps". 
+(Of course, this assumes you are using a Unix operating system.)
+The Makefile will also try to compile the files for the Java interface.
+If you do not have java compiler, this will fail, but only after
+all the lisp files have been compiled.  A Java compiler is not necessary 
+to install TPS.  The installation will still create TPS and ETPS,
+but you will not be able to use the Java interface.
+Note that if you do not have a Java compiler, you can download
+Java SDK (with a compiler) from http://java.sun.com/.
+The script file tps-build-install-linux can be used to
+build and install tps.  Look at it.
+
+4. If you are using KCL or IBCL, you may get an error during compiling
+which says something like "unable to allocate".  This error indicates
+that your C compiler cannot handle the size of the file that is
+being compiled.  To fix this, split the offending file (e.g. foo.lisp)
+into smaller pieces (e.g., foo1.lisp and foo2.lisp) and REPLACE 
+the occurrence of "foo" in the file defpck.lisp with "foo1 foo2".  
+If this doesn't work you may have to split the files again.
+
+5.  If you are using Allegro Common Lisp 5.0, the name of the core image should
+end in .dxl; for example, tps3.dxl. To achieve this, you can set tps-core-name
+in the Makefile (in which case the new core image may overwrite the old one if
+you rebuild), or just use the Unix @t(mv) command to rename the core image
+once it is built.
+
+6. When TPS starts up, it loads a file called tps3.patch if one
+is there; this contains fixes for bugs, new code which has been added
+since TPS was last built, etc.  For example, if you wish to change
+expert-list after tps has been built, just put the appropriate line
+into tps3.patch, using the format of the example in tps3-save.lisp.
+
+After you build a new TPS, you may wish to delete (or save in a
+different file) the contents of the old tps3.patch file. Keeping
+the empty file there assures that it will be in the right place when
+you need it again.
+
+7. Before using TPS, you may want to set up the tps3.ini files.  There
+is one tps3.ini file in the directory where tps is built which will be
+loaded for all users.  In addition, each expert user (those on
+expert-list) can have an individual tps3.ini file in his own top-level
+directory (from which he should call TPS) which contains user-specific
+flag-settings, etc.  For example, andrews might wish to have in his
+tps3.ini file the line
+
+(setq default-lib-dir "/usr/andrews/tpslibrary/")
+
+to specify his library directory.  These tps3.ini files will be loaded
+automatically as tps starts up for expert users, but not for other
+users.
+
+
+8.  If you don't use the Makefile, you may have to do the additional
+things mentioned below.  (This information is also contained as
+comments in the text file whatever/tps/doc/user/manual.mss for the
+section on Compiling TPS of the User Manual.  These comments are not
+printed out when Scribe processes the file.)
+
+8A. Reinstate the definition of expert-list which is currently commented 
+out of the file tps3-save.lisp (modifying it as appropriate; it should contain
+a list of the user names of all those users who are to be allowed expert privileges
+while using TPS). 
+
+8B. Copy the distributed file tps3.sys.example to tps3.sys and make
+any required changes.  This is a file which is loaded during
+compilation and each time TPS is run which sets the values of certain
+system-specific variables like directories, file names, etc.  For
+ETPS, create etps.sys from etps.sys.example in an analogous way.
+
+8C. TPS and ETPS have a command called REMARK, which allows the user
+to enter a string to be sent to the teacher/maintainer.
+If you have a Unix system and are running CMU Common Lisp, Lucid (or Sun)
+Common Lisp, KCL or IBCL, you can use email to send the remark.  To do
+this, set the variable MAIL-REMARKS in the file {tps3,etps}.sys to
+a string containing the mail addresses of those who should receive the
+remark.  If you do not desire this, set MAIL-REMARKS to NIL and
+set REMARKS-FILE to the name of the file that should store the
+remarks instead.
+
+8D. Change to the (empty) bin directory (using "cd bin").
+Then start lisp and load "../tps-compile.lisp".
+This automatically load and compile all the source files.
+Make any changes required.  To compile ETPS (instead of TPS),
+use the file etps-compile.lisp instead.  (If you compile both
+ETPS and TPS, make sure you delete the files in bin after compiling
+the first.)
+
+8E. Exit and restart lisp.  Load the tps-build.lisp (or etps-build.lisp) file.
+Then, call (tps3-save).  This will save the TPS (ETPS) image file and exit
+from lisp.  You may need to rename the image file.  For example, if you are
+using Allegro Lisp, you should rename the image file "tps3" to "tps3.dxl".
+
+8F.  To (optionally) compile the java files for the java interface which can be used
+with TPS under Allegro 5.0 or greater, do the following:
+
+cd whatever/tps/java/tps
+javac *.java
+cd whatever/tps/java
+javac *.java
+
+
+         STARTING TPS
+
+Look at the aliases-dist file and the run-* script files
+for examples of how to start tps.
+
+In some lisps, tps will be an executable file which can be
+executed directly.
+
+If you are using CMULISP, instead of the above use the command
+
+ cmulisp -core tps &
+
+where cmulisp is the name by which you call CMULISP.
+
+If you are using Allegro Common Lisp 5.0 or greater, you can use the command
+
+ lisp -I tps3.dxl &
+
+where tps3.dxl is the file that was created when @TPS was built. 
+
+If you are using a version of Allegro Common Lisp prior to 5.0,
+then an executable file should have been created by the Makefile.
+You can simply call this executable to start TPS.  For example,
+
+ tps3 &
+
+
+	USING TPS WITH THE X WINDOW SYSTEM
+
+  TPS can be run under  the  X  window  system  (X10R4, X11R3 or X11R4),  
+with  nice  output including  mathematical  symbols,  by  doing the 
+following.  
+
+1.  For X10R4: Make sure that the font directory, fonts, is in your 
+    XFONTPATH.  
+
+2.  For X11R3 or X11R4: Add the fonts directory to your font path by a 
+    xset fp+ whatever/tps/fonts.
+
+Then start TPS by
+
+% xterm -fn vtsingle -fb vtsymbold -e tps &
+
+where tps is the executable file, and, of course, you can add fancy
+things like geometry, side-bar, etc.
+
+If you are using CMULISP, instead of the above use the command
+
+% xterm -fn vtsingle -fb vtsymbold -e cmulisp -core tps &
+
+where cmulisp is the name by which you call CMULISP.
+
+When TPS starts, switch to style XTERM as follows:
+
+<0>style xterm
+
+  If you resize the X window, you should change the setting of the
+flag RIGHTMARGIN.
+
+  Demonstrations are easier to see if you use the X10 fonts gallant.r.19.onx
+and galsymbold.onx, which are included with this distribution, in place of
+vtsingle and vtsymbold.  These fonts are very large.
+
+  The fonts vtsingle.bdf, vtsymbold.bdf, gallant.r.19.bdf and 
+galsymbold.bdf are provided for use with X version 11.
+
+	USING TPS WITH THE JAVA INTERFACE
+
+To start TPS with the Java interface, use command line arguments 
+as in the following examples:
+
+lisp -I whatever/tps/tps3.dxl -- -javainterface cd whatever/tps/java \; java TpsStart > /dev/null &
+
+lisp -I whatever/tps/tps3.dxl -- -javainterface cd whatever/tps/java \; java TpsStart -other -big > /dev/null &
+
+
+
+	See the last Chapter of the Tps User Manual for more information.
+
+	USING TPS IN THE CASC COMPETITION
+
+See casc/README.casc.
+
+ ----------------------------------------------------------
+         TROUBLESHOOTING
+
+If your lisp is not in the list above, you may need to change some of the 
+system-dependent functions. The features used by TPS are "tops-20", "lucid", 
+":cmu", "kcl", "allegro" and "ibcl".  System-dependent files include
+
+CORE.EXP 
+Some symbols (such as memq) need to be exported in some lisps
+(such as Allegro).
+
+SPECIAL.EXP
+Contains symbols which cannot be exported in some lisps. These 
+are found by trial and error.
+
+BOOT0.LISP, BOOT1.LISP
+Contain some lisp and operating-system dependent functions and macros,
+like file manipulation.
+
+TOPS20.LISP
+Redefining the lisp top-level, saving a core image, exiting, etc.
+
+TPS3-SAVE.LISP
+Some I/O functions which should work for Unix lisps, also the original
+definition of expert-list.
+
+TPS3-ERROR.LISP
+Redefinitions of trapped error functions, as used in ETPS.
+
+
+
+
+	REPORTING BUGS AND SUGGESTED IMPROVEMENTS
+
+  If you find any bugs, or can suggest any improvements, please let us
+know.  Of course, we can't promise to fix everything.
+
+Contact:
+
+Internet: Andrews@CMU.EDU
+
+US Mail: Professor Peter Andrews
+         Department of Mathematical Sciences
+	 Carnegie Mellon University
+	 Pittsburgh PA 15213-3890
+	 USA
+
+

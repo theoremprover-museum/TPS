@@ -1,0 +1,14 @@
+(:name THM618
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, September 16, 2003 at 16:20:19."
+:description "~[C(I) =(OII) D(I)] OR ~Q(OI) C(I) OR Q(OI) D(I)"
+:needed-objects   NIL
+:mhelp "Simple E-unification example"
+:other-attributes NIL
+:other-remarks "
+")
+
+

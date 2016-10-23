@@ -1,0 +1,169 @@
+\contentsline {chapter}{\numberline {1}Introduction}{1}
+\contentsline {section}{\numberline {1.1}Guide to documentation}{1}
+\contentsline {section}{\numberline {1.2}The {{\sc Tps}} User Interface}{1}
+\contentsline {chapter}{\numberline {2}Proving theorems}{3}
+\contentsline {section}{\numberline {2.1}Introduction}{3}
+\contentsline {section}{\numberline {2.2}Automatic mode}{4}
+\contentsline {subsection}{\numberline {2.2.1}An Example Using DIY}{5}
+\contentsline {subsection}{\numberline {2.2.2}An Example Using MATE and ETREE-NAT}{5}
+\contentsline {subsection}{\numberline {2.2.3}A Longer Example Using MATE and ETREE-NAT}{5}
+\contentsline {subsection}{\numberline {2.2.4}Automatically Produced Proofs with Lemmas}{7}
+\contentsline {subsection}{\numberline {2.2.5}Interrupts: \^C, <CR>, \^G<CR>, M<CR> and T<CR>}{7}
+\contentsline {section}{\numberline {2.3}Interactive Mode}{7}
+\contentsline {subsection}{\numberline {2.3.1}Natural Deduction}{7}
+\contentsline {subsection}{\numberline {2.3.2}Extensional Sequent Calculus}{8}
+\contentsline {subsection}{\numberline {2.3.3}Manipulating Proofs}{8}
+\contentsline {section}{\numberline {2.4}Combining Interactive and Automatic Searches}{9}
+\contentsline {subsection}{\numberline {2.4.1}An Example Using Go to Start the Proof }{9}
+\contentsline {subsection}{\numberline {2.4.2}Duplicating Interactively and then Running Matingsearch}{11}
+\contentsline {subsection}{\numberline {2.4.3}Applying Primsubs Interactively and then Running Matingsearch}{12}
+\contentsline {subsection}{\numberline {2.4.4}Mating Interactively and then Unifying}{12}
+\contentsline {subsection}{\numberline {2.4.5}Duplicating and Mating Interactively and then Converting to ND}{13}
+\contentsline {subsection}{\numberline {2.4.6}Using Prim-Single and Dup-Var Interactively}{13}
+\contentsline {chapter}{\numberline {3}Setting and Varying Flags}{15}
+\contentsline {section}{\numberline {3.1}Review, flags, and modes}{15}
+\contentsline {section}{\numberline {3.2}Test: Multiple Searches on the Same Problem}{16}
+\contentsline {subsection}{\numberline {3.2.1}How to Build A Searchlist Without Any Effort}{16}
+\contentsline {subsection}{\numberline {3.2.2}Using TEST to Improve a Successful Mode}{16}
+\contentsline {subsection}{\numberline {3.2.3}Using TEST to Discover a Successful Mode}{17}
+\contentsline {subsection}{\numberline {3.2.4}Building A Searchlist with TEST}{17}
+\contentsline {subsection}{\numberline {3.2.5}Uniform Search: Finding Successful Modes Automatically}{20}
+\contentsline {section}{\numberline {3.3}Search Analysis: Facilities for Setting Flags and Tracing Automatic Search}{21}
+\contentsline {subsection}{\numberline {3.3.1}Example: Setting Flags for THM12}{21}
+\contentsline {subsection}{\numberline {3.3.2}Example: Setting Flags for X2116}{22}
+\contentsline {subsection}{\numberline {3.3.3}Tracing MS98-1}{24}
+\contentsline {subsection}{\numberline {3.3.4}Example: Tracing THM12}{25}
+\contentsline {subsection}{\numberline {3.3.5}Example: Tracing X2116}{29}
+\contentsline {chapter}{\numberline {4}How to define wffs, abbrevs, etc}{31}
+\contentsline {chapter}{\numberline {5}Using the library}{33}
+\contentsline {section}{\numberline {5.1}Storing and Retrieving Objects}{34}
+\contentsline {section}{\numberline {5.2}Displaying Objects}{35}
+\contentsline {section}{\numberline {5.3}File Maintenance}{35}
+\contentsline {section}{\numberline {5.4}Printed Output}{36}
+\contentsline {section}{\numberline {5.5}Expert Users}{36}
+\contentsline {section}{\numberline {5.6}Keywords}{36}
+\contentsline {section}{\numberline {5.7}Classification Schemes}{37}
+\contentsline {section}{\numberline {5.8}The Unix-style Library Top Level}{37}
+\contentsline {section}{\numberline {5.9}Cautions}{38}
+\contentsline {section}{\numberline {5.10}How to insert TPTP Problems into the {\sc Tps}\nobreakspace {}Library}{38}
+\contentsline {chapter}{\numberline {6}Mating Searches}{41}
+\contentsline {section}{\numberline {6.1}Expansion trees and how they grow}{41}
+\contentsline {section}{\numberline {6.2}The MATE Top-Level}{41}
+\contentsline {section}{\numberline {6.3}Primitive Substitutions}{42}
+\contentsline {subsection}{\numberline {6.3.1}How Primsubs are Generated}{42}
+\contentsline {subsection}{\numberline {6.3.2}The MS91 Procedures}{45}
+\contentsline {section}{\numberline {6.4}Some Important Flags in ms90-3 Search}{46}
+\contentsline {section}{\numberline {6.5}Helpful Hints for MS91}{47}
+\contentsline {section}{\numberline {6.6}The Matingstree Procedure}{47}
+\contentsline {subsection}{\numberline {6.6.1}A Brief Overview}{47}
+\contentsline {subsection}{\numberline {6.6.2}A Detailed Plan of the Matingstree Top Level}{48}
+\contentsline {subsection}{\numberline {6.6.3}How to Use the Mtree Top Level}{50}
+\contentsline {subsection}{\numberline {6.6.4}Automatic Searches with the Mtree Top Level}{51}
+\contentsline {subsection}{\numberline {6.6.5}The Mtree Subsumption Checker}{51}
+\contentsline {subsection}{\numberline {6.6.6}An Interactive Session in the Mtree Top Level}{52}
+\contentsline {chapter}{\numberline {7}Unification}{57}
+\contentsline {section}{\numberline {7.1}A Few Comments About Higher-Order Unification}{57}
+\contentsline {section}{\numberline {7.2}Bounds on Higher-Order Unification}{57}
+\contentsline {subsection}{\numberline {7.2.1}Depth Bounds}{58}
+\contentsline {subsection}{\numberline {7.2.2}Substitution Bounds}{58}
+\contentsline {subsection}{\numberline {7.2.3}Combining the Above}{59}
+\contentsline {section}{\numberline {7.3}Support Facilities}{59}
+\contentsline {subsection}{\numberline {7.3.1}Review}{59}
+\contentsline {subsection}{\numberline {7.3.2}Saving Disagreement sets}{59}
+\contentsline {section}{\numberline {7.4}Unification Tree}{59}
+\contentsline {subsection}{\numberline {7.4.1}Node Names}{60}
+\contentsline {subsection}{\numberline {7.4.2}Substitution Stack}{60}
+\contentsline {section}{\numberline {7.5}Simpl}{60}
+\contentsline {section}{\numberline {7.6}Match}{60}
+\contentsline {section}{\numberline {7.7}Comments}{61}
+\contentsline {section}{\numberline {7.8}A Session in Unification Top-Level}{61}
+\contentsline {chapter}{\numberline {8}Rewrite Rules and Theories}{63}
+\contentsline {section}{\numberline {8.1}Top-Level Commands for Manipulating Rewrite Rules}{63}
+\contentsline {section}{\numberline {8.2}Editor Operations Dealing with Rewrite Rules}{64}
+\contentsline {section}{\numberline {8.3}An Example of Rewrite Rules in Interactive Use}{64}
+\contentsline {section}{\numberline {8.4}Using Rewrite Rules in Automatic Proof Search}{66}
+\contentsline {section}{\numberline {8.5}The Rewriting Top Level}{67}
+\contentsline {subsection}{\numberline {8.5.1}Interacting with the Main Top Level}{67}
+\contentsline {subsection}{\numberline {8.5.2}Rewrite Rules, Theories and Derivations}{67}
+\contentsline {subsection}{\numberline {8.5.3}Automatic Search}{68}
+\contentsline {subsection}{\numberline {8.5.4}Commands for Entering and Leaving the Rewriting Top Level}{69}
+\contentsline {subsection}{\numberline {8.5.5}Commands for Starting, Finishing and Printing Rewrite Derivations}{69}
+\contentsline {subsection}{\numberline {8.5.6}Commands for Applying Rewrite Rules}{70}
+\contentsline {subsection}{\numberline {8.5.7}Commands for Rearranging the Derivation}{70}
+\contentsline {subsection}{\numberline {8.5.8}Lambda Conversion Commands}{71}
+\contentsline {subsection}{\numberline {8.5.9}Commands Concerned with Rewrite Rules and Theories}{71}
+\contentsline {subsection}{\numberline {8.5.10}Applicable Commands from the Main Top Level}{71}
+\contentsline {subsection}{\numberline {8.5.11}Flags}{71}
+\contentsline {subsection}{\numberline {8.5.12}Example}{72}
+\contentsline {subsection}{\numberline {8.5.13}Semantics of Rewrite Rules}{74}
+\contentsline {section}{\numberline {8.6}How Rewrite Rules and Theories Are Stored in the Library}{75}
+\contentsline {chapter}{\numberline {9}Proof Translations and Tactics}{77}
+\contentsline {section}{\numberline {9.1}Translation between proof formats; tactics}{77}
+\contentsline {subsection}{\numberline {9.1.1}Overview}{77}
+\contentsline {subsection}{\numberline {9.1.2}Syntax for Tactics and Tacticals}{78}
+\contentsline {subsection}{\numberline {9.1.3}Tacticals}{80}
+\contentsline {subsection}{\numberline {9.1.4}Using Tactics}{81}
+\contentsline {subsection}{\numberline {9.1.5}Translating from Natural Deduction to Expansion Proofs}{81}
+\contentsline {chapter}{\numberline {10}Testing for Satisfiability}{83}
+\contentsline {chapter}{\numberline {11}Output: Symbols, Files and Styles}{85}
+\contentsline {section}{\numberline {11.1}Proofwindows}{85}
+\contentsline {section}{\numberline {11.2}Interpreting the Output from Mating Search}{85}
+\contentsline {subsection}{\numberline {11.2.1}Symbols Printed by Mating Search}{85}
+\contentsline {subsection}{\numberline {11.2.2}Refining the Output: the Monitor}{87}
+\contentsline {section}{\numberline {11.3}Output files}{88}
+\contentsline {section}{\numberline {11.4}Output styles}{89}
+\contentsline {section}{\numberline {11.5}Saving Output from Mating Search}{89}
+\contentsline {section}{\numberline {11.6}Interrupting TPS for Occasional Output}{89}
+\contentsline {section}{\numberline {11.7}Output for Slides}{90}
+\contentsline {section}{\numberline {11.8}Record files}{90}
+\contentsline {chapter}{\numberline {12}Events}{93}
+\contentsline {section}{\numberline {12.1}Events in TPS}{93}
+\contentsline {subsection}{\numberline {12.1.1}Defining an Event}{93}
+\contentsline {subsection}{\numberline {12.1.2}Signalling Events}{94}
+\contentsline {subsection}{\numberline {12.1.3}Examples}{94}
+\contentsline {section}{\numberline {12.2}More on Events}{96}
+\contentsline {section}{\numberline {12.3}The Report Package}{98}
+\contentsline {chapter}{\numberline {13}The Rules Module}{101}
+\contentsline {section}{\numberline {13.1}Defining Inference Rules}{101}
+\contentsline {section}{\numberline {13.2}Assembling the Rules}{102}
+\contentsline {subsection}{\numberline {13.2.1}An example}{102}
+\contentsline {subsection}{\numberline {13.2.2}Customizing {{\sc Etps}} or {{\sc Tps}} with your own rules}{103}
+\contentsline {subsection}{\numberline {13.2.3}Creating Exercises}{104}
+\contentsline {chapter}{\numberline {14}Notes on setting things up}{107}
+\contentsline {section}{\numberline {14.1}Compiling TPS and ETPS}{107}
+\contentsline {subsection}{\numberline {14.1.1}Compiling TPS under Unix}{107}
+\contentsline {subsection}{\numberline {14.1.2}Compiling TPS under MS Windows}{108}
+\contentsline {subsection}{\numberline {14.1.3}Compiling the Java Interface}{110}
+\contentsline {section}{\numberline {14.2}Initialization}{111}
+\contentsline {subsection}{\numberline {14.2.1}Initializing {{\sc Tps}}}{111}
+\contentsline {subsection}{\numberline {14.2.2}Initializing {{\sc Etps}}}{111}
+\contentsline {section}{\numberline {14.3}Starting {{\sc Tps}}}{112}
+\contentsline {section}{\numberline {14.4}Using {{\sc Tps}} with the X window system}{112}
+\contentsline {section}{\numberline {14.5}Using {{\sc Tps}} with the Java Interface}{113}
+\contentsline {section}{\numberline {14.6}Using {{\sc Tps}} within Gnu Emacs}{115}
+\contentsline {section}{\numberline {14.7}Running {{\sc Tps}} in Batch Mode or from Omega}{115}
+\contentsline {subsection}{\numberline {14.7.1}Batch Processing Work Files}{115}
+\contentsline {subsection}{\numberline {14.7.2}Interactive/Omega Batch Processing}{115}
+\contentsline {subsection}{\numberline {14.7.3}Batch Processing With UNIFORM-SEARCH}{116}
+\contentsline {section}{\numberline {14.8}Calling {{\sc Tps}} from Other Programs}{116}
+\contentsline {subsection}{\numberline {14.8.1}Establishing Connections}{116}
+\contentsline {subsection}{\numberline {14.8.2}Socket Communication}{117}
+\contentsline {subsection}{\numberline {14.8.3}Ping-Pong Protocol}{117}
+\contentsline {subsection}{\numberline {14.8.4}Requests}{117}
+\contentsline {subsection}{\numberline {14.8.5}Example}{118}
+\contentsline {section}{\numberline {14.9}Starting {{\sc Tps}} as an Online Server}{121}
+\contentsline {subsection}{\numberline {14.9.1}Setting up the Online Server}{121}
+\contentsline {subsection}{\numberline {14.9.2}Starting or Restarting the Online Server}{122}
+\contentsline {section}{\numberline {14.10}Preparing ETPS for classroom use}{122}
+\contentsline {subsection}{\numberline {14.10.1}Starting ETPS as an Online Server for a Class}{122}
+\contentsline {subsection}{\numberline {14.10.2}Grades}{123}
+\contentsline {subsection}{\numberline {14.10.3}Security}{123}
+\contentsline {subsection}{\numberline {14.10.4}Diagnosing Problems in ETPS}{123}
+\contentsline {section}{\numberline {14.11}Interruptions and Emergencies}{123}
+\contentsline {section}{\numberline {14.12}How to produce manuals}{124}
+\contentsline {subsection}{\numberline {14.12.1}Scribe manuals}{124}
+\contentsline {subsection}{\numberline {14.12.2}\LaTeX \nobreakspace {}manuals}{125}
+\contentsline {subsection}{\numberline {14.12.3}HTML manuals}{126}
+\contentsline {section}{\numberline {14.13}Miscellaneous Information}{126}
+\penalty -\@highpenalty \relax \vskip 1.0em plus\p@ \@tempdima 1.5em\relax \begingroup \parindent \z@ \rightskip 1.55em\parfillskip -1.55em\unhbox \voidb@x \bfseries \advance \leftskip \@tempdima \hskip -\leftskip \hbox to\@tempdima {\hfil }Bibliography\penalty \@M \hfil \penalty \@M \hbox to1.55em{\hss 127}\par \penalty \@highpenalty \endgroup 
+\penalty -\@highpenalty \relax \vskip 1.0em plus\p@ \@tempdima 1.5em\relax \begingroup \parindent \z@ \rightskip 1.55em\parfillskip -1.55em\unhbox \voidb@x \bfseries \advance \leftskip \@tempdima \hskip -\leftskip \hbox to\@tempdima {\hfil }Index\penalty \@M \hfil \penalty \@M \hbox to1.55em{\hss 130}\par \penalty \@highpenalty \endgroup 

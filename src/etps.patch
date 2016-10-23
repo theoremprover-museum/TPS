@@ -1,0 +1,14 @@
+;;; -*- Mode:LISP; Package:CORE -*-
+;;; Last Modified: Sat Feb  6 14:02:21 1988
+;;; ******************************************************************* ;;;
+;;;         This code was written as part of the TPS project at         ;;;
+;;;                     Carnegie-Mellon University.                     ;;;
+;;;   If you want to use this code or any part of TPS, please contact   ;;;
+;;;               Peter B. Andrews (Andrews@A.CS.CMU.EDU)               ;;;
+;;; ******************************************************************* ;;;
+
+;;; This file is loaded each time etps starts up.
+;;; Place any modifications here until they are built into the core image
+(in-package :core)
+
+(in-package :user)

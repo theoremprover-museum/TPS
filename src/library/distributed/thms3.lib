@@ -1,0 +1,215 @@
+(:name THM30
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:04."
+:description "R(OA) SUBSET(O(OA)(OA)) S(OA) EQUIV FORALL F(AA).%(OA(OA)(AA)) F(AA) R(OA) SUBSET(O(OA)(OA)) %(OA(OA)(AA)) F(AA) S(OA)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM30A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:06."
+:description "U(OB) SUBSET(O(OB)(OB)) V(OB) IMPLIES %(OA(OB)(AB)) F(AB) U(OB) SUBSET(O(OA)(OA)) %(OA(OB)(AB)) F(AB) V(OB)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM30B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:07."
+:description "%(OA(OA)(AA)) [LAMBDA x(A) x(A)] R(OA) SUBSET(O(OA)(OA)) %(OA(OA)(AA)) [LAMBDA x(A) x(A)] S(OA) IMPLIES R(OA) SUBSET(O(OA)(OA)) S(OA)"
+:needed-objects   NIL
+:mhelp "Special case of THM30"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM31
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, June  3, 1997 at 17:22:16."
+:description "R(OI) SUBSET(O(OI)(OI)) S(OI) EQUIV R(OI) INTERSECT(OI(OI)(OI)) S(OI) =(O(OI)(OI)) R(OI)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM39
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, June  3, 1997 at 17:22:34."
+:description "R(OI) UNION(OI(OI)(OI)) S(OI) =(O(OI)(OI)) R(OI) INTERSECT(OI(OI)(OI)) S(OI) IMPLIES R(OI) SUBSET(O(OI)(OI)) S(OI)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM32
+:type GWFF
+:context NIL
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "[R(OB) UNION(OB(OB)(OB)) S(OB)] SETPRODUCT(O(B(BBB))(OB)(OB)) Z(OB) EQUIVS(O(O(B(BBB)))(O(B(BBB)))) [R(OB) UNION(OB(OB)(OB)) Z(OB)] SETPRODUCT(O(B(BBB))(OB)(OB)).S(OB) UNION(OB(OB)(OB)) Z(OB)"
+:needed-objects   (SETPRODUCT)
+:mhelp "41 CLAUSES AND 72 PATHS OR 77 CLAUSES AND 36 PATHS  "
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM32A
+:type GWFF
+:context NIL
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "[R(OB) UNION(OB(OB)(OB)) S(OB)] SETPRODUCT(O(B(BBB))(OB)(OB)) Z(OB) SUBSET(O(O(B(BBB)))(O(B(BBB)))) [R(OB) UNION(OB(OB)(OB)) Z(OB)] SETPRODUCT(O(B(BBB))(OB)(OB)).S(OB) UNION(OB(OB)(OB)) Z(OB)"
+:needed-objects   (SETPRODUCT)
+:mhelp "THE CONVERSE INCLUSION IS ALSO A THEOREM"
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM33
+:type GWFF
+:context NIL
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS F(A(AAA)A).INJECTIVE(O(A(AAA)A)) F(A(AAA)A) AND FORALL X(A) EXISTS Y(A) EXISTS Z(A).F(A(AAA)A) X(A) =(O(A(AAA))(A(AAA))) X(A) PAIR(A(AAA)AA) Y(A)"
+:needed-objects   (INJECTIVE PAIR)
+:mhelp "ONE SOLUTION IS TO LET F X = X PAIR X"
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM34
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:29:56."
+:description "%(OA(OB)(AB)) F(AB) [R(OB) UNION(OB(OB)(OB)) S(OB)] EQUIVS(O(OA)(OA)) %(OA(OB)(AB)) F(AB) R(OB) UNION(OA(OA)(OA)) %(OA(OB)(AB)) F(AB) S(OB)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM34A
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:29:57."
+:description "%(OA(OB)(AB)) F(AB) [R(OB) UNION(OB(OB)(OB)) S(OB)] SUBSET(O(OA)(OA)) %(OA(OB)(AB)) F(AB) R(OB) UNION(OA(OA)(OA)) %(OA(OB)(AB)) F(AB) S(OB)"
+:needed-objects   NIL
+:mhelp "THE CONVERSE INCLUSION IS ALSO A THEOREM"
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM34B
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:29:58."
+:description "%(OA(OB)(AB)) F(AB) R(OB) UNION(OA(OA)(OA)) %(OA(OB)(AB)) F(AB) S(OB) SUBSET(O(OA)(OA)) %(OA(OB)(AB)) F(AB).R(OB) UNION(OB(OB)(OB)) S(OB)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM35
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:29:59."
+:description "R(OI) INTERSECT(OI(OI)(OI)) S(OI) =(O(OI)(OI)) R(OI) IMPLIES R(OI) SUBSET(O(OI)(OI)) S(OI)"
+:needed-objects   NIL
+:mhelp "09-JUN-77 01:06:33  
+DATES  "
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM36
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:00."
+:description "R(OI) =(O(OI)(OI)) S(OI) IMPLIES R(OI) SUBSET(O(OI)(OI)) S(OI)"
+:needed-objects   NIL
+:mhelp "A TRIVIAL THEOREM WITH AN EASY PROOF"
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM37
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:00."
+:description "R(OI) =(O(OI)(OI)) R(OI) INTERSECT(OI(OI)(OI)) S(OI) IMPLIES R(OI) SUBSET(O(OI)(OI)) S(OI)"
+:needed-objects   NIL
+:mhelp "COMPLETE / AND EASY INTERACTIVE PROOF  
+13-JUN-77 11:36:50  
+DATES  "
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM38
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:01."
+:description "R(OI) INTERSECT(OI(OI)(OI)) S(OI) =(O(OI)(OI)) R(OI) UNION(OI(OI)(OI)) S(OI) IMPLIES R(OI) SUBSET(O(OI)(OI)) S(OI)"
+:needed-objects   NIL
+:mhelp "EASY INTERACTIVE PROOF  
+20-JUN-77 18:36:36  
+DATES  "
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+

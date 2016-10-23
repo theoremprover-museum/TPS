@@ -1,0 +1,42 @@
+(:name IDIAG
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA h(I(OI)) %(OI(O(OI))(I(OI))) h(I(OI)).LAMBDA s(OI).~s(OI).h(I(OI)) s(OI)"
+:needed-objects   NIL
+:mhelp "Crucial substitution for the Injective Cantor Theorem (X5309)"
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPE "OI(I(OI))"))
+:other-remarks "
+")
+
+
+(:name LESS-INFIX
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "<(OAB)"
+:needed-objects   NIL
+:mhelp "This just allows the predicate < to be printed in infix position"
+:other-attributes ((FACE <) (PRINTNOTYPE T) (INFIX 9) (TYPELIST ("A" "B")) (TYPE "OAB"))
+:other-remarks "
+")
+
+
+(:name LIKES-INFIX
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LIKES(OAB)"
+:needed-objects   NIL
+:mhelp "This just allows the predicate LIKES to be printed in infix position"
+:other-attributes ((FACE L I K E S) (PRINTNOTYPE T) (INFIX 11) (TYPELIST ("A" "B")) (TYPE "OAB"))
+:other-remarks "
+")
+
+

@@ -1,0 +1,182 @@
+(:name COMP1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS U(OI) FORALL V(I).U(OI) V(I) EQUIV A(O)"
+:needed-objects   (IN)
+:mhelp "One simple form of the Comprehension Principle"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name DESCR-CHURCH
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "F(OA) X(A) IMPLIES.FORALL Y(A) [F(OA) Y(A) IMPLIES X(A) =(OAA) Y(A)] IMPLIES F(OA).J(A(OA)) F(OA)"
+:needed-objects   NIL
+:mhelp "Church's statement of the Axiom of Descriptions"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name EXT-SET1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL X(OI) FORALL Y(OI).FORALL W(I) [X(OI) W(I) EQUIV Y(OI) W(I)] IMPLIES FORALL x(I).X(OI) x(I) EQUIV Y(OI) x(I)"
+:needed-objects   NIL
+:mhelp "Very trivial theorem"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name INDUCT1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL P(OS).P(OS) 0(S) AND FORALL X(S) [P(OS) X(S) IMPLIES P(OS).S(SS) X(S)] IMPLIES FORALL M(S).N(OS) M(S) IMPLIES P(OS) M(S)"
+:needed-objects   NIL
+:mhelp "Form of basic induction"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name LESSEQ1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA Y(S) LAMBDA Z(S) FORALL P(OS).P(OS) Y(S) AND FORALL X(S) [P(OS) X(S) IMPLIES P(OS).S(SS) X(S)] IMPLIES P(OS) Z(S)"
+:needed-objects   NIL
+:mhelp "Asertion that Y is less than or equal to Z"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name NATN1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL P(OS).P(OS) 0(S) AND FORALL X(S) [P(OS) X(S) IMPLIES P(OS).S(SS) X(S)] IMPLIES P(OS) N(S)"
+:needed-objects   NIL
+:mhelp "One way to say n is a natural number"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name NATN2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA N(S) FORALL P(OS).P(OS) 0(S) AND FORALL X(S) [P(OS) X(S) IMPLIES P(OS).S(SS) X(S)] IMPLIES P(OS) N(S)"
+:needed-objects   NIL
+:mhelp "set of natural numbers"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name RUSSELL1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, June  3, 1997 at 14:44:26."
+:description "~EXISTS U(I) FORALL V(I).E(OII) V(I) U(I) EQUIV ~E(OII) V(I) V(I)"
+:needed-objects   NIL
+:mhelp "One form of Russell's Paradox"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name SET-OF-SUPERSET-NAT
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA P(OS).P(OS) 0(S) AND FORALL X(S).P(OS) X(S) IMPLIES P(OS).S(SS) X(S)"
+:needed-objects   NIL
+:mhelp "collection of sets defining the natural numbers"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name SUPERSET-NAT
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "P(OS) 0(S) AND FORALL X(S).P(OS) X(S) IMPLIES P(OS).S(SS) X(S)"
+:needed-objects   NIL
+:mhelp "description of a superset of the set of natural numbers"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TTTP-6400
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL H(SSS) FORALL G(O(OI)).P-REC(SSS(SSS)) H(SSS) G(O(OI)) 0(S) =(OSS) G(O(OI)) AND FORALL N(S).NAT N(S) IMPLIES P-REC(SSS(SSS)) H(SSS) G(O(OI)) [S(SS) N(S)] =(OSS) H(SSS) N(S).P-REC(SSS(SSS)) H(SSS) G(O(OI)) N(S)"
+:needed-objects   (P-REC)
+:mhelp "THEOREM 6400 about primitive recusion operator. Needs O and S to be replaced by ZERO and SUCC."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X6401-TEMP
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL H(SSS) FORALL G(O(OI)) [FORALL x(OI) [IOTA(S(OS)) [LAMBDA M(S) FORALL W(OSS).W(OSS) 0(S) G(O(OI)) AND FORALL X(S) FORALL Y(S) [W(OSS) X(S) Y(S) IMPLIES W(OSS) [S(SS) X(S)].H(SSS) X(S) Y(S)] IMPLIES W(OSS) 0(S) M(S)] x(OI) EQUIV G(O(OI)) x(OI)] AND FORALL N(S).FORALL p(OS) [p(OS) [LAMBDA p(OI).~EXISTS x(I) p(OI) x(I)] AND FORALL x(S) [p(OS) x(S) IMPLIES p(OS).LAMBDA p(OI) EXISTS x(I).p(OI) x(I) AND x(S).LAMBDA t(I).~[t(I) =(OII) x(I)] AND p(OI) t(I)] IMPLIES p(OS) N(S)] IMPLIES FORALL x(OI).IOTA(S(OS)) [LAMBDA M(S) FORALL W(OSS).W(OSS) 0(S) G(O(OI)) AND FORALL X(S) FORALL Y(S) [W(OSS) X(S) Y(S) IMPLIES W(OSS) [S(SS) X(S)].H(SSS) X(S) Y(S)] IMPLIES W(OSS) [S(SS) N(S)] M(S)] x(OI) EQUIV H(SSS) N(S) [IOTA(S(OS)).LAMBDA M(S) FORALL W(OSS).W(OSS) 0(S) G(O(OI)) AND FORALL X(S) FORALL Y(S) [W(OSS) X(S) Y(S) IMPLIES W(OSS) [S(SS) X(S)].H(SSS) X(S) Y(S)] IMPLIES W(OSS) N(S) M(S)] x(OI)] IMPLIES FORALL x(OI).IOTA(S(OS)) [LAMBDA M(S) FORALL W(OSS).W(OSS) 0(S) G(O(OI)) AND FORALL X(S) FORALL Y(S) [W(OSS) X(S) Y(S) IMPLIES W(OSS) [S(SS) X(S)].S(SS) Y(S)] IMPLIES W(OSS) 0(S) M(S)] x(OI) EQUIV G(O(OI)) x(OI)"
+:needed-objects   (TTTP-6400 PLUS)
+:mhelp "Exercise x6401 from TTTP"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X6402-TEMP
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL H(SSS) FORALL G(O(OI)) [FORALL x(OI) [IOTA(S(OS)) [LAMBDA M(S) FORALL W(OSS).W(OSS) 0(S) G(O(OI)) AND FORALL X(S) FORALL Y(S) [W(OSS) X(S) Y(S) IMPLIES W(OSS) [S(SS) X(S)].H(SSS) X(S) Y(S)] IMPLIES W(OSS) 0(S) M(S)] x(OI) EQUIV G(O(OI)) x(OI)] AND FORALL N(S).FORALL p(OS) [p(OS) [LAMBDA p(OI).~EXISTS x(I) p(OI) x(I)] AND FORALL x(S) [p(OS) x(S) IMPLIES p(OS).LAMBDA p(OI) EXISTS x(I).p(OI) x(I) AND x(S).LAMBDA t(I).~[t(I) =(OII) x(I)] AND p(OI) t(I)] IMPLIES p(OS) N(S)] IMPLIES FORALL x(OI).IOTA(S(OS)) [LAMBDA M(S) FORALL W(OSS).W(OSS) 0(S) G(O(OI)) AND FORALL X(S) FORALL Y(S) [W(OSS) X(S) Y(S) IMPLIES W(OSS) [S(SS) X(S)].H(SSS) X(S) Y(S)] IMPLIES W(OSS) [S(SS) N(S)] M(S)] x(OI) EQUIV H(SSS) N(S) [IOTA(S(OS)).LAMBDA M(S) FORALL W(OSS).W(OSS) 0(S) G(O(OI)) AND FORALL X(S) FORALL Y(S) [W(OSS) X(S) Y(S) IMPLIES W(OSS) [S(SS) X(S)].H(SSS) X(S) Y(S)] IMPLIES W(OSS) N(S) M(S)] x(OI)] IMPLIES FORALL N(S).FORALL p(OS) [p(OS) [LAMBDA p(OI).~EXISTS x(I) p(OI) x(I)] AND FORALL x(S) [p(OS) x(S) IMPLIES p(OS).LAMBDA p(OI) EXISTS x(I).p(OI) x(I) AND x(S).LAMBDA t(I).~[t(I) =(OII) x(I)] AND p(OI) t(I)] IMPLIES p(OS) N(S)] IMPLIES FORALL x(OI).IOTA(S(OS)) [LAMBDA M(S) FORALL W(OSS).W(OSS) 0(S) G(O(OI)) AND FORALL X(S) FORALL Y(S) [W(OSS) X(S) Y(S) IMPLIES W(OSS) [S(SS) X(S)].S(SS) Y(S)] IMPLIES W(OSS) [S(SS) N(S)] M(S)] x(OI) EQUIV S(SS) [IOTA(S(OS)).LAMBDA M(S) FORALL W(OSS).W(OSS) 0(S) G(O(OI)) AND FORALL X(S) FORALL Y(S) [W(OSS) X(S) Y(S) IMPLIES W(OSS) [S(SS) X(S)].S(SS) Y(S)] IMPLIES W(OSS) N(S) M(S)] x(OI)"
+:needed-objects   (TTTP-6400 PLUS)
+:mhelp "Exercise x6402 FROM TTTP"
+:other-attributes NIL
+:other-remarks "
+")
+
+

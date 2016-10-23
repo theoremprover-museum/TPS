@@ -1,0 +1,6 @@
+#!/bin/tcsh
+cd /whatever/tps/
+\rm -f *bak
+mv maketps.log maketps.log.bak
+\rm -f bin/*fasl
+make tps > maketps.log

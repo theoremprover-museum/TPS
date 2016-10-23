@@ -1,0 +1,314 @@
+\section{Test: Multiple Searches on the Same Problem}\label{testtop}
+
+The \indexcommand{TEST} top level is designed to allow a succession of searches with
+varying flag settings to be performed without any interaction from the user.
+
+One of the major uses of this top level is to find settings of the various
+flags which will produce a proof of a theorem; this is done by the
+\indexcommand{UNIFORM-SEARCH} command, which is explained later in
+section \ref{uniform}.
+
+The top level is entered with the \indexcommand{TEST} command; as with
+the mate top level, this will prompt for a gwff and ask whether you
+want to open a vpwindow.
+
+There are three major groups of TEST commands; those which are for
+specifying a list of flags to be varied, those which deal with the
+associated library functions and those which actually perform the search.
+
+There is one major new data structure: a searchlist is a list of search items;
+each search item contains the name of a flag, a default (initial) value for the flag,
+and a range of values over which it should be varied. The user can have
+several searchlists in memory at once, and can switch between them
+with the \indexcommand{NEW-SEARCHLIST} command. See below for an example of how to
+construct a searchlist. Searchlists can be stored in the library with the
+\indexcommand{INSERT} command (from the test top level), and retrieved with the
+\indexcommand{FETCH} command (also from the test top level). There is an additional
+(optional) function attached to each searchlist; this will be called on each iteration of
+the search, and may do such things as setting flags which are not in the searchlist (so, for
+example, \indexflag{MAX-SEARCH-DEPTH} and \indexflag{MAX-UTREE-DEPTH} can be kept equal to
+each other by having one in the searchlist and the other set by the optional function).
+The function UNIFORM-SEARCH-FUNCTION is used by the UNIFORM-SEARCH procedures.
+
+The searchlist also contains (invisible to the user) internal flags which determine the current
+position in the search; this means that it is possible to interrupt a search,
+save the current searchlist in the library, and later on to reload that searchlist
+(even into a different core image) and continue the search from the point where it was
+interrupted.
+
+Once a searchlist is constructed, the \indexcommand{GO} command will start a search
+and the \indexcommand{CONTINUE} command will continue a search after an interruption.
+The flags in the subject \indexsubject{test-top} control many of the parameters of the
+search; type {\tt list test-top} for more information. The user has the option of opening
+a test-window, analogous to the vpwindow, which will show a summary of the search so far.
+If the search finds a proof, it will terminate; otherwise, it will increase the time limit
+in the flag \indexflag{TEST-INITIAL-TIME-LIMIT} and try again. Once the search terminates,
+it will define a new mode which can be saved in the library using \indexcommand{INSERT}
+{\it from the test top level}. (The \indexcommand{INSERT} in the library top level is different;
+when you try to save a mode, it asks you to specify all the flag settings. The \indexcommand{INSERT}
+in the test top level merely asks for the name of the mode.)
+
+\subsection{How to Build A Searchlist Without Any Effort}
+
+The commands \indexcommand{VARY-MODE} and \indexcommand{QUICK-DEFINE} are
+useful for defining searchlists quickly. The former takes an existing mode,
+and steps through it flag by flag, building a searchlist by offering to
+add each flag of the mode and an appropriate range to the new searchlist.
+The latter uses a pre-defined list of flags, either those listed in the
+\indexflag{TEST-FASTER-*} group or those listed in the \indexflag{TEST-EASIER-*}
+group, to create a searchlist in which each of the flags has up to
+\indexflag{TEST-MAX-SEARCH-VALUES} possible values.
+
+Given a large searchlist, it is possible to trim it down using the \indexcommand{SCALE-UP}
+and \indexcommand{SCALE-DOWN} commands; for each of the flags in the TEST-EASIER-* or TEST-FASTER-*
+lists (respectively), these commands compare the range of the flags in the
+searchlist with the current values of the flags, and remove all values that would not make the
+search easier (in the case of SCALE-UP) or faster (in the case of SCALE-DOWN).
+
+In some cases, it is not necessary to build a searchlist at all. The commands \indexcommand{PRESS-DOWN},
+\indexcommand{PUSH-UP} and \indexcommand{FIND-BEST-MODE} all build their own searchlists
+using the flags listed in the TEST-FASTER-* flags (for PRESS-DOWN and FIND-BEST-MODE)
+and those listed in the TEST-EASIER-* flags (for PUSH-UP and FIND-BEST-MODE). Below are
+examples of how to use these commands.
+
+\subsection{Using TEST to Improve a Successful Mode}
+\begin{tpsexample}
+<18>test sample-theorem !
+<test19>mode mode-sample-theorem
+{\it mode-sample-theorem is a mode in which sample-theorem can be proven.}
+<test20>list test-top
+
+Subject: TEST-TOP
+  TEST-FASTER-IF-HIGH:   (MIN-QUICK-DEPTH)
+  TEST-FASTER-IF-LOW:    (MAX-SEARCH-DEPTH SEARCH-TIME-LIMIT MAX-UTREE-DEPTH
+                          MAX-MATES MAX-SEARCH-LIMIT)
+  TEST-FASTER-IF-NIL:    ()
+  TEST-FASTER-IF-T:      (MIN-QUANTIFIER-SCOPE MS-SPLIT)
+  TEST-FIX-UNIF-DEPTHS:  T
+  TEST-INCREASE-TIME:    0
+  TEST-INITIAL-TIME-LIMIT: 30
+  TEST-MAX-SEARCH-VALUES: 10
+  TEST-REDUCE-TIME:      T
+{\it Some flags have been omitted. When we do PRESS-DOWN, it will
+automatically create a searchlist which will vary each
+of the flags listed in the TEST-FASTER-* flags above, and then
+start searching with a maximum time of 30 seconds, decreasing the
+time as it goes, and fixing the unification depths after the
+first successful search.}
+<test21>press-down
+{\it The search is started. While it works, we can go away for a
+cup of coffee (or a two-week vacation to Mexico, depending on how
+difficult sample-theorem is).}
+\end{tpsexample}
+
+\subsection{Using TEST to Discover a Successful Mode}
+\begin{tpsexample}
+<18>test sample-theorem !
+<test19>mode bad-mode
+{\it bad-mode is a mode in which sample-theorem cannot be proven.}
+<test20>list test-top
+
+Subject: TEST-TOP
+  TEST-EASIER-IF-HIGH:   (MAX-SEARCH-DEPTH SEARCH-TIME-LIMIT NUM-OF-DUPS
+                          MAX-UTREE-DEPTH MAX-MATES MAX-SEARCH-LIMIT)
+  TEST-EASIER-IF-LOW:    (MIN-QUICK-DEPTH)
+  TEST-EASIER-IF-NIL:    ()
+  TEST-EASIER-IF-T:      (ETA-RULE MIN-QUANTIFIER-SCOPE MS-SPLIT)
+  TEST-INCREASE-TIME:    10
+  TEST-INITIAL-TIME-LIMIT: 30
+  TEST-MAX-SEARCH-VALUES: 10
+{\it Some flags have been omitted. When we do PUSH-UP, it will
+automatically create a searchlist which will vary each
+of the flags listed in the TEST-EASIER-* flags above, and then
+start searching with a maximum time of 30 seconds, increasing the
+time by ten percent on each attempt.}
+<test21>push-up
+{\it The search is started. It will stop as soon as it finds a mode which works.
+We can combine both PUSH-UP and PRESS-DOWN (first push-up to find a successful
+mode, then press-down to find a better mode) by using the command FIND-BEST-MODE
+instead of PUSH-UP.}
+\end{tpsexample}
+
+\subsection{Building A Searchlist with TEST}
+\begin{tpsexample}
+<12>list test-top
+Subject: TEST-TOP
+  TEST-INITIAL-TIME-LIMIT: 30
+  TEST-NEXT-SEARCH-FN:   EXHAUSTIVE-SEARCH
+  TEST-REDUCE-TIME:      T
+  TEST-VERBOSE:          T
+  TESTWIN-HEIGHT:        24
+  TESTWIN-WIDTH:         80
+{\it These are the flags available. Note the first three; the first says that
+each search will be allowed 30 seconds, the second that the function
+EXHAUSTIVE-SEARCH will be used to determine which flag settings are used next,
+and the third that if a proof is found, the time allowed for the next proof
+will be decreased.}
+<13>test
+GWFF (GWFF0-OR-EPROOF): Gwff or Eproof [No Default]>x5305
+DEEPEN (YESNO): Deepen? [Yes]>
+WINDOW (YESNO): Open Vpform Window? [No]>yes
+File to send copy Vpform output to (`` '' to discard) [``vpwin.vpw'']>``test-top.vpw''
+
+Use CLOSE-MATEVPW when you want to close the vpwindow.
+<test14>?
+Top Levels:    LEAVE
+Mating search: CLOSE-TESTWIN CONTINUE GO OPEN-TESTWIN SEARCH-ORDER
+Searchlists:   ADD-FLAG ADD-FLAG* ADD-SUBJECTS NEW-SEARCHLIST REM-FLAG
+               REM-FLAG* SEARCHLISTS SHOW-SEARCHLIST
+Library:       DELETE FETCH INSERT
+
+<test15>new-searchlist
+NAME (SYMBOL): Name of new searchlist [No Default]>x5305-search
+{\it We begin to define a new searchlist, containing the flags to be varied.}
+<test16>searchlists
+X5305-SEARCH
+
+{\it ...this is currently the only searchlist in memory...}
+<test17>add-flag*
+FLAG (TPSFLAG): Flag to be added [No Default]>max-search-depth
+INIT (ANYTHING): Initial value of flag [No Default]>42
+RANGE (ANYTHING-LIST): List of possible values to use [No Default]>4 8 10
+
+Add another flag?  [Yes]>
+
+FLAG (TPSFLAG): Flag to be added [No Default]>max-utree-depth
+INIT (ANYTHING): Initial value of flag [No Default]>20
+RANGE (ANYTHING-LIST): List of possible values to use [No Default]>4 8 10
+
+Add another flag?  [Yes]>no
+
+{\it We have added two flags to our searchlist, with four values for each.
+Note also that there are commands to add a single flag (ADD-FLAG) or
+every flag in a given list of subjects (ADD-SUBJECTS), as well as
+commands to remove a flag or flags (REM-FLAG, REM-FLAG*).}
+<test18>show-searchlist
+NAME (SYMBOL): Name of searchlist [X5305-SEARCH]>
+Searchlist X5305-SEARCH is as follows:
+MAX-UTREE-DEPTH = 20, default is 20, range is [(20 4 8 10)]
+MAX-SEARCH-DEPTH = 42, default is 42, range is [(42 4 8 10)]
+
+{\it Next, we decide to check how many searches there will be, and in what
+order they will be performed.}
+<test19>search-order
+NAME (SYMBOL): Name of searchlist [X5305-SEARCH]>
+There are 16 possible settings of these flags.
+Search : (MAX-UTREE-DEPTH = 20) (MAX-SEARCH-DEPTH = 42)
+Search : (MAX-UTREE-DEPTH = 10) (MAX-SEARCH-DEPTH = 42)
+Search : (MAX-UTREE-DEPTH = 8) (MAX-SEARCH-DEPTH = 42)
+Search : (MAX-UTREE-DEPTH = 4) (MAX-SEARCH-DEPTH = 42)
+Search : (MAX-UTREE-DEPTH = 20) (MAX-SEARCH-DEPTH = 10)
+Search : (MAX-UTREE-DEPTH = 10) (MAX-SEARCH-DEPTH = 10)
+Search : (MAX-UTREE-DEPTH = 8) (MAX-SEARCH-DEPTH = 10)
+Search : (MAX-UTREE-DEPTH = 4) (MAX-SEARCH-DEPTH = 10)
+Search : (MAX-UTREE-DEPTH = 20) (MAX-SEARCH-DEPTH = 8)
+Search : (MAX-UTREE-DEPTH = 10) (MAX-SEARCH-DEPTH = 8)
+Search : (MAX-UTREE-DEPTH = 8) (MAX-SEARCH-DEPTH = 8)
+Search : (MAX-UTREE-DEPTH = 4) (MAX-SEARCH-DEPTH = 8)
+Search : (MAX-UTREE-DEPTH = 20) (MAX-SEARCH-DEPTH = 4)
+Search : (MAX-UTREE-DEPTH = 10) (MAX-SEARCH-DEPTH = 4)
+Search : (MAX-UTREE-DEPTH = 8) (MAX-SEARCH-DEPTH = 4)
+Search : (MAX-UTREE-DEPTH = 4) (MAX-SEARCH-DEPTH = 4)
+
+{\it Because TEST-NEXT-SEARCH-FN is EXHAUSTIVE-SEARCH, the search will try
+every possible combination of these flags, as shown above.}
+
+<test20>go
+MODENAME (SYMBOL): Name for optimal mode [TEST-BESTMODE]>x5305-bestmode
+TESTWIN (YESNO): Open a window for test-top summary? [No]>yes
+File to send test-top summary to (`` '' to discard) [``info.test'']>
+
+Use CLOSE-TESTWIN when you want to close the testwindow.
+
+Changing flag settings as follows:
+(MAX-UTREE-DEPTH = 20) (MAX-SEARCH-DEPTH = 42)
+
+{\it lots of output omitted...}
+
+The time used in each process:
+-----------------------------------------------------------------------------
+Process Name         | Realtime | Internal-runtime |  GC-time   | I-GC-time
+-----------------------------------------------------------------------------
+                                (Interrupted)
+Mating Search        |       77 |            52.13 |       0.00 |      52.13
+                      (1.3 mins)
+-----------------------------------------------------------------------------
+
+Changed MAX-UTREE-DEPTH = 20, default is 20, range is [(20 4 8 10)]
+
+Changed MAX-SEARCH-DEPTH = 42, default is 42, range is [(42 4 8 10)]
+Search finished.Changing flag settings as follows:
+(MAX-UTREE-DEPTH = 20) (MAX-SEARCH-DEPTH = 42)
+Finished varying flags; succeeded in proof.
+Best mode was ((MAX-SEARCH-DEPTH 42) (MAX-UTREE-DEPTH 8))
+Best time was 28.667
+
+Have defined a mode called X5305-BESTMODE; use INSERT to put this into the library.
+
+{\it We ran the search; it terminated and defined a new mode for us.}
+<test21>help X5305-BESTMODE
+X5305-BESTMODE is a mode.
+A mode resulting from a test-search.
+Flags are set as follows:
+   Flag                     Value in Mode         Current Value
+   MAX-SEARCH-DEPTH         42                    42
+   MAX-UTREE-DEPTH          8                     20
+
+<test22>close-testwin
+Closed test-window file : info.test
+Shall I delete the output file info.test?  [No]>yes
+
+\end{tpsexample}
+
+\subsection{Uniform Search: Finding Successful Modes Automatically}\label{uniform}
+
+There are two top-level commands in {\TPS} which search for a successful mode for
+proving a theorem, without requiring the user to master the \indexcommand{TEST} top level first.
+They are \indexcommand{UNIFORM-SEARCH} and \indexcommand{UNIFORM-SEARCH-L}.
+
+\indexcommand{UNIFORM-SEARCH-L} is analogous to \indexcommand{DIY-L}; it attempts
+to find a successful mode which will allow {\TPS} to fill in a subproof during the
+interactive construction of a larger theorem. Apart from the fact that it generates
+subproofs within a given range of lines, it works in exactly the same way as
+\indexcommand{UNIFORM-SEARCH}, and so the rest of this section is devoted entirely to
+\indexcommand{UNIFORM-SEARCH}.
+
+\indexcommand{UNIFORM-SEARCH} takes three essential arguments: a gwff which is to be proven,
+a mode and a searchlist. By default, the mode is called UNIFORM-SEARCH-MODE and the
+searchlist is called UNIFORM-SEARCH-2; if these objects are not present in your library,
+you should provide appropriate alternatives.
+
+The idea is that {\TPS} will set all of the flags to the values given in UNIFORM-SEARCH-MODE,
+and then vary the flags as prescribed by UNIFORM-SEARCH-2. So UNIFORM-SEARCH-MODE should
+be a `neutral' mode which does not constrain the search very much, and which sets all of
+the less important flags to reasonable values.
+
+UNIFORM-SEARCH-2 might be defined as follows (for example):
+\begin{tpsexample}
+DEFAULT-MS = MS91-6, default is MS91-6, range is [(MS91-6 MS91-7)]
+MAX-SUBSTS-VAR = 3, default is 3, range is [(3 5 7)]
+MAX-MATES = 1, default is 1, range is [(1 2 3 4 6)]
+NUM-OF-DUPS = 0, default is 0, range is [(0 1 2)]
+REWRITE-EQUALITIES = ALL, default is ALL, range is [(ALL LAZY2 LEIBNIZ)]
+REWRITE-DEFNS = (EAGER), default is (EAGER), range is [((EAGER) (LAZY2))]
+SEARCH-TIME-LIMIT = 30, default is 30, range is [(30 120 240 920 1840 3600 7200)]
+...plus the function UNIFORM-SEARCH-FUNCTION
+\end{tpsexample}
+
+As you can see, this varies the most important flags in {\TPS} over a reasonable range of values.
+Once you have entered the TEST top level with UNIFORM-SEARCH, all that remains is to type GO,
+and wait for a proof. Of course, proofs in UNIFORM-SEARCH usually take longer to be found than proofs in which
+the correct mode is already known.
+
+If a proof is found, a new mode will be defined, which can be stored in the library, and by merging the etree
+and then calling NAT-ETREE this proof can be translated into a natural deduction proof, exactly
+as in the MATE top level.
+
+One final word about UNIFORM-SEARCH: it will also offer to modify the searchlist for you.
+This will speed up the search, if possible, by removing those flags in the searchlist
+which will have no effect on the proof of the given gwff. In particular, it will remove
+unification depths for first-order gwffs, REWRITE-DEFNS for gwffs that contain no definitions,
+REWRITE-EQUALITIES for those that contain no equalities, and so on. It will also change the
+settings of DEFAULT-MS to MS88 and/or MS90-3 if it determines that there are no primitive
+substitutions for the given gwff.
+

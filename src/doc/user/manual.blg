@@ -1,0 +1,59 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: manual.aux
+A level-1 auxiliary file: refs.aux
+A level-1 auxiliary file: proving.aux
+A level-1 auxiliary file: flags.aux
+A level-1 auxiliary file: wffs.aux
+A level-1 auxiliary file: library.aux
+A level-1 auxiliary file: ms-guide.aux
+A level-1 auxiliary file: unification.aux
+A level-1 auxiliary file: rewrite.aux
+A level-1 auxiliary file: translations.aux
+A level-1 auxiliary file: models.aux
+A level-1 auxiliary file: output.aux
+A level-1 auxiliary file: events.aux
+A level-1 auxiliary file: rules.aux
+A level-1 auxiliary file: set-up.aux
+The style file: plain-casefix.bst
+Database file #1: logictex.bib
+You've used 36 entries,
+            2106 wiz_defined-function locations,
+            833 strings with 11788 characters,
+and the built_in function-call counts, 13357 in all, are:
+= -- 1362
+> -- 624
+< -- 28
++ -- 245
+- -- 204
+* -- 935
+:= -- 2199
+add.period$ -- 130
+call.type$ -- 36
+change.case$ -- 166
+chr.to.int$ -- 0
+cite$ -- 36
+duplicate$ -- 530
+empty$ -- 981
+format.name$ -- 206
+if$ -- 2829
+int.to.chr$ -- 0
+int.to.str$ -- 36
+missing$ -- 27
+newline$ -- 193
+num.names$ -- 96
+pop$ -- 180
+preamble$ -- 1
+purify$ -- 166
+quote$ -- 0
+skip$ -- 394
+stack$ -- 0
+substring$ -- 796
+swap$ -- 172
+text.length$ -- 26
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 137
+warning$ -- 0
+while$ -- 139
+width$ -- 38
+write$ -- 445

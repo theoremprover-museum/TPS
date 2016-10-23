@@ -1,0 +1,14 @@
+(:name THM269
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:29:40."
+:description "FORALL w(OA) FORALL y(OA) FORALL z(OA).w(OA) INTERSECT(OA(OA)(OA)) COMPLEMENT(OA(OA)) z(OA) SUBSET(O(OA)(OA)) y(OA) AND z(OA) SETDIFF(OA(OA)(OA)) y(OA) =(O(OA)(OA)) LAMBDA x(A) FALSEHOOD IMPLIES w(OA) SUBSET(O(OA)(OA)) y(OA)"
+:needed-objects   (SETDIFF)
+:mhelp "Example for CADE-15. Variant of THM108"
+:other-attributes NIL
+:other-remarks "
+")
+
+

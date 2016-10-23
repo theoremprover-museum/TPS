@@ -1,0 +1,1071 @@
+\indexentry{tpsjobs-done, File}{1}
+\indexentry{defpck.lisp, File}{2}
+\indexentry{*features*}{3}
+\indexentry{:TPS}{4}
+\indexentry{:ETPS}{4}
+\indexentry{defpck.lisp, File}{4}
+\indexentry{defpck.lisp, File}{4}
+\indexentry{in-package}{5}
+\indexentry{Makefile, File}{5}
+\indexentry{special.exp, File}{5}
+\indexentry{special.exp, File}{5}
+\indexentry{special.exp, File}{5}
+\indexentry{*features*}{5}
+\indexentry{tps3-save, Function}{5}
+\indexentry{linelength, Function}{6}
+\indexentry{exit-from-lisp, Function}{6}
+\indexentry{status-userid, Function}{6}
+\indexentry{call-system, Function}{6}
+\indexentry{setup-xterm-window, Function}{6}
+\indexentry{setup-big-xterm-window, Function}{6}
+\indexentry{make-passive-socket, Function}{6}
+\indexentry{make-passive-socket-port, Function}{6}
+\indexentry{connect-socket, Function}{6}
+\indexentry{accept-socket-conn, Function}{6}
+\indexentry{pass-socket-local-pass, Function}{6}
+\indexentry{tops20.lisp, File}{6}
+\indexentry{tps3-save, Function}{6}
+\indexentry{tps3-save, Function}{6}
+\indexentry{defconstant}{6}
+\indexentry{defconstnt}{6}
+\indexentry{core-name}{7}
+\indexentry{tps3.sys, File}{7}
+\indexentry{tps3.patch, File}{7}
+\indexentry{memory}{7}
+\indexentry{heap space}{7}
+\indexentry{stack space}{7}
+\indexentry{swap space}{7}
+\indexentry{garbage collection}{8}
+\indexentry{datasize}{8}
+\indexentry{stacksize}{8}
+\indexentry{SAM}{8}
+\indexentry{swap space}{8}
+\indexentry{locate}{12}
+\indexentry{find}{12}
+\indexentry{etags}{12}
+\indexentry{TAGS, File}{12}
+\indexentry{eproof}{12}
+\indexentry{global-definelist}{12}
+\indexentry{defutil, Command}{12}
+\indexentry{msg}{13}
+\indexentry{prompt-read}{13}
+\indexentry{utilities}{13}
+\indexentry{y-or-n-p, Function}{13}
+\indexentry{prompt-read, Function}{13}
+\indexentry{msg, Function}{14}
+\indexentry{msgf, Function}{14}
+\indexentry{runcount, Function}{14}
+\indexentry{stringdt, Function}{14}
+\indexentry{stringdtl, Function}{14}
+\indexentry{SCRIPT, Command}{14}
+\indexentry{SAVE-WORK, Command}{14}
+\indexentry{*standard-output*}{14}
+\indexentry{tops20.lisp, File}{14}
+\indexentry{prfw.lisp, File}{14}
+\indexentry{edtop.lisp, File}{14}
+\indexentry{vpforms.lisp, File}{14}
+\indexentry{ASSEMBLE-RULE, Command}{15}
+\indexentry{definfo}{15}
+\indexentry{mode, Function}{15}
+\indexentry{flagging.lisp, File}{15}
+\indexentry{facilities.lisp, File}{16}
+\indexentry{facilities-short.lisp, File}{16}
+\indexentry{tpsjobs, File}{16}
+\indexentry{tpsjobs-done, File}{16}
+\indexentry{Debugging}{16}
+\indexentry{QUERY-USER, Flag}{16}
+\indexentry{MATING-VERBOSE, Flag}{16}
+\indexentry{UNIFY-VERBOSE, Flag}{16}
+\indexentry{TACTIC-VERBOSE, Flag}{16}
+\indexentry{OPTIONS-VERBOSE, Flag}{16}
+\indexentry{etrees-debug, File}{16}
+\indexentry{dumplisp, Function}{17}
+\indexentry{tpsjobs-done, File}{17}
+\indexentry{xterm.lisp, File}{18}
+\indexentry{xterm-bold-font, Function}{18}
+\indexentry{xterm-normal-font, Function}{18}
+\indexentry{pptyox, Function}{18}
+\indexentry{xterm.lisp, File}{18}
+\indexentry{xterm.lisp, File}{19}
+\indexentry{XTERM-ANSI-BOLD, Flag}{19}
+\indexentry{TLIST, MExpr}{21}
+\indexentry{defcategory}{22}
+\indexentry{global-categorylist}{23}
+\indexentry{defcontext}{23}
+\indexentry{global-contextlist}{23}
+\indexentry{flavors}{23}
+\indexentry{bogus-slot}{24}
+\indexentry{command-interpreters-core.lisp, File}{26}
+\indexentry{command-interpreters-auto.lisp, File}{26}
+\indexentry{{\it  name}}{27}
+\indexentry{{\it  name}}{29}
+\indexentry{\it  typeconstant, Type}{33}
+\indexentry{\it  typevariable, Type}{33}
+\indexentry{\it  typesymbol, Type}{33}
+\indexentry{pmprsym, Syntax}{34}
+\indexentry{pmabbsym, Syntax}{34}
+\indexentry{pmabbsym, Syntax}{34}
+\indexentry{logconst, Syntax}{34}
+\indexentry{propsym, Syntax}{34}
+\indexentry{pmpropsym, Syntax}{34}
+\indexentry{propsym, Syntax}{34}
+\indexentry{pmprsym, Syntax}{34}
+\indexentry{abbrev, Syntax}{34}
+\indexentry{pmabbrev, Syntax}{35}
+\indexentry{binder, Syntax}{35}
+\indexentry{label, Syntax}{35}
+\indexentry{[, Syntax}{38}
+\indexentry{hatom, Syntax}{38}
+\indexentry{P, EdOp}{40}
+\indexentry{edwff, EdOp}{40}
+\indexentry{Etree, Data}{43}
+\indexentry{Leaf, Data}{43}
+\indexentry{TYPE-IOTA-MODE, Flag}{45}
+\indexentry{TYPE-IOTA-MODE, Flag}{45}
+\indexentry{TYPE-IOTA-MODE, Flag}{45}
+\indexentry{Infix, Property}{46}
+\indexentry{PrintTypes, Flag}{47}
+\indexentry{PrintDepth, Parameter}{47}
+\indexentry{AtomValFlag, Flag}{47}
+\indexentry{AllScopeFlag, Flag}{47}
+\indexentry{PWScope GWff, MExpr}{47}
+\indexentry{PrtWff, Function}{48}
+\indexentry{PrintTypes, Flag}{48}
+\indexentry{PrintDepth, Parameter}{48}
+\indexentry{AllScopeFlag, Flag}{48}
+\indexentry{AtomValFlag, Flag}{48}
+\indexentry{PPWfflag, Flag}{48}
+\indexentry{LocalLeftFlag, Flag}{48}
+\indexentry{FilLineFlag, Flag}{48}
+\indexentry{FlushLeftFlag, Flag}{48}
+\indexentry{Leftmargin, Parameter}{48}
+\indexentry{Rightmargin, Parameter}{48}
+\indexentry{Style, Parameter}{48}
+\indexentry{VPForm, Function}{48}
+\indexentry{VPDiag, Function}{48}
+\indexentry{Style, Parameter}{48}
+\indexentry{STYLE, Flag}{48}
+\indexentry{LEFTMARGIN, Flag}{48}
+\indexentry{RIGHTMARGIN, Flag}{48}
+\indexentry{SETUP-SLIDE-STYLE, Command}{48}
+\indexentry{CONCEPT, Style}{48}
+\indexentry{CONCEPT-S, Style}{48}
+\indexentry{GENERIC, Style}{49}
+\indexentry{GENERIC-STRING, Style}{49}
+\indexentry{SCRIBE, Style}{49}
+\indexentry{SLIDEPROOF, Command}{49}
+\indexentry{TEX, Style}{49}
+\indexentry{XTERM, Style}{49}
+\indexentry{RIGHTMARGIN, Flag}{49}
+\indexentry{SAIL, Style}{49}
+\indexentry{EQUIVS, Data}{49}
+\indexentry{FACE, Property}{49}
+\indexentry{CFONT, Property}{49}
+\indexentry{Kset, Data}{49}
+\indexentry{DFONT, Property}{49}
+\indexentry{TEXNAME, Property}{49}
+\indexentry{tps.mss, File}{49}
+\indexentry{cfont.lisp, File}{49}
+\indexentry{dfont.lisp, File}{49}
+\indexentry{PrtWff, Function}{50}
+\indexentry{PWff, Function}{50}
+\indexentry{PrintWffPlain, Function}{50}
+\indexentry{STYLE, Flag}{50}
+\indexentry{LEFTMARGIN, Flag}{50}
+\indexentry{RIGHTMARGIN, Flag}{50}
+\indexentry{PrintWffScope, Function}{50}
+\indexentry{BRACKETS, Parameter}{50}
+\indexentry{PrintWff, Function}{51}
+\indexentry{PCALL, Function}{51}
+\indexentry{print-symbol, Function}{51}
+\indexentry{PP-SYMBOL-SCRIBE, Function}{51}
+\indexentry{PP-SYMBOL-XTERM, Function}{51}
+\indexentry{PPWfflag, Flag}{51}
+\indexentry{LocalLeftFlag, Flag}{51}
+\indexentry{FilLineFlag, Flag}{52}
+\indexentry{FlushleftFlag, Flag}{52}
+\indexentry{PPlist}{52}
+\indexentry{pplist, Data}{52}
+\indexentry{aplicnlist, Data}{52}
+\indexentry{aplicn, Data}{52}
+\indexentry{plength, Data}{52}
+\indexentry{pgroup, Data}{52}
+\indexentry{pdepth, Data}{52}
+\indexentry{gencharlist, Data}{52}
+\indexentry{genchar, Data}{52}
+\indexentry{char, Data}{52}
+\indexentry{ascnumber, Data}{52}
+\indexentry{{\tt  MARKATOM}, Data}{53}
+\indexentry{PPlist}{53}
+\indexentry{PWff, Function}{54}
+\indexentry{PrintPPlist, Function}{54}
+\indexentry{PrintWffPlain, Function}{54}
+\indexentry{PrintWffScope, Function}{54}
+\indexentry{PrintWff, Function}{54}
+\indexentry{PrintFnDover, Function}{54}
+\indexentry{PrintFnTTY, Function}{54}
+\indexentry{PPWfflist, Parameter}{54}
+\indexentry{PPWfflength, Parameter}{54}
+\indexentry{PPrinc, Function}{55}
+\indexentry{PPTyo, Function}{55}
+\indexentry{PPrinc0, Function}{55}
+\indexentry{PPTyo0, Function}{55}
+\indexentry{PP-Enter-Kset, Function}{55}
+\indexentry{PPTyos, Function}{55}
+\indexentry{SPrintPPlist, Function}{55}
+\indexentry{JForm}{55}
+\indexentry{Descr-JForm}{55}
+\indexentry{Describe-VPForm, Function}{55}
+\indexentry{vpforms.lisp, File}{55}
+\indexentry{\it  JForm, Data}{55}
+\indexentry{\it  Literal, Data}{55}
+\indexentry{\it  SignAtom, Data}{55}
+\indexentry{\it  Var, Data}{55}
+\indexentry{\it  Atom, Data}{55}
+\indexentry{Desc-Jform, Data}{56}
+\indexentry{Height, Data}{56}
+\indexentry{Width, Data}{56}
+\indexentry{Cols, Data}{56}
+\indexentry{Rows, Data}{56}
+\indexentry{\%VPForm, Function}{56}
+\indexentry{Describe-VPForm, Function}{56}
+\indexentry{Describe-VPAtom, Function}{56}
+\indexentry{Describe-VPLit, Function}{56}
+\indexentry{FlatSym, Function}{56}
+\indexentry{FlatWff, Function}{56}
+\indexentry{Print, Function}{56}
+\indexentry{\%SPrintAplicn, Function}{56}
+\indexentry{\%SPrintPPlist, Function}{56}
+\indexentry{\%\%PRINC, Function}{56}
+\indexentry{VPFPage, Parameter}{57}
+\indexentry{\%\%PRINC, Function}{57}
+\indexentry{First-Order-Mode, Flag}{60}
+\indexentry{First-Order-Print-Mode, Flag}{60}
+\indexentry{Vertical Paths}{61}
+\indexentry{VPFORM JFORM \{FILE\} \{STYLE\} \{PRINTTYPES\} \{BRIEF\} \{VPFPAGE\}}{61}
+\indexentry{STYLE, Flag}{61}
+\indexentry{PRINTTYPES, Flag}{61}
+\indexentry{VpfPage, Parameter}{62}
+\indexentry{AndHeight, Parameter}{62}
+\indexentry{ForallIndent, Parameter}{62}
+\indexentry{CFontTable, Parameter}{62}
+\indexentry{FIRST-ORDER-PRINT-MODE, Flag}{62}
+\indexentry{FIRST-ORDER-MODE-PARSE, Flag}{62}
+\indexentry{LOWERCASERAISE, Flag}{62}
+\indexentry{PC, Parameter}{62}
+\indexentry{prt.lisp, File}{62}
+\indexentry{PRINTDEPTH, Flag}{62}
+\indexentry{EDPRINTDEPTH, Flag}{62}
+\indexentry{PRINTTYPES, Flag}{62}
+\indexentry{shownotypes, Command}{63}
+\indexentry{SailCharacters, Parameter}{63}
+\indexentry{PPWFFLAG, Flag}{63}
+\indexentry{FLUSHLEFTFLAG, Flag}{63}
+\indexentry{FILLINEFLAG, Flag}{63}
+\indexentry{LOCALLEFTFLAG, Flag}{63}
+\indexentry{ATOMVALFLAG, Flag}{63}
+\indexentry{ALLSCOPEFLAG, Flag}{63}
+\indexentry{SCRIBE-PREAMBLE, Flag}{64}
+\indexentry{VPFORM-TEX-PREAMBLE, Flag}{64}
+\indexentry{SCRIBEPROOF, Command}{64}
+\indexentry{TEXPROOF, Command}{64}
+\indexentry{GWFF, Argument Type}{67}
+\indexentry{BOOLEAN, Argument Type}{67}
+\indexentry{TYPESYM, Argument Type}{67}
+\indexentry{THROWFAIL, Function}{67}
+\indexentry{STYLE, Flag}{67}
+\indexentry{GVAR, Argument Type}{67}
+\indexentry{GETWFF-SUBTYPE, Function}{67}
+\indexentry{DEFWFFOP, Function}{68}
+\indexentry{TRUEFN, Function}{68}
+\indexentry{TRUEFN, Function}{68}
+\indexentry{DEFPRTOP}{69}
+\indexentry{wffrec\%}{70}
+\indexentry{defwffrec, Function}{70}
+\indexentry{APPLY-LABEL, Function}{70}
+\indexentry{GAR, Function}{71}
+\indexentry{GDR, Function}{71}
+\indexentry{LABEL-Q, Function}{71}
+\indexentry{LSYMBOL-Q, Function}{71}
+\indexentry{LOGCONST-Q, Function}{71}
+\indexentry{PROPSYM-Q, Function}{72}
+\indexentry{PMPROPSYM-Q, Function}{72}
+\indexentry{PMABBREV-Q, Function}{72}
+\indexentry{ABBREV-Q, Function}{72}
+\indexentry{BOUNDWFF-Q, Function}{72}
+\indexentry{edwff, Data}{77}
+\indexentry{edop, Data}{77}
+\indexentry{ED-COMMAND, Argument Type}{79}
+\indexentry{EDSEARCH, Function}{80}
+\indexentry{PRINTEDTFILE, Flag}{82}
+\indexentry{PRINTEDTFLAG, Flag}{82}
+\indexentry{PRINTEDTFLAG-SLIDES, Flag}{82}
+\indexentry{PRINTEDTOPS, Flag}{82}
+\indexentry{VPD-FILENAME, Flag}{82}
+\indexentry{PRINTVPDFLAG, Flag}{82}
+\indexentry{EDPPWFFLAG, Flag}{83}
+\indexentry{EDPRINTDEPTH, Flag}{83}
+\indexentry{PRINTDEPTH, Flag}{83}
+\indexentry{ByteStream, Data}{83}
+\indexentry{bytestream-tty, Function}{83}
+\indexentry{RdCList, Data}{83}
+\indexentry{CRLF, Data}{83}
+\indexentry{LexList, Data}{83}
+\indexentry{TypeAssoc, Data}{83}
+\indexentry{GroupList, Data}{83}
+\indexentry{PreWff, Data}{83}
+\indexentry{LexScan, Function}{83}
+\indexentry{GroupScan, Function}{84}
+\indexentry{LexList, Parameter}{84}
+\indexentry{InfixScan, Function}{84}
+\indexentry{MakeTerm, Function}{84}
+\indexentry{FinalScan, Function}{84}
+\indexentry{HELP object, Command}{85}
+\indexentry{princ-mhelp}{85}
+\indexentry{EXTRACT-TEST-INFO, Command}{85}
+\indexentry{maint.lisp, File}{85}
+\indexentry{princ-mhelp}{85}
+\indexentry{princ-mhelp-latex}{85}
+\indexentry{INFO}{86}
+\indexentry{HISTORY-SIZE, Flag}{89}
+\indexentry{PRIMSUB-METHOD, Flag}{90}
+\indexentry{APPLY-MATCH, Flag}{90}
+\indexentry{definfo}{90}
+\indexentry{defsynonym, Command}{90}
+\indexentry{UPDATE-RELEVANT, Command}{92}
+\indexentry{flag-deps.lisp, File}{92}
+\indexentry{FIRST-ORDER-MODE-MS, Flag}{93}
+\indexentry{RIGHTMARGIN, Flag}{93}
+\indexentry{UPDATE-RELEVANT, Command}{93}
+\indexentry{SHOW-RELEVANCE-PATHS, Command}{93}
+\indexentry{SAVE-FLAG-RELEVANCY-INFO, Command}{93}
+\indexentry{monitor}{95}
+\indexentry{monitor-check}{95}
+\indexentry{defmonitor, Command}{95}
+\indexentry{monitor-check}{95}
+\indexentry{monitor, Command}{96}
+\indexentry{nomonitor, Command}{96}
+\indexentry{RULEP, Command}{97}
+\indexentry{TYPESUBST, Command}{97}
+\indexentry{ASSERT, Command}{97}
+\indexentry{ADD-HYPS, Command}{97}
+\indexentry{DELETE-HYPS, Command}{97}
+\indexentry{LIST-RULES, Command}{97}
+\indexentry{list-rules, Function}{97}
+\indexentry{otl-help.lisp, File}{97}
+\indexentry{RULEP, Command}{97}
+\indexentry{RULEP, Command}{97}
+\indexentry{ML::RULES-2-PROP}{97}
+\indexentry{GO, Command}{99}
+\indexentry{SAVEPROOF, Command}{100}
+\indexentry{DONE, Command}{100}
+\indexentry{EXPERTFLAG, Flag}{100}
+\indexentry{EXPERTFLAG, Flag}{100}
+\indexentry{EXPERTFLAG, Flag}{100}
+\indexentry{LINE-NO-DEFAULTS, Function}{101}
+\indexentry{support}{101}
+\indexentry{pline}{101}
+\indexentry{dline}{101}
+\indexentry{LINE-NO-DEFAULTS-FROM, Function}{102}
+\indexentry{LINE-NO-DEFAULTS-TO, Function}{102}
+\indexentry{UPDATE-PLAN, Function}{104}
+\indexentry{AUTO-GENERATE-HYPS, Flag}{106}
+\indexentry{TREAT-HLINES-AS-DLINES, Flag}{108}
+\indexentry{HLINE-JUSTIFICATION, Flag}{109}
+\indexentry{CLEANUP-SAME, Flag}{109}
+\indexentry{CLEANUP, Command}{109}
+\indexentry{GO, Command}{111}
+\indexentry{etree, Data}{111}
+\indexentry{etrees-labels.lisp, File}{111}
+\indexentry{name}{111}
+\indexentry{components}{111}
+\indexentry{positive}{111}
+\indexentry{get-shallow, Function}{111}
+\indexentry{junctive}{111}
+\indexentry{free-vars}{111}
+\indexentry{parent}{112}
+\indexentry{predecessor}{112}
+\indexentry{status}{112}
+\indexentry{email from Dan Nesmith about status}{112}
+\indexentry{etrees-debug, File}{114}
+\indexentry{check-etree-structure, Function}{114}
+\indexentry{check-etree-structure-break, Function}{114}
+\indexentry{check-etree-structure, Function}{114}
+\indexentry{expansion proof}{115}
+\indexentry{current-eproof}{115}
+\indexentry{eproof, Data}{115}
+\indexentry{current-eproof}{115}
+\indexentry{etree, Data}{115}
+\indexentry{current-topnode}{115}
+\indexentry{etree, Data}{115}
+\indexentry{current-topnode}{115}
+\indexentry{etree, Data}{115}
+\indexentry{econjunction}{115}
+\indexentry{components}{115}
+\indexentry{junctive}{115}
+\indexentry{edisjunction}{115}
+\indexentry{econjunction}{115}
+\indexentry{implication}{115}
+\indexentry{econjunction}{115}
+\indexentry{negation}{115}
+\indexentry{components}{115}
+\indexentry{junctive}{115}
+\indexentry{skolem}{115}
+\indexentry{shallow}{115}
+\indexentry{skolem}{115}
+\indexentry{etree-nat, Command}{115}
+\indexentry{get-shallow, Function}{115}
+\indexentry{terms}{115}
+\indexentry{skolem-term, Data}{115}
+\indexentry{selection}{115}
+\indexentry{shallow}{115}
+\indexentry{terms}{115}
+\indexentry{skolem}{115}
+\indexentry{selection}{115}
+\indexentry{skolem}{115}
+\indexentry{SKOLEM-DEFAULT, Flag}{115}
+\indexentry{expansion}{115}
+\indexentry{shallow}{115}
+\indexentry{skolem}{115}
+\indexentry{terms}{115}
+\indexentry{exp-var, Data}{115}
+\indexentry{prim-vars}{115}
+\indexentry{rewrite}{115}
+\indexentry{shallow}{115}
+\indexentry{justification}{115}
+\indexentry{ruleq-shallow}{115}
+\indexentry{reverse}{115}
+\indexentry{justification}{115}
+\indexentry{EQUIVWFFS}{115}
+\indexentry{LAMBDA}{115}
+\indexentry{BETA}{115}
+\indexentry{ETA}{115}
+\indexentry{EQUIV-IMPLICS}{116}
+\indexentry{EQUIV-DISJS}{116}
+\indexentry{LEIBNIZ=}{116}
+\indexentry{EXT=}{116}
+\indexentry{REFL=}{116}
+\indexentry{RULEQ}{116}
+\indexentry{MIN-QUANTIFIER-SCOPE, Flag}{116}
+\indexentry{ADD-TRUTH}{116}
+\indexentry{TRUTHP}{116}
+\indexentry{ADD-TRUTH, Flag}{116}
+\indexentry{TRUTHVALUES-HACK, Flag}{116}
+\indexentry{leaf}{116}
+\indexentry{shallow}{116}
+\indexentry{skolem}{116}
+\indexentry{components}{116}
+\indexentry{junctive}{116}
+\indexentry{predecessor}{116}
+\indexentry{leaf}{116}
+\indexentry{true}{116}
+\indexentry{false}{116}
+\indexentry{empty-dup-info}{116}
+\indexentry{NAT-ETREE, Command}{116}
+\indexentry{master-eproof}{116}
+\indexentry{current-eproof}{116}
+\indexentry{MS91-6}{116}
+\indexentry{MS91-7}{116}
+\indexentry{ms91-basic.lisp, File}{116}
+\indexentry{ms91-search.lisp, File}{116}
+\indexentry{option-set}{116}
+\indexentry{eproof}{116}
+\indexentry{master-eproof}{116}
+\indexentry{finish-up-option-search, Function}{116}
+\indexentry{current-eproof}{116}
+\indexentry{eproof}{116}
+\indexentry{jform}{116}
+\indexentry{all-banned}{116}
+\indexentry{fill-selected, Function}{116}
+\indexentry{inst-exp-vars-params}{116}
+\indexentry{dissolve}{116}
+\indexentry{etree-to-jform, Function}{117}
+\indexentry{etree-to-prop-jform, Function}{117}
+\indexentry{DISSOLVE, Flag}{117}
+\indexentry{free-vars-in-etree}{117}
+\indexentry{EXP-VAR}{117}
+\indexentry{VAR}{117}
+\indexentry{SUBST}{117}
+\indexentry{substitution-list}{117}
+\indexentry{inst-exp-vars-params}{117}
+\indexentry{all-banned}{117}
+\indexentry{skolem-constants}{117}
+\indexentry{SKOLEM-DEFAULT, Flag}{117}
+\indexentry{substitution-list}{117}
+\indexentry{leaf-list}{117}
+\indexentry{skolem-method}{117}
+\indexentry{SKOLEM-DEFAULT, Flag}{117}
+\indexentry{max-cgraph-counter}{117}
+\indexentry{bktrack-limit}{117}
+\indexentry{connections-array}{117}
+\indexentry{incomp-clists-wrt-etree}{117}
+\indexentry{mating-list}{117}
+\indexentry{incomp-clists}{117}
+\indexentry{cgraph}{117}
+\indexentry{skolem-node-list}{117}
+\indexentry{stats}{117}
+\indexentry{max-incomp-clists-wrt-etree}{117}
+\indexentry{symmetry}{117}
+\indexentry{symmetry-holder}{117}
+\indexentry{merged}{117}
+\indexentry{statuses}{117}
+\indexentry{name}{117}
+\indexentry{lemmas}{117}
+\indexentry{REWRITE-DEFNS, Flag}{118}
+\indexentry{REWRITE-EQUALITIES, Flag}{118}
+\indexentry{LAZY2}{118}
+\indexentry{DUAL}{118}
+\indexentry{*instantiated-defs-list*}{118}
+\indexentry{*instantiated-eqs-list*}{118}
+\indexentry{*hacked-rewrites-list*}{118}
+\indexentry{*banned-conns-list*}{118}
+\indexentry{quick-unification-connection, Function}{118}
+\indexentry{*ho-banned-conns-list*}{118}
+\indexentry{*unsubst-exp-vars*}{119}
+\indexentry{current-eproof}{119}
+\indexentry{free-vars-in-etree}{119}
+\indexentry{*rew-unsubst-exps*}{119}
+\indexentry{*leibniz-var-list*}{119}
+\indexentry{*after-primsub*}{119}
+\indexentry{etrees-wffops.lisp, File}{119}
+\indexentry{ftrees, File}{119}
+\indexentry{etree-to-ftree, Function}{119}
+\indexentry{ftree-to-etree, Function}{119}
+\indexentry{SAVE-ETREE, Command}{120}
+\indexentry{RESTORE-ETREE, Command}{120}
+\indexentry{mating, Data}{120}
+\indexentry{unification tree, Data}{120}
+\indexentry{uni-term, Data}{120}
+\indexentry{failure record, Data}{120}
+\indexentry{etrees-wffops.lisp, File}{120}
+\indexentry{deepen-leaf-node-real, Function}{120}
+\indexentry{ADD-TRUTH, Flag}{120}
+\indexentry{MIN-QUANTIFIER-SCOPE, Flag}{120}
+\indexentry{REWRITE-EQUIVS, Flag}{120}
+\indexentry{SKOLEM-DEFAULT, Flag}{121}
+\indexentry{REWRITE-EQUALITIES, Flag}{121}
+\indexentry{NONE}{121}
+\indexentry{REWRITE-EQUALITIES, Flag}{121}
+\indexentry{NONE}{121}
+\indexentry{REWRITE-EQUALITIES, Flag}{121}
+\indexentry{REWRITE-DEFNS}{121}
+\indexentry{REWRITE-DEFNS}{121}
+\indexentry{deepen-leaf-node-real, Function}{121}
+\indexentry{REWRITE-DEFNS}{121}
+\indexentry{contains-some-defn, Function}{121}
+\indexentry{current-eproof}{121}
+\indexentry{skolemization}{121}
+\indexentry{SKOLEM-DEFAULT, Flag}{121}
+\indexentry{create-skolem-node, Function}{121}
+\indexentry{msearch, Function}{125}
+\indexentry{msearch, Function}{125}
+\indexentry{order-components, Flag}{125}
+\indexentry{max-mates, Flag}{125}
+\indexentry{check-conn, Function}{126}
+\indexentry{conn-unif-p, Function}{126}
+\indexentry{ALLOW-NONLEAF-CONNS, Flag}{126}
+\indexentry{ALLOW-NONLEAF-CONNS, Flag}{126}
+\indexentry{ALL}{126}
+\indexentry{REWRITES, Flag}{126}
+\indexentry{allow-nonleaf-conns}{126}
+\indexentry{current-eproof}{126}
+\indexentry{DISSOLVE, Flag}{126}
+\indexentry{dissolve}{126}
+\indexentry{current-eproof}{126}
+\indexentry{ms-director, Function}{127}
+\indexentry{current-eproof}{127}
+\indexentry{ms, Function}{127}
+\indexentry{ms-propositional, Function}{127}
+\indexentry{current-eproof}{127}
+\indexentry{prop-msearch, Function}{127}
+\indexentry{CJFORM, Command}{127}
+\indexentry{connection graph}{127}
+\indexentry{MIN-QUANT-ETREE, Flag}{129}
+\indexentry{one-step-mqe-bd, Function}{129}
+\indexentry{one-step-mqe-infix, Function}{129}
+\indexentry{MIN-QUANT-ETREE, Flag}{129}
+\indexentry{lemmas}{129}
+\indexentry{ADD-EXT-LEMMAS, Command}{130}
+\indexentry{ASSERT-LEMMAS, Flag}{132}
+\indexentry{ASSERT-LEMMAS, Flag}{132}
+\indexentry{ASSERT-LEMMAS, Flag}{132}
+\indexentry{DIY, Command}{132}
+\indexentry{USE-EXT-LEMMAS, Flag}{132}
+\indexentry{ext-exp-dag-macros.lisp, File}{132}
+\indexentry{ext-exp-dag-verbose}{132}
+\indexentry{ext-exp-dag-debug}{132}
+\indexentry{EXT-MATE}{132}
+\indexentry{EXT-MATE}{132}
+\indexentry{ext-mate-top.lisp, File}{132}
+\indexentry{ext-search.lisp, File}{133}
+\indexentry{ms04-search.lisp, File}{133}
+\indexentry{merge-debug}{135}
+\indexentry{etr-merge, Function}{135}
+\indexentry{modify-dual-rewrites, Function}{135}
+\indexentry{prune-unmated-branches, Function}{135}
+\indexentry{MERGE-MINIMIZE-MATING, Flag}{135}
+\indexentry{replace-non-leaf-leaves, Function}{136}
+\indexentry{leaf-p*, Function}{136}
+\indexentry{SKOLEM-DEFAULT, Flag}{136}
+\indexentry{subst-skol-terms, Function}{136}
+\indexentry{TRUTHVALUES-HACK, Flag}{136}
+\indexentry{ADD-TRUTH, Flag}{136}
+\indexentry{REMOVE-LEIBNIZ, Flag}{136}
+\indexentry{subst-vars-for-params, Function}{136}
+\indexentry{active-mating}{136}
+\indexentry{cleanup-etree, Function}{136}
+\indexentry{prettify-etree, Function}{136}
+\indexentry{etr-merge, Function}{136}
+\indexentry{merge-all, Function}{136}
+\indexentry{mating-merge.lisp, File}{136}
+\indexentry{etr-merge, Function}{136}
+\indexentry{make-mating-lists, Function}{136}
+\indexentry{prune-status-0, Function}{136}
+\indexentry{substitute-in-etree, Function}{137}
+\indexentry{strip-exp-vars-for-etree, Function}{137}
+\indexentry{strip-exp-vars, Function}{137}
+\indexentry{merge-all, Function}{137}
+\indexentry{merge-all, Function}{137}
+\indexentry{treemerge, Function}{137}
+\indexentry{unneeded-node-p, Function}{137}
+\indexentry{modify-dual-rewrites, Function}{137}
+\indexentry{prune-unmated-branches, Function}{137}
+\indexentry{mating-merge.lisp, File}{137}
+\indexentry{unneeded-node-p, Function}{137}
+\indexentry{MERGE-MINIMIZE-MATING, Flag}{137}
+\indexentry{SPANS, Function}{137}
+\indexentry{SPANS, Function}{137}
+\indexentry{SPANNING-CLIST-PATH, Function}{137}
+\indexentry{FIND-CHEAPEST-CLIST-SPANNING-PATH, Function}{137}
+\indexentry{FIND-ALT-CHEAPEST-CLIST-SPANNING-PATH, Function}{137}
+\indexentry{UNNEEDED-NODE-P, Function}{137}
+\indexentry{FIND-CHEAPEST-CLIST-SPANNING-PATH, Function}{137}
+\indexentry{SPANS, Function}{138}
+\indexentry{PROP-MSEARCH, Function}{138}
+\indexentry{SPANS, Function}{138}
+\indexentry{PROP-MSEARCH, Function}{138}
+\indexentry{PROP-FIND-CHEAPEST-PATH, Function}{138}
+\indexentry{mating-merge.lisp, File}{138}
+\indexentry{prune-unmated-branches, Function}{139}
+\indexentry{mating-merge.lisp, File}{139}
+\indexentry{modify-dual-rewrites, Function}{139}
+\indexentry{*hacked-rewrites-list*}{139}
+\indexentry{fix-shallow-chain, Function}{140}
+\indexentry{fix-shallow-chain, Function}{140}
+\indexentry{prune-unmated-branches, Function}{141}
+\indexentry{mating-merge.lisp, File}{141}
+\indexentry{unneeded-node-p, Function}{141}
+\indexentry{replace-non-leaf-leaves, Function}{141}
+\indexentry{leaf-p*, Function}{141}
+\indexentry{subst-skol-terms, Function}{141}
+\indexentry{mating-merge.lisp, File}{141}
+\indexentry{subst-skol-terms-main, Function}{141}
+\indexentry{mating-merge-eq.lisp, File}{141}
+\indexentry{remove-leibniz-nodes, Function}{141}
+\indexentry{pre-process-nonleaf-leibniz-connections, Function}{141}
+\indexentry{remove-leibniz, Function}{141}
+\indexentry{cleanup-leibniz-expansions, Function}{141}
+\indexentry{remove-spurious-connections, Function}{141}
+\indexentry{check-shallow-formulas, Function}{141}
+\indexentry{apply-thm-146, Function}{141}
+\indexentry{remove-leibniz-nodes, Function}{141}
+\indexentry{pre-process-nonleaf-leibniz-connections, Function}{141}
+\indexentry{remove-leibniz, Function}{141}
+\indexentry{deepen-negated-leaves, Function}{142}
+\indexentry{make-left-side-refl, Function}{142}
+\indexentry{cleanup-leibniz-expansions, Function}{143}
+\indexentry{pre-process-nonleaf-leibniz-connections, Function}{143}
+\indexentry{remove-leibniz, Function}{143}
+\indexentry{remove-leibniz, Function}{144}
+\indexentry{remove-leibniz, Function}{144}
+\indexentry{remove-leibniz, Function}{144}
+\indexentry{make-left-side-refl, Function}{144}
+\indexentry{make-left-side-refl, Function}{144}
+\indexentry{make-left-side-refl, Function}{144}
+\indexentry{make-left-side-refl, Function}{144}
+\indexentry{make-left-side-refl, Function}{145}
+\indexentry{cleanup-leibniz-expansions, Function}{147}
+\indexentry{check-shallow-formulas, Function}{148}
+\indexentry{apply-thm-146, Function}{148}
+\indexentry{remove-spurious-connections, Function}{149}
+\indexentry{remove-spurious-connections, Function}{149}
+\indexentry{apply-thm-146, Function}{149}
+\indexentry{check-shallow-formulas, Function}{149}
+\indexentry{apply-thm-146, Function}{149}
+\indexentry{mating-merge2.lisp, File}{150}
+\indexentry{raise-lambda-nodes, Function}{150}
+\indexentry{raise-lambda-nodes-skol, Function}{150}
+\indexentry{raise-lambda-nodes-aux1, Function}{150}
+\indexentry{raise-lambda-nodes-neg, Function}{150}
+\indexentry{raise-lambda-nodes-ab, Function}{150}
+\indexentry{raise-lambda-nodes-equiv, Function}{150}
+\indexentry{raise-lambda-nodes, Function}{151}
+\indexentry{cleanup-rewrite-node, Function}{154}
+\indexentry{mating-merge-eq.lisp, File}{154}
+\indexentry{cleanup-etree, Function}{154}
+\indexentry{cleanup-all-expansions, Function}{154}
+\indexentry{cleanup-expansion, Function}{154}
+\indexentry{cleanup-rewrite-node, Function}{154}
+\indexentry{cleanup-etree, Function}{154}
+\indexentry{merge-tree-real, Function}{154}
+\indexentry{cleanup-all-expansions, Function}{154}
+\indexentry{cleanup-all-expansions, Function}{154}
+\indexentry{cleanup-expansion, Function}{154}
+\indexentry{cleanup-rewrite-node, Function}{154}
+\indexentry{cleanup-expansion, Function}{154}
+\indexentry{cleanup-all-expansions, Function}{154}
+\indexentry{cleanup-rewrite-node, Function}{154}
+\indexentry{cleanup-all-expansions, Function}{155}
+\indexentry{cleanup-all-expansions, Function}{155}
+\indexentry{reduce-rewrites, Function}{155}
+\indexentry{remove-double-negations-merge, Function}{156}
+\indexentry{cleanup-leibniz-expansions, Function}{156}
+\indexentry{check-shallow-formula, Function}{156}
+\indexentry{cleanup-all-expansions, Function}{156}
+\indexentry{cleanup-all-expansions, Function}{156}
+\indexentry{cleanup-all-expansions, Function}{156}
+\indexentry{REWRITE-DEFNS, Flag}{156}
+\indexentry{cleanup-all-expansions, Function}{156}
+\indexentry{min-quant-scope, Function}{156}
+\indexentry{cleanup-all-expansions, Function}{156}
+\indexentry{mating-merge-eq.lisp, File}{157}
+\indexentry{prettify-etree, Function}{159}
+\indexentry{merge-tree-real, Function}{159}
+\indexentry{prettify-process-vars-in-etree, Function}{159}
+\indexentry{prettify-identify-free-bound, Function}{159}
+\indexentry{prettify-identify-free-bound, Function}{159}
+\indexentry{prettify-identify-bound-bound, Function}{159}
+\indexentry{get-best-alt-free-name, Function}{159}
+\indexentry{get-best-alt-bound-name, Function}{159}
+\indexentry{rename-all-vars-in-etree, Function}{159}
+\indexentry{remove-unnecessary-ab-rews, Function}{160}
+\indexentry{prettify-process-vars-in-etree, Function}{160}
+\indexentry{free-must-avoid}{160}
+\indexentry{bound-must-avoid}{160}
+\indexentry{sel-var-bound}{160}
+\indexentry{bound-try-to-equate-bound}{160}
+\indexentry{bound-try-to-equate-to-free}{160}
+\indexentry{prettify-free-rename, Function}{160}
+\indexentry{prettify-bound-rename, Function}{160}
+\indexentry{prettify-free-legal-p, Function}{160}
+\indexentry{prettify-bound-legal-p, Function}{160}
+\indexentry{not-alpha-image}{160}
+\indexentry{bound-must-avoid}{161}
+\indexentry{prettify-free-bound-legal-p, Function}{161}
+\indexentry{prettify-bound-bound-legal-p, Function}{161}
+\indexentry{prettify-identify-free-bound, Function}{161}
+\indexentry{prettify-identify-bound-bound, Function}{161}
+\indexentry{prettify-identify-free-bound, Function}{161}
+\indexentry{pretty-var-p, Function}{161}
+\indexentry{get-best-alt-name, Function}{161}
+\indexentry{proposition-var}{161}
+\indexentry{predicate-var}{161}
+\indexentry{relation-var}{161}
+\indexentry{function-var}{161}
+\indexentry{individual-var}{161}
+\indexentry{randomvars, Function}{161}
+\indexentry{merge-tree-real, Function}{161}
+\indexentry{randomvars, Function}{161}
+\indexentry{get-best-alt-free-name, Function}{161}
+\indexentry{get-best-alt-name, Function}{161}
+\indexentry{prettify-free-legal-p, Function}{161}
+\indexentry{get-best-alt-bound-name, Function}{161}
+\indexentry{get-best-alt-name, Function}{161}
+\indexentry{prettify-bound-legal-p, Function}{161}
+\indexentry{rename-all-vars-in-etree, Function}{161}
+\indexentry{scope-problem-p, Function}{161}
+\indexentry{rename-all-vars-in-wff, Function}{161}
+\indexentry{eeod-to-eed-node, Function}{162}
+\indexentry{ext-exp-open-dags.lisp, File}{162}
+\indexentry{ext-exp-dag-prettify, Function}{162}
+\indexentry{ext-exp-dags.lisp, File}{162}
+\indexentry{mating-merge-eq.lisp, File}{162}
+\indexentry{SUBSUMPTION-CHECK, Flag}{163}
+\indexentry{SUBSUMPTION-NODES, Flag}{163}
+\indexentry{SUBSUMPTION-DEPTH, Flag}{163}
+\indexentry{UNIFY-VERBOSE, Flag}{164}
+\indexentry{SUBSUMPTION-DEPTH, Flag}{165}
+\indexentry{imitation-eta, Function}{165}
+\indexentry{unif-match.lisp, File}{165}
+\indexentry{DEFAULT-MS, Flag}{167}
+\indexentry{DEFAULT-EXPAND, Flag}{167}
+\indexentry{PRIMSUB-METHOD, Flag}{167}
+\indexentry{DEFAULT-MS, Flag}{167}
+\indexentry{MS98-1}{167}
+\indexentry{MS98-INIT, Flag}{167}
+\indexentry{PRIMSUB-METHOD, Flag}{167}
+\indexentry{PR00}{167}
+\indexentry{INCLUDE-INDUCTION-PRINCIPLE, Flag}{171}
+\indexentry{make-knaster-tarski-lemma, Function}{172}
+\indexentry{make-knaster-tarski-negf, Function}{172}
+\indexentry{make-knaster-tarski-leastfp-lemma, Function}{172}
+\indexentry{make-knaster-tarski-leastfp-negf, Function}{172}
+\indexentry{make-knaster-tarski-gfp-lemma, Function}{172}
+\indexentry{make-knaster-tarski-gfp-negf, Function}{172}
+\indexentry{mon-fn-negf, Function}{173}
+\indexentry{clist}{173}
+\indexentry{ftree-solve-constraint-set, Function}{174}
+\indexentry{make-ftree-setvar-soln, Function}{174}
+\indexentry{make-min-inv-princ, Function}{174}
+\indexentry{make-min-setvar-lemma-posf, Function}{174}
+\indexentry{make-min-setvar-lemma-negf, Function}{175}
+\indexentry{make-clos-setvar-lemma-negf, Function}{175}
+\indexentry{INCLUDE-INDUCTION-PRINCIPLE, Flag}{175}
+\indexentry{make-knaster-tarski-leastfp-lemma, Flag}{175}
+\indexentry{make-knaster-tarski-lemma, Flag}{175}
+\indexentry{make-clos-setvar-lemma-negf-0, Flag}{175}
+\indexentry{make-min-inv-princ, Function}{175}
+\indexentry{make-min-inv-princ-2, Function}{175}
+\indexentry{make-min-inv-princ-2, Function}{175}
+\indexentry{make-min-inv-princ-3, Function}{175}
+\indexentry{make-min-inv-princ-3, Function}{175}
+\indexentry{make-min-inv-princ, Function}{175}
+\indexentry{make-min-inv-princ-4, Function}{175}
+\indexentry{make-min-inv-princ-4, Function}{176}
+\indexentry{make-min-inv-princ-4, Function}{176}
+\indexentry{make-min-inv-princ-5, Function}{176}
+\indexentry{make-min-inv-princ-5, Function}{176}
+\indexentry{make-min-inv-princ-5, Function}{176}
+\indexentry{make-min-inv-princ-3, Function}{176}
+\indexentry{make-min-inv-princ-6, Function}{176}
+\indexentry{make-min-inv-princ-6, Function}{176}
+\indexentry{make-min-inv-princ-6, Function}{176}
+\indexentry{make-min-setvar-lemma-posf, Function}{177}
+\indexentry{make-min-setvar-lemma-posf-1, Function}{177}
+\indexentry{make-min-setvar-lemma-posf-1, Function}{177}
+\indexentry{make-min-setvar-lemma-posf-3, Function}{177}
+\indexentry{INCLUDE-INDUCTION-PRINCIPLE, Flag}{177}
+\indexentry{INCLUDE-INDUCTION-PRINCIPLE, Flag}{177}
+\indexentry{NUM-OF-DUPS, Flag}{177}
+\indexentry{make-min-setvar-lemma-posf-2, Function}{177}
+\indexentry{make-min-setvar-lemma-posf-3, Function}{177}
+\indexentry{make-min-setvar-lemma-posf-3, Function}{177}
+\indexentry{NUM-OF-DUPS, Flag}{178}
+\indexentry{make-min-setvar-lemma-posf-4, Function}{178}
+\indexentry{NUM-OF-DUPS, Flag}{178}
+\indexentry{NUM-OF-DUPS, Flag}{178}
+\indexentry{make-min-setvar-lemma-posf-4, Function}{178}
+\indexentry{make-min-setvar-lemma-posf-5, Function}{178}
+\indexentry{make-min-setvar-lemma-posf-5, Function}{178}
+\indexentry{make-min-setvar-lemma-posf-6, Function}{178}
+\indexentry{make-min-setvar-lemma-posf-6, Function}{178}
+\indexentry{make-clos-setvar-lemma-negf, Function}{179}
+\indexentry{INCLUDE-INDUCTION-PRINCIPLE, Flag}{179}
+\indexentry{make-knaster-tarski-leastfp-lemma, Function}{179}
+\indexentry{make-clos-setvar-lemma-negf-0, Function}{179}
+\indexentry{make-clos-setvar-lemma-negf-0, Function}{179}
+\indexentry{mon-fn-negf, Function}{180}
+\indexentry{make-clos-setvar-lemma-negf-1, Function}{181}
+\indexentry{make-clos-setvar-ind-negf, Function}{181}
+\indexentry{make-clos-setvar-lemma-negf-1, Function}{181}
+\indexentry{make-clos-setvar-lemma-negf-2, Function}{181}
+\indexentry{make-clos-setvar-lemma-negf-2, Function}{181}
+\indexentry{make-clos-setvar-lemma-negf-3, Function}{181}
+\indexentry{make-clos-setvar-lemma-negf-4, Function}{181}
+\indexentry{make-clos-setvar-lemma-negf-4, Function}{181}
+\indexentry{make-clos-setvar-lemma-negf-3, Function}{182}
+\indexentry{make-clos-setvar-lemma-negf-3, Function}{182}
+\indexentry{make-clos-setvar-lemma-negf-5, Function}{182}
+\indexentry{make-clos-setvar-lemma-negf-5, Function}{183}
+\indexentry{make-clos-setvar-lemma-negf-4, Function}{183}
+\indexentry{make-clos-setvar-lemma-negf-5, Function}{183}
+\indexentry{make-clos-setvar-lemma-negf-6, Function}{183}
+\indexentry{make-clos-setvar-lemma-negf-6, Function}{183}
+\indexentry{make-clos-setvar-lemma-negf-6, Function}{183}
+\indexentry{make-clos-setvar-lemma-negf-2, Function}{183}
+\indexentry{make-clos-setvar-lemma-negf-7, Function}{183}
+\indexentry{make-clos-setvar-lemma-negf-7, Function}{184}
+\indexentry{make-clos-setvar-lemma-negf-7, Function}{184}
+\indexentry{make-clos-setvar-lemma-negf-7, Function}{184}
+\indexentry{make-clos-setvar-lemma-negf-7, Function}{184}
+\indexentry{make-clos-setvar-lemma-negf-2, Function}{184}
+\indexentry{make-clos-setvar-lemma-negf-8, Function}{184}
+\indexentry{make-clos-setvar-lemma-negf-8, Function}{184}
+\indexentry{make-clos-setvar-lemma-negf-8, Function}{185}
+\indexentry{make-clos-setvar-lemma-negf-9, Function}{185}
+\indexentry{make-clos-setvar-lemma-negf-9, Function}{185}
+\indexentry{make-clos-setvar-ind-negf, Function}{185}
+\indexentry{make-clos-setvar-ind-negf, Function}{186}
+\indexentry{make-clos-setvar-ind-negf-1, Function}{186}
+\indexentry{make-clos-setvar-ind-negf-2, Function}{186}
+\indexentry{make-clos-setvar-ind-negf-2, Function}{187}
+\indexentry{make-clos-setvar-ind-negf-2, Function}{187}
+\indexentry{make-clos-setvar-ind-negf-3, Function}{187}
+\indexentry{make-clos-setvar-ind-negf-3, Function}{188}
+\indexentry{make-clos-setvar-ind-negf-4, Function}{188}
+\indexentry{make-clos-setvar-ind-negf-4, Function}{188}
+\indexentry{make-clos-setvar-ind-negf-4, Function}{188}
+\indexentry{make-clos-setvar-ind-negf-4, Function}{189}
+\indexentry{make-clos-setvar-ind-negf-5, Function}{189}
+\indexentry{make-clos-setvar-ind-negf-5, Function}{189}
+\indexentry{make-clos-setvar-ind-negf-5, Function}{189}
+\indexentry{make-clos-setvar-ind-negf-5, Function}{189}
+\indexentry{make-clos-setvar-ind-negf-1, Function}{189}
+\indexentry{make-ftree-subst, Function}{189}
+\indexentry{make-knaster-tarski-leastfp-lemma, Function}{191}
+\indexentry{tacuse, Flag}{194}
+\indexentry{tacmode}{194}
+\indexentry{tactic-verbose, Flag}{194}
+\indexentry{tactic-use, Syntax}{195}
+\indexentry{tactic-mode, Syntax}{195}
+\indexentry{tactic-defn, Syntax}{195}
+\indexentry{primitive-tactic, Syntax}{195}
+\indexentry{compound-tactic, Syntax}{195}
+\indexentry{tactic-exp, Syntax}{195}
+\indexentry{goal, Syntax}{195}
+\indexentry{goal-list, Syntax}{195}
+\indexentry{msg, Syntax}{195}
+\indexentry{token, Syntax}{195}
+\indexentry{tacl-defn, Syntax}{196}
+\indexentry{primitive-tacl-defn, Syntax}{196}
+\indexentry{compound-tacl-defn, Syntax}{196}
+\indexentry{use-tactic, MExpr}{199}
+\indexentry{tacuse, Flag}{199}
+\indexentry{tacmode, Flag}{199}
+\indexentry{tactic-verbose, Flag}{199}
+\indexentry{eproof}{200}
+\indexentry{current-eproof}{203}
+\indexentry{current-eproof}{203}
+\indexentry{dproof}{204}
+\indexentry{NAT-ETREE, Command}{204}
+\indexentry{NAT-ETREE-VERSION, Flag}{204}
+\indexentry{NATREE-DEBUG, Flag}{204}
+\indexentry{NAT-ETREE, Command}{204}
+\indexentry{ETR-INFO}{204}
+\indexentry{ETREE-AUTO-SUGGEST, Command}{204}
+\indexentry{MS98-TRACE, Flag}{205}
+\indexentry{NAT-ETREE, Command}{205}
+\indexentry{NAT-ETREE-VERSION, Flag}{205}
+\indexentry{ceb-nat-etr.lisp, File}{205}
+\indexentry{ceb-nat-seq.lisp, File}{205}
+\indexentry{ceb-nat-etree, Function}{205}
+\indexentry{ceb-proof-to-natree, Function}{205}
+\indexentry{natree-to-ftree-main, Function}{205}
+\indexentry{ceb-proof-to-natree, Function}{205}
+\indexentry{proof-to-natree, Function}{205}
+\indexentry{hx-natree-top.lisp, File}{205}
+\indexentry{natree-to-ftree-main, Function}{205}
+\indexentry{natree-to-ftree-seq-normal, Function}{205}
+\indexentry{ftree-seq-weaken-early, Function}{205}
+\indexentry{ftree-seq-cut-elim, Function}{205}
+\indexentry{cutfree-ftree-seq-to-ftrees, Function}{205}
+\indexentry{natree-to-ftree-seq-normal, Function}{205}
+\indexentry{natree-to-ftree-seq-extraction, Function}{205}
+\indexentry{natree-to-ftree-seq-normal, Function}{205}
+\indexentry{natree-to-ftree-seq-extraction, Function}{205}
+\indexentry{expand-cases, Function}{207}
+\indexentry{ELIMINATE-ALL-RULEP-APPS, Command}{208}
+\indexentry{ELIMINATE-RULEP-LINE, Command}{208}
+\indexentry{ELIMINATE-CONJ*-RULEP-APPS, Command}{208}
+\indexentry{ELIMINATE-CONJ*-RULEP-APPS, Command}{208}
+\indexentry{BASIC-PROP-TAC}{208}
+\indexentry{make-assert-a-hyp, Function}{208}
+\indexentry{ftree-seq.lisp, File}{209}
+\indexentry{ftree-seq, File}{210}
+\indexentry{cutfree-ftree-seq-to-ftrees, Function}{212}
+\indexentry{ftrees, File}{212}
+\indexentry{natree-to-ftree-seq-normal, Function}{212}
+\indexentry{natree-to-ftree-seq-extraction, Function}{212}
+\indexentry{ftree-seq-merge-focus-all-pos, Function}{213}
+\indexentry{NATREE-DEBUG, Flag}{214}
+\indexentry{NORMALIZE-PROOF, Command}{214}
+\indexentry{NAT-ETREE, Command}{215}
+\indexentry{NAT-ETREE-VERSION, Flag}{215}
+\indexentry{ATTACH-DUP-INFO-TO-NATREE, Function}{215}
+\indexentry{ATTACH-DUP-INFO-TO-NATREE, Function}{215}
+\indexentry{ETREE-NAT, Command}{215}
+\indexentry{ATTACH-DUP-INFO-TO-NATREE, Function}{215}
+\indexentry{ATTACH-DUP-INFO-TO-NATREE, Function}{215}
+\indexentry{ATTACH-DUP-INFO-TO-NATREE, Function}{215}
+\indexentry{hx-natree-top, File}{215}
+\indexentry{hx-natree-duplication, File}{215}
+\indexentry{ATTACH-DUP-INFO-TO-NATREE, Function}{215}
+\indexentry{UPWARD-UPDATE-NATREE, Function}{215}
+\indexentry{hx-natree-rulep, File}{215}
+\indexentry{RULEP, Function}{215}
+\indexentry{ATTACH-DUP-INFO-TO-NATREE, Function}{215}
+\indexentry{hx-natree-aux, File}{215}
+\indexentry{ETREE-TO-JFORM-REC, Function}{216}
+\indexentry{ETREE}{216}
+\indexentry{hx-natree-cleanup, File}{216}
+\indexentry{ETREE-NAT, Command}{216}
+\indexentry{ETREE-NAT, Command}{216}
+\indexentry{hx-natree-debug, File}{216}
+\indexentry{MIN-QUANT-ETREE, Flag}{216}
+\indexentry{MIN-QUANT-ETREE, Flag}{216}
+\indexentry{NAT-ETREE, Command}{216}
+\indexentry{NAT-ETREE-VERSION, Flag}{216}
+\indexentry{ftree-seq-mix-elim-1, Function}{223}
+\indexentry{ftree-seq-mix-elim-principal, Function}{223}
+\indexentry{ftree-seq-cut-elim, Function}{224}
+\indexentry{ftree-seq-mix-elim-finish, Function}{225}
+\indexentry{ftree-seq-replace-equivwffs, Function}{225}
+\indexentry{ftree-seq-invert-position-list, Function}{226}
+\indexentry{ftree-seq-mix-elim-imitate-rule, Function}{227}
+\indexentry{ftree-seq-bring-to-front, Function}{227}
+\indexentry{ftree-seq-mix-elim-principal, Function}{227}
+\indexentry{ext-seq}{230}
+\indexentry{ext-exp-dag-macros.lisp, File}{231}
+\indexentry{EXT-SEQ}{231}
+\indexentry{CUTFREE-TO-EDAG, Command}{231}
+\indexentry{ext-seq-top.lisp, File}{231}
+\indexentry{ext-exp-dags-nd.lisp, File}{231}
+\indexentry{MS04-2}{231}
+\indexentry{MS03-7}{231}
+\indexentry{EXT-MATE}{231}
+\indexentry{ETREE-NAT, Command}{231}
+\indexentry{BACKUP-LIB-DIR, Flag}{233}
+\indexentry{DEFAULT-LIB-DIR, Flag}{233}
+\indexentry{BACKUP-LIB-DIR, Flag}{233}
+\indexentry{INSERT-TPTP, Command}{233}
+\indexentry{INSERT-TPTP*, Command}{233}
+\indexentry{INSERT-LIB-DIR, Flag}{234}
+\indexentry{EVENTS}{235}
+\indexentry{REPORT}{239}
+\indexentry{DEFREPORT}{240}
+\indexentry{DEFREPORT1}{240}
+\indexentry{tps3-save.lisp, File}{243}
+\indexentry{-javainterface}{245}
+\indexentry{-big}{245}
+\indexentry{-x2}{245}
+\indexentry{-x4}{245}
+\indexentry{-nopopups}{245}
+\indexentry{-screenx}{245}
+\indexentry{-screeny}{245}
+\indexentry{-rightOffset}{245}
+\indexentry{-bottomOffset}{245}
+\indexentry{-maxChars}{245}
+\indexentry{JAVAWIN, Command}{246}
+\indexentry{JAVA-COMM, Flag}{246}
+\indexentry{external-interface.lisp, Command}{246}
+\indexentry{COMMAND}{246}
+\indexentry{RESPONSE}{246}
+\indexentry{read-line-sym, Function}{246}
+\indexentry{RESPONSE}{246}
+\indexentry{RIGHTMARGIN, Flag}{246}
+\indexentry{RESPONSE}{246}
+\indexentry{external-interface.lisp, File}{246}
+\indexentry{*standard-output*}{246}
+\indexentry{STYLE, Flag}{246}
+\indexentry{ISTYLE}{246}
+\indexentry{interface-style.lisp, File}{246}
+\indexentry{XTERM}{246}
+\indexentry{interface-style.lisp, File}{247}
+\indexentry{menu}{247}
+\indexentry{menuitem}{247}
+\indexentry{TpsWin.java, File}{247}
+\indexentry{generate-java-menus, Command}{248}
+\indexentry{TpsWin.java, File}{248}
+\indexentry{TpsWin.java, File}{248}
+\indexentry{generate-java-menus, Command}{248}
+\indexentry{TpsWin.java, File}{248}
+\indexentry{TpsWin.java, File}{248}
+\indexentry{TpsSmallFonts.java, File}{248}
+\indexentry{TpsBigFonts.java, File}{248}
+\indexentry{interface-style.lisp, File}{248}
+\indexentry{istyle-characters}{248}
+\indexentry{interface-style.lisp, File}{248}
+\indexentry{istyle-characters}{248}
+\indexentry{TpsSmallFonts.java, File}{248}
+\indexentry{TpsBigFonts.java, File}{248}
+\indexentry{TpsSmallFonts.java, File}{248}

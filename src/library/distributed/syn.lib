@@ -1,0 +1,16 @@
+(:name SYN031-1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "~.FORALL A(I) [g(OII) A(I) a(I) OR g(OII) [f(II) A(I)] A(I)] AND FORALL A(I) [g(OII) A(I) a(I) OR g(OII) A(I).f(II) A(I)] AND FORALL A(I) FORALL B(I) [~g(OII) A(I) B(I) OR g(OII) [f(II) B(I)] B(I)] AND FORALL A(I) FORALL B(I) [~g(OII) A(I) B(I) OR g(OII) B(I).f(II) B(I)] AND FORALL A(I) FORALL B(I).~g(OII) A(I) B(I) OR ~g(OII) B(I) a(I)"
+:needed-objects   NIL
+:mhelp "SYN031-1 from Sutcliffe's library.
+More commonly known as MQW.
+Originally stated for resolution."
+:other-attributes NIL
+:other-remarks "
+")
+
+

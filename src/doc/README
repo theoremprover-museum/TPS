@@ -1,0 +1,19 @@
+This directory and its subdirectories are the sources for TPS
+documentation.  Each of the directories etps, grader, facilities,
+prog, and user contains the files for one of the manuals. (The
+facilities directory actually contains the files for both the
+facilities manual and the facilities-short manual.)
+
+To print a manual on a postscript printer, just print the press file
+manual.ps in the relevant directory.
+
+Each directory also contains the Scribe or Latex manuscript files
+which will produce a press file.  For example, to create a new press
+file for the etps manual, do the following:
+% cd etps
+% scribe manual 
+
+The file lib/ksets.lib contains the definitions of the fonts needed for
+each printer.
+
+

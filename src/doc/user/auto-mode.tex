@@ -1,0 +1,107 @@
+%::::::::::::::
+%auto-mode.tex
+%::::::::::::::
+
+Automatic proof in {\TPS} is based on the `mating-search' paradigm described
+in \cite{Andrews2002a}, \cite{Andrews81},  and \cite{Andrews89}, or
+enhancements of it described in \cite{Bishop99,Bishop99a,Brown2002,
+Brown2004a}.
+{\TPS} starts by searching for an expansion proof
+\cite{Miller84,Miller87,Andrews89}
+or an extensional expansion proof \cite{Brown2004a}, and
+then translates this into a natural deduction proof.
+
+There are several ways in which one can use the automatic facilities of \TPS.
+
+
+The command \indexcommand{DIY} calls the mating-search facility
+(see Chapter \ref{ms-guide}), and if that succeeds in finding a proof, applies a
+tactic (such as {\tt COMPLETE-TRANSFORM-TAC} or {\tt PFENNING-TAC}) to
+translate the expansion tree proof  into a natural
+deduction proof. Using  \indexcommand{DIY} is the simplest way to
+prove a theorem automatically.
+
+The nature of the search initiated by \indexcommand{DIY} or by
+\indexcommand{GO} will be heavily influenced by which setting you have
+for the flag \indexflag{DEFAULT-MS}. If you do {\it setflag default-ms} and
+then respond with ? when asked for an argument, you'll see the
+available options.  Help messages will tell you a little about them, and
+there is some more information in Chapter \ref{ms-guide}.
+
+
+If you want to see more of what is going on in the search for a proof,
+you may want to start proving a theorem by entering
+the  MATE top-level with a particular wff and
+experimenting with the mating-search commands.  To do this, use the
+\indexcommand{MATE} command. See section \ref{ms-guide} for information
+about this top-level.
+
+After a mating has been found in the mating-search top-level and the
+expansion proof constructed, you can apply the proper substitutions to
+the expansion tree with the \indexcommand{MERGE-TREE} command, which
+also eliminates redundant branches from the tree.  Or just use the
+\indexcommand{LEAVE} command, which will apply the merge procedure and
+then return you to the main top-level.  To build a natural deduction
+proof using the information in the expansion proof you just
+constructed, use the command \indexcommand{ETREE-NAT}.  You may also
+enter mating-search with the most recent expansion proof created.
+This is stored in the variable {\tt \indexother{CURRENT-EPROOF}},
+and is the default
+value for the {\tt MATE} command.  When you leave mating-search, this
+variable is set to the current expansion proof, so you may reenter
+with the same proof if desired.  The value of this variable is also
+the expansion proof used when translating into a natural deduction
+proof with {\tt ETREE-NAT}.  Another variable, {\tt LAST-EPROOF}, stores
+the value of the expansion proof created before {\tt CURRENT-EPROOF}.
+Either of these symbols may be entered when prompted by the {\tt MATE}
+command for a wff or eproof.
+
+Details of how to save output from the mating search are in Chapter
+\ref{output}.
+
+Let us discuss here exactly what the effects of the various mating
+search and translation commands are.
+\begin{itemize}
+\item The command \indexcommand{MATE}, when it returns to the top level,
+alters the value of
+the variable {\tt CURRENT-EPROOF} to be the expansion proof constructed.
+
+\item The command \indexcommand{ETREE-NAT} takes the expansion proof stored
+in {\tt CURRENT-EPROOF}, places the information it contains on the specified
+line of the natural deduction proof, then calls the specified tactic on the
+natural deduction proof.
+
+\item The command \indexcommand{DIY} will construct an expansion proof for
+the specified planned line of the current natural deduction proof,
+then, like {\tt ETREE-NAT}, will place the information it contains on
+the specified line(s) of the natural deduction proof and call the
+specified tactic.  The value of {\tt CURRENT-EPROOF} is not changed, however.
+\end{itemize}
+
+Note that once the information from the expansion proof has been
+placed into the natural deduction proof, as by {\tt DIY} and
+{\tt ETREE-NAT}, the value of {\tt CURRENT-EPROOF} is unnecessary to
+the translation process, and one can use the command {\tt USE-TACTIC} to
+apply translation tactics.
+But since the {\tt MATE} command does not transfer the information fromn
+{\tt CURRENT-EPROOF} into the natural deduction proof,
+the {\tt ETREE-NAT} command must be applied after {\tt MATE} in
+order to start the translation process.
+
+It is possible to translate natural deduction proofs to expansion proofs.
+This is accomplished by the command {\tt NAT-ETREE}.  The expansion proof
+created will be stored in the variable {\tt CURRENT-EPROOF}.  At present,
+this procedure
+is not complete and will fail on some natural deduction proofs, including:
+\begin{itemize}
+\item Those which are not cut-free, i.e., do not satisfy the subformula property
+
+\item Those which use substitution of equality rules
+
+\item Those which use the assertion of axioms, like reflexivity of equality
+\end{itemize}
+
+
+
+
+

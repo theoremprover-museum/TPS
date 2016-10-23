@@ -1,0 +1,7 @@
+#csh -f
+
+cd /whatever/tps/
+./etps-build-linux
+
+cd /whatever/tps/
+./etps-install-linux

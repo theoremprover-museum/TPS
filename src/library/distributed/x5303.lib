@@ -1,0 +1,14 @@
+(:name X5303
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Friday, March  5, 1999 at 11:15:43."
+:description "=(OAA) =(O(OAA)(OAA)) LAMBDA x(A) LAMBDA y(A) FORALL p(OAA).FORALL z(A) p(OAA) z(A) z(A) IMPLIES p(OAA) x(A) y(A)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

@@ -1,0 +1,9 @@
+#!/bin/csh -f
+#
+foreach file ("`ls /usr/theorem/fonts/*.onx`")
+#/usr/misc/.X11tra/bin/x11font $file > $file:r.bdf
+/usr/misc/.X11/bin/bdftosnf $file:r.bdf > $file:r.snf
+#/usr/misc/.X11/bin/fc < $file:r.bdf > $file:r.snf
+end
+#
+#rm /usr/theorem/fonts/*.bdf

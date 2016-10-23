@@ -1,0 +1,44 @@
+;;; ******************************************************************* ;;;
+;;;         (c) Copyrighted 1988 by Carnegie Mellon University.         ;;;
+;;;                        All rights reserved.                         ;;;
+;;;         This code was written as part of the TPS project.           ;;;
+;;;   If you want to use this code or any part of TPS, please contact   ;;;
+;;;               Peter B. Andrews (Andrews@CS.CMU.EDU)                 ;;;
+;;; ******************************************************************* ;;;
+;;; Updated context 7/20/87 DAN
+(context rules-4-quant)
+
+(defirule rulec
+  (lines (d1 (h) () "exists x(A). B")
+	 (h2 (h) (h2) "`(LCONTR [[lambda x(A). B] y(A)])"
+	     ("Choose" ("y(A)") (d1)))
+	 (d3 (h) (h2) "A")
+	 (p4 (h) () "A" ("RuleC" () (d1 d3))))
+  (support-transformation ((p4 d1 'ss)) ((d3 h2 'ss)))
+  (restrictions (is-variable "y(A)")
+		(not-free-in-hyps "y(A)")
+		(not-free-in "y(A)" "exists x(A). B")
+		(not-free-in "y(A)" "A(O)"))
+  (itemshelp (d1 "Existentially Quantified Line")
+	     (h2 "Hypothesis with Chosen Variable")
+	     (d3 "Conclusion with Additional Hypothesis")
+	     (p4 "Conclusion without Additional Hypothesis")
+	     ("x(A)" "Existentially Quantified Variable")
+	     ("B(O)" "Scope of Existential Quantifier")
+	     ("y(A)" "Chosen Variable Name")
+	     ("A(O)" "Conclusion to be Proven Using Existentially Quantified Line")
+	     (LCONTR "Assertion of Hypothesis"))
+  (mhelp "RuleC"))
+
+(defirule egen
+  (lines (p1 (h) () "`(LCONTR [[lambda x(A). A] t(A)])")
+	 (p2 (h) () "exists x(A). A" ("EGen" ("t(A)") (p1))))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (restrictions (is-variable "x(A)"))
+  (itemshelp (p1 "Line to be Existentially Generalized")
+	     (p2 "Existentially Quantified Line")
+	     ("x(A)" "Existentially Quantified Variable")
+	     ("A(O)" "Scope of Existential Quantifier")
+	     ("t(A)" "Term to be Generalized Upon")
+	     (LCONTR "Assertion of Line to be Generalized"))
+  (mhelp "Rule of Existential Generalization."))

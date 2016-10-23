@@ -1,0 +1,14 @@
+(:name THM275A-1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL r(OAA) EXISTS p(OAA).r(OAA) SUBRELATION(O(OAA)(OAA)) p(OAA) AND TRANSITIVE(O(OAA)) p(OAA) AND FORALL q(OAA).TRANSITIVE(O(OAA)) q(OAA) AND r(OAA) SUBRELATION(O(OAA)(OAA)) q(OAA) IMPLIES p(OAA) SUBRELATION(O(OAA)(OAA)) q(OAA)"
+:needed-objects   (TRANSITIVE SUBRELATION)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

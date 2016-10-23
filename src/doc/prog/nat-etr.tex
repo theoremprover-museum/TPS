@@ -1,0 +1,706 @@
+There are three versions of \indexcommand{NAT-ETREE},
+the command for translating natural deductions into
+expansion tree proofs.  The user can choose between
+the three by setting the flag \indexflag{NAT-ETREE-VERSION}
+to one of the following values:
+\begin{enumerate}
+\item {\bf OLD}  (the original version)
+\item {\bf HX} (Hongwei Xi's version, written in the early
+to mid 1990's)
+\item {\bf CEB} (Chad E. Brown's version, written in early 2000)
+\end{enumerate}
+Also, note that setting the flag \indexflag{NATREE-DEBUG}
+to T is useful for debugging the {\bf HX} and {\bf CEB}
+versions.  The subsections that follow describe each of these
+versions in greater detail.
+
+After using \indexcommand{NAT-ETREE} to translate to an
+expansion proof, the user can use this expansion proof
+to suggest flag settings (via the mate commands
+\indexother{ETR-INFO} and \indexcommand{ETREE-AUTO-SUGGEST})
+or to trace MS98-1 (using the flag \indexflag{MS98-TRACE}.  
+See the User's Manual for a description
+of these facilities.  The User's Manual also has examples.
+
+\subsection{Chad's Nat-Etree}\label{ceb-nat-etr}
+
+To use this version of \indexcommand{NAT-ETREE}, set
+\indexflag{NAT-ETREE-VERSION} to {\bf CEB}.
+The main functions for this version are in the
+files \indexfile{ceb-nat-etr.lisp} and \indexfile{ceb-nat-seq.lisp}.  
+The relevant functions are:
+\begin{description}
+\item [\indexfunction{ceb-nat-etree}]  
+This is the main function.  It preprocesses the proof to 
+\begin{itemize}
+\item remove applications of {\it Subst=} and {\it Sym=},
+\item expand applications of {\it RuleP} and other propositional rules
+(e.g., {\it Assoc}) in terms of more
+primitive inference rules,
+\item attempt to expand any applications of {\it RuleQ},
+\item replace instances of {\it Assert} by hypotheses
+which are discharged at the end of the proof,
+\item and replace applications of the {\it Cases} rule
+using more than two disjuncts by multiple applications
+of the {\it Cases} rule using two disjuncts.
+\end{itemize}
+The function then calls \indexfunction{ceb-proof-to-natree} to build
+the natree version of the natural deduction proof, calls
+\indexfunction{natree-to-ftree-main} to build the ftree representation
+of the expansion tree and a complete mating.  Finally, this
+is converted into an ordinary expansion proof which may optionally
+be merged.  (Merging is appropriate if the user plans to translate
+back to a natural deduction proof, but inappropriate if the user
+is trying to gather information about a potential automatic proof.)
+\item [\indexfunction{ceb-proof-to-natree}]  This is a modification
+of Hongwei's 
+\indexfunction{proof-to-natree} (see \indexfile{hx-natree-top.lisp}).
+This function builds the natree, changing some justifications to $RuleP$
+or $RuleQ$, and changing the variables in applications of $UGen$ and $RuleC$
+so they are unique in the entire proof (i.e., the natree rules satisfy a global
+eigenvariable condition, since the etree selection variables must be distinct).
+\item [\indexfunction{natree-to-ftree-main}]  This function calls
+\indexfunction{natree-to-ftree-seq-normal} to build a sequent calculus derivation
+(see ~\ref{ftree-seq}) from the natree.  Then \indexfunction{ftree-seq-weaken-early}
+modifies the derivation so that the weaken rule is applied eagerly.  This may
+eliminate certain unnecessary cuts and simplify the derivation.
+Then the cut elimination function \indexfunction{ftree-seq-cut-elim}
+(see section~\ref{ftree-seq-mix-elim})
+is used to make the derivation cut-free.
+Finally, \indexfunction{cutfree-ftree-seq-to-ftrees} is used to obtain
+an ftree and a complete mating from the cut-free derivation.
+\item [\indexfunction{natree-to-ftree-seq-normal}, \indexfunction{natree-to-ftree-seq-extraction}]
+These 
+functions are mutually recursive and provide the main algorithm for constructing
+the sequent calculus derivation.  A description of the algorithm is below.  The function \indexfunction{natree-to-ftree-seq-normal}
+is called on natree nodes which are considered normal.  (These would be annotated with a $\Uparrow$.)
+The function \indexfunction{natree-to-ftree-seq-extraction} is called on natree nodes which
+are considered extractions.  (These would be annotated with a $\downarrow$.)
+\end{description}
+
+Frank Pfenning's ATP
+class contained notes on annotating (intuitionistic first-order)
+normal natural deduction proofs, and gave a constructive proof
+(algorithm) that every natural deduction proof
+translates into a sequent calculus proof.  Also, normal natural deduction proofs
+translate to cut-free sequent calculus proofs.
+The idea of using annotations carries over to classical higher-order
+logic.
+
+\subsubsection{Normal Deductions}
+
+The idea of a normal deduction is that the proof works down
+using elimination rules, and up using introduction rules,
+meeting in the middle.  We can formalize this idea by saying that
+a natural deduction proof is normal if its assertions can be annotated,
+so that the assertions involved in the applications of rules of inference
+are as described below.
+Technically, we are defining normal natural deductions by mutually
+defining normal deductions ($\Uparrow$) and extraction deductions ($\downarrow$).
+
+\subsubsection{Annotations of the Assertions in a Proof}
+
+First, the basic rules which allow one to infer normal deductions ($\Uparrow$).
+$$ \ianc{A\Uparrow}{\forall x A\Uparrow}{UGen}$$
+where $x$ is not free in any hypotheses.
+$$ \ibnc{\exists y A\downarrow}{\hypo{\ian{}{[x/y]A\downarrow}{}}{C\Uparrow}}{C\Uparrow}{RuleC}$$
+where $x$ is not free in any hypotheses.
+$$ \ianc{[t/x]A\Uparrow}{\exists x A\Uparrow}{EGen}$$
+$$ \ianc{A\Uparrow}{A\lor B\Uparrow}{IDisj-L} \;
+ \ianc{B\Uparrow}{A\lor B\Uparrow}{IDisj-R}$$
+$$ \ibnc{A\Uparrow}{B\Uparrow}{A \land B\Uparrow}{Conj} $$
+$$ \ianc{\bot\downarrow}{A\Uparrow}{Absurd}$$
+$$ \ianc{\hypo{\ian{}{\neg A\downarrow}{}}{\bot\Uparrow}}{A\Uparrow}{Indirect} \;
+ \ianc{\hypo{\ian{}{A\downarrow}{}}{\bot\Uparrow}}{\neg A\Uparrow}{NegIntro} \;
+ \ianc{\hypo{\ian{}{A\downarrow}{}}{B\Uparrow}}{A\supset B\Uparrow}{Deduct}$$
+$$ \ibnc{\neg A\downarrow}{A\Uparrow}{C\Uparrow}{NegElim}$$
+$$ \ibnc{A \vee B\downarrow}{\hypo{\ian{}{A\downarrow}{}}{C\Uparrow}\quad\qquad\hypo{\ian{}{B\downarrow}{}}{C\Uparrow}}{C\Uparrow}{Cases}$$
+
+TPS also has rules {\it Cases3} and {\it Cases4} which may be used to
+eliminate disjunctions with three or four disjuncts, resp.  
+Such rule applications are replaced by iterations of the binary
+{\it Cases} rule in a preprocessing step using
+\indexfunction{expand-cases}.
+
+Next, the basic rules which allow one to infer extraction deductions ($\downarrow$).
+$$ \ianc{A \land B\downarrow}{A\downarrow}{Conj} \hspace{2em} \ianc{A \land B\downarrow}{B\downarrow}{Conj}$$
+$$ \ianc{\forall x A\downarrow}{[t/x]A\downarrow}{UI}$$
+$$ \ibnc{A \limplies B\downarrow}{A\Uparrow}{B\downarrow}{MP}$$
+
+Notice that hypothesis lines are always considered extraction derivations.
+Such lines may be justified by any of the following:
+$Hyp$, $Choose$, $Assume negation$, $Case 1$, $Case 2$, $Case 3$, $Case 4$.
+
+We need a coercion rule, as every extraction is a normal derivation:
+$$ \ianc{A\downarrow}{A\Uparrow}{coercion}$$
+In a TPS natural deduction style proof, this coercion step will not usually be
+explicit.  Instead, a single line will be given the property of being
+a coercion, in which case we know it has both annotations $\downarrow$
+and $\Uparrow$, and that these annotations were assigned in a way consistent
+with the coercion rule above.  Often, when interactively constructing
+a natural deduction proof in TPS, one finds that a planned line is the
+same as a support line, and finishes the subgoal using SAME.  This would
+correspond to the coercion rule above.
+
+The backward coercion rule 
+$$ \ianc{A\Uparrow}{A\downarrow}{bcoercion}$$
+is used to pass from normal deductions to extractions.
+Backwards coercions correspond to instances of cut.
+A separate, interesting project in TPS would be to
+program a normalization procedure.
+Such a procedure would
+find instances of the backward coercion rule when
+annotating a proof, identify to what kind of ``redex''
+the backward coercion rule corresponds, and perform the
+reduction.  For this to work we would need to define the
+notion of redex so that every proof which needs the backward
+coercion rule to be annotated (proofs that are not normal)
+must have a redex.  Also, we could not prove that reduction
+terminates -- a task equivalent to constructively proving 
+cut-elimination in classical higher-order logic.
+Instead, the current code translates backwards coercion
+as an application of cut, and then uses a cut elimination
+procedure (which may not terminate) to obtain a cut-free
+proof.  (See section~\ref{ftree-seq-mix-elim})
+
+\subsubsection{Some Nonstandard ND Rules}
+
+There is code to replace ``fancy'' propositional rules
+like $RuleP$ with subderivations using primitive rules.  
+See the commands \indexcommand{ELIMINATE-ALL-RULEP-APPS}, \indexcommand{ELIMINATE-RULEP-LINE},
+and \indexcommand{ELIMINATE-CONJ*-RULEP-APPS}.  The command \indexcommand{ELIMINATE-CONJ*-RULEP-APPS}
+only expands those $RuleP$ applications which can be replaced by applications of $Conj$ rules.
+The other two commands use Sunil's fast propositional search to find an expansion proof
+and uses the tactic \indexother{BASIC-PROP-TAC} to translate back to natural deduction to fill
+in the gap using only primitive propositional rules.
+
+Of course, the $Same$ rule just propagates the annotation.
+So, with respect to annotations, there are two versions of this rule:
+$$\ianc{A\downarrow}{A\downarrow}{Same As}\hspace{2em}
+\ianc{A\Uparrow}{A\Uparrow}{Same As}$$
+
+When converting normal natural deduction to expansion tree
+proofs, we only consider formulas up to $\alpha$-conversion,
+so we can ignore the corresponding ND rule.  But effectively,
+we allow this rule to be annotated in either of two ways,
+as with the $Same$ rule:
+$$\ianc{\forall x A\downarrow}{\forall y [y/x]A\downarrow}{AB}\hspace{2em}
+\ianc{\forall x A\Uparrow}{\forall y [y/x]A\Uparrow}{AB}$$
+
+$Neg$, $NNF$, and $NNF-Expand$ can be used to make small first-order
+inferences (from $\neg \forall x . A$ to $\exists x . \neg A$, etc.).
+Since we only care about formulas up to $\alpha\beta$ and negation-normal-form, we
+can treat these rules the same way as the $Same$ and $AB$ rules.
+
+Applications of $Assert$ (other than $Assert Refl=$) are replaced by
+explicit hypotheses in a preprocessing step by the function 
+\indexfunction{make-assert-a-hyp}.  So, when building the natree,
+there should be no instances of $Assert$ other than $Refl=$.
+$Assert Refl=$ is annotated as a normal deduction:
+$$\ianc{}{A=A\Uparrow}{Assert Refl=}$$
+The idea is that we work backwards to an instance of reflexivity.
+
+Definitions can be eliminated or introduced, and the annotations
+reflect this.  Also, elimination and introduction of definitions includes
+some $\beta$-reduction.  Suppose the abbreviation $A$ is defined to
+be $\lambda x_1\cdots\lambda x_n . \psi [x_1,\ldots, x_n]$ in the following
+annotated rule schemas.
+$$\ianc{\phi[A\; B_1\; \cdots \; B_n]\downarrow}{\phi[\psi[B_1,\ldots,B_n]]\downarrow}{Defn}$$
+$$\ianc{\phi[\psi[B_1,\ldots,B_n]]\Uparrow}{\phi[A\; B_1\; \cdots \; B_n]\Uparrow}{Defn}$$
+
+When annotating $\lambda$ rules, the arrows point in the
+direction of normalization.
+$$\ianc{B\downarrow}{A\downarrow}{Lambda}\hspace{2em}
+\ianc{A\Uparrow}{B\Uparrow}{Lambda}$$
+where $A$  is the $\beta\eta$-normal form of $B$.
+There are also rules $Beta$ and $Eta$ which are treated similarly.
+
+\subsubsection{Equality Rules}
+
+We assume that the proof has been preprocessed to remove
+applications of substitution of equals, and applications of
+symmetry, so there is no need to annotate these rules (for now).
+
+As noted above, reflexivity is treated as a normal deduction:
+$$\ianc{}{A = A\Uparrow}{Refl=}$$
+
+There are two ways to apply extensionality consistent with the
+idea of annotations (both correspond to expanding an equation using
+extensionality in the corresponding expansion tree).  Also, there
+are two kinds of extensionality (functional and propositional).
+$$\ianc{f_{\greekb\greeka} = g_{\greekb\greeka}\downarrow}{\forall x_\greeka . f x = g x\downarrow}{Ext=}
+\hspace{2em}
+\ianc{P_\greeko = Q_\greeko\downarrow}{P_\greeko \equiv Q_\greeko \downarrow}{Ext=}$$
+$$\ianc{\forall x_\greeka . f x = g x\Uparrow}{f_{\greekb\greeka} = g_{\greekb\greeka}\Uparrow}{Ext=}
+\hspace{2em}
+\ianc{P_\greeko \equiv Q_\greeko\Uparrow}{P_\greeko = Q_\greeko\Uparrow}{Ext=}$$
+
+Leibniz equality is handled just like definition expansion.
+$$\ianc{A_\greeka = B_\greeka\downarrow}{\forall q_{\greeko\greeka} . q A \limplies q B\downarrow}{Equiv-eq}$$
+$$\ianc{\forall q_{\greeko\greeka} . q A \limplies q B\Uparrow}{A_\greeka = B_\greeka\Uparrow}{Equiv-eq}$$
+
+\subsubsection{A Sequent Calculus}\label{ftree-seq}
+
+In the file \indexfile{ftree-seq.lisp}, a sequent calculus
+is implemented.  The file contains code to convert
+sequent calculus derivations into
+expansion proofs, and a cut elimination
+algorithm.  This is a two sided sequent calculus
+with sequents $\Gamma \rightarrow \Delta$.
+The code refers to formulas in $\Gamma$ as positive
+(as opposed to ``left'') and formulas in $\Delta$
+as negative (as opposed to ``right'') to correspond
+to the parity of expansion tree nodes.
+$\Gamma$ and $\Delta$ are lists, as opposed to multisets
+or sets, so order and multiplicity are important.
+
+There are many variations of sequent calculi for classical
+logic.  For example, consider the two
+variants of the negative rule for $\land$:
+$$\ibnc{\Gamma\rightarrow A,\Delta}{\Gamma\rightarrow B,\Delta}{\Gamma\rightarrow A\land B,\Delta}{}$$
+$$\ibnc{\Gamma_1\rightarrow A,\Delta_1}{\Gamma_2\rightarrow B,\Delta_2}{\Gamma_1,\Gamma_2\rightarrow A\land B,\Delta_1,\Delta_2}{}$$
+Furthermore, there is the issue of the positions of
+the main formulas (i.e., must $A$ and $B$ be the first formulas
+on the list?)
+Different kinds of rules determine what structural rules the sequent calculus
+should have.  The sequent calculus implemented in \indexfile{ftree-seq}
+has the following logical rules:
+
+\begin{center}
+$\ibnc{\Gamma_1\rightarrow A,\Delta_1}{\Gamma_2\rightarrow B,\Delta_2}{\Gamma_1,\Gamma_2\rightarrow A\land B,\Delta_1,\Delta_2}{\land-}$\hspace{2cm}
+$\ianc{A,B,\Gamma\rightarrow \Delta}{A\land B,\Gamma\rightarrow \Delta}{\land+}$\\[.5cm]
+$\ianc{\Gamma\rightarrow A,B,\Delta}{\Gamma\rightarrow A\lor B,\Delta}{\lor-}$\hspace{2cm}
+$\ibnc{A,\Gamma_1\rightarrow \Delta_1}{B,\Gamma_2\rightarrow \Delta_2}{A\lor B,\Gamma_1,\Gamma_2\rightarrow \Delta_1,\Delta_2}{\lor+}$\\[.5cm]
+$\ianc{A,\Gamma\rightarrow B,\Delta}{\Gamma\rightarrow A\limplies B,\Delta}{\limplies-}$\hspace{2cm}
+$\ibnc{\Gamma_1\rightarrow A,\Delta_1}{B,\Gamma_2\rightarrow \Delta_2}{A\limplies B,\Gamma_1,\Gamma_2\rightarrow \Delta_1,\Delta_2}{\limplies+}$\\[.5cm]
+$\ianc{A,\Gamma\rightarrow \Delta}{\Gamma\rightarrow \lnot A,\Delta}{\lnot-}$\hspace{2cm}
+$\ianc{\Gamma\rightarrow A,\Delta}{\lnot A,\Gamma\rightarrow \Delta}{\lnot+}$\\[.5cm]
+$\ianc{A(a),\Gamma\rightarrow \Delta}{\forall x A(x),\Gamma\rightarrow \Delta}{SEL+^a}$\hspace{2cm}
+$\ianc{\Gamma\rightarrow A(a),\Delta}{\Gamma\rightarrow \forall x A(x),\Delta}{SEL-^a}$\\[.5cm]
+$\ianc{A(t),\Gamma\rightarrow \Delta}{\forall x A(x),\Gamma\rightarrow \Delta}{EXP+^t}$\hspace{2cm}
+$\ianc{\Gamma\rightarrow A(t),\Delta}{\Gamma\rightarrow \exists x A(x),\Delta}{EXP-^t}$\\[.5cm]
+\end{center}
+
+There are also rewrite rules:\\[.5cm]
+\begin{center}
+$\ianc{\Gamma\rightarrow [A\limplies B]\land [B\limplies A],\Delta}{\Gamma\rightarrow A\equiv B,\Delta}{REW(\equiv)-}$\\[.5cm]
+$\ianc{[A\limplies B]\land [B\limplies A],\Gamma\rightarrow \Delta}{A\equiv B,\Gamma\rightarrow \Delta}{REW(\equiv)+}$\\[.5cm]
+$\ianc{\Gamma\rightarrow A^{\lambda,\beta,\eta},\Delta}{\Gamma\rightarrow A,\Delta}{REW({\lambda,\beta,\eta})-}$\hspace{2cm}
+$\ianc{A^{\lambda,\beta,\eta},\Gamma\rightarrow \Delta}{A,\Gamma\rightarrow \Delta}{REW({\lambda,\beta,\eta})+}$\\[.5cm]
+\end{center}
+where $A^{\lambda,\beta,\eta}$ is either the $\beta\eta$-normal form,
+$\beta$-normal form, or $\eta$-normal form of $A$.\\[.5cm]
+\begin{center}
+$\ianc{\Gamma\rightarrow A,\Delta}{\Gamma\rightarrow B,\Delta}{REW(AB)-}$\hspace{2cm}
+$\ianc{A,\Gamma\rightarrow \Delta}{B,\Gamma\rightarrow \Delta}{REW(AB)+}$\\[.5cm]
+\end{center}
+where $A$ and $B$ are $\alpha$-equivalent.\\[.5cm]
+\begin{center}
+$\ianc{\Gamma\rightarrow A,\Delta}{\Gamma\rightarrow B,\Delta}{REW(EQUIVWFFS)-}$\\[.5cm]
+$\ianc{A,\Gamma\rightarrow \Delta}{B,\Gamma\rightarrow \Delta}{REW(EQUIVWFFS)+}$\\[.5cm]
+\end{center}
+where $A$ is the result of expanding some abbreviations in $B$.\\[.5cm]
+\begin{center}
+$\ianc{\Gamma\rightarrow A,\Delta}{\Gamma\rightarrow B,\Delta}{REW(Leibniz=)-}$\hspace{2cm}
+$\ianc{A,\Gamma\rightarrow \Delta}{B,\Gamma\rightarrow \Delta}{REW(Leibniz=)+}$\\[.5cm]
+\end{center}
+where $A$ is the result of expanding some equalities in $B$ using the Leibniz
+definition of equality.\\[.5cm]
+\begin{center}
+$\ianc{\Gamma\rightarrow A,\Delta}{\Gamma\rightarrow B,\Delta}{REW(Ext=)-}$\hspace{2cm}
+$\ianc{A,\Gamma\rightarrow \Delta}{B,\Gamma\rightarrow \Delta}{REW(Ext=)+}$\\[.5cm]
+\end{center}
+where $A$ is the result of expanding some equalities in $B$ using extensionality.
+(This does not provide a complete calculus for extensionality without a cut rule.
+So, sometimes cut elimination will fail if these extensionality rules are used.)
+
+The structural rules are:
+
+\begin{center}
+$\ianc{\Gamma\rightarrow \Delta}{\Gamma\rightarrow A,\Delta}{weaken-}$\hspace{2cm}
+$\ianc{\Gamma\rightarrow \Delta}{A,\Gamma\rightarrow \Delta}{weaken+}$\\[.5cm]
+$\ianc{\Gamma\rightarrow A,A,\Delta}{\Gamma\rightarrow A,\Delta}{merge-}$\hspace{2cm}
+$\ianc{A,A,\Gamma\rightarrow \Delta}{A,\Gamma\rightarrow \Delta}{merge+}$\\[.5cm]
+$\ianc{\Gamma\rightarrow\Delta_1,A,\Delta_2}{\Gamma\rightarrow A,\Delta_1,\Delta_2}{focus^n+}$
+where $\Delta_1$ has length $n$.\\[.5cm]
+$\ianc{\Gamma_1,A,\Gamma_2\rightarrow\Delta}{A,\Gamma_1,\Gamma_2\rightarrow\Delta}{focus^n+}$
+where $\Gamma_1$ has length $n$.\\[.5cm]
+\end{center}
+
+Finally, we have an initial rule and a cut rule:
+
+\begin{center}
+$\ianc{}{A\rightarrow A}{init}$\hspace{2cm}
+$\ibnc{\Gamma_1\rightarrow A,\Delta_1}{A,\Gamma_2\rightarrow \Delta_2}{\Gamma_1,\Gamma_2\rightarrow \Delta_1,\Delta_2}{cut}$\\[.5cm]
+\end{center}
+
+In all these rules, it is important that the formulas
+appear in the positions as indicated in the diagrams above.
+The focus rule gives us the only way to reorder
+the formulas of the sequent.  This forces us to do some
+tedious shuffling in some places, but makes it easier to
+perform recursion on the sequent derivations, since we
+have a very good idea of how the rule application looks.
+
+The sequent calculus is 
+similar to the ftree representation of expansion trees (see section~\ref{ftrees}),
+and the file includes a function
+\indexfunction{cutfree-ftree-seq-to-ftrees}
+which translates a cut-free sequent calculus derivation of
+$\Gamma\rightarrow\Delta$
+to two lists of ftrees
+$\Gamma^*$ and $\Delta^*$,
+and a list of connections $M$.
+For each wff $A\in\Gamma$, there is a
+correponding positive ftree $F\in\Gamma^*$ with shallow 
+formula $A$.
+For each wff $A\in\Delta$, there is a
+correponding negative ftree $F\in\Delta^*$ with shallow 
+formula $A$.  The list of connections $M$ gives a complete
+mating for the ftree
+$\bigwedge(\Gamma^*) \limplies \bigvee(\Delta^*)$.
+In particular, a cut-free sequent calculus derivation of
+$\rightarrow A$ will be translated into a negative ftree
+with shallow formula $A$ and a complete mating $M$.
+
+Regarding this translation to ftrees,
+the names of the logical and rewrite rules
+correspond to the construction of the corresponding ftree.
+The $weaken$ and $focus$ structural rules are relatively easy to handle.
+Applications of $merge$ require the use of a $merge$ algorithm for ftrees
+(in the file \indexfile{ftrees}).
+The $init$ rule corresponds to two mated nodes.
+And, of course, we cannot translate an application of $cut$.
+
+\subsubsection{Translating from Natural Deduction to Sequent Calculus}
+
+In the sequent calculus described above, the order and multiplicity
+of formulas is important.  However, in describing the algorithm below,
+we are more interested in sets of formulas.  So, let us use the
+notation $Set(\Gamma)$ to denote the set of fomulas on the list $\Gamma$.
+
+Normal natural deductions are converted into the sequent calculus 
+via two mutually recursive algorithms:
+
+\begin{enumerate}
+\item  \indexfunction{natree-to-ftree-seq-normal}:
+Suppose we are given a line $\Gamma \vdash C\Uparrow$.
+Then we can compute a derivation of a sequent
+$\Gamma_1\rightarrow C$ where $Set(\Gamma_1)\subseteq Set(\Gamma)$.
+\item  \indexfunction{natree-to-ftree-seq-extraction}:
+Given a line $\Gamma \vdash B\downarrow$
+and a derivation of a sequent $\Gamma_1 \rightarrow C$
+where $Set(\Gamma_1) \subseteq Set(\Gamma)\cup \{B\}$.
+Then we can compute a derivation of
+a sequent
+$\Gamma_2\rightarrow C$
+where $Set(\Gamma_2) \subseteq Set(\Gamma)$.
+(That is, we have eliminated occurrences of $B$ on the
+positive side.)
+\end{enumerate}
+
+We can show a few cases to demonstrate how the algorithms
+work.
+
+{\bf Case:}
+Coercion.
+$$ \ianc{C\downarrow}{C\Uparrow}{coercion}$$
+with hypotheses $\Gamma$.
+We need a derivation of some $\Gamma_2\rightarrow C$.
+We can apply the second induction hypothesis
+to the initial sequent $C\rightarrow C$ (with
+$\Gamma_1$ empty)
+to obtain a derivation of such a sequent $\Gamma_2\rightarrow C$.
+
+{\bf Case:}  Hyp.  Suppose the line is
+$$\Gamma \vdash B$$
+where $B$ is in $\Gamma$,
+and suppose we are given a derivation of a sequent
+$\Gamma_1 \rightarrow C$ with
+$Set(\Gamma_1)\subseteq Set(\Gamma)\cup \{B\}$.
+Since $B\in\Gamma$, we have
+$Set(\Gamma_1)\subseteq Set(\Gamma)$
+and we are done.
+
+{\bf Case:}  Deduct.  This case is easy, as are most of the ``introduction''
+rules.  Suppose we have
+$$\ianc{\above{\DD}{\Gamma, A\vdash B\Uparrow}}{\Gamma \vdash A\supset B\Uparrow}{Deduct}$$
+By induction we have a derivation of a sequent
+$\Gamma_1\rightarrow B$
+where $Set(\Gamma_1)\subseteq Set(\Gamma)\cup \{A\}$.
+Using the structural rules (see the function \indexfunction{ftree-seq-merge-focus-all-pos})
+we obtain a derivation with $A$ at the front:
+$A,\Gamma_2\rightarrow B$
+where $Set(\Gamma_2) \subseteq Set(\Gamma)$.
+Applying the $\limplies-$ rule, we have a derivation of
+$\Gamma_2\rightarrow A\limplies B$ as desired.
+
+{\bf Case:}  MP.  This case is interesting, because a naive   
+algorithm would be forced to treat this case like a ``cut'' in
+the sequent calculus.  Suppose we have
+$$ \ibnc{\above{\DD}{\Gamma \vdash A \limplies B\downarrow}}{\above\EE{\Gamma \vdash A\Uparrow}}{\Gamma \vdash B\downarrow}{MP}$$
+Since this is an extraction, we must be given a derivation of
+$\DD_1$ a sequent $\Gamma_1\rightarrow C$
+where $Set(\Gamma_1) \subseteq Set(\Gamma)\cup \{B\}$.
+Applying structural rules to $\DD_1$, we have a derivation $\DD_2$
+of a sequent $B,\Gamma_2\rightarrow C$
+with $Set(\Gamma_2)\subseteq Set(\Gamma)$.
+
+The first algorithm applied to $\EE$ gives a derivation of some
+$\Gamma_3\rightarrow A$ where $Set(\Gamma_3)\subseteq Set(\Gamma)$.
+If we apply $\limplies+$ as follows:
+$$\ibnc{\Gamma_3\rightarrow A}{B,\Gamma_2\rightarrow C}{A\limplies B,\Gamma_3,Gamma_2\rightarrow C}{\limplies+}$$
+then we can call the second algorithm on this derivation and $\DD$
+to obtain a derivation of some $\Gamma_4\rightarrow C$
+with $Set(\Gamma_4)\subseteq Set(\Gamma)$.
+
+{\bf Case:}  Backwards Coercion.  
+$$ \ianc{\above{DD}{B\Uparrow}}{B\downarrow}{bcoercion}$$
+with hypotheses $\Gamma$.
+Suppose we are given a derivation of some $\Gamma_1\rightarrow C$
+where $Set(\Gamma_1)\subseteq Set(\Gamma)\cup \{B\}$.
+Using structureal rules we obtain a derivation of a sequent
+$B,\Gamma_2\rightarrow C$ where
+$Set(\Gamma_2)\subseteq Set(\Gamma)$.
+We want to remove $B$ from the positive side.
+Applying the first algorithm to $\DD$, we obtain a
+derivation of a sequent $\Gamma_3\rightarrow B$
+with $Set(\Gamma_3)\subseteq Set(\Gamma)$.
+An application of $cut$ gives us the sequent we desire:
+$$\ibnc{\Gamma_3\rightarrow B}{B,\Gamma_2\rightarrow C}{\Gamma_3,\Gamma_2\rightarrow C}{cut}$$
+
+{\bf Remark:}  We check equality of wff's up to $\alpha$-conversion and negation-normal-form.
+Because we check up to negation-normal-form, applications of $Neg$ and $NNF$ rules can be
+treated the same way as the $Same$ and $AB$ rules.
+
+{\bf Note:}  If \indexflag{NATREE-DEBUG} is set to T, then at each step,
+the code double checks that the derivation is well formed.
+
+After we have a sequent calculus derivation, cut elimination can be
+used to try to remove applications of cut (see section~\ref{ftree-seq-mix-elim}.  If we obtain a cut-free
+derivation, this can be translated into an ftree with a complete mating.
+
+% {\bf Example:}
+% 
+% Consider the following natural deduction proof of
+% $$\forall \,x [ \,P \,x \supset \,P . \,f \,x] \supset . \,P \,a \supset \,P . \,f . \,f \,a$$
+% 
+% {\it Show the proof.}
+% 
+% This is a normal proof, as it can be annotated as follows (without using backward coercion):
+% 
+% {\it Fill in the rest of this example and work through the conversion to an expansion
+% tree proof step by step.}
+
+\subsubsection{Normalization of Proofs}
+
+There is now a \TPS command \indexcommand{NORMALIZE-PROOF}
+that converts a natural deduction proof (or a natural
+deduction proof with asserted lemmas which have natural
+deduction proofs in memory) into a sequent calculus proof
+(with cuts), then uses the cut-elimination algorithm
+to obtain a cut-free proof (assuming termination),
+and finally translates back to natural deduction.
+The resulting natural deduction proof is normal.
+
+ 
+If we decided to normalize natural deduction proofs directly
+(without passing through a sequent calculus), we would
+need to identify
+possible redexes (pairs of rule applications which must use
+backward coercion to be annotated), and show how to reduce these.
+There are many such redexes.  The following is a typical example:
+
+$$ \ianc{\ibnc{\above\DD{A}}{\above\EE{B}}{A \land B\downarrow}{Conj}}{A\downarrow}{Conj} \rightarrow \above\DD{A}$$
+
+In first order logic, one can show that some measure on the proof reduces
+when a redex is reduced, so that the process will terminate with
+a normal proof.  In higher order logic, showing termination is equivalent
+to showing termination of cut-elimination.
+
+Actually carrying this out is a possible future project.  Though
+this is much less important since we now have a cut elimination algorithm
+implemented.
+
+\subsection{Hongwei's Nat-Etree}
+
+This is a brief description of Hongwei's code
+for \indexcommand{NAT-ETREE}.  To use this code,
+set \indexflag{NAT-ETREE-VERSION} to {\bf HX}.
+
+%{\bf Note:  Hongwei wanted this code to work for all natural deductions,
+%whether normal or not.  So, given a natural deduction proof which
+%is not normal, try this one, and you might get lucky.}
+
+\indexfunction{ATTACH-DUP-INFO-TO-NATREE} is the main function, which
+is called recursively on the subproofs of a given natural
+deduction. The goal of \indexfunction{ATTACH-DUP-INFO-TO-NATREE} is to
+construct an expansion tree, with no mating attached,
+corresponding to a given natural deduction. The constructed
+expansion tree contains all the correct duplications done on
+quantifiers and all substitutions done on variables.
+A propositional search will be called on the generated expansion
+tree to recover the mating and generate an expansion proof.
+Then \indexcommand{ETREE-NAT} can produce a natural deduction corresponding
+to the constructed expansion proof.
+
+The following is an oversimplified case.
+
+Given natural deductions N1 and N2 with conclusions
+A and B, respectively, and N derived from N1 and N2
+by conjunction introduction. \indexfunction{ATTACH-DUP-INFO-TO-NATREE}
+called on N generates two recursive calls on N1 and N2,
+and get the expansion proofs corresponding to N1 and N2,
+respectively, with which it constructs an expansion proof
+corresponding to N.
+
+An important feature of \indexfunction{ATTACH-DUP-INFO-TO-NATREE} is that
+it can deal with all natural deductions, with or without
+cuts in them. This is mainly achieved by substitution and
+merge. This essentially corresponds to the idea in Frank
+Pfenning's thesis, though his setting is sequent calculus.
+On the other hand, the implementation differs significantly
+since natural deductions grow in both ways when compared with
+sequent calculus. This is reflected in the code of
+\indexfunction{ATTACH-DUP-INFO-TO-NATREE} which travels through a natural
+deduction twice, from bottom to top and from top to bottom,
+to catch all the information needed to duplicate quantifiers
+correctly.
+
+Overview of the files:
+\begin{itemize} 
+\item \indexfile{hx-natree-top} contains the definition of the data structure,
+some print functions and top commands.
+
+\item \indexfile{hx-natree-duplication} contains the code of \indexfunction{ATTACH-DUP-INFO-TO-NATREE}
+and some auxiliary functions such as \indexfunction{UPWARD-UPDATE-NATREE}. Also many
+functions for constructing expansion trees are defined here.
+
+\item \indexfile{hx-natree-rulep} contains the code for handling \indexfunction{RULEP}. This is done
+by using hash tables to store positive and negative duplication
+information. Then cuts are eliminated by substitution and merge.
+The case in \indexfunction{ATTACH-DUP-INFO-TO-NATREE} which deals with implication
+is a much simplified version of this strategy, and helps understand
+the algorithm.
+
+\item \indexfile{hx-natree-aux} contains the code of merge functions and the ones handling
+rewrite nodes. Presumably there are some bugs in handling rewrites, and
+this can be found in the comments mixed with the code. Also a new version
+of \indexfunction{ETREE-TO-JFORM-REC} is defined here to cope with a modified date structure
+\indexother{ETREE}.
+
+\item \indexfile{hx-natree-cleanup} contains the functions which clean up the expansion
+proofs before they can be used by \indexcommand{ETREE-NAT}. This is temporary crutch,
+and should be replaced by some systematic methods. For instance, one
+could construct brand new expansion proofs according to a constructed
+one rather than modify it to fit the needs of \indexcommand{ETREE-NAT}. This yields
+a better chance to avoid some problems caused by rewrite nodes. 
+
+\item \indexfile{hx-natree-debug} contains some simple debugging facilities such as some
+display function and some modified versions of the main functions in the
+code. A suggested way is to modify the code using these debugging functions
+and trace them. More facilities are needed to eliminate sophisticated bugs.
+\end{itemize}
+
+Selection nodes, not Skolem nodes, are used in the constructed expansion
+trees. The prevents us from setting the \indexflag{MIN-QUANT-ETREE} flag to simplify a
+proof. It is a little daunting task to modify the code for \indexflag{MIN-QUANT-ETREE},
+but the benefits are also clear: both \indexcommand{NAT-ETREE} and non-pfd procedures can
+take advantage of the modification.
+
+\subsection{The Original Nat-Etree}
+
+{\bf Note: What follows is a description of how NAT-ETREE used to work.}
+To use this code set \indexflag{NAT-ETREE-VERSION} to {\bf OLD}.
+
+Legend has it that the code was written by Dan Nesmith and
+influenced by the ideas of Frank Pfenning.  Frank's thesis
+contains ideas for translating from a cut-free sequent calculus
+to expansion tree proofs.
+
+\begin{enumerate}
+\item Important files: nat-etr (defines functions which are independent
+of the particular rules of inference used); ml-nat-etr1 and
+ml-nat-etr2 (which define translations for the rules in the standard TPS).
+
+\item There are three global variables which are used throughout the
+translation process: DPROOF, which is the nproof to
+be translated; LINE-NODE-LIST, which is an association list which
+associates each line of the proof to the node which represents it in
+the expansion tree which is being constructed; MATE-LIST, which is a
+list of connections in the expansion proof which is being constructed.
+
+\item At the beginning of the translation process, the current proof is
+copied because modifications will be made to it.  (It is restored when
+the translation is complete.)  The copy is stored in the variable
+DPROOF.  Next the function SAME-IFY is called.  This attempts to undo
+the effects of the CLEANUP function, and to make explicit the
+"connections" in the proof.  This is done because, in an nproof, 
+a single line can represent more than one node in an
+expansion proof.  SAME-IFY tries to add lines to the proof in such a
+way that each line corresponds to exactly one expansion tree node.  
+
+\item After the proof has been massaged by SAME-IFY, the initial root
+node of the expansion tree is constructed.  This node is merely a
+leaf whose shallow formula is the assertion of the last line of the
+nproof.  LINE-NODE-LIST is initialized to contain
+just the association of this leaf node with the last line of the
+proof, and MATE-LIST is set to nil.
+
+\item Next the function NAT-XLATE is called on the last line of the
+proof.  NAT-XLATE, depending on the line's justification, calls
+auxiliary functions which carry out the translation, and which usually
+call NAT-XLATE recursively to translate lines by which the current
+line is justified.  When the justification "Same as" is found, this
+indicates that the node associated with this line and the node which
+is associated with the line it is the same as should be mated in the
+expansion proof.
+
+\item Example:  Suppose we have the following nproof:
+\begin{verbatim}
+(1) 1  !  A            Hyp
+(2)    !  A implies A  Deduct: 1
+
+SAME-IFY will construct the new proof:
+
+(1) 1  !  A            Hyp
+(2) 1  !  A            Same as: 1 
+(3)    !  A implies A  Deduct: 2
+\end{verbatim}
+
+Then a leaf node LEAF0 is constructed with shallow formula 
+"A implies A", and LINE-NODE-LIST is set to ((3 . LEAF0)). 
+NAT-XLATE is called, and because line 3 is justified using the
+deduction rule, LEAF0 is deepened to an implication node, say IMP0,
+with children LEAF1 and LEAF2.  Then LINE-NODE-LIST is updated to be
+((1 . LEAF1) (2 . LEAF2) (3 . IMP0)), and NAT-XLATE is called
+recursively on lines 1 and 2.  Since line 1 is justified by "Hyp",
+NAT-XLATE does nothing.  Since line 2 is justified by "Same as: 1",
+NAT-XLATE updates the value of MATING-LIST to (("LEAF1" . "LEAF2")), a
+connection consisting of the nodes which represent lines 1 and 2.
+
+\item In an nproof that is not cut-free, there will exist lines which do
+not arise from deepening the expansion tree which represents the last
+line of the nproof.  Currently, NAT-XLATE will get very confused and
+probably blow up.  The justification "RuleP" causes other
+difficulties, because it generally requires that several connections
+be made, involving lines whose nodes haven't been deepened to the
+literal level yet.  The function XLATE-RULEP attempts to do this, but
+does not always succeed.  This is true because RULEP can also be used
+to justify a line whose node is actually a child of the justifying
+line, e.g.: 
+\begin{verbatim}
+(45)  ! A and B 
+(46)  ! A        RuleP: 45
+\end{verbatim}
+Though XLATE-RULEP can handle this situation, it cannot handle more
+complex ones such as:
+\begin{verbatim}
+(16)  ! A
+(17)  ! A implies B
+(18)  ! B            RuleP: 16 17
+\end{verbatim}
+Ideally, SAME-IFY would identify these situations before the
+translation process is begun, but it does not.
+\end{enumerate}
+

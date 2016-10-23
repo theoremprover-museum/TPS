@@ -1,0 +1,140 @@
+(:name ABSTRACT
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(A) EXISTS w(R).~CONCRETE(ORA) x(A) w(R)"
+:needed-objects   (CONCRETE)
+:mhelp "'ABSTRACT' from Zalta's theory"
+:other-attributes ((FACE A !) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "OA"))
+:other-remarks "
+")
+
+
+(:name CONCRETE
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "Primitive 1-ary relation for Edward Zalta's theory."
+:other-attributes ((FACE E !) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPELIST ("R" "A")) (TYPE "ORA"))
+:other-remarks "
+")
+
+
+(:name ENCODES
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "'ENCODES' relation from Zalta's theory"
+:other-attributes ((FACE | |) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPELIST ("R" "A")) (TYPE "OR(OA)A"))
+:other-remarks "
+")
+
+
+(:name ORDINARY
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(A) EXISTS w(R) CONCRETE(ORA) x(A) w(R)"
+:needed-objects   (CONCRETE)
+:mhelp "'ORDINARY' from Zalta's theory"
+:other-attributes ((FACE O !) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "OA"))
+:other-remarks "
+")
+
+
+(:name POINTMODELS
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(A) LAMBDA p(O) LAMBDA w(R) ENCODES(OR(OA)A) x(A) [LAMBDA y(A) p(O)] w(R)"
+:needed-objects   (ENCODES)
+:mhelp "x(A) is true in p(O) at point w(R)"
+:other-attributes ((FACE VALID) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (INFIX 10) (TYPELIST ("A" "R")) (TYPE "OROA"))
+:other-remarks "
+")
+
+
+(:name TRUE-AT
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "Relation between propositions and points in Zalta's theory"
+:other-attributes ((TYPELIST "R") (TYPE "ORO"))
+:other-remarks "
+")
+
+
+(:name TRUE-IN
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "Relation between individuals and propositions in Zalta's theory"
+:other-attributes ((FACE VALID) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (INFIX 10) (TYPELIST "A") (TYPE "OOA"))
+:other-remarks "
+")
+
+
+(:name ZWORLD
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(A) EXISTS w(R) FORALL p(O).x(A) TRUE-IN(OOA) p(O) EQUIV TRUE-AT(ORO) p(O) w(R)"
+:needed-objects   (TRUE-IN TRUE-AT)
+:mhelp "Defn of World from Zalta's theory"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OA"))
+:other-remarks "
+")
+
+
+(:name ZMAXIMAL
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(A) FORALL p(O).x(A) TRUE-IN(OOA) p(O) OR x(A) TRUE-IN(OOA).~p(O)"
+:needed-objects   (TRUE-IN)
+:mhelp "Defn of Maximal from Zalta's theory."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OA"))
+:other-remarks "
+")
+
+
+(:name ZTHMWM
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, March  3, 2004 at 21:44:00."
+:description "FORALL w(R) FORALL p(O) [TRUE-AT(ORO) p(O) w(R) OR TRUE-AT(ORO) [~p(O)] w(R)] IMPLIES FORALL x(I).ZWORLD(OI) x(I) IMPLIES ZMAXIMAL(OI) x(I)"
+:needed-objects   (TRUE-AT ZWORLD ZMAXIMAL)
+:mhelp "Every world is maximal - Zalta's theory"
+:other-attributes NIL
+:other-remarks "
+")
+
+

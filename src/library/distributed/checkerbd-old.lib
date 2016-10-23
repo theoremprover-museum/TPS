@@ -1,0 +1,200 @@
+(:name L2000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL k(OII) FORALL z(I) FORALL w(I).CKB-FIN k(OII) IMPLIES CKB-FIN.CKB-AP(OII(OII)II) z(I) w(I) k(OII)"
+:needed-objects   (CKB-FIN CKB-AP)
+:mhelp "Lemma in proof of TOUGHNUT2"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB-ODD
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(I).x(I) =(OII) 1(I) OR.x(I) =(OII) s(II) [s(II) 1(I)] OR x(I) =(OII) s(II) [s(II).s(II).s(II) 1(I)] OR x(I) =(OII) s(II).s(II).s(II).s(II).s(II).s(II) 1(I)"
+:needed-objects   NIL
+:mhelp "The set of odd numbers for TOUGHNUT2"
+:other-attributes ((FACE ODD) (PRINTNOTYPE T) (TYPE "OI"))
+:other-remarks "
+")
+
+
+(:name CKB-EVEN
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(I).x(I) =(OII) s(II) 1(I) OR.x(I) =(OII) s(II) [s(II).s(II) 1(I)] OR x(I) =(OII) s(II) [s(II).s(II).s(II).s(II) 1(I)] OR x(I) =(OII) s(II).s(II).s(II).s(II).s(II).s(II).s(II) 1(I)"
+:needed-objects   NIL
+:mhelp "The set of even numbers for TOUGHNUT2"
+:other-attributes ((FACE EVEN) (PRINTNOTYPE T) (TYPE "OI"))
+:other-remarks "
+")
+
+
+(:name CKB-BLACK
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA u(I) LAMBDA v(I).CKB-ODD u(I) AND CKB-ODD v(I) OR CKB-EVEN u(I) AND CKB-EVEN v(I)"
+:needed-objects   (CKB-ODD CKB-EVEN)
+:mhelp "The set of black squares for TOUGHNUT2"
+:other-attributes ((FACE BLACK) (PRINTNOTYPE T) (TYPE "OII"))
+:other-remarks "
+")
+
+
+(:name L7000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "CKB-FIN CKB-BLACK"
+:needed-objects   (CKB-FIN CKB-BLACK)
+:mhelp "Lemma in proof of TOUGHNUT2"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name L3000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "CKB-FIN.LAMBDA u(I) LAMBDA v(I).u(I) =(OII) 1(I) AND v(I) =(OII) 1(I)"
+:needed-objects   (CKB-FIN)
+:mhelp "Lemma in proof of TOUGHNUT2"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB-H
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(I) LAMBDA y(I) LAMBDA u(I) LAMBDA v(I).CKB-BLACK x(I) y(I) AND.g(III) [s(II).s(II) x(I)] [s(II) y(I)] =(OII) 1(I) AND u(I) =(OII) s(II) [s(II).s(II) x(I)] AND v(I) =(OII) s(II) y(I) OR g(III) [s(II).s(II) x(I)] [s(II) y(I)] =(OII) 2(I) AND u(I) =(OII) s(II) [s(II) x(I)] AND v(I) =(OII) s(II) [s(II) y(I)] OR g(III) [s(II).s(II) x(I)] [s(II) y(I)] =(OII) 3(I) AND u(I) =(OII) s(II) x(I) AND v(I) =(OII) s(II) y(I) OR g(III) [s(II).s(II) x(I)] [s(II) y(I)] =(OII) 4(I) AND u(I) =(OII) s(II) [s(II) x(I)] AND v(I) =(OII) y(I)"
+:needed-objects   (CKB-BLACK)
+:mhelp "Mapping for the proof of TOUGHNUT2.
+CKB-H maps the black square <x,y> to the black square <u,v> which is
+covered by the same domino as the white square <ssx,sy>"
+:other-attributes ((FACE H) (TYPE "OIIII"))
+:other-remarks "
+")
+
+
+(:name L2500
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "CKB-INJ CKB-H(OIIII)"
+:needed-objects   (CKB-INJ CKB-H)
+:mhelp "Lemma in proof of TOUGHNUT2"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name L2400
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "CKB-H(OIIII) CKB-XPL CKB-BLACK"
+:needed-objects   (CKB-H CKB-XPL CKB-BLACK)
+:mhelp "Lemma in proof of TOUGHNUT2"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB-L9000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I).CKB-ODD x(I) IMPLIES CKB-ODD [s(II).s(II) x(I)] AND CKB-EVEN.S(II) X(I)"
+:needed-objects   (CKB-ODD CKB-EVEN)
+:mhelp "Lemma in proof of TOUGHNUT2"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB-L10000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I).CKB-EVEN x(I) IMPLIES CKB-EVEN [s(II).s(II) x(I)] AND CKB-ODD.S(II) X(I)"
+:needed-objects   (CKB-ODD CKB-EVEN)
+:mhelp "Lemma in proof of TOUGHNUT2"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB-L11000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL u(I) FORALL v(I).CKB-BLACK u(I) v(I) IMPLIES CKB-BLACK [s(II) u(I)] [s(II) v(I)] AND CKB-BLACK u(I) [s(II).s(II) v(I)] AND CKB-BLACK [s(II).s(II) u(I)] v(I)"
+:needed-objects   (CKB-BLACK)
+:mhelp "Lemma in proof of TOUGHNUT2"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB-AP
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(B) LAMBDA y(A) LAMBDA k(OAB) LAMBDA u(B) LAMBDA v(A).k(OAB) u(B) v(A) OR u(B) =(OBB) x(B) AND v(A) =(OAA) y(A)"
+:needed-objects   NIL
+:mhelp "[CKB-AP x y k] is the result of adding the ordered 
+pair <x,y> to the set k of ordered pairs."
+:other-attributes ((FACE +) (PRINTNOTYPE T) (TYPELIST ("A" "B")) (TYPE "OAB(OAB)AB"))
+:other-remarks "
+")
+
+
+(:name CKB-SB
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(B) LAMBDA y(A) LAMBDA k(OAB) LAMBDA u(B) LAMBDA v(A).k(OAB) u(B) v(A) AND ~.u(B) =(OBB) x(B) AND v(A) =(OAA) y(A)"
+:needed-objects   NIL
+:mhelp "[CKB-SP x y k] is the result of deleting the ordered
+pair <x,y> from  the set k of ordered pairs."
+:other-attributes ((FACE -) (PRINTNOTYPE T) (TYPELIST ("A" "B")) (TYPE "OAB(OAB)AB"))
+:other-remarks "
+")
+
+

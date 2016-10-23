@@ -1,0 +1,56 @@
+(:name GEN-HOM
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(AB) FORALL x(B) FORALL y(B).f(AB) [*(BBB) x(B) y(B)] =(OAA) *(AAA) [f(AB) x(B)].f(AB) y(B)"
+:needed-objects   NIL
+:mhelp "generic homomorphism (* is left undefined)"
+:other-attributes ((TYPELIST ("A" "B")) (TYPE "O(AB)") (PRINTNOTYPE T))
+:other-remarks "
+")
+
+
+(:name THM270-DPAIRS
+:type DPAIRSET
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description (
+("q^11(OC).H^3(CB).F^3(BA) x^25(A)"  .  "~q^9(OB).F^3(BA).*(AAA) x^27(A) y^16(A)")
+("q^11(OC).G^3(CA) x^25(A)"  .  "q^12(OC).G^3(CA).*(AAA) x^29(A) y^19(A)")
+("q^13(OC).H^3(CB).F^3(BA) x^32(A)"  .  "q^14(OC).G^3(CA) x^31(A)")
+("q^12(OC).*(CCC) [G^3(CA) x^29(A)].G^3(CA) y^19(A)"  .  "~q^13(OC).G^3(CA) x^32(A)")
+("q^14(OC).H^3(CB).F^3(BA) x^31(A)"  .  "~q^15(OC).H^3(CB).F^3(BA) x^30(A)")
+("q^15(OC).G^3(CA) x^30(A)"  .  "q^11(OB).F^3(BA).X^3(AB) y^13(B)")
+("q^8(OB).F^3(BA).X^3(AB) y^11(B)"  .  "q^10(OB) y^14(B)")
+("q^8(OB) y^11(B)"  .  "~Q^9(OC).H^3(CB).*(BBB) X^3(B) Y^9(B)")
+("q^10(OB).F^3(BA).X^3(AB) y^14(B)"  .  "q^9(OB).*(BBB) [F^3(BA) x^27(A)].F^3(BA) y^16(A)")
+("q^11(OB) y^13(B)"  .  "Q^9(OC).*(CCC) [H^3(CB) X^3(B)].H^3(CB) Y^9(B)"))
+:needed-objects   NIL
+:mhelp "the correct dpairs for thm270. Requires unification depth of 48, M-S-V of 7."
+:other-attributes ((VARIABLE-LIST (|q^11<OB>| |q^10<OB>| |y^14<B>| |y^13<B>| |q^15<OC>| |q^14<OC>| |q^13<OC>| |x^32<A>| |x^31<A>| |x^30<A>| |q^12<OC>| |y^19<A>| |x^29<A>| |q^9<OB>| |y^16<A>| |x^27<A>| |q^8<OB>| |y^11<B>| |q^11<OC>| |x^25<A>|)))
+:other-remarks "
+")
+
+
+(:name THM270-INST
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL f(BA) FORALL g(CA) FORALL h(CB).FORALL x(A) FORALL q(OC) [q(OC) [h(CB).f(BA) x(A)] IMPLIES q(OC).g(CA) x(A)] AND FORALL y(B) EXISTS x(A) FORALL q(OB) [q(OB) [f(BA) x(A)] IMPLIES q(OB) y(B)] AND FORALL x(A) FORALL y(A) FORALL q(OB) [q(OB) [f(BA).*(AAA) x(A) y(A)] IMPLIES q(OB).*(BBB) [f(BA) x(A)].f(BA) y(A)] AND FORALL x(A) FORALL y(A) FORALL q(OC) [q(OC) [g(CA).*(AAA) x(A) y(A)] IMPLIES q(OC).*(CCC) [g(CA) x(A)].g(CA) y(A)] IMPLIES FORALL x(B) FORALL y(B) FORALL q(OC).q(OC) [h(CB).*(BBB) x(B) y(B)] IMPLIES q(OC).*(CCC) [h(CB) x(B)].h(CB) y(B)"
+:needed-objects   NIL
+:mhelp "THM270 with all the equalities and definitions instantiated.
+Correct mating: duplicate [L14 L15] twice and [L19 L20] three
+times, then mate: (L35 L20.3) (L34 L20.1) (L30 L15.1) (L29 L15)
+(L24 L14) (L25 L19.2) (L19.3 L20) (L20.2 L19.1) (L19 L14.2)
+(L15.2 L14.1). Needs lots of unification: see THM270-DPAIRS."
+:other-attributes NIL
+:other-remarks "
+")
+
+

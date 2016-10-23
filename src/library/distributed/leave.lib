@@ -1,0 +1,14 @@
+(:name PELL26-5
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS x(I) P(OI) x(I) IMPLIES EXISTS x(I) P(OI) x(I) IMPLIES FORALL x(I).P(OI) x(I) IMPLIES S(OI) x(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

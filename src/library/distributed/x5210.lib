@@ -1,0 +1,14 @@
+(:name X5210
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Friday, November 13, 1998 at 17:49:17."
+:description "[=(OAA) x(A)] =(O(OA)(OA)) LAMBDA z(A) EXISTS y(A).y(A) =(OAA) x(A) AND z(A) =(OAA) y(A)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

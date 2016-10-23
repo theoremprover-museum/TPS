@@ -1,0 +1,270 @@
+\chapter{Rewrite Rules and Theories}
+\label{rewrite}
+
+{\TPS} allows the user to define rewrite rules, and to apply them in interactive and automatic proofs.
+
+Rewrite rules may be polymorphic and/or bidirectional; there may be a function attached to test for
+the applicability of the rule (the default is `always applicable'), and there may also be another function
+to be applied after the rule is applied - for example, lambda-normalization
+(the default is that there is no such function).
+
+Bidirectional rules are considered to `normally' work left-to-right, but
+the user will be prompted if there is any ambiguity. (So, for example,
+\indexcommand{APPLY-RRULE} and \indexcommand{UNAPPLY-RRULE} are not
+distinguishable for a bidirectional rule, unless it has an associated function.)
+
+Theories are basically collections of rewrite rules and gwffs (and possibly some other previously defined subtheories).
+They have %only two uses in {\TPS}.
+several uses in {\TPS}.
+%Firstly,
+They can be saved into the library, so the user can define a theory containing all of
+the required axioms and rewrite rules and then load it with a single FETCH command.
+%Secondly,
+The command \indexcommand{USE-THEORY} activates all of the rewrite rules of the
+given theory and deactivates all other rewrite rules in memory, allowing the user to switch
+easily between different theories.
+One can include the currently active rewrite rules as additional premises into
+proofs by setting the flag \indexflag{ASSERT-RRULES} (see
+\ref{RRulesInAutoProofs}).
+Within the rewriting top level (see Section \ref{RewritingTopLevel}), theories
+are used to describe rewrite relations. Theories designed solely for use within
+the rewriting top level will typically contain no axioms.
+When a theory is loaded from the library, {\TPS} also creates an abbreviation
+which is the conjunction of the axioms, the universal
+closure of the rewrite rules and the abbreviations representing any subtheories
+given by the user. This allows the user to have sentences like
+`PA IMPLIES [[ONE PLUS ONE] = TWO]', if PA is a theory.
+
+%The top-level commands for manipulating rewrite rules are as follows:
+
+\section{Top-Level Commands for Manipulating Rewrite Rules}
+\begin{description}
+\item[] \indexcommand{FETCH} gets an rrule from the library.
+
+\item[] \indexcommand{DELETE-RRULE} deletes an rrule from {\TPS}.
+
+\item[] \indexcommand{LIST-RRULES} lists the rrules currently in memory.
+
+\item[] \indexcommand{MAKE-ABBREV-RRULE} creates an rrule from an abbreviation (eg EQUIVS, above).
+
+\item[] \indexcommand{MAKE-INVERSE-RRULE} creates a new rule which is the inverse of an old rule.
+
+\item[] \indexcommand{MAKE-THEORY} creates a new theory, which can be saved in the library.
+
+\item[] \indexcommand{PERMUTE-RRULES} reorders the list of rrules in {\TPS}. (By default, {\TPS} will try to apply the
+active rules in the order in which they are listed.)
+
+\item[] \indexcommand{REWRITE-SUPP1} does one step of rewriting in an ND proof (see APPLY-ANY-RRULE).
+
+\item[] \indexcommand{REWRITE-SUPP*} does many steps in an ND proof (see APPLY-ANY-RRULE*).
+
+\item[] \indexcommand{UNREWRITE-PLAN*} and \indexcommand{UNREWRITE-PLAN1} are the same but in the other direction.
+ Because the last four can get confusing, we also have:
+
+\item[] \indexcommand{SIMPLIFY-PLAN}, \indexcommand{SIMPLIFY-PLAN*}, \indexcommand{SIMPLIFY-SUPP} and \indexcommand{SIMPLIFY-SUPP*}
+ which attempt to simplify a plan or support line assuming that the left-to-right
+  direction is `simplification', and that the higher-numbered lines should
+  always be rewrite instances of the lower-numbered lines.
+  Now that we have bidirectional rules, this makes sense.
+  All of the ND commands use active rules only. All rules are active when
+  first loaded/defined, and remain active until deactivated by the user.
+
+\item[] \indexcommand{ACTIVATE-RULES} and \indexcommand{DEACTIVATE-RULES} allow you to turn rules on and off.
+
+\item[] \indexcommand{USE-THEORY} activates all the rewrite rules in the given theory and deactivates
+  all other rules. If the theory is unknown, {\TPS} will attempt to load it from the library.
+
+\item[] \indexcommand{USE-RRULES}, and its associated wffop \indexother{INSTANCE-OF-REWRITING}, allow you to deduce
+ any wff B(O) from a wff A(O) provided that A rewrites to B *without* using any
+ overlapping (nested) rewrite rules. In particular, you can generate one wff from
+ the other in the editor, rewriting only those parts you want to rewrite.
+\end{description}
+
+%There are also a number of editor operations dealing with rewrite rules:
+
+\section{Editor Operations Dealing with Rewrite Rules}
+\begin{description}
+\item[] \indexcommand{ARR} is the editor command which applies the first applicable rrule.
+
+\item[] \indexcommand{ARR*} does ARR until it terminates.
+  (both of the above use active rules only)
+
+\item[] \indexcommand{ARR1} applies a particular rrule once.
+
+\item[] \indexcommand{ARR1*} applies the same rrule until it terminates.
+  (both of the above can use either active or inactive rules).
+
+\item[] \indexcommand{MAKE-RRULE} makes an rrule whose lhs is the current edwff.
+
+\item[] \indexcommand{UNARR}, \indexcommand{UNARR*}, \indexcommand{UNARR1}, \indexcommand{UNARR1*} are the
+  editor commands which apply rrules in the reverse direction.
+\end{description}
+%
+%An example of how to use these commands will be given later.
+
+\section{An Example of Rewrite Rules in Interactive Use}
+
+\begin{tpsexample}
+<lib25>fetch theo2
+TYPE (LIB-ARGTYPE-OR-NIL): argtype or nil [NIL]>
+THEO2
+{\it We retrieve the theory THEO2 from the library.}
+<lib26>help theo2
+THEO2 is a theory and a logical abbreviation.
+     -----
+As a theory:
+THEO2 is an extension of (THEO1)
+Rewrite rules are: (ONE)
+     -----
+As a logical abbreviation:
+
+THEO1 \(\and\) \(\one\) = SUCC\(\sb{\greeks\greeks}\) ZERO\(\sb{\greeks}\)
+{\it THEO2 contains THEO1 as a subtheory; let's look at that.}
+<lib27>help theo1
+THEO1 is a theory and a logical abbreviation.
+     -----
+As a theory:
+theory of arithmetic, sort of
+Rewrite rules are: (ADD-A ADD-B)
+     -----
+As a logical abbreviation:
+theory of arithmetic, sort of
+\(\forall\)x\(\sb{\greeks}\) [x + ZERO\(\sb{\greeks}\) = x] \(\and\) \(\forall\)y\(\sb{\greeks}\) \(\forall\)x.x + SUCC\(\sb{\greeks\greeks}\) y = SUCC.x + y
+{\it THEO1 is the usual theory of ZERO, SUCC and +}
+<lib28>leave
+<29>list-rrules
+Currently defined rewrites are: (ONE ADD-B ADD-A)
+These are defined as follows:
+ONE : \(\one\) <--> SUCC\(\sb{\greeks\greeks}\) ZERO\(\sb{\greeks}\)
+ADD-B : x\(\sb{\greeks}\) + SUCC\(\sb{\greeks\greeks}\) y\(\sb{\greeks}\) <--> SUCC\(\sb{\greeks\greeks}\).x\(\sb{\greeks}\) + y\(\sb{\greeks}\)
+ADD-A : x\(\sb{\greeks}\) + ZERO\(\sb{\greeks}\) <--> x\(\sb{\greeks}\)
+
+Of these, (ONE ADD-B ADD-A) are active.
+{\it We see that there are now three rewrite rules, all active and all bidirectional.}
+<30>ed sum1
+<Ed31>p
+SUCC\(\sb{\greeks\greeks}\) ZERO\(\sb{\greeks}\) + ZERO +.SUCC [SUCC.SUCC ZERO] + SUCC [SUCC.SUCC ZERO] + ZERO
+{\it Now let's try to reduce this expression.}
+<Ed32>arr*
+Apply bidirectional rules in the forward direction? [Yes]>
+SUCC\(\sb{\greeks\greeks}\).SUCC.SUCC.SUCC.SUCC.SUCC.SUCC ZERO\(\sb{\greeks}\)
+{\it That was perhaps a little quick; let's do it again more slowly.}
+<Ed33>sub sum1
+SUCC\(\sb{\greeks\greeks}\) ZERO\(\sb{\greeks}\) + ZERO +.SUCC [SUCC.SUCC ZERO] + SUCC [SUCC.SUCC ZERO] + ZERO
+<Ed34>arr
+Apply bidirectional rules in the forward direction? [Yes]>
+SUCC\(\sb{\greeks\greeks}\) ZERO\(\sb{\greeks}\) + ZERO +.SUCC [SUCC [SUCC.SUCC ZERO] + SUCC.SUCC ZERO] + ZERO
+{\it Here we took the first applicable rewrite rule.}
+<Ed35>arr1*
+RULE (SYMBOL): name of rule [No Default]>add-b
+Apply rule in the forward direction? [Yes]>
+SUCC\(\sb{\greeks\greeks}\) ZERO\(\sb{\greeks}\) + ZERO +.SUCC [SUCC.SUCC.SUCC [SUCC.SUCC ZERO] + ZERO] + ZERO
+{\it Then we apply ADD-B as much as possible.}
+<Ed36>arr1*
+RULE (SYMBOL): name of rule [No Default]>add-a
+Apply rule in the forward direction? [Yes]>
+SUCC\(\sb{\greeks\greeks}\) ZERO\(\sb{\greeks}\) + SUCC.SUCC.SUCC.SUCC.SUCC.SUCC ZERO
+{\it Then ADD-A...}
+<Ed37>arr1*
+RULE (SYMBOL): name of rule [No Default]>add-b
+Apply rule in the forward direction? [Yes]>
+SUCC\(\sb{\greeks\greeks}\).SUCC.SUCC.SUCC.SUCC.SUCC.SUCC ZERO\(\sb{\greeks}\) + ZERO
+{\it Then ADD-B, and clearly one more ADD-A would do it}
+<Ed38>arr1*
+RULE (SYMBOL): name of rule [No Default]>ONE
+Apply rule in the forward direction? [Yes]>no
+SUCC\(\sb{\greeks\greeks}\).SUCC.SUCC.SUCC.SUCC.SUCC.\(\one\) + ZERO\(\sb{\greeks}\)
+{\it ...but instead we opt to apply ONE from right to left.}
+<Ed39>ok
+<40>prove sum3
+SUM3 is not a known gwff. Search for it in library? [Yes]>
+PREFIX (SYMBOL): Name of the Proof [No Default]>sum3
+NUM (LINE): Line Number for Theorem [100]>
+(100)  \(\assert\)   \(\one\) + \(\one\) + [ZERO\(\sb{\greeks}\) + SUCC\(\sb{\greeks\greeks}\) \(\one\)] + SUCC [ZERO + \(\one\)]
+          = SUCC .SUCC .SUCC .SUCC .SUCC .SUCC ZERO & PLAN1
+{\it Now let's try to prove a theorem with these rewrite rules.}
+<41>simplify-plan*
+P2 (LINE): Line after rewriting (higher-numbered) [100]>
+P1 (LINE): Line before rewriting (lower-numbered) [99]>
+(99)   \(\assert\)   SUCC\(\sb{\greeks\greeks}\) [SUCC .SUCC .SUCC .SUCC .SUCC ZERO\(\sb{\greeks}\)]
+          = SUCC .SUCC .SUCC .SUCC .SUCC .SUCC ZERO & PLAN2
+{\it All we need do now is ASSERT REFL=. Instead, we'll delete this line and prove it more slowly.}
+<42>delete 99
+<43>simplify-plan
+P2 (LINE): Line after rewriting (higher-numbered) [100]>
+P1 (LINE): Line before rewriting (lower-numbered) [99]>
+(99)   \(\assert\)   SUCC\(\sb{\greeks\greeks}\) ZERO\(\sb{\greeks}\) + \(\one\) + [ZERO + SUCC \(\one\)] + SUCC [ZERO + \(\one\)]
+          = SUCC .SUCC .SUCC .SUCC .SUCC .SUCC ZERO & PLAN4
+<44>simplify-plan
+P2 (LINE): Line after rewriting (higher-numbered) [99]>
+P1 (LINE): Line before rewriting (lower-numbered) [98]>
+(98)   \(\assert\)   SUCC\(\sb{\greeks\greeks}\) ZERO\(\sb{\greeks}\) + SUCC ZERO + [ZERO + SUCC \(\one\)] + SUCC [ZERO + \(\one\)]
+          = SUCC .SUCC .SUCC .SUCC .SUCC .SUCC ZERO & PLAN5
+{\it We could continue in this way, or we can try restricting the range of rewrite rules to be applied, as follows:}
+<45>deactivate-rules
+RLIST (RRULELIST): Rules to deactivate [(ONE ADD-B ADD-A)]>ADD-B ADD-A
+{\it The only rule left to apply is now ONE.}
+<46>simplify-plan*
+P2 (LINE): Line after rewriting (higher-numbered) [98]>
+P1 (LINE): Line before rewriting (lower-numbered) [97]>
+(97)   \(\assert\)     SUCC\(\sb{\greeks\greeks}\) ZERO\(\sb{\greeks}\) + SUCC ZERO + [ZERO + SUCC .SUCC ZERO]
+            + SUCC [ZERO + SUCC ZERO]
+          = SUCC .SUCC .SUCC .SUCC .SUCC .SUCC ZERO & PLAN6
+{\it Every instance if ONE is now rewritten to SUCC ZERO}
+<47>activate-rules
+RLIST (RRULELIST): Rules to activate [(ONE ADD-B ADD-A)]>ADD-B
+{\it We reactivate ADD-B, which is the rule taking (x+(SUCC y)) to SUCC(x+y).}
+<48>simplify-plan*
+P2 (LINE): Line after rewriting (higher-numbered) [97]>
+P1 (LINE): Line before rewriting (lower-numbered) [96]>
+(96)   \(\assert\)   SUCC\(\sb{\greeks\greeks}\) [SUCC .  SUCC [SUCC .SUCC [SUCC ZERO\(\sb{\greeks}\) + ZERO] + .ZERO + ZERO]
+                          + .ZERO + ZERO]
+          = SUCC .SUCC .SUCC .SUCC .SUCC .SUCC ZERO & PLAN7
+<49>activate-rules
+RLIST (RRULELIST): Rules to activate [(ONE ADD-B ADD-A)]>
+{\it Finally, we reactivate ADD-A, which takes (x+ZERO) to x.}
+<50>simplify-plan*
+P2 (LINE): Line after rewriting (higher-numbered) [96]>
+P1 (LINE): Line before rewriting (lower-numbered) [95]>
+(95)   \(\assert\)   SUCC\(\sb{\greeks\greeks}\) [SUCC .SUCC .SUCC .SUCC .SUCC ZERO\(\sb{\greeks}\)]
+          = SUCC .SUCC .SUCC .SUCC .SUCC .SUCC ZERO & PLAN8
+<51>assert refl=
+LINE (LINE): Line with Theorem Instance [No Default]>95
+{\it ...and the proof is done.}
+\end{tpsexample}
+
+\section{Using Rewrite Rules in Automatic Proof Search}
+\label{RRulesInAutoProofs}
+
+The \indexother{MS98-1} search procedure can extract rewrite rules from wffs
+and use them for proof search. To use this feature within \index{MS98-1}, set
+the flag \indexflag{MS98-REWRITES}. You may also need to set the flag
+\indexflag{MAX-SUBSTS-VAR} to some positive value.
+
+By default the procedure will not use any rewrite rules apart from those it
+can extract during proof search. In some cases, though, it may be beneficial
+to allow the procedure using additional rewrite rules. This can be done in two
+ways.
+
+The recommended way to add rewrite rules is adding them as equational premises
+to the main assertion. To add the active rewrite rules as premises to the
+assertion of a proof, set the flag \indexflag{ASSERT-RRULES} before beginning
+a new proof using \indexcommand{PROVE}. Assume, for instance, you have two
+active rewrite rules (of the form \mbox{\texttt{$l_i$ <--> $r_i$}} for
+$i\in\{1,2\}$). After setting \indexflag{ASSERT-RRULES}, you start a proof by
+entering \texttt{PROVE "\textit{main-assertion}"}. The resulting assertion will
+be of the form \texttt{$l_2$ = $r_2$ $\implies$ .$l_i$ = $r_i$ $\implies$ \textit{main-assertion}}.
+
+\indexother{MS98-1} may fail to recognize some of the rules passed by the above
+method. This usually indicates that the rule is too complex to be used by the
+procedure.
+If you want to enforce that all active rewrite rules are indeed used by the
+search procedure, you can set the flag \indexflag{MS98-EXTERNAL-REWRITES}.
+This flag works independently from the setting of \indexflag{ASSERT-RRULES}.
+Normally, i.e. when the flag is not set, \indexother{MS98-1} temporarily
+deactivates all active rewrite rules which were not extracted from the
+assertion to prove. When \indexflag{MS98-EXTERNAL-REWRITES} is set, the
+globally active rewrite rules remain active and are used in addition to the
+rules extracted from the proof assertion.
+
+\input{rewrite-top}

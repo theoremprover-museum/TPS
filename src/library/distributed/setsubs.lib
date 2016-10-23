@@ -1,0 +1,42 @@
+(:name BLEDSOE6
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER NEEDS-SETSUB)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, June 11, 1997 at 13:33:21."
+:description "EXISTS A(OI).P(OI) a(I) AND ~[a(I) =(OII) b(I)] IMPLIES FORALL x(I) [A(OI) x(I) IMPLIES P(OI) x(I)] AND EXISTS y(I) A(OI) y(I) AND ~A(OI) b(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CHURCH-ROSSER-THM
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER NEEDS-SETSUB)
+:provability NIL
+:proof-date NIL
+:description "FORALL R(OTT).CHURCH-ROSSER R(OTT) IMPLIES FORALL M(T) FORALL N(T).EQCL R(OTT) M(T) N(T) IMPLIES EXISTS Z(T).RTCL R(OTT) M(T) Z(T) AND RTCL R(OTT) N(T) Z(T)"
+:needed-objects   (RTCL CHURCH-ROSSER EQCL)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM143A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER NEEDS-SETSUB)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 29, 1997 at 17:43:07."
+:description "FORALL h(I(OI)).FORALL p(OI) FORALL q(OI) [h(I(OI)) p(OI) =(OII) h(I(OI)) q(OI) IMPLIES p(OI) =(O(OI)(OI)) q(OI)] IMPLIES ~%(OI(O(OI))(I(OI))) h(I(OI)) [LAMBDA s(OI).~s(OI).h(I(OI)) s(OI)].h(I(OI)).%(OI(O(OI))(I(OI))) h(I(OI)).LAMBDA s(OI).~s(OI).h(I(OI)) s(OI)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

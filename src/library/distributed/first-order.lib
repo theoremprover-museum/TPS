@@ -1,0 +1,14 @@
+(:name X2201TEST
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Friday, October 30, 1998 at 11:41:38."
+:description "~[EXISTS x(I) Q(OII) x(I) y(I) IMPLIES ~FORALL z(I).FORALL u(I) P(OIII) u(I) y(I) z(I) IMPLIES ~EXISTS v(I) R(OI) v(I)] EQUIV EXISTS x(I) FORALL z(I) EXISTS u(I) FORALL v(I).~.Q(OII) x(I) y(I) IMPLIES ~.P(OIII) u(I) y(I) z(I) IMPLIES ~R(OI) v(I)"
+:needed-objects   NIL
+:mhelp "shows x2201 equivalent to its prenex normal form"
+:other-attributes NIL
+:other-remarks "
+")
+
+

@@ -1,0 +1,28 @@
+(:name PRED-EX1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "IND AND FORALL x(I) +(OIII) 0(I) x(I) x(I) AND FORALL x(I) FORALL y(I) FORALL z(I) [+(OIII) y(I) x(I) z(I) IMPLIES +(OIII) [S(II) y(I)] x(I).S(II) z(I)] IMPLIES FORALL y(I) FORALL x(I) EXISTS z(I) +(OIII) y(I) x(I) z(I)"
+:needed-objects   (IND)
+:mhelp "Addition example."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PRED-EX1SOL
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA w(I) FORALL x(I) EXISTS z(I) +(OIII) w(I) x(I) z(I)"
+:needed-objects   NIL
+:mhelp "Predicate substitution for pred-ex1."
+:other-attributes NIL
+:other-remarks "
+")
+
+

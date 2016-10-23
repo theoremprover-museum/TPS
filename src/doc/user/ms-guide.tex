@@ -1,0 +1,556 @@
+\chapter{Mating Searches}\label{ms-guide}
+
+\section{Expansion trees and how they grow}
+See the theses and papers by Miller and Pfenning.
+
+\section{The MATE Top-Level}
+
+Inside the mating-search top-level, you
+may examine the expansion tree, apply substitutions for variables,
+etc.  If you want to actually search for a mating, use the
+\indexcommand{GO} mating-search command (Note that this is a different
+{\tt GO} command from the one in the main top-level. This one works only from
+the mate top-level.). You can also search for a mating by typing the name
+of the mating-search you wish to use.
+
+
+
+The algorithm used by {\TPS} to search for matings can be altered by changing
+the setting of the flag \indexflag{DEFAULT-MS}. At present, there are eight
+possible settings for this flag, not including the matingstree procedures described in
+chapter \ref{mtree}:
+
+\begin{description}
+\item[] \indexother{MS88} is Andrews' original
+search procedure, as detailed in \cite{Andrews81}, which exhausts all paths through
+a jform before duplicating the outermost quantifiers and trying again. MS88 will
+apply primitive substitutions to a very limited extent.
+
+\item[] \indexother{MS89} is like MS88, but will apply a variety of primitive substitutions
+and duplications, and will work on several variants of
+the jform simultaneously in the `option tree' style.
+
+\item[] \indexother{MS90-3} uses Issar's `path-focused duplication' procedure to search
+a single jform. See \cite{issar90} for further details.
+
+\item[] \indexother{MS90-9} is like MS90-3, but will apply a variety of primitive substitutions
+and duplications, and will work on several variants of the jform simultaneously in
+the `option tree' style.
+
+\item[] \indexother{MS91-6} is a variant of MS89, using `option sets' rather than `option trees',
+which allows the user more control over the
+order in which the variant jforms are considered. See section \ref{ms91} for further details.
+
+\item[] \indexother{MS91-7} is a variant of MS90-9, using `option sets' rather than `option trees',
+which allows the user more control over the
+order in which the variant jforms are considered. See section \ref{ms91} for further details.
+
+\item[] \indexother{MS92-9} is a simulation of MS88, using the code from MS90-3.
+
+\item[] \indexother{MS93-1} is a simulation of MS89, using the code from MS90-9.
+
+\item[] \indexother{MS98-1} is Matt Bishop's Search Procedure, Component Search.
+See Matt Bishop's thesis for details.
+
+\end{description}
+
+Each of these flag settings is also a command in its own right, and in the mating-search
+top level any of these mating searches may be invoked by simply entering its name.
+When using \indexcommand{DIY} or \indexcommand{GO}, however, the mating search that
+will be used is that given by \indexflag{DEFAULT-MS}.
+
+More information on (for example) the MS88 procedure may be obtained by entering
+{\it help ms88}.
+Information comparing the different searches can be found in the help message for
+\indexflag{DEFAULT-MS}.
+
+Each of these procedures is governed by a number of other flags; for example, in
+some of the procedures the flag \indexflag{NUM-OF-DUPS} controls the maximum number
+of duplications allowed. Each of the above flag settings is also a subject heading,
+and hence a full list of all the flags associated with (for example) MS88 may be obtained
+by typing {\tt list ms88}.
+
+The user may also wish to examine the help message for the flag
+\indexflag{QUERY-USER}; this flag allows some interactive control over the
+automatic search procedures, by letting the user specify which vpforms to ignore
+and which to search on, when to duplicate quantifiers, and so on.
+
+\section{Primitive Substitutions}
+
+There are two distinct procedures relating to primitive substitutions in {\TPS}, and they
+interact. The first of these is the actual generation of the substitutions; this is
+principally governed by the \indexflag{PRIMSUB-METHOD} flag and its related flags;
+the second is the way in which they are chosen and combined in the various mating searches.
+
+Primsub generation is dealt with in the next section; it is done in exactly the same manner
+for every mating search, and also for the \indexcommand{NAME-PRIM} commands in the mate and
+editor top levels. Once a hashtable of primsubs has been generated, it will remain in memory
+until something is done that would change the substitutions available (for example, starting
+a new mating search, or changing one of the flags in the subject PRIMSUBS)
+
+Primsub use is considerably more complex, and is dealt with differently by different mating searches.
+Given the hashtable of primsubs, which will be the same for all mating searches, it is up to the
+individual mating search to decide how to use this information. In general, there are three approaches
+to this: do nothing, use option trees, and use option sets.
+
+MS88 does nothing. It has a few very basic primitive substitutions built-in, and uses these instead of
+the table of primsubs. MS90-3 also does nothing.
+
+MS89, MS90-9 and MS93-1 all use option trees. In this case, a tree of substitutions is built;
+the root is empty, and at each node one branch is added for each possible substitution (it helps at
+this point to consider a quantifier duplication as a vacuous substitution). The tree is of course
+constructed as required, since it will probably be of infinite depth. The mating search then has a fixed
+amount of time to consider the vpform corresponding to each node in the tree, which it does breadth first.
+So, for example, it will start by considering the vpform with no substitutions, and then proceed to
+the vpform with the first available substitution, then the second, and so on. When it runs out of substitutions,
+it may then go on to consider the vpform with two copies of the first substitution, then with one of the first
+and one of the second, and so on. This will continue until a proof is found; since there are always more
+combinations of substitutions, there is no hope of halting without a proof.
+
+MS91-6 and MS91-7 use option sets, which are multisets of substitutions generated from the original table of primsubs.
+Again, since there is no {\it a priori} limit on the size of such a multiset, there are potentially infinitely
+many of them, so only a few are generated at any time. In comparison to the option tree method, which gives the
+user very little control over
+the order in which substitutions are considered, option sets allow the user to specify how to go about
+generating the sets, and in what order to consider them. First each substitution, and then each set,
+is assigned a `weight'; the search proceeds
+similarly to the option-tree searches, except that instead of searching a tree breadth-first, {\TPS} instead
+considers the available sets of substitutions in order from `lightest' to `heaviest'.
+Although the initial hashtable of substitutions is exactly the same as for all the other mating searches,
+by giving certain substitutions or combinations of substitutions `infinite' weight the user can
+effectively prevent their ever being considered. Option sets are rather more difficult to use than
+option trees, because the user has to specify how this weighting is to be done; section \ref{ms91}
+discusses this in some detail.
+
+\subsection{How Primsubs are Generated}
+
+In most mating-search procedures, {\TPS} will attempt to make some substitutions
+where appropriate. There are three ways in which these substitutions can be generated;
+which is used will depend on the setting of the \indexflag{PRIMSUB-METHOD} (MS88 is an exception
+to this general rule; it has an extremely limited set of predefined primitive substitutions,
+and does not use \indexflag{PRIMSUB-METHOD}. The results will
+be as follows (examples are given for X5305 with \indexflag{NEG-PRIMSUBS} NIL and
+\indexflag{PRIM-BDTYPES} (`I')):
+
+\indexother{PR89} is the original method of generating primsubs, first written for MS89.
+It generates first basic substitutions: a conjunction of two literals and a disjunction
+of two literals. It will also generate a projection, if the types are appropriate, and a
+negation, if \indexflag{NEG-PRIMSUB} is T. Finally it generates the simplest possible
+quantified substitutions: a universally quantified single literal and and existentially
+quantified single literal. The types of the quantified variables, will be determined
+by \indexflag{PRIM-BDTYPES}, and two such substitutions will be generated for each
+bound type listed in \indexflag{PRIM-BDTYPES}.
+The setting of \indexflag{PRIM-BDTYPES} may itself be determined by the setting of
+\indexflag{PRIM-BDTYPES-AUTO}; read the help message for this flag for more details. Example:
+
+\begin{tpsexample}
+Var:   \(f\sp{{2}}\sb{o\alpha}\)
+
+     PRIM1   LogConst     \(\lambda w \sp{{1}}\sb{\greeka} .f \sp{{1}}\sb{\greeko\greeka}  w \sp{{1}}  \and f \sp{{2}}\sb{\greeko\greeka}  w \sp{{1}}\)
+     PRIM2   LogConst     \(\lambda w \sp{{1}}\sb{\greeka} .f \sp{{3}}\sb{\greeko\greeka}  w \sp{{1}}  \lor f \sp{{4}}\sb{\greeko\greeka}  w \sp{{1}}\)
+     PRIM3   PrimQuant   \(\lambda w \sp{{1}}\sb{\greeka}   \exists w \sp{{2}}\sb{\greeki}  f \sp{{5}}\sb{\greeko\greeki\greeka}  w \sp{{1}}  w \sp{{2}}\)
+     PRIM4   PrimQuant   \(\lambda w \sp{{1}}\sb{\greeka}   \forall w \sp{{2}}\sb{\greeki}  f \sp{{6}}\sb{\greeko\greeki\greeka}  w \sp{{1}}  w \sp{{2}}\)
+\end{tpsexample}
+
+\indexother{PR93} extends the above method to more general substitutions.
+All of the non-quantified substitutions are generated as before, and then {\TPS}
+consults the flags \indexflag{MIN-PRIM-DEPTH} and \indexflag{MAX-PRIM-DEPTH}, which
+contain integers, and generates substitutions for each depth in the given range.
+At depth 1, quantified substitutions are generated as in PR89.
+At depth N>1, a substitution containing (N-1) quantifiers ranging over (N-1) conjunctions
+(respectively, disjunctions) of (N-2) disjunctions (respectively, conjunctions). Again, these are generated
+at every bound type listed in \indexflag{PRIM-BDTYPES}. Example (\indexflag{MAX-PRIM-DEPTH} 2,
+\indexflag{MIN-PRIM-DEPTH} 1):
+\begin{tpsexample}
+ Var:   \(f\sp{{2}}\sb{\greeko\greeka}\)
+
+     PRIM5   LogConst     \(\lambda w\sp{{3}}\sb{\greeka} .f \sp{{7}}\sb{\greeko\greeka}  w \sp{{3}}  \and f \sp{{8}}\sb{\greeko\greeka}  w \sp{{3}}\)
+     PRIM6   LogConst     \(\lambda w \sp{{3}}\sb{\greeka} .f \sp{{9}}\sb{\greeko\greeka}  w \sp{{3}}  \lor f \sp{{10}}\sb{\greeko\greeka}  w \sp{{3}}\)
+     PRIM7   PrimQuant   \(\lambda w \sp{{3}}\sb{\greeka}   \exists w \sp{{4}}\sb{\greeki}  f \sp{{11}}\sb{\greeko\greeki\greeka}  w \sp{{3}}  w \sp{{4}}\)
+     PRIM8   PrimQuant   \(\lambda w \sp{{3}}\sb{\greeka}   \forall w \sp{{4}}\sb{\greeki}  f \sp{{12}}\sb{\greeko\greeki\greeka}  w \sp{{3}}  w \sp{{4}}\)
+     PRIM9   GenSub2   \(\lambda w \sp{{3}}\sb{\greeka}   \exists w \sp{{5}}\sb{\greeki} .f \sp{{13}}\sb{\greeko\greeki\greeka}  w \sp{{3}}  w \sp{{5}}  \lor f \sp{{14}}\sb{\greeko\greeki\greeka}  w \sp{{3}}  w \sp{{5}}\)
+     PRIM10  GenSub2   \(\lambda w \sp{{3}}\sb{\greeka}   \exists w \sp{{5}}\sb{\greeki} .f \sp{{15}}\sb{\greeko\greeki\greeka}  w \sp{{3}}  w \sp{{5}}  \and f \sp{{16}}\sb{\greeko\greeki\greeka}  w \sp{{3}}  w \sp{{5}}\)
+     PRIM11  GenSub2   \(\lambda w \sp{{3}}\sb{\greeka}   \forall w \sp{{5}}\sb{\greeki} .f \sp{{17}}\sb{\greeko\greeki\greeka}  w \sp{{3}}  w \sp{{5}}  \lor f \sp{{18}}\sb{\greeko\greeki\greeka}  w \sp{{3}}  w \sp{{5}}\)
+     PRIM12  GenSub2   \( \lambda w \sp{{3}}\sb{\greeka}   \forall w \sp{{5}}\sb{\greeki} .f \sp{{19}}\sb{\greeko\greeki\greeka}  w \sp{{3}}  w \sp{{5}}  \and f \sp{{20}}\sb{\greeko\greeki\greeka}  w \sp{{3}}  w \sp{{5}}\)
+\end{tpsexample}
+
+\indexother{PR95} generates more substitutions than PR93, but is more economical
+in terms of the number of literals in the resulting jform. It works as for PR93,
+except that at depth N>1 it then examines the flags \indexflag{MIN-PRIM-LITS}
+and \indexflag{MAX-PRIM-LITS}; for each M in the range given by these two flags,
+it generates all possible arrangements of M literals separated by conjunctions and
+disjunctions, and then quantifies each of them with (N-1) quantifiers. The bound
+types are determined by \indexflag{PRIM-BDTYPES}. Example (\indexflag{MIN-PRIM-LITS} 2,
+\indexflag{MAX-PRIM-LITS} 3):
+\begin{tpsexample}
+     PRIM13   LogConst     \(\lambda w \sp{{6}}\sb{\greeka} .f \sp{{21}}\sb{\greeko\greeka}  w \sp{{6}}  \and f \sp{{22}}\sb{\greeko\greeka}  w \sp{{6}}\)
+     PRIM14   LogConst     \(\lambda w \sp{{6}}\sb{\greeka} .f \sp{{23}}\sb{\greeko\greeka}  w \sp{{6}}  \lor f \sp{{24}}\sb{\greeko\greeka}  w \sp{{6}}\)
+     PRIM15   PrimQuant   \(\lambda w \sp{{6}}\sb{\greeka}   \exists w \sp{{7}}\sb{\greeki}  f \sp{{25}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{7}}\)
+     PRIM16   PrimQuant   \(\lambda w \sp{{6}}\sb{\greeka}   \forall w \sp{{7}}\sb{\greeki}  f \sp{{26}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{7}}\)
+     PRIM17   GenSub2   \(\lambda w \sp{{6}}\sb{\greeka}   \exists w \sp{{8}}\sb{\greeki} .f \sp{{27}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}  \lor f \sp{{28}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}\)
+     PRIM18   GenSub2   \(\lambda w \sp{{6}}\sb{\greeka}   \exists w \sp{{8}}\sb{\greeki} .f \sp{{29}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}  \and f \sp{{30}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}\)
+     PRIM19   GenSub2   \(\lambda w \sp{{6}}\sb{\greeka}   \exists w \sp{{8}}\sb{\greeki} .f \sp{{31}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}  \lor f \sp{{32}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}  \)
+               \(\lor f \sp{{33}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}\)
+     PRIM20   GenSub2   \(\lambda w \sp{{6}}\sb{\greeka}   \exists w \sp{{8}}\sb{\greeki} .[f \sp{{34}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}  \lor f \sp{{35}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}} ] \)
+               \(\land f \sp{{36}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}\)
+     PRIM21   GenSub2   \(\lambda w \sp{{6}}\sb{\greeka}   \exists w \sp{{8}}\sb{\greeki} .f \sp{{37}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}  \and f \sp{{38}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}  \)
+               \(\lor f \sp{{39}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}\)
+     PRIM22   GenSub2   \(\lambda w \sp{{6}}\sb{\greeka}   \exists w \sp{{8}}\sb{\greeki} .f \sp{{40}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}  \and f \sp{{41}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}  \)
+               \(\land f \sp{{42}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}\)
+     PRIM23   GenSub2   \(\lambda w \sp{{6}}\sb{\greeka}   \forall w \sp{{8}}\sb{\greeki} .f \sp{{43}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}  \lor f \sp{{44}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}\)
+     PRIM24   GenSub2   \(\lambda w \sp{{6}}\sb{\greeka}   \forall w \sp{{8}}\sb{\greeki} .f \sp{{45}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}  \and f \sp{{46}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}\)
+     PRIM25   GenSub2   \(\lambda w \sp{{6}}\sb{\greeka}   \forall w \sp{{8}}\sb{\greeki} .f \sp{{47}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}  \lor f \sp{{48}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}  \)
+               \(\lor f \sp{{49}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}\)
+     PRIM26   GenSub2   \(\lambda w \sp{{6}}\sb{\greeka}   \forall w \sp{{8}}\sb{\greeki} .[f \sp{{50}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}  \lor f \sp{{51}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}} ] \)
+               \(\land f \sp{{52}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}\)
+     PRIM27   GenSub2   \(\lambda w \sp{{6}}\sb{\greeka}   \forall w \sp{{8}}\sb{\greeki} .f \sp{{53}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}  \and f \sp{{54}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}  \)
+               \(\lor f \sp{{55}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}\)
+     PRIM28   GenSub2   \(\lambda w \sp{{6}}\sb{\greeka}   \forall w \sp{{8}}\sb{\greeki} .f \sp{{56}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}  \and f \sp{{57}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}  \)
+               \(\land f \sp{{58}}\sb{\greeko\greeki\greeka}  w \sp{{6}}  w \sp{{8}}\)
+\end{tpsexample}
+
+\indexother{PR97} usually generates even more substitutions than PR95.
+At depth 1, it produces substitutions which are appropriately generalized versions of
+the subformulas of the current gwff, each having between \indexflag{MIN-PRIM-LITS}
+and \indexflag{MAX-PRIM-LITS} literals.
+At depth N>1 it adds (N-1) quantifiers in front of each of the substitutions generated at
+depth 1. The types of the quantified variables are determined by \indexflag{PRIM-BDTYPES}.
+Example (\indexflag{MIN-PRIM-LITS} 2, \indexflag{MAX-PRIM-LITS} 3, \indexflag{MAX-PRIM-DEPTH} 1):
+
+\begin{tpsexample}
+The current gwff is THM15B:
+\(\forall f \sb{\greeki\greeki} . \exists g \sb{\greeki\greeki}  [ITERATE+ f g \and  \exists x \sb{\greeki} .g x = x \and  \forall z \sb{\greeki} .g z = z \implies z = x] \)
+               \(\implies  \exists y \sb{\greeki} .f y = y\)
+
+     PRIM15   LogConst     \(\lambda w \sp{{70}}\sb{\greeki\greeki} .p \sp{{60}}\sb{\greeko(\greeki\greeki)}  w \sp{{70}}  \and p \sp{{61}}\sb{\greeko(\greeki\greeki)}  w \sp{{70}}\)
+     PRIM16   LogConst     \(\lambda w \sp{{70}}\sb{\greeki\greeki} .p \sp{{62}}\sb{\greeko(\greeki\greeki)}  w \sp{{70}}  \lor p \sp{{63}}\sb{\greeko(\greeki\greeki)}  w \sp{{70}}\)
+     PRIM17   SubFmSub1   \(\lambda w \sp{{70}}\sb{\greeki\greeki}   \exists w \sp{{71}}\sb{\greeki} .p \sp{{64}}\sb{\greeki\greeki(\greeki\greeki)}  w \sp{{70}}  w \sp{{71}}  = p \sp{{65}}\sb{\greeki\greeki(\greeki\greeki)}  w \sp{{70}}  w \sp{{71}}\)
+     PRIM18   SubFmSub1   \(\lambda w \sp{{70}}\sb{\greeki\greeki}   \forall w \sp{{72}}\sb{\greeko\greeki} .p \sp{{66}}\sb{\greeko(\greeko\greeki)(\greeki\greeki)}  w \sp{{70}}  w \sp{{72}}  \)
+               \(\implies p \sp{{67}}\sb{\greeko(\greeko\greeki)(\greeki\greeki)}  w \sp{{70}}  w \sp{{72}}\)
+     PRIM19   SubFmSub1   \(\lambda w \sp{{70}}\sb{\greeki\greeki} .p \sp{{68}}\sb{\greeki(\greeki\greeki)}  w \sp{{70}}  = p \sp{{69}}\sb{\greeki(\greeki\greeki)}  w \sp{{70}}\)
+     PRIM20   SubFmSub1   \(\lambda w \sp{{70}}\sb{\greeki\greeki}   \forall w \sp{{73}}\sb{\greeki\greeki} .p \sp{{70}}\sb{\greeko(\greeki\greeki)(\greeki\greeki)}  w \sp{{70}}  w \sp{{73}}  \)
+               \(\implies p \sp{{71}}\sb{\greeko(\greeki\greeki)(\greeki\greeki)}  w \sp{{70}}  w \sp{{73}}\)
+     PRIM21   SubFmSub1   \(\lambda w \sp{{70}}\sb{\greeki\greeki} .p \sp{{72}}\sb{\greeko(\greeki\greeki)}  w \sp{{70}}  \and  \forall w \sp{{74}}\sb{\greeki\greeki}  p \sp{{73}}\sb{\greeko(\greeki\greeki)(\greeki\greeki)}  w \sp{{70}}  w \sp{{74}}\)
+     PRIM22   SubFmSub1   \(\lambda w \sp{{70}}\sb{\greeki\greeki} .p \sp{{74}}\sb{\greeko(\greeki\greeki)}  w \sp{{70}}  \implies p \sp{{75}}\sb{\greeko(\greeki\greeki)}  w \sp{{70}}\)
+     PRIM23   SubFmSub1   \(\lambda w \sp{{70}}\sb{\greeki\greeki}   \forall w \sp{{75}}\sb{\greeko(\greeki\greeki)} .p \sp{{76}}\sb{\greeko(\greeko(\greeki\greeki))(\greeki\greeki)}  w \sp{{70}}  w \sp{{75}}  \)
+               \(\implies p \sp{{77}}\sb{\greeko(\greeko(\greeki\greeki))(\greeki\greeki)}  w \sp{{70}}  w \sp{{75}}\)
+     PRIM24   SubFmSub1   \(\lambda w \sp{{70}}\sb{\greeki\greeki}  ITERATE+ [p \sp{{78}}\sb{\greeki\greeki(\greeki\greeki)}  w \sp{{70}} ].p \sp{{79}}\sb{\greeki\greeki(\greeki\greeki)}  w \sp{{70}}\)
+     PRIM25   SubFmSub1   \(\lambda w \sp{{70}}\sb{\greeki\greeki} .p \sp{{80}}\sb{\greeko(\greeki\greeki)}  w \sp{{70}}  \)
+               \(\implies p \sp{{81}}\sb{\greeki(\greeki\greeki)}  w \sp{{70}}  = p \sp{{82}}\sb{\greeki(\greeki\greeki)}  w \sp{{70}}\)
+     PRIM26   SubFmSub1   \(\lambda w \sp{{70}}\sb{\greeki\greeki} .p \sp{{83}}\sb{\greeki(\greeki\greeki)}  w \sp{{70}}  = p \sp{{84}}\sb{\greeki(\greeki\greeki)}  w \sp{{70}}  \)
+               \(\implies p \sp{{85}}\sb{\greeko(\greeki\greeki)}  w \sp{{70}}\)
+     PRIM27   SubFmSub1   \(\lambda w \sp{{70}}\sb{\greeki\greeki}   \forall w \sp{{76}}\sb{\greeki} .p \sp{{86}}\sb{\greeko\greeki(\greeki\greeki)}  w \sp{{70}}  w \sp{{76}}  \)
+               \(\implies p \sp{{87}}\sb{\greeki\greeki(\greeki\greeki)}  w \sp{{70}}  w \sp{{76}}  = p \sp{{88}}\sb{\greeki\greeki(\greeki\greeki)}  w \sp{{70}}  w \sp{{76}}\)
+     PRIM28   SubFmSub1   \(\lambda w \sp{{70}}\sb{\greeki\greeki}   \forall w \sp{{77}}\sb{\greeki} .p \sp{{89}}\sb{\greeki\greeki(\greeki\greeki)}  w \sp{{70}}  w \sp{{77}}  = p \sp{{90}}\sb{\greeki\greeki(\greeki\greeki)}  w \sp{{70}}  w \sp{{77}}  \)
+               \(\implies p \sp{{91}}\sb{\greeko\greeki(\greeki\greeki)}  w \sp{{70}}  w \sp{{77}}\)
+     PRIM29   SubFmSub1   \(\lambda w \sp{{70}}\sb{\greeki\greeki} .p \sp{{92}}\sb{\greeki(\greeki\greeki)}  w \sp{{70}}  = p \sp{{93}}\sb{\greeki(\greeki\greeki)}  w \sp{{70}}  \)
+               \(\land  \forall w \sp{{78}}\sb{\greeki}  p \sp{{94}}\sb{\greeko\greeki(\greeki\greeki)}  w \sp{{70}}  w \sp{{78}}\)
+     PRIM30   SubFmSub1   \(\lambda w \sp{{70}}\sb{\greeki\greeki}   \exists w \sp{{79}}\sb{\greeki} .p \sp{{95}}\sb{\greeki\greeki(\greeki\greeki)}  w \sp{{70}}  w \sp{{79}}  \)
+               \(= p \sp{{96}}\sb{\greeki\greeki(\greeki\greeki)}  w \sp{{70}}  w \sp{{79}}  \and  \forall w \sp{{80}}\sb{\greeki}  p \sp{{97}}\sb{\greeko\greeki\greeki(\greeki\greeki)}  w \sp{{70}}  w \sp{{79}}  w \sp{{80}}\)
+     PRIM31   SubFmSub1   \(\lambda w \sp{{70}}\sb{\greeki\greeki} .p \sp{{98}}\sb{\greeko(\greeki\greeki)}  w \sp{{70}}  \and  \forall w \sp{{81}}\sb{\greeki\greeki} .p \sp{{99}}\sb{\greeko(\greeki\greeki)(\greeki\greeki)}  w \sp{{70}}  w \sp{{81}}  \)
+               \(\implies p \sp{{100}}\sb{\greeko(\greeki\greeki)(\greeki\greeki)}  w \sp{{70}}  w \sp{{81}}\)
+     PRIM32   SubFmSub1   \(\lambda w \sp{{70}}\sb{\greeki\greeki} .p \sp{{101}}\sb{\greeko(\greeki\greeki)}  w \sp{{70}}  \and  \forall w \sp{{82}}\sb{\greeki\greeki}  p \sp{{102}}\sb{\greeko(\greeki\greeki)(\greeki\greeki)}  w \sp{{70}}  w \sp{{82}}  \)
+               \(\implies p \sp{{103}}\sb{\greeko(\greeki\greeki)}  w \sp{{70}}\)
+     PRIM33   SubFmSub1   \(\lambda w \sp{{70}}\sb{\greeki\greeki}   \forall w \sp{{83}}\sb{\greeko(\greeki\greeki)} .p \sp{{104}}\sb{\greeko(\greeko(\greeki\greeki))(\greeki\greeki)}  w \sp{{70}}  w \sp{{83}}  \)
+               \(\land  \forall w \sp{{84}}\sb{\greeki\greeki}  p \sp{{105}}\sb{\greeko(\greeki\greeki)(\greeko(\greeki\greeki))(\greeki\greeki)}  w \sp{{70}}  w \sp{{83}}  w \sp{{84}}  \implies p \sp{{106}}\sb{\greeko(\greeko(\greeki\greeki))(\greeki\greeki)}  w \sp{{70}}  w \sp{{83}}\)
+     PRIM34   SubFmSub1   \(\lambda w \sp{{70}}\sb{\greeki\greeki} .ITERATE+ [p \sp{{107}}\sb{\greeki\greeki(\greeki\greeki)}  w \sp{{70}} ] [p \sp{{108}}\sb{\greeki\greeki(\greeki\greeki)}  w \sp{{70}} ] \)
+               \(\land  \exists w \sp{{85}}\sb{\greeki}  p \sp{{109}}\sb{\greeko\greeki(\greeki\greeki)}  w \sp{{70}}  w \sp{{85}}\)
+     PRIM35   SubFmSub1   \(\lambda w \sp{{70}}\sb{\greeki\greeki}   \exists w \sp{{86}}\sb{\greeki\greeki} .ITERATE+ [p \sp{{110}}\sb{\greeki\greeki(\greeki\greeki)(\greeki\greeki)}  w \sp{{70}}  w \sp{{86}} ] \)
+               \([p \sp{{111}}\sb{\greeki\greeki(\greeki\greeki)(\greeki\greeki)}  w \sp{{70}}  w \sp{{86}} ] \and  \exists w \sp{{87}}\sb{\greeki}  p \sp{{112}}\sb{\greeko\greeki(\greeki\greeki)(\greeki\greeki)}  w \sp{{70}}  w \sp{{86}}  w \sp{{87}}\)
+     PRIM36   SubFmSub1   \(\lambda w \sp{{70}}\sb{\greeki\greeki} . \exists w \sp{{88}}\sb{\greeki\greeki}  p \sp{{113}}\sb{\greeko(\greeki\greeki)(\greeki\greeki)}  w \sp{{70}}  w \sp{{88}}  \)
+               \(\implies  \exists w \sp{{89}}\sb{\greeki} .p \sp{{114}}\sb{\greeki\greeki(\greeki\greeki)}  w \sp{{70}}  w \sp{{89}}  = p \sp{{115}}\sb{\greeki\greeki(\greeki\greeki)}  w \sp{{70}}  w \sp{{89}}\)
+     PRIM37   SubFmSub1   \(\lambda w \sp{{70}}\sb{\greeki\greeki}   \forall w \sp{{90}}\sb{\greeki\greeki} . \exists w \sp{{91}}\sb{\greeki\greeki}  p \sp{{116}}\sb{\greeko(\greeki\greeki)(\greeki\greeki)(\greeki\greeki)}  w \sp{{70}}  w \sp{{90}}  w \sp{{91}}  \)
+               \(\implies  \exists w \sp{{92}}\sb{\greeki} .p \sp{{117}}\sb{\greeki\greeki(\greeki\greeki)(\greeki\greeki)}  w \sp{{70}}  w \sp{{90}}  w \sp{{92}}  = p \sp{{118}}\sb{\greeki\greeki(\greeki\greeki)(\greeki\greeki)}  w \sp{{70}}  w \sp{{90}}  w \sp{{92}}\)
+\end{tpsexample}
+
+In the mating-search and editor top levels, the command
+\indexcommand{NAME-PRIM} will show you all such substitutions; you can get more
+(or fewer) by adjusting the settings of the flags given in the subject \indexother{PRIMSUBS}
+(type {\tt list primsubs} for a list of these flags). In the mating-search top level,
+you can interactively apply a primitive substitution with one of the commands
+\indexcommand{PRIM-ALL}, \indexcommand{PRIM-OUTER}, \indexcommand{PRIM-SINGLE}
+or \indexcommand{PRIM-SUB} (these are all slightly different; see the help messages
+for more information).
+
+Primitve substitutions are generated for all the head variables of appropriate
+type in a given wff.
+Substitutions that are generated may or may not respect the
+value of \indexflag{PRIM-BDTYPES}, depending on the setting of the
+flag \indexflag{PRIM-BDTYPES-AUTO}. Please read the help messages for these
+flags for more information.
+
+\subsection{The MS91 Procedures}
+\label{ms91}
+
+The two procedures MS91-6 and MS91-7 take the original jform and apply, respectively,
+MS88 and MS90-3 to variants of it that are produced by applying primitive substitutions
+and duplications. They are very similar to MS89 and MS90-9, but allow the user more
+control over the substitutions that will be tried; because of this, they have many more
+flags to be set than do any of the other procedures.
+
+The MS91 procedures first generate a list of expansion options
+(an expansion option is a quantifier duplication or an
+instantiation of a predicate variable), and
+then generate combinations (finite sets) of these options. Since there
+are an infinite number of these finite sets (because any option may be
+used more than once), we generate the option sets a few at a time.
+The maximum number of sets generated at any one time is governed
+by the flag \indexflag{NEW-OPTION-SET-LIMIT}.
+
+The basic idea of the enumeration scheme is that there is a
+weight assigned to each set of options. Starting with the weight
+of the initial problem (with the empty set of options), we then
+look for variants whose weight is within an acceptable range (given by
+\indexflag{MS91-WEIGHT-LIMIT-RANGE}) of some target value. These weights
+may correspond to new option sets, or they may correspond to old option
+sets that are being reconsidered. If we fail
+to find any such variants, we increase the acceptable value and try again.
+So our objective is to ensure that the simplest substitutions are assigned
+the smallest weights. It is possible for a set to be assigned an infinite
+weight, in which case it will never be considered.
+
+The weight is the sum of three
+separate weights, which we denote \indexother{weight-a}, \indexother{weight-b}
+and \indexother{weight-c}. The user is given control over the
+weights by means of the settings of the flags \indexflag{WEIGHT-A-FN},
+\indexflag{WEIGHT-B-FN}, \indexflag{WEIGHT-C-FN}, \indexflag{WEIGHT-A-COEFFICIENT},
+\indexflag{WEIGHT-B-COEFFICIENT} and \indexflag{WEIGHT-C-COEFFICIENT}.
+The total weight of each option set is initially the sum of each of the three
+functions evaluated on the set, multiplied by each of the three
+coefficients. Asking for help on these flags will give you a list of
+the possible functions for each flag; asking for help on MS91-6 or MS91-7
+will give you an summary of this section of the manual.
+
+Weight-a should in some way measure
+the complexity of an individual option (and so the weight-a of the
+option set is the sum of the weight-a's of each of its elements).
+So one possible value for \indexflag{WEIGHT-A-FN} is \indexother{EXPANSION-LEVEL-WEIGHT-A},
+which assigns to each option its expansion level (i.e. how late in the list of options
+it is).
+
+Weight-b should calculate the weight of the entire option set, by
+considering the number of duplications and substitutions it contains.
+So one possible value for \indexflag{WEIGHT-B-FN} is \indexother{SIMPLE-WEIGHT-B-FN},
+which sums up the  various penalties for substitutions and duplications given
+in the flags \indexflag{PENALTY-FOR-EACH-PRIMSUB}, \indexflag{PENALTY-FOR-MULTIPLE-PRIMSUBS}
+and \indexflag{PENALTY-FOR-MULTIPLE-SUBS}. Another possible value is
+\indexother{SIMPLEST-WEIGHT-B-FN}, which adds up the number of substitutions and
+duplications and returns that number plus one.
+Yet a third possible value is \indexother{ALL-PENALTIES-FN}, which evaluates
+\indexother{SIMPLE-WEIGHT-B-FN} and then adds the penalty given by the flag
+\indexflag{PENALTY-FOR-ORDINARY-DUP}.
+
+Weight-c should measure the complexity of the resulting jform.
+So two possible values for \indexflag{WEIGHT-C-FN} are \indexother{OPTION-SET-NUM-VPATHS}
+and \indexother{OPTION-SET-NUM-LEAVES}, which count up (respectively) the number of paths
+or leaves in the resulting jform.
+
+The procedures will work on each jform for a limited time (given by the
+flag \indexflag{SEARCH-TIME-LIMIT}), before assigning a new weight to the option
+set and proceeding to the next jform. This means that the procedure will only
+give up searching on a particular jform if it has discovered that there can be no
+successful mating, or if the new weight that is assigned is INFINITY.
+The user can control the value of the new weight by changing the setting
+of the flag \indexflag{RECONSIDER-FN}.
+
+So the structure of the MS91 procedures looks like this:
+\begin{enumerate}
+\item Work on the original problem for \indexflag{SEARCH-TIME-LIMIT}
+seconds using either MS88 or MS90-3 as appropriate.
+
+\item If that fails, change the weight of the old problem (using \indexflag{RECONSIDER-FN}).
+
+\item Generate new options (which will be a list of possible duplications and
+primitive substitutions for the expansion variables of the problem).
+
+\item Using the list of options, attempt to generate \indexflag{NEW-OPTION-SET-LIMIT} many
+new option sets whose weights lie within \indexflag{MS91-WEIGHT-LIMIT-RANGE} of the
+weight of the last option set used. If we fail to do this because no more option
+sets can be generated from the current option list, give up and go on to the next step.
+If we fail because all the option sets we generate are not in our desired weight range,
+increase the lower limit of this range and try again.
+
+\item Apply either MS88 or MS90-3 to each of the new option sets, in order of their
+weight (may also reconsider old option sets; an option set expires permanently after \indexflag{MAX-SEARCH-LIMIT}
+seconds in total have been spent on it). Each set gets considered for
+\indexflag{SEARCH-TIME-LIMIT} seconds at a time.
+
+\item When all of the new option sets have been used we call
+the function given by \indexflag{OPTIONS-GENERATE-FN}, which will return T if new options should be
+generated. Depending on the setting of this flag, this might be because we have generated all
+possible new option sets from the current list of options, or because the current option sets
+have become too complicated in some sense. If \indexflag{OPTIONS-GENERATE-FN} returns NIL
+then we go back to step 4; otherwise
+return to step 3 (note that the problem will usually now contain new expansion variables
+because of the primitive substitutions).
+\end{enumerate}
+
+\section{Some Important Flags in ms90-3 Search}
+\begin{itemize}
+\item \indexflag{NUM-OF-DUPS}
+The flag determines the maximum number of duplications allowed
+on a path. In the extreme case, i.e., when num-of-dup is 0, a
+universal jform can still appear several times on different paths
+as long as it appears at most once on each path. It is exceedingly
+crucial to keep the flag low while you are dealing with higher
+problems. This could be achieved by reorganizing jforms, sometimes.
+
+\item \indexflag{MAX-MATES} The flag determines the maximum number of times
+a literal could occur in a mating. Please always remember that
+literals generated by duplications on a path are regarded as a new
+one, which bears no relations with the old ones. Hence, both the new
+ones and the old ones can occur in a mating up to
+\indexflag{MAX-MATES} times. You may often increment
+\indexflag{MAX-MATES} so that you can decrement
+\indexflag{NUM-OF-DUPS}, or vice versa. In the higher order case, it
+is usually worth augmenting \indexflag{MAX-MATES} to keep
+\indexflag{NUM-OF-DUP} low.
+
+\item \indexflag{ORDER-COMPONENTS} The flag gives you a few choices to
+reorganize the jform through which you want to search. Setting it to T
+often reduces the minimum value of \indexflag{NUM-OF-DUPS} we need to
+find a mating. When the jforms under predicate variables are a big
+disjunction, it is recommended that you set \indexflag{ORDER-COMPONENTS}
+to T so that you might have a chance to set \indexflag{NUM-OF-DUPS} to 0.
+This expedites the whole search process dramatically.
+\end{itemize}
+
+\section{Helpful Hints for MS91}
+\begin{itemize}
+\item Setting \indexflag{MS91-WEIGHT-LIMIT-RANGE} to INFINITY means that the next option
+set that is generated will always be accepted (unless it has weight INFINITY); this
+will spped things up, at the possible expense of generating heavier option sets
+before lighter ones.
+
+\item Setting \indexflag{NEW-OPTION-SET-LIMIT} to 1 will minimize the delay between each search.
+However, it's quicker to generate a batch of option sets all at once rather than individually,
+so this may make the total time for the search slightly longer.
+
+\item Setting \indexflag{RECONSIDER-FN} to INF-WEIGHT will prevent any option set from being
+considered more than once.
+
+\item Try not to use everything all at once; there's probably no need to use
+weights a, b and c all together. Try setting one or two of their coefficients to 0.
+
+\item Judicious use of INFINITY as a penalty will get you to your goal a lot
+faster; so (for example) \indexflag{PENALTY-FOR-ORDINARY-DUPS} INFINITY will ensure
+that you never get a vpform with any unused duplications, or
+\indexflag{PENALTY-FOR-MULTIPLE-SUBS} INFINITY will ensure that each variable gets
+at most one primsub. (However, generating sets with weight INFINITY still
+takes time; if it seems to pause for a while before producing a new option
+set, it may well be producing and ignoring a batch with weight INFINITY...)
+
+\item Generating new options takes a considerable time (because the jform will have gone from
+having one or two expansion variables to having ten or twenty of them).
+If your search is likely to reach
+the stage of generating new options, then:
+\begin{itemize}
+\item You could try increasing the number of primsubs produced in the first round of options,
+by increasing the value of \indexflag{MAX-PRIM-DEPTH}; this might allow the search to
+finish without generating new options. (In general, the set of primsubs produced by having
+\indexflag{MAX-PRIM-DEPTH} greater than 1 is a subset of those produced by repeatedly
+generating new options with \indexflag{MAX-PRIM-DEPTH} equal to 1.)
+
+\item You should consider making weight-c or weight-a the dominant weight function,
+as opposed to weight-b.
+(This is because the new options will appear to be single primitive substitutions, just like
+the old ones, and thus weight-b will be unable to distinguish them).
+\end{itemize}
+
+\item Use the \indexcommand{SEARCH-ORDER} command to see in what order the option sets will
+be generated.
+
+\item Compare your flag settings to the four preset modes \indexother{MS91-SIMPLEST}, \indexother{MS91-ORIGINAL},
+\indexother{MS91-NODUPS} and \indexother{MS91-DEEP}; these modes are four of the most common
+ways in which these flags can usefully be set.
+\end{itemize}
+
+% \begin{comment} (This is the old description, prior to  Mar 1994.)
+% The two procedures MS91-6 and MS91-7 have a considerable number of flags which
+% govern the order in which the various primitive substitutions are applied to the
+% jform. The substitutions that are used are limited to those which are shown
+% when you type \indexcommand{NAME-PRIM} (in particular, you should check that
+% the settings of \indexflag{MAX-PRIM-DEPTH} and \indexflag{MIN-PRIM-DEPTH} are
+% appropriate before beginning an automatic search with these procedures).
+% 
+% An expansion option is a quantifier duplication or an
+% instantiation of a predicate variable. In general, we shall take care
+% of duplications as part of the search process. Thus, an expansion
+% option is essentially a wff to be substituted for a particular
+% predicate variable; it may contain additional predicate variables.
+% In principle, one may need to use certain options more than once,
+% though in simple examples this rarely happens.
+% 
+% The MS91 procedures first generate a list of expansion options, and
+% then generate combinations (finite sets) of these options. Since there
+% are an infinite number of these finite sets (because any option may be
+% used more than once), we generate the option sets a few at a time.
+% The maximum number of sets generated at any one time is governed
+% by the flag \indexflag{NEW-OPTION-SET-LIMIT}.
+% 
+% The basic idea of the enumeration scheme is that there is a
+% weight assigned to each set of options. Starting with the weight
+% of the initial problem (with the empty set of options), we then
+% look for variants whose weight is within an acceptable range (given by
+% \indexflag{MS91-WEIGHT-LIMIT-RANGE}) of some target value. These weights
+% may correspond to new option sets, or they may correspond to old option
+% sets that are being reconsidered. If we fail
+% to find any such variants, we increase the acceptable value and try again.
+% So our objective is to ensure that the simplest substitutions are assigned
+% the smallest weights. It is possible for a set to be assigned an infinite
+% weight, in which case it will never be considered.
+% 
+% The weight is the sum of three
+% separate weights, which we denote \indexother{weight-a}, \indexother{weight-b}
+% and \indexother{weight-c}. The user is given control over the
+% weights by means of the settings of the flags \indexflag{WEIGHT-A-FN},
+% \indexflag{WEIGHT-B-FN}, \indexflag{WEIGHT-C-FN}, \indexflag{WEIGHT-A-COEFFICIENT},
+% \indexflag{WEIGHT-B-COEFFICIENT} and \indexflag{WEIGHT-C-COEFFICIENT}.
+% The total weight of each option set is initially the sum of each of the three
+% functions evaluated on the set, multiplied by each of the three
+% coefficients. Asking for help on these flags will give you a list of
+% the possible functions for each flag; asking for help on MS91-6 or MS91-7
+% will give you an summary of this section of the manual.
+% 
+% Weight-a should in some way measure
+% the complexity of an individual option (and so the weight-a of the
+% option set is the sum of the weight-a's of each of its elements).
+% So one possible value for \indexflag{WEIGHT-A-FN} is \indexother{EXPANSION-LEVEL-WEIGHT-A},
+% which assigns to each option its expansion level (i.e. how late in the list of options
+% it is).
+% 
+% Weight-b should calculate the weight of the entire option set, by
+% considering the number of duplications and substitutions it contains.
+% So one possible value for \indexflag{WEIGHT-B-FN} is \indexother{SIMPLE-WEIGHT-B-FN},
+% which sums up the  various penalties for substitutions and duplications given
+% in the flags \indexflag{PENALTY-FOR-EACH-PRIMSUB}, \indexflag{PENALTY-FOR-MULTIPLE-PRIMSUBS}
+% and \indexflag{PENALTY-FOR-MULTIPLE-SUBS}. Another possible value is
+% \indexother{SIMPLEST-WEIGHT-B-FN}, which adds up the number of substitutions and
+% duplications and returns that number plus one.
+% 
+% Weight-c should measure the complexity of the resulting jform.
+% So two possible values for \indexflag{WEIGHT-C-FN} are \indexother{OPTION-SET-NUM-VPATHS}
+% and \indexother{OPTION-SET-NUM-LEAVES}, which count up (respectively) the number of paths
+% or leaves in the resulting jform.
+% 
+% The procedures will work on each jform for a limited time (given by the
+% flag \indexflag{SEARCH-TIME-LIMIT}), before assigning a new weight to the option
+% set and proceeding to the next jform. This means that the procedure will only
+% give up searching on a particular jform if it has discovered that there can be no
+% successful mating, or if the new weight that is assigned is INFINITY.
+% The user can control the value of the new weight by changing the setting
+% of the flag \indexflag{RECONSIDER-FN}.
+% 
+% 
+% \subsection{Examples}
+% 
+% To enumerate the variant jforms in as simple a manner as possible, set WEIGHT-A-COEFFICIENT
+% and WEIGHT-C-COEFFICIENT to 0, set WEIGHT-B-COEFFICIENT to 10 and set
+% WEIGHT-B-FN to SIMPLEST-WEIGHT-B-FN.
+% 
+% Another setting that works reasonably well is to set all the coefficients to 1,
+% WEIGHT-A-FN to EXPANSION-LEVEL-WEIGHT-A, WEIGHT-B-FN to SIMPLE-WEIGHT-B-FN and
+% WEIGHT-C-FN to OPTION-SET-NUM-LEAVES, and then set all the various PENALTY- flags
+% to 3.
+% \end{comment}
+\input{mtree}

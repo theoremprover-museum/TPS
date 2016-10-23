@@ -1,0 +1,246 @@
+\chapter{Flags}
+
+Here is an example of how to add the flag {\it neg-prim-sub} to \TPS:
+
+Insert into the file prim.lisp the code:
+\begin{verbatim}
+(defflag neg-prim-sub
+  (flagtype boolean)
+  (default nil)
+  (subjects primsubs)
+  (mhelp "When T, one of the primitive substitutions will introduce negation."))
+
+\end{verbatim}
+
+Actually, that code almost worked, but changing the flag did not have the
+desired effect. The primsubs were stored in a hashtable which, once computed,
+was never changed again, so the code had to be  
+replaced by:
+
+\begin{verbatim}
+(defflag neg-prim-sub
+  (flagtype boolean)
+  (default nil)
+  (change-fn (lambda (a b c)
+	       (declare (ignore a b c))
+	       (ini-prim-hashtable)))
+  (subjects primsubs)
+  (mhelp "When T, one of the primitive substitutions will introduce negation."))
+
+\end{verbatim}
+
+Also put into the file auto.exp the line
+\begin{verbatim}
+(export '(neg-prim-sub))
+\end{verbatim}
+
+There are two ways to update flags. One is to do it manually. This is
+supported by function update-flag. The other way is to set flags
+automatically. For example, you may have to do this in your .ini
+file. If XXX is a flag and you want to set it to YYY, then you can add
+a line (set-flag 'XXX YYY) in your .ini file. Sometimes, you may use
+(setq XXX YYY), but this is highly discouraged because XXX may have a
+"change-fn" associated with it, which should be called whenever you
+set XXX. Flag \indexflag{HISTORY-SIZE} is such an example.
+(Note that if the variable being set is just a variable, and not a \TPS
+flag, then the setq form is correct.)
+
+\section{Symbols as Flag Arguments}
+
+If your new flag accepts symbols as arguments, and only certain symbols 
+are acceptable (as in, for example, \indexflag{PRIMSUB-METHOD} or \indexflag{APPLY-MATCH}),
+the symbols which can be used should have help messages attached somehow. This can either
+be done by defining a new category for the arguments, such as ORDERCOM or DEV-STYLE, or it can
+be done using the \indexother{definfo} command: {\tt (definfo foo (mhelp "Help text."))} attaches
+the given text to the symbol {\tt foo}.
+
+\section{Synonyms}
+
+It is possible to define two flags with different names which are 
+synonymous to each other, using the \indexcommand{defsynonym} macro.
+The advantage of this is that it allows the name of a flag to be changed
+(from the user's point of view) without requiring either a change in the
+code or extensive editing of all the modes saved in the library.
+
+For example:
+
+%\begin{tpsexample}
+\begin{verbatim}
+(defsynonym SUBNAME
+            (synonym TRUENAME)
+            (replace-old T)
+            (mhelp "SUBNAME is a synonym for the flag TRUENAME."))
+\end{verbatim}
+%\end{tpsexample}
+
+defines a new synonym for {\tt TRUENAME}. The {\it replace-old} property 
+determines whether or not the new synonym is to be regarded as the
+"new name" of the flag, if replace-old is {\tt T} 
+(and so to be recorded in the library, etc.) 
+or merely as an alias, if replace-old is {\tt NIL}.
+
+\section{Relevancy Relationships Between Flags}
+
+When defining a new flag, one can specify relevancy relationships
+between the flag and the values of other flags.  For example,
+if the flag {\bf DEFAULT-MS} is set to {\bf MS90-3}, then
+the flag {\bf MS98-NUM-OF-DUPS} is irrelevant.  On the other
+hand, if {\bf DEFAULT-MS} is set to {\bf MS98-1}, then the
+flag {\bf MS98-NUM-OF-DUPS} is relevant.  Since we expect the
+relevancy information to be incomplete at any point in time,
+it makes sense to explicitly record relevancy and irrelevancy
+information separately.
+
+The slots used to record these relationships are
+\begin{itemize}
+\item irrelevancy-preconditions
+\item relevancy-preconditions
+\item irrelevant-kids
+\item relevant-kids
+\end{itemize}
+
+If we want to record the irrelevancy relationship in
+the {\bf DEFAULT-MS}/{\bf MS98-NUM-OF-DUPS} 
+example above, there are two ways.  The first is to
+record this in the definition of {\bf DEFAULT-MS} using the
+{\it irrelevant-kids} slot as shown below.
+\begin{verbatim}
+(defflag default-ms
+  (flagtype searchtype)
+  (default ms90-3)
+  (subjects mating-search . . .)
+  (change-fn (lambda (flag value pvalue)
+	       (when (neq value pvalue) (update-otherdefs value))))
+  (irrelevant-kids ((neq default-ms 'ms98-1) '(ms98-num-of-dups)))
+  (mhelp . . . ))
+\end{verbatim}
+The format for this slot is a list of elements of the form
+\verb+(<pred> <sexpr>)+
+where \verb+<pred>+ is a condition on the value of the flag
+being defined
+and \verb+<sexpr>+ is an s-expression
+which should evaluate to a list of flags.
+
+Alternatively, we can specify the relationship when
+we define {\bf MS98-NUM-OF-DUPS} using the slot {\it irrelevancy-preconditions}
+\begin{verbatim}
+(defflag ms98-num-of-dups
+  (default nil)
+  (flagtype null-or-posinteger)
+  (subjects ms98-1)
+  (irrelevancy-preconditions (default-ms (neq default-ms 'ms98-1)))
+  (mhelp . . .))
+If some positive integer n, we reject any component using more than n 
+of the duplications."))
+\end{verbatim}
+The format for this slot is a list of pairs \verb+(<flag> <pred>)+
+where \verb+<flag>+ is a flag and \verb+<pred>+
+is a condition on the value of the flag \verb+<flag>+.
+
+Relevancy relationships can be specified in an analogous way.
+\begin{verbatim}
+(defflag default-ms
+  (flagtype searchtype)
+  (default ms90-3)
+  (subjects mating-search . . .)
+  (change-fn (lambda (flag value pvalue)
+	       (when (neq value pvalue) (update-otherdefs value))))
+  (irrelevant-kids ((neq default-ms 'ms98-1) '(ms98-num-of-dups)))
+  (relevant-kids ((eq default-ms 'ms98-1) '(ms98-num-of-dups)))
+  (mhelp . . . ))
+\end{verbatim}
+or
+\begin{verbatim}
+(defflag ms98-num-of-dups
+  (default nil)
+  (flagtype null-or-posinteger)
+  (subjects ms98-1)
+  (irrelevancy-preconditions (default-ms (neq default-ms 'ms98-1)))
+  (relevancy-preconditions (default-ms (eq default-ms 'ms98-1)))
+  (mhelp . . .))
+\end{verbatim}
+
+The conditions given are compiled into a relevancy graph and an irrelevancy graph.
+The graphs are labelled directed graphs, where the nodes are flags and the
+arcs are labelled by the conditions.
+These graphs are currently used in the following two ways.
+\begin{enumerate}
+\item The relevancy graph is used by the {\bf \indexcommand{UPDATE-RELEVANT}} command.
+The user specifies a flag to update.  Based on the value given for that flag,
+the user is then asked to specify values for the target flags for which the condition
+on the arc is true.  
+For example, consider the following session:
+\begin{verbatim}
+<0>update-relevant default-ms
+DEFAULT-MS [MS98-1]>ms98-1
+. . . 
+MS98-NUM-OF-DUPS [NIL]>2
+. . .
+<1>update-relevant default-ms
+DEFAULT-MS [MS98-1]>ms90-3
+. . .
+<2>
+\end{verbatim}
+\item The irrelevancy graph is used to warn the user when an irrelevant flag
+is being set.  A flag $F_0$ is {\it never irrelevant}
+if there are no arcs with $F_0$ as the target.
+A flag $F_1$ is {\it irrelevant} when there is a path
+from a flag $F_0$ to $F_1$, where $F_0$ is never irrelevant and
+at least one of the conditions on the path evaluates to true.  
+Consider the following session.
+\begin{verbatim}
+<2>default-ms
+DEFAULT-MS [MS90-3]>
+
+<3>ms98-num-of-dups
+MS98-NUM-OF-DUPS [NIL]>3
+WARNING: The setting of the flag DEFAULT-MS makes
+     the value of the flag MS98-NUM-OF-DUPS irrelevant.
+
+<4>default-ms
+DEFAULT-MS [MS90-3]>ms98-1
+
+<5>ms98-num-of-dups
+MS98-NUM-OF-DUPS [3]>2
+
+<6>
+\end{verbatim}
+\end{enumerate}
+
+\subsection{Automatically Generating Flag Relevancy}
+
+In addition to the relevancy information directly specified
+in the \verb+defflag+ declarations in the code, there
+is now code (in \indexfile{flag-deps.lisp}) to read
+and analyze the code in the lisp files to determine
+flag relevancy.  This code first reads the lisp files
+and records all \verb+defun+ and \verb+defmacro+ definitions.
+Then, it computes easy flag conditions in which flags
+and calls to other functions occur.  At present an {\it easy
+flag condition} is built from atoms
+of the form {\it easy-flag-term} {\it easy-operator} {\it easy-flag-term}
+using boolean operations and \verb+IF+.
+An {\it easy-operator} is one of =, <, >, <=, >=, eq, eql, equal, or neq.
+An {\it easy-flag-term} is a flag, NIL, T, a number, or any quoted term.
+The important property these conditions should satisfy is that their
+values are static, i.e., they do not depend on the dynamic environment.
+(Note that some flags, such as \indexflag{FIRST-ORDER-MODE-MS} are
+often dynamically set by the code.  This flag, for example, is removed
+from the list of flags, along with any flag, such as \indexflag{RIGHTMARGIN},
+that is never relevant for automatic search.  The code does attempt to recognize
+when flags are dynamically bound in a certain context and take this into
+consideration.)
+
+A user is given the option of computing this flag relevancy information
+when calling \indexcommand{UPDATE-RELEVANT} or \indexcommand{SHOW-RELEVANCE-PATHS}.
+Another option is to load the relevance information from a file.
+Such a file could have been created in a previous \TPS session
+using \indexcommand{SAVE-FLAG-RELEVANCY-INFO}.
+
+
+
+
+
+
+
+

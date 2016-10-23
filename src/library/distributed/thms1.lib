@@ -1,0 +1,341 @@
+(:name SIMPLEPQ
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) [P(OI) x(I) IMPLIES Q(OI).f(II) x(I)] AND FORALL y(I) [Q(OI) y(I) IMPLIES P(OI) y(I)] AND P(OI) a(I) IMPLIES P(OI).f(II) a(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM607
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS c(A(OA)) FORALL X(OA) [EXISTS t(A) X(OA) t(A) IMPLIES X(OA).c(A(OA)) X(OA)] IMPLIES.EXISTS g(BA) SURJECTIVE(O(BA)) g(BA) IMPLIES EXISTS f(AB) INJECTIVE(O(AB)) f(AB)"
+:needed-objects   (SURJECTIVE INJECTIVE)
+:mhelp "AC(A) implies . exists g(BA) SURJECTIVE g implies exists f(AB) INJECTIVE f  (TPS failed w/ MODE-THM146-MS98 after 4 hrs)"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM608
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS c(A(OA)) FORALL X(OA) [EXISTS t(A) X(OA) t(A) IMPLIES X(OA).c(A(OA)) X(OA)] IMPLIES.EXISTS R(OBA) SURJ-FN-GRAPH(O(OBA)) R(OBA) IMPLIES EXISTS S(OAB) INJ-FN-GRAPH(O(OAB)) S(OAB)"
+:needed-objects   (SURJ-FN-GRAPH INJ-FN-GRAPH)
+:mhelp "existence of a surjective relation implies existence of an injective relation in the other direction"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM609
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS c(A(OA)) FORALL X(OA) [EXISTS t(A) X(OA) t(A) IMPLIES X(OA).c(A(OA)) X(OA)] IMPLIES EXISTS g(BA) SURJECTIVE(O(BA)) g(BA) OR EXISTS f(AB) SURJECTIVE(O(AB)) f(AB)"
+:needed-objects   (SURJECTIVE)
+:mhelp "AC => comparability
+
+   using surjective functions
+"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM610
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS c(A(OA)) FORALL X(OA) [EXISTS t(A) X(OA) t(A) IMPLIES X(OA).c(A(OA)) X(OA)] IMPLIES EXISTS r(OBA) SURJ-FN-GRAPH(O(OBA)) r(OBA) OR EXISTS s(OAB) SURJ-FN-GRAPH(O(OAB)) s(OAB)"
+:needed-objects   (SURJ-FN-GRAPH)
+:mhelp "AC => comparability
+
+   using surjective relations"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM611
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS c(A(OA)) FORALL X(OA) [EXISTS t(A) X(OA) t(A) IMPLIES X(OA).c(A(OA)) X(OA)] IMPLIES EXISTS g(BA) INJECTIVE(O(BA)) g(BA) OR EXISTS f(AB) INJECTIVE(O(AB)) f(AB)"
+:needed-objects   (INJECTIVE)
+:mhelp "AC => comparability
+
+   using injective functions
+"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM612
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS S(OBA) INJ-FN-GRAPH(O(OBA)) S(OBA) OR EXISTS R(OAB) INJ-FN-GRAPH(O(OAB)) R(OAB)"
+:needed-objects   (INJ-FN-GRAPH)
+:mhelp "AC => comparability
+
+   using injective relations "
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM15
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:49."
+:description "FORALL f(II).EXISTS g(II) [ITERATE+(O(II)(II)) f(II) g(II) AND EXISTS1 x(I).g(II) x(I) =(OII) x(I)] IMPLIES EXISTS y(I).f(II) y(I) =(OII) y(I)"
+:needed-objects   (ITERATE+)
+:mhelp "If some iterate of a function f has a unique fixed point,
+then f has a fixed point.
+Example discussed in Resolution in Type Theory, JSL 36 (1971)."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM15A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, July 28, 1998 at 13:41:25."
+:description "FORALL f(II).EXISTS g(II) [ITERATE+(O(II)(II)) f(II) g(II) AND EXISTS x(I).g(II) x(I) =(OII) x(I) AND FORALL z(I).g(II) z(I) =(OII) z(I) IMPLIES x(I) =(OII) z(I)] IMPLIES EXISTS y(I).f(II) y(I) =(OII) y(I)"
+:needed-objects   (ITERATE+)
+:mhelp "If some iterate of a function f has a unique fixed point,
+then f has a fixed point.
+Example discussed in Resolution in Type Theory, JSL 36 (1971)."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM15C
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Monday, July 27, 1998 at 12:14:43."
+:description "FORALL f(II).EXISTS g(II) [ITERATE(O(II)(II)) f(II) g(II) AND EXISTS x(I).g(II) x(I) =(OII) x(I) AND FORALL z(I).g(II) z(I) =(OII) z(I) IMPLIES z(I) =(OII) x(I)] IMPLIES EXISTS y(I).f(II) y(I) =(OII) y(I)"
+:needed-objects   (COMPOSE ITERATE)
+:mhelp "Like THM15B but with ITERATE instead of ITERATE+"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM19
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) EXISTS y(I) P(OII) x(I) y(I) IMPLIES EXISTS f(II) FORALL x(I) P(OII) x(I).f(II) x(I)"
+:needed-objects   NIL
+:mhelp "Consequence of the axiom of choice, but not a theorem."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM19SK1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Monday, June 30, 1997 at 13:31:44."
+:description "~.FORALL x(I) P(OII) x(I) [E(I(OI)).LAMBDA y(I) P(OII) x(I) y(I)] AND FORALL f(II).~P(OII) [E(I(OI)).LAMBDA x(I).~P(OII) x(I).f(II) x(I)].f(II).E(I(OI)).LAMBDA x(I).~P(OII) x(I).f(II) x(I)"
+:needed-objects   NIL
+:mhelp "Related to THM19; result of Skolemizing naively."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM10
+:type GWFF
+:context NIL
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL F(II).FORALL X(I) FORALL Y(I) [X(I) LT(OII) Y(I) IMPLIES F(II) X(I) LT(OII) F(II) Y(I)] IMPLIES EXISTS Z(I).F(II) Z(I) =(OII) Z(I)"
+:needed-objects   (LT)
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM11
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 15:18:54."
+:description "%(OA(OB)(AB)) f(AB) [x(OB) INTERSECT(OB(OB)(OB)) y(OB)] SUBSET(O(OA)(OA)) %(OA(OB)(AB)) f(AB) x(OB) INTERSECT(OA(OA)(OA)) %(OA(OB)(AB)) f(AB) y(OB)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM12
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 15:18:55."
+:description "FORALL R(OI) FORALL S(OI).R(OI) =(O(OI)(OI)) S(OI) IMPLIES FORALL X(I).S(OI) X(I) IMPLIES R(OI) X(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM13
+:type GWFF
+:context NIL
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL R(OI) FORALL S(OI) [R(OI) =(O(OI)(OI)) S(OI) IMPLIES FORALL X(I).S(OI) X(I) IMPLIES R(OI) X(I)] IMPLIES INJECTIVE(O(OII)).LAMBDA X(I) LAMBDA Y(I).X(I) =(OII) Y(I)"
+:needed-objects   (INJECTIVE)
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM14
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 15:19:00."
+:description "INJECTIVE(O(OII)).LAMBDA X(I) LAMBDA Y(I).Y(I) =(OII) X(I)"
+:needed-objects   (INJECTIVE)
+:mhelp "15-APR-77 23:26:50 22-APR-77 16:40:39 26-APR-77 20:59:33  
+DATES  "
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM15-0
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 15:19:01."
+:description "FORALL F(II) EXISTS G(II).G(II) ITERATES(O(II)(II)) F(II) AND EXISTS1B(O(OI)) [LAMBDA X(I).G(II) X(I) =(OII) X(I)] IMPLIES EXISTS Y(I).F(II) Y(I) =(OII) Y(I)"
+:needed-objects   (ITERATES EXISTS1B)
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM15A-0
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:15:19."
+:description "FORALL F(II).EXISTS G(II) [G(II) ITERATES(O(II)(II)) F(II) AND EXISTS x(I).G(II) x(I) =(OII) x(I) AND FORALL y(I).G(II) y(I) =(OII) y(I) IMPLIES x(I) =(OII) y(I)] IMPLIES EXISTS Y(I).F(II) Y(I) =(OII) Y(I)"
+:needed-objects   (ITERATES)
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM16
+:type GWFF
+:context NIL
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GROUP-1(O(II)I(III)) P(III) E(I) J(II) IMPLIES FORALL X(I).P(III) X(I) [J(II) X(I)] =(OII) E(I)"
+:needed-objects   (GROUP-1)
+:mhelp "THIS IS A SIMPLE THEOREM OF GROUP THEORY  
+IN THIS CONTEXT IT IS A THEOREM OF HIGHER ORDER LOGIC  
+BECAUSE OF THE DEFINITION OF EQUALITY  
+WE ARE NOT USING ANY SPECIAL RULES FOR HANDLING EQUALITY"
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM17
+:type GWFF
+:context NIL
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GROUP-1(O(AA)A(AAA)) P(AAA) E(A) J(AA) IMPLIES FORALL X(A).P(AAA) X(A) E(A) =(OAA) X(A)"
+:needed-objects   (GROUP-1)
+:mhelp "THE USUAL PROOF OF THM17 USES THM16"
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM18
+:type GWFF
+:context NIL
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GROUP-1(O(II)I(III)) P(III) E(I) J(II) IMPLIES FORALL X(I) FORALL Y(I).J(II) [P(III) X(I) Y(I)] =(OII) P(III) [J(II) Y(I)].J(II) X(I)"
+:needed-objects   (GROUP-1)
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM19A
+:type GWFF
+:context NIL
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL Y(I) EXISTS Z(I) R(OII) Y(I) Z(I) IMPLIES EXISTS F(II) FORALL Y(I) R(OII) Y(I).F(II) Y(I)"
+:needed-objects   NIL
+:mhelp "THIS IS A CONSEQUENCE OF THE AXIOM OF CHOICE  
+IT IS ONLY PROVABLE WHEN SKOLEMIZATION IS DONE SO AS TO INTRODUCE CHOICE FUNCTIONS"
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+

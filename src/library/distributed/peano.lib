@@ -1,0 +1,140 @@
+(:name PA-1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(N).+(NNN) x(N) 0(N) =(ONN) x(N)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PA-2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(N) FORALL y(N).+(NNN) x(N) [S(NN) y(N)] =(ONN) S(NN).+(NNN) x(N) y(N)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PA-3
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(N).*(NNN) x(N) 0(N) =(ONN) 0(N)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PA-4
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(N) FORALL y(N).*(NNN) x(N) [S(NN) y(N)] =(ONN) +(NNN) [*(NNN) x(N) y(N)] x(N)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PA-IND
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL p(ON).p(ON) 0(N) AND FORALL x(N) [p(ON) x(N) IMPLIES p(ON).S(NN) x(N)] IMPLIES FORALL x(N) p(ON) x(N)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PA-IND-EQ
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL p(NN) FORALL q(NN).p(NN) 0(N) =(ONN) q(NN) 0(N) AND FORALL x(N) [p(NN) x(N) =(ONN) q(NN) x(N) IMPLIES p(NN) [S(NN) x(N)] =(ONN) q(NN).S(NN) x(N)] IMPLIES FORALL x(N).p(NN) x(N) =(ONN) q(NN) x(N)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PA-THM1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "PA-1 AND PA-2 AND PA-3 AND PA-4 IMPLIES *(NNN) [S(NN).S(NN) 0(N)] [S(NN).S(NN) 0(N)] =(ONN) +(NNN) [S(NN).S(NN) 0(N)].S(NN).S(NN) 0(N)"
+:needed-objects   (PA-1 PA-2 PA-3 PA-4)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PA-THM2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:15:00."
+:description "PA-1 AND PA-2 AND PA-IND-EQ IMPLIES FORALL x(N).+(NNN) x(N) 0(N) =(ONN) +(NNN) 0(N) x(N)"
+:needed-objects   (PA-1 PA-2 PA-IND-EQ)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PA-THM3
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "PA-1 AND PA-2 AND PA-IND-EQ IMPLIES FORALL x(N) FORALL y(N).+(NNN) [S(NN) x(N)] y(N) =(ONN) +(NNN) y(N).S(NN) x(N)"
+:needed-objects   (PA-1 PA-2 PA-IND-EQ)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PA-THM4
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "PA-1 AND PA-2 AND PA-IND-EQ IMPLIES FORALL x(N) FORALL y(N).+(NNN) x(N) y(N) =(ONN) +(NNN) y(N) x(N)"
+:needed-objects   (PA-1 PA-2 PA-IND-EQ)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

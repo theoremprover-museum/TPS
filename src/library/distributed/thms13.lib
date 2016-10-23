@@ -1,0 +1,229 @@
+(:name THM130
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, February 17, 1999 at 23:00:24."
+:description "IND AND r(OII) 0(I) 0(I) AND FORALL x(I) FORALL y(I) [r(OII) x(I) y(I) IMPLIES r(OII) [S(II) x(I)].S(II) y(I)] IMPLIES FORALL x(I) EXISTS y(I) r(OII) x(I) y(I)"
+:needed-objects   (IND)
+:mhelp "Induction theorem in which the conclusion is weaker than the statement which must be proved by induction"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM130A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:31."
+:description "IND AND r(OII) 0(I) 0(I) AND FORALL x(I) [r(OII) x(I) x(I) IMPLIES r(OII) [S(II) x(I)].S(II) x(I)] IMPLIES FORALL x(I) EXISTS y(I) r(OII) x(I) y(I)"
+:needed-objects   (IND)
+:mhelp "TPS must figure out what to do induction on."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM130B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Saturday, September 13, 1997 at 22:31:21."
+:description "r(OSS) ZERO(S) ZERO(S) AND FORALL x(S) FORALL y(S) [r(OSS) x(S) y(S) IMPLIES r(OSS) [SUCC(SS) x(S)].SUCC(SS) y(S)] IMPLIES FORALL x(S).NAT x(S) IMPLIES EXISTS y(S) r(OSS) x(S) y(S)"
+:needed-objects   NIL
+:mhelp "A simple theorem to be proved by induction. NAT, ZERO, and SUCC
+ are built into TPS, so they don't have to be declared as needed objects."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM131D
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:33."
+:description "FORALL h1(BG) FORALL h2(AB) FORALL s1(OG) FORALL f1(GG) FORALL s2(OB) FORALL f2(BB) FORALL s3(OA) FORALL f3(AA).HOM(O(BB)(OB)(GG)(OG)(BG)) h1(BG) s1(OG) f1(GG) s2(OB) f2(BB) AND HOM(O(AA)(OA)(BB)(OB)(AB)) h2(AB) s2(OB) f2(BB) s3(OA) f3(AA) IMPLIES FORALL x(G).s1(OG) x(G) IMPLIES [h2(AB) COMPOSE(AG(BG)(AB)) h1(BG)] [f1(GG) x(G)] =(OAA) f3(AA).[h2(AB) COMPOSE(AG(BG)(AB)) h1(BG)] x(G)"
+:needed-objects   (HOM COMPOSE)
+:mhelp "THM131 with only part d of the conclusion"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM132
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:35."
+:description "FORALL h(AA) FORALL s(OA) FORALL f(AA).HOM(O(AA)(OA)(AA)(OA)(AA)) h(AA) s(OA) f(AA) s(OA) f(AA) IMPLIES FORALL x(A).s(OA) x(A) IMPLIES [h(AA) COMPOSE(AA(AA)(AA)) h(AA)] [f(AA) x(A)] =(OAA) f(AA).[h(AA) COMPOSE(AA(AA)(AA)) h(AA)] x(A)"
+:needed-objects   (COMPOSE HOM)
+:mhelp "Special case of THM131D"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM133
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:36."
+:description "FORALL h1(BG) FORALL h2(AB) FORALL f1(GGG) FORALL f2(BBB) FORALL f3(AAA).HOMOM2(O(BBB)(GGG)(BG)) h1(BG) f1(GGG) f2(BBB) AND HOMOM2(O(AAA)(BBB)(AB)) h2(AB) f2(BBB) f3(AAA) IMPLIES HOMOM2(O(AAA)(GGG)(AG)) [h2(AB) COMPOSE(AG(BG)(AB)) h1(BG)] f1(GGG) f3(AAA)"
+:needed-objects   (HOMOM2 COMPOSE)
+:mhelp "The composition of homomorphisms of binary  operators is a 
+homomorphism. Suggested by Boyer et al JAR 2 page 284. 
+Simplified version of THM126"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM134
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:38."
+:description "FORALL z(I) FORALL g(II).ITERATE+(O(II)(II)) [LAMBDA x(I) z(I)] g(II) IMPLIES FORALL x(I).g(II) x(I) =(OII) z(I)"
+:needed-objects   (ITERATE+)
+:mhelp "Every positive iterate of a constant function is a constant function. 
+Proof does not actually require primsubs."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM135
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:38."
+:description "FORALL f(AA) FORALL g1(AA) FORALL g2(AA).ITERATE(O(AA)(AA)) f(AA) g1(AA) AND ITERATE(O(AA)(AA)) f(AA) g2(AA) IMPLIES ITERATE(O(AA)(AA)) f(AA).g1(AA) COMPOSE(AA(AA)(AA)) g2(AA)"
+:needed-objects   (ITERATE COMPOSE)
+:mhelp "The composition of iterates of a function is also an iterate of that function. Not provable without eta-conversion"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM135A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL f(AA) FORALL g1(AA) FORALL g2(AA).ITERATE(O(AA)(AA)) f(AA) g1(AA) AND ITERATE(O(AA)(AA)) f(AA) [LAMBDA x(A) g2(AA) x(A)] IMPLIES ITERATE(O(AA)(AA)) f(AA).g1(AA) COMPOSE(AA(AA)(AA)) LAMBDA x(A) g2(AA) x(A)"
+:needed-objects   (ITERATE COMPOSE)
+:mhelp "The composition of iterates of a function is an iterate of that function. Formulated so as to be provable without eta-conversion."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM135B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL f(AA) FORALL g1(AA) FORALL g2(AA).ITERATE+(O(AA)(AA)) f(AA) g1(AA) AND ITERATE+(O(AA)(AA)) f(AA) [LAMBDA x(A) g2(AA) x(A)] IMPLIES ITERATE+(O(AA)(AA)) f(AA).g1(AA) COMPOSE(AA(AA)(AA)) LAMBDA x(A) g2(AA) x(A)"
+:needed-objects   (COMPOSE ITERATE+)
+:mhelp "Like THM135A, but with ITERATE+ instead of ITERATE"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM135C
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL g(AA) [LAMBDA x(A) g(AA) x(A) =(O(AA)(AA)) g(AA)] IMPLIES FORALL f(AA) FORALL g1(AA) FORALL g2(AA).ITERATE(O(AA)(AA)) f(AA) g1(AA) AND ITERATE(O(AA)(AA)) f(AA) g2(AA) IMPLIES ITERATE(O(AA)(AA)) f(AA).g1(AA) COMPOSE(AA(AA)(AA)) g2(AA)"
+:needed-objects   (ITERATE COMPOSE)
+:mhelp "The compositiion of iterates of a function is an iterate of that function;
+note that we explicitly assume the eta-condition."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM135D
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL f(AA) FORALL g1(AA) FORALL g2(AA).ITERATE+(O(AA)(AA)) f(AA) g1(AA) AND ITERATE+(O(AA)(AA)) f(AA) g2(AA) IMPLIES ITERATE+(O(AA)(AA)) f(AA).g1(AA) COMPOSE(AA(AA)(AA)) g2(AA)"
+:needed-objects   (ITERATE+ COMPOSE)
+:mhelp "Like thm135 but uses ITERATE+"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM136
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:40."
+:description "FORALL r(OAA) TRANSITIVE(O(OAA)).TRANSITIVE-CLOSURE(OAA(OAA)) r(OAA)"
+:needed-objects   (TRANSITIVE TRANSITIVE-CLOSURE)
+:mhelp "The transitive closure of a relation is transitive."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM137
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:41."
+:description "FORALL X(I) R(OII) X(I) A(I) IMPLIES EXISTS Y(I) R(OII) B(I) Y(I)"
+:needed-objects   NIL
+:mhelp "trivial theorem for logic lessons"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM138
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS x(I) FORALL y(I) [P(OI) x(I) EQUIV P(OI) y(I)] EQUIV [EXISTS x(I) Q(OI) x(I) EQUIV FORALL y(I) R(OI) y(I)] EQUIV [EXISTS x(I) FORALL y(I) [Q(OI) x(I) EQUIV Q(OI) y(I)] EQUIV.EXISTS x(I) R(OI) x(I) EQUIV FORALL y(I) S(OI) y(I)] EQUIV.EXISTS x(I) FORALL y(I) [R(OI) x(I) EQUIV R(OI) y(I)] EQUIV [EXISTS x(I) S(OI) x(I) EQUIV FORALL y(I) P(OI) y(I)] EQUIV.EXISTS x(I) FORALL y(I) [S(OI) x(I) EQUIV S(OI) y(I)] EQUIV.EXISTS x(I) P(OI) x(I) EQUIV FORALL y(I) Q(OI) y(I)"
+:needed-objects   NIL
+:mhelp "Similar in spirit to X2129, but bigger; yields 14,868,736 clauses."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM139
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:42."
+:description "FORALL y(I) EXISTS f(II).y(I) IN(O(OI)I) RANGE(OI(II)) f(II)"
+:needed-objects   (IN RANGE)
+:mhelp "Every object is in the range of some function."
+:other-attributes NIL
+:other-remarks "
+")
+
+

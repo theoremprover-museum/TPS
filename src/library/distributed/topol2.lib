@@ -1,0 +1,56 @@
+(:name CLOSURE-THM0
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, October 29, 1997 at 13:24:56."
+:description "FORALL S(O(OB)).TOPOLOGY(O(O(OB))) S(O(OB)) IMPLIES FORALL W(OB).W(OB) SUBSET(O(OB)(OB)) TOP-CLOSURE(OB(OB)(O(OB))) S(O(OB)) W(OB)"
+:needed-objects   (TOPOLOGY TOP-CLOSURE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CLOSURE-THM1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL S(O(OB)).TOPOLOGY(O(O(OB))) S(O(OB)) IMPLIES FORALL W(OB) CLOSED(O(OB)(O(OB))) S(O(OB)).TOP-CLOSURE(OB(OB)(O(OB))) S(O(OB)) W(OB)"
+:needed-objects   (TOPOLOGY CLOSED TOP-CLOSURE)
+:mhelp "Seems to be unprovable in TPS; something to do with the handling of ="
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CLOSURE-THM2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL S(O(OB)) FORALL T(O(OA)).TOPOLOGY(O(O(OA))) T(O(OA)) AND TOPOLOGY(O(O(OB))) S(O(OB)) IMPLIES FORALL F(AB).CONTINUOUS(O(AB)(O(OB))(O(OA))) T(O(OA)) S(O(OB)) F(AB) EQUIV FORALL X(OB).%(OA(OB)(AB)) F(AB) [TOP-CLOSURE(OB(OB)(O(OB))) S(O(OB)) X(OB)] SUBSET(O(OA)(OA)) TOP-CLOSURE(OA(OA)(O(OA))) T(O(OA)).%(OA(OB)(AB)) F(AB) X(OB)"
+:needed-objects   (TOPOLOGY TOP-CLOSURE CONTINUOUS)
+:mhelp "Seems to be unprovable in TPS; something to do with the handling of ="
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TOP-CLOSURE
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA T(O(OA)) LAMBDA S(OA) SETINTERSECT(OA(O(OA))).LAMBDA W(OA).S(OA) SUBSET(O(OA)(OA)) W(OA) AND CLOSED(O(OA)(O(OA))) T(O(OA)) W(OA)"
+:needed-objects   (CLOSED)
+:mhelp "Assumes T is a TOPOLOGY"
+:other-attributes ((TYPELIST ("A")) (TYPE "OA(OA)(O(OA))") (PRINTNOTYPE T) (FO-SINGLE-SYMBOL T))
+:other-remarks "
+")
+
+

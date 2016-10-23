@@ -1,0 +1,14 @@
+(:name THM262-EXT
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL p(OA) FORALL a(OA) [FORALL b(A) [p(OA) b(A) =(OOO) a(OA) b(A)] IMPLIES FORALL P(O(OA)).P(O(OA)) p(OA) IMPLIES P(O(OA)) a(OA)] IMPLIES FORALL P(O(OA)).PARTITION(O(O(OA))) P(O(OA)) IMPLIES EXISTS Q(OAA).EQUIVALENCE-REL(O(OAA)) Q(OAA) AND EQUIVALENCE-CLASSES(O(OA)(OAA)) Q(OAA) =(O(O(OA))(O(OA))) P(O(OA))"
+:needed-objects   (PARTITION EQUIVALENCE-REL EQUIVALENCE-CLASSES)
+:mhelp "thm262 plus extensionality"
+:other-attributes NIL
+:other-remarks "
+")
+
+

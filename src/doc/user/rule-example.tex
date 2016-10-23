@@ -1,0 +1,189 @@
+\subsection{Customizing {\ETPS} or {\TPS} with your own rules}
+
+Suppose that we wanted to set up a logical system with just one rule,
+{\it modus ponens}.  Here's how we would go about it.
+
+First we find the definition of the rule MP, which is located in one
+of the files with the extension {\tt .rules}.  Let's make some minor
+modifications to it for our new system. This is what it looks like:
+\begin{alltt}
+(defirule modpon
+  (lines (p1 (h) () `A')
+	 (d2 (h) () `A implies B')
+	 (d3 (h) () `B' (`Modus Ponens' () (p1 d2))))
+  (support-transformation (('pp d2 'ss)) ((p1 'ss) ('pp d3 'ss p1)))
+  (itemshelp (p1 `Line with Antecedent of Implication')
+	     (d2 `Line with Implication')
+	     (d3 `Line with Succedent of Implication')
+	     (`A(O)' `Antecedent of Implication')
+	     (`B(O)' `Succedent of Implication'))
+  (mhelp `The rule of Modus Ponens.'))
+\end{alltt}
+
+We place the rule definition in a new file, say {\tt mp.rules}.  Now we
+need to generate the Lisp functions that carry out the rule.  At the
+{\ETPS} top level, we do the following:
+\begin{alltt}
+;;; Set up flags to read the new rule properly
+<0> mode rules
+<1>assemble-file
+RULE-FILE (FILESPEC): Rule source file to be assembled [`.rules']>mp
+PART-OF (SYMBOL): Package the file is part of [OTLSUGGEST]>newpackage
+MODPON
+Written file /afs/cs.cmu.edu/user/nesmith/tps/mp.lisp.
+\end{alltt}
+
+In order to put this new rule into a new {\lisp} package, we add the following
+lines to the beginning of the file {\tt mp.lisp}:
+\begin{alltt}
+(unless (find-package `MY-RULES')
+  (make-package `MY-RULES' :use (package-use-list (find-package `ML'))))
+(in-package 'my-rules)
+\end{alltt}
+
+We also should put the new rule file into a separate {\TPS} package, by
+adding the following to the file {\tt defpck.lisp}:
+\begin{alltt}
+(def-lisp-package my-rules
+  (needed-lisp-packages core auto)
+  (mhelp `My rules.'))
+
+(defmodule my-rules
+  (needed-modules math-logic-2-wffs theorems replace)
+  (lisp-pack my-rules)
+  (files mp)
+  (mhelp `Defines my rules.'))
+\end{alltt}
+
+Now we load these changes into {\ETPS}:
+\begin{alltt}
+<2> qload defpck
+Loading stuff from \#<File stream `/afs/cs.cmu.edu/user/nesmith/tps/defpck.lisp'>.
+<3> sys-load my-rules
+<4> use-package 'my-rules
+\end{alltt}
+
+Now the rules in the package my-rules are available for use.  We can have them
+loaded each time {\ETPS} starts up by adding the following lines to the
+file {\tt etps.patch}:
+\begin{alltt}
+(qload `defpck')
+(sys-load-package 'my-rules)
+(use-package 'my-rules)
+(unuse-package 'ml)
+\end{alltt}
+
+The last form above will make the current rules unavailable to the user.
+
+We could also build a version of {\ETPS} which uses these rules by loading
+my-rules instead of math-logic-2-rules.  This change can be made by
+modifying the file {\tt etps-build.lisp} in the appropriate place.
+
+Notice that if two rules in different packages (or even different modules)
+have the same name, and both are loaded into the same core image, the last one
+loaded will be the one that is available. (In particular, in the standard {\TPS},
+the modules {\tt math-logic-1} and {\tt math-logic-2} conflict in this way, although
+{\tt math-logic-1} is normally not loaded.)
+
+\subsection{Creating Exercises}
+
+In general, you may use \indexfunction{DEFTHEOREM} to define theorems from the book
+the student may want to use \indexother{BOOK-THEOREM}, practice exercises \indexother{PRACTICE},
+exercises \indexother{EXERCISE} and test problems \indexother{TEST-PROBLEM}. This is indicated
+in the value of the \indexother{THM-TYPE} property. There is one other value of \indexother{THM-TYPE},
+which is \indexother{LIBRARY}, indicating that the theorem was loaded from the library.
+
+You may specify the amount of advice given and the rules excluded by writing
+the appropriate Lisp function and making its name the value of the
+\indexother{ALLOWED-CMD-P} property. Some functions are already defined, and are described below.
+
+By a similar device with the \indexother{ALLOWED-LEMMA-P} property,
+you may specify which theorems may be asserted legally and used with
+{\tt SUBST-WFF} to help in the proof.
+
+The \indexother{ASSERTION} property should be given a wff in quotes, the assertion
+of the theorem. There are other properties \indexother{SCORE}, \indexother{REMARKS},
+\indexother{FOL} and \indexother{MHELP}. The first two are useless, but are meant to contain
+the maximum score for the exercise (GRADER currently ignores this) and any remarks from
+the teacher. The third should be T if the theorem is first-order, and the last is the usual
+help message.
+
+Here are some examples:
+
+\begin{tpsexample}
+(deftheorem X6004
+  (assertion
+   ` eqp [= x(B)] [= y(A)] ')
+  (thm-type exercise)
+  (allowed-cmd-p allow-all)
+  (allowed-lemma-p allow-no-lemmas))
+
+(deftheorem X5206
+  (assertion
+   ` \% f(AB) [x union y] = . [\% f x] union [\% f y] ')
+  (thm-type exercise)
+  (allowed-cmd-p allow-all)
+  (required-lemmas (x5200 x5204))
+  (allowed-lemma-p only-required-lemmas))
+\end{tpsexample}
+
+The functions for \indexother{allowed-cmd-p} are as
+follows. Notice that for practice theorems (i.e. those
+with THM-TYPE PRACTICE) these generally behave like ALLOW-ALL.
+
+\begin{description}
+\item[\indexfunction{ALLOW-ALL} ]	 allows all commands
+
+\item[] \indexfunction{ALLOW-RULEP} 
+allows all commands except \indexcommand{ADVICE}.
+
+\item[\indexfunction{DISALLOW-RULEP} ]	 allows all commands except
+\indexcommand{ADVICE} and \indexcommand{RULEP}.
+\end{description}
+
+Those for \indexother{allowed-lemma-p} are:
+\begin{description}
+\item[\indexfunction{ALLOW-NO-LEMMAS} ]	 allows no theorems to be asserted
+in proving the exercise.
+
+\item[\indexfunction{ONLY-REQUIRED-LEMMAS} ]	 allows only
+theorems listed under \indexother{REQUIRED-LEMMAS} to be used.
+
+\item[\indexfunction{THEOREM-NO} {\it nnn} ]	 allows only theorem {\it nnn}
+to be asserted.
+
+\item[\indexfunction{ALLOW-LOWER-NOS} ]	 allows any theorem with a lower number
+to be asserted. (This obviously requires your theorems to be numbered,
+as the default theorems from Andrews' book are.)
+\end{description}
+
+The definitions of exercises can be stored in files and loaded into {\TPS}
+when needed. In order to use the safeguards of the {\TPS} package loading
+functions, these are given a package of their own ({\tt ML} in our system),
+and we have defined modules for these files and other files
+defining the logical system for {\ETPS} in {\tt defpck}. The main module
+for a system will have some mnemonic name, such as {\tt math-logic-2},
+and the module for the exercises will have the suffix {\tt -exercises}.
+Similarly, the module names for wffs (constants, abbreviations, etc.)
+and rules bear the suffices {\tt -wffs} and {\tt -rules}, respectively.
+
+If you just want to put an exercise into {\ETPS} temporarily, add the
+necessary information to the file etps.patch as in the following
+example:
+
+\begin{tpsexample}
+(export '(x8030a))
+
+(context ml2-exercises)
+
+(deftheorem x8030a
+  (assertion
+"
+[g(OO) TRUTH AND g FALSEHOOD] = FORALL x(O) g x
+  ")
+  (thm-type exercise)
+  (allowed-cmd-p allow-all)
+  (allowed-lemma-p allow-no-lemmas))
+
+
+\end{tpsexample}

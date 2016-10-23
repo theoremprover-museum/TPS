@@ -1,0 +1,128 @@
+(:name FOUR-THEOREM
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "TWO TIMESA(SSS) TWO =(OSS) TWO PLUSA(SSS) TWO"
+:needed-objects   (TWO TIMESA PLUSA)
+:mhelp "2*2 = 2+2"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name FOUR-THEOREM-B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "PLUS-AXIOMS AND TIMES-AXIOMS IMPLIES *(SSS) TWO TWO =(OSS) +(SSS) TWO TWO"
+:needed-objects   (TWO PLUS-AXIOMS TIMES-AXIOMS)
+:mhelp "2*2 = 2+2"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PLUS-AXIOMS
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL X(S) [+(SSS) X(S) ZERO(S) =(OSS) X(S)] AND FORALL X(S) FORALL Y(S).+(SSS) X(S) [SUCC(SS) Y(S)] =(OSS) SUCC(SS).+(SSS) X(S) Y(S)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPE "O"))
+:other-remarks "
+")
+
+
+(:name PLUSA
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "PRIM-REC(SSS(SSS)).LAMBDA X(S) LAMBDA Y(S) SUCC(SS) Y(S)"
+:needed-objects   (PRIM-REC)
+:mhelp "Addition defined primitive recursively."
+:other-attributes ((FACE +) (FO-SINGLE-SYMBOL +) (PRINTNOTYPE T) (INFIX 12) (TYPELIST ("S")) (TYPE "SSS"))
+:other-remarks "
+")
+
+
+(:name SIX-THEOREM
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL R(OII) FORALL A(I) FORALL B(I) FORALL C(I) FORALL D(I) FORALL E(I) FORALL F(I).SYMMETRIC(O(OII)) R(OII) AND ~[A(I) =(OII) B(I)] AND ~[A(I) =(OII) C(I)] AND ~[A(I) =(OII) D(I)] AND ~[A(I) =(OII) E(I)] AND ~[A(I) =(OII) F(I)] AND ~[B(I) =(OII) C(I)] AND ~[B(I) =(OII) D(I)] AND ~[B(I) =(OII) E(I)] AND ~[B(I) =(OII) F(I)] AND ~[C(I) =(OII) D(I)] AND ~[C(I) =(OII) E(I)] AND ~[C(I) =(OII) F(I)] AND ~[D(I) =(OII) E(I)] AND ~[D(I) =(OII) F(I)] AND ~[E(I) =(OII) F(I)] IMPLIES EXISTS a(I) EXISTS b(I) EXISTS c(I).~[a(I) =(OII) b(I)] AND ~[a(I) =(OII) c(I)] AND ~[b(I) =(OII) c(I)] AND.R(OII) a(I) b(I) AND R(OII) a(I) c(I) AND R(OII) b(I) c(I) OR ~R(OII) a(I) b(I) AND ~R(OII) a(I) c(I) AND ~R(OII) b(I) c(I)"
+:needed-objects   (SYMMETRIC)
+:mhelp "Of any six people, either three mutually know each other or three mutually don't know each other.
+Can probably only be done by using an enormous case analysis."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name SIX-THEOREM-B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "[R(OII) A(I) B(I) OR G(OII) A(I) B(I)] AND [R(OII) A(I) C(I) OR G(OII) A(I) C(I)] AND [R(OII) A(I) D(I) OR G(OII) A(I) D(I)] AND [R(OII) A(I) E(I) OR G(OII) A(I) E(I)] AND [R(OII) A(I) F(I) OR G(OII) A(I) F(I)] AND [R(OII) B(I) C(I) OR G(OII) B(I) C(I)] AND [R(OII) B(I) D(I) OR G(OII) B(I) D(I)] AND [R(OII) B(I) E(I) OR G(OII) B(I) E(I)] AND [R(OII) B(I) F(I) OR G(OII) B(I) F(I)] AND [R(OII) C(I) D(I) OR G(OII) C(I) D(I)] AND [R(OII) C(I) E(I) OR G(OII) C(I) E(I)] AND [R(OII) C(I) F(I) OR G(OII) C(I) F(I)] AND [R(OII) D(I) E(I) OR G(OII) D(I) E(I)] AND [R(OII) D(I) F(I) OR G(OII) D(I) F(I)] AND [R(OII) E(I) F(I) OR G(OII) E(I) F(I)] IMPLIES EXISTS a(I) EXISTS b(I) EXISTS c(I) [R(OII) a(I) b(I) AND R(OII) a(I) c(I) AND R(OII) b(I) c(I)] OR EXISTS a(I) EXISTS b(I) EXISTS c(I).G(OII) a(I) b(I) AND G(OII) a(I) c(I) AND G(OII) b(I) c(I)"
+:needed-objects   NIL
+:mhelp "Of any six people, either three mutually know each other or three mutually don't know each other.
+Think of R and G as red and green edges in the complete graph K6. Suggested by Olivier Lessmann."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TIMES-AXIOMS
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL X(S) [*(SSS) X(S) ZERO(S) =(OSS) ZERO(S)] AND FORALL X(S) FORALL Y(S).*(SSS) X(S) [SUCC(SS) Y(S)] =(OSS) +(SSS) [*(SSS) X(S) Y(S)] Y(S)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPE "O"))
+:other-remarks "
+")
+
+
+(:name TIMESA
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X(S) PRIM-REC(SSS(SSS)) [LAMBDA Y(S) [PLUSA(SSS) X(S)]] ZERO(S)"
+:needed-objects   (PRIM-REC PLUSA)
+:mhelp "Multiplication defined primitive recursively."
+:other-attributes ((FACE *) (FO-SINGLE-SYMBOL *) (PRINTNOTYPE T) (INFIX 12) (TYPELIST ("S")) (TYPE "SSS"))
+:other-remarks "
+")
+
+
+(:name TWO
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "SUCC(SS) ONE"
+:needed-objects   NIL
+:mhelp "The number 2"
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPE "S"))
+:other-remarks "
+")
+
+

@@ -1,0 +1,105 @@
+		DOCJOBS
+Jobs to be done documenting TPS
+
+----------------------------------------------------------------
+		General procedures
+
+Documentation jobs are in 
+/afs/cs/project/tps/admin/docjobs
+
+See /afs/andrew.cmu.edu/usr/pa01/hlp/tpsdoc.hlp
+for help on the tps manual indexing scheme.
+
+Note that there are different files for different
+chapters of the manuals.
+
+Documentation not yet ready to go into manuals
+goes into the file newdoc in the appropriate directory:
+[gtps]/home/theorem/project/doc/user for the user manual
+[gtps]/home/theorem/project/doc/etps for the etps manual
+[gtps]/home/theorem/project/doc/prog for the programmer's manual
+
+Insofar as possible, indicate which chapter and section it belongs in,
+and keep material for these sections in the correct order.
+Number these starting with asterisks (example: *7.1.2) so
+that we can find it quickly.
+
+If it's not quite clear which manual it goes into,
+or if it needs to be divided up or sorted out, put it into
+[gtps]/home/theorem/project/doc/user/newdoc
+
+/afs/cs/user/andrews/tps3-notes.doc
+contains general information about tps3 which might be useful someday,
+but is either not yet sorted out or is not worth putting into the user
+or programmer's manual for the present.
+
+Copies of new documentation which has been installed
+in the main manual but not yet checked by Andrews
+should be put into the file newdoc-check
+in the same directory. This will make it easy to see what
+was added. Everything in this file should be completely
+redundant. Its contents should be deleted as soon as
+they have been checked.
+
+	Transfer newdoc into the relevant manual when it can
+be done right (properly indexed.)
+----------------------------------------------------------------
+		Jobs to be done
+
+=====================================================================
+
+		ETPS MANUAL
+
+One can set up and execute a work file to set
+flags such as RIGHTMARGIN so that one will
+not have to repeatedly set up one's environment.
+======================================================================
+
+		USER'S MANUAL
+
+Also see the file tpsjobs
+
+Add to the chapter on setting up tps the information in the files
+/home/theorem/project/dist/README.gnuclisp
+/home/theorem/project/dist/run-tps3gnuclisp
+
+In the discussion of rewrite rules, make it clear that one can 
+define rewrite rules by using the insert library command
+
+
+How to see what rrules are available:
+
+list-of-libobjects
+TYPE (LIB-ARGTYPE-OR-NIL): Types of objects or NIL for all objects. [NIL]>RRULE
+BACKUP (YESNO): Include backup directories? [No]>Y
+ADD-A          mbishop/rrule.lib
+ADD-B          mbishop/rrule.lib
+ADDAGAIN       mbishop/rrule.lib
+ADDONCEMORE    mbishop/rrule.lib
+COMMUTE        mbishop/rrule.lib
+EQUIVS         mbishop/rrule.lib
+ONE            mbishop/rrule.lib
+STRANGE        mbishop/rrule.lib
+
+
+=====================================================================
+		PROGRAMMER'S MANUAL
+
+	Examining a proof
+
+dproof
+X2112
+
+<2>(plist 'x2112)
+(GAPS NIL NEXTPLAN-NO 26 PLANS NIL LINEALIASES ((1 . #:L1480) (2 . #:L1490) (3 . #:L1503) (4 . #:L1517) (5 . #:L1534) (6 . #:L1554) (7 . #:L1562) (8 . #:L1583) (9 . #:L1595) (10 . #:L1606) (11 . #:L1617) (12 . #:L1626) (13 . #:L1596) (14 . #:L1563) (15 . #:L1545) (16 . #:L1535) (17 . #:L1481) (18 . T31)) LINES (#:L1480 #:L1490 #:L1503 #:L1517 #:L1534 #:L1554 #:L1562 #:L1583 #:L1595 #:L1606 #:L1617 #:L1626 #:L1596 #:L1563 #:L1545 #:L1535 #:L1481 T31) GWFF-NAME X2112 ASSERTION ((IMPLIES (AND (AND (|v<I>| . EXISTS) (|x<I>| . FORALL) (P<OII> . |x<I>|) . |v<I>|) (|x<I>| . FORALL) (IMPLIES S<OI> . |x<I>|) (|y<I>| . EXISTS) (Q<OII> . |y<I>|) . |x<I>|) (|x<I>| . FORALL) (|y<I>| . FORALL) (IMPLIES (P<OII> . |x<I>|) . |y<I>|) NOT (Q<OII> . |x<I>|) . |y<I>|) (|u<I>| . EXISTS) NOT S<OI> . |u<I>|) THM-TYPE PRACTICE FOL T ALLOWED-CMD-P ALLOW-RULEP ALLOWED-LEMMA-P ALLOW-NO-LEMMAS CORE::CONTEXTS ((%THEOREM% . ML1-EXERCISES)) %THEOREM% T)
+<3>(proof-lines 'x2112)
+(#:L1480 #:L1490 #:L1503 #:L1517 #:L1534 #:L1554 #:L1562 #:L1583 #:L1595 #:L1606 #:L1617 #:L1626 #:L1596 #:L1563 #:L1545 #:L1535 #:L1481 T31)
+
+<4>(plist 't31)
+(HYPOTHESES NIL MATING ((LEAF10 . LEAF28) (LEAF17 . LEAF12) (LEAF15 . LEAF8)) CORE::NODE IMP1 CORE::SUPPORT (NIL) LINENUMBER 18 JUSTIFICATION ("Deduct" NIL (#:L1481)) ASSERTION ((IMPLIES (AND (AND (|v<I>| . EXISTS) (|x<I>| . FORALL) (P<OII> . |x<I>|) . |v<I>|) (|x<I>| . FORALL) (IMPLIES S<OI> . |x<I>|) (|y<I>| . EXISTS) (Q<OII> . |y<I>|) . |x<I>|) (|x<I>| . FORALL) (|y<I>| . FORALL) (IMPLIES (P<OII> . |x<I>|) . |y<I>|) NOT (Q<OII> . |x<I>|) . |y<I>|) (|u<I>| . EXISTS) NOT S<OI> . |u<I>|))
+
+<5>(plist (car (proof-lines 'x2112)))
+(CORE::NODE CONJ0 HYPOTHESES (#:L1480) JUSTIFICATION ("Hyp" NIL NIL) LINENUMBER 1 ASSERTION ((AND (AND (|v<I>| . EXISTS) (|x<I>| . FORALL) (P<OII> . |x<I>|) . |v<I>|) (|x<I>| . FORALL) (IMPLIES S<OI> . |x<I>|) (|y<I>| . EXISTS) (Q<OII> . |y<I>|) . |x<I>|) (|x<I>| . FORALL) (|y<I>| . FORALL) (IMPLIES (P<OII> . |x<I>|) . |y<I>|) NOT (Q<OII> . |x<I>|) . |y<I>|))
+
+====================================================================
+

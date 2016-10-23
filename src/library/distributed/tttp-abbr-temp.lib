@@ -1,0 +1,43 @@
+(:name P-REC
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA H(SSS) LAMBDA G(O(OI)) LAMBDA N(S) IOTA(S(OS)).LAMBDA M(S) FORALL W(OSS).W(OSS) 0(S) G(O(OI)) AND FORALL X(S) FORALL Y(S) [W(OSS) X(S) Y(S) IMPLIES W(OSS) [S(SS) X(S)].H(SSS) X(S) Y(S)] IMPLIES W(OSS) N(S) M(S)"
+:needed-objects   NIL
+:mhelp "Primitive Recursion operator. Needs O and S to be replaced by ZERO and SUCC."
+:other-attributes ((TYPELIST ("S")) (TYPE "SSS(SSS)"))
+:other-remarks "
+")
+
+
+(:name PLUS
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "P-REC(SSS(SSS)).LAMBDA X(S) LAMBDA Y(S) S(SS) Y(S)"
+:needed-objects   (P-REC)
+:mhelp "Addition defined primitive recursively. Uses P-REC, which has ) and S free."
+:other-attributes ((FACE +) (FO-SINGLE-SYMBOL +) (PRINTNOTYPE T) (INFIX 12) (TYPELIST ("S")) (TYPE "SSS"))
+:other-remarks "
+")
+
+
+(:name TTTP-6400
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL H(SSS) FORALL G(O(OI)).P-REC(SSS(SSS)) H(SSS) G(O(OI)) 0(S) =(OSS) G(O(OI)) AND FORALL N(S).NAT N(S) IMPLIES P-REC(SSS(SSS)) H(SSS) G(O(OI)) [S(SS) N(S)] =(OSS) H(SSS) N(S).P-REC(SSS(SSS)) H(SSS) G(O(OI)) N(S)"
+:needed-objects   (P-REC)
+:mhelp "THEOREM 6400 about primitive recusion operator. Needs O and S to be replaced by ZERO and SUCC. Also defined here to be an
+abbreviation so it can be part of other theorems and be instantiated."
+:other-attributes ((TYPE "O"))
+:other-remarks "
+")
+
+

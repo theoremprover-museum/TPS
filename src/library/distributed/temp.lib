@@ -1,0 +1,592 @@
+(:name ZALTAABBREVS
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "CONCRETE(ORA) x(A) w(R) AND ENCODES(OR(OA)A) x(A) F(OA) w(R) AND ORDINARY(OA) x(A) AND ABSTRACT(OA) x(A) AND [x(A) POINTMODELS(OROA) p(O)] w(R)"
+:needed-objects   (CONCRETE ENCODES ORDINARY ABSTRACT POINTMODELS)
+:mhelp "gwff showing many Abbrevs from Zalta's theory - not a theorem"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name DEMO-TRIV1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "P(OI) a(I) AND FORALL x(I) [P(OI) x(I) IMPLIES Q(OI).f(II) x(I)] AND FORALL y(I) [Q(OI) y(I) IMPLIES R(OI).g(II) y(I)] IMPLIES EXISTS w(I) R(OI) w(I)"
+:needed-objects   NIL
+:mhelp "Example for giving demo of TPS
+to illustrate a simple mating and (interactive) etree-nat."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name EXX1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, January 26, 2000 at 17:36:48."
+:description "FORALL x(I) P(OI) x(I) IMPLIES P(OI) a(I)"
+:needed-objects   NIL
+:mhelp "simple example"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X2111A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, May 28, 2002 at 14:11:38."
+:description "FORALL x(I) [EXISTS y(I) [x(I) LESS-INFIX(OII) y(I)] IMPLIES FORALL y(I) Q(OII) x(I) y(I)] AND FORALL z(I) EXISTS y(I) [z(I) LESS-INFIX(OII) y(I)] IMPLIES FORALL y(I) FORALL x(I) Q(OII) x(I) y(I)"
+:needed-objects   (LESS-INFIX)
+:mhelp "Variant of X2111 for testing infix mechanism"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM2SUB1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA z^3(I) FORALL P(OI).FORALL z^3(I) [EXISTS w^0(OI) [FORALL x^4(I) [w^0(OI) x^4(I) IMPLIES P(OI) x^4(I)] AND K^7(OI(OI)) w^0(OI) z^3(I)] IMPLIES P(OI) z^3(I)] IMPLIES P(OI) z^3(I)"
+:needed-objects   NIL
+:mhelp "Here is a crucial substitution term we find at the end of the proof of THM2
+after NORMALIZE-PROOF.
+ If we substitute THM2SUB2A for K in THM2SUB3A, we essentially get THM2SUB1."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM2SUB2A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA u(OI) LAMBDA x(I) EXISTS w(OI).FORALL r(I) [w(OI) r(I) IMPLIES u(OI) r(I)] AND K^11(OI(OI)) w(OI) x(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM2SUB3A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA y(I) FORALL P(OI).FORALL v(I) [K^13(OI(OI)) P(OI) v(I) IMPLIES P(OI) v(I)] IMPLIES P(OI) y(I)"
+:needed-objects   NIL
+:mhelp "THM2SUB3A is the intersection of the collection of sets P such that K P is a subset of P."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM573-SUB
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(I) LAMBDA y(I) EXISTS p(OI).x(I) =(OII) h(I(OI)) p(OI) AND p(OI) y(I)"
+:needed-objects   NIL
+:mhelp "Crucial substitution for proof of THM573"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name A-4A-3
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL u(I) FORALL x(I) FORALL y(I) EQ(OII) u(I) y(I)"
+:needed-objects   NIL
+:mhelp "Axiom a4"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name ALLCONJ2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) P(OI) x(I) IMPLIES P(OI) a(I) AND P(OI) b(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name ALLCONJ3
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) P(OI) x(I) IMPLIES P(OI) a(I) AND P(OI) b(I) AND P(OI) c(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CNF-NTRIV4
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "[~P(O) OR Q(O)] AND [P(O) OR ~Q(O)] AND [~Q(O) OR R(O)] AND [Q(O) OR ~R(O)] AND [~P(O) OR ~R(O)] AND.P(O) OR R(O)"
+:needed-objects   NIL
+:mhelp "Conjunctive normal form of NOT TRIV4"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CT23A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Friday, February 28, 1997 at 10:43:17."
+:description "EXISTS x(O) FORALL y(O).x(O) =(OOO) y(O) =(OOO).y(O) =(OOO) x(O)"
+:needed-objects   NIL
+:mhelp "Simple propositional theorem"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CT23B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Friday, February 28, 1997 at 11:08:50."
+:description "FORALL x(O) FORALL y(O).x(O) =(OOO) y(O) =(OOO).y(O) =(OOO) x(O)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CT25
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Friday, February 28, 1997 at 11:32:29."
+:description "~FORALL x(O) FORALL y(O).x(O) =(OOO) y(O)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name EXT2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "C(OO) A(O) IMPLIES C(OO).~~A(O)"
+:needed-objects   NIL
+:mhelp "Trivial consequence of ext0"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name EXT2A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXT=0 IMPLIES EXT2"
+:needed-objects   (EXT=0 EXT2)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PRIMQWFF
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL p(O(OA)) r(O(O(OA))) p(O(OA)) IMPLIES q(O)"
+:needed-objects   NIL
+:mhelp "Simple wff which has a projective primsub"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TEST1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL p(OI) p(OI) y(I) IMPLIES.EXISTS x(I) R(OI) x(I) IMPLIES Q(OI) y(I)"
+:needed-objects   NIL
+:mhelp "temporary wff to test using prenex primsubs"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TEST2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL p(OI) p(OI) y(I) IMPLIES FORALL x(I) R(OI) x(I) AND Q(OI) y(I)"
+:needed-objects   NIL
+:mhelp "temporary wff for testing prenex primsubs"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TEST3
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL p(OI) p(OI) y(I) IMPLIES R(OI) x(I) AND R(OI) [f(II) x(I)] AND Q(OI) y(I)"
+:needed-objects   NIL
+:mhelp "temporary wff to test prenex primsubs"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM7B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, April 29, 1999 at 14:06:48."
+:description "FORALL x(I) FORALL y(I).FORALL q(I(OI)) [[LAMBDA w(OI) w(OI).q(I(OI)) w(OI)] [LAMBDA z(I).x(I) =(OII) z(I)] IMPLIES [LAMBDA w(OI) w(OI).q(I(OI)) w(OI)].LAMBDA z(I).y(I) =(OII) z(I)] IMPLIES x(I) =(OII) y(I)"
+:needed-objects   NIL
+:mhelp "half-proved version of thm7 for test purposes"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TRIV0
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, November  2, 1999 at 15:10:23."
+:description "p(O) OR ~p(O)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TRIV1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL p(OI) FORALL y(I).p(OI) y(I) IMPLIES EXISTS x(I) r(OII) x(I) y(I)"
+:needed-objects   NIL
+:mhelp "trivial example to test for bug"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TRIV2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL r(OII) FORALL y(I).FORALL p(OI) p(OI) y(I) IMPLIES EXISTS x(I) r(OII) x(I) y(I)"
+:needed-objects   NIL
+:mhelp "trivial theorem to isolate bug. Note that p occurs with only one 
+parity so no primsubs will be generated for it"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TRIV3
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL p(OI) EXISTS q(OI) FORALL x(I).p(OI) x(I) IMPLIES q(OI) x(I)"
+:needed-objects   NIL
+:mhelp "trivial theorem for debugging"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TRIV4
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "[P(O) EQUIV Q(O)] AND [Q(O) EQUIV R(O)] IMPLIES.P(O) EQUIV R(O)"
+:needed-objects   NIL
+:mhelp "Transitivity of Equivalence. Good example
+for structure of matings."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X5310-SUB2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL r^24(OBB(OB)) FORALL r^23(OBB(OB)) [FORALL x(OB) EXISTS y(B) FORALL w^6(B) [r^23(OBB(OB)) x(OB) y(B) w^6(B) OR r^24(OBB(OB)) x(OB) y(B) w^6(B)] IMPLIES EXISTS f(B(OB)) FORALL x(OB) FORALL w^6(B).r^23(OBB(OB)) x(OB) [f(B(OB)) x(OB)] w^6(B) OR r^24(OBB(OB)) x(OB) [f(B(OB)) x(OB)] w^6(B)] IMPLIES EXISTS j(B(OB)) FORALL p(OB).EXISTS z(B) p(OB) z(B) IMPLIES p(OB).j(B(OB)) p(OB)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TEST4
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS x(I) EXISTS y(I).[p(OI) x(I) IMPLIES p(OI).f(II).f(II) y(I)] AND.p(OI) y(I) IMPLIES p(OI).f(II).f(II) a(I)"
+:needed-objects   NIL
+:mhelp "This is a small problem to experiment
+with unification and MAX-SUBSTS-VAR."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name MS04-TESTMODE
+:type MODE1
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description (
+   (ADD-TRUTH IF-NEEDED)
+   (ALLOW-NONLEAF-CONNS NIL)
+   (APPLY-MATCH APPLY-MATCH-ALL-FRDPAIRS)
+   (BAD-VAR-CONNECTED-PRUNE T)
+   (COUNTSUBS-FIRST NIL)
+   (DEFAULT-EXPAND MS04-2)
+   (DEFAULT-MATE MS04-2)
+   (DEFAULT-MS MS04-2)
+   (DELAY-SETVARS NIL)
+   (DISSOLVE NIL)
+   (DNEG-IMITATION CONST-FLEX)
+   (DUP-ALLOWED T)
+   (DUPLICATION-STRATEGY DUP-OUTER)
+   (DUPLICATION-STRATEGY-PFD DUP-INNER)
+   (ETA-RULE T)
+   (EXCLUDING-GC-TIME NIL)
+   (FIRST-ORDER-MODE-MS NIL)
+   (IMITATION-FIRST T)
+   (INCLUDE-COINDUCTION-PRINCIPLE T)
+   (INCLUDE-INDUCTION-PRINCIPLE T)
+   (INITIAL-BKTRACK-LIMIT INFINITY)
+   (INTERRUPT-ENABLE T)
+   (LAST-MODE-NAME ", and SOURCE-PATH set to (/home/theorem/tps/bin/ /home/theorem/tps/lisp/ /home/theorem/tps/proofs/complete/ /home/theorem/tps/proofs/complete/cleaned /home/theorem/tps/proofs/incomplete/ /home/theorem/tps/cebrown/ /home/theorem/tps/cebrown/domain/), and RIGHTMARGIN set to 130, and PSEQ-USE-LABELS set to NIL, and DEFAULT-MS set to MS04-2, and QUERY-USER set to T, and MS04-VERBOSE set to T, and USE-RULEP set to NIL, and QUERY-USER set to NIL, and MS04-VERBOSE set to NIL, and MS04-DUP-WEIGHT set to 100, and MS04-INITIAL-DEPTH set to 500, and MS04-USE-SEMANTICS set to NIL, and MS04-TRACE set to T, and MS04-VERBOSE set to T, and MS04-INITIAL-DEPTH set to 50, and MS04-INITIAL-DEPTH set to 10, and MS04-INCR-DEPTH set to 10, and MS04-INITIAL-DEPTH set to 200, and MS03-WEIGHT-PRIMSUB-FIRST-EQUALS set to 1, and MS03-WEIGHT-PRIMSUB-FIRST-EQUALS set to 2, and MS04-INITIAL-DEPTH set to 120")
+   (LEIBNIZ-SUB-CHECK NIL)
+   (MATE-FFPAIR NIL)
+   (MATE-UP-TO-NNF T)
+   (MATING-VERBOSE MED)
+   (MAX-BINDER-COMPUTATION 1048576)
+   (MAX-CONSTRAINT-SIZE 3)
+   (MAX-DOMAIN-SIZE 65536)
+   (MAX-DUP-PATHS INFINITY)
+   (MAX-MATES 2)
+   (MAX-NUM-CONSTRAINTS 2)
+   (MAX-PRIM-DEPTH 1)
+   (MAX-PRIM-LITS 4)
+   (MAX-SEARCH-DEPTH 20)
+   (MAX-SEARCH-LIMIT NIL)
+   (MAX-SUBSTS-PROJ NIL)
+   (MAX-SUBSTS-PROJ-TOTAL NIL)
+   (MAX-SUBSTS-QUICK NIL)
+   (MAX-SUBSTS-VAR 2)
+   (MAX-UTREE-DEPTH 20)
+   (MERGE-MINIMIZE-MATING T)
+   (MIN-PRIM-DEPTH 1)
+   (MIN-PRIM-LITS 2)
+   (MIN-QUANT-ETREE T)
+   (MIN-QUANTIFIER-SCOPE NIL)
+   (MIN-QUICK-DEPTH 3)
+   (MONITORFLAG NIL)
+   (MS-DIR QUASI-TPS1)
+   (MS-INIT-PATH NIL)
+   (MS-SPLIT T)
+   (MS03-QUICK-EUNIFICATION-LIMIT 50)
+   (MS03-USE-SET-CONSTRAINTS NIL)
+   (MS03-WEIGHT-BANNED-SELS 300)
+   (MS03-WEIGHT-EUNIF1 1)
+   (MS03-WEIGHT-EUNIF2 1)
+   (MS03-WEIGHT-FLEXFLEXDIFF 3)
+   (MS03-WEIGHT-FLEXFLEXDIFF-O 10)
+   (MS03-WEIGHT-FLEXFLEXSAME 5)
+   (MS03-WEIGHT-FLEXFLEXSAME-O 20)
+   (MS03-WEIGHT-FLEXRIGID-BRANCH 6)
+   (MS03-WEIGHT-FLEXRIGID-EQN 100)
+   (MS03-WEIGHT-FLEXRIGID-FLEXEQN 100)
+   (MS03-WEIGHT-FLEXRIGID-MATE 1)
+   (MS03-WEIGHT-FLEXRIGID-NOEQN 500)
+   (MS03-WEIGHT-FLEXRIGID-O 20)
+   (MS03-WEIGHT-IMITATE 1)
+   (MS03-WEIGHT-OCCURS-CHECK 150)
+   (MS03-WEIGHT-PRIMSUB-FALSEHOOD 50)
+   (MS03-WEIGHT-PRIMSUB-FIRST-AND 200)
+   (MS03-WEIGHT-PRIMSUB-FIRST-EQUALS 2)
+   (MS03-WEIGHT-PRIMSUB-FIRST-EXISTS 200)
+   (MS03-WEIGHT-PRIMSUB-FIRST-FORALL 200)
+   (MS03-WEIGHT-PRIMSUB-FIRST-NOT-EQUALS 200)
+   (MS03-WEIGHT-PRIMSUB-FIRST-NOT-PROJ 500)
+   (MS03-WEIGHT-PRIMSUB-FIRST-OR 200)
+   (MS03-WEIGHT-PRIMSUB-FIRST-PROJ 500)
+   (MS03-WEIGHT-PRIMSUB-NEXT-AND 200)
+   (MS03-WEIGHT-PRIMSUB-NEXT-EQUALS 200)
+   (MS03-WEIGHT-PRIMSUB-NEXT-EXISTS 200)
+   (MS03-WEIGHT-PRIMSUB-NEXT-FORALL 200)
+   (MS03-WEIGHT-PRIMSUB-NEXT-NOT-EQUALS 200)
+   (MS03-WEIGHT-PRIMSUB-NEXT-NOT-PROJ 500)
+   (MS03-WEIGHT-PRIMSUB-NEXT-OR 200)
+   (MS03-WEIGHT-PRIMSUB-NEXT-PROJ 500)
+   (MS03-WEIGHT-PRIMSUB-TRUTH 50)
+   (MS03-WEIGHT-PROJECT 1)
+   (MS03-WEIGHT-RIGID-MATE 1)
+   (MS03-WEIGHT-RIGIDRIGID-EQN 50)
+   (MS03-WEIGHT-RIGIDRIGID-FLEXEQN 60)
+   (MS03-WEIGHT-RIGIDRIGID-NOEQN 500)
+   (MS03-WEIGHT-RIGIDRIGIDDIFF-O 40)
+   (MS03-WEIGHT-RIGIDRIGIDSAME-O 15)
+   (MS04-DUP-WEIGHT 100)
+   (MS04-INCR-DEPTH 10)
+   (MS04-INITIAL-DEPTH 120)
+   (MS04-MAX-DEPTH INFINITY)
+   (MS04-PRENEX-PRIMSUBS T)
+   (MS04-TRACE T)
+   (MS04-USE-SEMANTICS NIL)
+   (MS04-VERBOSE MAX)
+   (MS04-WEIGHT-PRIMSUB-FIRST-NOT 1000)
+   (MS04-WEIGHT-PRIMSUB-NEXT-NOT 1000)
+   (MS04-WEIGHT-PRIMSUB-NEXTTP 100)
+   (MS90-3-DUP-STRATEGY 1)
+   (MS90-3-QUICK NIL)
+   (MS91-INTERLEAVE 5)
+   (NATREE-DEBUG NIL)
+   (NEG-PRIM-SUB NIL)
+   (NEW-MATING-AFTER-DUP NIL)
+   (NUM-FRPAIRS 5)
+   (NUM-OF-DUPS 2)
+   (OCCURS-CHECK T)
+   (ORDER-COMPONENTS T)
+   (PR00-ALLOW-SUBNODE-CONNS T)
+   (PR00-MAX-SUBSTS-VAR 4)
+   (PR00-NUM-ITERATIONS 1)
+   (PR00-REQUIRE-ARG-DEPS NIL)
+   (PR97C-MAX-ABBREVS 1)
+   (PR97C-PRENEX T)
+   (PRIM-BDTYPES ("I"))
+   (PRIM-BDTYPES-AUTO REPLACE)
+   (PRIM-PREFIX PRIM)
+   (PRIM-QUANTIFIER T)
+   (PRIMSUB-METHOD PR93)
+   (PRIMSUB-VAR-SELECT T)
+   (PRINT-MATING-COUNTER 300000)
+   (PRINTMATEFILE "mate.mss")
+   (PRINTMATEFLAG NIL)
+   (PRINTMATEFLAG-SLIDES NIL)
+   (PRINTMATEOPS ALWAYS-TRUE)
+   (PROP-STRATEGY ALLOW-DUPLICATES)
+   (PRUNING NIL)
+   (QUERY-USER NIL)
+   (RANK-EPROOF-FN NUM-VPATHS-RANKING)
+   (RECORDFLAGS (LAST-MODE-NAME DEFAULT-MS MEASUREMENTS SHORT-SITE-NAME MACHINE-TYPE LISP-IMPLEMENTATION-TYPE MAX-SEARCH-LIMIT SEARCH-TIME-LIMIT MAX-UTREE-DEPTH MAX-SEARCH-DEPTH MIN-QUICK-DEPTH INITIAL-BKTRACK-LIMIT NUM-FRPAIRS FIRST-ORDER-MODE-MS NUM-OF-DUPS MAX-MATES ORDER-COMPONENTS REWRITE-DEFNS REWRITE-EQUALITIES REMOVE-LEIBNIZ PRIM-QUANTIFIER PRIM-BDTYPES NEG-PRIM-SUB OCCURS-CHECK RANK-EPROOF-FN SKOLEM-DEFAULT MIN-QUANTIFIER-SCOPE))
+   (REDUCE-DOUBLE-NEG T)
+   (REMOVE-LEIBNIZ T)
+   (REWRITE-DEFNS (EAGER))
+   (REWRITE-EQUALITIES ALL)
+   (REWRITE-EQUIVS 1)
+   (RIGID-PATH-CK T)
+   (RULEP-WFFEQ WFFEQ-AB)
+   (SEARCH-COMPLETE-PATHS NIL)
+   (SEARCH-TIME-LIMIT 60)
+   (SHOW-TIME T)
+   (SKOLEM-DEFAULT NIL)
+   (STOP-AT-TSN T)
+   (SUBSUMPTION-CHECK NIL)
+   (SUBSUMPTION-DEPTH INFINITY)
+   (SUBSUMPTION-NODES LP-NODES)
+   (TIMING-NAMED NIL)
+   (TOTAL-NUM-OF-DUPS NIL)
+   (TRUTHVALUES-HACK NIL)
+   (UNI-SEARCH-HEURISTIC BREADTH-FIRST)
+   (UNIF-COUNTER 0)
+   (UNIF-COUNTER-OUTPUT 0)
+   (UNIF-TRIGGER NIL)
+   (UNIFY-VERBOSE MED)
+   (USE-DIY NIL)
+   (USE-EXT-LEMMAS NIL)
+   (USE-FAST-PROP-SEARCH T)
+   (USE-RULEP NIL)
+   (USE-SYMSIMP T)
+   (WHICH-CONSTRAINTS (MAX MIN))) 
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

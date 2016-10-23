@@ -1,0 +1,273 @@
+(:name THM88
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, April 29, 1999 at 14:06:50."
+:description "FORALL U(OA) FORALL V(OA).U(OA) SUBSET(O(OA)(OA)) V(OA) IMPLIES POWERSET(O(O(OA))(O(OA))) [POWERSET(O(OA)(OA)) U(OA)] SUBSET(O(O(O(OA)))(O(O(OA)))) POWERSET(O(O(OA))(O(OA))).POWERSET(O(OA)(OA)) V(OA)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM89
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Friday, October 17, 1997 at 11:51:24."
+:description "TRANSITIVE(O(OAA)) L(OAA) AND [FORALL X(B) L(OAA) [A(AB) X(B)] [A(AB).F(BB) X(B)] AND G(BB) =(O(BB)(BB)) LAMBDA Z(B) F(BB).F(BB) Z(B)] IMPLIES FORALL Y(B) L(OAA) [A(AB) Y(B)].A(AB).G(BB) Y(B)"
+:needed-objects   (TRANSITIVE)
+:mhelp "(THE AGE OF A PERSON IS LESS THAN THE AGE OF THE PARENTAL GRANDFATHER
+OF THE PERSON)"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM89A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Friday, February 12, 1999 at 23:30:48."
+:description "[TRANSITIVE(O(OAA)) LESS-INFIX(OAA)] AND [FORALL X(B) [A(AB) X(B) LESS-INFIX(OAA) A(AB).F(BB) X(B)] AND G(BB) =(O(BB)(BB)) LAMBDA Z(B) F(BB).F(BB) Z(B)] IMPLIES FORALL Y(B).A(AB) Y(B) LESS-INFIX(OAA) A(AB).G(BB) Y(B)"
+:needed-objects   (TRANSITIVE LESS-INFIX)
+:mhelp "(THE AGE OF A PERSON IS LTHE PATERNAL GRANDFATHER OF THE PERSON)"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM89B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, June 12, 2002 at 13:10:11."
+:description "TRANSITIVE(O(OAA)) L(OAA) AND FORALL X(B) L(OAA) [A(AB) X(B)] [A(AB).F(BB) X(B)] IMPLIES FORALL Y(B) L(OAA) [A(AB) Y(B)].A(AB).F(BB).F(BB) Y(B)"
+:needed-objects   (TRANSITIVE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM80
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:31:00."
+:description "FORALL R(I) M(OI) R(I) OR EXISTS X(I) [~G(OI) X(I)] OR ~[FORALL Y(I) M(OI) Y(I) OR EXISTS S(I) N(OI) S(I)] OR ~[FORALL Z(I) [~N(OI) Z(I)] OR ~FORALL T(I) G(OI) T(I)] IMPLIES FORALL R(I) M(OI) R(I) OR.EXISTS X(I) [~G(OI) X(I)] OR.~FORALL Y(I) [M(OI) Y(I) OR EXISTS S(I) N(OI) S(I)] OR ~FORALL Z(I).~N(OI) Z(I) OR ~FORALL T(I) G(OI) T(I)"
+:needed-objects   NIL
+:mhelp "THIS IS [S IMPLIES T] IN FALSE LEMMAS IN HERBRAND "
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM81
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:31:00."
+:description "FORALL S(I) FORALL T(I) [R(OII) S(I) S(I) EQUIV R(OII) S(I) T(I)] AND FORALL W(I) FORALL Z(I) [R(OII) W(I) W(I) EQUIV R(OII) Z(I) W(I)] IMPLIES.EXISTS X(I) R(OII) X(I) X(I) IMPLIES FORALL Y(I) R(OII) Y(I) Y(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM82
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:31:00."
+:description "FORALL x(I) EXISTS y(I) F(OII) x(I) y(I) AND EXISTS x(I) FORALL e(I) EXISTS n(I) FORALL w(I) [S(OII) n(I) w(I) IMPLIES D(OIII) w(I) x(I) e(I)] AND FORALL EPSILON(I) EXISTS DELTA(I) FORALL x1(I) FORALL x2(I) [D(OIII) x1(I) x2(I) DELTA(I) IMPLIES FORALL y1(I) FORALL y2(I).F(OII) x1(I) y1(I) AND F(OII) x2(I) y2(I) IMPLIES D(OIII) y1(I) y2(I) EPSILON(I)] IMPLIES EXISTS y(I) FORALL e(I) EXISTS m(I) FORALL w(I).S(OII) m(I) w(I) IMPLIES FORALL z(I).F(OII) w(I) z(I) IMPLIES D(OIII) z(I) y(I) e(I)"
+:needed-objects   NIL
+:mhelp "1981-NOV-07 GOT MATING AUTOMATICALLY  
+RUNTIME 9.006 CONS COUNT 46029  
+SYSTEM System III  
+GENVPATHMATES GENVPATHMATES4  
+NEXTBADPATH NEXTBADPATH3  
+BESTPAIRS1RST BESTPAIRS1RST3  
+PATH-SEARCHLENGTH 5  
+EQUIV-CHOICE T  
+EQHEURISTIC  
+INITDEPTH 2  
+UNIDEPTH 3  
+PRINTFLAG ARCS  
+ 
+1981-NOV-16 PROOF CONSTRUCTED AUTOMATICALLY FROM PLAN  
+RUNTIME 75.622635 CONS COUNT 133134  
+ 
+1981-DEC-14 GOT MATING AUTOMATICALLY ON NEW RUN WITH DIFFERENT VARIABLE NAMES  
+RUNTIME 9.09983 CONS COUNT 46047  
+SYSTEM System III  
+GENVPATHMATES GENVPATHMATES4  
+NEXTBADPATH NEXTBADPATH3  
+BESTPAIRS1RST BESTPAIRS1RST3  
+PATH-SEARCHLENGTH 5  
+EQUIV-CHOICE T  
+EQHEURISTIC  
+INITDEPTH 2  
+UNIDEPTH 3  
+PRINTFLAG ARCS  
+ 
+1982-FEB-04 RUNTIME 109.87219 CONSCOUNT 615453  
+SYSTEM TPS1  
+GENVPATHMATES GENVPATHMATES4  
+NEXTBADPATH NEXTBADPATH3  
+BESTPAIRS1RST BESTPAIRS1RST3  
+PATH-SEARCHLENGTH 5  
+EQUIV-CHOICE T  
+EQHEURISTIC  
+INITDEPTH 2  
+UNIDEPTH 3  
+PRINTFLAG ARCS  
+*** COMPLETELY AUTOMATIC TPS PROOF  
+***  
+1982 FEB 27 COMPLETE PROOF IN TPS1  
+OUTLINE BUILD AUTOMATICALLY  
+DAM  
+ 
+DATES  "
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM82A
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:31:01."
+:description "FORALL X(I) EXISTS Y(I) F(OII) X(I) Y(I) AND EXISTS X(I) FORALL E(I) EXISTS N(I) FORALL W(I) [S(OII) N(I) W(I) IMPLIES D(OIII) W(I) X(I) E(I)] AND FORALL G(I) EXISTS H(I) FORALL X1(I) FORALL X2(I) [D(OIII) X1(I) X2(I) H(I) IMPLIES FORALL Y1(I) FORALL Y2(I).F(OII) X1(I) Y1(I) AND F(OII) X2(I) Y2(I) IMPLIES D(OIII) Y1(I) Y2(I) G(I)] IMPLIES EXISTS Y(I) FORALL E(I) EXISTS M(I) FORALL W(I).S(OII) M(I) W(I) IMPLIES FORALL Z(I).F(OII) W(I) Z(I) IMPLIES D(OIII) Z(I) Y(I) E(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM83
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:31:01."
+:description "FORALL X(I) EXISTS Y(I) [P(OI) X(I) IMPLIES FORALL Z(I).R(OII) X(I) Y(I) AND P(OI) Z(I)] IMPLIES EXISTS U(I) FORALL V(I).P(OI) V(I) IMPLIES R(OII) W(I) U(I)"
+:needed-objects   NIL
+:mhelp "1982-JAN-11 COMPLETE AUTOMATIC PROOF  
+TIMING SPOILED BY BUG  
+ 
+ 
+RUNTIME 178.5886 CONS COUNT 405955  
+SYSTEM System III  
+GENVPATHMATES GENVPATHMATES4  
+NEXTBADPATH NEXTBADPATH3  
+BESTPAIRS1RST BESTPAIRS1RST3  
+PATH-SEARCHLENGTH 5  
+EQUIV-CHOICE T  
+EQHEURISTIC  
+INITDEPTH 2  
+UNIDEPTH 3  
+PRINTFLAG ARCS  
+ 
+1982 FEB 27 COMPLETE PROOF IN TPS1  
+OUTLINE BUILT AUTOMATICALLY  
+DAM  
+ 
+DATES  "
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM84
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:31:02."
+:description "EXISTS x(I) FORALL y(I).FORALL f(II) FORALL z(I) [P(OII) z(I) [f(II) x(I)] AND P(OII) x(I) y(I)] IMPLIES P(OII) y(I).g(II).h(II) y(I)"
+:needed-objects   NIL
+:mhelp "1982 -FEB-22 EASY THEOREM  
+BOTH MATING AND OUTLINE FOUND AUTOMATICALLY  
+ 
+ 
+DATES  "
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM85
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:31:02."
+:description "EXISTS x(I) EXISTS f(II) FORALL y(I).FORALL z(I) P(OII) z(I) [f(II) x(I)] AND P(OII) x(I) y(I) IMPLIES P(OII) y(I).g(II).h(II) y(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM86
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:31:03."
+:description "%(OA(OB)(AB)) f(AB) [SETINTERSECT(OB(O(OB))) w(O(OB))] SUBSET(O(OA)(OA)) SETINTERSECT(OA(O(OA))).%(O(OA)(O(OB))(OA(OB))) [%(OA(OB)(AB)) f(AB)] w(O(OB))"
+:needed-objects   NIL
+:mhelp "1982 FEB 27 ATTEMPT IN TPS1 FAILED  
+UNIFICATION PROCESS GOT LOST  
+DAM  
+ATTEMP IN COMPLD WITH REALLOC 10000 1100 5000 5000 85000  
+EVENTUALLY RAN OUT OF SPACE  
+DAM  "
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM87
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:31:04."
+:description "EXISTS v(I) FORALL j(I) EXISTS q(I).j(I) IN(O(OI)I) [P(OIII) a(I) [h(II) j(I)] UNION(OI(OI)(OI)) P(OIII) v(I).k(II) j(I)] IMPLIES j(I) IN(O(OI)I) P(OIII) v(I) q(I)"
+:needed-objects   (IN)
+:mhelp "1985-AUG-22 COMPLETE AUTOMATIC PROOF  
+ 
+RUNCOUNT 18.079021 CONSCOUNT 98741  
+SYSTEM TPS1  
+GENVPATHMATES GENVPATHMATES4  
+NEXTBADPATH NEXTBADPATH3  
+BESTPAIRS1RST BESTPAIRS1RST3  
+PATH-SEARCHLENGTH 5  
+EQUIV-CHOICE T  
+EQHEURISTIC  
+INITDEPTH 2  
+UNIDEPTH 3  
+PRINTFLAG ARCS  
+ 
+ 
+DATES  "
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+

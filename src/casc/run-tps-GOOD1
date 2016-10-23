@@ -1,0 +1,362 @@
+#!/usr/bin/perl -w
+
+#-----------------------------------------------------------------------------
+#----G1a - the first version with 53 modes
+#----G1b - removed mode MODE-THM91-PR97
+#----G1c - 25/06/09 - removed modes MODE-THM7-MSQ and GAZING-MODE2
+#----G1d - 30/06/09 - removed mode MODE-THM112-B
+#----G1e - June 2010 - removed MODE-STRANGE-HO-EXAMPLE
+#----G1f - 31/01/2011 - ND translation in CMUCL fixed; all modes put back
+#-----------------------------------------------------------------------------
+use strict "vars";
+use IO::Select;
+
+require "/home/graph/tptp/Systems/TPS---3.0/run-tps-lib";
+#-----------------------------------------------------------------------------
+my $TPTPDirectory = "/home/graph/tptp";
+
+if (exists($ENV{TPTP_HOME})) {
+    $TPTPDirectory = $ENV{TPTP_HOME};
+}
+if (! exists($ENV{TPTP})) {
+    $ENV{TPTP} = "$TPTPDirectory/TPTP";
+    if (! -d $ENV{TPTP}) {
+        die("ERROR: Cannot find TPTP directory\n");
+    }
+}
+
+my $SystemExecutionDirectory = "$TPTPDirectory/SystemExecution";
+my $TreeLimitedRun = "$SystemExecutionDirectory/TreeLimitedRun";
+my $TPTP2X = "$ENV{TPTP}/TPTP2X/tptp2X";
+my $TempDir = "/tmp";
+
+my @Modes = (
+    "BOOL-PROP-MODE",
+    "GAZING-MODE2",
+    "MODE-THM587-DEMO",
+    "MS98-HO-MODE",
+    "MODE-CD-LATTICE-THM",
+    "MODE-THM7-MSQ",
+    "MODE-STRANGE-HO-EXAMPLE",
+    "CT29-MODE",
+    "EASY-SV-MODE",
+    "MODE-THM115-PR97A",
+    "MODE-THM40",
+    "MODE-THM143A-1",
+    "MODE-6102-MS98",
+    "MODE-X5211-MS98",
+    "MS98-THM568-MODE",
+    "MODE-THM91-PR97",
+    "MODE-THM112A-PR00",
+    "MODE-THM252C",
+    "MODE-X2129-C",
+    "MODE-THM112-B",
+    "MODE-THM532-2",
+    "MS98-THM563-MODE",
+    "MODE-THM300A-4",
+    "SV-MODE-NOD1",
+    "MODE-GRP-COMM2-MS98",
+    "MODE-THM303-DTPS",
+    "MODE-THM15B-PR97-A",
+    "MODE-X5306A",
+    "MODE-TRANS-IND-MS98",
+    "MODE-CLOSED-THM1",
+    "MODE-PA-THM2-MS98",
+    "MODE-THM15B-C",
+    "MODE-THM126-MS98",
+    "IND-SV-MODE",
+    "MS98-HO-PRIMSUBS2",
+    "MODE-THM15B-MS98-3",
+    "MODE-THM578-PR00",
+    "MODE-THM584-PR00",
+    "MODE-EQUIV123-MS98",
+    "IND-SV-MODE3",
+    "MODE-THM531E",
+    "MODE-X5204-MS98",
+    "MODE-THM119-MS98",
+    "MS98-CR-THEOREM-MODE",
+    "MODE-NBHD-THM2",
+    "COIND-SV-MODE-180",
+    "BOOL-PROP-MODE2",
+    "CS-DUC-RELNS-MODE",
+    "MODE-X5310-A",
+    "MODE-MODULAR-EQUIV-THM",
+    "MODE-DISTRIB-THM-MS98",
+    "MODE-THM574",
+    "MODE-X5308-B",
+);
+my %ModeCPUMins = (
+    "BOOL-PROP-MODE" => 5,
+    "GAZING-MODE2" => 5,
+    "MODE-THM587-DEMO" => 5,
+    "MS98-HO-MODE" => 5,
+    "MODE-CD-LATTICE-THM" => 5,
+    "MODE-THM7-MSQ" => 5,
+    "MODE-STRANGE-HO-EXAMPLE" => 5,
+    "CT29-MODE" => 5,
+    "EASY-SV-MODE" => 5,
+    "MODE-THM115-PR97A" => 5,
+    "MODE-THM40" => 5,
+    "MODE-THM143A-1" => 5,
+    "MODE-6102-MS98" => 5,
+    "MODE-X5211-MS98" => 5,
+    "MS98-THM568-MODE" => 5,
+    "MODE-THM91-PR97" => 5,
+    "MODE-THM112A-PR00" => 5,
+    "MODE-THM252C" => 5,
+    "MODE-X2129-C" => 5,
+    "MODE-THM112-B" => 5,
+    "MODE-THM532-2" => 5,
+    "MS98-THM563-MODE" => 5,
+    "MODE-THM300A-4" => 5,
+    "SV-MODE-NOD1" => 5,
+    "MODE-GRP-COMM2-MS98" => 5,
+    "MODE-THM303-DTPS" => 5,
+    "MODE-THM15B-PR97-A" => 5,
+    "MODE-X5306A" => 5,
+    "MODE-TRANS-IND-MS98" => 5,
+    "MODE-CLOSED-THM1" => 5,
+    "MODE-PA-THM2-MS98" => 5,
+    "MODE-THM15B-C" => 5,
+    "MODE-THM126-MS98" => 5,
+    "IND-SV-MODE" => 5,
+    "MS98-HO-PRIMSUBS2" => 5,
+    "MODE-THM15B-MS98-3" => 5,
+    "MODE-THM578-PR00" => 5,
+    "MODE-THM584-PR00" => 5,
+    "MODE-EQUIV123-MS98" => 5,
+    "IND-SV-MODE3" => 5,
+    "MODE-THM531E" => 5,
+    "MODE-X5204-MS98" => 5,
+    "MODE-THM119-MS98" => 5,
+    "MS98-CR-THEOREM-MODE" => 5,
+    "MODE-NBHD-THM2" => 5,
+    "COIND-SV-MODE-180" => 5,
+    "BOOL-PROP-MODE2" => 5,
+    "CS-DUC-RELNS-MODE" => 5,
+    "MODE-X5310-A" => 5,
+    "MODE-MODULAR-EQUIV-THM" => 5,
+    "MODE-DISTRIB-THM-MS98" => 5,
+    "MODE-THM574" => 5,
+    "MODE-X5308-B" => 5,
+);
+my %ModeCPUMaxs = (
+    "BOOL-PROP-MODE" => 5,
+    "GAZING-MODE2" => 5,
+    "MODE-THM587-DEMO" => 5,
+    "MS98-HO-MODE" => 5,
+    "MODE-CD-LATTICE-THM" => 60,
+    "MODE-THM7-MSQ" => 5,
+    "MODE-STRANGE-HO-EXAMPLE" => 5,
+    "CT29-MODE" => 5,
+    "EASY-SV-MODE" => 5,
+    "MODE-THM115-PR97A" => 5,
+    "MODE-THM40" => 5,
+    "MODE-THM143A-1" => 5,
+    "MODE-6102-MS98" => 13,
+    "MODE-X5211-MS98" => 14,
+    "MS98-THM568-MODE" => 14,
+    "MODE-THM91-PR97" => 5,
+    "MODE-THM112A-PR00" => 5,
+    "MODE-THM252C" => 51,
+    "MODE-X2129-C" => 5,
+    "MODE-THM112-B" => 5,
+    "MODE-THM532-2" => 5,
+    "MS98-THM563-MODE" => 5,
+    "MODE-THM300A-4" => 12,
+    "SV-MODE-NOD1" => 20,
+    "MODE-GRP-COMM2-MS98" => 23,
+    "MODE-THM303-DTPS" => 60,
+    "MODE-THM15B-PR97-A" => 5,
+    "MODE-X5306A" => 5,
+    "MODE-TRANS-IND-MS98" => 5,
+    "MODE-CLOSED-THM1" => 5,
+    "MODE-PA-THM2-MS98" => 5,
+    "MODE-THM15B-C" => 5,
+    "MODE-THM126-MS98" => 5,
+    "IND-SV-MODE" => 7,
+    "MS98-HO-PRIMSUBS2" => 9,
+    "MODE-THM15B-MS98-3" => 7,
+    "MODE-THM578-PR00" => 7,
+    "MODE-THM584-PR00" => 20,
+    "MODE-EQUIV123-MS98" => 54,
+    "IND-SV-MODE3" => 54,
+    "MODE-THM531E" => 54,
+    "MODE-X5204-MS98" => 60,
+    "MODE-THM119-MS98" => 60,
+    "MS98-CR-THEOREM-MODE" => 60,
+    "MODE-NBHD-THM2" => 60,
+    "COIND-SV-MODE-180" => 60,
+    "BOOL-PROP-MODE2" => 60,
+    "CS-DUC-RELNS-MODE" => 60,
+    "MODE-X5310-A" => 60,
+    "MODE-MODULAR-EQUIV-THM" => 60,
+    "MODE-DISTRIB-THM-MS98" => 60,
+    "MODE-THM574" => 60,
+    "MODE-X5308-B" => 60,
+);
+
+my $GlobalInterrupted;
+my $Stream;
+my $PID;
+#-----------------------------------------------------------------------------
+MyMain();
+#-----------------------------------------------------------------------------
+sub InteruptHandler {
+
+    print("Interrupted!\n");
+    $GlobalInterrupted = 1;
+    CleanUp();
+    exit;
+}
+#-----------------------------------------------------------------------------
+sub CleanUp {
+
+#DEBUG print("Quit $PID\n");
+    kill(3,$PID);
+    sleep(1);
+#DEBUG print("Kill $PID\n");
+    kill(9,$PID);
+
+    close($Stream);
+}
+#-----------------------------------------------------------------------------
+sub MyMain {
+
+    my $RawFilePath;
+    my $FileName;
+    my $GlobalCPULimit;
+    my $ModesChosen;
+    my $SharedCPULimit;
+    my $Mode;
+    my $KilledMode;
+    my $CPULimit;
+    my $CPUUsage;
+    my $Process;
+    my $Line;
+    my $SolutionFound;
+
+    if (scalar(@ARGV) == 0) {
+        printf("ERROR: No file specified\n");
+        die("\n");
+    }
+    $RawFilePath = shift(@ARGV);
+    if (scalar(@ARGV) == 0) {
+        printf("ERROR: No CPU limit specified\n");
+        die("\n");
+    }
+    $GlobalCPULimit = shift(@ARGV);
+
+#----If this looks like a THF file, convert to TPS format using tptp2X
+    if (`grep -c '^thf' $RawFilePath` > 0) {
+#----Make a temporary directory for all files
+        $TempDir = "$TempDir/TPS-GOOD1_${$}_".`hostname -s`;
+        chomp($TempDir);
+        system("mkdir $TempDir");
+#DEBUG print("made $TempDir\n");
+        END {
+#----Remove temporary file
+#DEBUG print("Removing $TempDir\n");
+            system("rm -rf $TempDir");
+        }
+#----Check tptp2X is available
+         if (! -x $TPTP2X) {
+             die("ERROR: Cannot find tptp2X in $ENV{TPTP}/TPTP2X/tptp2X\n");
+         }
+#----Get a name for this file, stripping of TPTP extensions
+         $FileName = `basename $RawFilePath .p`;
+         chomp($FileName);
+         $FileName = `basename $FileName .tptp`;
+         chomp($FileName);
+         $FileName = "$TempDir/$FileName.tps";
+#----Convert to TPS format
+         system("$TPTP2X -q2 -d- -f tps $RawFilePath > $FileName");
+    } else {
+        $FileName = $RawFilePath;
+    }
+#DEBUG print("============ TPS format is ==============\n");
+#DEBUG system("cat $FileName");
+#DEBUG print("=========================================\n");
+
+#----Send STDERR to STDOUT
+    close(STDERR);
+    open(STDERR,">&STDOUT");
+#----Flush output
+    $| = 1;
+    
+    $SIG{'QUIT'} = 'InteruptHandler';
+    $SIG{'XCPU'} = 'InteruptHandler';
+    $SIG{'ALRM'} = 'InteruptHandler';
+    $GlobalInterrupted = 0;
+
+#----Check which modes can be run
+    $ModesChosen = 0;
+    while (!$ModesChosen) {
+        $ModesChosen = 1;
+        $SharedCPULimit = int($GlobalCPULimit / scalar(@Modes));
+        foreach $Mode (@Modes) {
+            $CPULimit = $ModeCPUMins{$Mode};
+            if ($SharedCPULimit < $CPULimit) {
+                $KilledMode = pop(@Modes);
+                print(
+"ALERT: Will not run $KilledMode due to minimal CPU limit $CPULimit\n");
+                delete($ModeCPUMins{$KilledMode});
+                delete($ModeCPUMaxs{$KilledMode});
+                $ModesChosen = 0;
+                last;
+            }
+        }
+    }
+
+#DEBUG print("===SharedCPULimit = $SharedCPULimit\n");
+
+    $SolutionFound = 0;
+    while (!$GlobalInterrupted && !$SolutionFound && scalar(@Modes) > 0) {
+        $Mode = shift(@Modes);
+#----Get CPU time used so far
+        $CPUUsage = GetCPUUsage();
+        printf("CPU used so far: $CPUUsage\n");
+#----CPU limit is minimum of shared and mode max
+        $CPULimit = $ModeCPUMaxs{$Mode};
+        if ($SharedCPULimit < $CPULimit) {
+            $CPULimit = $SharedCPULimit;
+        }
+#----Allow unlimited time for last mode
+        if (scalar(@Modes) == 1) {
+            $CPULimit = int($GlobalCPULimit - $CPUUsage);
+        }
+#----Build the command
+        $Process = MakeTPSCommand($FileName,$Mode);
+        $Process = sprintf("%s %s %s %d %d %s %s",$TreeLimitedRun,"-q2","-p2",
+$CPULimit,2*$CPULimit,0,$Process);
+        print("
+-----------------------------------------------------------------------------
+RUNNING: $Process\n\n");
+        $PID = open($Stream,"$Process |") or die("ERROR: Cannot run $Process");
+        while (!$GlobalInterrupted && defined($Line = <$Stream>)) {
+            chomp($Line);
+#DEBUG print("TPS says ===$Line===\n");
+            if (!$SolutionFound && SolutionLine($Line)) {
+                $SolutionFound = 1;
+                print("% SZS status Theorem for $FileName\n");
+            }
+            if (Wanted($Line)) {
+                EchoLine($Line);
+            }
+        }
+        close($Stream);
+    }
+}
+#-----------------------------------------------------------------------------
+sub GetCPUUsage {
+
+    my $User;
+    my $System;
+    my $ChildUser;
+    my $ChildSystem;
+
+    ($User,$System,$ChildUser,$ChildSystem) = times();
+
+    return($User + $System + $ChildUser + $ChildSystem);
+}
+#-----------------------------------------------------------------------------

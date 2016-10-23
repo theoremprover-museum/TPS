@@ -1,0 +1,98 @@
+;;; -*- Mode:LISP; Package:TEACHER -*-
+;;; ******************************************************************* ;;;
+;;;         (c) Copyrighted 1988 by Carnegie Mellon University.         ;;;
+;;;                        All rights reserved.                         ;;;
+;;;         This code was written as part of the TPS project.           ;;;
+;;;   If you want to use this code or any part of TPS, please contact   ;;;
+;;;               Peter B. Andrews (Andrews@CS.CMU.EDU)                 ;;;
+;;; ******************************************************************* ;;;
+(in-package :TEACHER)
+
+;;; Package: (REPORT
+
+;;; File: (REPORT-INIT
+;;; Category: FLAG-MODE
+(EXPORT
+ '(STPS2-F85-C STPS2-F85-TD ETPS2-F85-C ETPS2-F85-TF ETPS2-S86-TF ETPS2-S86-C
+  STPS2 ETPS2))
+;;;) (end of file REPORT-INIT)
+
+;;; File: (REPORT-STATS
+;;; Category: FUNCTION
+(EXPORT
+ '(MSG-CODE PRINT-RERROR-DETAIL RERRTABLE-END RERRTABLE-DO RERRTABLE-BEGIN
+    ASSOC-ENTER STRING-CODE FIND-CODE THROW-CODE PRINT-IERRORS IERROR-END
+    IERROR-DO IERROR-BEGIN PRINT-USAGE-SUMMARY PRINT-USAGE-DETAIL CTABLE-END
+    CTABLE-DO CTABLE-BEGIN))
+;;; Category: REPORTCMD
+(EXPORT '(RULE-ERROR-TABLE INPUT-ERROR-TABLE COMMAND-TABLE))
+;;; Category: MACRO
+(EXPORT '(TNUM))
+;;; Category: CONTEXT
+;(EXPORT '(STATS))  Now exported from CORE  DAN
+;;;) (end of file REPORT-STATS)
+
+;;; File: (REPORT
+;;; Category: REPORTCMD
+(EXPORT '(SECURITY EXER-TABLE QUITREP REMARK-LIST))
+;;; Category: PROPNAME
+(EXPORT '(SOURCE-EVENT EVENTARGS PASSED-ARGS BEGIN-FN DO-FN END-FN))
+;;; Category: FLAG
+(EXPORT '(SINCE-DEFAULT))
+;;; Category: VARIABLE
+(EXPORT '(REPORT-CTREE GLOBAL-REPORTLIST))
+;;; Category: MACRO
+(EXPORT '(DEFREPORT DEFREPORT1))
+;;; Category: CATEGORY
+(EXPORT '(REPORTCMD))
+;;; Category: MEXPR
+(EXPORT '(REPORT))
+;;; Category: TOPLEVEL
+(EXPORT '(REPORT-TOP))
+;;; Category: FUNCTION
+(EXPORT
+ '(SECURE-END SECURE-DO SECURE-BEG EXERTABLE-END MAKE-TABLE GET-CORR
+    TAB-AND-PRINT BINPT-SORT CUMADD BIN-SORT EXERTABLE-DO EXERTABLE-BEG QUITREP
+    REM-END WRITE-DATE REM-DO GREATDATE REM-BEG PRITERATE GET-EVARG
+    REPORT-INTERPRET REPORT-PRINT-* REPORT-PROMPT REPORTOP REPORT ISDATE GETDATE
+    SURELIST DIVIS UNIT))
+;;; Category: ARGTYPE
+;*; (EXPORT '(DATE)) Taking it out as it's already exported in meg-template for
+;*; done exercise
+;;; Category: CONTEXT
+(EXPORT '(REPORT-EXAMPLES REPORT-OBJECT grader-object))
+;;; Category: TPS-FILE
+(EXPORT '(REPORT))
+;;;) (end of file REPORT)
+;;;) (end of package REPORT)
+
+;;;GRADER
+;;file grades
+(export '(gr-exit gr-leave letter-grade sort-fn penalty-fns calculate-grade
+		  change-weight info-exercises display number-of-students
+		  statistics comment aliases delete-student add-students
+		  due-dates etps-grade late-exercises modify-grade alter-grade
+		  insert-grades resume-insert-grades create-gradefile
+		  gr-review chg-vars gexpr global-gexprlist le id et
+		  total total%))
+
+(export '(penalty penalty-0 penalty%10 penalty1%10 penalty2%10 penalty%
+		  penalty1% penalty2% -sdev- -mean- -median- do-grades --max--
+		  patch-file grade-file old-grade-file totals-grade-file grade-dir
+		  old-totals-grade-file letter-grade-file etps-file course-name
+		  statistical-options print-n-digits cal-percentage new-item
+		  letter-grade-flag drop-min due-date-flag default-penalty-fn
+		  -weight- exit-inferior-top))
+
+
+
+(export '(gr-a-out gr-b-vars gr-c-gradefile gr-d-manual-grades
+		   gr-e-automatic-grades gr-f-class-list gr-g-output
+		   gr-h-stat gr-i-display gr-j-totals gr-k-sorting
+		   gr-l-letter-grade))
+
+(export '(gr-filenames gr-misc))
+
+;;;cleaning up (MB 8/11/94)
+(export '(grade-top))
+(export '(contexts-teacher gr-macros grades-top grades1 grades2 change-sequence))

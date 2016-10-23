@@ -1,0 +1,14 @@
+(:name THM135A-EXP
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "[p^4(O(AA)) [LAMBDA u^3(A) u^3(A)] AND [p^4(O(AA)) J^0(AA) IMPLIES p^4(O(AA)).LAMBDA x^4(A) F^0(AA).J^0(AA) x^4(A)] IMPLIES p^4(O(AA)) G1^0(AA)] AND [p^6(O(AA)) [LAMBDA u^4(A) u^4(A)] AND [p^6(O(AA)) J^1(AA) IMPLIES p^6(O(AA)).LAMBDA x^5(A) F^0(AA).J^1(AA) x^5(A)] IMPLIES p^6(O(AA)).LAMBDA x(A) G2^0(AA) x(A)] IMPLIES.P^0(O(AA)) [LAMBDA u^5(A) u^5(A)] AND [[P^0(O(AA)) j^6(AA) IMPLIES P^0(O(AA)).LAMBDA x^7(A) F^0(AA).j^6(AA) x^7(A)] AND.P^0(O(AA)) j^7(AA) IMPLIES P^0(O(AA)).LAMBDA x^7(A) F^0(AA).j^7(AA) x^7(A)] IMPLIES P^0(O(AA)).LAMBDA x^6(A) G1^0(AA).G2^0(AA) x^6(A)"
+:needed-objects   NIL
+:mhelp "deep formula after duplicating correct quantifier of THM135A in mate"
+:other-attributes NIL
+:other-remarks "
+")
+
+

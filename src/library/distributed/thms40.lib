@@ -1,0 +1,269 @@
+(:name THM402
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Friday, September 20, 2002 at 12:27:04."
+:description "FORALL R(OAA) FORALL U(A(OA)).TRANSITIVE(O(OAA)) R(OAA) AND FORALL s(OA) [FORALL z(A) [s(OA) z(A) IMPLIES R(OAA) z(A).U(A(OA)) s(OA)] AND FORALL j(A).FORALL k(A) [s(OA) k(A) IMPLIES R(OAA) k(A) j(A)] IMPLIES R(OAA) [U(A(OA)) s(OA)] j(A)] IMPLIES FORALL f(AA).FORALL x(A) FORALL y(A) [R(OAA) x(A) y(A) IMPLIES R(OAA) [f(AA) x(A)].f(AA) y(A)] IMPLIES EXISTS w(A) R(OAA) w(A).f(AA) w(A)"
+:needed-objects   (TRANSITIVE)
+:mhelp "Weak form of THM145 for technical testing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM400
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "TRANSITIVE(O(OII)) P(OII) AND TRANSITIVE(O(OII)) Q(OII) AND FORALL x(I) FORALL y(I) [Q(OII) x(I) y(I) IMPLIES Q(OII) y(I) x(I)] AND FORALL x(I) FORALL y(I) [P(OII) x(I) y(I) OR Q(OII) x(I) y(I)] IMPLIES FORALL x(I) FORALL y(I) P(OII) x(I) y(I) OR FORALL x(I) FORALL y(I) Q(OII) x(I) y(I)"
+:needed-objects   (TRANSITIVE)
+:mhelp "Pure first-order theorem.
+Attributed to Wos at CADE13.
+In Bishop's library as CADE13."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM401
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL R(OAA) FORALL U(A(OA)).TRANSITIVE(O(OAA)) R(OAA) AND FORALL s(OA) [FORALL z(A) [s(OA) z(A) IMPLIES R(OAA) z(A).U(A(OA)) s(OA)] AND FORALL j(A).FORALL k(A) [s(OA) k(A) IMPLIES R(OAA) k(A) j(A)] IMPLIES R(OAA) [U(A(OA)) s(OA)] j(A)] IMPLIES FORALL s(OA) EXISTS b(A) FORALL z(A).s(OA) z(A) IMPLIES R(OAA) z(A) b(A)"
+:needed-objects   (TRANSITIVE)
+:mhelp "Trivial theorem for testing.
+In a complete lattice, every set has an upper bound."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM403
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Monday, March 31, 2003 at 17:47:07."
+:description "FORALL R(OAA) FORALL U(A(OA)).TRANSITIVE(O(OAA)) R(OAA) AND FORALL s(OA) [FORALL z(A) [s(OA) z(A) IMPLIES R(OAA) z(A).U(A(OA)) s(OA)] AND FORALL j(A).FORALL k(A) [s(OA) k(A) IMPLIES R(OAA) k(A) j(A)] IMPLIES R(OAA) [U(A(OA)) s(OA)] j(A)] IMPLIES FORALL f(AA).FORALL x(A) FORALL y(A) [R(OAA) x(A) y(A) IMPLIES R(OAA) [f(AA) x(A)].f(AA) y(A)] IMPLIES EXISTS w(A) R(OAA) [f(AA) w(A)] w(A)"
+:needed-objects   (TRANSITIVE)
+:mhelp "Weak form of THM145 for technical testing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM404
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "PEANO1 IMPLIES EXISTS n(I) ODD1(OI) n(I)"
+:needed-objects   (PEANO1 ODD1)
+:mhelp "When we assume that the individuals are the natural
+numbers, there is an odd number.
+Can a question answering system find an odd number 
+when the odd numbers are simply defined as those 
+which are not even?"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM405
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL u(I) [~.S(II) u(I) =(OII) 0(I)] AND FORALL v(I) FORALL w(I) [S(II) v(I) =(OII) S(II) w(I) IMPLIES v(I) =(OII) w(I)] IMPLIES EXISTS n(I) ODD1(OI) n(I)"
+:needed-objects   (ODD1)
+:mhelp "Variant of THM404, omitting the unnecessary induction
+principle. Should be easier than THM404 for a search procedure.
+When we assume that the individuals are the natural
+numbers, there is an odd number.
+Can a question answering system find an odd number 
+when the odd numbers are simply defined as those 
+which are not even?"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM406
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL u(I) [~.S(II) u(I) =(OII) 0(I)] AND FORALL v(I) FORALL w(I) [S(II) v(I) =(OII) S(II) w(I) IMPLIES v(I) =(OII) w(I)] IMPLIES ODD1(OI).S(II) 0(I)"
+:needed-objects   (ODD1)
+:mhelp "Variant of THM405. Should be easier than THM405
+for a search procedure. 
+When we assume that the individuals are the natural
+numbers, then one is an odd number."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM409-1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, March 18, 2004 at 15:27:51."
+:description "~.Q^1(OIII) a(I) b(I) c(I) AND P^1(OII) a(I) a(I) AND P^1(OII) b(I) b(I) AND P^1(OII) c(I) c(I) AND FORALL x(I) P^1(OII) d(I) x(I) AND FORALL x(I) FORALL y(I) [~P^1(OII) x(I) y(I) OR P^1(OII) [f(II) x(I)] y(I)] AND FORALL x(I) FORALL y(I) FORALL z(I) FORALL u(I) FORALL v(I) FORALL w(I) [~Q^1(OIII) x(I) y(I) z(I) OR ~P^1(OII) [f(II) x(I)] u(I) OR ~P^1(OII) [f(II) y(I)] v(I) OR ~P^1(OII) [f(II) z(I)] w(I) OR Q^2(OIII) u(I) v(I) w(I)] AND FORALL x(I) FORALL y(I) FORALL z(I).~Q^2(OIII) x(I) y(I) z(I)"
+:needed-objects   NIL
+:mhelp "First formula in Nieuwenhuis Example 3"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM409-2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, March 18, 2004 at 17:21:27."
+:description "~.Q^1(OIII) a(I) b(I) c(I) AND P^1(OII) a(I) a(I) AND P^1(OII) b(I) b(I) AND P^1(OII) c(I) c(I) AND FORALL x(I) P^1(OII) d(I) x(I) AND FORALL x(I) FORALL y(I) [~P^1(OII) x(I) y(I) OR P^1(OII) [f(II) x(I)] y(I)] AND FORALL x(I) FORALL y(I) FORALL z(I) FORALL u(I) FORALL v(I) FORALL w(I) [~Q^1(OIII) x(I) y(I) z(I) OR ~P^1(OII) [f(II) x(I)] u(I) OR ~P^1(OII) [f(II) y(I)] v(I) OR ~P^1(OII) [f(II) z(I)] w(I) OR Q^2(OIII) u(I) v(I) w(I)] AND P^2(OII) a(I) a(I) AND P^2(OII) b(I) b(I) AND P^2(OII) c(I) c(I) AND FORALL x(I) P^2(OII) d(I) x(I) AND FORALL x(I) FORALL y(I) [~P^2(OII) x(I) y(I) OR P^2(OII) [f(II) x(I)] y(I)] AND FORALL x(I) FORALL y(I) FORALL z(I) FORALL u(I) FORALL v(I) FORALL w(I) [~Q^2(OIII) x(I) y(I) z(I) OR ~P^2(OII) [f(II) x(I)] u(I) OR ~P^2(OII) [f(II) y(I)] v(I) OR ~P^2(OII) [f(II) z(I)] w(I) OR Q^3(OIII) u(I) v(I) w(I)] AND FORALL x(I) FORALL y(I) FORALL z(I).~Q^3(OIII) x(I) y(I) z(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM409-3
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, March 18, 2004 at 17:34:07."
+:description "~.Q^1(OIII) a(I) b(I) c(I) AND P^1(OII) a(I) a(I) AND P^1(OII) b(I) b(I) AND P^1(OII) c(I) c(I) AND FORALL x(I) P^1(OII) d(I) x(I) AND FORALL x(I) FORALL y(I) [~P^1(OII) x(I) y(I) OR P^1(OII) [f(II) x(I)] y(I)] AND FORALL x(I) FORALL y(I) FORALL z(I) FORALL u(I) FORALL v(I) FORALL w(I) [~Q^1(OIII) x(I) y(I) z(I) OR ~P^1(OII) [f(II) x(I)] u(I) OR ~P^1(OII) [f(II) y(I)] v(I) OR ~P^1(OII) [f(II) z(I)] w(I) OR Q^2(OIII) u(I) v(I) w(I)] AND P^2(OII) a(I) a(I) AND P^2(OII) b(I) b(I) AND P^2(OII) c(I) c(I) AND FORALL x(I) P^2(OII) d(I) x(I) AND FORALL x(I) FORALL y(I) [~P^2(OII) x(I) y(I) OR P^2(OII) [f(II) x(I)] y(I)] AND FORALL x(I) FORALL y(I) FORALL z(I) FORALL u(I) FORALL v(I) FORALL w(I) [~Q^2(OIII) x(I) y(I) z(I) OR ~P^2(OII) [f(II) x(I)] u(I) OR ~P^2(OII) [f(II) y(I)] v(I) OR ~P^2(OII) [f(II) z(I)] w(I) OR Q^3(OIII) u(I) v(I) w(I)] AND P^3(OII) a(I) a(I) AND P^3(OII) b(I) b(I) AND P^3(OII) c(I) c(I) AND FORALL x(I) P^3(OII) d(I) x(I) AND FORALL x(I) FORALL y(I) [~P^3(OII) x(I) y(I) OR P^3(OII) [f(II) x(I)] y(I)] AND FORALL x(I) FORALL y(I) FORALL z(I) FORALL u(I) FORALL v(I) FORALL w(I) [~Q^3(OIII) x(I) y(I) z(I) OR ~P^3(OII) [f(II) x(I)] u(I) OR ~P^3(OII) [f(II) y(I)] v(I) OR ~P^3(OII) [f(II) z(I)] w(I) OR Q^4(OIII) u(I) v(I) w(I)] AND FORALL x(I) FORALL y(I) FORALL z(I).~Q^4(OIII) x(I) y(I) z(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM409-4
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Friday, March 19, 2004 at  6:20:05."
+:description "~.Q^1(OIII) a(I) b(I) c(I) AND P^1(OII) a(I) a(I) AND P^1(OII) b(I) b(I) AND P^1(OII) c(I) c(I) AND FORALL x(I) P^1(OII) d(I) x(I) AND FORALL x(I) FORALL y(I) [~P^1(OII) x(I) y(I) OR P^1(OII) [f(II) x(I)] y(I)] AND FORALL x(I) FORALL y(I) FORALL z(I) FORALL u(I) FORALL v(I) FORALL w(I) [~Q^1(OIII) x(I) y(I) z(I) OR ~P^1(OII) [f(II) x(I)] u(I) OR ~P^1(OII) [f(II) y(I)] v(I) OR ~P^1(OII) [f(II) z(I)] w(I) OR Q^2(OIII) u(I) v(I) w(I)] AND P^2(OII) a(I) a(I) AND P^2(OII) b(I) b(I) AND P^2(OII) c(I) c(I) AND FORALL x(I) P^2(OII) d(I) x(I) AND FORALL x(I) FORALL y(I) [~P^2(OII) x(I) y(I) OR P^2(OII) [f(II) x(I)] y(I)] AND FORALL x(I) FORALL y(I) FORALL z(I) FORALL u(I) FORALL v(I) FORALL w(I) [~Q^2(OIII) x(I) y(I) z(I) OR ~P^2(OII) [f(II) x(I)] u(I) OR ~P^2(OII) [f(II) y(I)] v(I) OR ~P^2(OII) [f(II) z(I)] w(I) OR Q^3(OIII) u(I) v(I) w(I)] AND P^3(OII) a(I) a(I) AND P^3(OII) b(I) b(I) AND P^3(OII) c(I) c(I) AND FORALL x(I) P^3(OII) d(I) x(I) AND FORALL x(I) FORALL y(I) [~P^3(OII) x(I) y(I) OR P^3(OII) [f(II) x(I)] y(I)] AND FORALL x(I) FORALL y(I) FORALL z(I) FORALL u(I) FORALL v(I) FORALL w(I) [~Q^3(OIII) x(I) y(I) z(I) OR ~P^3(OII) [f(II) x(I)] u(I) OR ~P^3(OII) [f(II) y(I)] v(I) OR ~P^3(OII) [f(II) z(I)] w(I) OR Q^4(OIII) u(I) v(I) w(I)] AND P^4(OII) a(I) a(I) AND P^4(OII) b(I) b(I) AND P^4(OII) c(I) c(I) AND FORALL x(I) P^4(OII) d(I) x(I) AND FORALL x(I) FORALL y(I) [~P^4(OII) x(I) y(I) OR P^4(OII) [f(II) x(I)] y(I)] AND FORALL x(I) FORALL y(I) FORALL z(I) FORALL u(I) FORALL v(I) FORALL w(I) [~Q^4(OIII) x(I) y(I) z(I) OR ~P^4(OII) [f(II) x(I)] u(I) OR ~P^4(OII) [f(II) y(I)] v(I) OR ~P^4(OII) [f(II) z(I)] w(I) OR Q^5(OIII) u(I) v(I) w(I)] AND FORALL x(I) FORALL y(I) FORALL z(I).~Q^5(OIII) x(I) y(I) z(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM409-5
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof"
+:proof-date "Tuesday, March 23, 2004 at 14:45:32."
+:description "~.Q^1(OIII) a(I) b(I) c(I) AND P^1(OII) a(I) a(I) AND P^1(OII) b(I) b(I) AND P^1(OII) c(I) c(I) AND FORALL x(I) P^1(OII) d(I) x(I) AND FORALL x(I) FORALL y(I) [~P^1(OII) x(I) y(I) OR P^1(OII) [f(II) x(I)] y(I)] AND FORALL x(I) FORALL y(I) FORALL z(I) FORALL u(I) FORALL v(I) FORALL w(I) [~Q^1(OIII) x(I) y(I) z(I) OR ~P^1(OII) [f(II) x(I)] u(I) OR ~P^1(OII) [f(II) y(I)] v(I) OR ~P^1(OII) [f(II) z(I)] w(I) OR Q^2(OIII) u(I) v(I) w(I)] AND P^2(OII) a(I) a(I) AND P^2(OII) b(I) b(I) AND P^2(OII) c(I) c(I) AND FORALL x(I) P^2(OII) d(I) x(I) AND FORALL x(I) FORALL y(I) [~P^2(OII) x(I) y(I) OR P^2(OII) [f(II) x(I)] y(I)] AND FORALL x(I) FORALL y(I) FORALL z(I) FORALL u(I) FORALL v(I) FORALL w(I) [~Q^2(OIII) x(I) y(I) z(I) OR ~P^2(OII) [f(II) x(I)] u(I) OR ~P^2(OII) [f(II) y(I)] v(I) OR ~P^2(OII) [f(II) z(I)] w(I) OR Q^3(OIII) u(I) v(I) w(I)] AND P^3(OII) a(I) a(I) AND P^3(OII) b(I) b(I) AND P^3(OII) c(I) c(I) AND FORALL x(I) P^3(OII) d(I) x(I) AND FORALL x(I) FORALL y(I) [~P^3(OII) x(I) y(I) OR P^3(OII) [f(II) x(I)] y(I)] AND FORALL x(I) FORALL y(I) FORALL z(I) FORALL u(I) FORALL v(I) FORALL w(I) [~Q^3(OIII) x(I) y(I) z(I) OR ~P^3(OII) [f(II) x(I)] u(I) OR ~P^3(OII) [f(II) y(I)] v(I) OR ~P^3(OII) [f(II) z(I)] w(I) OR Q^4(OIII) u(I) v(I) w(I)] AND P^4(OII) a(I) a(I) AND P^4(OII) b(I) b(I) AND P^4(OII) c(I) c(I) AND FORALL x(I) P^4(OII) d(I) x(I) AND FORALL x(I) FORALL y(I) [~P^4(OII) x(I) y(I) OR P^4(OII) [f(II) x(I)] y(I)] AND FORALL x(I) FORALL y(I) FORALL z(I) FORALL u(I) FORALL v(I) FORALL w(I) [~Q^4(OIII) x(I) y(I) z(I) OR ~P^4(OII) [f(II) x(I)] u(I) OR ~P^4(OII) [f(II) y(I)] v(I) OR ~P^4(OII) [f(II) z(I)] w(I) OR Q^5(OIII) u(I) v(I) w(I)] AND P^5(OII) a(I) a(I) AND P^5(OII) b(I) b(I) AND P^5(OII) c(I) c(I) AND FORALL x(I) P^5(OII) d(I) x(I) AND FORALL x(I) FORALL y(I) [~P^5(OII) x(I) y(I) OR P^5(OII) [f(II) x(I)] y(I)] AND FORALL x(I) FORALL y(I) FORALL z(I) FORALL u(I) FORALL v(I) FORALL w(I) [~Q^5(OIII) x(I) y(I) z(I) OR ~P^5(OII) [f(II) x(I)] u(I) OR ~P^5(OII) [f(II) y(I)] v(I) OR ~P^5(OII) [f(II) z(I)] w(I) OR Q^6(OIII) u(I) v(I) w(I)] AND FORALL x(I) FORALL y(I) FORALL z(I).~Q^6(OIII) x(I) y(I) z(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM409-6
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "~.Q^1(OIII) a(I) b(I) c(I) AND P^1(OII) a(I) a(I) AND P^1(OII) b(I) b(I) AND P^1(OII) c(I) c(I) AND FORALL x(I) P^1(OII) d(I) x(I) AND FORALL x(I) FORALL y(I) [~P^1(OII) x(I) y(I) OR P^1(OII) [f(II) x(I)] y(I)] AND FORALL x(I) FORALL y(I) FORALL z(I) FORALL u(I) FORALL v(I) FORALL w(I) [~Q^1(OIII) x(I) y(I) z(I) OR ~P^1(OII) [f(II) x(I)] u(I) OR ~P^1(OII) [f(II) y(I)] v(I) OR ~P^1(OII) [f(II) z(I)] w(I) OR Q^2(OIII) u(I) v(I) w(I)] AND P^2(OII) a(I) a(I) AND P^2(OII) b(I) b(I) AND P^2(OII) c(I) c(I) AND FORALL x(I) P^2(OII) d(I) x(I) AND FORALL x(I) FORALL y(I) [~P^2(OII) x(I) y(I) OR P^2(OII) [f(II) x(I)] y(I)] AND FORALL x(I) FORALL y(I) FORALL z(I) FORALL u(I) FORALL v(I) FORALL w(I) [~Q^2(OIII) x(I) y(I) z(I) OR ~P^2(OII) [f(II) x(I)] u(I) OR ~P^2(OII) [f(II) y(I)] v(I) OR ~P^2(OII) [f(II) z(I)] w(I) OR Q^3(OIII) u(I) v(I) w(I)] AND P^3(OII) a(I) a(I) AND P^3(OII) b(I) b(I) AND P^3(OII) c(I) c(I) AND FORALL x(I) P^3(OII) d(I) x(I) AND FORALL x(I) FORALL y(I) [~P^3(OII) x(I) y(I) OR P^3(OII) [f(II) x(I)] y(I)] AND FORALL x(I) FORALL y(I) FORALL z(I) FORALL u(I) FORALL v(I) FORALL w(I) [~Q^3(OIII) x(I) y(I) z(I) OR ~P^3(OII) [f(II) x(I)] u(I) OR ~P^3(OII) [f(II) y(I)] v(I) OR ~P^3(OII) [f(II) z(I)] w(I) OR Q^4(OIII) u(I) v(I) w(I)] AND P^4(OII) a(I) a(I) AND P^4(OII) b(I) b(I) AND P^4(OII) c(I) c(I) AND FORALL x(I) P^4(OII) d(I) x(I) AND FORALL x(I) FORALL y(I) [~P^4(OII) x(I) y(I) OR P^4(OII) [f(II) x(I)] y(I)] AND FORALL x(I) FORALL y(I) FORALL z(I) FORALL u(I) FORALL v(I) FORALL w(I) [~Q^4(OIII) x(I) y(I) z(I) OR ~P^4(OII) [f(II) x(I)] u(I) OR ~P^4(OII) [f(II) y(I)] v(I) OR ~P^4(OII) [f(II) z(I)] w(I) OR Q^5(OIII) u(I) v(I) w(I)] AND P^5(OII) a(I) a(I) AND P^5(OII) b(I) b(I) AND P^5(OII) c(I) c(I) AND FORALL x(I) P^5(OII) d(I) x(I) AND FORALL x(I) FORALL y(I) [~P^5(OII) x(I) y(I) OR P^5(OII) [f(II) x(I)] y(I)] AND FORALL x(I) FORALL y(I) FORALL z(I) FORALL u(I) FORALL v(I) FORALL w(I) [~Q^5(OIII) x(I) y(I) z(I) OR ~P^5(OII) [f(II) x(I)] u(I) OR ~P^5(OII) [f(II) y(I)] v(I) OR ~P^5(OII) [f(II) z(I)] w(I) OR Q^6(OIII) u(I) v(I) w(I)] AND P^6(OII) a(I) a(I) AND P^6(OII) b(I) b(I) AND P^6(OII) c(I) c(I) AND FORALL x(I) P^6(OII) d(I) x(I) AND FORALL x(I) FORALL y(I) [~P^6(OII) x(I) y(I) OR P^6(OII) [f(II) x(I)] y(I)] AND FORALL x(I) FORALL y(I) FORALL z(I) FORALL u(I) FORALL v(I) FORALL w(I) [~Q^6(OIII) x(I) y(I) z(I) OR ~P^6(OII) [f(II) x(I)] u(I) OR ~P^6(OII) [f(II) y(I)] v(I) OR ~P^6(OII) [f(II) z(I)] w(I) OR Q^7(OIII) u(I) v(I) w(I)] AND FORALL x(I) FORALL y(I) FORALL z(I).~Q^7(OIII) x(I) y(I) z(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM401A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, May 23, 2002 at 21:01:43."
+:description "FORALL RR(OAA) FORALL U(A(OA)).TRANSITIVE(O(OAA)) RR(OAA) AND FORALL s(OA) [FORALL z(A) [s(OA) z(A) IMPLIES RR(OAA) z(A).U(A(OA)) s(OA)] AND FORALL j(A).FORALL k(A) [s(OA) k(A) IMPLIES RR(OAA) k(A) j(A)] IMPLIES RR(OAA) [U(A(OA)) s(OA)] j(A)] IMPLIES FORALL s(OA) EXISTS b(A) FORALL z(A).s(OA) z(A) IMPLIES RR(OAA) z(A) b(A)"
+:needed-objects   (TRANSITIVE)
+:mhelp "Trivial variant of THM401 for testing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM401B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, May 23, 2002 at 21:14:04."
+:description "FORALL RRR(OAA) FORALL U(A(OA)).TRANSITIVE(O(OAA)) RRR(OAA) AND FORALL s(OA) [FORALL z(A) [s(OA) z(A) IMPLIES RRR(OAA) z(A).U(A(OA)) s(OA)] AND FORALL j(A).FORALL k(A) [s(OA) k(A) IMPLIES RRR(OAA) k(A) j(A)] IMPLIES RRR(OAA) [U(A(OA)) s(OA)] j(A)] IMPLIES FORALL s(OA) EXISTS b(A) FORALL z(A).s(OA) z(A) IMPLIES RRR(OAA) z(A) b(A)"
+:needed-objects   (TRANSITIVE)
+:mhelp "Trivial variant of THM401 for testing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM401Z
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, May 23, 2002 at 21:55:49."
+:description "FORALL ABCDEFGHIJKLMNOPQRSTUVWXYZ(OAA) FORALL U(A(OA)).TRANSITIVE(O(OAA)) ABCDEFGHIJKLMNOPQRSTUVWXYZ(OAA) AND FORALL s(OA) [FORALL z(A) [s(OA) z(A) IMPLIES ABCDEFGHIJKLMNOPQRSTUVWXYZ(OAA) z(A).U(A(OA)) s(OA)] AND FORALL j(A).FORALL k(A) [s(OA) k(A) IMPLIES ABCDEFGHIJKLMNOPQRSTUVWXYZ(OAA) k(A) j(A)] IMPLIES ABCDEFGHIJKLMNOPQRSTUVWXYZ(OAA) [U(A(OA)) s(OA)] j(A)] IMPLIES FORALL s(OA) EXISTS b(A) FORALL z(A).s(OA) z(A) IMPLIES ABCDEFGHIJKLMNOPQRSTUVWXYZ(OAA) z(A) b(A)"
+:needed-objects   (TRANSITIVE)
+:mhelp "Trivial variant of THM401 for testing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM407
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Successful mode for automatic proof found automatically."
+:proof-date "Wednesday, February 18, 2004 at 20:40:55."
+:description "EXISTS v(I) FORALL x(I) P(OII) x(I) v(I) AND FORALL x(I) [S(OI) x(I) IMPLIES EXISTS y(I) Q(OII) y(I) x(I)] AND FORALL x(I) FORALL y(I) [P(OII) x(I) y(I) IMPLIES ~Q(OII) x(I) y(I)] IMPLIES EXISTS u(I) [~S(OI) u(I)] IMPLIES.EXISTS v(I) FORALL x(I) P(OII) x(I) v(I) AND FORALL x(I) [S(OI) x(I) IMPLIES EXISTS y(I) Q(OII) y(I) x(I)] AND FORALL x(I) FORALL y(I) [P(OII) x(I) y(I) IMPLIES ~Q(OII) x(I) y(I)] IMPLIES EXISTS u(I).~S(OI) u(I)"
+:needed-objects   NIL
+:mhelp "Has the form [P IMPLIES P]. Easily proved when
+ALLOW-NONLEAF-CONNS is set to (ALL)."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM408
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Successful mode for automatic proof found automatically."
+:proof-date "Wednesday, February 18, 2004 at 20:50:05."
+:description "FORALL x(I) EXISTS y(I) F(OII) x(I) y(I) AND EXISTS x(I) FORALL e(I) EXISTS n(I) FORALL w(I) [S(OII) n(I) w(I) IMPLIES D(OIII) w(I) x(I) e(I)] AND FORALL e(I) EXISTS d(I) FORALL a(I) FORALL b(I) [D(OIII) a(I) b(I) d(I) IMPLIES FORALL y(I) FORALL z(I).F(OII) a(I) y(I) AND F(OII) b(I) z(I) IMPLIES D(OIII) y(I) z(I) e(I)] IMPLIES EXISTS y(I) FORALL e(I) EXISTS m(I) FORALL w(I) [S(OII) m(I) w(I) IMPLIES FORALL z(I).F(OII) w(I) z(I) IMPLIES D(OIII) z(I) y(I) e(I)] IMPLIES.FORALL x(I) EXISTS y(I) F(OII) x(I) y(I) AND EXISTS x(I) FORALL e(I) EXISTS n(I) FORALL w(I) [S(OII) n(I) w(I) IMPLIES D(OIII) w(I) x(I) e(I)] AND FORALL e(I) EXISTS d(I) FORALL a(I) FORALL b(I) [D(OIII) a(I) b(I) d(I) IMPLIES FORALL y(I) FORALL z(I).F(OII) a(I) y(I) AND F(OII) b(I) z(I) IMPLIES D(OIII) y(I) z(I) e(I)] IMPLIES EXISTS y(I) FORALL e(I) EXISTS m(I) FORALL w(I).S(OII) m(I) w(I) IMPLIES FORALL z(I).F(OII) w(I) z(I) IMPLIES D(OIII) z(I) y(I) e(I)"
+:needed-objects   NIL
+:mhelp "Like THM407, but harder."
+:other-attributes NIL
+:other-remarks "
+")
+
+

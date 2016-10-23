@@ -1,0 +1,82 @@
+;;; ******************************************************************* ;;;
+;;;         (c) Copyrighted 1988 by Carnegie Mellon University.         ;;;
+;;;                        All rights reserved.                         ;;;
+;;;         This code was written as part of the TPS project.           ;;;
+;;;   If you want to use this code or any part of TPS, please contact   ;;;
+;;;               Peter B. Andrews (Andrews@CS.CMU.EDU)                 ;;;
+;;; ******************************************************************* ;;;
+;;; Updated contexts 7/20/87 DAN
+(context rules-2-prop)
+
+(defirule deduct
+  (lines (h1 (h) (h1) "A" ("Hyp"))
+	 (d2 (h) (h1) "B")
+	 (p3 (h) () "A implies B" ("Deduct" () (d2))))
+  (itemshelp
+   (h1 "Line with Hypothesis")
+   (d2 "Line with Conclusion")
+   (p3 "Line with Implication")
+   ("A(O)" "Antecendent of Implication")
+   ("B(O)" "Succedent of Implication"))
+  (support-transformation ((p3 'ss)) ((d2 h1 'ss)))
+  (mhelp "The deduction rule."))
+
+(defirule mp
+  (lines (p1 (h) () "A")
+	 (d2 (h) () "A implies B")
+	 (d3 (h) () "B" ("MP" () (p1 d2))))
+  (support-transformation (('pp d2 'ss)) ((p1 'ss) ('pp d3 'ss p1)))
+  (itemshelp (p1 "Line with Antecedent of Implication")
+	     (d2 "Line with Implication")
+	     (d3 "Line with Succedent of Implication")
+	     ("A(O)" "Antecedent of Implication")
+	     ("B(O)" "Succedent of Implication"))
+  (mhelp "Modus Ponens."))
+
+;*;(defirule backchain
+;*;  (lines (d1 (h) () "A implies B")
+;*;	 (p2 (h) () "A")
+;*;	 (h3 (h) (h3) "B" ("Hyp" () ()))
+;*;	 (p4 (h) (h3) "C")
+;*;	 (p5 (h) () "C" ("MP, Deduct" () (d1 p2 p4))))
+;*;  (support-transformation ((p5 d1 'ss)) ((p4 h3 'ss) (p2 'ss)))
+;*;  (itemshelp
+;*;   (d1 "Line with Implication")
+;*;   (p2 "Line with Antecedent of Implication")
+;*;   (h3 "Line with Succedent of Implication")
+;*;   (p4 "Conclusion with Extra Hypothesis")
+;*;   (p5 "Conclusion without Extra Hypothesis")
+;*;   ("A(O)" "Antecedent of Implication")
+;*;   ("B(O)" "Succedent of Implication")
+;*;   ("C(O)" "Conclusion"))
+;*;  (mhelp "Backchaining."))
+
+(defirule econj
+  (lines (d1 (h) () "A and B")
+	 (d2 (h) () "A" ("Conj" () (d1)))
+	 (d3 (h) () "B" ("Conj" () (d1))))
+  (support-transformation (('pp d1 'ss)) (('pp d2 d3 'ss)))
+  (itemshelp (d1 "Line with Conjunction")
+	     (d2 "Line with Left Conjunct")
+	     (d3 "Line with Right Conjunct")
+	     ("A(O)" "Left Conjunct")
+	     ("B(O)" "Right Conjunct"))
+  (mhelp "Rule to infer two conjuncts from a conjunction."))
+
+(defirule iconj
+  (lines (p1 (h) () "A")
+	 (p2 (h) () "B")
+	 (p3 (h) () "A and B" ("Conj" () (p1 p2))))
+  (support-transformation ((p3 'ss)) ((p1 'ss) (p2 'ss)))
+  (itemshelp (p3 "Line with Conjunction")
+	     (p1 "Line with Left Conjunct")
+	     (p2 "Line with Right Conjunct")
+	     ("A(O)" "Left Conjunct")
+	     ("B(O)" "Right Conjunct"))
+  (mhelp "Rule to infer a conjunction from two conjuncts."))
+
+(defirule itruth
+  (lines (p1 (h) () "TRUTH" ("Truth" () ())))
+  (support-transformation ((p1 'ss)) nil)
+  (itemshelp (p1 "Line with TRUTH"))
+  (mhelp "Rule to infer TRUTH"))

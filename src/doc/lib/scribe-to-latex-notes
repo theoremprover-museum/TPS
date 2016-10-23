@@ -1,0 +1,217 @@
+/home/theorem/project/doc/lib/scribe-to-latex-notes
+
+The tps manuals were originally formatted for Scribe.
+In 2000 Chad Brown converted the Programmer's Guide
+to latex. See 
+/home/theorem/project/doc/prog/SCRIBETOTEX-NOTES
+Most of its contents are essentially reproduced below.
+
+Some commands from /home/theorem/project/doc/prog/manual.tex
+are now in /home/theorem/tps/doc/lib/tpsdoc.tex
+Also, new things have been put into tpsdoc.tex corresponding
+to items in the old scribe file tpsdoc.lib
+
+================================================================
+	CONVERTING USER MANUAL FROM SCRIBE TO LATEX
+
+Create the directory /home/theorem/project/doc/user/convert-to-latex
+and put in it the executable file do-convert:
+---------------------------------------------
+sample entries:
+s2latex ../searchanalysis.mss	 > searchanalysis.tex  
+s2latex ../set-up.mss		 > set-up.tex	      
+s2latex ../tactics.mss		 > tactics.tex	      
+s2latex ../testtop.mss		 > testtop.tex	      
+s2latex ../tps-auto.mss		 > tps-auto.tex	      
+s2latex ../translations.mss	 > translations.tex    
+s2latex ../unification.mss		 > unification.tex     
+s2latex ../wffs.mss		 > wffs.tex            
+---------------------------------------------
+Execute it to get tex versions of all the mss files.
+Save these unprocessed tex files in save-temp for safety
+
+Create new versions of manual.tex and refs.tex by hand.
+Include in manual.tex the line
+\input /home/theorem/tps/doc/lib/tpsdoc.tex
+
+----------------------------------------------------------------
+Put copies of all these files except manual.tex and refs.tex into
+home/theorem/project/doc/user/convert-to-latex/test2
+
+In test2 concatenate these files into the file all with the command:
+more *.tex > all
+
+Headers like
+::::::::::::::
+epr-npr-translate.tex
+::::::::::::::
+will be put as separators in the file all
+--------------------------------------------------------------
+Now edit the file all. Use latex to check it. In
+/home/theorem/project/doc/user/convert-to-latex/test3% ls -l
+all.tex -> ../test2/all
+manual.tex
+refs.tex
+This version of manual.tex contains the line
+\include{all}
+and it doesn't load any of the other files.
+
+The files aren't loaded in the correct order, and the headers
+of the files don't make sense to latex, but one can still 
+run latex on manual.tex to see what problems need to be dealt with.
+
+--------------
+grep -i "\include{" all.tex
+\include{testtop}
+\include{searchanalysis}
+\include{mtree}
+\include{monitor}
+\include{auto-mode}
+\include{tps-auto}
+\include{rule-example}
+% \include{lib:ksets.mss}
+% \include{lib:symb10.mss}}
+\include{tactics}
+\include{natetr}
+Comment out all of those lines in all for testing purposes;
+then put them back like this after editing all
+
+In tpsexample environment, which is alltt,
+for math formulas,  note that `$' just produces a dollar sign,
+  so you'll have to type `\(...\)' or `\[...\]'.  Also, `^' and `_'
+  just produce their characters; use `\sp' or `\sb' for super- and
+  subscripts, as in `\(x\sp{2}\)'.
+
+
+--------------
+Editing: Query-replace (<ESC>%
+
+CHANGE				TO
+\include			%\include
+chapterph			chapter
+\TPS				{\TPS}
+\tps				{\TPS}
+\ETPS				{\ETPS}
+\etps				{\ETPS}
+\Lisp				{\lisp}
+\g{l}				$\lambda$
+{\tt\char`\^}		        \^
+enumeration			enumerate
+verbatim			alltt
+{\tt\char`\<}			<
+{\tt\char`\>}			>
+{\tt\char`\|}			|
+{\tt\char`\~}			$\sim$
+$\sim$				\(\sim\)
+{\tt\char`\\}			\
+\tag				\label
+\begin{tabular}			\begin{tabular}{ll}	where the appropriate thing is put in for ll
+|				{\tt |}		in a tabular environment
+\				\(\setminus\)		where you really want \
+\or				\lor	(see note in tpsdoc.tex)
+\f12{o}				$_{\greeko}$
+\f12{a}				$_{\greeka}$
+\f12{oa}			$_{\greeko\greeka}$
+\f12{i}				$_{\greeki}$
+\f12{oi}			$_{\greeko\greeki}$
+\f12{oii}			$_{\greeko\greeki\greeki}$
+\f12{i(ii)}			$_{\greeki(\greeki\greeki)}$
+\f12{ii}			$_{\greeki\greeki}$
+\f12{oia}			$_{\greeko\greeki\greeka}$
+\f12{o(ii)}			$_{\greeko(\greeki\greeki)}$
+\f12{o(oi)(ii)}			$_{\greeko(\greeko\greeki)(\greeki\greeki)}$
+\f12{ii(ii)}			$_{\greeki\greeki(\greeki\greeki)}$
+\f12{ii(ii)(ii)}		$_{\greeki\greeki(\greeki\greeki)(\greeki\greeki)}$
+\f12{o(ii)(ii)}			$_{\greeko(\greeki\greeki)(\greeki\greeki)}$
+\f12{o(o(ii))(ii)}		$_{\greeko(\greeko(\greeki\greeki))(\greeki\greeki)}$
+\f12{oi(ii)}			$_{\greeko\greeki(\greeki\greeki)}$
+\f12{oii(ii)}			$_{\greeko\greeki\greeki(\greeki\greeki)}$
+\f12{o(ii)(o(ii))(ii)}		$_{\greeko(\greeki\greeki)(\greeko(\greeki\greeki))(\greeki\greeki)}$
+\f12{oi(ii)(ii)}		$_{\greeko\greeki(\greeki\greeki)(\greeki\greeki)}$
+\f12{o(ii)(ii)(ii)}		$_{\greeko(\greeki\greeki)(\greeki\greeki)(\greeki\greeki)}$
+\f12{s}				$_{\greeks}$
+\f12{ss}			$_{\greeks\greeks}$
+\forall				\(\forall\)
+\exists				$\exists$
+$\sb{\greeks\greeks}$		\(\sb{\greeks\greeks}\)
+\^				\(\wedge\)	 (where not followed by a letter)
+replace such things as x\^2 by x\sp{2} in some places, but not all; check first
+M-X query-replace-regexp
+\^\([0-9]+\)			sp{\1}
+
+\hbox				(blank)		(This may leave an extra pair of {} around
+						 what was in the box, but this seems not to matter.)
+$$				(blank)			(May need to do this again later)		
+_				\sb
+---------those above are done--------------------
+^				\sp
+$				<space>		in the middle of a formula
+$				\(		at beginning of math formula
+$				\)		at end of math formula
+
+---------those above are partly done--------------------
+
+
+
+
+
+
+
+
+\indexother
+\indexfunction
+\indexcommand
+\begin{description}
+
+---------------------------------------------
+copy /home/theorem/project/doc/user/convert-to-latex/test2/all
+to the save-temp directory just in case it will be needed.
+
+--------------------------------
+%\include			\include
+
+Restore the \include commands in all to look like this:
+\include{testtop}
+\include{searchanalysis}
+\include{mtree}
+\include{monitor}
+\include{auto-mode}
+\include{tps-auto}
+\include{rule-example}
+% \include{lib:ksets.mss}
+% \include{lib:symb10.mss}}
+\include{tactics}
+\include{natetr}
+
+Change \include to \input in all files except the root file manual.tex
+----------------------------------------------------------------
+
+
+Then the file all can be split into several files again
+(replacing the old versions) as follows:
+
+/home/theorem/project/doc/user/convert-to-latex/test2% lisp
+
+CL-USER(1): (defun split-tex-files (&optional (name "all"))
+  (let ((f (open name :direction :input))
+	(out-file nil))
+    (do ((l (read-line f nil 'eof) (read-line f nil 'eof)))
+	((or (eq l 'eof) (string= l "::::::::::::::"))
+	 (unless (eq l 'eof)
+	   (setq out-file (open (read-line f) :direction :output :if-exists :overwrite))
+	   (read-line f))))
+    (do ((l (read-line f nil 'eof) (read-line f nil 'eof)))
+	((eq l 'eof) (close f))
+	(if (string= l "::::::::::::::")
+	    (progn
+	      (close out-file)
+	      (setq out-file (open (read-line f) :direction :output :if-exists :supersede))
+	      (read-line f))
+	  (format out-file "~d~%" l)))))
+
+CL-USER(2): (split-tex-files)
+
+CL-USER(3): (exit)
+
+Now the old tex files have been replaced by the edited tex files.
+==========================================================

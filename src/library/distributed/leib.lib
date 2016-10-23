@@ -1,0 +1,16 @@
+(:name LEIBEQ
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(A) LAMBDA y(A) FORALL q(OA).q(OA) x(A) IMPLIES q(OA) y(A)"
+:needed-objects   NIL
+:mhelp "A definition of Leibniz equality.  By using this abbreviation,
+we make the value of REWRITE-EQUALITIES for this occurrence of 'equality'.  Also,
+in the extensional case, we can compare this with primitive equality."
+:other-attributes ((FACE = =) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (INFIX 7) (TYPELIST ("A")) (TYPE "OAA"))
+:other-remarks "
+")
+
+

@@ -1,0 +1,504 @@
+(:name DIFF
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA T(OA) LAMBDA S(OA) LAMBDA x(A).T(OA) x(A) AND ~S(OA) x(A)"
+:needed-objects   NIL
+:mhelp "The difference of T and S"
+:other-attributes ((TYPELIST ("A")) (TYPE "OA(OA)(OA)") (FACE -) (PRINTNOTYPE T) (INFIX 5) (FO-SINGLE-SYMBOL T))
+:other-remarks "
+")
+
+
+(:name GAZING-THM11
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:19:24."
+:description "FORALL S(OA) FORALL T(OA) FORALL U(OA).S(OA) SUBSET(O(OA)(OA)) U(OA) AND T(OA) SUBSET(O(OA)(OA)) U(OA) AND S(OA) SUBSET(O(OA)(OA)) T(OA) IMPLIES [U(OA) DIFF(OA(OA)(OA)) T(OA)] SUBSET(O(OA)(OA)).U(OA) DIFF(OA(OA)(OA)) S(OA)"
+:needed-objects   (DIFF)
+:mhelp "Example 11 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM12
+:type GWFF
+:context UNCLASSIFIED
+:keywords (PROVEN WITH-EQUALITY WITH-DEFN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:19:53."
+:description "FORALL S(OA) FORALL T(OA).S(OA) SUBSET(O(OA)(OA)) T(OA) IMPLIES S(OA) =(O(OA)(OA)).T(OA) DIFF(OA(OA)(OA)).T(OA) DIFF(OA(OA)(OA)) S(OA)"
+:needed-objects   (DIFF)
+:mhelp "Example 12 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM15
+:type GWFF
+:context UNCLASSIFIED
+:keywords (PROVEN WITH-EQUALITY WITH-DEFN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:20:16."
+:description "FORALL S(OA).S(OA) SUBSET(O(OA)(OA)) LAMBDA x(A) FALSEHOOD IMPLIES S(OA) =(O(OA)(OA)) LAMBDA x(A) FALSEHOOD"
+:needed-objects   NIL
+:mhelp "Example 15 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM18
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:20:40."
+:description "FORALL S(OA) FORALL T(OA).S(OA) SUBSET(O(OA)(OA)) S(OA) UNION(OA(OA)(OA)) T(OA)"
+:needed-objects   NIL
+:mhelp "Example 18 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM19
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:21:51."
+:description "FORALL S(OA) FORALL T(OA).S(OA) SUBSET(O(OA)(OA)) T(OA) UNION(OA(OA)(OA)) S(OA)"
+:needed-objects   NIL
+:mhelp "Example 19 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM20
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:22:09."
+:description "FORALL S(OA) FORALL T(OA).S(OA) INTERSECT(OA(OA)(OA)) T(OA) SUBSET(O(OA)(OA)) S(OA)"
+:needed-objects   NIL
+:mhelp "Example 20 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM21
+:type GWFF
+:context UNCLASSIFIED
+:keywords (PROVEN WITHOUT-EQUALITY WITH-DEFN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:22:29."
+:description "FORALL S(OA) FORALL T(OA).S(OA) INTERSECT(OA(OA)(OA)) T(OA) SUBSET(O(OA)(OA)) T(OA)"
+:needed-objects   NIL
+:mhelp "Example 21 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM22
+:type GWFF
+:context UNCLASSIFIED
+:keywords (PROVEN WITH-EQUALITY WITH-DEFN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:22:57."
+:description "FORALL S(OA).S(OA) UNION(OA(OA)(OA)) LAMBDA x(A) FALSEHOOD =(O(OA)(OA)) S(OA)"
+:needed-objects   NIL
+:mhelp "Example 22 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM23
+:type GWFF
+:context UNCLASSIFIED
+:keywords (PROVEN WITH-EQUALITY WITH-DEFN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:23:39."
+:description "FORALL S(OA) FORALL T(OA).S(OA) UNION(OA(OA)(OA)) T(OA) =(O(OA)(OA)) S(OA) IMPLIES T(OA) SUBSET(O(OA)(OA)) S(OA)"
+:needed-objects   NIL
+:mhelp "Example 23 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM24
+:type GWFF
+:context UNCLASSIFIED
+:keywords (PROVEN WITH-EQUALITY WITH-DEFN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:25:34."
+:description "FORALL S(OA).S(OA) INTERSECT(OA(OA)(OA)) LAMBDA x(A) FALSEHOOD =(O(OA)(OA)) LAMBDA x(A) FALSEHOOD"
+:needed-objects   NIL
+:mhelp "Example 24 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM25
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:26:21."
+:description "FORALL S(OA) FORALL T(OA).S(OA) INTERSECT(OA(OA)(OA)) T(OA) =(O(OA)(OA)) T(OA) INTERSECT(OA(OA)(OA)) S(OA)"
+:needed-objects   NIL
+:mhelp "Example 25 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM26
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:27:08."
+:description "FORALL S(OA) FORALL T(OA).S(OA) UNION(OA(OA)(OA)) T(OA) =(O(OA)(OA)) T(OA) UNION(OA(OA)(OA)) S(OA)"
+:needed-objects   NIL
+:mhelp "Example 26 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM27
+:type GWFF
+:context UNCLASSIFIED
+:keywords (PROVEN WITH-EQUALITY WITH-DEFN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:27:34."
+:description "FORALL S(OA) FORALL T(OA) FORALL U(OA).S(OA) INTERSECT(OA(OA)(OA)) T(OA) INTERSECT(OA(OA)(OA)) U(OA) =(O(OA)(OA)) S(OA) INTERSECT(OA(OA)(OA)).T(OA) INTERSECT(OA(OA)(OA)) U(OA)"
+:needed-objects   NIL
+:mhelp "Example 27 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM28
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:28:02."
+:description "FORALL S(OA) FORALL T(OA) FORALL U(OA).S(OA) UNION(OA(OA)(OA)) T(OA) UNION(OA(OA)(OA)) U(OA) =(O(OA)(OA)) S(OA) UNION(OA(OA)(OA)).T(OA) UNION(OA(OA)(OA)) U(OA)"
+:needed-objects   NIL
+:mhelp "Example 28 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM29
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:28:34."
+:description "FORALL S(OA) FORALL T(OA) FORALL U(OA).S(OA) INTERSECT(OA(OA)(OA)) [T(OA) UNION(OA(OA)(OA)) U(OA)] =(O(OA)(OA)) S(OA) INTERSECT(OA(OA)(OA)) T(OA) UNION(OA(OA)(OA)) S(OA) INTERSECT(OA(OA)(OA)) U(OA)"
+:needed-objects   NIL
+:mhelp "Example 29 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM3
+:type GWFF
+:context UNCLASSIFIED
+:keywords (PROVEN WITHOUT-EQUALITY WITH-DEFN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:16:17."
+:description "FORALL S(OA) FORALL T(OA) FORALL U(OA).S(OA) SUBSET(O(OA)(OA)) T(OA) AND T(OA) SUBSET(O(OA)(OA)) U(OA) IMPLIES S(OA) SUBSET(O(OA)(OA)) U(OA)"
+:needed-objects   NIL
+:mhelp "Example 3 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM30
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:29:20."
+:description "FORALL S(OA) FORALL T(OA) FORALL U(OA).S(OA) UNION(OA(OA)(OA)) T(OA) INTERSECT(OA(OA)(OA)) U(OA) =(O(OA)(OA)) [S(OA) UNION(OA(OA)(OA)) T(OA)] INTERSECT(OA(OA)(OA)).S(OA) UNION(OA(OA)(OA)) U(OA)"
+:needed-objects   NIL
+:mhelp "Example 30 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM31
+:type GWFF
+:context UNCLASSIFIED
+:keywords (PROVEN WITH-EQUALITY WITH-DEFN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:29:41."
+:description "FORALL S(OA).S(OA) INTERSECT(OA(OA)(OA)) S(OA) =(O(OA)(OA)) S(OA)"
+:needed-objects   NIL
+:mhelp "Example 31 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM32
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:30:06."
+:description "FORALL S(OA).S(OA) UNION(OA(OA)(OA)) S(OA) =(O(OA)(OA)) S(OA)"
+:needed-objects   NIL
+:mhelp "Example 32 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM33
+:type GWFF
+:context UNCLASSIFIED
+:keywords (PROVEN WITH-EQUALITY WITH-DEFN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:30:43."
+:description "FORALL S(OA) FORALL T(OA) FORALL U(OA).S(OA) SUBSET(O(OA)(OA)) U(OA) AND T(OA) SUBSET(O(OA)(OA)) U(OA) IMPLIES.S(OA) SUBSET(O(OA)(OA)) T(OA) EQUIV S(OA) INTERSECT(OA(OA)(OA)) [U(OA) DIFF(OA(OA)(OA)) T(OA)] =(O(OA)(OA)) LAMBDA x(A) FALSEHOOD"
+:needed-objects   (DIFF)
+:mhelp "Example 33 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM34
+:type GWFF
+:context UNCLASSIFIED
+:keywords (PROVEN WITH-EQUALITY WITH-DEFN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:31:24."
+:description "FORALL S(OA) FORALL T(OA) FORALL U(OA).S(OA) SUBSET(O(OA)(OA)) U(OA) AND T(OA) SUBSET(O(OA)(OA)) U(OA) IMPLIES.S(OA) SUBSET(O(OA)(OA)) T(OA) EQUIV [U(OA) DIFF(OA(OA)(OA)) S(OA)] UNION(OA(OA)(OA)) T(OA) =(O(OA)(OA)) U(OA)"
+:needed-objects   (DIFF)
+:mhelp "Example 34 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM35
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:32:40."
+:description "FORALL S(OA) FORALL T(OA) FORALL U(OA).S(OA) SUBSET(O(OA)(OA)) U(OA) AND T(OA) SUBSET(O(OA)(OA)) U(OA) IMPLIES.S(OA) SUBSET(O(OA)(OA)) T(OA) EQUIV S(OA) INTERSECT(OA(OA)(OA)) [U(OA) DIFF(OA(OA)(OA)) T(OA)] SUBSET(O(OA)(OA)).U(OA) DIFF(OA(OA)(OA)) S(OA)"
+:needed-objects   (DIFF)
+:mhelp "Example 35 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM36
+:type GWFF
+:context UNCLASSIFIED
+:keywords (PROVEN WITHOUT-EQUALITY WITH-DEFN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:33:16."
+:description "FORALL S(OA) FORALL T(OA) FORALL U(OA).S(OA) SUBSET(O(OA)(OA)) U(OA) AND T(OA) SUBSET(O(OA)(OA)) U(OA) IMPLIES.S(OA) SUBSET(O(OA)(OA)) T(OA) EQUIV S(OA) INTERSECT(OA(OA)(OA)) [U(OA) DIFF(OA(OA)(OA)) T(OA)] SUBSET(O(OA)(OA)) T(OA)"
+:needed-objects   (DIFF)
+:mhelp "Example 36 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM38
+:type GWFF
+:context UNCLASSIFIED
+:keywords (PROVEN WITH-EQUALITY WITH-DEFN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:33:46."
+:description "FORALL S(OA) FORALL T(OA).S(OA) UNION(OA(OA)(OA)) T(OA) =(O(OA)(OA)) S(OA) EQUIV T(OA) SUBSET(O(OA)(OA)) S(OA)"
+:needed-objects   NIL
+:mhelp "Example 38 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM39
+:type GWFF
+:context UNCLASSIFIED
+:keywords (PROVEN WITH-EQUALITY WITH-DEFN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:34:16."
+:description "FORALL S(OA) FORALL T(OA).S(OA) INTERSECT(OA(OA)(OA)) T(OA) =(O(OA)(OA)) S(OA) EQUIV S(OA) SUBSET(O(OA)(OA)) T(OA)"
+:needed-objects   NIL
+:mhelp "Example 39 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM41
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:35:30."
+:description "FORALL S(OA).SYMDIFF(OA(OA)(OA)) S(OA) [LAMBDA x(A) FALSEHOOD] =(O(OA)(OA)) S(OA)"
+:needed-objects   (SYMDIFF)
+:mhelp "Example 41 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM42
+:type GWFF
+:context UNCLASSIFIED
+:keywords (PROVEN WITH-EQUALITY WITH-DEFN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:36:19."
+:description "FORALL S(OA) FORALL T(OA).SYMDIFF(OA(OA)(OA)) S(OA) T(OA) =(O(OA)(OA)) SYMDIFF(OA(OA)(OA)) T(OA) S(OA)"
+:needed-objects   (SYMDIFF)
+:mhelp "Example 42 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM43
+:type GWFF
+:context UNCLASSIFIED
+:keywords (PROVEN WITH-EQUALITY WITH-DEFN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:38:24."
+:description "FORALL S(OA) FORALL T(OA) FORALL U(OA).SYMDIFF(OA(OA)(OA)) [SYMDIFF(OA(OA)(OA)) S(OA) T(OA)] U(OA) =(O(OA)(OA)) SYMDIFF(OA(OA)(OA)) S(OA).SYMDIFF(OA(OA)(OA)) T(OA) U(OA)"
+:needed-objects   (SYMDIFF)
+:mhelp "Example 43 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM44
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:39:19."
+:description "FORALL S(OA) FORALL T(OA) FORALL U(OA).S(OA) INTERSECT(OA(OA)(OA)) SYMDIFF(OA(OA)(OA)) T(OA) U(OA) =(O(OA)(OA)) SYMDIFF(OA(OA)(OA)) [S(OA) INTERSECT(OA(OA)(OA)) T(OA)].S(OA) INTERSECT(OA(OA)(OA)) U(OA)"
+:needed-objects   (SYMDIFF)
+:mhelp "Example 44 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM45
+:type GWFF
+:context UNCLASSIFIED
+:keywords (PROVEN WITHOUT-EQUALITY WITH-DEFN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:39:48."
+:description "FORALL S(OA) FORALL T(OA).[T(OA) DIFF(OA(OA)(OA)) S(OA)] SUBSET(O(OA)(OA)) SYMDIFF(OA(OA)(OA)) T(OA) S(OA)"
+:needed-objects   (SYMDIFF DIFF)
+:mhelp "Example 45 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM46
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:40:34."
+:description "FORALL S(OA) FORALL T(OA).S(OA) =(O(OA)(OA)) T(OA) EQUIV SYMDIFF(OA(OA)(OA)) T(OA) S(OA) =(O(OA)(OA)) LAMBDA x(A) FALSEHOOD"
+:needed-objects   (SYMDIFF)
+:mhelp "Example 46 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM7
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:17:39."
+:description "FORALL S(OA) FORALL T(OA) FORALL U(OA).S(OA) =(O(OA)(OA)) T(OA) AND T(OA) =(O(OA)(OA)) U(OA) IMPLIES S(OA) =(O(OA)(OA)) U(OA)"
+:needed-objects   NIL
+:mhelp "Example 7 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM8
+:type GWFF
+:context UNCLASSIFIED
+:keywords (PROVEN WITH-EQUALITY WITH-DEFN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:18:08."
+:description "FORALL S(OA) FORALL T(OA) [S(OA) =(O(OA)(OA)) T(OA)] IMPLIES S(OA) SUBSET(O(OA)(OA)) T(OA) AND T(OA) SUBSET(O(OA)(OA)) S(OA)"
+:needed-objects   NIL
+:mhelp "Example 8 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GAZING-THM9
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, October 28, 1997 at 18:18:52."
+:description "FORALL S(OA) FORALL T(OA) FORALL U(OA).S(OA) =(O(OA)(OA)) T(OA) AND T(OA) =(O(OA)(OA)) U(OA) IMPLIES S(OA) SUBSET(O(OA)(OA)) T(OA) AND T(OA) SUBSET(O(OA)(OA)) U(OA) AND U(OA) SUBSET(O(OA)(OA)) S(OA)"
+:needed-objects   NIL
+:mhelp "Example 9 from Barker-Plummer's paper about Gazing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name SYMDIFF
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA T(OA) LAMBDA S(OA).[T(OA) DIFF(OA(OA)(OA)) S(OA)] UNION(OA(OA)(OA)).S(OA) DIFF(OA(OA)(OA)) T(OA)"
+:needed-objects   (DIFF)
+:mhelp "The symmetric difference of T and S"
+:other-attributes ((TYPELIST ("A")) (TYPE "OA(OA)(OA)") (PRINTNOTYPE T) (FO-SINGLE-SYMBOL T))
+:other-remarks "
+")
+
+

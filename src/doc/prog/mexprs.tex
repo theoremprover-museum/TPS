@@ -1,0 +1,329 @@
+\chapter{MExpr's} \label{defmexprs}
+\TPS provides its own top-level.  It allows for default arguments
+and provides a way of giving arguments (e.g. wffs) in some external
+representation which is converted before the "real" function is called.
+All this is also available in an interactive mode, where the user is
+prompted for arguments after he has been told what the defaults are
+and which alternatives are open.  The way all this has been implemented
+is through MExpr's, which constitute special functional objects analogous
+to Expr's or FExpr's in LISP.  Every \TPS command should be an MExpr
+so that the facilities of \TPS' top-level can be utilized. 
+
+\section{Defining MExpr's} \label{mexprargs}
+Mexprs are special functional objects that are
+recognized by the top level of \tps.
+They can be defined with the {\tt defmexpr} macro, which has
+a number of optional arguments.
+The general format is ({\tt {}} indicate optional arguments)
+\begin{verbatim}
+(defmexpr {\it name}
+	 {(ArgTypes {\it type1} {\it type2} ...)}
+	 {(ArgNames {\it name1} {\it name2} ...)}
+	 {(ArgHelp {\it help1} {\it help2} ...)}
+	 {(DefaultFns  {\it fnspec1} {\it fnspec2} ...)}
+         {(EnterFns {\it fnspec1} {\it fnspec2} ...)}
+	 {(MainFns {\it fnspec1} {\it fnspec2} ...)}
+	 {(CloseFns {\it fnspec1} {\it fnspec2} ...)}
+         {(Print-Command {\it boolean})}
+         {(Dont-Restore {\it boolean})}
+	 {(MHelp "{\it comment}")}
+\end{verbatim}
+
+There are actually two other possible entries, {\tt Wffop-Typelist} and {\tt WffArgTypes}; these
+are only used in mexprs which are generated automatically by the Rules package.
+
+In the following a {\it function specification} is either a symbol naming
+a function, or an expression of the form {\tt (Lambda {\it arglist} . {\it body})}.
+We also assume that the main function which is to perform the command has
+{\it n} arguments.  Then the phrases in the above definition have the
+following meaning.
+\begin{description}
+\item [{\it name}\index{{\it name}}]
+ This is the name of the MExpr as called by the user.
+
+\item [{\tt ArgTypes}] This is a list which must have as many elements as the
+function arguments, i.e. {\it n}.  {\it type1}, {\it type2}, ..., {\it typen} have
+to be valid types, which means that they
+have to have a non-{\tt NIL} {\tt ArgType} property.  Each argument supplied by the
+user on the command line will be processed first by the corresponding
+{\tt GetFn}.  In case an FExpr is to be called, each element of the
+argument list is presupposed to be of the same type.  This type is
+specified in parentheses.  If {\tt ArgTypes} is omitted, the function has
+no arguments.
+
+\item [{\tt ArgHelp}] This has to be a list of length {\it n}.  Each element is
+a string describing the argument, or {\tt NIL}.  These quick helps
+for arguments can be accessed via the {\tt ?} when being prompted
+for the argument value.  For an FExpr, there should be only one string.
+
+\item [{\tt DefaultFns}]
+The {\it fnspecs} declared in this place are being processed in a
+left-to-right order, where the result of one {\it fnspec} is passed on
+to next.  A {\it fnspec} can signal an error (a {\tt THROW} with a
+{\tt FAIL} label) if the arguments seem to be contradictory (e.g.  if a
+planned line and a term is supplied for a {\tt P}-rule, but the term does
+not appear in the proof), but it can count on the arguments being of
+the correct type and in internal representation. 
+
+In detail, each default {\it fnspec} must be either a symbol denoting
+a function of {\it n} arguments, where {\it n} is the number of mexpr
+arguments, or else a lambda expression of {\it n} arguments.
+Each {\it fnspec} must return a list of
+length {\it n}.  This list will then be handed on and processed by the next
+{\it fnspec} as if it were the list of arguments supplied by the user.
+Any entry which is not a {\tt \$} should be left unchanged.  The function
+is not allowed to have side-effects.
+As a general convention, the arguments which are not used by
+a {\it fnspec} are not written out with their name, but replaced by
+{\tt \%}{\it i}.  This makes it easier to see at one glance which defaults
+are filled in by a certain {\it defaultspec}. 
+
+\item [{\tt EnterFns}] {\it fnspec1}, {\it fnspec2}, ... is an arbitrary list of function
+specifications.  They are called in succession with the value list
+returned by the last default {\it fnspec}, before the {\tt MainFns} are called.
+
+\item [{\tt MainFns}] {\it fnspec1}, {\it fnspec2}, ... is an arbitrary list of function
+specifications.  They are called in succession with the value list
+returned by the last default {\it fnspec}.  If none are specified, it is assumed
+that there is a function named {\it name}, which can be called.
+Notice that at this stage, no defaulted arguments may be left.
+{\tt ComDeCode} (the command processing function) will refuse to call
+any function, unless all the defaults are determined.  This clearly
+divides the responsibilities between {\tt GetFn}'s, {\tt DefaultFn}'s and
+{\tt MainFn}'s. Any {\it fnspec} may abort with an error by doing a
+{\tt THROW} with a {\tt FAIL} label.  A {\tt THROW} with a {\tt TryNext} label
+will be handled like a normal return.  A {\tt THROW} with a {\tt CutShort} label
+means that none of the remaining {\tt MainFn}'s will be executed and the 
+value of the {\tt THROW} will be handed on to the {\tt CloseFn}'s.
+
+\item [{\tt CloseFns}] {\it fnspec1}, {\it fnspec2}, ... is a list of function
+specifications.  They are called in succession with the value returned
+by the last {\tt MainFn}.  Even if the {\tt MainFn}'s were FExpr's, each
+{\it fnspec} has to describe an Expr.
+
+\item [{\tt Dont-Restore}] {\it boolean} determines whether or not this command will be
+restored, if it is saved using SAVE-WORK. For example, commands like HELP and ? should not
+be restored.
+
+\item [{\tt Print-Command}] {\it boolean} is used by RESTORE-WORK and EXECUTE-FILE, which 
+both ask "Execute Print-Commands?"; this is how they know which commands are print 
+commands.
+
+\item [{\tt MHelp}] This has to be a string and will be available through
+{\tt UserHelp} and the {\tt ??} if no {\tt QuickHelp} is available.
+
+\end{description}
+
+\section{Argument Types}
+At the top-level of \TPS
+explicitly declared argument types are available.  Many of the more important ones are
+all declared in the file {\tt argtyp.lisp}.  They can be recognized by their
+{\tt ArgType} property value, which is {\tt T}.  Each of argument type
+has at least three properties, {\tt GetFn}, {\tt TestFn}, and {\tt PrintFn}.
+{\tt GetFn} is responsible for translating the user's value
+into internal representation, {\tt TestFn} tests if some object is of the given
+type, and {\tt PrintFn} makes the internal
+representation intelligible to the user.  
+
+The defining command for the category {\tt argtype} is actually {\tt deftype\%\%}, but 
+all definitions of argtypes should be made through the secondary macro {\tt DefType\%}.
+Its format is as follows
+({\tt {}} enclose optional arguments):
+\begin{verbatim}
+(DefType% {\it name}
+	 (GetFn {\it fnspec})
+	 (TestFn {\it fnspec})
+	 (PrintFn {\it fnspec})
+	{(Short-Prompt {\it boolean})}
+	{(MHelp "{\it comment}")}
+	{({\it property1} {\it value1}) ({\it property2} {\it value2}) ...})
+\end{verbatim}
+In the above a {\it fnspec} is either the name of a one-argument function,
+or a list of forms which are to be evaluated as an implicit progn.
+In the latter case, {\it name} stands for the argument supplied.
+\begin{description}
+\item [{\it name}\index{{\it name}}] 
+The name of the argument type.  It will get a property value of {\tt T}
+for the property {\tt ArgType} when the {\tt DefType\%} has been executed.
+
+
+\item [{\tt GetFn}] Here {\it fnspec} defines the function used to process the argument
+as supplied by the user on the command line.  The value returned by it
+is then handed on to the main function executing the command.  No {\tt GetFn}
+will ever receive a {\tt \$}.  It is simply not called, if the corresponding
+argument in the command line is defaulted.  A {\tt GetFn} should signal an
+error if the argument is not
+of the correct type.  This will be implemented (as it is right now)
+as a {\tt THROW} with the label {\tt FAIL}.  A special case of {\it fnspec}
+for a {\tt GetFn} is {\tt TestFn}.  This means the {\tt GetFn} will
+test if the supplied argument is of the correct type.  If yes, the argument
+will simply be returned, otherwise an error will be signaled.
+A {\tt GetFn} may have side-effects, but this has to be declared
+under {\tt Side-Effects}.
+
+\item [{\tt PrintFn}] Here {\it fnspec} should print the external representation
+of its only argument.  It can expect this argument to be of the correct
+type.  The value returned is ignored.  A {\tt PrintFn} may signal an error
+if printing is not possible (e.g. if the current style does not
+have a representation of the given data type).
+
+\item [{\tt TestFn}] Here {\it fnspec} should return {\tt NIL} if its argument is not of
+type {\it name}, and return something not {\tt NIL} otherwise.
+
+\item [{\tt Short-Prompt}] {\it boolean} is only used in {\it otl-typ.lisp}, but I can't 
+work out what for.
+
+% \begin{comment}
+% This was removed...
+% {\tt Side-Effects}\\ {\it value1}, {\it value2}, ... constitute a list of identifiers
+% which cause the {\tt GetFn} to have side-effects.  {\w {\tt (Side-Effects T)}}
+% means that any argument to {\tt GetFn} will lead to side-effects.  This is
+% necessary for instance in the {\tt RWff} argument type, since {\tt RDC}, {\tt RD} ,or
+% {\tt PAD} have side-effects and thus should not be called more than once.
+% It is useful however, to call a {\tt GetFn} on the same argument more than
+% once to figure out defaults as well as possible.
+% \end{comment}
+\item [{\tt MHelp}] This is an optional documentation and is accessed during {\tt MHelp}
+or after a {\tt ?} while the user supplies command arguments interactively.
+
+\item [({\it property} {\it value})] Pairs like this allow for more information about the type.
+\footnote{More properties may become useful, so
+the {\tt Deftype\%} macro allows arbitrary property names.  Possibilities here
+include {\tt EdFn} (for editing this argument type) or {\tt OutputFn} (to be able to
+read back a data object of the specified type.)}
+\end{description}
+For example
+\begin{verbatim}
+(deftype% anything
+  (getfn (lambda (anything) anything))
+  (testfn (lambda (anything) (declare (ignore anything)) t))
+  (printfn princ)
+  (mhelp "Any legal LISP object."))
+
+(deftype% integer+
+  (getfn testfn)
+  (testfn (and (integerp integer+) (> integer+ -1)))
+  (printfn princ)
+  (mhelp "A nonnegative integer."))
+
+(deftype% boolean
+  (getfn (cond (boolean t) (t nil)))
+  (testfn (or (eq boolean t) (eq boolean nil)))
+  (printfn (if boolean (princ t) (princ nil)))
+  (mhelp "A Boolean value (NIL for false, T for true)."))
+\end{verbatim}
+
+No {\tt TestFn} or {\tt PrintFn} is allowed to have any
+side-effects, since they may be called arbitrarily often.  No {\tt GetFn}
+needs to expect
+{\tt \$} as an argument, since defaults are now figured out elsewhere.
+This avoids conflicts between different defaults for the same argument
+type in different functions.  Hence {\tt GetFn} never computes the
+default. 
+
+\subsection{List Types}
+
+The macro {\tt deflisttype} defines a list from an existing type:
+
+%\begin{lispcode}
+\begin{verbatim}
+(deflisttype filespeclist filespec)
+\end{verbatim}
+%\end{lispcode}
+
+This takes an existing type, {\tt filespec}, and produces a type of lists of filespecs.
+It is also possible to specify other properties (the same properties as for {\tt deftype\%}),
+in which case these properties override those of the original type. This is typically 
+used to give the list type a different help message from the original type.
+
+\subsection{Consed Types}
+
+The macro {\tt defconstype} defines a type as a cons of two existing types:
+
+%\begin{lispcode}
+\begin{verbatim}
+(defconstype subst-pair gvar gwff
+  (mhelp "Means substitute gwff for gvar."))
+\end{verbatim}
+%\end{lispcode}
+
+This takes two existing types, {\tt gvar} and {\tt gwff}, and produces a type {\tt subst-pair} of 
+consed pairs {\tt (gvar . gwff)}.
+It is also possible to specify other properties (the same properties as for {\tt deftype\%}),
+in which case these properties override those of the original type. This is typically 
+used to give the cons type a different help message from the original type.
+
+
+
+
+
+
+% \begin<comment>
+% Which other properties of argument types are allowed is determined
+% by the global variable {\tt ArgTyProps}.
+% {\tt ArgTyProps} is very similar to {\tt GrinProps} and serves the same
+% purpose.  It contains a list of pairs
+% whose first element is the name of a property associated with the
+% argument type and whose second element is either {\tt LIST} or {\tt CONS}.
+% A value of {\tt LIST} indicates that the property to be stored is just
+% a single element, and hence has to be written out using
+% @w[{\tt (LIST {\it property} (GET {\it type} {\it property}))}].  {\tt CONS} on the other
+% hand means that the property will be a list and thus has to be written
+% using
+% @w[{\tt (CONS {\it property} (GET {\it type} {\it property}))}].  
+% As an example consider the following definition made in the file
+% {\tt BASICS}.
+% \begin{verbatim}
+% (DV ARGTYPROPS
+%     ((GETFN . LIST)
+%      (TESTFN . LIST)
+%      (PRINTFN . LIST)
+%      (SIDE-EFFECTS . CONS)
+%      (MHELP . LIST)))
+% \end{verbatim}
+% \end<comment>
+
+% \begin<comment>
+% \section{The Tactic mechanism}
+% {\it Carl's comments}
+% Tactics and tacticals, though inspired by proof methods, are implemented
+% in a general way for \tps. Basically, anything which can described as
+% a goal-satisfying process using some fixed kind of object or state, can
+% form a base for tactics. We define four entities to implement tactics.
+% 
+% \begin{description}
+% \item [Tacticals] These are functions which take formal arguments, either parameters,
+% tactic functions, tactic expressions or lists of these, and with additional
+% arguments
+% indicating the goals, object and bindings for parameters, return the same
+% values as tactics. The application of a tactical to its formal arguments
+% is a tactic expression. For example, {\tt (or deduct same)} is a
+% tactic expression, with {\tt or} as the tactical.
+% 
+% \item [Base] A base determines how a tactic expression consisting of a non-tactic
+% atom is to be interpreted. Besides the recognition function ({\tt isfn})
+% and the function to "run" the atom, producing the same output as a tactic,
+% there are properties to ensure the correct operation of certain tacticals.
+% For example, {\tt fork} needs a process function in order for the forking
+% of processes to make sense in a particular base (and to hack the setting
+% of global variables). Much of the work of developing tactics for, say,
+% rules consists of defining the base correctly. This makes
+% a great deal more sense than to change the general procedure to adapt to
+% changes in the implementation of rules.
+% 
+% \item [Tactic functions] These are functions made into objects for tactics.
+% This allows them to be documented, as would be necessary for functions
+% accessing an expression tree, and limited, as teachers allowing rule
+% tactics might wish.
+% 
+% \item [Tactics] A Tactic is an object with a tactic expression in its {\tt defn}
+% property. If uncompiled, the tactic interpreter, {\tt run-tactic-exp},
+% will interpret that tactic expression. If compiled, its {\tt compile}
+% property should contain a function to achieve the same effect as
+% when it is uncompiled. [Compilation has not been implemented.]
+% A tactic has arguments, listed in it {\tt mouths} property, which the 
+% {\tt feed} tactical may fill using a feed function for the base.
+% This provides a more general kind of argument-handling.
+% 
+% \end{description}
+% \end<comment>

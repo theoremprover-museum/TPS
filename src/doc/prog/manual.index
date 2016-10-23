@@ -1,0 +1,386 @@
+% This file was generated from manual.idx via the lisp function
+% manual-index defined in index.lisp
+\begin{theindex}
+\item *standard-output* 12
+\item :ETPS 3
+\item :TPS 3
+\item abbrev, Syntax 30
+\item ABBREV-Q, Function 66
+\item ALLSCOPEFLAG, Flag 55
+\item AllScopeFlag, Flag 39, 40
+\item AndHeight, Parameter 54
+\item aplicn, Data 44
+\item aplicnlist, Data 44
+\item APPLY-LABEL, Function 64
+\item APPLY-MATCH, Flag 84
+\item ascnumber, Data 44
+\item ASSEMBLE-RULE, Command 13
+\item ATOMVALFLAG, Flag 55
+\item AtomValFlag, Flag 39, 40
+\item ATTACH-DUP-INFO-TO-NATREE, Function 124, 125
+\item AUTO-GENERATE-HYPS, Flag 96
+\item BACKUP-LIB-DIR, Flag 129
+\item binder, Syntax 31
+\item bogus-slot 20
+\item BOOLEAN, Argument Type 61
+\item BOUNDWFF-Q, Function 66
+\item BRACKETS, Parameter 42
+\item ByteStream, Data 77
+\item bytestream-tty, Function 77
+\item CFONT, Property 41
+\item cfont.lisp, File 41
+\item CFontTable, Parameter 54
+\item char, Data 44
+\item check-conn, Function 105
+\item check-etree-structure, Function 102
+\item check-etree-structure-break, Function 102
+\item CJFORM, Command 106
+\item CLEANUP, Command 99
+\item CLEANUP-SAME, Flag 99
+\item Cols, Data 48
+\item command-interpreters-auto.lisp, File 22
+\item command-interpreters-core.lisp, File 22
+\item components 101, 102, 103
+\item compound-tacl-defn, Syntax 117
+\item compound-tactic, Syntax 117
+\item CONCEPT, Style 40
+\item CONCEPT-S, Style 40
+\item conn-unif-p, Function 105
+\item connection graph 106
+\item core-name 5
+\item create-skolem-node, Function 103
+\item CRLF, Data 77
+\item current-eproof 102, 105, 106, 123
+\item current-topnode 102
+\item datasize 6
+\item Debugging 14
+\item DEFAULT-LIB-DIR, Flag 129
+\item defcategory 18
+\item defcontext 19
+\item definfo 84
+\item defmonitor, Command 85
+\item DEFPRTOP 63
+\item DEFREPORT 136
+\item DEFREPORT1 136
+\item defsynonym, Command 84
+\item defutil, Command 10
+\item DEFWFFOP, Function 62
+\item defwffrec, Function 64
+\item Desc-Jform, Data 48
+\item Descr-JForm 47
+\item Describe-VPAtom, Function 48
+\item Describe-VPForm, Function 47, 48
+\item Describe-VPLit, Function 48
+\item DFONT, Property 41
+\item dfont.lisp, File 41
+\item dline 91
+\item DONE, Command 90
+\item dproof 124
+\item econjunction 102
+\item ED-COMMAND, Argument Type 73
+\item edisjunction 102
+\item edop, Data 71
+\item EDPPWFFLAG, Flag 77
+\item EDPRINTDEPTH, Flag 54, 77
+\item EDSEARCH, Function 74
+\item edtop.lisp, File 12
+\item edwff, Data 71
+\item edwff, EdOp 36
+\item eproof 10, 121
+\item eproof, Data 102
+\item EQUIVS, Data 41
+\item etags 10
+\item ETREE 125
+\item etree, Data 101, 102
+\item Etree, Data 59
+\item ETREE-NAT, Command 124, 125
+\item etree-nat, Command 103
+\item ETREE-TO-JFORM-REC, Function 125
+\item etrees-debug, File 14, 102
+\item etrees-labels.lisp, File 101
+\item EVENTS 131
+\item exp-var, Data 103
+\item expansion 103
+\item expansion proof 102
+\item EXPERTFLAG, Flag 90
+\item FACE, Property 41
+\item facilities-short.lisp, File 13
+\item facilities.lisp, File 13
+\item failure record, Data 103
+\item false 103
+\item FILLINEFLAG, Flag 55
+\item FilLineFlag, Flag 40, 44
+\item FinalScan, Function 78
+\item find 10
+\item FIND-ALT-CHEAPEST-CLIST-SPANNING-PATH, Function 108
+\item FIND-CHEAPEST-CLIST-SPANNING-PATH, Function 108
+\item First-Order-Mode, Flag 52
+\item FIRST-ORDER-MODE-PARSE, Flag 54
+\item FIRST-ORDER-PRINT-MODE, Flag 54
+\item First-Order-Print-Mode, Flag 52
+\item FlatSym, Function 48
+\item FlatWff, Function 48
+\item flavors 19
+\item FLUSHLEFTFLAG, Flag 55
+\item FlushleftFlag, Flag 44
+\item FlushLeftFlag, Flag 40
+\item ForallIndent, Parameter 54
+\item free-vars 101
+\item GAR, Function 65
+\item garbage collection 6
+\item GDR, Function 65
+\item genchar, Data 44
+\item gencharlist, Data 44
+\item GENERIC, Style 41
+\item GENERIC-STRING, Style 41
+\item get-shallow, Function 101, 103
+\item GETWFF-SUBTYPE, Function 61
+\item global-categorylist 19
+\item global-contextlist 19
+\item global-definelist 10
+\item GO, Command 89, 101
+\item goal, Syntax 117
+\item goal-list, Syntax 117
+\item GroupList, Data 77
+\item GroupScan, Function 77
+\item GVAR, Argument Type 61
+\item GWFF, Argument Type 61
+\item hatom, Syntax 34
+\item heap space 6
+\item Height, Data 48
+\item HELP object, Command 79
+\item HISTORY-SIZE, Flag 83
+\item HLINE-JUSTIFICATION, Flag 98
+\item hx-natree-aux, File 125
+\item hx-natree-cleanup, File 125
+\item hx-natree-debug, File 125
+\item hx-natree-duplication, File 125
+\item hx-natree-rulep, File 125
+\item hx-natree-top, File 125
+\item imitation-eta, Function 113
+\item implication 102
+\item in-package 4
+\item Infix, Property 38
+\item InfixScan, Function 78
+\item INFO 79
+\item JForm 47
+\item junctive 101, 102, 103
+\item Kset, Data 41
+\item label, Syntax 31
+\item LABEL-Q, Function 65
+\item leaf 103
+\item Leaf, Data 59
+\item LEFTMARGIN, Flag 40, 42
+\item Leftmargin, Parameter 40
+\item LexList, Data 77
+\item LexList, Parameter 77
+\item LexScan, Function 77
+\item LINE-NO-DEFAULTS, Function 90
+\item LINE-NO-DEFAULTS-FROM, Function 92
+\item LINE-NO-DEFAULTS-TO, Function 92
+\item LOCALLEFTFLAG, Flag 55
+\item LocalLeftFlag, Flag 40, 43
+\item locate 9
+\item logconst, Syntax 30
+\item LOGCONST-Q, Function 65
+\item LOWERCASERAISE, Flag 54
+\item LSYMBOL-Q, Function 65
+\item MakeTerm, Function 78
+\item mating, Data 103
+\item MATING-VERBOSE, Flag 14
+\item max-mates, Flag 105
+\item memory 6
+\item merge-debug 108
+\item MIN-QUANT-ETREE, Flag 108, 125, 126
+\item monitor 85
+\item monitor, Command 86
+\item monitor-check 85
+\item ms, Function 106
+\item ms-director, Function 105
+\item ms-propositional, Function 106
+\item msearch, Function 104, 105
+\item msg 10
+\item msg, Function 11
+\item msg, Syntax 117
+\item msgf, Function 11
+\item name 101
+\item NAT-ETREE, Command 124, 126
+\item negation 102
+\item nomonitor, Command 86
+\item one-step-mqe-bd, Function 108
+\item one-step-mqe-infix, Function 108
+\item OPTIONS-VERBOSE, Flag 14
+\item order-components, Flag 105
+\item P, EdOp 36
+\item parent 101
+\item PC, Parameter 54
+\item PCALL, Function 43
+\item pdepth, Data 44
+\item pgroup, Data 44
+\item plength, Data 44
+\item pline 91
+\item pmabbrev, Syntax 31
+\item PMABBREV-Q, Function 66
+\item pmabbsym, Syntax 30
+\item pmpropsym, Syntax 30
+\item PMPROPSYM-Q, Function 65
+\item pmprsym, Syntax 30
+\item positive 101
+\item PP-Enter-Kset, Function 47
+\item PP-SYMBOL-SCRIBE, Function 43
+\item PP-SYMBOL-XTERM, Function 43
+\item PPlist 44, 45
+\item pplist, Data 44
+\item PPrinc, Function 47
+\item PPrinc0, Function 47
+\item PPTyo, Function 47
+\item PPTyo0, Function 47
+\item PPTyos, Function 47
+\item PPWFFLAG, Flag 55
+\item PPWfflag, Flag 40, 43
+\item PPWfflength, Parameter 46
+\item PPWfflist, Parameter 46
+\item predecessor 101, 103
+\item PreWff, Data 77
+\item prfw.lisp, File 12
+\item prim-vars 103
+\item primitive-tacl-defn, Syntax 117
+\item primitive-tactic, Syntax 117
+\item PRIMSUB-METHOD, Flag 84
+\item princ-mhelp 79
+\item Print, Function 48
+\item print-symbol, Function 43
+\item PRINTDEPTH, Flag 54, 77
+\item PrintDepth, Parameter 39, 40
+\item PRINTEDTFILE, Flag 76
+\item PRINTEDTFLAG, Flag 76
+\item PRINTEDTFLAG-SLIDES, Flag 76
+\item PRINTEDTOPS, Flag 76
+\item PrintFnDover, Function 46
+\item PrintFnTTY, Function 46
+\item PrintPPlist, Function 46
+\item PRINTTYPES, Flag 53, 54
+\item PrintTypes, Flag 39, 40
+\item PRINTVPDFLAG, Flag 76
+\item PrintWff, Function 43, 46
+\item PrintWffPlain, Function 42, 46
+\item PrintWffScope, Function 42, 46
+\item prompt-read 10
+\item prompt-read, Function 11
+\item PROP-FIND-CHEAPEST-PATH, Function 109
+\item PROP-MSEARCH, Function 109
+\item prop-msearch, Function 106
+\item propsym, Syntax 30
+\item PROPSYM-Q, Function 65
+\item prt.lisp, File 54
+\item PrtWff, Function 40, 42
+\item PRUNE-UNMATED-BRANCHES, Function 108
+\item PWff, Function 42, 46
+\item PWScope GWff, MExpr 39
+\item QUERY-USER, Flag 14
+\item RdCList, Data 77
+\item REPORT 135
+\item RIGHTMARGIN, Flag 40, 41, 42
+\item Rightmargin, Parameter 40
+\item Rows, Data 48
+\item RULEP, Function 125
+\item runcount, Function 12
+\item SAIL, Style 41
+\item SailCharacters, Parameter 55
+\item SAM 6
+\item SAVE-WORK, Command 12
+\item SAVEPROOF, Command 90
+\item SCRIBE, Style 41
+\item SCRIBE-PREAMBLE, Flag 59
+\item SCRIBEPROOF, Command 59
+\item SCRIPT, Command 12
+\item SETUP-SLIDE-STYLE, Command 40
+\item shallow 102, 103
+\item shownotypes, Command 54
+\item skolem 102, 103
+\item SKOLEM-DEFAULT, Flag 103
+\item skolem-term, Data 103
+\item skolemization 103
+\item SLIDEPROOF, Command 41
+\item SPANNING-CLIST-PATH, Function 108
+\item SPANS, Function 108, 109
+\item SPrintPPlist, Function 47
+\item stack space 6
+\item stacksize 6
+\item status 102
+\item stringdt, Function 12
+\item stringdtl, Function 12
+\item STYLE, Flag 40, 42, 53, 61
+\item Style, Parameter 40
+\item SUBSUMPTION-CHECK, Flag 111
+\item SUBSUMPTION-DEPTH, Flag 111, 113
+\item SUBSUMPTION-NODES, Flag 111
+\item support 91
+\item swap space 6, 7
+\item tacl-defn, Syntax 117
+\item tacmode 116
+\item tacmode, Flag 120
+\item tactic-defn, Syntax 117
+\item tactic-exp, Syntax 117
+\item tactic-mode, Syntax 117
+\item tactic-use, Syntax 117
+\item tactic-verbose, Flag 116, 120
+\item TACTIC-VERBOSE, Flag 14
+\item tacuse, Flag 116, 120
+\item TAGS, File 10
+\item terms 103
+\item TEX, Style 41
+\item TEXNAME, Property 41
+\item TEXPROOF, Command 59
+\item THROWFAIL, Function 61
+\item TLIST, MExpr 17
+\item token, Syntax 117
+\item tops20.lisp, File 12
+\item tps.mss, File 41
+\item tps3-save.lisp, File 139
+\item tps3.patch, File 5
+\item tps3.sys, File 5
+\item TREAT-HLINES-AS-DLINES, Flag 98
+\item true 103
+\item TRUEFN, Function 62
+\item TYPE-IOTA-MODE, Flag 37
+\item TypeAssoc, Data 77
+\item TYPESYM, Argument Type 61
+\item uni-term, Data 103
+\item unif-match.lisp, File 113
+\item unification tree, Data 103
+\item UNIFY-VERBOSE, Flag 14, 112
+\item UNNEEDED-NODE-P, Function 108
+\item UPDATE-PLAN, Function 94
+\item UPWARD-UPDATE-NATREE, Function 125
+\item use-tactic, MExpr 120
+\item utilities 11
+\item Vertical Paths 53
+\item VPD-FILENAME, Flag 76
+\item VPDiag, Function 40
+\item VPFORM JFORM \{FILE\} \{STYLE\} \{PRINTTYPES\} \{BRIEF\} \{VPFPAGE\} 53
+\item VPForm, Function 40
+\item VPFORM-TEX-PREAMBLE, Flag 59
+\item vpforms.lisp, File 12, 47
+\item VpfPage, Parameter 54
+\item VPFPage, Parameter 49
+\item wffrec\% 64
+\item Width, Data 48
+\item XTERM, Style 41
+\item y-or-n-p, Function 11
+\item [, Syntax 34
+\item \%SPrintAplicn, Function 48
+\item \%SPrintPPlist, Function 48
+\item \%VPForm, Function 48
+\item \%\%PRINC, Function 48, 49
+\item \it  Atom, Data 47
+\item \it  JForm, Data 47
+\item \it  Literal, Data 47
+\item \it  SignAtom, Data 47
+\item \it  typeconstant, Type 29
+\item \it  typesymbol, Type 29
+\item \it  typevariable, Type 29
+\item \it  Var, Data 47
+\item {\it  name} 23, 25
+\item {\tt  MARKATOM}, Data 45
+\end{theindex}

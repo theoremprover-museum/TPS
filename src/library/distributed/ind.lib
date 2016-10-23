@@ -1,0 +1,42 @@
+(:name THM606
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "IND AND INJECTIVE(O(II)) S(II) AND FORALL n(I) [~.S(II) n(I) =(OII) 0(I)] IMPLIES EXISTS d(OII).d(OII) 0(I) 0(I) AND FORALL x(I) FORALL y(I) [d(OII) x(I) y(I) IMPLIES d(OII) [S(II) x(I)].S(II).S(II) y(I)] AND FORALL x(I) EXISTS1B(O(OI)).LAMBDA y(I) d(OII) x(I) y(I)"
+:needed-objects   (IND INJECTIVE EXISTS1B)
+:mhelp "Doubling function.  Experimenting with quantificational depth."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM623
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL p(OI) FORALL q(OI) [p(OI) 0(I) AND FORALL u(I) [p(OI) u(I) IMPLIES q(OI).S(II) u(I)] AND FORALL v(I) [q(OI) v(I) IMPLIES p(OI).S(II) v(I)] IMPLIES EVEN(OI) SUBSET(O(OI)(OI)) p(OI) AND ODD(OI) SUBSET(O(OI)(OI)) q(OI)] AND [N(OI) 0(I) AND FORALL n(I).N(OI) n(I) IMPLIES N(OI).S(II) n(I)] IMPLIES FORALL m(I).EVEN(OI) m(I) OR ODD(OI) m(I) IMPLIES N(OI) m(I)"
+:needed-objects   NIL
+:mhelp "A version of a theorem suggested by Frank Pfenning involving mutual induction."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM624
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EVEN(OI) 0(I) AND FORALL x(I) [EVEN(OI) x(I) IMPLIES ODD(OI).S(II) x(I)] AND FORALL y(I) [ODD(OI) y(I) IMPLIES EVEN(OI).S(II) y(I)] AND FORALL p(OI) FORALL q(OI) [p(OI) 0(I) AND FORALL u(I) [p(OI) u(I) IMPLIES q(OI).S(II) u(I)] AND FORALL v(I) [q(OI) v(I) IMPLIES p(OI).S(II) v(I)] IMPLIES EVEN(OI) SUBSET(O(OI)(OI)) p(OI) AND ODD(OI) SUBSET(O(OI)(OI)) q(OI)] IMPLIES FORALL n(I).ODD(OI) n(I) IMPLIES EXISTS m(I).EVEN(OI) m(I) AND S(II) m(I) =(OII) n(I)"
+:needed-objects   NIL
+:mhelp "Even Odd induction example"
+:other-attributes NIL
+:other-remarks "
+")
+
+

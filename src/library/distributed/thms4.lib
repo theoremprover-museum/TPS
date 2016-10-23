@@ -1,0 +1,216 @@
+(:name THM40
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, March 24, 1998 at 15:48:47."
+:description "FINITE1B AND INJECTIVE(O(BC)) F(BC) AND INJECTIVE(O(CB)) G(CB) IMPLIES FINITE1C"
+:needed-objects   (FINITE1C FINITE1B INJECTIVE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM44
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:07."
+:description "EXISTS S(OI) FORALL X(I) [[S(OI) X(I) OR P(OI) X(I)] AND.~S(OI) X(I) OR Q(OI) X(I)] EQUIV FORALL Y(I).P(OI) Y(I) OR Q(OI) Y(I)"
+:needed-objects   NIL
+:mhelp "USEFUL IN ELIMINATING A QUANTIFIER ON A SECOND ORDER VARIABLE"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM47
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, April 21, 1999 at 16:31:25."
+:description "FORALL X(I) FORALL Y(I).X(I) =(OII) Y(I) EQUIV FORALL R(OII).FORALL Z(I) R(OII) Z(I) Z(I) IMPLIES R(OII) X(I) Y(I)"
+:needed-objects   NIL
+:mhelp "Shows equivalence of two definitions of ="
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM47A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:08."
+:description "FORALL X(I) FORALL Y(I).X(I) =(OII) Y(I) IMPLIES FORALL R(OII).FORALL Z(I) R(OII) Z(I) Z(I) IMPLIES R(OII) X(I) Y(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM47B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:09."
+:description "FORALL X(I) FORALL Y(I).FORALL R(OII) [FORALL Z(I) R(OII) Z(I) Z(I) IMPLIES R(OII) X(I) Y(I)] IMPLIES X(I) =(OII) Y(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM47D
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:10."
+:description "FORALL X(I) FORALL Y(I).FORALL q(OI) [q(OI) X(I) IMPLIES q(OI) Y(I)] EQUIV FORALL R(OII).FORALL Z(I) R(OII) Z(I) Z(I) IMPLIES R(OII) X(I) Y(I)"
+:needed-objects   NIL
+:mhelp "THM47 with expand= applied"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM48
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:11."
+:description "FORALL F(AB) FORALL G(BC).INJECTIVE(O(AB)) F(AB) AND INJECTIVE(O(BC)) G(BC) IMPLIES INJECTIVE(O(AC)).F(AB) COMPOSE(AC(BC)(AB)) G(BC)"
+:needed-objects   (INJECTIVE COMPOSE)
+:mhelp "The composition of injective functions is injective"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM41
+:type GWFF
+:context NIL
+:keywords (PROVEN WITH-EQUALITY WITH-DEFN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, November 19, 1997 at 14:12:04."
+:description "FINITE1B AND INJECTIVE(O(CB)) F(CB) AND INJECTIVE(O(BC)) D(BC) IMPLIES SURJECTIVE(O(BC)) D(BC)"
+:needed-objects   (FINITE1B INJECTIVE SURJECTIVE)
+:mhelp "THIS IS ESSENTIALLY HUET'S  
+FORMULATION OF THE CHESSBOARD PROBLEM "
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM42
+:type GWFF
+:context NIL
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL P(OI) [P(OI) O(I) AND FORALL Z(I) [P(OI) Z(I) IMPLIES P(OI).S(II) Z(I)] IMPLIES FORALL X(I) P(OI) X(I)] AND FORALL X(I) [X(I) LT(OII) X(I)] AND FORALL U(I) FORALL V(I) FORALL W(I) [U(I) LT(OII) V(I) AND V(I) LT(OII) W(I) IMPLIES U(I) LT(OII) W(I)] AND FORALL X(I) [+(III) X(I) O(I) =(OII) X(I)] AND FORALL X(I) FORALL Y(I) [X(I) GT(OII) O(I) IMPLIES ~+(III) X(I) Y(I) LT(OII) Y(I)] AND FORALL U(I) FORALL V(I) FORALL W(I) [U(I) GT(OII) V(I) IMPLIES +(III) V(I) [S(II) W(I)] LT(OII) +(III) U(I) W(I)] IMPLIES ~EXISTS F(II).FORALL X(I) [F(II) X(I) GT(OII) O(I)] AND FORALL X(I).F(II) X(I) GT(OII) F(II).S(II) X(I)"
+:needed-objects   (LT GT)
+:mhelp "THIS PROBLEM WAS SUGESTED BY HUET  
+THERE IS NO INFINITE DECREASING SEQUENCE OF NATURAL NUMBERS"
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM43
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 15:19:06."
+:description "FORALL S(OI).~EXISTS G(OII) FORALL F(OI).F(OI) SUBSET(O(OI)(OI)) S(OI) IMPLIES EXISTS J(I).S(OI) J(I) AND G(OII) J(I) =(O(OI)(OI)) F(OI)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM45
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:08."
+:description "P(OII) D(I) E(I) AND FORALL X(I) FORALL Y(I) [P(OII) X(I) Y(I) IMPLIES P(OII) Y(I) X(I) AND Q(OII) X(I) Y(I)] AND FORALL U(I) FORALL V(I) [Q(OII) U(I) V(I) IMPLIES Q(OII) U(I) U(I)] IMPLIES Q(OII) D(I) D(I) AND Q(OII) E(I) E(I)"
+:needed-objects   NIL
+:mhelp "TRIVIAL THEOREM  
+REQUIRES 2 COPIES OF CLAUSES  
+YIELDS 32 PATHS 8 CLAUSES AFTER QUANTIFIER DUPLICATION"
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM46
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:08."
+:description "POWERSET(O(OI)(OI)) [D(OI) INTERSECT(OI(OI)(OI)) E(OI)] SUBSET(O(O(OI))(O(OI))) POWERSET(O(OI)(OI)) D(OI) INTERSECT(O(OI)(O(OI))(O(OI))) POWERSET(O(OI)(OI)) E(OI)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM46A
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:10."
+:description "POWERSET(O(OI)(OI)) [D(OI) INTERSECT(OI(OI)(OI)) E(OI)] EQUIVS(O(O(OI))(O(OI))) POWERSET(O(OI)(OI)) D(OI) INTERSECT(O(OI)(O(OI))(O(OI))) POWERSET(O(OI)(OI)) E(OI)"
+:needed-objects   NIL
+:mhelp "12 CLAUSES 24 PATHS WHEN MINIMIZE CLAUSES  
+12 PATHS 24 CLAUSES WHEN MINIMIZE PATHS  
+REQUIRES QUANTIFIER DUPLICATION  "
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM48A
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:20."
+:description "FORALL F(II).INJECTIVE(O(II)) F(II) IMPLIES INJECTIVE(O(II)).F(II) COMPOSE(II(II)(II)) F(II)"
+:needed-objects   (INJECTIVE COMPOSE)
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM49
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:21."
+:description "[P(O) EQUIV Q(O)] OR [Q(O) EQUIV R(O)] OR.P(O) EQUIV R(O)"
+:needed-objects   NIL
+:mhelp "REALLY TRIVIAL"
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+

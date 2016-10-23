@@ -1,0 +1,549 @@
+(:name CKB6-L1000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I).CKB6-NUM x(I) IMPLIES s(II) [s(II).s(II).s(II).s(II).s(II).s(II).s(II) x(I)] =(OII) x(I)"
+:needed-objects   (CKB6-NUM)
+:mhelp "Lemma in proof of TOUGHNUT2"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB6-L10000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL j(I) FORALL k(I).CKB6-BLACK j(I) k(I) IMPLIES CKB6-BLACK [s(II).s(II).s(II) j(I)].s(II) k(I)"
+:needed-objects   (CKB6-BLACK)
+:mhelp "Lemma in proof of TOUGHNUT2"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB6-L11000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL j(I) FORALL k(I).CKB6-BLACK j(I) k(I) IMPLIES CKB6-BLACK [s(II).s(II) j(I)].s(II).s(II) k(I)"
+:needed-objects   (CKB6-BLACK)
+:mhelp "Lemma in proof of TOUGHNUT2"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB6-L12000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I).~.s(II) [s(II) x(I)] =(OII) x(I)"
+:needed-objects   NIL
+:mhelp "Lemma in proof of TOUGHNUT2"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB6-L13000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I).~.s(II) x(I) =(OII) x(I)"
+:needed-objects   NIL
+:mhelp "Lemma in proof of TOUGHNUT2"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB6-L14000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "~.1(I) =(OII) 5(I)"
+:needed-objects   NIL
+:mhelp "Lemma in proof of TOUGHNUT2"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB6-L15000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "~.3(I) =(OII) 5(I)"
+:needed-objects   NIL
+:mhelp "Lemma in proof of TOUGHNUT2"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB6-L16000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "~.4(I) =(OII) 5(I)"
+:needed-objects   NIL
+:mhelp "Lemma in proof of TOUGHNUT2"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB6-L17000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "~.2(I) =(OII) 5(I)"
+:needed-objects   NIL
+:mhelp "Lemma in proof of TOUGHNUT2"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB6-L2000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) FORALL y(I).CKB6-NUM x(I) AND CKB6-NUM y(I) AND s(II) x(I) =(OII) s(II) y(I) IMPLIES x(I) =(OII) y(I)"
+:needed-objects   (CKB6-NUM)
+:mhelp "Lemma in proof of TOUGHNUT2; s is
+injective on the numbers of interest."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB6-L24000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "CKB6-H(OIIII) CKB-XPL CKB6-BLACK"
+:needed-objects   (CKB6-H CKB-XPL CKB6-BLACK)
+:mhelp "Lemma in proof of TOUGHNUT2"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB6-L25000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "CKB-INJ CKB6-H(OIIII)"
+:needed-objects   (CKB-INJ CKB6-H)
+:mhelp "Lemma in proof of TOUGHNUT2"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB6-L25000A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) FORALL y(I).CKB6-NUM x(I) AND CKB6-NUM y(I) AND s(II) [s(II) x(I)] =(OII) s(II) [s(II) y(I)] IMPLIES x(I) =(OII) y(I)"
+:needed-objects   (CKB6-NUM)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB6-L26000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) FORALL y(I).CKB6-NUM x(I) AND CKB6-NUM y(I) AND s(II) [s(II).s(II) x(I)] =(OII) s(II) [s(II).s(II) y(I)] IMPLIES x(I) =(OII) y(I)"
+:needed-objects   (CKB6-NUM)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB6-L3000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I).CKB6-NUM x(I) IMPLIES CKB6-NUM.s(II) x(I)"
+:needed-objects   (CKB6-NUM)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB6-L30000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) FORALL y(I) FORALL u(I) FORALL v(I).CKB6-H(OIIII) x(I) y(I) u(I) v(I) IMPLIES g(III) u(I) v(I) =(OII) 1(I) OR g(III) u(I) v(I) =(OII) 2(I) OR g(III) u(I) v(I) =(OII) 3(I) OR g(III) u(I) v(I) =(OII) 4(I)"
+:needed-objects   (CKB6-H)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB6-L31000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) FORALL y(I) FORALL u(I) FORALL v(I).CKB6-H(OIIII) x(I) y(I) u(I) v(I) IMPLIES ~.g(III) u(I) v(I) =(OII) 5(I)"
+:needed-objects   (CKB6-H)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB6-L4000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I).CKB6-NUM x(I) IMPLIES CKB6-NUM.s(II).s(II) x(I)"
+:needed-objects   (CKB6-NUM)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB6-L40000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "[CKB6-H(OIIII) CKB-XPL CKB6-BLACK] 1(I) 1(I)"
+:needed-objects   (CKB-XPL CKB6-H CKB6-BLACK)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB6-L5000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL j(I) FORALL k(I).CKB6-BLACK j(I) k(I) IMPLIES CKB6-NUM j(I) AND CKB6-NUM k(I)"
+:needed-objects   (CKB6-BLACK CKB6-NUM)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB6-L50000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "CKB-INF CKB6-BLACK"
+:needed-objects   (CKB-INF CKB6-BLACK)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB6-L6000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "CKB6-BLACK SUBRELATION(O(OII)(OII)) CKB6-NUM PRODUCT(OII(OI)(OI)) CKB6-NUM"
+:needed-objects   (CKB6-BLACK SUBRELATION PRODUCT CKB6-NUM)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB6-L70000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL p(OI).FINITE1(O(OI)) p(OI) IMPLIES FORALL q(OI).FINITE1(O(OI)) q(OI) IMPLIES FORALL k(OII).k(OII) SUBRELATION(O(OII)(OII)) p(OI) PRODUCT(OII(OI)(OI)) q(OI) IMPLIES CKB-FIN k(OII)"
+:needed-objects   (FINITE1 SUBRELATION PRODUCT CKB-FIN)
+:mhelp "Lemma in proof of TOUGHNUT2. A subrelation of the product of finite relations is CKB-finite."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB6-L8000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL j(I) FORALL k(I).CKB6-BLACK j(I) k(I) IMPLIES CKB6-BLACK [s(II).s(II) j(I)] k(I)"
+:needed-objects   (CKB6-BLACK)
+:mhelp "Lemma in proof of TOUGHNUT2"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB6-L9000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL j(I) FORALL k(I).CKB6-BLACK j(I) k(I) IMPLIES CKB6-BLACK [s(II) j(I)].s(II) k(I)"
+:needed-objects   (CKB6-BLACK)
+:mhelp "Lemma in proof of TOUGHNUT2"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TOUGHNUT2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "~.s(II) [s(II).s(II).s(II).s(II).s(II).s(II).s(II) 8(I)] =(OII) 8(I) AND FORALL x(I) [~.s(II) [s(II).s(II).s(II) x(I)] =(OII) x(I)] AND FORALL x(I) FORALL y(I) [g(III) x(I) y(I) =(OII) 5(I) EQUIV x(I) =(OII) 8(I) AND y(I) =(OII) 8(I) OR x(I) =(OII) 1(I) AND y(I) =(OII) 1(I)] AND FORALL x(I) FORALL y(I) [g(III) x(I) y(I) =(OII) 1(I) EQUIV g(III) [s(II) x(I)] y(I) =(OII) 3(I)] AND FORALL x(I) FORALL y(I) [g(III) x(I) y(I) =(OII) 2(I) EQUIV g(III) x(I) [s(II) y(I)] =(OII) 4(I)] AND FORALL x(I) FORALL y(I) [~[g(III) 1(I) y(I) =(OII) 3(I)] AND ~[g(III) 8(I) y(I) =(OII) 1(I)] AND ~[g(III) x(I) 1(I) =(OII) 4(I)] AND ~.g(III) x(I) 8(I) =(OII) 2(I)] AND 1(I) =(OII) s(II) 8(I) AND 2(I) =(OII) s(II) 1(I) AND 3(I) =(OII) s(II) 2(I) AND 4(I) =(OII) s(II) 3(I) AND 5(I) =(OII) s(II) 4(I) AND FORALL x(I) FORALL y(I).g(III) x(I) y(I) =(OII) 1(I) OR g(III) x(I) y(I) =(OII) 2(I) OR g(III) x(I) y(I) =(OII) 3(I) OR g(III) x(I) y(I) =(OII) 4(I) OR g(III) x(I) y(I) =(OII) 5(I)"
+:needed-objects   NIL
+:mhelp "Mutilated checkerboard problem in second formulation
+presented by McCarthy in Stanford Artificial
+Intelligence Project Memo No. 16, 1964."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB6-L80000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) FORALL y(I) FORALL r(OII).CKB-INF [ADDPAIR(OIIII(OII)) r(OII) x(I) y(I)] IMPLIES CKB-INF r(OII)"
+:needed-objects   (CKB-INF ADDPAIR)
+:mhelp "Posible lemma for proof of Toughnut2."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB6-L65000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FINITE1(O(OI)) CKB6-NUM8"
+:needed-objects   (FINITE1 CKB6-NUM8)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB-L32000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I).x(I) CKB-E2 x(I)"
+:needed-objects   (CKB-E2)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB-L33000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I).x(I) CKB-E2 s(II).s(II) x(I)"
+:needed-objects   (CKB-E2)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB-L34000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "[TRANSITIVE(O(OII)) CKB-E2]"
+:needed-objects   (TRANSITIVE CKB-E2)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB-L35000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) FORALL y(I).x(I) CKB-E2 y(I) IMPLIES s(II) x(I) CKB-E2 s(II) y(I)"
+:needed-objects   (CKB-E2)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB-L36000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I).CKB6-NUM x(I) IMPLIES s(II) [s(II) x(I)] CKB-E2 x(I)"
+:needed-objects   (CKB6-NUM CKB-E2)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB-L37000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) FORALL y(I).CKB6-BLACK x(I) y(I) IMPLIES x(I) CKB-E2 y(I)"
+:needed-objects   (CKB6-BLACK CKB-E2)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB-L38000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "~1(I) CKB-E2 2(I)"
+:needed-objects   (CKB-E2)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB-L39000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) FORALL y(I).CKB6-BLACK x(I) y(I) IMPLIES ~.s(II) [s(II) x(I)] =(OII) 1(I) AND s(II) y(I) =(OII) 1(I) OR s(II) [s(II) x(I)] =(OII) 8(I) AND s(II) y(I) =(OII) 8(I)"
+:needed-objects   (CKB6-BLACK)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB-L39100
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) FORALL y(I).CKB6-BLACK x(I) y(I) IMPLIES ~.g(III) [s(II).s(II) x(I)] [s(II) y(I)] =(OII) 5(I)"
+:needed-objects   (CKB6-BLACK)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB-L43000
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) FORALL y(I) FORALL u(I) FORALL v(I).CKB6-H(OIIII) x(I) y(I) u(I) v(I) AND g(III) u(I) v(I) =(OII) 3(I) IMPLIES u(I) =(OII) s(II) [s(II).s(II) x(I)] AND v(I) =(OII) s(II) y(I)"
+:needed-objects   (CKB6-H)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CKB-L43100
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) FORALL y(I) FORALL u(I) FORALL v(I).CKB6-H(OIIII) x(I) y(I) u(I) v(I) AND g(III) u(I) v(I) =(OII) 3(I) IMPLIES s(II) [s(II).s(II).s(II).s(II) u(I)] =(OII) x(I) AND s(II) [s(II).s(II).s(II).s(II).s(II).s(II) v(I)] =(OII) y(I)"
+:needed-objects   (CKB6-H)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

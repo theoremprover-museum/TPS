@@ -1,0 +1,14 @@
+(:name X5204
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Friday, March 19, 1999 at 14:44:20."
+:description "%(OA(OB)(AB)) f(AB) [SETUNION(OB(O(OB))) w(O(OB))] =(O(OA)(OA)) SETUNION(OA(O(OA))).%(O(OA)(O(OB))(OA(OB))) [%(OA(OB)(AB)) f(AB)] w(O(OB))"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

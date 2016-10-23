@@ -1,0 +1,11 @@
+latex manual
+bibtex manual
+makeindex manual
+latex manual
+bibtex manual
+latex manual
+latex manual
+dvips manual
+cp manual.ps man.ps
+gzip man.ps
+ps2pdf manual.ps

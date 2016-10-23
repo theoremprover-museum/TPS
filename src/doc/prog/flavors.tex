@@ -1,0 +1,178 @@
+\section{Flavors and Labels of Gwffs}
+\label{defflavors}
+\label{labels}
+
+It is sometimes desirable to be able to endow a gwff with additional
+properties.  For example, one may wish to be able to refer to a
+gwff by a short tag, or to specify that a particular gwff is actually
+a node in an expansion tree.  For this purpose, \TPS provides the
+facility of {\it labels} and {\it flavors} (see page \pageref{flavors}).  
+A {\it label} is an object which, as far as \TPS is concerned, is merely
+a special case of gwff. Labels thus stand for gwffs, but may have
+additional properties and distinct representations.
+
+{\it Flavors} are the classes into which labels are divided.  The definition
+of a flavor specifies some common properties of a class
+of labels, usually the behavior of wffops and predicates.  Also, a 
+flavor's definition should specify what attributes each label of that 
+flavor should have, and how it should be printed.
+
+\subsection{Representation}
+
+Each flavor is represented in \TPS by a Lisp structure of type {\tt flavor}, 
+which has the following slots: {\tt wffop-hash-table}, which stores the
+properties common to each instance of the flavor, in particular, how
+wffops are to behave; {\tt constructor-fun}, which
+is the name of the function to be called when a new label of the flavor
+is to be created; {\tt name}, the flavor's name; and {\tt mhelp}, a description
+of the flavor.  The values of these slots are automatically computed when
+\TPS reads a {\tt defflavor} declaration.
+The flavor structures are stored in a central hash table, called
+{\tt *flavor-hash-table*}, keyed on the flavor names.  This also is 
+updated automatically whenever a flavor is defined (or redefined).
+
+There are two ways to represent labels (instances of flavors), and the
+choice is made during the definition of the flavor.  The first, and more
+traditional, way is to have each label be a Lisp symbol, with the attributes
+of the label being kept on the symbol's property list.  
+The second way is to make each label a Lisp structure.  The type of the
+structure is the name of the flavor; thus an object's type can be used to
+determine that it is a label of a certain flavor.
+
+If one wishes to have labels be symbols, nothing must be done; this is the
+default.  A flavor's labels will be structures only if one of two things
+is declared in the {\tt defflavor}.  The first is that the property
+{\tt structured} appears.  The second is if another flavor whose instances are
+structures is specified to be {\it included} in the new flavor.
+
+When a flavor's labels are to be structures, one will usually wish to
+specify the {\tt printfn} property so that the labels will be printed
+in a nice way.  This function must be one which is acceptable for use
+in a {\tt defstruct}.  It is also required that one specify the slots, or
+attributes, the
+structures are to have, by including a list of the form
+\begin{verbatim}
+(instance-attributes (slot1 default1) ... (slotN defaultN))
+\end{verbatim}
+in the flavor definition.
+
+\subsection{Using Labels}
+
+The function {\tt define-label} is a generic way to create new labels of a
+specified flavor.  The function call {\tt (define-label sym flavor-name)}
+will do one of two things.  If {\tt flavor-name} is a flavor  whose
+labels are symbols, then the property list of {\tt sym} will be updated
+with property {\tt FLAVOR} having value {\tt flavor-name}.  If on the 
+other hand, {\tt flavor-name} is a flavor having structures for labels,
+then {\tt sym} will be setq'd to the value of the result of calling
+the constructor function for {\tt flavor-name}, which will create
+a structure of type {\tt flavor-name}.
+
+To access the attributes of a label which is a symbol,  use {\tt get},
+since all attributes will be on the symbol's property list.  
+The attributes of a label which is a structure of type {\tt flavor-name}
+can be accessed by using the standard Lisp accessing functions for
+structures.  Thus, if one of the label's attributes is {\tt represents},
+the attribute can be accessed by calling the function 
+{\tt flavor-name-represents}. 
+
+Flavors can be redefined or modified at any time.  This may be done if,
+for example, one wished to extend a flavor's definition into a Lisp
+package which was not always loaded.  Merely put another {\tt defflavor}
+statement into the code.  You need only put the new or changed 
+properties in the redefinition.  If, however, you wish to change the
+attributes of a flavor which is a structure, you should put in all
+of the attributes you desire, not just the new ones, and be sure
+to declare any included flavor as well.  Note: it is possible to
+change a flavor which uses symbols as labels into one which uses
+structures, but if you fail to redefine code which depends on 
+property lists, the program will be smashed to flinders.
+
+
+\subsection{Inheritance and Subflavors}
+
+Some flavors may be similar in many ways; in fact, some flavors may be
+more specialized versions of other flavors.  One may wish a new flavor's
+labels to be operated upon by most wffops in the same way as an existing
+flavor's labels; this we will call inheritance of properties.  In addition,
+one may wish a new flavor to actually be a subtype (in Lisp terms)
+of an existing flavor, and have the attributes of the existing flavor's 
+labels be included in the attributes of the new flavor's labels; this we
+will call inclusion of attributes.   The {\tt defflavor} form allows either
+or both types of sharing to be used.
+
+Inheritance of properties is signalled in the {\tt defflavor} by a form such
+as {\tt (inherit-properties {\it existing-flavor1} ... {\it existing-flavorN})}.
+This will cause the properties in the {\tt wffop-hash-table} of the 
+existing flavors to be placed into the {\tt wffop-hash-table} of the new
+flavor. If any conflict of properties occurs, e.g., if {\it existing-flavorI}
+and  {\it existing-flavorJ}, I < J, have a property with the same name, then
+the value which {\it existing-flavorJ} has for that property will be 
+the one inherited by the new flavor. A new flavor may inherit properties 
+from any number of existing flavors.
+
+In contrast, attributes may be included from only one other flavor.  This
+can be done by using the form {\tt (include {\it existing-flavor})}. The 
+existing flavor must be a flavor whose instances are structures, and the
+new flavor's instances will also be structures whose slots include the
+attributes of the existing flavor.  Thus the same accessing functions for
+those slots will work on labels of both flavors.  To define default
+values for those slots, add them to the {\tt include} form as if it were
+an {\tt :include} specifier to a {\tt defstruct}; e.g., 
+{\tt (include {\it existing-flavor} ({\it slot1 default1}))}.
+
+\subsection{Examples}
+
+Here are some examples of flavor definitions.
+
+%\begin{lispcode}
+\begin{verbatim}
+(defflavor etree
+  (mhelp "Defines common properties of expansion tree nodes.")
+  (structured t)
+  (instance-attributes
+   (name '|| :type symbol)
+   components				; a node's children
+   (positive nil )			; true if node is positive in the
+					;formula
+   (junctive nil :type symbol)		; whether node acts as neutral,
+					;conjunction, or disjunction
+   free-vars				; expansion variables in whose scope
+					; node occurs,
+					; used for skolemizing
+   parent				; parent of the node
+   ;;to keep track of nodes from which this node originated when copying a
+   ;;subtree
+   (predecessor nil)
+   (status 1))
+   (printfn print-etree)
+   (printwff (lambda (wff bracket depth)
+	       (if print-nodenames (pp-symbol-space (etree-name wff))
+		 (printwff 
+		  (if print-deep (get-deep wff)
+		    (get-shallow wff))
+		  bracket depth))))
+   ...many more properties...)
+\end{verbatim}
+%\end{lispcode}
+
+{\tt \indexData{Etree}} labels will be structures, with several attributes.
+The function used to print them will be {\tt print-etree}.
+
+%\begin{lispcode}
+\begin{verbatim}
+(defflavor leaf
+  (mhelp "A leaf label stands for a leaf node of an etree.")
+  (inherit-properties etree)
+  (instance-attributes
+   shallow)
+  (include etree (name (intern-str (create-namestring leaf-name))))))
+\end{verbatim}
+%\end{lispcode}
+
+{\tt \indexData{Leaf}} labels will also be structures, with attributes including
+those of {\tt etree}, as well as a new one called {\tt shallow}.  Note that
+the {\tt name} attribute is given a default in the {\tt include} form.
+{\tt Leaf} inherits all of the properties of {\tt etree}, including, for
+example, its print function, unless they are explicitly redefined in
+the definition of {\tt leaf}.

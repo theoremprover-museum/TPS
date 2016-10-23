@@ -1,0 +1,14 @@
+(:name THM2F
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL X(OI) FORALL Y(OI) [X(OI) SUBSET(O(OI)(OI)) Y(OI) IMPLIES K(OI(OI)) X(OI) SUBSET(O(OI)(OI)) K(OI(OI)) Y(OI)] IMPLIES EXISTS U(OI).K(OI(OI)) U(OI) =(O(OI)(OI)) U(OI)"
+:needed-objects   NIL
+:mhelp "THM2 but using = instead of EQUIVS"
+:other-attributes NIL
+:other-remarks "
+")
+
+

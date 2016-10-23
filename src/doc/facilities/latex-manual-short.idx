@@ -1,0 +1,1970 @@
+\indexentry{BEGIN-PRFW@BEGIN-PRFW, {\bf MExpr}}{10}
+\indexentry{DO-GRADES@DO-GRADES, {\bf MExpr}}{10}
+\indexentry{ED@ED, {\bf MExpr}}{10}
+\indexentry{END-PRFW@END-PRFW, {\bf MExpr}}{10}
+\indexentry{EXT-MATE@EXT-MATE, {\bf MExpr}}{11}
+\indexentry{EXT-SEQ@EXT-SEQ, {\bf MExpr}}{11}
+\indexentry{HISTORY@HISTORY, {\bf MExpr}}{11}
+\indexentry{LIB@LIB, {\bf MExpr}}{11}
+\indexentry{MATE@MATE, {\bf MExpr}}{11}
+\indexentry{MODELS@MODELS, {\bf MExpr}}{11}
+\indexentry{MTREE@MTREE, {\bf MExpr}}{11}
+\indexentry{POP@POP, {\bf MExpr}}{11}
+\indexentry{PUSH@PUSH, {\bf MExpr}}{11}
+\indexentry{REVIEW@REVIEW, {\bf MExpr}}{11}
+\indexentry{REWRITE@REWRITE, {\bf MExpr}}{11}
+\indexentry{REWRITE-IN@REWRITE-IN, {\bf MExpr}}{11}
+\indexentry{REWRITING@REWRITING, {\bf MExpr}}{11}
+\indexentry{TEST@TEST, {\bf MExpr}}{12}
+\indexentry{UNIFORM-SEARCH@UNIFORM-SEARCH, {\bf MExpr}}{12}
+\indexentry{UNIFORM-SEARCH-L@UNIFORM-SEARCH-L, {\bf MExpr}}{12}
+\indexentry{UNIFY@UNIFY, {\bf MExpr}}{12}
+\indexentry{UNIXLIB@UNIXLIB, {\bf MExpr}}{13}
+\indexentry{?@?, {\bf MExpr}}{13}
+\indexentry{??@??, {\bf MExpr}}{13}
+\indexentry{ABBREVIATIONS@ABBREVIATIONS, {\bf MExpr}}{13}
+\indexentry{ENVIRONMENT@ENVIRONMENT, {\bf MExpr}}{13}
+\indexentry{HELP@HELP, {\bf MExpr}}{13}
+\indexentry{HELP*@HELP*, {\bf MExpr}}{13}
+\indexentry{HELP-GROUP@HELP-GROUP, {\bf MExpr}}{13}
+\indexentry{LIST-RULES@LIST-RULES, {\bf MExpr}}{14}
+\indexentry{LIST-RULES*@LIST-RULES*, {\bf MExpr}}{14}
+\indexentry{OOPS@OOPS, {\bf MExpr}}{14}
+\indexentry{PROBLEMS@PROBLEMS, {\bf MExpr}}{14}
+\indexentry{SEARCH@SEARCH, {\bf MExpr}}{14}
+\indexentry{CHARDOC@CHARDOC, {\bf MExpr}}{14}
+\indexentry{COLLECT-HELP@COLLECT-HELP, {\bf MExpr}}{14}
+\indexentry{HELP-LIST@HELP-LIST, {\bf MExpr}}{14}
+\indexentry{HTML-DOC@HTML-DOC, {\bf MExpr}}{14}
+\indexentry{LATEX-DOC@LATEX-DOC, {\bf MExpr}}{14}
+\indexentry{LATEX-QUICK-REF@LATEX-QUICK-REF, {\bf MExpr}}{14}
+\indexentry{OMDOC-ASSERTION@OMDOC-ASSERTION, {\bf MExpr}}{15}
+\indexentry{OMDOC-CLASS-SCHEME@OMDOC-CLASS-SCHEME, {\bf MExpr}}{15}
+\indexentry{OMDOC-LIB@OMDOC-LIB, {\bf MExpr}}{15}
+\indexentry{OMDOC-PROOF@OMDOC-PROOF, {\bf MExpr}}{15}
+\indexentry{QUICK-REF@QUICK-REF, {\bf MExpr}}{15}
+\indexentry{SCRIBE-DOC@SCRIBE-DOC, {\bf MExpr}}{15}
+\indexentry{LOADKEY@LOADKEY, {\bf MExpr}}{15}
+\indexentry{RESET@RESET, {\bf MExpr}}{15}
+\indexentry{ALIAS@ALIAS, {\bf MExpr}}{15}
+\indexentry{CLEANUP@CLEANUP, {\bf MExpr}}{15}
+\indexentry{DONE@DONE, {\bf MExpr}}{15}
+\indexentry{EXERCISE@EXERCISE, {\bf MExpr}}{15}
+\indexentry{EXIT@EXIT, {\bf MExpr}}{15}
+\indexentry{NEWS@NEWS, {\bf MExpr}}{16}
+\indexentry{PROVE@PROVE, {\bf MExpr}}{16}
+\indexentry{RECONSIDER@RECONSIDER, {\bf MExpr}}{16}
+\indexentry{REMARK@REMARK, {\bf MExpr}}{16}
+\indexentry{SUMMARY@SUMMARY, {\bf MExpr}}{16}
+\indexentry{UNALIAS@UNALIAS, {\bf MExpr}}{16}
+\indexentry{BUILD-PROOF-HIERARCHY@BUILD-PROOF-HIERARCHY, {\bf MExpr}}{16}
+\indexentry{DEPTH@DEPTH, {\bf MExpr}}{16}
+\indexentry{EXPLAIN@EXPLAIN, {\bf MExpr}}{17}
+\indexentry{FIND-LINE@FIND-LINE, {\bf MExpr}}{17}
+\indexentry{PALL@PALL, {\bf MExpr}}{17}
+\indexentry{PBRIEF@PBRIEF, {\bf MExpr}}{17}
+\indexentry{PL@PL, {\bf MExpr}}{17}
+\indexentry{PL*@PL*, {\bf MExpr}}{17}
+\indexentry{PLINE@PLINE, {\bf MExpr}}{17}
+\indexentry{PPLAN@PPLAN, {\bf MExpr}}{17}
+\indexentry{PRINT-PROOF-STRUCTURE@PRINT-PROOF-STRUCTURE, {\bf MExpr}}{17}
+\indexentry{PRW@PRW, {\bf MExpr}}{18}
+\indexentry{PW@PW, {\bf MExpr}}{18}
+\indexentry{PWSCOPE@PWSCOPE, {\bf MExpr}}{18}
+\indexentry{PWTYPES@PWTYPES, {\bf MExpr}}{18}
+\indexentry{SHOWNOTYPES@SHOWNOTYPES, {\bf MExpr}}{18}
+\indexentry{SHOWTYPES@SHOWTYPES, {\bf MExpr}}{18}
+\indexentry{TABLEAU@TABLEAU, {\bf MExpr}}{18}
+\indexentry{\textasciicircum P@\textasciicircum P, {\bf MExpr}}{18}
+\indexentry{\textasciicircum PN@\textasciicircum PN, {\bf MExpr}}{18}
+\indexentry{EXECUTE-FILE@EXECUTE-FILE, {\bf MExpr}}{18}
+\indexentry{FINDPROOF@FINDPROOF, {\bf MExpr}}{19}
+\indexentry{FINISH-SAVE@FINISH-SAVE, {\bf MExpr}}{19}
+\indexentry{PAUSE@PAUSE, {\bf MExpr}}{19}
+\indexentry{RESTORE-WORK@RESTORE-WORK, {\bf MExpr}}{19}
+\indexentry{RESTOREPROOF@RESTOREPROOF, {\bf MExpr}}{19}
+\indexentry{RESUME-SAVE@RESUME-SAVE, {\bf MExpr}}{19}
+\indexentry{SAVE-FLAGS-AND-WORK@SAVE-FLAGS-AND-WORK, {\bf MExpr}}{19}
+\indexentry{SAVE-SUBPROOF@SAVE-SUBPROOF, {\bf MExpr}}{19}
+\indexentry{SAVE-WORK@SAVE-WORK, {\bf MExpr}}{20}
+\indexentry{SAVEPROOF@SAVEPROOF, {\bf MExpr}}{20}
+\indexentry{SCRIPT@SCRIPT, {\bf MExpr}}{20}
+\indexentry{STOP-SAVE@STOP-SAVE, {\bf MExpr}}{20}
+\indexentry{UNSCRIPT@UNSCRIPT, {\bf MExpr}}{20}
+\indexentry{APPEND-WFF@APPEND-WFF, {\bf MExpr}}{20}
+\indexentry{APPEND-WFFS@APPEND-WFFS, {\bf MExpr}}{20}
+\indexentry{PRINTPROOF@PRINTPROOF, {\bf MExpr}}{20}
+\indexentry{SCRIBEPROOF@SCRIBEPROOF, {\bf MExpr}}{20}
+\indexentry{SETUP-SLIDE-STYLE@SETUP-SLIDE-STYLE, {\bf MExpr}}{21}
+\indexentry{SLIDEPROOF@SLIDEPROOF, {\bf MExpr}}{21}
+\indexentry{TEXPROOF@TEXPROOF, {\bf MExpr}}{21}
+\indexentry{CREATE-SUBPROOF@CREATE-SUBPROOF, {\bf MExpr}}{21}
+\indexentry{LINE-COMMENT@LINE-COMMENT, {\bf MExpr}}{21}
+\indexentry{MERGE-PROOFS@MERGE-PROOFS, {\bf MExpr}}{21}
+\indexentry{PROOF-COMMENT@PROOF-COMMENT, {\bf MExpr}}{22}
+\indexentry{PROOFLIST@PROOFLIST, {\bf MExpr}}{22}
+\indexentry{TRANSFER-LINES@TRANSFER-LINES, {\bf MExpr}}{22}
+\indexentry{PSEQ@PSEQ, {\bf MExpr}}{22}
+\indexentry{PSEQL@PSEQL, {\bf MExpr}}{22}
+\indexentry{SEQ-TO-NAT@SEQ-TO-NAT, {\bf MExpr}}{22}
+\indexentry{SEQLIST@SEQLIST, {\bf MExpr}}{22}
+\indexentry{AUTO-SUGGEST@AUTO-SUGGEST, {\bf MExpr}}{22}
+\indexentry{ETR-AUTO-SUGGEST@ETR-AUTO-SUGGEST, {\bf MExpr}}{23}
+\indexentry{CLOSE-TESTWIN@CLOSE-TESTWIN, {\bf MExpr}}{23}
+\indexentry{DEASSERT-LEMMAS@DEASSERT-LEMMAS, {\bf MExpr}}{23}
+\indexentry{DIY@DIY, {\bf MExpr}}{23}
+\indexentry{DIY-L@DIY-L, {\bf MExpr}}{23}
+\indexentry{DIY-L-WITH-TIMEOUT@DIY-L-WITH-TIMEOUT, {\bf MExpr}}{23}
+\indexentry{DIY-WITH-TIMEOUT@DIY-WITH-TIMEOUT, {\bf MExpr}}{24}
+\indexentry{DIY2@DIY2, {\bf MExpr}}{24}
+\indexentry{DIY2-L@DIY2-L, {\bf MExpr}}{24}
+\indexentry{EPROOFLIST@EPROOFLIST, {\bf MExpr}}{24}
+\indexentry{MONITOR@MONITOR, {\bf MExpr}}{24}
+\indexentry{MONITORLIST@MONITORLIST, {\bf MExpr}}{24}
+\indexentry{NOMONITOR@NOMONITOR, {\bf MExpr}}{24}
+\indexentry{PIY@PIY, {\bf MExpr}}{24}
+\indexentry{PIY2@PIY2, {\bf MExpr}}{25}
+\indexentry{SET-EPROOF@SET-EPROOF, {\bf MExpr}}{25}
+\indexentry{SEARCH-ORDER@SEARCH-ORDER, {\bf MExpr}}{25}
+\indexentry{ETREE-NAT@ETREE-NAT, {\bf MExpr}}{25}
+\indexentry{NAT-ETREE@NAT-ETREE, {\bf MExpr}}{25}
+\indexentry{NORMALIZE-PROOF@NORMALIZE-PROOF, {\bf MExpr}}{26}
+\indexentry{PFNAT@PFNAT, {\bf MExpr}}{26}
+\indexentry{PNTR@PNTR, {\bf MExpr}}{26}
+\indexentry{TIDY-PROOF@TIDY-PROOF, {\bf MExpr}}{26}
+\indexentry{LEAST-SEARCH-DEPTH@LEAST-SEARCH-DEPTH, {\bf MExpr}}{26}
+\indexentry{ELIMINATE-ALL-RULEP-APPS@ELIMINATE-ALL-RULEP-APPS, {\bf MExpr}}{26}
+\indexentry{ELIMINATE-CONJ*-RULEP-APPS@ELIMINATE-CONJ*-RULEP-APPS, {\bf MExpr}}{27}
+\indexentry{ELIMINATE-RULEP-LINE@ELIMINATE-RULEP-LINE, {\bf MExpr}}{27}
+\indexentry{SET-BACKGROUND-EPROOF@SET-BACKGROUND-EPROOF, {\bf MExpr}}{27}
+\indexentry{ECHO@ECHO, {\bf MExpr}}{27}
+\indexentry{USE-TACTIC@USE-TACTIC, {\bf MExpr}}{27}
+\indexentry{ADVICE@ADVICE, {\bf MExpr}}{27}
+\indexentry{CHECK-STRUCTURE@CHECK-STRUCTURE, {\bf MExpr}}{27}
+\indexentry{GO@GO, {\bf MExpr}}{27}
+\indexentry{GO2@GO2, {\bf MExpr}}{28}
+\indexentry{MONSTRO@MONSTRO, {\bf MExpr}}{28}
+\indexentry{SUGGEST@SUGGEST, {\bf MExpr}}{28}
+\indexentry{CLOSE-MATEVPW@CLOSE-MATEVPW, {\bf MExpr}}{28}
+\indexentry{OPEN-MATEVPW@OPEN-MATEVPW, {\bf MExpr}}{28}
+\indexentry{ADD-HYPS@ADD-HYPS, {\bf MExpr}}{28}
+\indexentry{DELETE@DELETE, {\bf MExpr}}{28}
+\indexentry{DELETE*@DELETE*, {\bf MExpr}}{28}
+\indexentry{DELETE-HYPS@DELETE-HYPS, {\bf MExpr}}{28}
+\indexentry{INTRODUCE-GAP@INTRODUCE-GAP, {\bf MExpr}}{29}
+\indexentry{LOCK-LINE@LOCK-LINE, {\bf MExpr}}{29}
+\indexentry{MAKE-ASSERT-A-HYP@MAKE-ASSERT-A-HYP, {\bf MExpr}}{29}
+\indexentry{MODIFY-GAPS@MODIFY-GAPS, {\bf MExpr}}{29}
+\indexentry{MOVE@MOVE, {\bf MExpr}}{29}
+\indexentry{MOVE*@MOVE*, {\bf MExpr}}{29}
+\indexentry{PLAN@PLAN, {\bf MExpr}}{29}
+\indexentry{RENUMBERALL@RENUMBERALL, {\bf MExpr}}{29}
+\indexentry{SQUEEZE@SQUEEZE, {\bf MExpr}}{29}
+\indexentry{UNLOCK-LINE@UNLOCK-LINE, {\bf MExpr}}{29}
+\indexentry{ARE-WE-USING@ARE-WE-USING, {\bf MExpr}}{29}
+\indexentry{COUNT-LINES@COUNT-LINES, {\bf MExpr}}{29}
+\indexentry{PSTATUS@PSTATUS, {\bf MExpr}}{30}
+\indexentry{SPONSOR@SPONSOR, {\bf MExpr}}{30}
+\indexentry{SUBPROOF@SUBPROOF, {\bf MExpr}}{30}
+\indexentry{UNSPONSOR@UNSPONSOR, {\bf MExpr}}{30}
+\indexentry{ASSERT@ASSERT, {\bf MExpr}}{30}
+\indexentry{ASSERT2@ASSERT2, {\bf MExpr}}{30}
+\indexentry{HYP@HYP, {\bf MExpr}}{30}
+\indexentry{LEMMA@LEMMA, {\bf MExpr}}{30}
+\indexentry{SAME@SAME, {\bf MExpr}}{30}
+\indexentry{ASSOC-LEFT@ASSOC-LEFT, {\bf MExpr}}{30}
+\indexentry{CASES@CASES, {\bf MExpr}}{30}
+\indexentry{CASES3@CASES3, {\bf MExpr}}{31}
+\indexentry{CASES4@CASES4, {\bf MExpr}}{31}
+\indexentry{DEDUCT@DEDUCT, {\bf MExpr}}{31}
+\indexentry{DISJ-IMP@DISJ-IMP, {\bf MExpr}}{31}
+\indexentry{DISJ-IMP-L@DISJ-IMP-L, {\bf MExpr}}{31}
+\indexentry{DISJ-IMP-R@DISJ-IMP-R, {\bf MExpr}}{31}
+\indexentry{ECONJ@ECONJ, {\bf MExpr}}{31}
+\indexentry{EQUIV-IMPLICS@EQUIV-IMPLICS, {\bf MExpr}}{31}
+\indexentry{ICONJ@ICONJ, {\bf MExpr}}{31}
+\indexentry{IDISJ-LEFT@IDISJ-LEFT, {\bf MExpr}}{31}
+\indexentry{IDISJ-RIGHT@IDISJ-RIGHT, {\bf MExpr}}{31}
+\indexentry{IMP-DISJ@IMP-DISJ, {\bf MExpr}}{31}
+\indexentry{IMP-DISJ-L@IMP-DISJ-L, {\bf MExpr}}{31}
+\indexentry{IMP-DISJ-R@IMP-DISJ-R, {\bf MExpr}}{31}
+\indexentry{IMPLICS-EQUIV@IMPLICS-EQUIV, {\bf MExpr}}{31}
+\indexentry{INDIRECT@INDIRECT, {\bf MExpr}}{31}
+\indexentry{INDIRECT1@INDIRECT1, {\bf MExpr}}{31}
+\indexentry{INDIRECT2@INDIRECT2, {\bf MExpr}}{31}
+\indexentry{ITRUTH@ITRUTH, {\bf MExpr}}{32}
+\indexentry{MP@MP, {\bf MExpr}}{32}
+\indexentry{RULEP@RULEP, {\bf MExpr}}{32}
+\indexentry{SUBST-EQUIV@SUBST-EQUIV, {\bf MExpr}}{32}
+\indexentry{ABSURD@ABSURD, {\bf MExpr}}{32}
+\indexentry{ENEG@ENEG, {\bf MExpr}}{32}
+\indexentry{INEG@INEG, {\bf MExpr}}{32}
+\indexentry{NNF@NNF, {\bf MExpr}}{32}
+\indexentry{NNF-EXPAND@NNF-EXPAND, {\bf MExpr}}{32}
+\indexentry{PULLNEG@PULLNEG, {\bf MExpr}}{32}
+\indexentry{PUSHNEG@PUSHNEG, {\bf MExpr}}{32}
+\indexentry{AB*@AB*, {\bf MExpr}}{32}
+\indexentry{ABE@ABE, {\bf MExpr}}{32}
+\indexentry{ABU@ABU, {\bf MExpr}}{32}
+\indexentry{EGEN@EGEN, {\bf MExpr}}{33}
+\indexentry{RULEC@RULEC, {\bf MExpr}}{33}
+\indexentry{RULEC1@RULEC1, {\bf MExpr}}{33}
+\indexentry{UGEN@UGEN, {\bf MExpr}}{33}
+\indexentry{UI@UI, {\bf MExpr}}{33}
+\indexentry{SUBSTITUTE@SUBSTITUTE, {\bf MExpr}}{33}
+\indexentry{TYPESUBST@TYPESUBST, {\bf MExpr}}{33}
+\indexentry{EQUIV-EQ@EQUIV-EQ, {\bf MExpr}}{33}
+\indexentry{EQUIV-EQ-CONTR@EQUIV-EQ-CONTR, {\bf MExpr}}{33}
+\indexentry{EQUIV-EQ-CONTR*@EQUIV-EQ-CONTR*, {\bf MExpr}}{33}
+\indexentry{EQUIV-EQ-EXPD@EQUIV-EQ-EXPD, {\bf MExpr}}{33}
+\indexentry{EQUIV-EQ-EXPD*@EQUIV-EQ-EXPD*, {\bf MExpr}}{33}
+\indexentry{EXT=@EXT=, {\bf MExpr}}{33}
+\indexentry{EXT=0@EXT=0, {\bf MExpr}}{34}
+\indexentry{LET@LET, {\bf MExpr}}{34}
+\indexentry{SUBST=@SUBST=, {\bf MExpr}}{34}
+\indexentry{SUBST=L@SUBST=L, {\bf MExpr}}{34}
+\indexentry{SUBST=R@SUBST=R, {\bf MExpr}}{34}
+\indexentry{SYM=@SYM=, {\bf MExpr}}{34}
+\indexentry{EDEF@EDEF, {\bf MExpr}}{34}
+\indexentry{EQUIV-WFFS@EQUIV-WFFS, {\bf MExpr}}{34}
+\indexentry{IDEF@IDEF, {\bf MExpr}}{34}
+\indexentry{BETA*@BETA*, {\bf MExpr}}{34}
+\indexentry{ETA*@ETA*, {\bf MExpr}}{34}
+\indexentry{LAMBDA*@LAMBDA*, {\bf MExpr}}{34}
+\indexentry{LCONTR*@LCONTR*, {\bf MExpr}}{34}
+\indexentry{LCONTR*-BETA@LCONTR*-BETA, {\bf MExpr}}{35}
+\indexentry{LCONTR*-ETA@LCONTR*-ETA, {\bf MExpr}}{35}
+\indexentry{LEXPD*@LEXPD*, {\bf MExpr}}{35}
+\indexentry{LEXPD*-BETA@LEXPD*-BETA, {\bf MExpr}}{35}
+\indexentry{LEXPD*-ETA@LEXPD*-ETA, {\bf MExpr}}{35}
+\indexentry{ACTIVATE-RULES@ACTIVATE-RULES, {\bf MExpr}}{35}
+\indexentry{ACTIVE-THEORY@ACTIVE-THEORY, {\bf MExpr}}{35}
+\indexentry{DEACTIVATE-RULES@DEACTIVATE-RULES, {\bf MExpr}}{35}
+\indexentry{DEACTIVATE-THEORY@DEACTIVATE-THEORY, {\bf MExpr}}{35}
+\indexentry{DELETE-RRULE@DELETE-RRULE, {\bf MExpr}}{35}
+\indexentry{LIST-RRULES@LIST-RRULES, {\bf MExpr}}{35}
+\indexentry{MAKE-ABBREV-RRULE@MAKE-ABBREV-RRULE, {\bf MExpr}}{35}
+\indexentry{MAKE-INVERSE-RRULE@MAKE-INVERSE-RRULE, {\bf MExpr}}{35}
+\indexentry{MAKE-THEORY@MAKE-THEORY, {\bf MExpr}}{35}
+\indexentry{PERMUTE-RRULES@PERMUTE-RRULES, {\bf MExpr}}{36}
+\indexentry{REWRITE-SUPP*@REWRITE-SUPP*, {\bf MExpr}}{36}
+\indexentry{REWRITE-SUPP1@REWRITE-SUPP1, {\bf MExpr}}{36}
+\indexentry{SIMPLIFY-PLAN@SIMPLIFY-PLAN, {\bf MExpr}}{36}
+\indexentry{SIMPLIFY-PLAN*@SIMPLIFY-PLAN*, {\bf MExpr}}{36}
+\indexentry{SIMPLIFY-SUPP@SIMPLIFY-SUPP, {\bf MExpr}}{36}
+\indexentry{SIMPLIFY-SUPP*@SIMPLIFY-SUPP*, {\bf MExpr}}{36}
+\indexentry{UNREWRITE-PLAN*@UNREWRITE-PLAN*, {\bf MExpr}}{36}
+\indexentry{UNREWRITE-PLAN1@UNREWRITE-PLAN1, {\bf MExpr}}{36}
+\indexentry{USE-RRULES@USE-RRULES, {\bf MExpr}}{36}
+\indexentry{USE-THEORY@USE-THEORY, {\bf MExpr}}{36}
+\indexentry{DISABLE-EVENTS@DISABLE-EVENTS, {\bf MExpr}}{36}
+\indexentry{DATEREC@DATEREC, {\bf MExpr}}{36}
+\indexentry{DISPLAY-TIME@DISPLAY-TIME, {\bf MExpr}}{37}
+\indexentry{CLOAD@CLOAD, {\bf MExpr}}{37}
+\indexentry{CLOAD-MODULES@CLOAD-MODULES, {\bf MExpr}}{37}
+\indexentry{COMPILE-LIST@COMPILE-LIST, {\bf MExpr}}{37}
+\indexentry{COMPL@COMPL, {\bf MExpr}}{37}
+\indexentry{EXTRACT-TEST-INFO@EXTRACT-TEST-INFO, {\bf MExpr}}{37}
+\indexentry{FILETYPE@FILETYPE, {\bf MExpr}}{37}
+\indexentry{GENERATE-JAVA-MENUS@GENERATE-JAVA-MENUS, {\bf MExpr}}{37}
+\indexentry{LEDIT@LEDIT, {\bf MExpr}}{37}
+\indexentry{LOAD-SLOW@LOAD-SLOW, {\bf MExpr}}{37}
+\indexentry{ORGANIZE@ORGANIZE, {\bf MExpr}}{38}
+\indexentry{QLOAD@QLOAD, {\bf MExpr}}{38}
+\indexentry{SETUP-ONLINE-ACCESS@SETUP-ONLINE-ACCESS, {\bf MExpr}}{38}
+\indexentry{SYS-LOAD@SYS-LOAD, {\bf MExpr}}{38}
+\indexentry{TEST-INIT@TEST-INIT, {\bf MExpr}}{38}
+\indexentry{TLIST@TLIST, {\bf MExpr}}{39}
+\indexentry{TLOAD@TLOAD, {\bf MExpr}}{39}
+\indexentry{TPS-TEST@TPS-TEST, {\bf MExpr}}{39}
+\indexentry{TPS-TEST2@TPS-TEST2, {\bf MExpr}}{40}
+\indexentry{TPS3-SAVE@TPS3-SAVE, {\bf MExpr}}{40}
+\indexentry{LOADED-MODS@LOADED-MODS, {\bf MExpr}}{40}
+\indexentry{MODULES@MODULES, {\bf MExpr}}{40}
+\indexentry{UNLOADED-MODS@UNLOADED-MODS, {\bf MExpr}}{41}
+\indexentry{ASSEMBLE-FILE@ASSEMBLE-FILE, {\bf MExpr}}{41}
+\indexentry{ASSEMBLE-MOD@ASSEMBLE-MOD, {\bf MExpr}}{41}
+\indexentry{BUILD@BUILD, {\bf MExpr}}{41}
+\indexentry{WRITE-RULE@WRITE-RULE, {\bf MExpr}}{41}
+\indexentry{PACK-STAT@PACK-STAT, {\bf MExpr}}{41}
+\indexentry{UNUSE@UNUSE, {\bf MExpr}}{41}
+\indexentry{USE@USE, {\bf MExpr}}{41}
+\indexentry{DISPLAYFILE@DISPLAYFILE, {\bf MExpr}}{41}
+\indexentry{LS@LS, {\bf MExpr}}{41}
+\indexentry{MODEREC@MODEREC, {\bf MExpr}}{42}
+\indexentry{PSCHEMES@PSCHEMES, {\bf MExpr}}{42}
+\indexentry{BUG-DELETE@BUG-DELETE, {\bf MExpr}}{42}
+\indexentry{BUG-HELP@BUG-HELP, {\bf MExpr}}{42}
+\indexentry{BUG-LIST@BUG-LIST, {\bf MExpr}}{42}
+\indexentry{BUG-RESTORE@BUG-RESTORE, {\bf MExpr}}{42}
+\indexentry{BUG-SAVE@BUG-SAVE, {\bf MExpr}}{42}
+\indexentry{JAVAWIN@JAVAWIN, {\bf MExpr}}{43}
+\indexentry{HYP@HYP, {\bf Rule}}{44}
+\indexentry{LEMMA@LEMMA, {\bf Rule}}{44}
+\indexentry{SAME@SAME, {\bf Rule}}{44}
+\indexentry{ASSOC-LEFT@ASSOC-LEFT, {\bf Rule}}{44}
+\indexentry{CASES@CASES, {\bf Rule}}{45}
+\indexentry{CASES3@CASES3, {\bf Rule}}{45}
+\indexentry{CASES4@CASES4, {\bf Rule}}{45}
+\indexentry{DEDUCT@DEDUCT, {\bf Rule}}{45}
+\indexentry{DISJ-IMP@DISJ-IMP, {\bf Rule}}{46}
+\indexentry{DISJ-IMP-L@DISJ-IMP-L, {\bf Rule}}{46}
+\indexentry{DISJ-IMP-R@DISJ-IMP-R, {\bf Rule}}{46}
+\indexentry{ECONJ@ECONJ, {\bf Rule}}{46}
+\indexentry{EQUIV-IMPLICS@EQUIV-IMPLICS, {\bf Rule}}{46}
+\indexentry{ICONJ@ICONJ, {\bf Rule}}{46}
+\indexentry{IDISJ-LEFT@IDISJ-LEFT, {\bf Rule}}{46}
+\indexentry{IDISJ-RIGHT@IDISJ-RIGHT, {\bf Rule}}{47}
+\indexentry{IMP-DISJ@IMP-DISJ, {\bf Rule}}{47}
+\indexentry{IMP-DISJ-L@IMP-DISJ-L, {\bf Rule}}{47}
+\indexentry{IMP-DISJ-R@IMP-DISJ-R, {\bf Rule}}{47}
+\indexentry{IMPLICS-EQUIV@IMPLICS-EQUIV, {\bf Rule}}{47}
+\indexentry{INDIRECT@INDIRECT, {\bf Rule}}{47}
+\indexentry{INDIRECT1@INDIRECT1, {\bf Rule}}{47}
+\indexentry{INDIRECT2@INDIRECT2, {\bf Rule}}{48}
+\indexentry{ITRUTH@ITRUTH, {\bf Rule}}{48}
+\indexentry{MP@MP, {\bf Rule}}{48}
+\indexentry{SUBST-EQUIV@SUBST-EQUIV, {\bf Rule}}{48}
+\indexentry{ABSURD@ABSURD, {\bf Rule}}{48}
+\indexentry{ENEG@ENEG, {\bf Rule}}{48}
+\indexentry{INEG@INEG, {\bf Rule}}{49}
+\indexentry{NNF@NNF, {\bf Rule}}{49}
+\indexentry{NNF-EXPAND@NNF-EXPAND, {\bf Rule}}{49}
+\indexentry{PULLNEG@PULLNEG, {\bf Rule}}{49}
+\indexentry{PUSHNEG@PUSHNEG, {\bf Rule}}{49}
+\indexentry{AB*@AB*, {\bf Rule}}{49}
+\indexentry{ABE@ABE, {\bf Rule}}{49}
+\indexentry{ABU@ABU, {\bf Rule}}{50}
+\indexentry{EGEN@EGEN, {\bf Rule}}{50}
+\indexentry{RULEC@RULEC, {\bf Rule}}{50}
+\indexentry{RULEC1@RULEC1, {\bf Rule}}{50}
+\indexentry{UGEN@UGEN, {\bf Rule}}{50}
+\indexentry{UI@UI, {\bf Rule}}{50}
+\indexentry{SUBSTITUTE@SUBSTITUTE, {\bf Rule}}{51}
+\indexentry{EQUIV-EQ@EQUIV-EQ, {\bf Rule}}{51}
+\indexentry{EQUIV-EQ-CONTR@EQUIV-EQ-CONTR, {\bf Rule}}{51}
+\indexentry{EQUIV-EQ-CONTR*@EQUIV-EQ-CONTR*, {\bf Rule}}{51}
+\indexentry{EQUIV-EQ-EXPD@EQUIV-EQ-EXPD, {\bf Rule}}{51}
+\indexentry{EQUIV-EQ-EXPD*@EQUIV-EQ-EXPD*, {\bf Rule}}{51}
+\indexentry{EXT=@EXT=, {\bf Rule}}{52}
+\indexentry{EXT=0@EXT=0, {\bf Rule}}{52}
+\indexentry{LET@LET, {\bf Rule}}{52}
+\indexentry{SUBST=@SUBST=, {\bf Rule}}{52}
+\indexentry{SUBST=L@SUBST=L, {\bf Rule}}{52}
+\indexentry{SUBST=R@SUBST=R, {\bf Rule}}{52}
+\indexentry{SYM=@SYM=, {\bf Rule}}{53}
+\indexentry{EDEF@EDEF, {\bf Rule}}{53}
+\indexentry{EQUIV-WFFS@EQUIV-WFFS, {\bf Rule}}{53}
+\indexentry{IDEF@IDEF, {\bf Rule}}{53}
+\indexentry{BETA*@BETA*, {\bf Rule}}{53}
+\indexentry{ETA*@ETA*, {\bf Rule}}{53}
+\indexentry{LAMBDA*@LAMBDA*, {\bf Rule}}{54}
+\indexentry{LCONTR*@LCONTR*, {\bf Rule}}{54}
+\indexentry{LCONTR*-BETA@LCONTR*-BETA, {\bf Rule}}{54}
+\indexentry{LCONTR*-ETA@LCONTR*-ETA, {\bf Rule}}{54}
+\indexentry{LEXPD*@LEXPD*, {\bf Rule}}{54}
+\indexentry{LEXPD*-BETA@LEXPD*-BETA, {\bf Rule}}{54}
+\indexentry{LEXPD*-ETA@LEXPD*-ETA, {\bf Rule}}{54}
+\indexentry{REWRITE-SUPP*@REWRITE-SUPP*, {\bf Rule}}{55}
+\indexentry{REWRITE-SUPP1@REWRITE-SUPP1, {\bf Rule}}{55}
+\indexentry{SIMPLIFY-PLAN@SIMPLIFY-PLAN, {\bf Rule}}{55}
+\indexentry{SIMPLIFY-PLAN*@SIMPLIFY-PLAN*, {\bf Rule}}{55}
+\indexentry{SIMPLIFY-SUPP@SIMPLIFY-SUPP, {\bf Rule}}{55}
+\indexentry{SIMPLIFY-SUPP*@SIMPLIFY-SUPP*, {\bf Rule}}{55}
+\indexentry{UNREWRITE-PLAN*@UNREWRITE-PLAN*, {\bf Rule}}{55}
+\indexentry{UNREWRITE-PLAN1@UNREWRITE-PLAN1, {\bf Rule}}{55}
+\indexentry{USE-RRULES@USE-RRULES, {\bf Rule}}{56}
+\indexentry{LEAVE}{57}
+\indexentry{CUTFREE-TO-EDAG}{57}
+\indexentry{DELETE}{57}
+\indexentry{EXPAND-ALL-DERIVED-RULES}{57}
+\indexentry{EXPAND-ALL-INITS-AND-REFLS}{57}
+\indexentry{INTRODUCE-GAP}{57}
+\indexentry{PROOFLIST}{58}
+\indexentry{PROVE}{58}
+\indexentry{RECONSIDER}{58}
+\indexentry{SQUEEZE}{58}
+\indexentry{WEAKEN}{58}
+\indexentry{PALL}{58}
+\indexentry{PPLAN}{58}
+\indexentry{PSTATUS}{58}
+\indexentry{ALL+}{58}
+\indexentry{ALL-}{58}
+\indexentry{CONTR}{58}
+\indexentry{CUT}{58}
+\indexentry{DEC}{58}
+\indexentry{DNEG}{58}
+\indexentry{EQFUNC}{58}
+\indexentry{EQO}{58}
+\indexentry{EQUIVWFFS+}{58}
+\indexentry{EQUIVWFFS-}{59}
+\indexentry{EUNIF1}{59}
+\indexentry{EUNIF2}{59}
+\indexentry{EXTFUNC}{59}
+\indexentry{EXTO}{59}
+\indexentry{INIT}{59}
+\indexentry{INITEQ}{59}
+\indexentry{INTERNALIZE+}{59}
+\indexentry{INTERNALIZE-}{59}
+\indexentry{LAM}{59}
+\indexentry{OR+}{59}
+\indexentry{OR-}{59}
+\indexentry{REFL}{59}
+\indexentry{TRUE+}{59}
+\indexentry{AND+}{59}
+\indexentry{AND-}{59}
+\indexentry{EQUIV+}{59}
+\indexentry{EQUIV-}{59}
+\indexentry{EXISTS+}{60}
+\indexentry{EXISTS-}{60}
+\indexentry{FALSE-}{60}
+\indexentry{IMPLIES+}{60}
+\indexentry{IMPLIES-}{60}
+\indexentry{RESTOREPROOF}{60}
+\indexentry{SAVEPROOF}{60}
+\indexentry{SCRIBEPROOF}{60}
+\indexentry{TEXPROOF}{60}
+\indexentry{GO2}{60}
+\indexentry{ALL+TAC@ALL+TAC, {\bf Tactic}}{61}
+\indexentry{ALL-TAC@ALL-TAC, {\bf Tactic}}{61}
+\indexentry{AND+TAC@AND+TAC, {\bf Tactic}}{61}
+\indexentry{AND-TAC@AND-TAC, {\bf Tactic}}{61}
+\indexentry{AUTO-TAC@AUTO-TAC, {\bf Tactic}}{61}
+\indexentry{BOOK-TAC@BOOK-TAC, {\bf Tactic}}{61}
+\indexentry{COMPLETE-TRANSFORM*-TAC@COMPLETE-TRANSFORM*-TAC, {\bf Tactic}}{61}
+\indexentry{COMPLETE-TRANSFORM-TAC@COMPLETE-TRANSFORM-TAC, {\bf Tactic}}{62}
+\indexentry{CONTRACT-TAC@CONTRACT-TAC, {\bf Tactic}}{62}
+\indexentry{DEC+TAC@DEC+TAC, {\bf Tactic}}{62}
+\indexentry{DIY-TAC@DIY-TAC, {\bf Tactic}}{62}
+\indexentry{ELIM-DEFNS-TAC@ELIM-DEFNS-TAC, {\bf Tactic}}{62}
+\indexentry{EQFUNC-TAC@EQFUNC-TAC, {\bf Tactic}}{62}
+\indexentry{EQO-TAC@EQO-TAC, {\bf Tactic}}{62}
+\indexentry{EQUIV+TAC@EQUIV+TAC, {\bf Tactic}}{62}
+\indexentry{EQUIV-TAC@EQUIV-TAC, {\bf Tactic}}{62}
+\indexentry{EQUIVWFFS+TAC@EQUIVWFFS+TAC, {\bf Tactic}}{62}
+\indexentry{EQUIVWFFS-TAC@EQUIVWFFS-TAC, {\bf Tactic}}{63}
+\indexentry{EUNIF1-TAC@EUNIF1-TAC, {\bf Tactic}}{63}
+\indexentry{EUNIF2-TAC@EUNIF2-TAC, {\bf Tactic}}{63}
+\indexentry{EXISTS+TAC@EXISTS+TAC, {\bf Tactic}}{63}
+\indexentry{EXISTS-TAC@EXISTS-TAC, {\bf Tactic}}{63}
+\indexentry{EXTFUNC+TAC@EXTFUNC+TAC, {\bf Tactic}}{63}
+\indexentry{EXTO+TAC@EXTO+TAC, {\bf Tactic}}{63}
+\indexentry{FALSE-TAC@FALSE-TAC, {\bf Tactic}}{63}
+\indexentry{GO2-TAC@GO2-TAC, {\bf Tactic}}{63}
+\indexentry{IMPLIES+TAC@IMPLIES+TAC, {\bf Tactic}}{63}
+\indexentry{IMPLIES-TAC@IMPLIES-TAC, {\bf Tactic}}{63}
+\indexentry{INIT-TAC@INIT-TAC, {\bf Tactic}}{64}
+\indexentry{INITEQ-TAC@INITEQ-TAC, {\bf Tactic}}{64}
+\indexentry{INTERNALIZE+TAC@INTERNALIZE+TAC, {\bf Tactic}}{64}
+\indexentry{INTERNALIZE-TAC@INTERNALIZE-TAC, {\bf Tactic}}{64}
+\indexentry{LAMBDA-TAC@LAMBDA-TAC, {\bf Tactic}}{64}
+\indexentry{MIN-PROP@MIN-PROP, {\bf Tactic}}{64}
+\indexentry{MONSTRO-TAC@MONSTRO-TAC, {\bf Tactic}}{64}
+\indexentry{NOT-TAC@NOT-TAC, {\bf Tactic}}{64}
+\indexentry{OR+TAC@OR+TAC, {\bf Tactic}}{64}
+\indexentry{OR-TAC@OR-TAC, {\bf Tactic}}{64}
+\indexentry{PFENNING*-TAC@PFENNING*-TAC, {\bf Tactic}}{64}
+\indexentry{PFENNING-TAC@PFENNING-TAC, {\bf Tactic}}{65}
+\indexentry{PLINE-TAC@PLINE-TAC, {\bf Tactic}}{65}
+\indexentry{PROP-ELIM-RULES-TAC@PROP-ELIM-RULES-TAC, {\bf Tactic}}{65}
+\indexentry{PROP-INTRO-RULES-TAC@PROP-INTRO-RULES-TAC, {\bf Tactic}}{65}
+\indexentry{REFL+TAC@REFL+TAC, {\bf Tactic}}{65}
+\indexentry{REWRITE-PLINE-P-TAC@REWRITE-PLINE-P-TAC, {\bf Tactic}}{65}
+\indexentry{REWRITE-PLINE-TAC@REWRITE-PLINE-TAC, {\bf Tactic}}{65}
+\indexentry{REWRITE-SLINE-TAC@REWRITE-SLINE-TAC, {\bf Tactic}}{65}
+\indexentry{SLINE-TAC@SLINE-TAC, {\bf Tactic}}{66}
+\indexentry{SUB=-TAC@SUB=-TAC, {\bf Tactic}}{66}
+\indexentry{TRUE+TAC@TRUE+TAC, {\bf Tactic}}{66}
+\indexentry{ABSURD-TAC@ABSURD-TAC, {\bf Tactic}}{66}
+\indexentry{BACKCHAIN-LEMMA-TAC@BACKCHAIN-LEMMA-TAC, {\bf Tactic}}{66}
+\indexentry{BASIC-PROP*-TAC@BASIC-PROP*-TAC, {\bf Tactic}}{66}
+\indexentry{BASIC-PROP-TAC@BASIC-PROP-TAC, {\bf Tactic}}{67}
+\indexentry{CASES-TAC@CASES-TAC, {\bf Tactic}}{67}
+\indexentry{CLASS-DISJ-TAC@CLASS-DISJ-TAC, {\bf Tactic}}{67}
+\indexentry{DEDUCT-TAC@DEDUCT-TAC, {\bf Tactic}}{67}
+\indexentry{DISJ-EQUIV-TAC@DISJ-EQUIV-TAC, {\bf Tactic}}{67}
+\indexentry{DISJ-IMP-TAC@DISJ-IMP-TAC, {\bf Tactic}}{67}
+\indexentry{ECONJ*-TAC@ECONJ*-TAC, {\bf Tactic}}{67}
+\indexentry{ECONJ-TAC@ECONJ-TAC, {\bf Tactic}}{67}
+\indexentry{ENEG-TAC@ENEG-TAC, {\bf Tactic}}{68}
+\indexentry{EQUIV-DISJ-TAC@EQUIV-DISJ-TAC, {\bf Tactic}}{68}
+\indexentry{EQUIV-IMPLICS-TAC@EQUIV-IMPLICS-TAC, {\bf Tactic}}{68}
+\indexentry{ICONJ*-TAC@ICONJ*-TAC, {\bf Tactic}}{68}
+\indexentry{ICONJ-TAC@ICONJ-TAC, {\bf Tactic}}{68}
+\indexentry{IDISJ-LEFT-TAC@IDISJ-LEFT-TAC, {\bf Tactic}}{68}
+\indexentry{IDISJ-RIGHT-TAC@IDISJ-RIGHT-TAC, {\bf Tactic}}{68}
+\indexentry{IDISJ-TAC@IDISJ-TAC, {\bf Tactic}}{68}
+\indexentry{IMP-DISJ-TAC@IMP-DISJ-TAC, {\bf Tactic}}{69}
+\indexentry{IMPLICS-EQUIV-TAC@IMPLICS-EQUIV-TAC, {\bf Tactic}}{69}
+\indexentry{INDIRECT-DISJ-PLINE-TAC@INDIRECT-DISJ-PLINE-TAC, {\bf Tactic}}{69}
+\indexentry{INDIRECT-EXISTS-PLINE-TAC@INDIRECT-EXISTS-PLINE-TAC, {\bf Tactic}}{69}
+\indexentry{INDIRECT-TAC@INDIRECT-TAC, {\bf Tactic}}{69}
+\indexentry{INDIRECT2-TAC@INDIRECT2-TAC, {\bf Tactic}}{69}
+\indexentry{INEG-TAC@INEG-TAC, {\bf Tactic}}{69}
+\indexentry{MP-TAC@MP-TAC, {\bf Tactic}}{69}
+\indexentry{NEG-AND-ELIM-TAC@NEG-AND-ELIM-TAC, {\bf Tactic}}{70}
+\indexentry{NEG-AND-PLAN-TAC@NEG-AND-PLAN-TAC, {\bf Tactic}}{70}
+\indexentry{NEG-AND-SLINE-TAC@NEG-AND-SLINE-TAC, {\bf Tactic}}{70}
+\indexentry{NEG-ATOM-ELIM-TAC@NEG-ATOM-ELIM-TAC, {\bf Tactic}}{70}
+\indexentry{NEG-EQUAL-ELIM-TAC@NEG-EQUAL-ELIM-TAC, {\bf Tactic}}{70}
+\indexentry{NEG-EXISTS-ELIM-DUP-TAC@NEG-EXISTS-ELIM-DUP-TAC, {\bf Tactic}}{70}
+\indexentry{NEG-EXISTS-ELIM-SIMPLE-TAC@NEG-EXISTS-ELIM-SIMPLE-TAC, {\bf Tactic}}{70}
+\indexentry{NEG-IMP-ELIM-TAC@NEG-IMP-ELIM-TAC, {\bf Tactic}}{70}
+\indexentry{NEG-IMP-PLAN-TAC@NEG-IMP-PLAN-TAC, {\bf Tactic}}{70}
+\indexentry{NEG-IMP-SLINE-TAC@NEG-IMP-SLINE-TAC, {\bf Tactic}}{71}
+\indexentry{NEG-NEG-ELIM-TAC@NEG-NEG-ELIM-TAC, {\bf Tactic}}{71}
+\indexentry{NEG-NEG-PLAN-TAC@NEG-NEG-PLAN-TAC, {\bf Tactic}}{71}
+\indexentry{NEG-NEG-SLINE-TAC@NEG-NEG-SLINE-TAC, {\bf Tactic}}{71}
+\indexentry{NEG-OR-ELIM-DUP-TAC@NEG-OR-ELIM-DUP-TAC, {\bf Tactic}}{71}
+\indexentry{NEG-OR-ELIM-SIMPLE-TAC@NEG-OR-ELIM-SIMPLE-TAC, {\bf Tactic}}{71}
+\indexentry{NEG-OR-PLAN-TAC@NEG-OR-PLAN-TAC, {\bf Tactic}}{71}
+\indexentry{NEG-OR-SLINE-TAC@NEG-OR-SLINE-TAC, {\bf Tactic}}{71}
+\indexentry{NEG-UNIV-ELIM-TAC@NEG-UNIV-ELIM-TAC, {\bf Tactic}}{71}
+\indexentry{OR-LEMMA-LEFT-TAC@OR-LEMMA-LEFT-TAC, {\bf Tactic}}{71}
+\indexentry{OR-LEMMA-RIGHT-TAC@OR-LEMMA-RIGHT-TAC, {\bf Tactic}}{72}
+\indexentry{OR-LEMMA-TAC@OR-LEMMA-TAC, {\bf Tactic}}{72}
+\indexentry{PROP-PRIM@PROP-PRIM, {\bf Tactic}}{72}
+\indexentry{PROPOSITIONAL@PROPOSITIONAL, {\bf Tactic}}{72}
+\indexentry{PULLNEG-TAC@PULLNEG-TAC, {\bf Tactic}}{72}
+\indexentry{PUSHNEG-TAC@PUSHNEG-TAC, {\bf Tactic}}{72}
+\indexentry{RULEP-TAC@RULEP-TAC, {\bf Tactic}}{72}
+\indexentry{SAME-TAC@SAME-TAC, {\bf Tactic}}{72}
+\indexentry{SUBST=-BACKCHAIN-LEMMA-TAC@SUBST=-BACKCHAIN-LEMMA-TAC, {\bf Tactic}}{73}
+\indexentry{TRUTH-TAC@TRUTH-TAC, {\bf Tactic}}{73}
+\indexentry{TRUTHP-REWRITE-PLAN-TAC@TRUTHP-REWRITE-PLAN-TAC, {\bf Tactic}}{73}
+\indexentry{AB-PLAN-TAC@AB-PLAN-TAC, {\bf Tactic}}{73}
+\indexentry{AB-SLINE-TAC@AB-SLINE-TAC, {\bf Tactic}}{73}
+\indexentry{ABU-TAC@ABU-TAC, {\bf Tactic}}{73}
+\indexentry{EDEF-TAC@EDEF-TAC, {\bf Tactic}}{73}
+\indexentry{EGEN-TAC@EGEN-TAC, {\bf Tactic}}{73}
+\indexentry{EXISTS-LEMMA-TAC@EXISTS-LEMMA-TAC, {\bf Tactic}}{73}
+\indexentry{IDEF-TAC@IDEF-TAC, {\bf Tactic}}{74}
+\indexentry{NEG-EXP-PLAN-TAC@NEG-EXP-PLAN-TAC, {\bf Tactic}}{74}
+\indexentry{NEG-EXP-SLINE-TAC@NEG-EXP-SLINE-TAC, {\bf Tactic}}{74}
+\indexentry{NEG-SEL-PLAN-TAC@NEG-SEL-PLAN-TAC, {\bf Tactic}}{74}
+\indexentry{NEG-SEL-SLINE-TAC@NEG-SEL-SLINE-TAC, {\bf Tactic}}{74}
+\indexentry{QUANTIFICATIONAL@QUANTIFICATIONAL, {\bf Tactic}}{74}
+\indexentry{RULEC-TAC@RULEC-TAC, {\bf Tactic}}{74}
+\indexentry{RULEQ-PLAN-TAC@RULEQ-PLAN-TAC, {\bf Tactic}}{74}
+\indexentry{RULEQ-SLINE-TAC@RULEQ-SLINE-TAC, {\bf Tactic}}{74}
+\indexentry{SYMSIMP-TAC@SYMSIMP-TAC, {\bf Tactic}}{74}
+\indexentry{UGEN-TAC@UGEN-TAC, {\bf Tactic}}{74}
+\indexentry{UI-HERBRAND-TAC@UI-HERBRAND-TAC, {\bf Tactic}}{75}
+\indexentry{UI-TAC@UI-TAC, {\bf Tactic}}{75}
+\indexentry{UNNEC-EXP-TAC@UNNEC-EXP-TAC, {\bf Tactic}}{75}
+\indexentry{EQUALITY-PLAN-TAC@EQUALITY-PLAN-TAC, {\bf Tactic}}{75}
+\indexentry{EQUALITY-SLINE-TAC@EQUALITY-SLINE-TAC, {\bf Tactic}}{75}
+\indexentry{EXT=-PLAN-TAC@EXT=-PLAN-TAC, {\bf Tactic}}{76}
+\indexentry{EXT=-SLINE-TAC@EXT=-SLINE-TAC, {\bf Tactic}}{76}
+\indexentry{LEIBNIZ=-PLAN-TAC@LEIBNIZ=-PLAN-TAC, {\bf Tactic}}{76}
+\indexentry{LEIBNIZ=-SLINE-TAC@LEIBNIZ=-SLINE-TAC, {\bf Tactic}}{76}
+\indexentry{NEG-EQUAL-SLINE-TAC@NEG-EQUAL-SLINE-TAC, {\bf Tactic}}{76}
+\indexentry{REFL=-TAC@REFL=-TAC, {\bf Tactic}}{76}
+\indexentry{SUBST=-TAC@SUBST=-TAC, {\bf Tactic}}{76}
+\indexentry{SUBST=L-TAC@SUBST=L-TAC, {\bf Tactic}}{76}
+\indexentry{SUBST=R-TAC@SUBST=R-TAC, {\bf Tactic}}{77}
+\indexentry{SYM=-TAC@SYM=-TAC, {\bf Tactic}}{77}
+\indexentry{EQUIV-WFFS-PLAN-TAC@EQUIV-WFFS-PLAN-TAC, {\bf Tactic}}{77}
+\indexentry{EQUIV-WFFS-SLINE-TAC@EQUIV-WFFS-SLINE-TAC, {\bf Tactic}}{77}
+\indexentry{NEG-EQUIV-SLINE-TAC@NEG-EQUIV-SLINE-TAC, {\bf Tactic}}{77}
+\indexentry{NEG-REW-PLAN-TAC@NEG-REW-PLAN-TAC, {\bf Tactic}}{77}
+\indexentry{NEG-REW-SLINE-TAC@NEG-REW-SLINE-TAC, {\bf Tactic}}{77}
+\indexentry{BETA-ETA-SEPARATE-TAC@BETA-ETA-SEPARATE-TAC, {\bf Tactic}}{78}
+\indexentry{BETA-ETA-TOGETHER-TAC@BETA-ETA-TOGETHER-TAC, {\bf Tactic}}{78}
+\indexentry{BETA-ONLY-TAC@BETA-ONLY-TAC, {\bf Tactic}}{78}
+\indexentry{EQUIV-EQ-CONTR-TAC@EQUIV-EQ-CONTR-TAC, {\bf Tactic}}{78}
+\indexentry{EQUIV-EQ-EXPD-TAC@EQUIV-EQ-EXPD-TAC, {\bf Tactic}}{78}
+\indexentry{EXT=-TAC@EXT=-TAC, {\bf Tactic}}{78}
+\indexentry{EXT=0-TAC@EXT=0-TAC, {\bf Tactic}}{78}
+\indexentry{LCONTR*-BETA-TAC@LCONTR*-BETA-TAC, {\bf Tactic}}{78}
+\indexentry{LCONTR*-ETA-TAC@LCONTR*-ETA-TAC, {\bf Tactic}}{78}
+\indexentry{LCONTR*-TAC@LCONTR*-TAC, {\bf Tactic}}{79}
+\indexentry{LCONTR*-VARY-TAC@LCONTR*-VARY-TAC, {\bf Tactic}}{79}
+\indexentry{LEXPD*-BETA-TAC@LEXPD*-BETA-TAC, {\bf Tactic}}{79}
+\indexentry{LEXPD*-ETA-TAC@LEXPD*-ETA-TAC, {\bf Tactic}}{79}
+\indexentry{LEXPD*-TAC@LEXPD*-TAC, {\bf Tactic}}{79}
+\indexentry{LEXPD*-VARY-TAC@LEXPD*-VARY-TAC, {\bf Tactic}}{79}
+\indexentry{DUPLICATE-SUPPORT-TAC@DUPLICATE-SUPPORT-TAC, {\bf Tactic}}{80}
+\indexentry{FINISHED-P@FINISHED-P, {\bf Tactic}}{80}
+\indexentry{INESS-PLINE-TAC@INESS-PLINE-TAC, {\bf Tactic}}{80}
+\indexentry{MAKE-NICE@MAKE-NICE, {\bf Tactic}}{80}
+\indexentry{MAKE-ROOM@MAKE-ROOM, {\bf Tactic}}{80}
+\indexentry{NEG-PLINE-P-TAC@NEG-PLINE-P-TAC, {\bf Tactic}}{80}
+\indexentry{NEG-SLINE-P-TAC@NEG-SLINE-P-TAC, {\bf Tactic}}{80}
+\indexentry{NNF-TAC@NNF-TAC, {\bf Tactic}}{80}
+\indexentry{RESTRICT-MATING-TAC@RESTRICT-MATING-TAC, {\bf Tactic}}{80}
+\indexentry{REWRITE-SLINE-P-TAC@REWRITE-SLINE-P-TAC, {\bf Tactic}}{81}
+\indexentry{SHOW-CURRENT-PLAN@SHOW-CURRENT-PLAN, {\bf Tactic}}{81}
+\indexentry{SHOW-PLANS@SHOW-PLANS, {\bf Tactic}}{81}
+\indexentry{UNIVERSAL-GOAL-P@UNIVERSAL-GOAL-P, {\bf Tactic}}{81}
+\indexentry{UNSPONSOR-TAC@UNSPONSOR-TAC, {\bf Tactic}}{81}
+\indexentry{USE-RULEP-TAC@USE-RULEP-TAC, {\bf Tactic}}{81}
+\indexentry{USE-SYMSIMP-TAC@USE-SYMSIMP-TAC, {\bf Tactic}}{81}
+\indexentry{CALL}{82}
+\indexentry{COMPOSE}{82}
+\indexentry{FAILTAC}{82}
+\indexentry{IDTAC}{82}
+\indexentry{IFTHEN}{82}
+\indexentry{NO-GOAL}{82}
+\indexentry{ORELSE}{82}
+\indexentry{REPEAT}{82}
+\indexentry{SEQUENCE}{82}
+\indexentry{THEN}{83}
+\indexentry{THEN*}{83}
+\indexentry{THEN**}{83}
+\indexentry{TRY}{83}
+\indexentry{LEAVE}{84}
+\indexentry{ETD}{84}
+\indexentry{ETP}{84}
+\indexentry{P}{84}
+\indexentry{PDEEP}{84}
+\indexentry{PP}{84}
+\indexentry{PPDEEP}{84}
+\indexentry{PPF}{84}
+\indexentry{PPNODE}{84}
+\indexentry{PSH}{84}
+\indexentry{PTREE}{84}
+\indexentry{PTREE*}{84}
+\indexentry{PTREE-FILE}{84}
+\indexentry{SHOW-OPTION-TREE}{85}
+\indexentry{O}{85}
+\indexentry{REM}{85}
+\indexentry{DP}{85}
+\indexentry{DP*}{85}
+\indexentry{DP=}{85}
+\indexentry{DPTREE}{85}
+\indexentry{DUP-ALL}{85}
+\indexentry{DUP-OUTER}{85}
+\indexentry{DUP-VAR}{85}
+\indexentry{EXP}{85}
+\indexentry{MOD-STATUS}{85}
+\indexentry{NAME-PRIM}{85}
+\indexentry{PRIM-ALL}{85}
+\indexentry{PRIM-OUTER}{85}
+\indexentry{PRIM-SINGLE}{85}
+\indexentry{PRIM-SUB}{85}
+\indexentry{RESTORE-ETREE}{85}
+\indexentry{SAVE-ETREE}{85}
+\indexentry{SEL}{86}
+\indexentry{SET-SEARCH-TREE}{86}
+\indexentry{SUB}{86}
+\indexentry{SUB-ETREE}{86}
+\indexentry{TERMS}{86}
+\indexentry{ETR-INFO}{86}
+\indexentry{ADD-EXT-LEMMAS}{86}
+\indexentry{GO}{86}
+\indexentry{NOOP}{86}
+\indexentry{UNIFY}{86}
+\indexentry{ADD-CONN}{86}
+\indexentry{ADD-CONN*}{86}
+\indexentry{APPLY-SUBSTS}{86}
+\indexentry{COMPLETE-P}{86}
+\indexentry{INIT-MATING}{86}
+\indexentry{MINIMAL-P}{86}
+\indexentry{MS88}{86}
+\indexentry{MS88-SUB}{87}
+\indexentry{REM-CONN}{87}
+\indexentry{REM-CONN*}{87}
+\indexentry{REM-LAST-CONN}{87}
+\indexentry{SHOW-MATING}{87}
+\indexentry{SHOW-SUBSTS}{87}
+\indexentry{MS89}{87}
+\indexentry{EXPAND-ETREE}{87}
+\indexentry{MS90-3}{87}
+\indexentry{PROP-MSEARCH}{87}
+\indexentry{MS90-9}{87}
+\indexentry{MS91-6}{88}
+\indexentry{MS91-7}{88}
+\indexentry{MS92-9}{88}
+\indexentry{MS93-1}{89}
+\indexentry{MS98-1}{89}
+\indexentry{MS98-DUP}{89}
+\indexentry{MS98-PRIM}{89}
+\indexentry{MERGE-TREE}{89}
+\indexentry{CJFORM}{89}
+\indexentry{CW}{89}
+\indexentry{CWD}{89}
+\indexentry{CWS}{89}
+\indexentry{NUM-HPATHS}{90}
+\indexentry{NUM-VPATHS}{90}
+\indexentry{VP}{90}
+\indexentry{VPD}{90}
+\indexentry{VPETREE}{90}
+\indexentry{VPT}{90}
+\indexentry{0}{90}
+\indexentry{D}{90}
+\indexentry{FB}{90}
+\indexentry{FI}{90}
+\indexentry{GOTO}{90}
+\indexentry{L}{90}
+\indexentry{R}{90}
+\indexentry{UP}{90}
+\indexentry{\textasciicircum }{90}
+\indexentry{DEL-DUP-CONNS}{90}
+\indexentry{STATS}{90}
+\indexentry{EXPUNGE}{90}
+\indexentry{EXPUNGE-OLD}{91}
+\indexentry{LEAVE}{92}
+\indexentry{ETD}{92}
+\indexentry{ETP}{92}
+\indexentry{P}{92}
+\indexentry{PDEEP}{92}
+\indexentry{PP}{92}
+\indexentry{PPDEEP}{92}
+\indexentry{PPF}{92}
+\indexentry{PSH}{92}
+\indexentry{SHOW-EXP-TERMS}{92}
+\indexentry{SHOW-EXP-VARS}{92}
+\indexentry{SHOW-MATING}{93}
+\indexentry{SHOW-SEL-VARS}{93}
+\indexentry{COMPLETE-P}{93}
+\indexentry{MS03-LIFT}{93}
+\indexentry{MS04-LIFT}{93}
+\indexentry{ETREE-NAT}{93}
+\indexentry{MERGE-TREE}{93}
+\indexentry{CJFORM}{93}
+\indexentry{NUM-HPATHS}{93}
+\indexentry{NUM-VPATHS}{93}
+\indexentry{VP}{93}
+\indexentry{VPD}{93}
+\indexentry{ADD-CONN}{94}
+\indexentry{ADD-CONN*}{94}
+\indexentry{DUP-AND-IMITATE}{94}
+\indexentry{DUP-AND-PROJECT}{94}
+\indexentry{DUP-AND-SUBST-EXISTS}{94}
+\indexentry{DUP-AND-SUBST-FORALL}{94}
+\indexentry{DUP-NODE}{94}
+\indexentry{DUP-VAR}{94}
+\indexentry{EXPAND-EXISTS}{94}
+\indexentry{EXPAND-FORALL}{94}
+\indexentry{EXPAND-IMITATE}{94}
+\indexentry{EXPAND-PROJECT}{94}
+\indexentry{EXPAND-SUBST}{94}
+\indexentry{IMITATE}{94}
+\indexentry{PROJECT}{94}
+\indexentry{REM-CONN}{94}
+\indexentry{REM-CONN*}{95}
+\indexentry{SUBST}{95}
+\indexentry{SUBST-EXISTS}{95}
+\indexentry{SUBST-FORALL}{95}
+\indexentry{0}{95}
+\indexentry{D}{95}
+\indexentry{FB}{95}
+\indexentry{FI}{95}
+\indexentry{GOTO}{95}
+\indexentry{L}{95}
+\indexentry{R}{95}
+\indexentry{UP}{95}
+\indexentry{\textasciicircum }{95}
+\indexentry{LEAVE}{96}
+\indexentry{ADD-CONN}{96}
+\indexentry{CHOOSE-BRANCH}{96}
+\indexentry{COMPLETE-P}{96}
+\indexentry{D}{96}
+\indexentry{GOTO}{96}
+\indexentry{INIT}{96}
+\indexentry{KILL}{97}
+\indexentry{PICK}{97}
+\indexentry{PRUNE}{97}
+\indexentry{REM-NODE}{97}
+\indexentry{RESURRECT}{97}
+\indexentry{SHOW-MATING}{97}
+\indexentry{SHOW-SUBSTS}{97}
+\indexentry{SIB}{97}
+\indexentry{UNIFY}{97}
+\indexentry{UP}{97}
+\indexentry{CONNS-ADDED}{97}
+\indexentry{LIVE-LEAVES}{97}
+\indexentry{PM-NODE}{97}
+\indexentry{PMTR}{97}
+\indexentry{PMTR*}{98}
+\indexentry{PMTR-FLAT}{98}
+\indexentry{POB}{98}
+\indexentry{POB-LITS}{98}
+\indexentry{POB-NODE}{98}
+\indexentry{POTR}{98}
+\indexentry{POTR*-FLAT}{98}
+\indexentry{POTR-FLAT}{98}
+\indexentry{PPATH}{98}
+\indexentry{PPATH*}{98}
+\indexentry{ADD-ALL-LIT}{99}
+\indexentry{ADD-ALL-OB}{99}
+\indexentry{EXPAND-LEAVES}{99}
+\indexentry{GO}{99}
+\indexentry{MT94-11}{99}
+\indexentry{MT94-12}{99}
+\indexentry{MT95-1}{99}
+\indexentry{QRY}{99}
+\indexentry{LEAVE}{100}
+\indexentry{0}{100}
+\indexentry{APPLY-SUBST}{100}
+\indexentry{EPROOF-UTREE}{100}
+\indexentry{GO}{100}
+\indexentry{GOTO}{100}
+\indexentry{MATCH}{100}
+\indexentry{MATCH-PAIR}{101}
+\indexentry{NAME-DPAIR}{101}
+\indexentry{NTH-SON}{101}
+\indexentry{P}{101}
+\indexentry{PALL}{101}
+\indexentry{PP}{101}
+\indexentry{PP*}{101}
+\indexentry{SIMPLIFY}{101}
+\indexentry{STATS}{101}
+\indexentry{SUBST-STACK}{101}
+\indexentry{UTREE}{102}
+\indexentry{UTREE*}{102}
+\indexentry{\textasciicircum }{102}
+\indexentry{\textasciicircum \textasciicircum }{102}
+\indexentry{ADD-DPAIR}{102}
+\indexentry{ADD-DPAIRS-TO-NODE}{102}
+\indexentry{ADD-DPAIRS-TO-UTREE}{102}
+\indexentry{FIND-NESTING}{102}
+\indexentry{PRUNE}{102}
+\indexentry{RM-DPAIR}{102}
+\indexentry{SHOW-DPAIRSET}{102}
+\indexentry{UNIF-PROBLEM}{102}
+\indexentry{LEAVE}{103}
+\indexentry{BREADTH-FIRST-SEARCH}{103}
+\indexentry{CLOSE-TESTWIN}{103}
+\indexentry{CONTINUE}{103}
+\indexentry{EXHAUSTIVE-SEARCH}{103}
+\indexentry{FIND-BEST-MODE}{103}
+\indexentry{GO}{104}
+\indexentry{OPEN-TESTWIN}{104}
+\indexentry{PRESS-DOWN}{104}
+\indexentry{PRESS-DOWN-2}{104}
+\indexentry{PUSH-UP}{104}
+\indexentry{PUSH-UP-2}{104}
+\indexentry{SEARCH-ORDER}{104}
+\indexentry{ADD-FLAG}{105}
+\indexentry{ADD-FLAG*}{105}
+\indexentry{ADD-FUNCTION}{105}
+\indexentry{ADD-SUBJECTS}{105}
+\indexentry{NEW-SEARCHLIST}{105}
+\indexentry{QUICK-DEFINE}{105}
+\indexentry{REM-FLAG}{105}
+\indexentry{REM-FLAG*}{105}
+\indexentry{REVISE-DEFAULTS}{105}
+\indexentry{SCALE-DOWN}{106}
+\indexentry{SCALE-UP}{106}
+\indexentry{SEARCHLISTS}{106}
+\indexentry{SHOW-SEARCHLIST}{106}
+\indexentry{VARY-MODE}{106}
+\indexentry{DELETE}{106}
+\indexentry{FETCH}{106}
+\indexentry{INSERT}{106}
+\indexentry{LEAVE}{107}
+\indexentry{PELT}{107}
+\indexentry{PELT-REC}{108}
+\indexentry{PELTS}{108}
+\indexentry{PELTS-REC}{108}
+\indexentry{PSIZE}{108}
+\indexentry{SHOW-ASSIGNMENTS}{108}
+\indexentry{ASSIGN-VAR}{108}
+\indexentry{CHANGE-BASE-TYPE}{108}
+\indexentry{COND-PROBABILITY}{109}
+\indexentry{INTERPRET}{109}
+\indexentry{PROBABILITY}{109}
+\indexentry{REMOVE-ALL-ASSIGNMENTS}{109}
+\indexentry{SOLVE}{109}
+\indexentry{UNASSIGN-VAR}{109}
+\indexentry{LEAVE}{110}
+\indexentry{NOOP}{110}
+\indexentry{OK}{110}
+\indexentry{P}{110}
+\indexentry{PP}{110}
+\indexentry{PS}{110}
+\indexentry{PT}{110}
+\indexentry{CW}{110}
+\indexentry{DELWEAK}{110}
+\indexentry{DW}{110}
+\indexentry{DW*}{110}
+\indexentry{NAME}{111}
+\indexentry{RW}{111}
+\indexentry{SAVE}{111}
+\indexentry{O}{111}
+\indexentry{REM}{111}
+\indexentry{CJFORM}{111}
+\indexentry{DJFORM}{111}
+\indexentry{NUM-HPATHS}{111}
+\indexentry{NUM-VPATHS}{111}
+\indexentry{PJ}{111}
+\indexentry{PROP-CJFORM}{111}
+\indexentry{VP}{111}
+\indexentry{VPD}{111}
+\indexentry{VPF}{112}
+\indexentry{VPT}{112}
+\indexentry{0}{112}
+\indexentry{A}{112}
+\indexentry{D}{112}
+\indexentry{FB}{112}
+\indexentry{FI}{112}
+\indexentry{L}{112}
+\indexentry{R}{112}
+\indexentry{UNDO}{112}
+\indexentry{XTR}{112}
+\indexentry{\textasciicircum }{112}
+\indexentry{ASRB}{112}
+\indexentry{ASSL}{112}
+\indexentry{ASSR}{112}
+\indexentry{CMRG}{113}
+\indexentry{CMUT}{113}
+\indexentry{CNTOP}{113}
+\indexentry{DIST-CTR}{113}
+\indexentry{DIST-EXP}{113}
+\indexentry{DL}{113}
+\indexentry{DNEG}{113}
+\indexentry{DR}{113}
+\indexentry{MRG}{113}
+\indexentry{PMUT}{113}
+\indexentry{SUBEQ}{113}
+\indexentry{SUBIM}{113}
+\indexentry{ASRB*}{113}
+\indexentry{ASSL*}{114}
+\indexentry{ASSR*}{114}
+\indexentry{CMRG*}{114}
+\indexentry{CMUT*}{114}
+\indexentry{DIST-CTR*}{114}
+\indexentry{DIST-EXP*}{114}
+\indexentry{DNEG*}{114}
+\indexentry{MRG*}{114}
+\indexentry{PMUT*}{114}
+\indexentry{SUBEQ*}{114}
+\indexentry{SUBIM*}{114}
+\indexentry{MBED-AL}{114}
+\indexentry{MBED-AR}{115}
+\indexentry{MBED-E}{115}
+\indexentry{MBED-E1}{115}
+\indexentry{MBED-F}{115}
+\indexentry{MBED-IL}{115}
+\indexentry{MBED-IR}{115}
+\indexentry{MBED-L}{115}
+\indexentry{MBED-OL}{115}
+\indexentry{MBED-OR}{115}
+\indexentry{MBED-QL}{115}
+\indexentry{MBED-QR}{115}
+\indexentry{MBED=L}{115}
+\indexentry{MBED=R}{115}
+\indexentry{ARR}{115}
+\indexentry{ARR*}{115}
+\indexentry{ARR1}{116}
+\indexentry{ARR1*}{116}
+\indexentry{MAKE-RRULE}{116}
+\indexentry{UNARR}{116}
+\indexentry{UNARR*}{116}
+\indexentry{UNARR1}{116}
+\indexentry{UNARR1*}{116}
+\indexentry{AB}{116}
+\indexentry{IB}{116}
+\indexentry{PRIM-SUBST}{116}
+\indexentry{REW-EQUIV}{116}
+\indexentry{RP}{116}
+\indexentry{RPALL}{117}
+\indexentry{SUB}{117}
+\indexentry{SUBST}{117}
+\indexentry{SUBSTYP}{117}
+\indexentry{ABBR}{117}
+\indexentry{CONSTANTS}{117}
+\indexentry{EXPAND=}{117}
+\indexentry{EXPAND=*}{117}
+\indexentry{INST}{117}
+\indexentry{INST1}{117}
+\indexentry{INSTALL}{117}
+\indexentry{INSTALL-REC}{117}
+\indexentry{LIB-ABBR}{117}
+\indexentry{NEW-DEFS}{117}
+\indexentry{ABNORM}{117}
+\indexentry{ETAB}{117}
+\indexentry{ETAC}{117}
+\indexentry{ETAN}{117}
+\indexentry{ETAX}{117}
+\indexentry{LETA}{118}
+\indexentry{LEXP}{118}
+\indexentry{LNORM}{118}
+\indexentry{LNORM-BETA}{118}
+\indexentry{LNORM-ETA}{118}
+\indexentry{RED}{118}
+\indexentry{ULNORM}{118}
+\indexentry{NEG}{118}
+\indexentry{NNF}{118}
+\indexentry{PULL-NEG}{118}
+\indexentry{PUSH-NEG}{118}
+\indexentry{NAME-PRIM}{118}
+\indexentry{PRT-PRIM}{118}
+\indexentry{CLAUSE-FORM}{118}
+\indexentry{CNF}{118}
+\indexentry{HEAD}{119}
+\indexentry{HVARS}{119}
+\indexentry{MIN-SCOPE}{119}
+\indexentry{SUBFORMULAS}{119}
+\indexentry{SAT}{119}
+\indexentry{VALID}{119}
+\indexentry{SK1}{119}
+\indexentry{SK3}{119}
+\indexentry{DB}{119}
+\indexentry{EP}{119}
+\indexentry{OP}{119}
+\indexentry{DUPW}{119}
+\indexentry{EDILL}{119}
+\indexentry{ILL}{119}
+\indexentry{TP}{119}
+\indexentry{WFFP}{120}
+\indexentry{AND}{121}
+\indexentry{IMPLIES}{121}
+\indexentry{OR}{121}
+\indexentry{SUBSET}{121}
+\indexentry{DESCR@DESCR, {\bf  Theorem}}{122}
+\indexentry{EXT@EXT, {\bf  Theorem}}{122}
+\indexentry{EXT-LEIB@EXT-LEIB, {\bf  Theorem}}{122}
+\indexentry{REFL=@REFL=, {\bf  Theorem}}{122}
+\indexentry{SYM=@SYM=, {\bf  Theorem}}{122}
+\indexentry{T5302@T5302, {\bf  Theorem}}{122}
+\indexentry{T5310@T5310, {\bf  Theorem}}{122}
+\indexentry{T5310A@T5310A, {\bf  Theorem}}{122}
+\indexentry{X2106@X2106, {\bf  Theorem}}{122}
+\indexentry{X2107@X2107, {\bf  Theorem}}{122}
+\indexentry{X2108@X2108, {\bf  Theorem}}{123}
+\indexentry{X2109@X2109, {\bf  Theorem}}{123}
+\indexentry{X2110@X2110, {\bf  Theorem}}{123}
+\indexentry{X2111@X2111, {\bf  Theorem}}{123}
+\indexentry{X2112@X2112, {\bf  Theorem}}{123}
+\indexentry{X2113@X2113, {\bf  Theorem}}{123}
+\indexentry{X2114@X2114, {\bf  Theorem}}{123}
+\indexentry{X2115@X2115, {\bf  Theorem}}{123}
+\indexentry{X2116@X2116, {\bf  Theorem}}{123}
+\indexentry{X2117@X2117, {\bf  Theorem}}{123}
+\indexentry{X2118@X2118, {\bf  Theorem}}{123}
+\indexentry{X2119@X2119, {\bf  Theorem}}{123}
+\indexentry{X2120@X2120, {\bf  Theorem}}{123}
+\indexentry{X2121@X2121, {\bf  Theorem}}{123}
+\indexentry{X2122@X2122, {\bf  Theorem}}{123}
+\indexentry{X2123@X2123, {\bf  Theorem}}{123}
+\indexentry{X2124@X2124, {\bf  Theorem}}{123}
+\indexentry{X2125@X2125, {\bf  Theorem}}{124}
+\indexentry{X2126@X2126, {\bf  Theorem}}{124}
+\indexentry{X2127@X2127, {\bf  Theorem}}{124}
+\indexentry{X2128@X2128, {\bf  Theorem}}{124}
+\indexentry{X2129@X2129, {\bf  Theorem}}{124}
+\indexentry{X2130@X2130, {\bf  Theorem}}{124}
+\indexentry{X2131@X2131, {\bf  Theorem}}{124}
+\indexentry{X2132@X2132, {\bf  Theorem}}{124}
+\indexentry{X2133@X2133, {\bf  Theorem}}{124}
+\indexentry{X2134@X2134, {\bf  Theorem}}{124}
+\indexentry{X2135@X2135, {\bf  Theorem}}{124}
+\indexentry{X2136@X2136, {\bf  Theorem}}{124}
+\indexentry{X2137@X2137, {\bf  Theorem}}{124}
+\indexentry{X2138@X2138, {\bf  Theorem}}{124}
+\indexentry{X5200@X5200, {\bf  Theorem}}{124}
+\indexentry{X5201@X5201, {\bf  Theorem}}{124}
+\indexentry{X5202@X5202, {\bf  Theorem}}{125}
+\indexentry{X5203@X5203, {\bf  Theorem}}{125}
+\indexentry{X5204@X5204, {\bf  Theorem}}{125}
+\indexentry{X5205@X5205, {\bf  Theorem}}{125}
+\indexentry{X5206@X5206, {\bf  Theorem}}{125}
+\indexentry{X5207@X5207, {\bf  Theorem}}{125}
+\indexentry{X5208@X5208, {\bf  Theorem}}{125}
+\indexentry{X5209@X5209, {\bf  Theorem}}{125}
+\indexentry{X5210@X5210, {\bf  Theorem}}{125}
+\indexentry{X5211@X5211, {\bf  Theorem}}{125}
+\indexentry{X5212@X5212, {\bf  Theorem}}{125}
+\indexentry{X5303@X5303, {\bf  Theorem}}{125}
+\indexentry{X5304@X5304, {\bf  Theorem}}{125}
+\indexentry{X5305@X5305, {\bf  Theorem}}{125}
+\indexentry{X5308@X5308, {\bf  Theorem}}{125}
+\indexentry{X5309@X5309, {\bf  Theorem}}{125}
+\indexentry{X5310@X5310, {\bf  Theorem}}{125}
+\indexentry{X5500@X5500, {\bf  Theorem}}{125}
+\indexentry{X6004@X6004, {\bf  Theorem}}{126}
+\indexentry{X6101@X6101, {\bf  Theorem}}{126}
+\indexentry{X6104@X6104, {\bf  Theorem}}{126}
+\indexentry{X6105@X6105, {\bf  Theorem}}{126}
+\indexentry{X6106@X6106, {\bf  Theorem}}{126}
+\indexentry{X6201@X6201, {\bf  Theorem}}{126}
+\indexentry{X8030A@X8030A, {\bf  Theorem}}{126}
+\indexentry{<=}{127}
+\indexentry{COND}{127}
+\indexentry{EQP}{127}
+\indexentry{EQUIV}{127}
+\indexentry{FINITE}{127}
+\indexentry{MU}{127}
+\indexentry{NAT}{127}
+\indexentry{NC}{127}
+\indexentry{ONE}{127}
+\indexentry{RECURSION}{127}
+\indexentry{SIGMA1}{127}
+\indexentry{SUBSET}{127}
+\indexentry{SUCC}{127}
+\indexentry{UNITSET}{127}
+\indexentry{ZERO}{127}
+\indexentry{\% }{128}
+\indexentry{COMPLEMENT}{128}
+\indexentry{EQUIVS}{128}
+\indexentry{INTERSECT}{128}
+\indexentry{POWERSET}{128}
+\indexentry{SETEQUIV}{128}
+\indexentry{SETINTERSECT}{128}
+\indexentry{SETUNION}{128}
+\indexentry{UNION}{128}
+\indexentry{LAMBDA}{129}
+\indexentry{EXISTS}{129}
+\indexentry{EXISTS1}{129}
+\indexentry{EXISTSN}{129}
+\indexentry{FORALL}{129}
+\indexentry{FORALLN}{129}
+\indexentry{MU-BIND}{129}
+\indexentry{THAT}{129}
+\indexentry{AND}{130}
+\indexentry{FALSEHOOD}{130}
+\indexentry{IMPLIES}{130}
+\indexentry{NOT}{130}
+\indexentry{OR}{130}
+\indexentry{TRUTH}{130}
+\indexentry{=}{131}
+\indexentry{IOTA}{131}
+\indexentry{I}{132}
+\indexentry{O}{132}
+\indexentry{S}{133}
+\indexentry{LEAVE}{134}
+\indexentry{KEY}{134}
+\indexentry{LIBFILES}{134}
+\indexentry{LIBOBJECTS-IN-FILE}{134}
+\indexentry{LIST-OF-LIBOBJECTS}{134}
+\indexentry{SCRIBE-ALL-WFFS}{134}
+\indexentry{SCRIBELIBDIR}{135}
+\indexentry{SCRIBELIBFILE}{135}
+\indexentry{SEARCH}{135}
+\indexentry{SEARCH2}{135}
+\indexentry{SHOW}{135}
+\indexentry{SHOW*-WFF}{135}
+\indexentry{SHOW-ALL-WFFS}{135}
+\indexentry{SHOW-HELP}{135}
+\indexentry{SHOW-OBJECTS-IN-FILE}{136}
+\indexentry{SHOW-TIMING}{136}
+\indexentry{SHOW-WFF}{136}
+\indexentry{SHOW-WFF\& HELP}{136}
+\indexentry{SHOW-WFFS-IN-FILE}{136}
+\indexentry{TEX-ALL-WFFS}{136}
+\indexentry{TEXLIBDIR}{136}
+\indexentry{TEXLIBFILE}{136}
+\indexentry{DESTROY}{136}
+\indexentry{FETCH}{137}
+\indexentry{FIND-PROVABLE}{137}
+\indexentry{RESTORE-MASTERINDEX}{137}
+\indexentry{RETRIEVE-FILE}{137}
+\indexentry{COPY-LIBDIR}{137}
+\indexentry{COPY-LIBFILE}{137}
+\indexentry{CREATE-LIB-DIR}{137}
+\indexentry{CREATE-LIB-SUBDIR}{138}
+\indexentry{DELETE-LIB-DIR}{138}
+\indexentry{DELETE-LIBFILE}{138}
+\indexentry{MOVE-LIBFILE}{138}
+\indexentry{RENAME-LIBDIR}{138}
+\indexentry{RENAME-LIBFILE}{138}
+\indexentry{UPDATE-LIBDIR}{138}
+\indexentry{ADD-GOODMODES}{138}
+\indexentry{CHANGE-PROVABILITY}{139}
+\indexentry{CHECK-NEEDED-OBJECTS}{139}
+\indexentry{COPY-LIBOBJECT}{139}
+\indexentry{DELETE}{139}
+\indexentry{FIX-MODES}{139}
+\indexentry{IMPORT-NEEDED-OBJECTS}{139}
+\indexentry{INSERT}{139}
+\indexentry{INSERT-TPTP}{140}
+\indexentry{INSERT-TPTP*}{140}
+\indexentry{MOVE-LIBOBJECT}{140}
+\indexentry{REFORMAT}{140}
+\indexentry{REINDEX}{140}
+\indexentry{REMOVE-GOODMODES}{140}
+\indexentry{RENAME-OBJECT}{140}
+\indexentry{SORT}{140}
+\indexentry{SPRING-CLEAN}{140}
+\indexentry{ADD-KEYWORD}{141}
+\indexentry{CHANGE-KEYWORDS}{141}
+\indexentry{SHOW-KEYWORDS}{141}
+\indexentry{UPDATE-KEYWORDS}{141}
+\indexentry{ADD-BESTMODE}{141}
+\indexentry{DELETE-BESTMODE}{142}
+\indexentry{FIND-DUP-MODES}{142}
+\indexentry{MODIFY-BESTMODE}{142}
+\indexentry{SHOW-BESTMODE}{142}
+\indexentry{SHOW-BESTMODE-THMS}{142}
+\indexentry{SHOW-NEW-BESTMODES}{142}
+\indexentry{UPDATE-PROVABILITY}{142}
+\indexentry{CLASSIFY-CLASS}{142}
+\indexentry{CLASSIFY-ITEM}{142}
+\indexentry{CREATE-CLASS-SCHEME}{142}
+\indexentry{CREATE-LIBCLASS}{143}
+\indexentry{FETCH-DOWN}{143}
+\indexentry{FETCH-LIBCLASS}{143}
+\indexentry{FETCH-LIBCLASS*}{143}
+\indexentry{FETCH-UP}{143}
+\indexentry{GENERATE-CLASS-SCHEME}{144}
+\indexentry{GOTO-CLASS}{144}
+\indexentry{PCLASS}{144}
+\indexentry{PCLASS-SCHEME-TREE}{144}
+\indexentry{PCLASS-TREE}{144}
+\indexentry{PINTERSECT}{144}
+\indexentry{PINTERSECT*}{144}
+\indexentry{PSCHEMES}{145}
+\indexentry{ROOT-CLASS}{145}
+\indexentry{UNCLASSIFY-CLASS}{145}
+\indexentry{UNCLASSIFY-ITEM}{145}
+\indexentry{ABBR}{146}
+\indexentry{CLASS-SCHEME}{146}
+\indexentry{DPAIRSET}{146}
+\indexentry{GWFF}{146}
+\indexentry{LIB-CONST}{146}
+\indexentry{MODE}{146}
+\indexentry{MODE1}{146}
+\indexentry{MODES-GWFFS}{146}
+\indexentry{RRULE}{147}
+\indexentry{THEORY}{147}
+\indexentry{SLIST}{147}
+\indexentry{LIBDIR}{148}
+\indexentry{LEAVE}{149}
+\indexentry{FIND-GENERATED-CLASS}{149}
+\indexentry{GENERATE-CLASS-SCHEME}{149}
+\indexentry{IMPORT-CLASS}{149}
+\indexentry{LOCATE}{150}
+\indexentry{LS-ITEMS*}{150}
+\indexentry{PDOWN}{150}
+\indexentry{PINTERSECT}{150}
+\indexentry{PINTERSECT*}{150}
+\indexentry{PUP}{150}
+\indexentry{PWD}{150}
+\indexentry{SHOW}{150}
+\indexentry{SHOW-ALL-WFFS}{150}
+\indexentry{SHOW-HELP}{150}
+\indexentry{SHOW-WFF}{150}
+\indexentry{SHOW-WFF\& HELP}{150}
+\indexentry{DESTROY}{151}
+\indexentry{FETCH}{151}
+\indexentry{CD}{151}
+\indexentry{CLASSIFY-ITEM}{151}
+\indexentry{COPY-CLASS-SCHEME}{151}
+\indexentry{CP}{151}
+\indexentry{LN}{151}
+\indexentry{LS}{151}
+\indexentry{MKDIR}{151}
+\indexentry{MV}{152}
+\indexentry{RENAME-CLASS}{152}
+\indexentry{RM}{152}
+\indexentry{LEAVE}{153}
+\indexentry{CHANGED-FLAGS}{153}
+\indexentry{DESCRIBE}{153}
+\indexentry{DESCRIBE*}{153}
+\indexentry{KEY}{153}
+\indexentry{LIST}{153}
+\indexentry{SAVE-FLAG-RELEVANCY-INFO}{153}
+\indexentry{SET}{153}
+\indexentry{SETFLAG}{153}
+\indexentry{SETFLAGS1}{153}
+\indexentry{SETFLAGS2}{154}
+\indexentry{SHOW-RELEVANCE-PATHS}{154}
+\indexentry{SUBJECTS}{154}
+\indexentry{UPDATE}{154}
+\indexentry{UPDATE-RELEVANT}{154}
+\indexentry{ADD-FLAG-TO-MODE}{154}
+\indexentry{COMPARE-MODES}{154}
+\indexentry{COPY-MODE}{154}
+\indexentry{MODE}{154}
+\indexentry{REMOVE-FLAG-FROM-MODE}{154}
+\indexentry{UNIF-DEPTHS}{155}
+\indexentry{UNIF-NODEPTHS}{155}
+\indexentry{FIND-MODE}{155}
+\indexentry{EDITOR}{156}
+\indexentry{TEST-TOP}{156}
+\indexentry{OTL-VARS}{156}
+\indexentry{OUTLINE}{157}
+\indexentry{PRINTING}{157}
+\indexentry{PRINTING-TEX}{158}
+\indexentry{WINDOW-PROPS}{158}
+\indexentry{INTERNAL-NAMES}{159}
+\indexentry{SAVING-WORK}{159}
+\indexentry{ETREES}{159}
+\indexentry{MTREE}{160}
+\indexentry{MTREE-TOP}{160}
+\indexentry{IMPORTANT}{160}
+\indexentry{MATING-SEARCH}{160}
+\indexentry{TRANSMIT}{161}
+\indexentry{MS88}{163}
+\indexentry{MS89}{163}
+\indexentry{MS90-3}{164}
+\indexentry{MS90-9}{165}
+\indexentry{MS91-6}{165}
+\indexentry{MS91-7}{166}
+\indexentry{MS92-9}{167}
+\indexentry{MS93-1}{168}
+\indexentry{MS98-1}{169}
+\indexentry{MS98-MINOR}{169}
+\indexentry{EXT-SEARCH}{169}
+\indexentry{MS03-7}{171}
+\indexentry{MS04-2}{171}
+\indexentry{ETR-NAT}{173}
+\indexentry{UNIFICATION}{173}
+\indexentry{TACTICS}{173}
+\indexentry{SUGGESTS}{174}
+\indexentry{JFORMS}{174}
+\indexentry{SEMANTIC-BOUNDS}{174}
+\indexentry{WFF-PRIMS}{174}
+\indexentry{PARSING}{175}
+\indexentry{PRIMSUBS}{175}
+\indexentry{EVENTS}{175}
+\indexentry{GR-FILENAMES}{176}
+\indexentry{GR-MISC}{176}
+\indexentry{MAINTAIN}{176}
+\indexentry{SYSTEM}{177}
+\indexentry{RULES-MOD}{177}
+\indexentry{LIBRARY}{177}
+\indexentry{EXT-MATE-RECOMPUTE-JFORMS@EXT-MATE-RECOMPUTE-JFORMS, {\bf Flag}}{178}
+\indexentry{MT-DUPS-PER-QUANT@MT-DUPS-PER-QUANT, {\bf Flag}}{178}
+\indexentry{PROOFW-ACTIVE@PROOFW-ACTIVE, {\bf Flag}}{178}
+\indexentry{PROOFW-ACTIVE+NOS@PROOFW-ACTIVE+NOS, {\bf Flag}}{178}
+\indexentry{PROOFW-ACTIVE+NOS-HEIGHT@PROOFW-ACTIVE+NOS-HEIGHT, {\bf Flag}}{179}
+\indexentry{PROOFW-ACTIVE+NOS-WIDTH@PROOFW-ACTIVE+NOS-WIDTH, {\bf Flag}}{179}
+\indexentry{PROOFW-ACTIVE-HEIGHT@PROOFW-ACTIVE-HEIGHT, {\bf Flag}}{179}
+\indexentry{PROOFW-ACTIVE-WIDTH@PROOFW-ACTIVE-WIDTH, {\bf Flag}}{179}
+\indexentry{PROOFW-ALL@PROOFW-ALL, {\bf Flag}}{179}
+\indexentry{PROOFW-ALL-HEIGHT@PROOFW-ALL-HEIGHT, {\bf Flag}}{179}
+\indexentry{PROOFW-ALL-WIDTH@PROOFW-ALL-WIDTH, {\bf Flag}}{179}
+\indexentry{UNIXLIB-SHOWPATH@UNIXLIB-SHOWPATH, {\bf Flag}}{180}
+\indexentry{STYLE@STYLE, {\bf Flag}}{180}
+\indexentry{ALPHA-LOWER-FLAG@ALPHA-LOWER-FLAG, {\bf Flag}}{180}
+\indexentry{LAST-MODE-NAME@LAST-MODE-NAME, {\bf Flag}}{180}
+\indexentry{SUPPRESS-IRRELEVANCE-WARNINGS@SUPPRESS-IRRELEVANCE-WARNINGS, {\bf Flag}}{180}
+\indexentry{SUPPRESS-FLAGS@SUPPRESS-FLAGS, {\bf Flag}}{181}
+\indexentry{SUPPRESS-FLAGS-LIST@SUPPRESS-FLAGS-LIST, {\bf Flag}}{181}
+\indexentry{SHOW-ALL-PACKAGES@SHOW-ALL-PACKAGES, {\bf Flag}}{181}
+\indexentry{OMDOC-AUT-CREATOR@OMDOC-AUT-CREATOR, {\bf Flag}}{181}
+\indexentry{OMDOC-CATALOGUE@OMDOC-CATALOGUE, {\bf Flag}}{181}
+\indexentry{OMDOC-RIGHTS@OMDOC-RIGHTS, {\bf Flag}}{181}
+\indexentry{OMDOC-SOURCE@OMDOC-SOURCE, {\bf Flag}}{182}
+\indexentry{OMDOC-TRC-CREATOR@OMDOC-TRC-CREATOR, {\bf Flag}}{182}
+\indexentry{OMDOC-TYPE@OMDOC-TYPE, {\bf Flag}}{182}
+\indexentry{COMPLETION-OPTIONS@COMPLETION-OPTIONS, {\bf Flag}}{182}
+\indexentry{HISTORY-SIZE@HISTORY-SIZE, {\bf Flag}}{182}
+\indexentry{ASSERT-RRULES@ASSERT-RRULES, {\bf Flag}}{183}
+\indexentry{AUTO-GENERATE-HYPS@AUTO-GENERATE-HYPS, {\bf Flag}}{183}
+\indexentry{CLEANUP-RULEC@CLEANUP-RULEC, {\bf Flag}}{183}
+\indexentry{CLEANUP-SAME@CLEANUP-SAME, {\bf Flag}}{183}
+\indexentry{DEFAULT-WFFEQ@DEFAULT-WFFEQ, {\bf Flag}}{183}
+\indexentry{PRINT-DOTS@PRINT-DOTS, {\bf Flag}}{183}
+\indexentry{PRINTLINEFLAG@PRINTLINEFLAG, {\bf Flag}}{183}
+\indexentry{SHORT-HELP@SHORT-HELP, {\bf Flag}}{183}
+\indexentry{PRINT-COMBINED-EGENS@PRINT-COMBINED-EGENS, {\bf Flag}}{184}
+\indexentry{PRINT-COMBINED-UGENS@PRINT-COMBINED-UGENS, {\bf Flag}}{184}
+\indexentry{PRINT-COMBINED-UIS@PRINT-COMBINED-UIS, {\bf Flag}}{184}
+\indexentry{PRINT-UNTIL-UI-OR-EGEN@PRINT-UNTIL-UI-OR-EGEN, {\bf Flag}}{184}
+\indexentry{ALLSCOPEFLAG@ALLSCOPEFLAG, {\bf Flag}}{184}
+\indexentry{ATOMVALFLAG@ATOMVALFLAG, {\bf Flag}}{184}
+\indexentry{BLANK-LINES-INSERTED@BLANK-LINES-INSERTED, {\bf Flag}}{184}
+\indexentry{CHARSIZE@CHARSIZE, {\bf Flag}}{185}
+\indexentry{DISPLAYWFF@DISPLAYWFF, {\bf Flag}}{185}
+\indexentry{ELIM-DEFNS@ELIM-DEFNS, {\bf Flag}}{185}
+\indexentry{FILLINEFLAG@FILLINEFLAG, {\bf Flag}}{185}
+\indexentry{FIRST-ORDER-PRINT-MODE@FIRST-ORDER-PRINT-MODE, {\bf Flag}}{185}
+\indexentry{FLUSHLEFTFLAG@FLUSHLEFTFLAG, {\bf Flag}}{185}
+\indexentry{LEFTMARGIN@LEFTMARGIN, {\bf Flag}}{185}
+\indexentry{LOCALLEFTFLAG@LOCALLEFTFLAG, {\bf Flag}}{185}
+\indexentry{PPWFFLAG@PPWFFLAG, {\bf Flag}}{186}
+\indexentry{PRINTDEPTH@PRINTDEPTH, {\bf Flag}}{186}
+\indexentry{PRINTTYPES@PRINTTYPES, {\bf Flag}}{186}
+\indexentry{PRINTTYPES-ALL@PRINTTYPES-ALL, {\bf Flag}}{186}
+\indexentry{RETAIN-INITIAL-TYPE@RETAIN-INITIAL-TYPE, {\bf Flag}}{186}
+\indexentry{RIGHTMARGIN@RIGHTMARGIN, {\bf Flag}}{186}
+\indexentry{SCOPE@SCOPE, {\bf Flag}}{186}
+\indexentry{SLIDES-PREAMBLE@SLIDES-PREAMBLE, {\bf Flag}}{186}
+\indexentry{USE-DOT@USE-DOT, {\bf Flag}}{187}
+\indexentry{USE-INTERNAL-PRINT-MODE@USE-INTERNAL-PRINT-MODE, {\bf Flag}}{187}
+\indexentry{INFIX-NOTATION@INFIX-NOTATION, {\bf Flag}}{187}
+\indexentry{IN-TEX-MATH-MODE@IN-TEX-MATH-MODE, {\bf Flag}}{187}
+\indexentry{LATEX-EMULATION@LATEX-EMULATION, {\bf Flag}}{187}
+\indexentry{PAGELENGTH@PAGELENGTH, {\bf Flag}}{187}
+\indexentry{PAGEWIDTH@PAGEWIDTH, {\bf Flag}}{188}
+\indexentry{TEX-BREAK-BEFORE-SYMBOLS@TEX-BREAK-BEFORE-SYMBOLS, {\bf Flag}}{188}
+\indexentry{TEX-MIMIC-SCRIBE@TEX-MIMIC-SCRIBE, {\bf Flag}}{188}
+\indexentry{USE-WINDOW-STYLE@USE-WINDOW-STYLE, {\bf Flag}}{188}
+\indexentry{WINDOW-STYLE@WINDOW-STYLE, {\bf Flag}}{188}
+\indexentry{XTERM-ANSI-BOLD@XTERM-ANSI-BOLD, {\bf Flag}}{188}
+\indexentry{PRINT-WEAK@PRINT-WEAK, {\bf Flag}}{189}
+\indexentry{MAKE-WFFOPS-LABELS@MAKE-WFFOPS-LABELS, {\bf Flag}}{189}
+\indexentry{META-LABEL-NAME@META-LABEL-NAME, {\bf Flag}}{189}
+\indexentry{PRINT-META@PRINT-META, {\bf Flag}}{189}
+\indexentry{SAVE-INTERVAL@SAVE-INTERVAL, {\bf Flag}}{189}
+\indexentry{SAVE-WORK-ON-START-UP@SAVE-WORK-ON-START-UP, {\bf Flag}}{189}
+\indexentry{SAVE-WORK-P@SAVE-WORK-P, {\bf Flag}}{190}
+\indexentry{PRINTEDTFILE@PRINTEDTFILE, {\bf Flag}}{190}
+\indexentry{PRINTEDTFLAG@PRINTEDTFLAG, {\bf Flag}}{190}
+\indexentry{PRINTEDTFLAG-SLIDES@PRINTEDTFLAG-SLIDES, {\bf Flag}}{190}
+\indexentry{PRINTEDTOPS@PRINTEDTOPS, {\bf Flag}}{190}
+\indexentry{PRINTMATEFILE@PRINTMATEFILE, {\bf Flag}}{190}
+\indexentry{PRINTMATEFLAG@PRINTMATEFLAG, {\bf Flag}}{190}
+\indexentry{PRINTMATEFLAG-SLIDES@PRINTMATEFLAG-SLIDES, {\bf Flag}}{191}
+\indexentry{PRINTMATEOPS@PRINTMATEOPS, {\bf Flag}}{191}
+\indexentry{LATEX-POSTAMBLE@LATEX-POSTAMBLE, {\bf Flag}}{191}
+\indexentry{LATEX-PREAMBLE@LATEX-PREAMBLE, {\bf Flag}}{191}
+\indexentry{SCRIBE-LINE-WIDTH@SCRIBE-LINE-WIDTH, {\bf Flag}}{191}
+\indexentry{SCRIBE-POSTAMBLE@SCRIBE-POSTAMBLE, {\bf Flag}}{192}
+\indexentry{SCRIBE-PREAMBLE@SCRIBE-PREAMBLE, {\bf Flag}}{192}
+\indexentry{TEX-1-POSTAMBLE@TEX-1-POSTAMBLE, {\bf Flag}}{192}
+\indexentry{TEX-1-PREAMBLE@TEX-1-PREAMBLE, {\bf Flag}}{192}
+\indexentry{TEX-LINE-WIDTH@TEX-LINE-WIDTH, {\bf Flag}}{192}
+\indexentry{TEX-POSTAMBLE@TEX-POSTAMBLE, {\bf Flag}}{192}
+\indexentry{TEX-PREAMBLE@TEX-PREAMBLE, {\bf Flag}}{192}
+\indexentry{TPSTEX@TPSTEX, {\bf Flag}}{192}
+\indexentry{VPDTEX@VPDTEX, {\bf Flag}}{193}
+\indexentry{PRINT-COMMENTS@PRINT-COMMENTS, {\bf Flag}}{193}
+\indexentry{SLIDES-TURNSTILE-INDENT@SLIDES-TURNSTILE-INDENT, {\bf Flag}}{193}
+\indexentry{SLIDES-TURNSTYLE-INDENT@SLIDES-TURNSTYLE-INDENT, {\bf Flag}}{193}
+\indexentry{SUPPORT-NUMBERS@SUPPORT-NUMBERS, {\bf Flag}}{193}
+\indexentry{TURNSTILE-INDENT@TURNSTILE-INDENT, {\bf Flag}}{193}
+\indexentry{TURNSTILE-INDENT-AUTO@TURNSTILE-INDENT-AUTO, {\bf Flag}}{194}
+\indexentry{TURNSTYLE-INDENT@TURNSTYLE-INDENT, {\bf Flag}}{194}
+\indexentry{TURNSTYLE-INDENT-AUTO@TURNSTYLE-INDENT-AUTO, {\bf Flag}}{194}
+\indexentry{ADD-TRUTH@ADD-TRUTH, {\bf Flag}}{194}
+\indexentry{DUPLICATION-STRATEGY@DUPLICATION-STRATEGY, {\bf Flag}}{195}
+\indexentry{DUPLICATION-STRATEGY-PFD@DUPLICATION-STRATEGY-PFD, {\bf Flag}}{195}
+\indexentry{ECONJ-NAME@ECONJ-NAME, {\bf Flag}}{195}
+\indexentry{EDISJ-NAME@EDISJ-NAME, {\bf Flag}}{195}
+\indexentry{EMPTY-DUP-INFO-NAME@EMPTY-DUP-INFO-NAME, {\bf Flag}}{195}
+\indexentry{EPROOF-NAME@EPROOF-NAME, {\bf Flag}}{195}
+\indexentry{EXPANSION-NAME@EXPANSION-NAME, {\bf Flag}}{195}
+\indexentry{FALSE-NAME@FALSE-NAME, {\bf Flag}}{196}
+\indexentry{IMP-NAME@IMP-NAME, {\bf Flag}}{196}
+\indexentry{INITIAL-BKTRACK-LIMIT@INITIAL-BKTRACK-LIMIT, {\bf Flag}}{196}
+\indexentry{LEAF-NAME@LEAF-NAME, {\bf Flag}}{196}
+\indexentry{MATING-NAME@MATING-NAME, {\bf Flag}}{196}
+\indexentry{MIN-QUANTIFIER-SCOPE@MIN-QUANTIFIER-SCOPE, {\bf Flag}}{196}
+\indexentry{NEG-NAME@NEG-NAME, {\bf Flag}}{196}
+\indexentry{PRINT-DEEP@PRINT-DEEP, {\bf Flag}}{196}
+\indexentry{PRINT-NODENAMES@PRINT-NODENAMES, {\bf Flag}}{197}
+\indexentry{PSEQ-USE-LABELS@PSEQ-USE-LABELS, {\bf Flag}}{197}
+\indexentry{REWRITE-DEFNS@REWRITE-DEFNS, {\bf Flag}}{197}
+\indexentry{REWRITE-NAME@REWRITE-NAME, {\bf Flag}}{197}
+\indexentry{SELECTION-NAME@SELECTION-NAME, {\bf Flag}}{197}
+\indexentry{SHOW-SKOLEM@SHOW-SKOLEM, {\bf Flag}}{198}
+\indexentry{SKOLEM-DEFAULT@SKOLEM-DEFAULT, {\bf Flag}}{198}
+\indexentry{SKOLEM-SELECTION-NAME@SKOLEM-SELECTION-NAME, {\bf Flag}}{198}
+\indexentry{TRUE-NAME@TRUE-NAME, {\bf Flag}}{198}
+\indexentry{TRUTHVALUES-HACK@TRUTHVALUES-HACK, {\bf Flag}}{198}
+\indexentry{DEFAULT-OB@DEFAULT-OB, {\bf Flag}}{198}
+\indexentry{MT-DEFAULT-OB-MATE@MT-DEFAULT-OB-MATE, {\bf Flag}}{199}
+\indexentry{MT-SUBSUMPTION-CHECK@MT-SUBSUMPTION-CHECK, {\bf Flag}}{199}
+\indexentry{MT94-12-TRIGGER@MT94-12-TRIGGER, {\bf Flag}}{199}
+\indexentry{MTREE-FILTER-DUPS@MTREE-FILTER-DUPS, {\bf Flag}}{200}
+\indexentry{MTREE-STOP-IMMEDIATELY@MTREE-STOP-IMMEDIATELY, {\bf Flag}}{200}
+\indexentry{TAG-CONN-FN@TAG-CONN-FN, {\bf Flag}}{200}
+\indexentry{TAG-MATING-FN@TAG-MATING-FN, {\bf Flag}}{200}
+\indexentry{ASSERT-LEMMAS@ASSERT-LEMMAS, {\bf Flag}}{200}
+\indexentry{DEFAULT-EXPAND@DEFAULT-EXPAND, {\bf Flag}}{201}
+\indexentry{DEFAULT-MATE@DEFAULT-MATE, {\bf Flag}}{201}
+\indexentry{DEFAULT-MS@DEFAULT-MS, {\bf Flag}}{202}
+\indexentry{DIY2-INIT-TIME-LIMIT@DIY2-INIT-TIME-LIMIT, {\bf Flag}}{202}
+\indexentry{DIY2-NUM-ITERATIONS@DIY2-NUM-ITERATIONS, {\bf Flag}}{202}
+\indexentry{DIY2-TIME-INCREASE-FACTOR@DIY2-TIME-INCREASE-FACTOR, {\bf Flag}}{202}
+\indexentry{INTERRUPT-ENABLE@INTERRUPT-ENABLE, {\bf Flag}}{203}
+\indexentry{MATING-VERBOSE@MATING-VERBOSE, {\bf Flag}}{203}
+\indexentry{MONITORFLAG@MONITORFLAG, {\bf Flag}}{203}
+\indexentry{NEW-MATING-AFTER-DUP@NEW-MATING-AFTER-DUP, {\bf Flag}}{203}
+\indexentry{QUERY-USER@QUERY-USER, {\bf Flag}}{203}
+\indexentry{REC-MS-FILE@REC-MS-FILE, {\bf Flag}}{204}
+\indexentry{REC-MS-FILENAME@REC-MS-FILENAME, {\bf Flag}}{204}
+\indexentry{USE-DIY@USE-DIY, {\bf Flag}}{204}
+\indexentry{USE-EXT-LEMMAS@USE-EXT-LEMMAS, {\bf Flag}}{204}
+\indexentry{USE-FAST-PROP-SEARCH@USE-FAST-PROP-SEARCH, {\bf Flag}}{204}
+\indexentry{ADDED-CONN-ENABLED@ADDED-CONN-ENABLED, {\bf Flag}}{205}
+\indexentry{CONSIDERED-CONN-ENABLED@CONSIDERED-CONN-ENABLED, {\bf Flag}}{205}
+\indexentry{DUP-ALLOWED@DUP-ALLOWED, {\bf Flag}}{205}
+\indexentry{DUPE-ENABLED@DUPE-ENABLED, {\bf Flag}}{205}
+\indexentry{DUPE-VAR-ENABLED@DUPE-VAR-ENABLED, {\bf Flag}}{205}
+\indexentry{EXCLUDING-GC-TIME@EXCLUDING-GC-TIME, {\bf Flag}}{205}
+\indexentry{FIRST-ORDER-MODE-MS@FIRST-ORDER-MODE-MS, {\bf Flag}}{205}
+\indexentry{INCOMP-MATING-ENABLED@INCOMP-MATING-ENABLED, {\bf Flag}}{206}
+\indexentry{MATE-FFPAIR@MATE-FFPAIR, {\bf Flag}}{206}
+\indexentry{MATE-SUBSUMED-TEST-ENABLED@MATE-SUBSUMED-TEST-ENABLED, {\bf Flag}}{206}
+\indexentry{MATE-SUBSUMED-TRUE-ENABLED@MATE-SUBSUMED-TRUE-ENABLED, {\bf Flag}}{206}
+\indexentry{MATING-CHANGED-ENABLED@MATING-CHANGED-ENABLED, {\bf Flag}}{206}
+\indexentry{MS-INIT-PATH@MS-INIT-PATH, {\bf Flag}}{206}
+\indexentry{MS-SPLIT@MS-SPLIT, {\bf Flag}}{206}
+\indexentry{OCCURS-CHECK@OCCURS-CHECK, {\bf Flag}}{206}
+\indexentry{PRIM-QUANTIFIER@PRIM-QUANTIFIER, {\bf Flag}}{207}
+\indexentry{PRIMSUB-ENABLED@PRIMSUB-ENABLED, {\bf Flag}}{207}
+\indexentry{PROP-STRATEGY@PROP-STRATEGY, {\bf Flag}}{207}
+\indexentry{REMOVED-CONN-ENABLED@REMOVED-CONN-ENABLED, {\bf Flag}}{207}
+\indexentry{SEARCH-COMPLETE-PATHS@SEARCH-COMPLETE-PATHS, {\bf Flag}}{207}
+\indexentry{START-TIME-ENABLED@START-TIME-ENABLED, {\bf Flag}}{207}
+\indexentry{STOP-TIME-ENABLED@STOP-TIME-ENABLED, {\bf Flag}}{207}
+\indexentry{TIMING-NAMED@TIMING-NAMED, {\bf Flag}}{208}
+\indexentry{UNIF-SUBSUMED-TEST-ENABLED@UNIF-SUBSUMED-TEST-ENABLED, {\bf Flag}}{208}
+\indexentry{UNIF-SUBSUMED-TRUE-ENABLED@UNIF-SUBSUMED-TRUE-ENABLED, {\bf Flag}}{208}
+\indexentry{MAX-SEARCH-LIMIT@MAX-SEARCH-LIMIT, {\bf Flag}}{208}
+\indexentry{RANK-EPROOF-FN@RANK-EPROOF-FN, {\bf Flag}}{208}
+\indexentry{SEARCH-TIME-LIMIT@SEARCH-TIME-LIMIT, {\bf Flag}}{208}
+\indexentry{MAX-MATES@MAX-MATES, {\bf Flag}}{209}
+\indexentry{MIN-QUANT-ETREE@MIN-QUANT-ETREE, {\bf Flag}}{209}
+\indexentry{MS90-3-DUP-STRATEGY@MS90-3-DUP-STRATEGY, {\bf Flag}}{209}
+\indexentry{NUM-FRPAIRS@NUM-FRPAIRS, {\bf Flag}}{209}
+\indexentry{PRINT-MATING-COUNTER@PRINT-MATING-COUNTER, {\bf Flag}}{210}
+\indexentry{SHOW-TIME@SHOW-TIME, {\bf Flag}}{210}
+\indexentry{MS91-INTERLEAVE@MS91-INTERLEAVE, {\bf Flag}}{210}
+\indexentry{MS91-PREFER-SMALLER@MS91-PREFER-SMALLER, {\bf Flag}}{210}
+\indexentry{MS91-TIME-BY-VPATHS@MS91-TIME-BY-VPATHS, {\bf Flag}}{211}
+\indexentry{MS91-WEIGHT-LIMIT-RANGE@MS91-WEIGHT-LIMIT-RANGE, {\bf Flag}}{211}
+\indexentry{NEW-OPTION-SET-LIMIT@NEW-OPTION-SET-LIMIT, {\bf Flag}}{211}
+\indexentry{OPTIONS-GENERATE-ARG@OPTIONS-GENERATE-ARG, {\bf Flag}}{211}
+\indexentry{OPTIONS-GENERATE-FN@OPTIONS-GENERATE-FN, {\bf Flag}}{211}
+\indexentry{OPTIONS-GENERATE-UPDATE@OPTIONS-GENERATE-UPDATE, {\bf Flag}}{212}
+\indexentry{OPTIONS-VERBOSE@OPTIONS-VERBOSE, {\bf Flag}}{212}
+\indexentry{PENALTY-FOR-EACH-PRIMSUB@PENALTY-FOR-EACH-PRIMSUB, {\bf Flag}}{212}
+\indexentry{PENALTY-FOR-MULTIPLE-PRIMSUBS@PENALTY-FOR-MULTIPLE-PRIMSUBS, {\bf Flag}}{212}
+\indexentry{PENALTY-FOR-MULTIPLE-SUBS@PENALTY-FOR-MULTIPLE-SUBS, {\bf Flag}}{212}
+\indexentry{PENALTY-FOR-ORDINARY-DUP@PENALTY-FOR-ORDINARY-DUP, {\bf Flag}}{213}
+\indexentry{RECONSIDER-FN@RECONSIDER-FN, {\bf Flag}}{213}
+\indexentry{WEIGHT-A-COEFFICIENT@WEIGHT-A-COEFFICIENT, {\bf Flag}}{213}
+\indexentry{WEIGHT-A-FN@WEIGHT-A-FN, {\bf Flag}}{213}
+\indexentry{WEIGHT-B-COEFFICIENT@WEIGHT-B-COEFFICIENT, {\bf Flag}}{213}
+\indexentry{WEIGHT-B-FN@WEIGHT-B-FN, {\bf Flag}}{214}
+\indexentry{WEIGHT-C-COEFFICIENT@WEIGHT-C-COEFFICIENT, {\bf Flag}}{214}
+\indexentry{WEIGHT-C-FN@WEIGHT-C-FN, {\bf Flag}}{214}
+\indexentry{BREAK-AT-QUANTIFIERS@BREAK-AT-QUANTIFIERS, {\bf Flag}}{214}
+\indexentry{FF-DELAY@FF-DELAY, {\bf Flag}}{215}
+\indexentry{HPATH-THRESHOLD@HPATH-THRESHOLD, {\bf Flag}}{215}
+\indexentry{MAXIMIZE-FIRST@MAXIMIZE-FIRST, {\bf Flag}}{215}
+\indexentry{MEASUREMENTS@MEASUREMENTS, {\bf Flag}}{215}
+\indexentry{MS98-BASE-PRIM@MS98-BASE-PRIM, {\bf Flag}}{215}
+\indexentry{MS98-DUP-BELOW-PRIMSUBS@MS98-DUP-BELOW-PRIMSUBS, {\bf Flag}}{215}
+\indexentry{MS98-DUP-PRIMSUBS@MS98-DUP-PRIMSUBS, {\bf Flag}}{216}
+\indexentry{MS98-EXTERNAL-REWRITES@MS98-EXTERNAL-REWRITES, {\bf Flag}}{216}
+\indexentry{MS98-FIRST-FRAGMENT@MS98-FIRST-FRAGMENT, {\bf Flag}}{216}
+\indexentry{MS98-FORCE-H-O@MS98-FORCE-H-O, {\bf Flag}}{216}
+\indexentry{MS98-FRAGMENT-ORDER@MS98-FRAGMENT-ORDER, {\bf Flag}}{216}
+\indexentry{MS98-INIT@MS98-INIT, {\bf Flag}}{217}
+\indexentry{MS98-LOW-MEMORY@MS98-LOW-MEMORY, {\bf Flag}}{217}
+\indexentry{MS98-MAX-COMPONENTS@MS98-MAX-COMPONENTS, {\bf Flag}}{217}
+\indexentry{MS98-MAX-PRIMS@MS98-MAX-PRIMS, {\bf Flag}}{217}
+\indexentry{MS98-MEASURE@MS98-MEASURE, {\bf Flag}}{217}
+\indexentry{MS98-MERGE-DAGS@MS98-MERGE-DAGS, {\bf Flag}}{218}
+\indexentry{MS98-MINIMALITY-CHECK@MS98-MINIMALITY-CHECK, {\bf Flag}}{218}
+\indexentry{MS98-NUM-OF-DUPS@MS98-NUM-OF-DUPS, {\bf Flag}}{218}
+\indexentry{MS98-POLLUTE-GLOBAL-REWRITES@MS98-POLLUTE-GLOBAL-REWRITES, {\bf Flag}}{218}
+\indexentry{MS98-PRIMSUB-COUNT@MS98-PRIMSUB-COUNT, {\bf Flag}}{218}
+\indexentry{MS98-REW-PRIMSUBS@MS98-REW-PRIMSUBS, {\bf Flag}}{218}
+\indexentry{MS98-REWRITE-DEPTH@MS98-REWRITE-DEPTH, {\bf Flag}}{219}
+\indexentry{MS98-REWRITE-MODEL@MS98-REWRITE-MODEL, {\bf Flag}}{219}
+\indexentry{MS98-REWRITE-PRUNE@MS98-REWRITE-PRUNE, {\bf Flag}}{219}
+\indexentry{MS98-REWRITE-SIZE@MS98-REWRITE-SIZE, {\bf Flag}}{219}
+\indexentry{MS98-REWRITE-UNIF@MS98-REWRITE-UNIF, {\bf Flag}}{219}
+\indexentry{MS98-REWRITES@MS98-REWRITES, {\bf Flag}}{219}
+\indexentry{MS98-TRACE@MS98-TRACE, {\bf Flag}}{219}
+\indexentry{MS98-UNIF-HACK@MS98-UNIF-HACK, {\bf Flag}}{220}
+\indexentry{MS98-UNIF-HACK2@MS98-UNIF-HACK2, {\bf Flag}}{220}
+\indexentry{MS98-USE-COLORS@MS98-USE-COLORS, {\bf Flag}}{220}
+\indexentry{MS98-VALID-PAIR@MS98-VALID-PAIR, {\bf Flag}}{220}
+\indexentry{MS98-VARIABLE-ORDER@MS98-VARIABLE-ORDER, {\bf Flag}}{220}
+\indexentry{MS98-VERBOSE@MS98-VERBOSE, {\bf Flag}}{221}
+\indexentry{EXT-SEARCH-LIMIT@EXT-SEARCH-LIMIT, {\bf Flag}}{221}
+\indexentry{MS03-DUP-METHOD@MS03-DUP-METHOD, {\bf Flag}}{221}
+\indexentry{MS03-QUICK-EUNIFICATION-LIMIT@MS03-QUICK-EUNIFICATION-LIMIT, {\bf Flag}}{222}
+\indexentry{MS03-SOLVE-RIGID-PARTS@MS03-SOLVE-RIGID-PARTS, {\bf Flag}}{222}
+\indexentry{MS03-SOLVE-RIGID-PARTS-ALLOW-RECONNECTS@MS03-SOLVE-RIGID-PARTS-ALLOW-RECONNECTS, {\bf Flag}}{222}
+\indexentry{MS03-USE-JFORMS@MS03-USE-JFORMS, {\bf Flag}}{222}
+\indexentry{MS03-USE-SET-CONSTRAINTS@MS03-USE-SET-CONSTRAINTS, {\bf Flag}}{222}
+\indexentry{MS03-VERBOSE@MS03-VERBOSE, {\bf Flag}}{222}
+\indexentry{MS03-WEIGHT-BANNED-SELS@MS03-WEIGHT-BANNED-SELS, {\bf Flag}}{223}
+\indexentry{MS03-WEIGHT-CHANGE-DUPS@MS03-WEIGHT-CHANGE-DUPS, {\bf Flag}}{223}
+\indexentry{MS03-WEIGHT-DISJ-EUNIF@MS03-WEIGHT-DISJ-EUNIF, {\bf Flag}}{223}
+\indexentry{MS03-WEIGHT-DISJ-MATE@MS03-WEIGHT-DISJ-MATE, {\bf Flag}}{223}
+\indexentry{MS03-WEIGHT-DISJ-UNIF@MS03-WEIGHT-DISJ-UNIF, {\bf Flag}}{223}
+\indexentry{MS03-WEIGHT-DUP-VAR@MS03-WEIGHT-DUP-VAR, {\bf Flag}}{224}
+\indexentry{MS03-WEIGHT-EUNIF1@MS03-WEIGHT-EUNIF1, {\bf Flag}}{224}
+\indexentry{MS03-WEIGHT-EUNIF2@MS03-WEIGHT-EUNIF2, {\bf Flag}}{224}
+\indexentry{MS03-WEIGHT-FLEXFLEXDIFF@MS03-WEIGHT-FLEXFLEXDIFF, {\bf Flag}}{224}
+\indexentry{MS03-WEIGHT-FLEXFLEXDIFF-O@MS03-WEIGHT-FLEXFLEXDIFF-O, {\bf Flag}}{224}
+\indexentry{MS03-WEIGHT-FLEXFLEXSAME@MS03-WEIGHT-FLEXFLEXSAME, {\bf Flag}}{224}
+\indexentry{MS03-WEIGHT-FLEXFLEXSAME-O@MS03-WEIGHT-FLEXFLEXSAME-O, {\bf Flag}}{225}
+\indexentry{MS03-WEIGHT-FLEXRIGID-BRANCH@MS03-WEIGHT-FLEXRIGID-BRANCH, {\bf Flag}}{225}
+\indexentry{MS03-WEIGHT-FLEXRIGID-EQN@MS03-WEIGHT-FLEXRIGID-EQN, {\bf Flag}}{225}
+\indexentry{MS03-WEIGHT-FLEXRIGID-FLEXEQN@MS03-WEIGHT-FLEXRIGID-FLEXEQN, {\bf Flag}}{225}
+\indexentry{MS03-WEIGHT-FLEXRIGID-MATE@MS03-WEIGHT-FLEXRIGID-MATE, {\bf Flag}}{225}
+\indexentry{MS03-WEIGHT-FLEXRIGID-NOEQN@MS03-WEIGHT-FLEXRIGID-NOEQN, {\bf Flag}}{225}
+\indexentry{MS03-WEIGHT-FLEXRIGID-O@MS03-WEIGHT-FLEXRIGID-O, {\bf Flag}}{226}
+\indexentry{MS03-WEIGHT-IMITATE@MS03-WEIGHT-IMITATE, {\bf Flag}}{226}
+\indexentry{MS03-WEIGHT-OCCURS-CHECK@MS03-WEIGHT-OCCURS-CHECK, {\bf Flag}}{226}
+\indexentry{MS03-WEIGHT-PRIMSUB-FALSEHOOD@MS03-WEIGHT-PRIMSUB-FALSEHOOD, {\bf Flag}}{226}
+\indexentry{MS03-WEIGHT-PRIMSUB-FIRST-AND@MS03-WEIGHT-PRIMSUB-FIRST-AND, {\bf Flag}}{226}
+\indexentry{MS03-WEIGHT-PRIMSUB-FIRST-EQUALS@MS03-WEIGHT-PRIMSUB-FIRST-EQUALS, {\bf Flag}}{226}
+\indexentry{MS03-WEIGHT-PRIMSUB-FIRST-EXISTS@MS03-WEIGHT-PRIMSUB-FIRST-EXISTS, {\bf Flag}}{226}
+\indexentry{MS03-WEIGHT-PRIMSUB-FIRST-FORALL@MS03-WEIGHT-PRIMSUB-FIRST-FORALL, {\bf Flag}}{227}
+\indexentry{MS03-WEIGHT-PRIMSUB-FIRST-NOT-EQUALS@MS03-WEIGHT-PRIMSUB-FIRST-NOT-EQUALS, {\bf Flag}}{227}
+\indexentry{MS03-WEIGHT-PRIMSUB-FIRST-NOT-PROJ@MS03-WEIGHT-PRIMSUB-FIRST-NOT-PROJ, {\bf Flag}}{227}
+\indexentry{MS03-WEIGHT-PRIMSUB-FIRST-OR@MS03-WEIGHT-PRIMSUB-FIRST-OR, {\bf Flag}}{227}
+\indexentry{MS03-WEIGHT-PRIMSUB-FIRST-PROJ@MS03-WEIGHT-PRIMSUB-FIRST-PROJ, {\bf Flag}}{227}
+\indexentry{MS03-WEIGHT-PRIMSUB-NEXT-AND@MS03-WEIGHT-PRIMSUB-NEXT-AND, {\bf Flag}}{227}
+\indexentry{MS03-WEIGHT-PRIMSUB-NEXT-EQUALS@MS03-WEIGHT-PRIMSUB-NEXT-EQUALS, {\bf Flag}}{227}
+\indexentry{MS03-WEIGHT-PRIMSUB-NEXT-EXISTS@MS03-WEIGHT-PRIMSUB-NEXT-EXISTS, {\bf Flag}}{227}
+\indexentry{MS03-WEIGHT-PRIMSUB-NEXT-FORALL@MS03-WEIGHT-PRIMSUB-NEXT-FORALL, {\bf Flag}}{228}
+\indexentry{MS03-WEIGHT-PRIMSUB-NEXT-NOT-EQUALS@MS03-WEIGHT-PRIMSUB-NEXT-NOT-EQUALS, {\bf Flag}}{228}
+\indexentry{MS03-WEIGHT-PRIMSUB-NEXT-NOT-PROJ@MS03-WEIGHT-PRIMSUB-NEXT-NOT-PROJ, {\bf Flag}}{228}
+\indexentry{MS03-WEIGHT-PRIMSUB-NEXT-OR@MS03-WEIGHT-PRIMSUB-NEXT-OR, {\bf Flag}}{228}
+\indexentry{MS03-WEIGHT-PRIMSUB-NEXT-PROJ@MS03-WEIGHT-PRIMSUB-NEXT-PROJ, {\bf Flag}}{228}
+\indexentry{MS03-WEIGHT-PRIMSUB-TRUTH@MS03-WEIGHT-PRIMSUB-TRUTH, {\bf Flag}}{228}
+\indexentry{MS03-WEIGHT-PROJECT@MS03-WEIGHT-PROJECT, {\bf Flag}}{228}
+\indexentry{MS03-WEIGHT-RIGID-MATE@MS03-WEIGHT-RIGID-MATE, {\bf Flag}}{229}
+\indexentry{MS03-WEIGHT-RIGIDRIGID-EQN@MS03-WEIGHT-RIGIDRIGID-EQN, {\bf Flag}}{229}
+\indexentry{MS03-WEIGHT-RIGIDRIGID-FLEXEQN@MS03-WEIGHT-RIGIDRIGID-FLEXEQN, {\bf Flag}}{229}
+\indexentry{MS03-WEIGHT-RIGIDRIGID-NOEQN@MS03-WEIGHT-RIGIDRIGID-NOEQN, {\bf Flag}}{229}
+\indexentry{MS03-WEIGHT-RIGIDRIGIDDIFF-O@MS03-WEIGHT-RIGIDRIGIDDIFF-O, {\bf Flag}}{229}
+\indexentry{MS03-WEIGHT-RIGIDRIGIDSAME-O@MS03-WEIGHT-RIGIDRIGIDSAME-O, {\bf Flag}}{229}
+\indexentry{MS04-ALLOW-FLEX-EUNIFS@MS04-ALLOW-FLEX-EUNIFS, {\bf Flag}}{230}
+\indexentry{MS04-ALLOW-FLEXRIGID-PROJ-MATE@MS04-ALLOW-FLEXRIGID-PROJ-MATE, {\bf Flag}}{230}
+\indexentry{MS04-BACKTRACK-METHOD@MS04-BACKTRACK-METHOD, {\bf Flag}}{230}
+\indexentry{MS04-CHECK-UNIF-DEPTH@MS04-CHECK-UNIF-DEPTH, {\bf Flag}}{230}
+\indexentry{MS04-DELAY-FLEXRIGID-MATES@MS04-DELAY-FLEXRIGID-MATES, {\bf Flag}}{230}
+\indexentry{MS04-DELAY-UNIF-CONSTRAINTS@MS04-DELAY-UNIF-CONSTRAINTS, {\bf Flag}}{231}
+\indexentry{MS04-DUP-EARLY@MS04-DUP-EARLY, {\bf Flag}}{231}
+\indexentry{MS04-DUP-WEIGHT@MS04-DUP-WEIGHT, {\bf Flag}}{231}
+\indexentry{MS04-EAGER-UNIF-SUBST@MS04-EAGER-UNIF-SUBST, {\bf Flag}}{231}
+\indexentry{MS04-INCR-DEPTH@MS04-INCR-DEPTH, {\bf Flag}}{231}
+\indexentry{MS04-INITIAL-DEPTH@MS04-INITIAL-DEPTH, {\bf Flag}}{231}
+\indexentry{MS04-MAX-DELAYED-CONNS@MS04-MAX-DELAYED-CONNS, {\bf Flag}}{232}
+\indexentry{MS04-MAX-DEPTH@MS04-MAX-DEPTH, {\bf Flag}}{232}
+\indexentry{MS04-MAX-DUPS@MS04-MAX-DUPS, {\bf Flag}}{232}
+\indexentry{MS04-MAX-EUNIF1S@MS04-MAX-EUNIF1S, {\bf Flag}}{232}
+\indexentry{MS04-MAX-EUNIF2S@MS04-MAX-EUNIF2S, {\bf Flag}}{232}
+\indexentry{MS04-MAX-FLEX-EUNIFS@MS04-MAX-FLEX-EUNIFS, {\bf Flag}}{232}
+\indexentry{MS04-MAX-FLEXRIGID-MATES@MS04-MAX-FLEXRIGID-MATES, {\bf Flag}}{232}
+\indexentry{MS04-MAX-FLEXRIGID-NEG-MATES@MS04-MAX-FLEXRIGID-NEG-MATES, {\bf Flag}}{233}
+\indexentry{MS04-MAX-FLEXRIGID-NEG-PROJ-MATES@MS04-MAX-FLEXRIGID-NEG-PROJ-MATES, {\bf Flag}}{233}
+\indexentry{MS04-MAX-FLEXRIGID-PROJ-MATES@MS04-MAX-FLEXRIGID-PROJ-MATES, {\bf Flag}}{233}
+\indexentry{MS04-MAX-IMITS@MS04-MAX-IMITS, {\bf Flag}}{233}
+\indexentry{MS04-MAX-PRIMSUB-AND@MS04-MAX-PRIMSUB-AND, {\bf Flag}}{233}
+\indexentry{MS04-MAX-PRIMSUB-EQUALS@MS04-MAX-PRIMSUB-EQUALS, {\bf Flag}}{233}
+\indexentry{MS04-MAX-PRIMSUB-EXISTS@MS04-MAX-PRIMSUB-EXISTS, {\bf Flag}}{234}
+\indexentry{MS04-MAX-PRIMSUB-FORALL@MS04-MAX-PRIMSUB-FORALL, {\bf Flag}}{234}
+\indexentry{MS04-MAX-PRIMSUB-NOT@MS04-MAX-PRIMSUB-NOT, {\bf Flag}}{234}
+\indexentry{MS04-MAX-PRIMSUB-NOT-EQUALS@MS04-MAX-PRIMSUB-NOT-EQUALS, {\bf Flag}}{234}
+\indexentry{MS04-MAX-PRIMSUB-NOT-PROJ@MS04-MAX-PRIMSUB-NOT-PROJ, {\bf Flag}}{234}
+\indexentry{MS04-MAX-PRIMSUB-OR@MS04-MAX-PRIMSUB-OR, {\bf Flag}}{234}
+\indexentry{MS04-MAX-PRIMSUB-PROJ@MS04-MAX-PRIMSUB-PROJ, {\bf Flag}}{235}
+\indexentry{MS04-MAX-PROJS@MS04-MAX-PROJS, {\bf Flag}}{235}
+\indexentry{MS04-MAX-RIGID-MATES@MS04-MAX-RIGID-MATES, {\bf Flag}}{235}
+\indexentry{MS04-MP-OPTIONS@MS04-MP-OPTIONS, {\bf Flag}}{235}
+\indexentry{MS04-PRENEX-PRIMSUBS@MS04-PRENEX-PRIMSUBS, {\bf Flag}}{235}
+\indexentry{MS04-SEMANTIC-PRUNING@MS04-SEMANTIC-PRUNING, {\bf Flag}}{235}
+\indexentry{MS04-SOLVE-UNIF-DEPTH@MS04-SOLVE-UNIF-DEPTH, {\bf Flag}}{236}
+\indexentry{MS04-TRACE@MS04-TRACE, {\bf Flag}}{236}
+\indexentry{MS04-USE-SEMANTICS@MS04-USE-SEMANTICS, {\bf Flag}}{236}
+\indexentry{MS04-USE-SET-CONSTRAINTS@MS04-USE-SET-CONSTRAINTS, {\bf Flag}}{236}
+\indexentry{MS04-VERBOSE@MS04-VERBOSE, {\bf Flag}}{236}
+\indexentry{MS04-WEIGHT-ADD-SET-CONSTRAINT@MS04-WEIGHT-ADD-SET-CONSTRAINT, {\bf Flag}}{236}
+\indexentry{MS04-WEIGHT-DELAY-UNIF@MS04-WEIGHT-DELAY-UNIF, {\bf Flag}}{237}
+\indexentry{MS04-WEIGHT-EUNIF-DECS@MS04-WEIGHT-EUNIF-DECS, {\bf Flag}}{237}
+\indexentry{MS04-WEIGHT-EUNIF-DIFF-HEADS@MS04-WEIGHT-EUNIF-DIFF-HEADS, {\bf Flag}}{237}
+\indexentry{MS04-WEIGHT-FLEX-EUNIF@MS04-WEIGHT-FLEX-EUNIF, {\bf Flag}}{237}
+\indexentry{MS04-WEIGHT-FLEXRIGID-PROJ-MATE@MS04-WEIGHT-FLEXRIGID-PROJ-MATE, {\bf Flag}}{237}
+\indexentry{MS04-WEIGHT-MULTIPLE-EUNIF1S@MS04-WEIGHT-MULTIPLE-EUNIF1S, {\bf Flag}}{237}
+\indexentry{MS04-WEIGHT-MULTIPLE-EUNIF2S@MS04-WEIGHT-MULTIPLE-EUNIF2S, {\bf Flag}}{238}
+\indexentry{MS04-WEIGHT-MULTIPLE-MATES@MS04-WEIGHT-MULTIPLE-MATES, {\bf Flag}}{238}
+\indexentry{MS04-WEIGHT-PRIMSUB-FIRST-NOT@MS04-WEIGHT-PRIMSUB-FIRST-NOT, {\bf Flag}}{238}
+\indexentry{MS04-WEIGHT-PRIMSUB-NEXT-NOT@MS04-WEIGHT-PRIMSUB-NEXT-NOT, {\bf Flag}}{238}
+\indexentry{MS04-WEIGHT-PRIMSUB-NEXTTP@MS04-WEIGHT-PRIMSUB-NEXTTP, {\bf Flag}}{238}
+\indexentry{MS04-WEIGHT-PRIMSUB-OCCURS-CONST@MS04-WEIGHT-PRIMSUB-OCCURS-CONST, {\bf Flag}}{238}
+\indexentry{MS04-WEIGHT-SOLVE-SET-CONSTRAINTS@MS04-WEIGHT-SOLVE-SET-CONSTRAINTS, {\bf Flag}}{239}
+\indexentry{ETREE-NAT-VERBOSE@ETREE-NAT-VERBOSE, {\bf Flag}}{239}
+\indexentry{MATINGSTREE-NAME@MATINGSTREE-NAME, {\bf Flag}}{239}
+\indexentry{MERGE-MINIMIZE-MATING@MERGE-MINIMIZE-MATING, {\bf Flag}}{239}
+\indexentry{NAT-ETREE-VERSION@NAT-ETREE-VERSION, {\bf Flag}}{239}
+\indexentry{NATREE-DEBUG@NATREE-DEBUG, {\bf Flag}}{239}
+\indexentry{REMOVE-LEIBNIZ@REMOVE-LEIBNIZ, {\bf Flag}}{240}
+\indexentry{RENUMBER-LEAVES@RENUMBER-LEAVES, {\bf Flag}}{240}
+\indexentry{APPLY-MATCH@APPLY-MATCH, {\bf Flag}}{240}
+\indexentry{COUNTSUBS-FIRST@COUNTSUBS-FIRST, {\bf Flag}}{241}
+\indexentry{DNEG-IMITATION@DNEG-IMITATION, {\bf Flag}}{241}
+\indexentry{ETA-RULE@ETA-RULE, {\bf Flag}}{241}
+\indexentry{IMITATION-FIRST@IMITATION-FIRST, {\bf Flag}}{241}
+\indexentry{LEIBNIZ-SUB-CHECK@LEIBNIZ-SUB-CHECK, {\bf Flag}}{241}
+\indexentry{MAX-DUP-PATHS@MAX-DUP-PATHS, {\bf Flag}}{241}
+\indexentry{MAX-SEARCH-DEPTH@MAX-SEARCH-DEPTH, {\bf Flag}}{242}
+\indexentry{MAX-UTREE-DEPTH@MAX-UTREE-DEPTH, {\bf Flag}}{242}
+\indexentry{MIN-QUICK-DEPTH@MIN-QUICK-DEPTH, {\bf Flag}}{242}
+\indexentry{MS-DIR@MS-DIR, {\bf Flag}}{242}
+\indexentry{MS90-3-QUICK@MS90-3-QUICK, {\bf Flag}}{242}
+\indexentry{PRUNING@PRUNING, {\bf Flag}}{243}
+\indexentry{REDUCE-DOUBLE-NEG@REDUCE-DOUBLE-NEG, {\bf Flag}}{243}
+\indexentry{RIGID-PATH-CK@RIGID-PATH-CK, {\bf Flag}}{243}
+\indexentry{STOP-AT-TSN@STOP-AT-TSN, {\bf Flag}}{243}
+\indexentry{SUBSUMPTION-CHECK@SUBSUMPTION-CHECK, {\bf Flag}}{243}
+\indexentry{SUBSUMPTION-DEPTH@SUBSUMPTION-DEPTH, {\bf Flag}}{243}
+\indexentry{SUBSUMPTION-NODES@SUBSUMPTION-NODES, {\bf Flag}}{244}
+\indexentry{TOTAL-NUM-OF-DUPS@TOTAL-NUM-OF-DUPS, {\bf Flag}}{244}
+\indexentry{UNI-SEARCH-HEURISTIC@UNI-SEARCH-HEURISTIC, {\bf Flag}}{244}
+\indexentry{UNIF-COUNTER@UNIF-COUNTER, {\bf Flag}}{244}
+\indexentry{UNIF-COUNTER-OUTPUT@UNIF-COUNTER-OUTPUT, {\bf Flag}}{245}
+\indexentry{UNIF-TRIGGER@UNIF-TRIGGER, {\bf Flag}}{245}
+\indexentry{UNIFY-VERBOSE@UNIFY-VERBOSE, {\bf Flag}}{245}
+\indexentry{DEFAULT-TACTIC@DEFAULT-TACTIC, {\bf Flag}}{245}
+\indexentry{TACMODE@TACMODE, {\bf Flag}}{246}
+\indexentry{TACTIC-VERBOSE@TACTIC-VERBOSE, {\bf Flag}}{246}
+\indexentry{TACUSE@TACUSE, {\bf Flag}}{246}
+\indexentry{GO-INSTRUCTIONS@GO-INSTRUCTIONS, {\bf Flag}}{246}
+\indexentry{QUIETLY-USE-DEFAULTS@QUIETLY-USE-DEFAULTS, {\bf Flag}}{246}
+\indexentry{RESOLVE-CONFLICT@RESOLVE-CONFLICT, {\bf Flag}}{246}
+\indexentry{TEST-EASIER-IF-HIGH@TEST-EASIER-IF-HIGH, {\bf Flag}}{247}
+\indexentry{TEST-EASIER-IF-LOW@TEST-EASIER-IF-LOW, {\bf Flag}}{247}
+\indexentry{TEST-EASIER-IF-NIL@TEST-EASIER-IF-NIL, {\bf Flag}}{247}
+\indexentry{TEST-EASIER-IF-T@TEST-EASIER-IF-T, {\bf Flag}}{247}
+\indexentry{TEST-FASTER-IF-HIGH@TEST-FASTER-IF-HIGH, {\bf Flag}}{247}
+\indexentry{TEST-FASTER-IF-LOW@TEST-FASTER-IF-LOW, {\bf Flag}}{247}
+\indexentry{TEST-FASTER-IF-NIL@TEST-FASTER-IF-NIL, {\bf Flag}}{248}
+\indexentry{TEST-FASTER-IF-T@TEST-FASTER-IF-T, {\bf Flag}}{248}
+\indexentry{TEST-FIX-UNIF-DEPTHS@TEST-FIX-UNIF-DEPTHS, {\bf Flag}}{248}
+\indexentry{TEST-INCREASE-TIME@TEST-INCREASE-TIME, {\bf Flag}}{248}
+\indexentry{TEST-INITIAL-TIME-LIMIT@TEST-INITIAL-TIME-LIMIT, {\bf Flag}}{248}
+\indexentry{TEST-MAX-SEARCH-VALUES@TEST-MAX-SEARCH-VALUES, {\bf Flag}}{249}
+\indexentry{TEST-NEXT-SEARCH-FN@TEST-NEXT-SEARCH-FN, {\bf Flag}}{249}
+\indexentry{TEST-REDUCE-TIME@TEST-REDUCE-TIME, {\bf Flag}}{249}
+\indexentry{TEST-VERBOSE@TEST-VERBOSE, {\bf Flag}}{249}
+\indexentry{TESTWIN-HEIGHT@TESTWIN-HEIGHT, {\bf Flag}}{249}
+\indexentry{TESTWIN-WIDTH@TESTWIN-WIDTH, {\bf Flag}}{249}
+\indexentry{ALLOW-NONLEAF-CONNS@ALLOW-NONLEAF-CONNS, {\bf Flag}}{250}
+\indexentry{DISSOLVE@DISSOLVE, {\bf Flag}}{250}
+\indexentry{LIT-NAME@LIT-NAME, {\bf Flag}}{250}
+\indexentry{MATE-UP-TO-NNF@MATE-UP-TO-NNF, {\bf Flag}}{250}
+\indexentry{ORDER-COMPONENTS@ORDER-COMPONENTS, {\bf Flag}}{250}
+\indexentry{PRINT-LIT-NAME@PRINT-LIT-NAME, {\bf Flag}}{251}
+\indexentry{PRINTVPDFLAG@PRINTVPDFLAG, {\bf Flag}}{251}
+\indexentry{TEXFORMAT@TEXFORMAT, {\bf Flag}}{251}
+\indexentry{VPD-BRIEF@VPD-BRIEF, {\bf Flag}}{251}
+\indexentry{VPD-FILENAME@VPD-FILENAME, {\bf Flag}}{251}
+\indexentry{VPD-LIT-NAME@VPD-LIT-NAME, {\bf Flag}}{252}
+\indexentry{VPD-PTYPES@VPD-PTYPES, {\bf Flag}}{252}
+\indexentry{VPD-STYLE@VPD-STYLE, {\bf Flag}}{252}
+\indexentry{VPD-VPFPAGE@VPD-VPFPAGE, {\bf Flag}}{252}
+\indexentry{VPFORM-LABELS@VPFORM-LABELS, {\bf Flag}}{252}
+\indexentry{VPFORM-TEX-MAGNIFICATION@VPFORM-TEX-MAGNIFICATION, {\bf Flag}}{252}
+\indexentry{VPFORM-TEX-NEST@VPFORM-TEX-NEST, {\bf Flag}}{252}
+\indexentry{VPFORM-TEX-PREAMBLE@VPFORM-TEX-PREAMBLE, {\bf Flag}}{253}
+\indexentry{VPW-HEIGHT@VPW-HEIGHT, {\bf Flag}}{253}
+\indexentry{VPW-WIDTH@VPW-WIDTH, {\bf Flag}}{253}
+\indexentry{MAX-BINDER-COMPUTATION@MAX-BINDER-COMPUTATION, {\bf Flag}}{253}
+\indexentry{MAX-DOMAIN-SIZE@MAX-DOMAIN-SIZE, {\bf Flag}}{253}
+\indexentry{REWRITING-RELATION-SYMBOL@REWRITING-RELATION-SYMBOL, {\bf Flag}}{253}
+\indexentry{VERBOSE-REWRITE-JUSTIFICATION@VERBOSE-REWRITE-JUSTIFICATION, {\bf Flag}}{254}
+\indexentry{APP*-REWRITE-DEPTH@APP*-REWRITE-DEPTH, {\bf Flag}}{254}
+\indexentry{REWRITING-AUTO-DEPTH@REWRITING-AUTO-DEPTH, {\bf Flag}}{254}
+\indexentry{REWRITING-AUTO-GLOBAL-SORT@REWRITING-AUTO-GLOBAL-SORT, {\bf Flag}}{254}
+\indexentry{REWRITING-AUTO-MAX-WFF-SIZE@REWRITING-AUTO-MAX-WFF-SIZE, {\bf Flag}}{254}
+\indexentry{REWRITING-AUTO-MIN-DEPTH@REWRITING-AUTO-MIN-DEPTH, {\bf Flag}}{254}
+\indexentry{REWRITING-AUTO-SEARCH-TYPE@REWRITING-AUTO-SEARCH-TYPE, {\bf Flag}}{255}
+\indexentry{REWRITING-AUTO-SUBSTS@REWRITING-AUTO-SUBSTS, {\bf Flag}}{255}
+\indexentry{REWRITING-AUTO-TABLE-SIZE@REWRITING-AUTO-TABLE-SIZE, {\bf Flag}}{255}
+\indexentry{RULEP-MAINFN@RULEP-MAINFN, {\bf Flag}}{255}
+\indexentry{EDPPWFFLAG@EDPPWFFLAG, {\bf Flag}}{255}
+\indexentry{EDPRINTDEPTH@EDPRINTDEPTH, {\bf Flag}}{256}
+\indexentry{EDWIN-CURRENT@EDWIN-CURRENT, {\bf Flag}}{256}
+\indexentry{EDWIN-CURRENT-HEIGHT@EDWIN-CURRENT-HEIGHT, {\bf Flag}}{256}
+\indexentry{EDWIN-CURRENT-WIDTH@EDWIN-CURRENT-WIDTH, {\bf Flag}}{256}
+\indexentry{EDWIN-TOP@EDWIN-TOP, {\bf Flag}}{256}
+\indexentry{EDWIN-TOP-HEIGHT@EDWIN-TOP-HEIGHT, {\bf Flag}}{256}
+\indexentry{EDWIN-TOP-WIDTH@EDWIN-TOP-WIDTH, {\bf Flag}}{256}
+\indexentry{EDWIN-VPFORM@EDWIN-VPFORM, {\bf Flag}}{256}
+\indexentry{EDWIN-VPFORM-HEIGHT@EDWIN-VPFORM-HEIGHT, {\bf Flag}}{256}
+\indexentry{EDWIN-VPFORM-WIDTH@EDWIN-VPFORM-WIDTH, {\bf Flag}}{257}
+\indexentry{META-BDVAR-NAME@META-BDVAR-NAME, {\bf Flag}}{257}
+\indexentry{META-VAR-NAME@META-VAR-NAME, {\bf Flag}}{257}
+\indexentry{REN-VAR-FN@REN-VAR-FN, {\bf Flag}}{257}
+\indexentry{RENAME-ALL-BD-VARS@RENAME-ALL-BD-VARS, {\bf Flag}}{257}
+\indexentry{BASE-TYPE@BASE-TYPE, {\bf Flag}}{257}
+\indexentry{FIRST-ORDER-MODE-PARSE@FIRST-ORDER-MODE-PARSE, {\bf Flag}}{258}
+\indexentry{LOWERCASERAISE@LOWERCASERAISE, {\bf Flag}}{258}
+\indexentry{TYPE-IOTA-MODE@TYPE-IOTA-MODE, {\bf Flag}}{258}
+\indexentry{UNTYPED-LAMBDA-CALCULUS@UNTYPED-LAMBDA-CALCULUS, {\bf Flag}}{258}
+\indexentry{REWRITE-EQUALITIES@REWRITE-EQUALITIES, {\bf Flag}}{258}
+\indexentry{LAMBDA-CONV@LAMBDA-CONV, {\bf Flag}}{259}
+\indexentry{BAD-VAR-CONNECTED-PRUNE@BAD-VAR-CONNECTED-PRUNE, {\bf Flag}}{259}
+\indexentry{DELAY-SETVARS@DELAY-SETVARS, {\bf Flag}}{259}
+\indexentry{INCLUDE-COINDUCTION-PRINCIPLE@INCLUDE-COINDUCTION-PRINCIPLE, {\bf Flag}}{259}
+\indexentry{INCLUDE-INDUCTION-PRINCIPLE@INCLUDE-INDUCTION-PRINCIPLE, {\bf Flag}}{260}
+\indexentry{MAX-CONSTRAINT-SIZE@MAX-CONSTRAINT-SIZE, {\bf Flag}}{260}
+\indexentry{MAX-NUM-CONSTRAINTS@MAX-NUM-CONSTRAINTS, {\bf Flag}}{260}
+\indexentry{MAX-PRIM-DEPTH@MAX-PRIM-DEPTH, {\bf Flag}}{260}
+\indexentry{MAX-PRIM-LITS@MAX-PRIM-LITS, {\bf Flag}}{261}
+\indexentry{MIN-PRIM-DEPTH@MIN-PRIM-DEPTH, {\bf Flag}}{261}
+\indexentry{MIN-PRIM-LITS@MIN-PRIM-LITS, {\bf Flag}}{261}
+\indexentry{NEG-PRIM-SUB@NEG-PRIM-SUB, {\bf Flag}}{262}
+\indexentry{PR00-ALLOW-SUBNODE-CONNS@PR00-ALLOW-SUBNODE-CONNS, {\bf Flag}}{262}
+\indexentry{PR00-MAX-SUBSTS-VAR@PR00-MAX-SUBSTS-VAR, {\bf Flag}}{262}
+\indexentry{PR00-NUM-ITERATIONS@PR00-NUM-ITERATIONS, {\bf Flag}}{262}
+\indexentry{PR00-REQUIRE-ARG-DEPS@PR00-REQUIRE-ARG-DEPS, {\bf Flag}}{262}
+\indexentry{PR97C-MAX-ABBREVS@PR97C-MAX-ABBREVS, {\bf Flag}}{262}
+\indexentry{PR97C-PRENEX@PR97C-PRENEX, {\bf Flag}}{262}
+\indexentry{PRIM-BDTYPES@PRIM-BDTYPES, {\bf Flag}}{262}
+\indexentry{PRIM-BDTYPES-AUTO@PRIM-BDTYPES-AUTO, {\bf Flag}}{263}
+\indexentry{PRIM-PREFIX@PRIM-PREFIX, {\bf Flag}}{263}
+\indexentry{PRIMSUB-METHOD@PRIMSUB-METHOD, {\bf Flag}}{263}
+\indexentry{WHICH-CONSTRAINTS@WHICH-CONSTRAINTS, {\bf Flag}}{264}
+\indexentry{REWRITE-EQUIVS@REWRITE-EQUIVS, {\bf Flag}}{264}
+\indexentry{RULEP-WFFEQ@RULEP-WFFEQ, {\bf Flag}}{265}
+\indexentry{NAME-SKOLEM-FN@NAME-SKOLEM-FN, {\bf Flag}}{265}
+\indexentry{UI-HERBRAND-LIMIT@UI-HERBRAND-LIMIT, {\bf Flag}}{265}
+\indexentry{USE-RULEP@USE-RULEP, {\bf Flag}}{265}
+\indexentry{USE-SYMSIMP@USE-SYMSIMP, {\bf Flag}}{265}
+\indexentry{ADVICE-ASKED-ENABLED@ADVICE-ASKED-ENABLED, {\bf Flag}}{266}
+\indexentry{ADVICE-FILE@ADVICE-FILE, {\bf Flag}}{266}
+\indexentry{COMMAND-ENABLED@COMMAND-ENABLED, {\bf Flag}}{266}
+\indexentry{COMMAND-FILE@COMMAND-FILE, {\bf Flag}}{266}
+\indexentry{DONE-EXC-ENABLED@DONE-EXC-ENABLED, {\bf Flag}}{266}
+\indexentry{ERROR-ENABLED@ERROR-ENABLED, {\bf Flag}}{266}
+\indexentry{ERROR-FILE@ERROR-FILE, {\bf Flag}}{266}
+\indexentry{EVENT-CYCLE@EVENT-CYCLE, {\bf Flag}}{266}
+\indexentry{EVENTS-ENABLED@EVENTS-ENABLED, {\bf Flag}}{266}
+\indexentry{INPUT-ERROR-ENABLED@INPUT-ERROR-ENABLED, {\bf Flag}}{267}
+\indexentry{INPUT-ERROR-FILE@INPUT-ERROR-FILE, {\bf Flag}}{267}
+\indexentry{PROOF-ACTION-ENABLED@PROOF-ACTION-ENABLED, {\bf Flag}}{267}
+\indexentry{PROOF-FILE@PROOF-FILE, {\bf Flag}}{267}
+\indexentry{QUIET-EVENTS@QUIET-EVENTS, {\bf Flag}}{267}
+\indexentry{RULE-ERROR-ENABLED@RULE-ERROR-ENABLED, {\bf Flag}}{267}
+\indexentry{RULE-ERROR-FILE@RULE-ERROR-FILE, {\bf Flag}}{267}
+\indexentry{SCORE-FILE@SCORE-FILE, {\bf Flag}}{267}
+\indexentry{USER-PASSWD-FILE@USER-PASSWD-FILE, {\bf Flag}}{267}
+\indexentry{CAL-PERCENTAGE@CAL-PERCENTAGE, {\bf Flag}}{268}
+\indexentry{COURSE-NAME@COURSE-NAME, {\bf Flag}}{268}
+\indexentry{DEFAULT-PENALTY-FN@DEFAULT-PENALTY-FN, {\bf Flag}}{268}
+\indexentry{DROP-MIN@DROP-MIN, {\bf Flag}}{268}
+\indexentry{DUE-DATE-FLAG@DUE-DATE-FLAG, {\bf Flag}}{268}
+\indexentry{ETPS-FILE@ETPS-FILE, {\bf Flag}}{268}
+\indexentry{GRADE-DIR@GRADE-DIR, {\bf Flag}}{268}
+\indexentry{GRADE-FILE@GRADE-FILE, {\bf Flag}}{268}
+\indexentry{LETTER-GRADE-FILE@LETTER-GRADE-FILE, {\bf Flag}}{269}
+\indexentry{LETTER-GRADE-FLAG@LETTER-GRADE-FLAG, {\bf Flag}}{269}
+\indexentry{NEW-ITEM@NEW-ITEM, {\bf Flag}}{269}
+\indexentry{OLD-GRADE-FILE@OLD-GRADE-FILE, {\bf Flag}}{269}
+\indexentry{OLD-TOTALS-GRADE-FILE@OLD-TOTALS-GRADE-FILE, {\bf Flag}}{269}
+\indexentry{PATCH-FILE@PATCH-FILE, {\bf Flag}}{269}
+\indexentry{PRINT-N-DIGITS@PRINT-N-DIGITS, {\bf Flag}}{269}
+\indexentry{STATISTICAL-OPTIONS@STATISTICAL-OPTIONS, {\bf Flag}}{269}
+\indexentry{TOTALS-GRADE-FILE@TOTALS-GRADE-FILE, {\bf Flag}}{269}
+\indexentry{COMPILED-EXTENSION@COMPILED-EXTENSION, {\bf Flag}}{270}
+\indexentry{EXPERTFLAG@EXPERTFLAG, {\bf Flag}}{270}
+\indexentry{GOODMODES@GOODMODES, {\bf Flag}}{270}
+\indexentry{INIT-DIALOGUE@INIT-DIALOGUE, {\bf Flag}}{270}
+\indexentry{INIT-DIALOGUE-FN@INIT-DIALOGUE-FN, {\bf Flag}}{270}
+\indexentry{JAVA-COMM@JAVA-COMM, {\bf Flag}}{270}
+\indexentry{LISP-IMPLEMENTATION-TYPE@LISP-IMPLEMENTATION-TYPE, {\bf Flag}}{271}
+\indexentry{LOAD-WARN-P@LOAD-WARN-P, {\bf Flag}}{271}
+\indexentry{MACHINE-INSTANCE@MACHINE-INSTANCE, {\bf Flag}}{271}
+\indexentry{MACHINE-TYPE@MACHINE-TYPE, {\bf Flag}}{271}
+\indexentry{NEWS-DIR@NEWS-DIR, {\bf Flag}}{271}
+\indexentry{READ-LLOAD-SOURCES-P@READ-LLOAD-SOURCES-P, {\bf Flag}}{271}
+\indexentry{SAVE-FILE@SAVE-FILE, {\bf Flag}}{271}
+\indexentry{SHORT-SITE-NAME@SHORT-SITE-NAME, {\bf Flag}}{271}
+\indexentry{SOURCE-EXTENSION@SOURCE-EXTENSION, {\bf Flag}}{271}
+\indexentry{SOURCE-PATH@SOURCE-PATH, {\bf Flag}}{272}
+\indexentry{TEST-MODIFY@TEST-MODIFY, {\bf Flag}}{272}
+\indexentry{TEST-THEOREMS@TEST-THEOREMS, {\bf Flag}}{272}
+\indexentry{BUILD-MATCH@BUILD-MATCH, {\bf Flag}}{272}
+\indexentry{HLINE-JUSTIFICATION@HLINE-JUSTIFICATION, {\bf Flag}}{273}
+\indexentry{TREAT-HLINES-AS-DLINES@TREAT-HLINES-AS-DLINES, {\bf Flag}}{273}
+\indexentry{MAX-SUBSTS-PROJ@MAX-SUBSTS-PROJ, {\bf Flag}}{273}
+\indexentry{MAX-SUBSTS-PROJ-TOTAL@MAX-SUBSTS-PROJ-TOTAL, {\bf Flag}}{273}
+\indexentry{MAX-SUBSTS-QUICK@MAX-SUBSTS-QUICK, {\bf Flag}}{273}
+\indexentry{MAX-SUBSTS-VAR@MAX-SUBSTS-VAR, {\bf Flag}}{274}
+\indexentry{NUM-OF-DUPS@NUM-OF-DUPS, {\bf Flag}}{274}
+\indexentry{PRIMSUB-VAR-SELECT@PRIMSUB-VAR-SELECT, {\bf Flag}}{274}
+\indexentry{ADD-SUBDIRECTORIES@ADD-SUBDIRECTORIES, {\bf Flag}}{274}
+\indexentry{BACKUP-LIB-DIR@BACKUP-LIB-DIR, {\bf Flag}}{275}
+\indexentry{DEFAULT-LIB-DIR@DEFAULT-LIB-DIR, {\bf Flag}}{275}
+\indexentry{DEFAULT-LIBFILE-TYPE@DEFAULT-LIBFILE-TYPE, {\bf Flag}}{275}
+\indexentry{DEFAULT-LIBINDEX-TYPE@DEFAULT-LIBINDEX-TYPE, {\bf Flag}}{275}
+\indexentry{LIB-BESTMODE-FILE@LIB-BESTMODE-FILE, {\bf Flag}}{275}
+\indexentry{LIB-KEYWORD-FILE@LIB-KEYWORD-FILE, {\bf Flag}}{275}
+\indexentry{LIB-MASTERINDEX-FILE@LIB-MASTERINDEX-FILE, {\bf Flag}}{275}
+\indexentry{RECORDFLAGS@RECORDFLAGS, {\bf Flag}}{275}
+\indexentry{REMOVE-TRAILING-DIR@REMOVE-TRAILING-DIR, {\bf Flag}}{276}
+\indexentry{SHOW-ALL-LIBOBJECTS@SHOW-ALL-LIBOBJECTS, {\bf Flag}}{276}
+\indexentry{AUTO-KEYWORDS@AUTO-KEYWORDS, {\bf Flag}}{276}
+\indexentry{AUTO-LIB-DIR@AUTO-LIB-DIR, {\bf Flag}}{276}
+\indexentry{CLASS-DIRECTION@CLASS-DIRECTION, {\bf Flag}}{276}
+\indexentry{CLASS-SCHEME@CLASS-SCHEME, {\bf Flag}}{277}
+\indexentry{DEFAULT-BUG-DIR@DEFAULT-BUG-DIR, {\bf Flag}}{277}
+\indexentry{USE-DEFAULT-BUG-DIR@USE-DEFAULT-BUG-DIR, {\bf Flag}}{277}
+\indexentry{SCRIBE-DOC@SCRIBE-DOC, {\bf Flag-Mode}}{278}
+\indexentry{SCRIBE-DOC-FIRST-ORDER@SCRIBE-DOC-FIRST-ORDER, {\bf Flag-Mode}}{278}
+\indexentry{RULES@RULES, {\bf Flag-Mode}}{279}
+\indexentry{SCRIBE-OTL@SCRIBE-OTL, {\bf Flag-Mode}}{279}
+\indexentry{TEX-1-OTL@TEX-1-OTL, {\bf Flag-Mode}}{279}
+\indexentry{TEX-OTL@TEX-OTL, {\bf Flag-Mode}}{280}
+\indexentry{RE-READ@RE-READ, {\bf Flag-Mode}}{280}
+\indexentry{SCRIBE-EDWFF@SCRIBE-EDWFF, {\bf Flag-Mode}}{281}
+\indexentry{SCRIBE-MATEWFF@SCRIBE-MATEWFF, {\bf Flag-Mode}}{281}
+\indexentry{NAIVE@NAIVE, {\bf Flag-Mode}}{282}
+\indexentry{MS91-DEEP@MS91-DEEP, {\bf Flag-Mode}}{282}
+\indexentry{MS91-NODUPS@MS91-NODUPS, {\bf Flag-Mode}}{282}
+\indexentry{MS91-ORIGINAL@MS91-ORIGINAL, {\bf Flag-Mode}}{283}
+\indexentry{MS91-SIMPLEST@MS91-SIMPLEST, {\bf Flag-Mode}}{283}
+\indexentry{FIRST-ORDER@FIRST-ORDER, {\bf Flag-Mode}}{284}
+\indexentry{HIGHER-ORDER@HIGHER-ORDER, {\bf Flag-Mode}}{284}
+\indexentry{QUIET@QUIET, {\bf Flag-Mode}}{284}
+\indexentry{MATH-LOGIC-2-MODE@MATH-LOGIC-2-MODE, {\bf Flag-Mode}}{285}
+\indexentry{ML@ML, {\bf Flag-Mode}}{285}
+\indexentry{MSV-OFF@MSV-OFF, {\bf Flag-Mode}}{285}
+\indexentry{MSV-ON@MSV-ON, {\bf Flag-Mode}}{285}
+\indexentry{GR-EXIT}{286}
+\indexentry{GR-LEAVE}{286}
+\indexentry{LEAVE}{286}
+\indexentry{CHG-VARS}{286}
+\indexentry{GR-REVIEW}{286}
+\indexentry{CREATE-GRADEFILE}{286}
+\indexentry{ALTER-GRADE}{286}
+\indexentry{INSERT-GRADES}{286}
+\indexentry{LATE-EXERCISES}{287}
+\indexentry{MODIFY-GRADE}{287}
+\indexentry{RESUME-INSERT-GRADES}{287}
+\indexentry{DUE-DATES}{287}
+\indexentry{ETPS-GRADE}{287}
+\indexentry{ADD-STUDENTS}{287}
+\indexentry{DELETE-STUDENT}{287}
+\indexentry{ALIASES}{287}
+\indexentry{CHANGE-SEQUENCE}{287}
+\indexentry{COMMENT}{287}
+\indexentry{STATISTICS}{287}
+\indexentry{DISPLAY}{287}
+\indexentry{INFO-EXERCISES}{287}
+\indexentry{NUMBER-OF-STUDENTS}{288}
+\indexentry{CALCULATE-GRADE}{288}
+\indexentry{CHANGE-WEIGHT}{288}
+\indexentry{PENALTY-FNS}{288}
+\indexentry{SORT-FN}{288}
+\indexentry{LETTER-GRADE}{288}
+\indexentry{ADDED-CONN}{289}
+\indexentry{CONSIDERED-CONN}{289}
+\indexentry{DUPE}{289}
+\indexentry{DUPE-VAR}{289}
+\indexentry{INCOMP-MATING}{289}
+\indexentry{MATE-SUBSUMED-TEST}{289}
+\indexentry{MATE-SUBSUMED-TRUE}{289}
+\indexentry{MATING-CHANGED}{289}
+\indexentry{PRIMSUB}{289}
+\indexentry{REMOVED-CONN}{289}
+\indexentry{START-TIME}{289}
+\indexentry{STOP-TIME}{290}
+\indexentry{UNIF-SUBSUMED-TEST}{290}
+\indexentry{UNIF-SUBSUMED-TRUE}{290}
+\indexentry{ADVICE-ASKED}{290}
+\indexentry{COMMAND}{290}
+\indexentry{DONE-EXC}{290}
+\indexentry{ERROR}{290}
+\indexentry{INPUT-ERROR}{290}
+\indexentry{PROOF-ACTION}{290}
+\indexentry{RULE-ERROR}{290}
+\indexentry{GENERIC}{291}
+\indexentry{CONCEPT}{291}
+\indexentry{CONCEPT-S}{291}
+\indexentry{GENERIC-STRING}{291}
+\indexentry{ISTYLE}{291}
+\indexentry{SCRIBE}{291}
+\indexentry{SAIL}{292}
+\indexentry{TEX}{292}
+\indexentry{TEX-1}{292}
+\indexentry{XTERM}{292}

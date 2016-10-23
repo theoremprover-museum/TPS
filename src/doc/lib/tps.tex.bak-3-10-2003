@@ -1,0 +1,582 @@
+\def\endfake{\bigskip\bigskip}
+
+\def\Alpha{{\rm A}}
+\def\Beta{{\rm B}}
+\def\Chi{{\rm X}}
+\def\Epsilon{{\rm E}}
+\def\Eta{{\rm H}}
+\def\Iota{{\rm I}}
+\def\Kappa{{\rm K}}
+\def\Mu{{\rm M}}
+\def\Nu{{\rm N}}
+\def\Omicron{{\rm O}}
+\def\omicron{{\rm o}}
+\def\Rho{{\rm P}}
+\def\Tau{{\rm T}}
+\def\Upsilon{{\rm Y}}
+\def\Zeta{{\rm Z}}
+
+\def\bolda{{\bf A}}
+\def\boldb{{\bf B}}
+\def\boldc{{\bf C}}
+\def\boldd{{\bf D}}
+\def\bolde{{\bf E}}
+\def\boldf{{\bf F}}
+\def\boldg{{\bf G}}
+\def\boldh{{\bf H}}
+\def\boldi{{\bf I}}
+\def\boldj{{\bf J}}
+\def\boldk{{\bf K}}
+\def\boldl{{\bf L}}
+\def\boldm{{\bf M}}
+\def\boldn{{\bf N}}
+\def\boldo{{\bf O}}
+\def\boldp{{\bf P}}
+\def\boldq{{\bf Q}}
+\def\boldr{{\bf R}}
+\def\bolds{{\bf S}}
+\def\boldt{{\bf T}}
+\def\boldu{{\bf U}}
+\def\boldv{{\bf V}}
+\def\boldw{{\bf W}}
+\def\boldx{{\bf X}}
+\def\boldy{{\bf Y}}
+\def\boldz{{\bf Z}}
+
+%*-*-*-*-*-*-*-*-*
+\def\greeka{\alpha}
+\def\greekb{\beta}
+\def\greekc{\xi}
+\def\greekd{\delta}
+\def\greeke{\epsilon}
+\def\greekf{\phi}
+\def\greekg{\gamma}
+\def\greekh{\eta}
+\def\greeki{\iota}
+\def\greekj{j}
+\def\greekk{\kappa}
+\def\greekl{\lambda}
+\def\greekm{\mu}
+\def\greekn{\nu}
+\def\greeko{o}
+\def\greekp{\pi}
+\def\greekq{\theta}
+\def\greekr{\rho}
+\def\greeks{\sigma}
+\def\greekt{\tau}
+\def\greeku{\upsilon}
+\def\greekv{v}
+\def\greekw{\omega}
+\def\greekx{\chi}
+\def\greeky{\psi}
+\def\greekz{\zeta}
+
+\def\greek #1{#1}
+%*-*-*-*-*-*-*-*-*
+%\land, \lor are defined correctly in TeX itself.
+\def\bigbar{\vrule height8pt depth2pt width 1pt}
+
+\def\turnstile{$\vdash$} %hx
+\def\turnstyle{$\vdash$} %hx
+\def\lbottom{\bot}
+\def\powerset{{\cal P}} %hx
+\def\leqp{E} %hx
+\def\lone{\overline {\bf 1}} %hx
+\def\lzero{\overline {\bf 0}} %hx
+\def\percentage{\%} %hx
+\def\cond{{\bf COND}}
+\def\finite{{\bf FINITE}}
+\def\funimage{\#}
+\def\nat{{\bf NAT}}
+\def\nc{{\bf NC}}
+\def\recursion{{\bf recursion}}
+\def\succ{{\bf SUCC}}
+ 
+\def\arrowi{\mathord{\rightarrow{\rm I}}}
+\def\arrowe{\mathord{\rightarrow{\rm E}}}
+\def\botc{\perp_{C}}
+\def\foralli{\mathord{\forall{\rm I}}}
+\def\foralle{\mathord{\forall{\rm E}}}
+
+\def\existse{\mathord{\exists{\rm E}}}
+\def\ande{\mathord{\land{\rm E}}}
+\def\ore{\mathord{\land{\rm E}}}
+\def\eq{=}
+
+%The following macros are used to print a square box. (hx 10/28/92)
+\def\sqr#1#2{{\vcenter{\hrule height.#2pt
+     \hbox{\vrule width.#2pt height#1pt \kern#1pt \vrule width.#2pt}
+\hrule height.#2pt}}}
+\def\square{\kern2pt\raise0.25pt\hbox{$\mathchoice\sqr56\sqr56\sqr{4.1}5\sqr{2.5}5$}\kern2.5pt}
+
+
+\def\scripta{{\cal A}}
+
+\def\scriptb{{\cal B}}
+
+\def\scriptc{{\cal C}}
+
+\def\scriptd{{\cal D}}
+
+\def\scripte{{\cal E}}
+
+\def\scriptf{{\cal F}}
+
+\def\scriptg{{\cal G}}
+
+\def\scripth{{\cal H}}
+
+\def\scripti{{\cal I}}
+
+\def\scriptj{{\cal J}}
+
+\def\scriptk{{\cal K}}
+
+\def\scriptl{{\cal L}}
+
+\def\scriptm{{\cal M}}
+
+\def\scriptn{{\cal N}}
+
+\def\scripto{{\cal O}}
+
+\def\scriptp{{\cal P}}
+
+\def\scriptq{{\cal Q}}
+
+\def\scriptr{{\cal R}}
+
+\def\scripts{{\cal S}}
+
+\def\scriptt{{\cal T}}
+
+\def\scriptu{{\cal U}}
+
+\def\scriptv{{\cal V}}
+
+\def\scriptw{{\cal W}}
+
+\def\scriptx{{\cal X}}
+
+\def\scripty{{\cal Y}}
+
+\def\scriptz{{\cal Z}}
+
+\def\lintegral{\int}
+
+\def\sub#1{\null_{#1}}
+
+\def\sup#1{\null^{#1}}
+
+\def\cut{\mathord{Cut}}
+
+\def\mix{\mathord{Mix}}
+
+\def\contr{\mathord{C}}
+
+\def\defn{\mathord{defn}}
+
+\def\ori{\mathord{\lor{\rm I}}}
+
+\def\andi{\mathord{\land{\rm I}}}
+
+\def\existsi{\mathord{\exists{\rm I}}}
+
+\def\notnot{\mathord{\sim\sim}}
+
+\def\ornot{\mathord{\lor\sim}}
+
+\def\andnot{\mathord{\land\sim}}
+
+\def\forallnot{\mathord{\forall\sim}}
+
+\def\existsnot{\mathord{\exists\sim}}
+
+\def\truth{\mathord{\top}}
+\def\union{\cup}
+\def\image{\mathord{\null^{>}}\kern 0pt}
+
+
+\newbox\hypbox
+\newdimen\turnstylelength
+\newbox\formulabox
+\newdimen\formulawd
+
+\def\linenumbox#1{\hbox to 36pt{#1\hss}}
+\def\emptyhypbox{\hbox to 72pt{\hss}}
+\def\breakinhyp{\linenumbox{} \emptyhypbox}
+\def\breakinformula{\linenumbox{} \emptyhypbox}
+\def\hypnumbox#1{\setbox\hypbox=\hbox{#1} %
+                 \ifdim \wd\hypbox > 72pt \box\hypbox\hfil\break\breakinhyp %
+	                \else \hbox to 72pt{\unhbox\hypbox\hss}\fi}
+
+\def\middleformula{middleformula}
+\def\lastformula{lastformula}
+
+\def\partformula#1#2{
+   \setbox\formulabox =\hbox{#1}   
+   \formulawd = \wd\formulabox 
+   \advance\formulawd by 120pt
+   \ifdim \formulawd > \hsize 
+          \advance\formulawd by -130pt
+          \setbox\formulabox =\hbox to \formulawd{\box\formulabox\hss}
+          \advance\formulawd by 130pt
+          \else \fi
+   \box\formulabox 
+   \ifx\middleformula #2
+       \ifdim \formulawd > \hsize \hfil\penalty-1000 \else \hfil\break \fi
+       \else \fi}
+
+\def\judgelink#1{
+   \ifdim \formulawd > \hsize\penalty-1000\rightline{#1}\else \setbox\formulabox = \hbox{#1}   
+                \advance \formulawd by \wd\formulabox
+                \advance \formulawd by 5pt
+                \ifdim \formulawd >\hsize\hfil\break\rightline{#1}\else\hfill\box\formulabox\fi\fi}
+               
+\hfuzz = 20pt
+
+%---------------------------------------------------
+%the following is used to display timing recording
+\newbox\processname
+\newbox\realtime
+\newbox\inruntime
+\newbox\gctime
+\newbox\igctime
+
+\newdimen\processnamewd
+\newdimen\realtimewd
+\newdimen\inruntimewd
+\newdimen\gctimewd
+\newdimen\igctimewd
+\newdimen\diffwd
+\newdimen\ndiffwd
+
+\setbox\processname=\hbox{Proof transformation}
+\setbox\realtime=\hbox{Real time}
+\setbox\inruntime=\hbox{Internal-run time}
+\setbox\gctime=\hbox{GC time}
+\setbox\igctime=\hbox{I-GC time}
+
+\processnamewd=\wd\processname
+\setbox\processname=\hbox to \processnamewd{\hss Process name\hss}
+\realtimewd=\wd\realtime
+\inruntimewd=\wd\inruntime
+\gctimewd=\wd\gctime
+\igctimewd=\wd\igctime
+
+\diffwd=\hsize
+\advance \diffwd by -\processnamewd
+\advance \diffwd by -\realtimewd
+\advance \diffwd by -\inruntimewd
+\advance \diffwd by -\gctimewd
+\advance \diffwd by -\igctimewd
+\divide \diffwd by 5
+
+\advance \processnamewd by \diffwd 
+\advance \realtimewd by \diffwd 
+\advance \inruntimewd by \diffwd 
+\advance \gctimewd by \diffwd 
+\advance \igctimewd by \diffwd 
+
+\ndiffwd=\hsize
+\advance \ndiffwd by -\processnamewd
+
+\divide \diffwd by 2
+
+\setbox\processname=\hbox to \processnamewd{\hskip\diffwd Process name\hss}
+\setbox\realtime=\hbox to \realtimewd{\hss Real time\hss}
+\setbox\inruntime=\hbox to \inruntimewd{\hss Internal-run time\hss}
+\setbox\gctime=\hbox to \gctimewd{\hss GC time\hss}
+\setbox\igctime=\hbox to \igctimewd{\hss I-GC time\hss}
+
+\def\timeline#1#2#3#4#5{
+  \hbox{\strut
+        \hbox to \processnamewd{\hskip\diffwd#1\hss}\vrule
+        \hbox to \realtimewd{\hss#2\hskip\diffwd}\vrule
+        \hbox to \inruntimewd{\hss#3\hskip\diffwd}\vrule
+        \hbox to \gctimewd{\hss#4\hskip\diffwd}\vrule
+        \hbox to \igctimewd{\hss#5\hskip\diffwd} } }
+
+
+\def\ntimeline#1{\strut
+\hbox to \processnamewd{\hskip\diffwd#1\hss}\vrule
+\hbox to \ndiffwd{\hss not called in this proof\hss}}
+
+%the above is used to display timing recording
+%---------------------------------------------------
+%The following is used to print character documentation
+\def\today{
+\ifcase\month\or January\or February\or
+             March\or April\or May\or June\or July\or August\or
+             September\or Octobor\or November\or December\fi
+\space\number\day, \number\year}
+
+\def\frontpageofchardoc{
+\font\bigfont=cmbx10 at 14.4pt
+\font\midfont=cmbx10 at 12pt 
+\footline{\hfill}
+\vbox to \vsize{\vfill
+\centerline{{\bigfont TPS3 Character Sets}}
+\vskip10pt
+\centerline{{\midfont\today}}
+\vskip10pt
+\centerline{{\midfont Peter Andrews}}
+\vskip5pt
+\centerline{{\midfont Sunil Issar}}
+\vskip5pt
+\centerline{{\midfont Carl Klapper}}
+\vskip5pt
+\centerline{{\midfont Dan Nesmith}}
+\vskip5pt
+\centerline{{\midfont Hongwei Xi}}
+\vskip100pt
+\centerline{Working Edition}
+\vfill}
+\eject
+
+\footline{\hfil\folio\hfil}
+\pageno=1
+\headline={\ifnum\pageno>1
+                 {{\bf TPS3 Character Sets}\hfill{\bf Help for Special Characters}}
+                 \else{}\fi}}
+
+
+%---------------------------------------------------
+
+\newbox\tempa
+\newbox\tempb
+\newdimen\tempc
+\newbox\tempd
+
+%\newdimen\halfsize
+
+%\newdimen\halfbaselineskip
+
+\def\inruleanhelp#1#2#3{\setbox\tempa=\hbox{$\displaystyle{\mathstrut #2}$}%
+		        \setbox\tempb=\vbox{\halign{##\cr
+	\mud{#1}\cr
+	\noalign{\vskip\the\lineskip}%
+	\noalign{\hrule height 0pt}%
+	\rig{\vbox to 0pt{\vss\hbox to 0pt{${\; #3}$\hss}\vss}}\cr
+	\noalign{\hrule}%
+	\noalign{\vskip\the\lineskip}%
+	\mud{\copy\tempa}\cr}}%
+		      \tempc=\wd\tempb
+		      \advance\tempc by \wd\tempa
+		      \divide\tempc by 2 }
+
+\def\inrulemhelp#1#2#3{\setbox\tempa=\hbox{$\displaystyle{\mathstrut #2}$}%
+		        \setbox\tempb=\vbox{\halign{##\cr
+	\mud{#1}\cr
+	\noalign{\vskip\the\lineskip}%
+	\noalign{\hrule}%
+	\noalign{\vskip\the\lineskip}%
+	\noalign{\hrule height 0pt}%
+	\rig{\vbox to 0pt{\vss\hbox to 0pt{${\; #3}$\hss}\vss}}\cr
+	\noalign{\hrule}%
+	\noalign{\vskip\the\lineskip}%
+	\mud{\copy\tempa}\cr}}%
+		      \tempc=\wd\tempb
+		      \advance\tempc by \wd\tempa
+		      \divide\tempc by 2 }
+
+
+\def\inrulemchelp#1#2#3{\setbox\tempa=\hbox{$\displaystyle{\mathstrut #2}$}%
+			\setbox\tempd=\hbox{$\; #3$}%
+		        \setbox\tempb=\vbox{\halign{##\cr
+	\mud{#1}\cr
+	\noalign{\vskip\the\lineskip}%
+	\noalign{\hrule}%
+	\noalign{\vskip\the\lineskip}%
+	\noalign{\hrule height 0pt}%
+	\rig{\vbox to 0pt{\vss\hbox to 0pt{${\; #3}$\hss}\vss}}\cr
+	\noalign{\hrule}%
+	\noalign{\vskip\the\lineskip}%
+	\mud{\copy\tempa}\cr}}%
+		      \tempc=\wd\tempb
+		      \advance\tempc by \wd\tempa
+		      \divide\tempc by 2 }
+
+\def\inruleanchelp#1#2#3{\setbox\tempa=\hbox{$\displaystyle{\mathstrut #2}$}%
+			\setbox\tempd=\hbox{$\; #3$}%
+		        \setbox\tempb=\vbox{\halign{##\cr
+	\mud{#1}\cr
+	\noalign{\vskip\the\lineskip}%
+	\noalign{\hrule height 0pt}%
+	\rig{\vbox to 0pt{\vss\hbox to 0pt{\copy\tempd \hss}\vss}}\cr
+	\noalign{\hrule}%
+	\noalign{\vskip\the\lineskip}%
+	\mud{\copy\tempa}\cr}}%
+		      \tempc=\wd\tempb
+		      \advance\tempc by \wd\tempa
+		      \divide\tempc by 2 }
+
+\def\inrulean#1#2#3{{\inruleanhelp{#1}{#2}{#3}%
+		     \hbox to \wd\tempa{\hss \box\tempb \hss}}}
+
+%%%
+%%% Alternative in-text definition for deductions
+%%%
+
+
+
+\def\inruleanc#1#2#3{{\inruleanchelp{#1}{#2}{#3}%
+		     %\halfbaselineskip=\baselineskip
+		     %\divide\halfbaselineskip by 2
+		     \raisebox{-0.5\baselineskip}{\box\tempb\hskip\wd\tempd}}}
+
+\def\inrulemc#1#2#3{{\inrulemchelp{#1}{#2}{#3}%
+		     %\halfbaselineskip=\baselineskip
+		     %\divide\halfbaselineskip by 2
+		     \raisebox{-0.5\baselineskip}{\box\tempb\hskip\wd\tempd}}}
+
+
+\def\inrulem#1#2#3{{\inrulemhelp{#1}{#2}{#3}%
+		    \hbox to \wd\tempa{\hss \box\tempb \hss}}}
+
+\def\ginrulem#1#2#3{{\inrulemhelp{#1}{#2}{#3}%
+		     %\halfsize=\linewidth
+		     %\divide\halfsize by 2
+		     \hbox to .5\linewidth{\hfil \box\tempb \hfil}}}
+
+\def\ginruleml#1#2#3{{\inrulemchelp{#1}{#2}{#3}%
+		     %\halfsize=\linewidth
+		     %\divide\halfsize by 2
+		     \hbox to .5\linewidth{\hfil \box\tempb \hskip\wd\tempd \hfil
+		     }}}
+
+\def\linrulem#1#2#3{{\inrulemhelp{#1}{#2}{#3}%
+		      \hbox to \tempc{\hss \box\tempb}}}
+
+\def\rinrulem#1#2#3{{\inrulemhelp{#1}{#2}{#3}%
+		      \hbox to \tempc{\box\tempb \hss}}}
+
+
+\def\ginruleanl#1#2#3{{\inruleanchelp{#1}{#2}{#3}%
+		     %\halfsize=\linewidth
+		     %\divide\halfsize by 2
+		       \hbox to .5\linewidth{\hfil
+		         \box\tempb\hskip\wd\tempd \hfil
+		       }}}
+
+\def\ginrulean#1#2#3{{\inruleanhelp{#1}{#2}{#3}%
+		     %\halfsize=\linewidth
+		     %\divide\halfsize by 2
+		     \hbox to .5\linewidth{\hfil \box\tempb \hfil}}}
+
+\def\linrulean#1#2#3{{\inruleanhelp{#1}{#2}{#3}%
+		      \hbox to \tempc{\hss \box\tempb}}}
+
+\def\rinrulean#1#2#3{{\inruleanhelp{#1}{#2}{#3}%
+		      \hbox to \tempc{\box\tempb \hss}}}
+
+\newbox\gappremises
+
+\def\gap#1{\gapbuild#1{}\inrulegap{\box\gappremises}}
+
+\def\gapbuild#1{\if *#1*\let\next=\relax\else
+        \setbox\gappremises=\hbox{\ifvoid\gappremises\else
+					 \unhbox\gappremises \qquad\fi
+				  \mud{#1}}%
+	\let\next=\gapbuild\fi\next}
+
+\def\gaphelp#1#2#3{\setbox\tempa=\hbox{$\displaystyle{\mathstrut #2}$}%
+		   \setbox\tempb=\vbox{\lineskip=2pt%
+ \halign{##\cr
+	\mud{#1}\cr
+	%\noalign{\vskip\the\lineskip}%
+	\noalign{\hrule height 0pt}%
+	\mud{#3}\cr
+	\noalign{\hrule height 0pt}%
+	\noalign{\vskip\the\lineskip}%
+	\mud{\copy\tempa}\cr}}%
+		      \tempc=\wd\tempb
+		      \advance\tempc by \wd\tempa
+		      \divide\tempc by 2 }
+
+\def\gapchelp#1#2#3{\setbox\tempa=\hbox{$\displaystyle{\mathstrut #2}$}%
+		   \setbox\tempb=\hbox{$\vcenter{\lineskip=2pt%
+ \halign{##\cr
+	\mud{#1}\cr
+	%\noalign{\vskip\the\lineskip}%
+	\noalign{\hrule height 0pt}%
+	\mud{#3}\cr
+	\noalign{\hrule height 0pt}%
+	\noalign{\vskip\the\lineskip}%
+	\mud{\copy\tempa}\cr}}$}%
+		      \tempc=\wd\tempb
+		      \advance\tempc by \wd\tempa
+		      \divide\tempc by 2 }
+
+
+
+\def\inrulegap#1#2#3{{\gaphelp{#1}{#2}{#3}%
+		      \hbox to \wd\tempa{\hss \box\tempb \hss}}}
+
+\def\ginrulegap#1#2#3{{\gaphelp{#1}{#2}{#3}%
+		       \hbox to 0.5\linewidth{\hfil \box\tempb \hfil}}}
+
+\def\inrulegapc#1#2#3{{\gaphelp{#1}{#2}{#3}%
+		     %\halfbaselineskip=\baselineskip
+		     %\divide\halfbaselineskip by 2
+		     \raisebox{-0.5\baselineskip}{\box\tempb}}}
+
+
+\def\inrulebn#1#2#3#4{\inrulean{#1\quad\qquad #2}{#3}{#4}}
+\def\inrulebnc#1#2#3#4{\inruleanc{#1\quad\qquad #2}{#3}{#4}}
+\def\linrulebn#1#2#3#4{\linrulean{#1\quad\qquad #2}{#3}{#4}}
+\def\ginrulebn#1#2#3#4{\ginrulean{#1\quad\qquad #2}{#3}{#4}}
+\def\ginrulebnl#1#2#3#4{\ginruleanl{#1\quad\qquad #2}{#3}{#4}}
+\def\rinrulebn#1#2#3#4{\rinrulean{#1\quad\qquad #2}{#3}{#4}}
+
+\def\mud#1{\hfil $\displaystyle{#1}$\hfil}
+\def\rig#1{\hfil $\displaystyle{#1}$}
+
+\def\inruleax#1#2{\quad\vbox{\halign{\hfil $\displaystyle{##}$\hfil\cr
+				     #1\cr
+				     \noalign{\vskip\the\lineskip
+				              \hrule
+					      \vskip\the\lineskip}%
+				     \cdots\cr
+				     \noalign{\vskip\the\lineskip
+				              \hrule
+					      \vskip\the\lineskip}%
+				     #2\cr}}\;}
+
+
+\def\inruleadots#1#2{\quad\vbox{\halign{\hfil $\displaystyle{##}$\hfil\cr
+				     #1\hskip 3em\cr
+				     \noalign{\vskip\the\lineskip
+				              \hrule
+					      \vskip\the\lineskip}%
+				     \ddots\cr
+				     \noalign{\vskip\the\lineskip
+				              \hrule
+					      \vskip\the\lineskip}%
+				     \hskip 3em #2\cr}}\;}
+
+
+% cebrown - 11/5/00 - added macros for typesetting expansion trees.
+\def\etra#1#2{{\begin{array}[t]{c}#1 \\ \begin{array}[t]{c} \downarrow \\ #2\end{array}\end{array}}}
+\def\etrb#1#2#3{{\begin{array}[t]{c}#1 \\ \begin{array}[t]{cc} \swarrow & \searrow \\ #2 & #3 \end{array}\end{array}}}
+\def\etraa#1#2#3{{\begin{array}[t]{c}#1 \\ \begin{array}[t]{c} \downarrow #2 \\ #3\end{array}\end{array}}}
+\def\etrba#1#2#3#4#5{{\begin{array}[t]{c}#1 \\ \begin{array}[t]{cc} #2 \swarrow & \searrow #4 \\ #3 & #5 \end{array}\end{array}}}
+\def\etrca#1#2#3#4#5#6#7{{\begin{array}[t]{c}#1 \\ \begin{array}[t]{ccc} #2 \swarrow & \downarrow #4 & \searrow #6 \\ #3 & #5 & #7 \end{array}\end{array}}}
+
+\def\erew#1#2#3#4{{\etra{(#2)REW#1: #3}{#4}}}
+\def\erewstar#1#2#3{{\etra{#1 REW^\ast:#2}{#3}}}
+\def\erewstarnf#1#2{{\etra{#1 REW^\ast}{#2}}}
+\def\eleaf#1#2{{LEAF#1: #2}}
+\def\econj#1#2#3#4{{\etrb{CONJ#1}{#3}{#4}}}  % or CONJ#1: #2 to include fmla
+\def\edisj#1#2#3#4{{\etrb{DISJ#1}{#3}{#4}}}  % or DISJ#1: #2 to include fmla
+\def\eimp#1#2#3#4{{\etrb{IMP#1}{#3}{#4}}}  % or IMP#1: #2 to include fmla
+\def\eneg#1#2#3{{\etra{NEG#1}{#3}}}  % or NEG#1: #2 to include fmla
+\def\uexpnode#1#2#3#4{{\etraa{EXP#1: #2}{#3}{#4}}}
+\def\bexpnode#1#2#3#4#5#6{{\etrba{EXP#1: #2}{#3}{#4}{#5}{#6}}}
+\def\gexpnode#1#2#3#4#5#6{{\etrca{EXP#1: #2}{#3}{#4}{\ast}{\cdots}{#5}{#6}}}
+\def\sel#1#2#3#4{{\etraa{SEL#1: #2}{#3}{#4}}}
+\def\skol#1#2#3#4{{\etraa{SKOL#1: #2}{#3}{#4}}}
+\def\truenode#1{{TRUE#1}}
+\def\falsenode#1{{FALSE#1}}
+\def\etrgap#1{{\begin{array}[t]{c}\cdots \\ \downarrow \\ #1\end{array}}}
+

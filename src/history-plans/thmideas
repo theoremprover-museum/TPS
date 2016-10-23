@@ -1,0 +1,1451 @@
+		THMIDEAS
+
+IDEAS AND SOURCES FOR THEOREMS TPS CAN TRY TO PROVE
+
+Also see folders in office
+
+see /afs/cs/project/tps/tps/tpslib/andrews/konrad99a
+
+Papers in the literature:
+
+Geoff Sutcliffe, Christian Suttner, Theodor Yemenis,
+The TPTP Problem Library, CADE-12, 252-266.
+See /afs/cs/project/tps/tps/tpslib/tptp                    
+Use /afs/cs/project/tps/tps/tpslib/tptp/Documents/ReverseIndex
+to find theorems by names used elsewhere.
+
+See mizar.hlp
+http://mizar.org
+ http://mizar.org/JFM/Preprints.html
+
+Hines, CADE-10 p. 193-206, esp 204
+
+Bledsoe, "Challenge Problems in Elementary Calculus",
+JAR 6 (1990), 341-359.
+
+Bledsoe atp104 June 1991 draft
+Bibel, Bledsoe volume or Cade-10 talk
+
+Andrew Coppel, "A Theory of Polytopes"
+This is a nice self-contained theory which may be higher-order
+
+William M. Farmer and F. Javier Thayer,
+"Two Computer-Supported Proofs in Metric Space Topology",
+Notices of the AMS 38 (9), Nov. 1991, 1133-1138.
+
+Dafa Li. Halting Problem. JAR Newsletter 27 (Oct 1994)
+
+Pelletier, "Seventy-Five Problems ...", JAR 2 (1986), 191-216.
+Errata JAR 4, 235-236.
+
+Mark. E. Stickel, "A Prolog Technology Theorem Prover: Implementation by
+an Extended Prolog Compiler",
+Journal of Automated Reasoning 4 (1988), 353-380.
+
+
+SETHEO: A high-performance theorem prover. Journal of Automated
+Reasoning 8, (1992), 183-212.
+
+McCune & Wos, "... Condensed Detacment", CADE-11, 209-223
+
+------------------------------------------------------------
+extensions of THM252. Can we replace the binary union by
+arbitrary unions? By other set operations?
+------------------------------------------------------------
+Problems mentioned by Dana Scott in his 1996 lecture to CADE.
+
+------------------------------------------------------------
+	See Benji Shults' message of 12 Feb 1998
+
+ Wos' 8th research problem: "an inference rule
+for set thery?"  In the statement of this problem, he gives
+a challenge problem:
+
+  G/Ker(f) is isomorphic to H where f : G -> H is an onto
+  homomorphism
+
+Note: could just formulate this in terms of an equivalence relation
+and its quotient set.
+---------------------------------------------------
+Problem used to illustrate complete induction in Modern Math:
+If A and B are words such that AB = BA, the there is a word C
+such that A = C...C (some n times) and B = C...C (some m times).
+
+How formulate notion of finite sequence of symbols nicely?
+------------------------------------------------------------
+Equivalence of various fomulations of AC (Axiom of Choice)
+Schroder-Bernstein theorem
+
+Equivalence of various definitions of finiteness
+See JSL 64(4) Dec 1999 p.1552 bottom.
+-------------------------------------------------------
+If S is a finite set, and f maps S into S, then the following are equivalent:
+(1) f is injective
+(2) f is surjective
+(3) f is bijective
+------------------------------------------------------------
+There is an injection from A into B iff there is
+a surjection from B onto A
+
+------------------------------------------------------------
+From: Michael Albert <ma1q@hillgrove.math.cmu.edu>
+Date: Tue, 24 Oct 95 11:25:17 -0500
+To: Andrews+@cmu.edu
+Subject: A problem
+
+Peter,
+
+We did the following in Modern Math and I was wondering if perhaps
+it would make a nice test problem for TPS or something. I'll state
+it in abstract terms (we did it as a "round robin tournament")
+
+Let X be a finite set, and R a binary relation on X such that for
+all x,y in X xRy or yRx. Then there is a w in X, such that for all y
+in X either wRy or for some z,  wRz and zRy.
+
+(w "almost beats" every other player. Note that we are not using
+the full transitive closure -- just two steps.)
+
+PBA Note: Must require that X is nonempty, i.e. FINITE+
+------------------------------------------------------------
+Smullyan's very general fixed point theorem might be worth 
+looking at. See review JSL 61, Sept 1996, p.1053, line 17.
+------------------------------------------------------------
+
+
+T160
+If f maps A onto A then every iterate of f also maps A onto A.
+
+T161
+If A is finite and f maps A onto itself,
+then the set of iterates of f is finite.
+
+T162
+If A is finite and f maps A onto itself,
+then there are iterates g, k, and h of f such that k compose g = h
+and g = h
+Proof: by T161
+
+T163
+If A is finite and f maps A onto itself 
+then some iterate of f is the identity on A . (Mentioned by Mike Albert.)
+Proof: use T160 and T162. Prove that k is the identity on A
+
+The range of f compose f is a subset of the range of f.
+(Here, f must be a mapping with a specified domain.)
+
+If A is finite and f maps A into itself, then
+some iterate of f is the identity on its range. (Mentioned by Mike Albert.)
+
+If A is finite and f maps A into itself, then
+some iterate of f is a permutation of some subset of A.
+ (Mentioned by Mike Albert.)
+
+
+If A is finite and f maps A into itself, then
+some iterate of f is idempotent. (Mentioned by Mike Albert.)
+
+T170.
+If every surjection from A onto itself is an injection,
+then A is finite.
+
+T171.
+If A is finite, 
+then every injection of A into itself is a surjection.
+
+T172
+If every surjection from A onto itself is an injection,
+then every injection of A into itself is a surjection.
+Proof: by T170 and T171. If we have proofs of these, and then
+apply cut-elimination to get a proof of T172, what does it
+look like?
+
+not finite [lambda x T] equiv infin
+where finite is defined as in TTTP, and infin is defined
+in one of the ways discussed there.
+
+If A is finite, then its power set is also finite.
+
+If A and B are finite, then the set of functions from B to A is finite.
+
+There is no infinite descending sequence of integers.
+See notes by Huet in folder on theorems to try.
+
+One can define the set of even numbers in various ways.
+See recent Math Logic II exams in April.
+n is even iff n = f0 for some iterate f of the +2 function.
+n is even iff it is in every set which contains 0 and is closed
+under +2
+Prove these are equivalent
+
+AC implies Zorn's Lemma or parts of the proof. See Ogawara's detailed proof
+in envelope next to other potential theorems
+
+X5309 and variant of it in which = is replaced by a relation satisfying 
+the appropriate conditions
+ x5309.dir on dtps
+
+McCarthy's tough nut. Also see the formulation in one of Wos' books.
+
+Wos problems. See books.
+In particular, see JAR 5 p. 94
+G mod ker f is isomorphic to H, where G and H are groups and f is a hom
+from G onto H
+
+Lukasiewicz axioms imply Church's axioms; AAR Newsletter 21 (1992 Sept.) p. 10
+
+CADE-12
+
+Knaster-Tarski fixed point theorem for complete lattices
+f is monotone implies lfp(f) = f(lfp(f))
+where lfp(f) = the least fixed point of f
+
+Tarski fixed point theorem for lattices. (Find its number)
+See Huet, constrined resolution (3 IJCAI), example 3 p. 144
+
+Shinako's X5228 & X5229. Category-theory style defs of injection and
+surjection
+
+-------------------------
+Formalize Walter Noll's solution to the chess tournament problem:
+2n players; each round involves n pairs of players. Arrange the
+rounds so that each player plays every other player exactly once.
+
+Solution: one long player with n-1 players on each side, one small table for
+two players.  At end of round, all players rotate except one of the players at
+the small table, who never moves.
+
+
+-------------------------
+
+Formalize parts of graph theory.
+If there is a walk from u to v, there is a path.
+
+Halting problem (Dafa Li & others)
+AAR Newsletter No. 23 June 1993
+
+"For every man there is a better woman, but no woman is better than every man"
+implies there are infinitely many men and women.
+("Better" mustr be irreflexive and transitive?)
+
+Math Reviews 41 (1971) # 1541
+Math Reviews 42 #2945
+
+A subset of a finite set is finite (with finite defined in various ways).
+
+From: Frank.Pfenning@theory.cs.cmu.edu
+Subject: Alternate Definition of Image
+I found a file on the C in which I had recorded the alternate
+definition of image, and the interactive proofs of the equivalences of
+the two definitions (in TPS).  Image is understood in a somewhat
+less general sense as the image of a whole domain and not a subset
+of it.  That simplifies presentation and proof considerably.
+The definition is
+coquand:  "lambda f lambda y . forall Q [[forall z  Q [f z]] implies Q y]"
+tps:      "lambda f lambda y . exists x forall P [ P [f x] implies P y ]"
+The two implications are in <pfenning.tps>image.clisp, for quick
+consumption by tps as theorems COQ1 and COQ2.  I seem to recall
+that one proof was trivial, the other hard --- you may want to feed
+them to the new matingsearch.
+
+
+Resolution problems:
+The TPTP Problem Library
+Geoff Sutcliffe et al
+See AAR Newsletter 25 (Feb 1994) p. 4
+geoff@cs.jcu.edu.au
+
+====================================================================
+Date: Wed, 23 Mar 94 14:55:26 EST
+From: Frank Pfenning <Frank_Pfenning@ALONZO.TIP.CS.CMU.EDU>
+
+Below are some examples that require simple inductions, perhaps the most
+commonly used form of higher-order reasoning.  I can quickly and easily
+generate more along the same lines, should it turn out that these are doable.
+I hope I will be proven wrong, but I am somewhat skeptical that TPS can go
+very far in this direction.  After all, inductive theorem proving is a subject
+unto itself with at least 2 or 3 very powerful specialized provers.
+  - Frank
+----------------------------------------------------------------------
+n : type % type of natural numbers
+
+z : n      % zero
+s : n -> n % successor
+
+% Axiom: Induction
+forall P. P z and (forall x. P x implies P (s x)) implies forall x. P x
+
+% Axiom: structural identity
+id z z
+forall N. forall M. id N M implies id (s N) (s M)
+
+% Theorems
+forall N. id N N
+forall N. exists M. id N M		PBA note: THM130. Easy for TPS
+
+% Axioms: double
+double z z
+forall N. forall M. double N M implies double (s N) (s (s M))
+
+% Theorem: double is total
+forall N. exists M. double N M		PBA note: THM140. Easy for TPS,
+					but there is a translation bug
+
+% Axioms: half
+half z z
+half (s z) z
+forall N. forall M. half N M implies half (s (s N)) (s M)
+
+% Theorem: Connections between half and double.
+forall N. forall M. double N M implies half M N.
+forall N. forall M. half N M implies (double M N or double (s M) (s N))
+
+					Note (HX): The first of these is 
+					not a theorem. Consider model in 
+					which double M N is always true.
+					Should define DOUBLE inductively
+
+% Axioms: even and odd numbers
+even z
+forall N. even N implies even (s (s N))
+
+odd (s z)
+forall N. odd N implies odd (s (s N))
+
+% Theorem: Every number is either even or odd
+forall N. even N or odd N
+=================================================================
+Subject: The Winds and the Windows
+Date: Thu, 31 Mar 94 16:58:24 EST
+From: Aptenodytes forsteri <Matt_Bishop@K.GP.CS.CMU.EDU>
+
+
+This might be another good example for MST...
+
+
+On the subject of Lewis Carroll's problems, another
+(simpler) purely propositional problem is as follows:
+
+1) There is always sunshine when the wind is in the East.
+2) When it is cold and foggy, my neighbour practises the flute.
+3) When my fire smokes, I set the door open.
+4) When it is cold and I feel rheumatic, I light my fire.
+5) When the wind is in the East and comes in gusts, my fire smokes.
+6) When I keep the door open, I am free from headache.
+7) Even when the sun is shining and it is not cold, I keep my window 
+   shut if it is foggy.
+8) When the wind does not come in gusts, and when I have a fire and 
+   keep the door shut, I do not feel rheumatic.
+9) Sunshine always brings on fog.
+10) When my neighbour practises the flute, I shut the door, even if
+    I have no headache.
+11) When there is a fog and the wind is in the East, I feel rheumatic.
+
+Deduce that when the wind is in the East, I keep my window shut.
+
+This problem is in my library under the name WINDS.
+TPS can prove this in ms90-3 in a few seconds (see WINDS-MODE
+for a mode that produces a quick proof and sensible translation).
+
+(actually, 1,7 and 9 are enough to deduce the conclusion; the rest is 
+useless clutter. I didn't notice this until I looked at TPS's proof, though!)
+=======================================================================
+See Bishop's examples related to Bailin's def of transitive closure
+in his library file tc-interp-thms
+trcl-trans	trcl-trans-mode
+trcl-min	trcl-min-mode
+Run again an example to illutrate time taken for printing on screen.
+Use SILENT mode. 
+=================================================================
+
+
+The Schroder-Burnstein theorem (SB) which states that if there is an
+injection of A into B and an injection of B into A then there must be
+a bijection between A and B.  Is this already in the library as one of
+Huet's problems?
+=============================================================
+Subject: Automation of Church-Rosser
+Date: Mon, 29 Jul 1996 15:57:47 +0200
+From: Vincent Lombart <vl@info.ucl.ac.be>
+Sender: owner-qed@mcs.anl.gov
+Precedence: bulk
+
+Hello all.
+
+I am looking for information on possible automated proofs involving the
+Church-Rosser (diamond) property. The Church-Rosser property of a
+relation R can be defined as:
+    a
+   / \
+  b   c        R a b /\ R a c -> exists d. R b d /\ R c d
+   \ /
+    d
+
+One theorem I am interested in is proving that the transitive closure
+preserves the Church-Rosser property, i.e. if R* is the transitive closure
+of R, then
+
+        R* a b /\ R* a c -> exists d. R* b d /\ R* c d
+
+This proof is quite easy to perform in many interactive proof checkers.
+However, I am interested in _automatic_ guidance of this and similar proofs.
+Does anybody have information on whether this has been done before, and what
+has exactly been supplied to the theorem prover (lemma, induction type...)?
+
+Date: Mon, 29 Jul 1996 07:43:25 -0700 (PDT)
+From: David Barker-Plummer <dbp@csli.stanford.edu>
+Message-Id: <199607291443.HAA12985@Proof.Stanford.EDU>
+To: vl@info.ucl.ac.be
+cc: qed@mcs.anl.gov
+cc: sbailin@kevol.com
+In-reply-to: <199607291357.PAA04331@info.ucl.ac.be> (message from Vincent Lombart on Mon, 29 Jul 1996 15:57:47 +0200)
+Subject: Re: Automation of Church-Rosser
+Sender: owner-qed@mcs.anl.gov
+Precedence: bulk
+
+Vincent,
+
+You may be interest in looking at my work with Sidney Bailin on this
+theorem using the &/GROVER theorem proving system.  The system
+produces a fully automatic proof of this theorem.  The novelty of the
+&/GROVER system is that the user can express proof strategies
+diagrammatically to it.  &/GROVER has also been used to prove fully
+automatically the Schroeder-Bernstein theorem.
+
+You can find papers describing &/GROVER at
+        ftp://csli.stanford.edu/pub/diagrams/Papers/GROVER/
+
+Let us know if you would like more information abou the system, or the
+proofs...
+
+-- Dave
+
+=============================================================
+		SEMI-INTERACTIVE PROOFS
+		Proofs involving lemmas
+Checkerboard problem
+
+In TTTP, Axiom 6 implies 6108
+Can TPS prove the Lemma if we set it up as an inductive proof?
+Do this part interactively and let it run
+
+=============================================================
+			TPTP Library
+
+burstall                         [Wilson & Minker, 1976]    : COM002-1.p
+Number of clauses           :   19 (   0 non-Horn)(  15 unit)
+
+shortburst                       [Wilson & Minker, 1976]    : COM001-1.p
+Number of clauses           :   11 (   0 non-Horn)(   7 unit)
+
+=====================================================================
+Date: Mon, 12 Aug 96 10:58:57 CDT
+Posted-Date: Mon, 12 Aug 96 10:58:57 CDT
+Message-Id: <9608121558.AA07676@marie.ma.utexas.edu>
+Received: by marie.ma.utexas.edu (4.1/5.51)
+        id AA07676; Mon, 12 Aug 96 10:58:57 CDT
+From: Benjamin Price Shults <bshults@fireant.ma.utexas.edu>
+To: reiner@ira.uka.de, wos@mcs.anl.gov, Peter.Andrews@k.gp.cs.cmu.edu,
+        Edmund.Clarke@cs.cmu.edu
+Cc: beckert@i12pc5.ira.uka.de, bshults@marie.ma.utexas.edu
+Subject: Re: A challenge problem.
+
+Colleagues,
+
+I am sending you a list of first order "axioms" and a final first
+order theorem.  The theorem is true in any model of the axioms.  I
+would like to know if finding the proof of the theorem given the
+axioms is difficult for your provers.  I'm sure your provers will find
+a proof but I would like to know how the difficulty compares with
+other problems.  If this problem is relatively difficult for your
+provers, then I will make this example and others like it, available
+to the maintainers of TPTP and write a breif report for the AAR
+newsletter.
+
+The axioms and theorem are in s-expression syntax, i.e. fully
+parenthesized prefix notation.  I hope you will not have any
+difficulty translating it to a notation your provers understand.
+
+The theorem itself is a bit silly.  It came about because it is one of
+the hard parts of the proof of a larger theorem which my prover is not
+able to get yet.  However, my prover does get this proof easily.
+
+A note about the formalization: I differentiate between a topological
+space and the underlying set.  So if X is a top. space with an open
+subset U, then I say
+
+   (open-in U X)
+
+and
+
+   (a-subset-of U (coerce-to-class X)).
+
+Thank you for the time.
+
+---Input to the knowledge base---
+
+(def-theorem closed-subset-thm
+  (implies (forall ((y)) (implies (and (a-member-of y (coerce-to-class x))
+                                       (not (a-member-of y a)))
+                           (for-some ((g))
+                             (and (a-member-of y g)
+                                  (open-in g x)
+                                  (disjoint g a)))))
+    (closed-in a x)))
+
+(def-theorem product-of-open-sets
+  (implies (and (open-in a x) (open-in b y))
+    (open-in (the-product-of a b) (the-product-top-space-of x y))))
+
+(def-theorem product-top
+  (implies (a-member-of x (coerce-to-class (the-product-top-space-of s t)))
+    (for-some ((a) (b))
+      (and (a-member-of a (coerce-to-class s))
+           (a-member-of b (coerce-to-class t))
+           (= x (the-ordered-pair a b)))))))
+
+(def-theorem product
+  (iff (a-member-of x (the-product-of s t))
+       (for-some ((a) (b))
+         (and (a-member-of a s) (a-member-of b t)
+              (= x (the-ordered-pair a b))))))
+
+(def-theorem disjoint
+  (iff (disjoint a b)
+       (not (for-some ((y)) (and (a-member-of y a) (a-member-of y b))))))
+
+(def-theorem ordered-pair
+  (implies (= (the-ordered-pair a b) (the-ordered-pair c d))
+    (and (= a c) (= b d))))
+
+(def-theorem diagonal-top
+  (iff (a-member-of x (coerce-to-class (the-diagonal-top s)))
+       (for-some ((a))
+         (and (a-member-of a (coerce-to-class s))
+              (= x (the-ordered-pair a a))))))
+
+---theorem input---
+
+(def-theorem hard-part-1-4-4
+  (implies (and (open-in g1 s)
+                (open-in g2 s)
+                (a-member-of b g1)
+                (a-member-of a g2)
+                (disjoint g1 g2)
+                )
+    (for-some ((g))
+      (and (a-member-of (the-ordered-pair a b) g)
+           (open-in g (the-product-top-space-of s s))
+           (disjoint g (coerce-to-class (the-diagonal-top s)))))))
+==========================================================================
+Date: Mon, 23 Mar 1998 18:16:35 +0100
+From: Christoph Benzmueller <chris@ags.uni-sb.de>
+
+And furthermore, we have an example which Volker Sorge and
+Lassaad Cheikhrouhou are currently working on
+with our proof planner. We hope you will find it interesting and you will=
+ be =
+
+able to solve it. We would especially be interested if TPS could solve so=
+me
+subproblems automatically. =
+
+It's an example from group theory on the equivalence of different definit=
+ions =
+
+of
+groups (in POST syntax).
+
+
+Good luck,
+
+  Chris & Volker =
+
+
+
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D  Example =3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D
+
+(th~defdef not-empty
+	   (in base)
+	   (constants (not-empty (o (o i))))
+	   (formula
+	    (=3Ddef not-empty
+		  (lam (G (o i))
+		       (exists (lam (a i) (G a)))))))
+				=
+
+
+(th~defdef closed-under
+	   (in base)
+	   (constants (closed-under (o (i i i) (o i))))
+	   (formula
+	    (=3Ddef closed-under
+		  (lam (G (o i))
+		       (lam (op (i i i))
+			    (forall (lam (a i)
+				    (forall (lam (b i)
+					    (implies (and (G a) (G b)) (G (op a b))))))))))))
+
+(th~defdef associative =
+
+	   (in base)
+	   (constants (associative (o (i i i) (o i))))
+	   (formula
+	    (=3Ddef associative
+		  (lam (G (o i))
+		       (lam (op (i i i))
+			    (forall (lam (a i)
+				    (forall (lam (b i)
+					    (forall (lam (c i)
+						    (implies (and (G a)
+								  (and (G b)
+								       (G c)))
+							     (=3D (op a (op b c)) (op (op a b) c))))))))))))))
+
+
+(th~defdef unit
+	   (in base)
+	   (constants (unit (o i (i i i) (o i))))
+	   (formula
+	    (=3Ddef unit
+		  (lam (G (o i))
+		       (lam (op (i i i))
+			    (lam (e i)
+				 (forall (lam (a i)
+					      (implies (G a)
+						       (and (=3D (op a e) a)
+							    (=3D (op e a) a)))))))))))
+
+(th~defdef inverse-exist
+	   (in base)
+	   (constants (inverse-exist (o i (i i i) (o i))))
+	   (formula
+	    (=3Ddef inverse-exist
+		  (lam (G (o i))
+		       (lam (op (i i i))
+			    (lam (e i)
+				 (forall (lam (a i)
+			           	 (implies (G a)
+						  (exists (lam (x i)
+							  (and (G x)
+							       (and (=3D (op a x) e)
+								    (=3D (op x a) e))))))))))))))
+
+(th~defdef left-unit
+	   (in base)
+	   (constants (left-unit (o i (i i i) (o i))))
+	   (formula
+	    (=3Ddef left-unit
+		  (lam (G (o i))
+		       (lam (op (i i i))
+			    (lam (e i)
+				 (forall (lam (a i)
+					      (implies (G a)
+						       (=3D (op e a) a))))))))))
+
+(th~defdef left-inverse-exist
+	   (in base)
+	   (constants (left-inverse-exist (o i (i i i) (o i))))
+	   (formula
+	    (=3Ddef left-inverse-exist
+		  (lam (G (o i))
+		       (lam (op (i i i))
+			    (lam (e i)
+				 (forall (lam (a i)
+			           	 (implies (G a)
+						  (exists (lam (x i)
+							  (and (G x)
+							       (=3D (op x a) e)))))))))))))
+
+(th~defdef right-unit
+	   (in base)
+	   (constants (right-unit (o i (i i i) (o i))))
+	   (formula
+	    (=3Ddef right-unit
+		  (lam (G (o i))
+		       (lam (op (i i i))
+			    (lam (e i)
+				 (forall (lam (a i)
+					      (implies (G a)
+						       (=3D (op a e) a))))))))))
+
+(th~defdef right-inverse-exist
+	   (in base)
+	   (constants (right-inverse-exist (o i (i i i) (o i))))
+	   (formula
+	    (=3Ddef right-inverse-exist
+		  (lam (G (o i))
+		       (lam (op (i i i))
+			    (lam (e i)
+				 (forall (lam (a i)
+			           	 (implies (G a)
+						  (exists (lam (x i)
+							  (and (G x)
+							       (=3D (op a x) e)))))))))))))
+
+
+(th~defdef divisors-exist
+	   (in base)
+	   (constants (divisors-exist (o (i i i) (o i))))
+	   (formula
+	    (=3Ddef divisors-exist
+		  (lam (G (o i))
+		       (lam (op (i i i))
+			    (forall (lam (a i)
+				    (forall (lam (b i)
+					    (implies (and (G a) (G b))
+						     (and (exists (lam (x i)
+								  (and (G x) (=3D (op a x) b))))
+							  (exists (lam (y i)
+								  (and (G y) (=3D (op y a) b)))))))))))))))
+
+
+(th~defdef group01
+	   (in base)
+	   (constants (group01 (o (i i i) (o i))))
+	   (formula
+	    (=3Ddef group01
+		  (lam (G (o i))
+		       (lam (op (i i i))
+			    (and (not-empty G)
+				 (and (closed-under G op)
+				      (and (associative G op)
+					   (exists (lam (e i)
+						   (and (G e)
+							(and (unit G op e)
+							     (inverse-exist G op e)))))))))))))
+						   =
+
+(th~defdef group02
+	   (in base)
+	   (constants (group02 (o (i i i) (o i))))
+	   (formula
+	    (=3Ddef group02
+		  (lam (G (o i))
+		       (lam (op (i i i))
+			    (and (not-empty G)
+				 (and (closed-under G op)
+				      (and (associative G op)
+					   (exists (lam (e i)
+						   (and (G e)
+							(and (left-unit G op e)
+							     (left-inverse-exist G op e)))))))))))))
+
+(th~defdef group03
+	   (in base)
+	   (constants (group03 (o (i i i) (o i))))
+	   (formula
+	    (=3Ddef group03
+		  (lam (G (o i))
+		       (lam (op (i i i))
+			    (and (not-empty G)
+				 (and (closed-under G op)
+				      (and (associative G op)
+					   (exists (lam (e i)
+						   (and (G e)
+							(and (right-unit G op e)
+							     (right-inverse-exist G op e)))))))))))))
+
+(th~defdef group04
+	   (in base)
+	   (constants (group04 (o (i i i) (o i))))
+	   (formula
+	    (=3Ddef group04
+		  (lam (G (o i))
+		       (lam (op (i i i))
+			    (and (not-empty G)
+				 (and (closed-under G op)
+				      (and (associative G op)
+					   (divisors-exist G op)))))))))
+
+(th~defproblem equiv-01-02
+	       (in base)
+	       (conclusion
+		(forall (lam (G (o i))
+			(exists (lam (op1 (i i i))
+				(exists (lam (op2 (i i i))
+					(equiv (group01 G op1) (group02 G op2))))))))))
+
+(th~defproblem equiv-01-03
+	       (in base)
+	       (conclusion
+		(forall (lam (G (o i))
+			(exists (lam (op1 (i i i))
+				(exists (lam (op2 (i i i))
+					(equiv (group01 G op1) (group03 G op2))))))))))
+
+(th~defproblem equiv-01-04
+	       (in base)
+	       (conclusion
+		(forall (lam (G (o i))
+			(exists (lam (op1 (i i i))
+				(exists (lam (op2 (i i i))
+					(equiv (group01 G op1) (group04 G op2))))))))))
+
+=====================================================
+Subject: Boolean Properties of Sets
+Date: Wed, 05 Aug 1998 15:38:13 -0400
+From: Matt Bishop <Matt_Bishop@FTPS.TPS.CS.CMU.EDU>
+
+I found the paper "Boolean Properties of Sets" that was mentioned in 
+the Leo system description at CADE. The theorems are in my library
+(subdirectory mizar; they're called BOOL-PROP-*), and TPS can also prove 
+all but two of them (using just the mode BOOL-PROP-MODE), fairly quickly.
+
+The two that we can't do with that mode (nos. 56 and 57) each require 
+multiple duplications and a primsub. These are also the two examples
+which Leo can't do. MS98-1 can handle them, though (in mode 
+BOOL-PROP-MODE2; 56 is much quicker than 57).
+
+There is another paper, "Basic Properties of Sets", which looks trickier;
+I may try some of these examples as well.
+=====================================================
+THM196: Using ITERATE instead of ITERATE+ (see THM196A)
+the theorem is true if we have at least three individuals
+(need k(a) = a, k(b) = a, k(c) = c -- the point is that
+it is neither constant a nor identity), so cancellation
+won't work.  Good example of a theorem requiring descriptions.
+
+=====================================================
+Can TPS prove
+ n^2 = 2*m^2 -> n = 0 /\ m = 0
+for natural numbers?
+===================================================================
+		Klenk problems
+
+Subject: Predicate Logic Problems
+From: "Adam Joseph Conkey" <aconkey@andrew.cmu.edu>
+Date: Wed, 21 Jan 2009 17:10:00 -0500 (EST)
+To: andrews@cmu.edu
+
+1.	
+Professor Andrews,
+
+Attached are the AProS files of all the predicate logic problems I
+have entered from the Klenk text.  Professor Sieg asked that I send
+them to you.  Enjoy!
+
+-Adam Conkey.
+
+<?xml version="1.0" encoding="UTF-8"?>
+<assertioncategorygroup name="Klenk Problems (Predicate)">
+ <assertioncategory for="Unit 15_p.296_2">
+  <assertionlist>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)(C(x) -&gt; D(x))</premise>
+    <premise>(A.x)(E(x) -&gt; ~D(x))</premise>
+    <conclusion>(A.x)(E(x) -&gt; ~C(x))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)(F(x) -&gt; ~G(x))</premise>
+    <premise>(E.x)(H(x) &amp; G(x))</premise>
+    <conclusion>~(A.x)(H(x) -&gt; F(x))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)(K(x) -&gt; L(x))</premise>
+    <premise>(A.x)((K(x) &amp; L(x)) -&gt; M(x))</premise>
+    <conclusion>(A.x)(K(x) -&gt; M(x))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)(S(x) -&gt; (T(x) -&gt; U(x)))</premise>
+    <premise>(A.x)(U(x) -&gt; (V(x) &amp; W(x)))</premise>
+    <conclusion>(A.x)((S(x) &amp; T(x)) -&gt; V(x))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)(T(x) -&gt; (F(x) &amp; D(x)))</premise>
+    <premise>~(A.x)(T(x) -&gt; ~B(x))</premise>
+    <conclusion>~(A.x)(D(x) -&gt; ~B(x))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)((A(x) v. B(x)) -&gt; (C(x) &amp; D(x)))</premise>
+    <premise>(A.x)((C(x) v. D(x)) -&gt; (A(x) &amp; B(x)))</premise>
+    <conclusion>(A.x)(A(x) &lt;-&gt; C(x))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>~(E.x)(F(x) &amp; G(x))</premise>
+    <premise>(A.x)(Z(x) -&gt; (G(x) v. H(x)))</premise>
+    <premise>(E.x)(F(x) &amp; Z(x))</premise>
+    <conclusion>~(A.x)(F(x) -&gt; ~H(x))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)((B(x) v. W(x)) -&gt; ((A(x) v. F(x)) -&gt; S(x)))</premise>
+    <conclusion>(A.x)((B(x) &amp; F(x)) -&gt; S(x))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)(C(x) -&gt; (F(x) v. N(x)))</premise>
+    <premise>(A.x)(F(x) -&gt; B(x))</premise>
+    <premise>~(A.x)(C(x) -&gt; B(x))</premise>
+    <conclusion>~(A.x)(C(x) -&gt; ~N(x))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(E.x)(C(x) &amp; (~S(x) -&gt; (V(x) v. W(x))))</premise>
+    <premise>(A.x)(V(x) -&gt; ~C(x))</premise>
+    <premise>~(E.x)(W(x) &amp; C(x))</premise>
+    <conclusion>(E.x)(S(x) &amp; ~W(x))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>~(E.x)(F(x) &amp; ~(G(x) &amp; H(x)))</premise>
+    <premise>(A.x)((G(x) v. S(x)) -&gt; Z(x))</premise>
+    <premise>~(E.x)(Z(x) &amp; A(x))</premise>
+    <conclusion>(A.x)(F(x) -&gt; ~A(x))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)(F(x) -&gt; (H(x) v. I(x)))</premise>
+    <premise>~(A.x)(F(x) -&gt; H(x))</premise>
+    <premise>(A.x)(I(x) -&gt; (~Z(x) &lt;-&gt; H(x)))</premise>
+    <conclusion>~(A.x)(F(x) -&gt; ~Z(x))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)(F(x) -&gt; (B(x) &lt;-&gt; ~T(x)))</premise>
+    <premise>~(A.x)(F(x) -&gt; (B(x) v. C(x)))</premise>
+    <premise>~(E.x)(T(x) &amp; ~(D(x) -&gt; C(x)))</premise>
+    <conclusion>(E.x)(F(x) &amp; ~(C(x) v. D(x)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>~(E.x)((A(x) &amp; B(x)) &amp; ~C(x))</premise>
+    <premise>~(E.x)(A(x) &amp; ~B(x))</premise>
+    <premise>(A.x)(C(x) -&gt; ~(S(x) v. T(x)))</premise>
+    <conclusion>~(E.x)(A(x) &amp; T(x))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)((A(x) v. B(x)) -&gt; (G(x) &amp; ~H(x)))</premise>
+    <premise>(A.x)(G(x) -&gt; H(x))</premise>
+    <premise>(A.x)((D(x) &amp; E(x)) -&gt; B(x))</premise>
+    <premise>~(E.x)(P(x) &amp; ~E(x))</premise>
+    <conclusion>~(E.x)(P(x) &amp; (A(x) v. D(x)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>~(E.x)(A(x) &amp; B(x))</premise>
+    <premise>~(E.x)(A(x) &amp; ~C(x))</premise>
+    <premise>~(A.x)(A(x) -&gt; (F(x) v. G(x)))</premise>
+    <premise>(A.x)(H(x) -&gt; G(x))</premise>
+    <conclusion>~(A.x)(C(x) -&gt; (B(x) v. H(x)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)((A(x) v. B(x)) -&gt; ~(G(x) &amp; ~H(x)))</premise>
+    <premise>~(E.x)(A(x) &amp; D(x))</premise>
+    <premise>~(E.x)(H(x) &amp; ~D(x))</premise>
+    <premise>(A.x)(F(x) -&gt; (G(x) &lt;-&gt; W(x)))</premise>
+    <conclusion>~(E.x)((A(x) &amp; F(x)) &amp; W(x))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)(A(x) &lt;-&gt; ~C(x))</premise>
+    <premise>~(E.x)((S(x) &amp; (C(x) &amp; E(x))) &amp; ~(A(x) v. B(x)))</premise>
+    <conclusion>~(E.x)((E(x) &amp; ~B(x)) &amp; (S(x) &amp; ~A(x)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)((A(x) &lt;-&gt; B(x)) -&gt; (C(x) -&gt; (Z(x) v. W(x))))</premise>
+    <premise>~(E.x)(C(x) &amp; (E(x) -&gt; W(x)))</premise>
+    <premise>~(E.x)(E(x) &amp; (C(x) &amp; Z(x)))</premise>
+    <premise>(E.x)(C(x) &amp; (~B(x) &lt;-&gt; ~(D(x) -&gt; Z(x))))</premise>
+    <premise>~(E.x)(C(x) &amp; ~(W(x) v. D(x)))</premise>
+    <conclusion>~(A.x)(A(x) -&gt; Z(x))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>~(E.x)(P(x) &amp; (Q(x) &amp; (R(x) &lt;-&gt; T(x))))</premise>
+    <premise>(A.x)(P(x) &lt;-&gt; (~S(x) v. (A(x) -&gt; B(x))))</premise>
+    <premise>~(E.x)(A(x) &amp; ~S(x))</premise>
+    <premise>~(E.x)(Q(x) &amp; ~(P(x) v. T(x)))</premise>
+    <premise>(A.x)((P(x) &lt;-&gt; R(x)) -&gt; A(x))</premise>
+    <conclusion>(A.x)(Q(x) -&gt; (T(x) v. B(x)))</conclusion>
+   </assertion>
+  </assertionlist>
+ </assertioncategory>
+ <assertioncategory for="Unit 15_p.297_4">
+  <assertionlist>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)(F(x) -&gt; G(x))</premise>
+    <premise>~((E.x)G(x) v. (E.x)H(x))</premise>
+    <conclusion>~(E.x)F(x)</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>((A.x)(F(x) -&gt; ~G(x)) -&gt; (A.x)(F(x) -&gt; ~H(x)))</premise>
+    <conclusion>((E.x)(F(x) &amp; H(x)) -&gt; (E.x)(F(x) &amp; G(x)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)((F(x) v. G(x)) -&gt; H(x))</premise>
+    <premise>((A.x)H(x) -&gt; (A.x)S(x))</premise>
+    <conclusion>((A.x)F(x) -&gt; (A.x)S(x))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>((A.x)F(x) v. (A.x)G(x))</premise>
+    <premise>(A.x)(F(x) -&gt; H(x))</premise>
+    <conclusion>((E.x)~G(x) -&gt; (A.x)H(x))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>((E.x)F(x) -&gt; (A.x)(G(x) v. H(x)))</premise>
+    <premise>(A.x)(F(x) -&gt; ~G(x))</premise>
+    <conclusion>(~(E.x)H(x) -&gt; (A.x)~F(x))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>((E.x)F(x) -&gt; (A.x)(H(x) -&gt; ~J(x)))</premise>
+    <premise>~(E.x)(S(x) &amp; ~J(x))</premise>
+    <conclusion>((A.x)F(x) -&gt; ~(E.x)(H(x) &amp; S(x)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>((A.x)(F(x) -&gt; G(x)) -&gt; (A.x)(F(x) -&gt; H(x)))</premise>
+    <premise>(E.x)(F(x) &amp; ~H(x))</premise>
+    <premise>((E.x)~G(x) -&gt; ~(A.x)J(x))</premise>
+    <conclusion>(E.x)~J(x)</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>~((A.x)F(x) v. (E.x)G(x))</premise>
+    <premise>(A.x)(H(x) -&gt; F(x))</premise>
+    <premise>(((E.x)~H(x) &amp; (A.x)S(x)) -&gt; (E.x)G(x))</premise>
+    <conclusion>(E.x)~S(x)</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>~((E.x)~F(x) &amp; (E.x)(G(x) &amp; ~H(x)))</premise>
+    <premise>((A.x)H(x) -&gt; ~(E.x)(Z(x) &amp; W(x)))</premise>
+    <premise>~(A.x)(W(x) -&gt; F(x))</premise>
+    <conclusion>(~(E.x)~Z(x) -&gt; ~(A.x)G(x))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(((E.x)F(x) v. (E.x)G(x)) -&gt; (E.x)~H(x))</premise>
+    <premise>(A.x)(H(x) v. P(x))</premise>
+    <premise>~(E.x)(P(x) &amp; Q(x))</premise>
+    <conclusion>((A.x)Q(x) -&gt; (A.x)~F(x))</conclusion>
+   </assertion>
+  </assertionlist>
+ </assertioncategory>
+ <assertioncategory for="Unit 15_p.298_5">
+  <assertionlist>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <conclusion>((A.x)(F(x) -&gt; G(x)) -&gt; (~(A.x)G(x) -&gt; ~(A.x)F(x)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <conclusion>(~(E.x)(F(x) &amp; G(x)) -&gt; ((A.x)F(x) -&gt; ~(E.x)G(x)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <conclusion>((A.x)(F(x) &amp; G(x)) &lt;-&gt; ((A.x)F(x) &amp; (A.x)G(x)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <conclusion>(~((E.x)F(x) v. (E.x)~G(x)) -&gt; (A.x)(F(x) -&gt; H(x)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <conclusion>(((E.x)F(x) v. (E.x)G(x)) &lt;-&gt; (E.x)(F(x) v. G(x)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <conclusion>((A.x)(F(x) -&gt; ~(G(x) v. H(x))) -&gt; ~(E.x)(F(x) &amp; H(x)))</conclusion>
+   </assertion>
+  </assertionlist>
+ </assertioncategory>
+ <assertioncategory for="Unit 18_p.353_1">
+  <assertionlist>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)(E(x) -&gt; (A.y)(F(y) -&gt; G(x,y)))</premise>
+    <premise>(E.x)(E(x) &amp; (E.y)~G(x,y))</premise>
+    <conclusion>~(A.x)F(x)</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)(K(x) -&gt; ((E.y)L(x,y) -&gt; (E.z)L(z,x)))</premise>
+    <premise>(A.x)((E.z)L(z,x) -&gt; L(x,x))</premise>
+    <premise>~(E.x)L(x,x)</premise>
+    <conclusion>(A.x)(K(x) -&gt; (A.y)~L(x,y))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)(O(x) -&gt; (A.y)(R(y) -&gt; ~L(x,y)))</premise>
+    <premise>(A.x)(O(x) -&gt; (E.y)(H(y) &amp; L(x,y)))</premise>
+    <premise>(E.x)O(x)</premise>
+    <conclusion>(E.x)(H(x) &amp; ~R(x))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>~(A.x)(F(x) -&gt; G(x))</premise>
+    <premise>(A.x)(H(x) -&gt; G(x))</premise>
+    <premise>(A.x)(~(H(x) v. G(x)) -&gt; (E.y)(A(x,y) v. B(y,x)))</premise>
+    <premise>~(E.x)(E.y)A(x,y)</premise>
+    <conclusion>(E.x)(E.y)B(y,x)</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)((E.y)(D(y) &amp; K(y,x)) -&gt; (A.z)(A(z) -&gt; H(x,z)))</premise>
+    <premise>(A.x)(A.y)(F(x,y) -&gt; ~H(x,y))</premise>
+    <premise>~(A.x)(A(x) -&gt; ~D(x))</premise>
+    <premise>(A.x)(C(x) -&gt; (A.y)K(y,x))</premise>
+    <conclusion>(A.x)(C(x) -&gt; (E.y)(D(y) &amp; ~F(x,y)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(E.x)(P(x) &amp; (A.y)((S(y) &amp; (E.z)(P(z) &amp; L(y,z))) -&gt; L(y,x)))</premise>
+    <premise>(A.x)(S(x) -&gt; (E.y)(P(y) &amp; L(x,y)))</premise>
+    <conclusion>(E.x)(P(x) &amp; (A.y)(S(y) -&gt; L(y,x)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)((F(x) &amp; ~(A.y)(G(y) -&gt; H(x,y))) -&gt; (A.z)(I(z) -&gt; T(z,x)))</premise>
+    <premise>~(E.x)(E.y)(W(x,y) &amp; H(x,y))</premise>
+    <premise>(A.x)((E.y)(F(y) &amp; W(y,x)) -&gt; I(x))</premise>
+    <conclusion>(A.x)(F(x) -&gt; (A.y)((G(y) &amp; W(x,y)) -&gt; T(y,x)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>~(A.x)(C(x) -&gt; (A.y)(~C(y) -&gt; W(x,y)))</premise>
+    <premise>(A.x)(C(x) -&gt; (A.y)(E(y) -&gt; W(x,y)))</premise>
+    <conclusion>~(A.x)(C(x) v. E(x))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)(D(x) -&gt; M(x))</premise>
+    <premise>(A.x)((P(x) &amp; (E.y)(M(y) &amp; W(x,y))) -&gt; G(x))</premise>
+    <premise>(E.x)(P(x) &amp; (O(x) &amp; (E.y)(N(y) &amp; (D(y) &amp; W(x,y)))))</premise>
+    <conclusion>(E.x)(P(x) &amp; (O(x) &amp; G(x)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)((P(x) &amp; ~R(x,x)) -&gt; (A.y)(P(y) -&gt; ~R(y,x)))</premise>
+    <premise>(A.x)(P(x) -&gt; (A.y)((P(y) &amp; ~R(x,y)) -&gt; ~H(x,y)))</premise>
+    <conclusion>(A.x)((P(x) &amp; (A.y)(P(y) -&gt; ~R(x,y))) -&gt; ~(E.z)(P(z) &amp; H(z,x)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(E.x)(P(x) &amp; (A.y)(S(y) -&gt; T(x,y)))</premise>
+    <premise>(A.x)((P(x) &amp; ~(A.y)(W(y) -&gt; A(y,x))) -&gt; (A.z)(B(x,z) -&gt; S(z)))</premise>
+    <premise>(A.x)(P(x) -&gt; ~(E.y)(W(y) &amp; (T(x,y) v. A(y,x))))</premise>
+    <conclusion>(E.x)(P(x) &amp; (A.y)(W(y) -&gt; ~(A(y,x) v. B(x,y))))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>~(E.x)(F(x) &amp; G(x))</premise>
+    <premise>(A.x)((F(x) &amp; ~G(x)) -&gt; ~(E.y)(T(y,x) &amp; H(x,y)))</premise>
+    <premise>(A.x)((A.y)(H(x,y) -&gt; Z(x,y)) -&gt; G(x))</premise>
+    <conclusion>(A.x)(F(x) -&gt; (E.y)~(T(y,x) v. Z(x,y)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)((A(x) &amp; ~(A.y)(D(x,y) -&gt; R(x,y))) -&gt; (A.z)(T(z,x) -&gt; W(z)))</premise>
+    <premise>~(E.x)(E.y)(T(y,x) &amp; ~D(x,y))</premise>
+    <premise>~(A.x)(A(x) -&gt; (A.y)(T(y,x) -&gt; R(x,y)))</premise>
+    <conclusion>(E.x)W(x)</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)((E.y)(E(y) &amp; W(y,x)) -&gt; (A.z)(A(z) -&gt; S(x,z)))</premise>
+    <premise>(A.x)(A.y)(F(x,y) -&gt; ~S(x,y))</premise>
+    <premise>~(A.x)(A(x) -&gt; ~E(x))</premise>
+    <premise>(A.x)(T(x) -&gt; (A.y)W(y,x))</premise>
+    <conclusion>(A.x)(T(x) -&gt; (E.y)(E(y) &amp; ~F(x,y)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)((G(x) &amp; ~(A.y)(B(x,y) -&gt; S(x,y))) -&gt; ~(E.z)(T(z,x) &amp; ~W(z,x)))</premise>
+    <premise>(A.x)(P(x) -&gt; (A.y)(Z(y,x) -&gt; B(y,x)))</premise>
+    <premise>(A.x)((E.y)(R(x,y) &amp; S(x,y)) -&gt; ~(E.y)B(x,y))</premise>
+    <premise>~(E.x)(E.y)(R(x,y) &amp; ~T(y,x))</premise>
+    <conclusion>(A.x)(G(x) -&gt; (A.y)((P(y) &amp; (R(x,y) &amp; Z(x,y))) -&gt; W(y,x)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)((B(x) &amp; (A.y)(C(y) -&gt; A(y,x))) -&gt; (A.z)((L(z) &amp; P(z)) -&gt; R(z,x)))</premise>
+    <premise>(A.x)(P(x) -&gt; (A.y)(R(x,y) -&gt; T(x,y)))</premise>
+    <premise>(A.x)(C(x) -&gt; (A.y)((B(y) &amp; (E.z)(P(z) &amp; (W(z,y) &amp; F(z,x)))) -&gt; A(x,y)))</premise>
+    <conclusion>(A.x)((P(x) &amp; (A.y)(C(y) -&gt; F(x,y))) -&gt; (A.z)((B(z) &amp; W(x,z)) -&gt; (A.w)((P(w) &amp; L(w)) -&gt; T(w,z))))</conclusion>
+   </assertion>
+  </assertionlist>
+ </assertioncategory>
+ <assertioncategory for="Unit 18_p.353_2">
+  <assertionlist>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <conclusion>((A.x)(A.y)F(x,y) -&gt; (E.x)(E.y)F(x,y))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <conclusion>((E.x)(A.y)(A.z)F(x,y,z) -&gt; (A.y)(A.z)(E.x)F(x,y,z))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <conclusion>((A.x)((E.y)F(x,y) -&gt; G(x)) -&gt; (A.x)(A.y)(F(x,y) -&gt; G(x)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <conclusion>((A.x)(E.y)(F(x,y) -&gt; G(x)) -&gt; (A.x)((A.y)F(x,y) -&gt; G(x)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <conclusion>((E.y)(F(y) &amp; (A.x)(G(x) -&gt; H(x,y))) -&gt; (A.x)(G(x) -&gt; (E.y)(F(y) &amp; H(x,y))))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <conclusion>((A.x)((E.y)F(x,y) -&gt; (E.z)G(x,z)) &lt;-&gt; (A.x)(A.y)(E.z)(F(x,y) -&gt; G(x,z)))</conclusion>
+   </assertion>
+  </assertionlist>
+ </assertioncategory>
+ <assertioncategory for="Unit 20_p.381_2">
+  <assertionlist>
+   <assertion useDerivedRules="false">
+    <theory id="classical&gt;eq"/>
+    <premise>(A.x)((F(x) &amp; (E.y)(F(y) &amp; ~x = y)) -&gt; (A(x,b) v. A(b,x)))</premise>
+    <premise>(F(a) &amp; F(b))</premise>
+    <premise>(G(a) &amp; ~G(b))</premise>
+    <conclusion>(A(a,b) v. A(b,a))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical&gt;eq"/>
+    <premise>(E.x)(A(x) &amp; ((A.y)(A(y) -&gt; x = y) &amp; x = a))</premise>
+    <premise>(A(b) v. A(c))</premise>
+    <conclusion>(a = b v. a = c)</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical&gt;eq"/>
+    <premise>(E.x)(A(x) &amp; ((A.y)(A(y) -&gt; x = y) &amp; (E.z)(B(z) &amp; ((A.w)(B(w) -&gt; z = w) &amp; z = x))))</premise>
+    <premise>B(a)</premise>
+    <conclusion>(A.x)(A(x) -&gt; x = a)</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical&gt;eq"/>
+    <premise>(E.x)(E.y)(E.z)(F(x) &amp; (F(y) &amp; (~x = y &amp; (~y = z &amp; ~x = z))))</premise>
+    <premise>(E.x)(F(x) &amp; (G(x) &amp; (A.y)((F(y) &amp; G(y)) -&gt; x = y)))</premise>
+    <premise>(A.x)(~G(x) -&gt; H(x))</premise>
+    <conclusion>(E.x)(E.y)(H(x) &amp; (H(y) &amp; ~x = y))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical&gt;eq"/>
+    <premise>(E.x)(E.y)(E.z)(F(x) &amp; (F(y) &amp; (F(z) &amp; (~x = y &amp; (~y = z &amp; ~x = z)))))</premise>
+    <premise>(A.x)(F(x) -&gt; G(x))</premise>
+    <premise>(A.x)(A.y)(A.z)(A.w)((G(x) &amp; (G(y) &amp; (G(z) &amp; G(w)))) -&gt; (x = y v. (x = z v. (x = w v. (y = z v. (y = w v. z = w))))))</premise>
+    <conclusion>(E.x)(E.y)(E.z)(F(x) &amp; (F(y) &amp; (F(z) &amp; (~x = y &amp; (~y = z &amp; (~x = z &amp; (A.w)(F(w) -&gt; (w = x v. (w = y v. w = z)))))))))</conclusion>
+   </assertion>
+  </assertionlist>
+ </assertioncategory>
+ <assertioncategory for="Unit 20_p.381_3">
+  <assertionlist>
+   <assertion useDerivedRules="false">
+    <theory id="classical&gt;eq"/>
+    <conclusion>(F(a) &lt;-&gt; (E.x)(F(x) &amp; x = a))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical&gt;eq"/>
+    <conclusion>((E.x)(A.y)(F(y) &lt;-&gt; x = y) &lt;-&gt; (E.x)(F(x) &amp; (A.y)(F(y) &lt;-&gt; x = y)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical&gt;eq"/>
+    <conclusion>(A.x)(A.y)(A.z)((x = y &amp; y = z) -&gt; x = z)</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical&gt;eq"/>
+    <conclusion>(A.x)(A.y)(A.z)((x = y &amp; (y = z &amp; z = w)) -&gt; x = w)</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical&gt;eq"/>
+    <conclusion>(((E.x)F(x) &amp; (A.x)(A.y)((F(x) &amp; F(y)) -&gt; x = y)) &lt;-&gt; (E.x)(F(x) &amp; (A.y)(F(y) -&gt; x = y)))</conclusion>
+   </assertion>
+  </assertionlist>
+ </assertioncategory>
+ <assertioncategory for="Unprovable">
+  <assertionlist>
+   <assertion useDerivedRules="false">
+    <theory id="classical&gt;eq"/>
+    <premise>(E.x)(A(x) &amp; ((A.y)(A(y) -&gt; x = y) &amp; x = a))</premise>
+    <premise>(A(b) v. A(c))</premise>
+    <conclusion>(a = b v. a = c)</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical&gt;eq"/>
+    <premise>(E.x)(A(x) &amp; ((A.y)(A(y) -&gt; x = y) &amp; (E.z)(B(z) &amp; ((A.w)(B(w) -&gt; z = w) &amp; z = x))))</premise>
+    <premise>B(a)</premise>
+    <conclusion>(A.x)(A(x) -&gt; x = a)</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical&gt;eq"/>
+    <conclusion>(F(a) &lt;-&gt; (E.x)(F(x) &amp; x = a))</conclusion>
+   </assertion>
+  </assertionlist>
+ </assertioncategory>
+ <assertioncategory for="Do Not Halt">
+  <assertionlist>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)((A(x) v. B(x)) -&gt; (C(x) &amp; D(x)))</premise>
+    <premise>(A.x)((C(x) v. D(x)) -&gt; (A(x) &amp; B(x)))</premise>
+    <conclusion>(A.x)(A(x) &lt;-&gt; C(x))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(E.x)(C(x) &amp; (~S(x) -&gt; (V(x) v. W(x))))</premise>
+    <premise>(A.x)(V(x) -&gt; ~C(x))</premise>
+    <premise>~(E.x)(W(x) &amp; C(x))</premise>
+    <conclusion>(E.x)(S(x) &amp; ~W(x))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)(F(x) -&gt; (B(x) &lt;-&gt; ~T(x)))</premise>
+    <premise>~(A.x)(F(x) -&gt; (B(x) v. C(x)))</premise>
+    <premise>~(E.x)(T(x) &amp; ~(D(x) -&gt; C(x)))</premise>
+    <conclusion>(E.x)(F(x) &amp; ~(C(x) v. D(x)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)((A(x) v. B(x)) -&gt; (G(x) &amp; ~H(x)))</premise>
+    <premise>(A.x)(G(x) -&gt; H(x))</premise>
+    <premise>(A.x)((D(x) &amp; E(x)) -&gt; B(x))</premise>
+    <premise>~(E.x)(P(x) &amp; ~E(x))</premise>
+    <conclusion>~(E.x)(P(x) &amp; (A(x) v. D(x)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>~(E.x)(A(x) &amp; B(x))</premise>
+    <premise>~(E.x)(A(x) &amp; ~C(x))</premise>
+    <premise>~(A.x)(A(x) -&gt; (F(x) v. G(x)))</premise>
+    <premise>(A.x)(H(x) -&gt; G(x))</premise>
+    <conclusion>~(A.x)(C(x) -&gt; (B(x) v. H(x)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)((A(x) &lt;-&gt; B(x)) -&gt; (C(x) -&gt; (Z(x) v. W(x))))</premise>
+    <premise>~(E.x)(C(x) &amp; (E(x) -&gt; W(x)))</premise>
+    <premise>~(E.x)(E(x) &amp; (C(x) &amp; Z(x)))</premise>
+    <premise>(E.x)(C(x) &amp; (~B(x) &lt;-&gt; ~(D(x) -&gt; Z(x))))</premise>
+    <premise>~(E.x)(C(x) &amp; ~(W(x) v. D(x)))</premise>
+    <conclusion>~(A.x)(A(x) -&gt; Z(x))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>~(E.x)(P(x) &amp; (Q(x) &amp; (R(x) &lt;-&gt; T(x))))</premise>
+    <premise>(A.x)(P(x) &lt;-&gt; (~S(x) v. (A(x) -&gt; B(x))))</premise>
+    <premise>~(E.x)(A(x) &amp; ~S(x))</premise>
+    <premise>~(E.x)(Q(x) &amp; ~(P(x) v. T(x)))</premise>
+    <premise>(A.x)((P(x) &lt;-&gt; R(x)) -&gt; A(x))</premise>
+    <conclusion>(A.x)(Q(x) -&gt; (T(x) v. B(x)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>~((A.x)F(x) v. (E.x)G(x))</premise>
+    <premise>(A.x)(H(x) -&gt; F(x))</premise>
+    <premise>(((E.x)~H(x) &amp; (A.x)S(x)) -&gt; (E.x)G(x))</premise>
+    <conclusion>(E.x)~S(x)</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(((E.x)F(x) v. (E.x)G(x)) -&gt; (E.x)~H(x))</premise>
+    <premise>(A.x)(H(x) v. P(x))</premise>
+    <premise>~(E.x)(P(x) &amp; Q(x))</premise>
+    <conclusion>((A.x)Q(x) -&gt; (A.x)~F(x))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>~(A.x)(F(x) -&gt; G(x))</premise>
+    <premise>(A.x)(H(x) -&gt; G(x))</premise>
+    <premise>(A.x)(~(H(x) v. G(x)) -&gt; (E.y)(A(x,y) v. B(y,x)))</premise>
+    <premise>~(E.x)(E.y)A(x,y)</premise>
+    <conclusion>(E.x)(E.y)B(y,x)</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>~(E.x)(F(x) &amp; G(x))</premise>
+    <premise>(A.x)((F(x) &amp; ~G(x)) -&gt; ~(E.y)(T(y,x) &amp; H(x,y)))</premise>
+    <premise>(A.x)((A.y)(H(x,y) -&gt; Z(x,y)) -&gt; G(x))</premise>
+    <conclusion>(A.x)(F(x) -&gt; (E.y)~(T(y,x) v. Z(x,y)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)((A(x) &amp; ~(A.y)(D(x,y) -&gt; R(x,y))) -&gt; (A.z)(T(z,x) -&gt; W(z)))</premise>
+    <premise>~(E.x)(E.y)(T(y,x) &amp; ~D(x,y))</premise>
+    <premise>~(A.x)(A(x) -&gt; (A.y)(T(y,x) -&gt; R(x,y)))</premise>
+    <conclusion>(E.x)W(x)</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical&gt;eq"/>
+    <conclusion>(((E.x)F(x) &amp; (A.x)(A.y)((F(x) &amp; F(y)) -&gt; x = y)) &lt;-&gt; (E.x)(F(x) &amp; (A.y)(F(y) -&gt; x = y)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)((F(x) &amp; (E.y)(F(y) &amp; ~x = y)) -&gt; (A(x,b) v. A(b,x)))</premise>
+    <premise>(F(a) &amp; F(b))</premise>
+    <premise>(G(a) &amp; ~G(b))</premise>
+    <conclusion>(A(a,b) v. A(b,a))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical&gt;eq"/>
+    <premise>(E.x)(E.y)(E.z)(F(x) &amp; (F(y) &amp; (F(z) &amp; (~x = y &amp; (~y = z &amp; ~x = z)))))</premise>
+    <premise>(A.x)(F(x) -&gt; G(x))</premise>
+    <premise>(A.x)(A.y)(A.z)(A.w)((G(x) &amp; (G(y) &amp; (G(z) &amp; G(w)))) -&gt; (x = y v. (x = z v. (x = w v. (y = z v. (y = w v. z = w))))))</premise>
+    <conclusion>(E.x)(E.y)(E.z)(F(x) &amp; (F(y) &amp; (F(z) &amp; (~x = y &amp; (~y = z &amp; (~x = z &amp; (A.w)(F(w) -&gt; (w = x v. (w = y v. w = z)))))))))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical&gt;eq"/>
+    <premise>(E.x)(E.y)(E.z)(F(x) &amp; (F(y) &amp; (~x = y &amp; (~y = z &amp; ~x = z))))</premise>
+    <premise>(E.x)(F(x) &amp; (G(x) &amp; (A.y)((F(y) &amp; G(y)) -&gt; x = y)))</premise>
+    <premise>(A.x)(~G(x) -&gt; H(x))</premise>
+    <conclusion>(E.x)(E.y)(H(x) &amp; (H(y) &amp; ~x = y))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical&gt;eq"/>
+    <conclusion>((E.x)(A.y)(F(y) &lt;-&gt; x = y) &lt;-&gt; (E.x)(F(x) &amp; (A.y)(F(y) &lt;-&gt; x = y)))</conclusion>
+   </assertion>
+  </assertionlist>
+ </assertioncategory>
+ <assertioncategory for="Halted But Incomplete">
+  <assertionlist>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(A.x)(C(x) -&gt; (F(x) v. N(x)))</premise>
+    <premise>(A.x)(F(x) -&gt; B(x))</premise>
+    <premise>~(A.x)(C(x) -&gt; B(x))</premise>
+    <conclusion>~(A.x)(C(x) -&gt; ~N(x))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>((A.x)(F(x) -&gt; ~G(x)) -&gt; (A.x)(F(x) -&gt; ~H(x)))</premise>
+    <conclusion>((E.x)(F(x) &amp; H(x)) -&gt; (E.x)(F(x) &amp; G(x)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(E.x)(P(x) &amp; (A.y)((S(y) &amp; (E.z)(P(z) &amp; L(y,z))) -&gt; L(y,x)))</premise>
+    <premise>(A.x)(S(x) -&gt; (E.y)(P(y) &amp; L(x,y)))</premise>
+    <conclusion>(E.x)(P(x) &amp; (A.y)(S(y) -&gt; L(y,x)))</conclusion>
+   </assertion>
+   <assertion useDerivedRules="false">
+    <theory id="classical"/>
+    <premise>(E.x)(P(x) &amp; (A.y)(S(y) -&gt; T(x,y)))</premise>
+    <premise>(A.x)((P(x) &amp; ~(A.y)(W(y) -&gt; A(y,x))) -&gt; (A.z)(B(x,z) -&gt; S(z)))</premise>
+    <premise>(A.x)(P(x) -&gt; ~(E.y)(W(y) &amp; (T(x,y) v. A(y,x))))</premise>
+    <conclusion>(E.x)(P(x) &amp; (A.y)(W(y) -&gt; ~(A(y,x) v. B(x,y))))</conclusion>
+   </assertion>
+  </assertionlist>
+ </assertioncategory>
+</assertioncategorygroup>
+
+
+===================================================================

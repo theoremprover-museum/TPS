@@ -1,0 +1,76 @@
+;;; ******************************************************************* ;;;
+;;;         (c) Copyrighted 1988 by Carnegie Mellon University.         ;;;
+;;;                        All rights reserved.                         ;;;
+;;;         This code was written as part of the TPS project.           ;;;
+;;;   If you want to use this code or any part of TPS, please contact   ;;;
+;;;               Peter B. Andrews (Andrews@CS.CMU.EDU)                 ;;;
+;;; ******************************************************************* ;;;
+;;; Updated contexts 7/20/87 DAN
+(context rules-3-neg)
+
+(defirule pushneg
+  (lines (d1 (h) () "not A")
+	 (d2 (h) () "`(push-negation [not A])" ("Neg" () (d1))))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (restrictions (non-atomic-or-truthvalue "A(O)"))
+  (itemshelp (d1 "Line with Negation")
+	     (d2 "Line after Pushing in Negation one Step")
+	     ("A(O)" "Scope of Negation")
+	     (push-negation "Wff after Pushing in Negation"))
+  (mhelp "Push in negation."))
+
+(defirule pullneg
+  (lines (p1 (h) () "`(push-negation [not A])")
+	 (p2 (h) () "not A" ("Neg" () (p1))))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (restrictions (non-atomic "A(O)"))
+  (itemshelp (p1 "Line after Pushing in Negation one Step")
+	     (p2 "Line with Negation")
+	     ("A(O)" "Scope of Negation")
+	     (push-negation "Wff after Pushing in Negation"))
+  (mhelp "Pull out negation."))
+
+	; cebrown 2/16/01, nnf & nnf-expand	
+(defirule nnf
+  (lines (d1 (h) () "A")
+	 (d2 (h) () "`(neg-norm A)" ("NNF" () (d1))))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (restrictions (non-atomic-or-truthvalue "A(O)"))
+  (itemshelp (d1 "Line not in Negation Normal Form")
+	     (d2 "Line in Negation Normal Form")
+	     ("A(O)" "Wff")
+	     (neg-norm "Wff in Negation Normal Form."))
+  (mhelp "Put Wff in Negation Normal Form."))
+
+(defirule nnf-expand
+  (lines (p1 (h) () "`(neg-norm A)")
+	 (p2 (h) () "A" ("NNF-Expand" () (p1))))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (restrictions (non-atomic "A(O)"))
+  (itemshelp (p1 "Line in Negation Normal Form")
+	     (p2 "Line not in Negation Normal Form")
+	     ("A(O)" "Wff")
+	     (neg-norm "Wff in Negation Normal Form."))
+  (mhelp "Expand Wff from Negation Normal Form."))
+
+
+;*;(context prop-rules)
+
+;;; This is now in ML1-LOGIC1 in a different version.
+
+;*;(defirule mp
+;*;  (lines (d1 (h) () "A")
+;*;	 (d2 (h) () "A implies B")
+;*;	 (d3 (h) () "B" ("Modus Ponens" () (d1 d2))))
+;*;  (support-transformation (('pp d1 d2 'ss)) (('pp d3 'ss d1)))
+;*;  (itemshelp (d1 "Line with Antecedent of Implication")
+;*;	     (d2 "Line with Implication")
+;*;	     (d3 "Line with Succedent of Implication")
+;*;	     ("A(O)" "Antecedent of Implication")
+;*;	     ("B(O)" "Succedent of Implication"))
+;*;  (mhelp "Rule of Modus Ponens."))
+
+
+
+
+

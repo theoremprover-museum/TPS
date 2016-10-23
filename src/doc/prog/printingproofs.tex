@@ -1,0 +1,21 @@
+\section{Printing Proofs}
+
+Proofs printed in Scribe or \TeX are preceded by preambles which are
+defined by the variables \indexflag{SCRIBE-PREAMBLE} and 
+\indexflag{VPFORM-TEX-PREAMBLE}. The values of these flags are set
+in the {\it tps3.ini} file. Since these preambles source
+files in the directory {\it .../doc/lib}, things must be done carefully to
+make sure that \indexcommand{SCRIBEPROOF} and \indexcommand{TEXPROOF} 
+will insert the appropriate pathname when tps is distributed to other 
+locations. Note that the Makefile creates the file {\it tps3.sys}, which contains the variable
+sys-dir which shows where the tps was built.
+	
+When the Scribe preamble was changed to add
+\begin{verbatim}
+@@LibraryFile(KSets)
+@@LibraryFile(Mathematics10)
+\end{verbatim}
+some of the hacks in {\it tps.mss} may have become obsolete (but harmless).
+Mathematics10 is a file from the standard Scribe library; KSets
+is a file belonging to \tps.
+

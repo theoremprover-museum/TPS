@@ -1,0 +1,106 @@
+Here is a summary of what happens after matingsearch has terminated with
+a proof. 
+The functions involved are located in the files {\it mating-merge.lisp},
+{\it mating-merge2.lisp} and {\it mating-merge-eq.lisp}.
+
+\begin{enumerate}
+\item Apply Pfenning's Merge algorithm ({\tt etr-merge}), put resulting
+      etree and mating in variable \indexother{current-eproof}
+  \begin{enumerate}
+\item  Get a list of the connections from mating
+
+\item Get a list of substitutions required
+      \begin{enumerate}
+\item  Extract substitutions from unification tree
+        
+\item  Replace occurrences of PI and SIGMA by quantifiers
+        
+\item  Lambda-normalize each substitution
+        
+\item  Alpha-beta-normalize each substitution
+      \end{enumerate}
+    
+\item  Prune any unused expansions from the tree
+    
+\item  Make substitutions for variables
+    
+\item  Carry out merging ({\tt merge-all})
+  \end{enumerate}
+
+\item  Replace skolem terms by parameters (if applicable) 
+({\tt subst-skol-terms})
+
+\item  If remove-leibniz is T, apply Pfenning's algorithm for removing
+      the Leibniz equality nodes for substitution of equality nodes
+      ({\tt remove-leibniz-nodes})
+
+\item  Try to replace selected parameters by the actual bound variables
+      ({\tt subst-vars-for-params}), not always possible because of restriction
+      that a parameter should appear at most once
+
+\item  Raise lambda rewrite nodes, so that in natural deduction the lambda
+      normalization occurs as soon as possible. ({\tt raise-lambda-nodes})
+
+\item  Clean up the etree ({\tt cleanup-etree}).  For each expansion term
+      in the tree,
+   \begin{enumerate}
+\item  Lambda-normalize it
+      
+\item  Minimize the superscripts on bound variables
+      
+\item Make a new expansion with the new term
+      
+\item  Deepen the new expansion like the original, but removing 
+            unnecessary lambda-norm steps.
+      
+\item  Remove the original expansion
+   \end{enumerate}
+
+ Begin natural deduction proof, using \indexother{current-eproof}
+   \begin{itemize}
+\item  Set up planned line 
+	\begin{enumerate}
+\item  Use shallow wff of the current-eproof's etree
+          
+\item  Give it the tree as value for its NODE property
+          
+\item  Give it the current-eproof's mating (list of pairs of node names)
+                as its MATING property
+	\end{enumerate}
+   \end{itemize}
+
+ Call {\tt use-tactic} with tactic desired
+  \begin{enumerate}
+\item  Each line in the proof will correspond to a node in the etree; the 
+natural deduction proof is stored in the variable \indexother{dproof}.
+    
+\item   Here is an important property which should remain invariant during
+    the translation process:  It should always be the case that the 
+    line-mating of the planned line is a p-acceptable mating for the
+    etree that one could construct by making an implication whose antecedent
+    is the conjunction of the line-nodes of the supports, and whose 
+    consequent is the line-node of the planned line.  This will assure us
+    that we have sufficient information to carry out the translation.
+  \end{enumerate}
+\end{enumerate}
+
+It was observed that when path-focused duplication had been
+used, the expansion proof would often have a great deal of redundancy
+in the sense that the same expansion term would be used for a given variable
+many times. More precisely, if one defines an expansion branch by
+looking at sequences of nested expansion nodes, attaching one expansion
+term to each expansion node in the sequence, there would be many identical
+expansion branches. 
+
+In response to this, {\it mating-merge.lisp} was modified in the following ways:
+\begin{itemize}
+\item Don't do pruning of unnecessary nodes at the beginning of the merge,
+when the tree is its greatest size. 
+
+\item Instead, prune all branches that couldn't possibly have been used; 
+they are those that have a zero status. This is probably not necessary,
+but certainly makes debugging easier and doesn't cost much.
+
+\item After merging of identical expansions has been done, call the original
+pruning function.
+\end{itemize}

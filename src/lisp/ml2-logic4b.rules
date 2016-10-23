@@ -1,0 +1,50 @@
+;;; ******************************************************************* ;;;
+;;;         (c) Copyrighted 1988 by Carnegie Mellon University.         ;;;
+;;;                        All rights reserved.                         ;;;
+;;;         This code was written as part of the TPS project.           ;;;
+;;;   If you want to use this code or any part of TPS, please contact   ;;;
+;;;               Peter B. Andrews (Andrews@CS.CMU.EDU)                 ;;;
+;;; ******************************************************************* ;;;
+;;; updated contexts 7/20/87 DAN
+(context rules-4-quant)
+
+(defirule abe
+  (lines (d1 (h) ()  "exists x(A). A")
+	 (d2 (h) () "exists y(A) `(S y x(A) A)" ("AB" ("y(A)") (d1))))
+  (restrictions (free-for "y(A)" "x(A)" "A(O)")
+		(is-variable "y(A)") (is-variable "x(A)")
+		(not-free-in "y(A)" "A(O)"))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Lower Existentially Quantified Line")
+	     (d2 "Higher Existentially Quantified Line")
+	     ("x(A)" "Existentially Quantified Variable in Lower Line")
+	     ("A(O)" "Scope of Existential Quantifier in Lower Line")
+	     ("y(A)" "Existentially Quantified Variable in Higher Line")
+	     (S "Scope of Existential Quantifier in Higher Line"))
+  (mhelp "Rule to change a top level occurrence of an existentially
+ quantified variable."))
+
+(defirule ab*
+  (lines (d1 (h) () "A")
+	 (d2 (h) () "B" ("AB" () (d1))))
+  (restrictions (wffeq-ab "A(O)" "B(O)"))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Lower Line")
+	     (d2 "Higher Line")
+	     ("A(O)" "Assertion of Lower Line")
+	     ("B(O)" "Assertion of Higher Line"))
+  (mhelp "Rule to alphabetically change embedded quantified variables."))
+
+(context rules-7-defn)
+
+(defirule edef
+  (lines (d1 (h) () "A")
+	 (d2 (h) () "`(INST-DEF A)" ("Defn" () (d1))))
+  (restrictions (contains-defn "A(O)"))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Line with Definition")
+	     (d2 "Line with Instantiated Definition")
+	     ("A(O)" "Wff with Definition")
+	     (INST-DEF "Wff After Instantiating Definition"))
+  (mhelp "Rule to eliminate first definition, left to right."))
+

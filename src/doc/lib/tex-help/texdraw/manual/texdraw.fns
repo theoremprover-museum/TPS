@@ -1,0 +1,74 @@
+\initial {{\tt\indexbackslash }}
+\entry {\code {{\tt\indexbackslash }arc}}{13}
+\entry {\code {{\tt\indexbackslash }arrowheadsize}}{9}
+\entry {\code {{\tt\indexbackslash }arrowheadtype}}{9}
+\entry {\code {{\tt\indexbackslash }avec}}{8}
+\entry {\code {{\tt\indexbackslash }begin{\tt\char'173}texdraw{\tt\char'175}}}{5}
+\entry {\code {{\tt\indexbackslash }bsegment}}{17}
+\entry {\code {{\tt\indexbackslash }btexdraw}}{5}
+\entry {\code {{\tt\indexbackslash }centertexdraw}}{5}
+\entry {\code {{\tt\indexbackslash }clvec}}{14}
+\entry {\code {{\tt\indexbackslash }cossin}}{35}
+\entry {\code {{\tt\indexbackslash }currentpos}}{35}
+\entry {\code {{\tt\indexbackslash }drawbb}}{21}
+\entry {\code {{\tt\indexbackslash }drawdim}}{7}
+\entry {\code {{\tt\indexbackslash }end{\tt\char'173}texdraw{\tt\char'175}}}{5}
+\entry {\code {{\tt\indexbackslash }esegment}}{17}
+\entry {\code {{\tt\indexbackslash }etexdraw}}{5}
+\entry {\code {{\tt\indexbackslash }everytexdraw}}{5}
+\entry {\code {{\tt\indexbackslash }fcir}}{13}
+\entry {\code {{\tt\indexbackslash }fellip}}{13}
+\entry {\code {{\tt\indexbackslash }getpos}}{35}
+\entry {\code {{\tt\indexbackslash }htext}}{10}
+\entry {\code {{\tt\indexbackslash }ifill}}{15}
+\entry {\code {{\tt\indexbackslash }lcir}}{12}
+\entry {\code {{\tt\indexbackslash }lellip}}{13}
+\entry {\code {{\tt\indexbackslash }lfill}}{15}
+\entry {\code {{\tt\indexbackslash }linewd}}{8}
+\entry {\code {{\tt\indexbackslash }lvec}}{8}
+\entry {\code {{\tt\indexbackslash }move}}{8}
+\entry {\code {{\tt\indexbackslash }PSarc}}{32}
+\entry {\code {{\tt\indexbackslash }PSarcn}}{32}
+\entry {\code {{\tt\indexbackslash }PSclosepath}}{31}
+\entry {\code {{\tt\indexbackslash }PSfill}}{31}
+\entry {\code {{\tt\indexbackslash }PSlineto}}{32}
+\entry {\code {{\tt\indexbackslash }PSmoveto}}{32}
+\entry {\code {{\tt\indexbackslash }PSnewpath}}{31}
+\entry {\code {{\tt\indexbackslash }PSsetlinecap}}{31}
+\entry {\code {{\tt\indexbackslash }PSsetlinejoin}}{31}
+\entry {\code {{\tt\indexbackslash }PSstroke}}{31}
+\entry {\code {{\tt\indexbackslash }ravec}}{8}
+\entry {\code {{\tt\indexbackslash }realadd}}{36}
+\entry {\code {{\tt\indexbackslash }realdiv}}{36}
+\entry {\code {{\tt\indexbackslash }realmult}}{36}
+\entry {\code {{\tt\indexbackslash }relsegscale}}{20}
+\entry {\code {{\tt\indexbackslash }relunitscale}}{20}
+\entry {\code {{\tt\indexbackslash }rlvec}}{8}
+\entry {\code {{\tt\indexbackslash }rmove}}{8}
+\entry {\code {{\tt\indexbackslash }rtext}}{10}
+\entry {\code {{\tt\indexbackslash }savecurrpos}}{18}
+\entry {\code {{\tt\indexbackslash }savepos}}{18}
+\entry {\code {{\tt\indexbackslash }setgray}}{8}
+\entry {\code {{\tt\indexbackslash }setsegscale}}{20}
+\entry {\code {{\tt\indexbackslash }setunitscale}}{19}
+\entry {\code {{\tt\indexbackslash }textref}}{11}
+\entry {\code {{\tt\indexbackslash }vectlen}}{35}
+\entry {\code {{\tt\indexbackslash }vtext}}{10}
+\entry {\code {{\tt\indexbackslash }writeps}}{32}
+\initial {A}
+\entry {\code {arc}}{32}
+\entry {\code {arcn}}{32}
+\initial {C}
+\entry {\code {closepath}}{31}
+\initial {F}
+\entry {\code {fill}}{31}
+\initial {L}
+\entry {\code {lineto}}{32}
+\initial {M}
+\entry {\code {moveto}}{32}
+\initial {N}
+\entry {\code {newpath}}{31}
+\initial {S}
+\entry {\code {setlinecap}}{31}
+\entry {\code {setlinejoin}}{31}
+\entry {\code {stroke}}{31}

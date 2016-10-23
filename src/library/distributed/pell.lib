@@ -1,0 +1,202 @@
+(:name MORGAN-AXIOMS
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) FORALL y(I).T(OI) [i(III) x(I).i(III) y(I) x(I)] AND T(OI) [i(III) [i(III) x(I).i(III) y(I) z(I)].i(III) [i(III) x(I) y(I)].i(III) x(I) z(I)] AND T(OI) [i(III) [i(III) [n(II) x(I)].n(II) y(I)].i(III) y(I) x(I)] AND.T(OI) [i(III) x(I) y(I)] AND T(OI) x(I) IMPLIES T(OI) y(I)"
+:needed-objects   NIL
+:mhelp "axioms used in pell66-67 and with changed
+third axiom, in pell68
+ (PELL66 PELL67 PELL68)"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PELL19
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, June  3, 1997 at 16:13:42."
+:description "EXISTS x(I) FORALL y(I) FORALL z(I).P(OI) y(I) IMPLIES Q(OI) z(I) IMPLIES.P(OI) x(I) IMPLIES Q(OI) x(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PELL21
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, June  3, 1997 at 16:14:56."
+:description "EXISTS x(I) [p(O) IMPLIES F(OI) x(I)] AND EXISTS x(I) [F(OI) x(I) IMPLIES p(O)] IMPLIES EXISTS x(I).[p(O) IMPLIES F(OI) x(I)] AND.F(OI) x(I) IMPLIES p(O)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PELL25
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, June  3, 1997 at 16:15:34."
+:description "EXISTS x(I) P(OI) x(I) AND FORALL x(I) [F(OI) x(I) IMPLIES ~G(OI) x(I) AND R(OI) x(I)] AND FORALL x(I) [P(OI) x(I) IMPLIES G(OI) x(I) AND F(OI) x(I)] AND [FORALL x(I) [P(OI) x(I) IMPLIES Q(OI) x(I)] OR EXISTS x(I).P(OI) x(I) AND R(OI) x(I)] IMPLIES EXISTS x(I).Q(OI) x(I) AND P(OI) x(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PELL26
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, June  3, 1997 at 16:16:25."
+:description "[EXISTS x(I) P(OI) x(I) IMPLIES EXISTS x(I) Q(OI) x(I)] AND [EXISTS x(I) Q(OI) x(I) IMPLIES EXISTS x(I) P(OI) x(I)] AND FORALL x(I) FORALL y(I) [P(OI) x(I) AND Q(OI) y(I) IMPLIES [R(OI) x(I) IMPLIES S(OI) y(I)] AND.S(OI) y(I) IMPLIES R(OI) x(I)] IMPLIES [FORALL x(I) [P(OI) x(I) IMPLIES R(OI) x(I)] IMPLIES FORALL x(I).Q(OI) x(I) IMPLIES S(OI) x(I)] AND.FORALL x(I) [Q(OI) x(I) IMPLIES S(OI) x(I)] IMPLIES FORALL x(I).P(OI) x(I) IMPLIES R(OI) x(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PELL27
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, June  3, 1997 at 16:16:43."
+:description "EXISTS x(I) [F(OI) x(I) AND ~G(OI) x(I)] AND FORALL x(I) [F(OI) x(I) IMPLIES H(OI) x(I)] AND FORALL x(I) [J(OI) x(I) AND I(OI) x(I) IMPLIES F(OI) x(I)] AND [EXISTS x(I) [H(OI) x(I) AND ~G(OI) x(I)] IMPLIES FORALL x(I).I(OI) x(I) IMPLIES ~H(OI) x(I)] IMPLIES FORALL x(I).J(OI) x(I) IMPLIES ~I(OI) x(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PELL28
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, June  3, 1997 at 16:17:05."
+:description "FORALL x(I) [P(OI) x(I) IMPLIES FORALL x(I) Q(OI) x(I)] AND [FORALL x(I) [Q(OI) x(I) OR R(OI) x(I)] IMPLIES EXISTS x(I).Q(OI) x(I) AND S(OI) x(I)] AND [EXISTS x(I) S(OI) x(I) IMPLIES FORALL x(I).F(OI) x(I) IMPLIES G(OI) x(I)] IMPLIES FORALL x(I).P(OI) x(I) AND F(OI) x(I) IMPLIES G(OI) x(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PELL29
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, June  3, 1997 at 16:17:36."
+:description "EXISTS x(I) F(OI) x(I) AND EXISTS x(I) G(OI) x(I) IMPLIES [FORALL x(I) [F(OI) x(I) IMPLIES H(OI) x(I)] AND FORALL x(I) [G(OI) x(I) IMPLIES J(OI) x(I)] IMPLIES FORALL x(I) FORALL y(I).F(OI) x(I) AND G(OI) y(I) IMPLIES H(OI) x(I) AND J(OI) y(I)] AND.FORALL x(I) FORALL y(I) [F(OI) x(I) AND G(OI) y(I) IMPLIES H(OI) x(I) AND J(OI) y(I)] IMPLIES FORALL x(I).G(OI) x(I) IMPLIES J(OI) x(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PELL35
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, June  3, 1997 at 16:17:47."
+:description "EXISTS x(I) EXISTS y(I).P(OII) x(I) y(I) IMPLIES FORALL x(I) FORALL y(I) P(OII) x(I) y(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PELL40
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, June  3, 1997 at 16:17:58."
+:description "EXISTS y(I) FORALL x(I) [F(OII) x(I) y(I) EQUIV F(OII) x(I) x(I)] IMPLIES ~FORALL x(I) EXISTS y(I) FORALL z(I).F(OII) z(I) y(I) EQUIV ~F(OII) z(I) x(I)"
+:needed-objects   NIL
+:mhelp "The existence of an anti-russel set (a set
+containing exactly the elements which are members of themself) implies that not 
+every set has a complement"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PELL42
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, June  3, 1997 at 16:18:11."
+:description "~EXISTS y(I) FORALL x(I).[F(OII) x(I) y(I) IMPLIES ~EXISTS z(I).F(OII) x(I) z(I) AND F(OII) z(I) x(I)] AND.~EXISTS z(I) [F(OII) x(I) z(I) AND F(OII) z(I) x(I)] IMPLIES F(OII) x(I) y(I)"
+:needed-objects   NIL
+:mhelp "there is no set of non-circular sets [where
+a circular set is a set x s.t. there is a set y, s.t. x belongs to y and 
+reversely"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PELL66
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) FORALL y(I) [T(OI) [i(III) x(I).i(III) y(I) x(I)] AND T(OI) [i(III) [i(III) x(I).i(III) y(I) z(I)].i(III) [i(III) x(I) y(I)].i(III) x(I) z(I)] AND T(OI) [i(III) [i(III) [n(II) x(I)].n(II) y(I)].i(III) y(I) x(I)] AND.T(OI) [i(III) x(I) y(I)] AND T(OI) x(I) IMPLIES T(OI) y(I)] IMPLIES FORALL x(I) T(OI).i(III) x(I).n(II).n(II) x(I)"
+:needed-objects   NIL
+:mhelp "  (MORGAN-AXIOMS)"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PELL67
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) FORALL y(I) [T(OI) [i(III) x(I).i(III) y(I) x(I)] AND T(OI) [i(III) [i(III) x(I).i(III) y(I) z(I)].i(III) [i(III) x(I) y(I)].i(III) x(I) z(I)] AND T(OI) [i(III) [i(III) [n(II) x(I)].n(II) y(I)].i(III) y(I) x(I)] AND.T(OI) [i(III) x(I) y(I)] AND T(OI) x(I) IMPLIES T(OI) y(I)] IMPLIES FORALL x(I) T(OI).i(III) [n(II).n(II) x(I)] x(I)"
+:needed-objects   NIL
+:mhelp "  (MORGAN-AXIOMS)"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PELL68
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) FORALL y(I) [T(OI) [i(III) x(I).i(III) y(I) x(I)] AND T(OI) [i(III) [i(III) x(I).i(III) y(I) z(I)].i(III) [i(III) x(I) y(I)].i(III) x(I) z(I)] AND FORALL x(I) FORALL y(I) T(OI) [i(III) [i(III) y(I) x(I)].i(III) [n(II) x(I)].n(II) y(I)] AND.T(OI) [i(III) x(I) y(I)] AND T(OI) x(I) IMPLIES T(OI) y(I)] IMPLIES FORALL x(I) T(OI).i(III) x(I).n(II).n(II) x(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

@@ -1,0 +1,62 @@
+\chapter{Testing for Satisfiability}\label{models}
+
+{\TPS} has a top level called \indexcommand{MODELS} which can be used to compute the
+semantic value of a formula in small finite standard models of type
+theory in which the domains of all types have cardinalities which are
+powers of 2.  (The assumption that domains are a power of 2 is used
+for an efficient representation of functions as binary expansions of numbers.)
+This top level also features a \indexcommand{SOLVE} command that will solve
+for values of  ``output" variables in terms of values of ``input"
+variables which will make a given formula true.
+
+We can use the MODELS top level to investigate the satisfiability
+of variants of {THM616}.  First, we can simply
+ask {\TPS} to interpret {THM616} (in the standard model
+with 2 individuals)
+using the \indexcommand{INTERPRET} command in the  MODELS top level.
+The formula {THM616} has one free variable, $OPEN_{\greeko(\greeko\greeki)}$.
+We can use the command \indexcommand{ASSIGN-VAR} to assign this variable to
+an element of type $(\greeko(\greeko\greeki))$.  The 16 elements
+of this type are represented by numbers between 0 and 15.
+Once the variable is assigned a value, \indexcommand{INTERPRET} will
+evaluate {THM616} and determine that it is true (represented by 1 in type $\greeko$).
+We can also determine that {THM616} is true for any value of $OPEN_{\greeko(\greeko\greeki)}$
+by universally quantifying over $OPEN$ in the prefix of {THM616}.
+
+Of course, we already knew {THM616} must be true in every (extensional)
+model since {THM616} is a theorem.
+A better use of the MODELS top level is to establish that some formula
+is not a theorem.  For example, we can remove parts of {THM616}
+and question whether the simpler formula is a theorem.
+For example, can we prove {THM616} without using the closure
+of $OPEN$ under subsets?  The corresponding formula 
+$$\forall \,x_{\greeki} [ \,B_{\greeko\greeki} \,x \supset \exists \,D_{\greeko\greeki} . \,OPEN_{\greeko(\greeko\greeki)} \,D \land \,D \,x \land \,D \subseteq \,B] \supset \,OPEN \,B$$
+has two free variables $B_{\greeko\greeki}$ and $OPEN_{\greeko(\greeko\greeki)}$.
+Of course, as mathematicians we know this is not a theorem.  The goal is
+to find a counterexample.  The question is whether there is a counterexample
+within the standard model with 2 individuals.  We can ask {\TPS} to try to
+solve for such a counterexample by invoking the \indexcommand{SOLVE} command
+using the negation of the formula above
+with no input variables and the two output variables $B$ and $OPEN$.
+{\TPS} returns 10 possible interpretations of the pair of variables 
+satisfying the negation.  The first and simplest corresponds to
+choosing $B$ to be the empty set of individuals and $OPEN$ to be the empty set of sets.
+
+Similarly, \indexcommand{SOLVE} can solve for values of $B$ and $OPEN$
+satisfying the negation of 
+$$\forall \,G_{\greeko(\greeko\greeki)} [ \,G \subseteq \,OPEN_{\greeko(\greeko\greeki)} \supset \,OPEN . \bigcup \,G] \supset \,OPEN \,B_{\greeko\greeki}.$$
+{\TPS} returns 11 solutions; the first solution corresponds to choosing $OPEN$
+to be the set containing the empty set (which is indeed closed under arbitrary unions)
+and choosing $B$ to be a singleton.
+
+Of course, it is always possible that the hypotheses of {THM616} were inconsistent.
+That is, we might be able to strengthen {THM616} to state
+$$
+\begin{array}{c}
+\sim .  \forall \,G_{\greeko(\greeko\greeki)} [ \,G \subseteq \,OPEN_{\greeko(\greeko\greeki)} \supset \,OPEN . \bigcup \,G] \\
+\land \forall \,x_{\greeki} . \,B_{\greeko\greeki} \,x \supset \exists \,D_{\greeko\greeki} . \,OPEN \,D \land \,D \,x \land \,D \subseteq \,B
+\end{array}
+$$
+\indexcommand{SOLVE} finds 17 solutions for the negation of this formula.
+Four of the solutions interpret $OPEN$ as the set of all sets of individuals
+(so that the interpretation of $B$ is irrelevant).

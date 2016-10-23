@@ -1,0 +1,29 @@
+split-ptree is an ugly hack which uses awk to split a file
+produced by PTREE-FILE into columns of a given width.
+It should be called from the directory which contains the file 
+to be split, and it will write output into that same directory.
+Your best bet is probably to define an alias: say
+alias tps-split "/afs/cs/project/tps/tps/utilities/split-ptree"
+
+split-ptree is an executable; when it is run it will ask for 
+an input file (e.g. etree.txt), the name of an output file
+(e.g. etr-column; this will produce output files 
+etr-column.1, etr-column.2, etc.), the width of the input 
+file in characters (the default for PTREE-FILE is 200), and
+the desired width of the output files in characters.
+
+These arguments may be supplied on the command line instead -- 
+e.g.: tps-split etree.txt etr-column 200 80
+
+It then calls an awk file, split.awk, to do the actual work.
+The complete pathname of this file is given explicitly in 
+split-ptree, and must be changed if the split.awk file is moved.
+
+Error checking is next to nonexistent. It will check that the input 
+file exists, and that the first **two** output files don't exist,
+but nothing beyond that. The output files will contain at least
+the first <width> characters from each line of the file, and 
+possibly more if there are any more (e.g. if you split a file with
+width 120 into 80-column files, you'll get two files, one containing
+columns 1 to 80, and one containing columns 81 to 160 -- in particular,
+any characters in the columns 121 to 160 will be shown.

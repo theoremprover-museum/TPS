@@ -1,0 +1,154 @@
+(:name DIAG0
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(I).~G^0(OII) x(I) x(I)"
+:needed-objects   NIL
+:mhelp "Diagonal set for proof of x5304"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name DIAG1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(I).~G^1(OII) x(I) x(I)"
+:needed-objects   NIL
+:mhelp "Diagonal set for proof of x5304"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name DIAG2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(I).~G^2(OII) x(I) x(I)"
+:needed-objects   NIL
+:mhelp "Diagonal set for proof of x5304"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name DIAG3
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(I).~G^3(OII) x(I) x(I)"
+:needed-objects   NIL
+:mhelp "Diagonal set for proof of x5304"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name JDIAG0
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "J^0(I(OI)).LAMBDA x(I).~G^0(OII) x(I) x(I)"
+:needed-objects   NIL
+:mhelp "Skolem term for proof of x5304"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name JDIAG1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "J^1(I(OI)).LAMBDA x(I).~G^1(OII) x(I) x(I)"
+:needed-objects   NIL
+:mhelp "Skolem term for proof of x5304"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name JDIAG2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "J^2(I(OI)).LAMBDA x(I).~G^2(OII) x(I) x(I)"
+:needed-objects   NIL
+:mhelp "Skolem term for proof of x5304"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name JDIAG3
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "J^3(I(OI)).LAMBDA x(I).~G^3(OII) x(I) x(I)"
+:needed-objects   NIL
+:mhelp "Skolem term for proof of x5304"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM145A-SUB28
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "U(A(OA)).LAMBDA z(A).z(A) LESSEQ(OAA) f(AA) z(A)"
+:needed-objects   (LESSEQ)
+:mhelp "Substituion term for THM145A"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM145A-SUB7
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "f(AA).U(A(OA)).LAMBDA z(A).z(A) LESSEQ(OAA) f(AA) z(A)"
+:needed-objects   (LESSEQ)
+:mhelp "Substitution term for THM145A"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM145A-SUB8
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA z(A).z(A) LESSEQ(OAA) f(AA) z(A)"
+:needed-objects   (LESSEQ)
+:mhelp "Substituion term for THM145A"
+:other-attributes NIL
+:other-remarks "
+")
+
+

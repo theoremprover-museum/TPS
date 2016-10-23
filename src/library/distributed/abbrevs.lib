@@ -1,0 +1,28 @@
+(:name MEETS
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X(OA) LAMBDA Y(OA) EXISTS x(A).X(OA) x(A) AND Y(OA) x(A)"
+:needed-objects   NIL
+:mhelp "Non-empty intersection"
+:other-attributes ((TYPELIST ("A")) (TYPE "O(OA)(OA)") (INFIX 10) (PRINTNOTYPE T) (FO-SINGLE-SYMBOL T))
+:other-remarks "
+")
+
+
+(:name MISSES
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X(OA) LAMBDA Y(OA).~X(OA) MEETS(O(OA)(OA)) Y(OA)"
+:needed-objects   (MEETS)
+:mhelp "Empty intersection"
+:other-attributes ((TYPELIST ("A")) (TYPE "O(OA)(OA)") (INFIX 10) (PRINTNOTYPE T) (FO-SINGLE-SYMBOL T))
+:other-remarks "
+")
+
+

@@ -1,0 +1,32 @@
+\chapter{Writing Inference Rules}
+
+Information on how to write new rules using the rules module
+is in the User Manual.
+
+The chapter about \ETPS (chapter ~\ref{etps}) has some discussion
+of how default line numbers and default hypotheses are generated in 
+the various {\tt OUTLINE} modules. This should correspond fairly 
+closely to the way in which the automatically-generated rules
+generate their defaults. The same chapter also has a discussion of
+support transformations which illustrates the way in which rules are
+defined.
+
+{\bf Do not edit the automatically-generated files.} This means any file 
+{\it whatever.lisp} that has a companion file {\it whatever.rules}. If you edit 
+the lisp files directly, your changes will be lost if the rules are ever recompiled.
+
+There are some rules which are defined directly as commands (mexpr's).
+Examples are \indexcommand{RULEP}, \indexcommand{TYPESUBST}, \indexcommand{ASSERT}, 
+\indexcommand{ADD-HYPS} and \indexcommand{DELETE-HYPS}.
+In order for these commands to show up when \indexcommand{LIST-RULES}
+is called, the programmer should modify the definition of \indexfunction{list-rules}
+in \indexfile{otl-help.lisp} to explicitly include them.
+For example, \indexcommand{RULEP} is explicitly included by the following code:
+\begin{verbatim}
+    (when (get 'ML::rulep 'mainfns)
+      (push 'RULEP gsrl)
+      (push '(ML::RULES-2-PROP) gsrl))
+\end{verbatim}
+This includes \indexcommand{RULEP} in the context \indexother{ML::RULES-2-PROP}.
+
+

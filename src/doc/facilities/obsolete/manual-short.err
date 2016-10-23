@@ -1,0 +1,93 @@
+@Comment{ERRLOG of manual-short.mss by Scribe 8.2 on 26 January 2010 at 15:59}
+
+Error in text found while processing the manuscript.
+facilities-short.mss, line 8346:  ms03-weight-primsub-falsehood@=ms03-weight-primsub-first-and@>ms03-weight-primsub-first-equals
+Line too wide; lost "ls".
+
+Error in text.
+facilities-short.mss, line 8347:  ms03-weight-primsub-first-exists@=ms03-weight-primsub-first-forall@>ms03-weight-primsub-first-not-equals
+Line too wide; lost "t-equals".
+
+Error in text.
+facilities-short.mss, line 8348:  ms03-weight-primsub-first-not-proj@=ms03-weight-primsub-first-or@>ms03-weight-primsub-first-proj
+Line too wide; lost "j".
+
+Error in text.
+facilities-short.mss, line 8349:  ms03-weight-primsub-next-and@=ms03-weight-primsub-next-equals@>ms03-weight-primsub-next-exists
+Line too wide; lost "ists".
+
+Error in text.
+facilities-short.mss, line 8350:  ms03-weight-primsub-next-forall@=ms03-weight-primsub-next-not-equals@>ms03-weight-primsub-next-not-proj
+Line too wide; lost "ext-not-proj".
+
+Error in text.
+facilities-short.mss, line 8650:  ms03-weight-primsub-first-and@=ms03-weight-primsub-first-equals@>ms03-weight-primsub-first-exists
+Line too wide; lost "sts".
+
+Error in text.
+facilities-short.mss, line 8651:  ms03-weight-primsub-first-forall@=ms03-weight-primsub-first-not-equals@>ms03-weight-primsub-first-not-proj
+Line too wide; lost "st-not-proj".
+
+Error in text.
+facilities-short.mss, line 8653:  ms03-weight-primsub-next-equals@=ms03-weight-primsub-next-exists@>ms03-weight-primsub-next-forall
+Line too wide; lost "forall".
+
+Error in text.
+facilities-short.mss, line 8654:  ms03-weight-primsub-next-not-equals@=ms03-weight-primsub-next-not-proj@>ms03-weight-primsub-next-or
+Line too wide; lost "-next-or".
+
+Error in text.
+facilities-short.mss, line 8664:  ms04-max-flexrigid-neg-mates@=ms04-max-flexrigid-neg-proj-mates@>ms04-max-flexrigid-proj-mates
+Line too wide; lost "es".
+
+Error in text.
+facilities-short.mss, line 8694:  ms03-weight-primsub-first-and@=ms03-weight-primsub-first-equals@>ms03-weight-primsub-first-exists
+Line too wide; lost "sts".
+
+Error in text.
+facilities-short.mss, line 8695:  ms03-weight-primsub-first-forall@=ms03-weight-primsub-first-not-equals@>ms03-weight-primsub-first-not-proj
+Line too wide; lost "st-not-proj".
+
+Error in text.
+facilities-short.mss, line 8697:  ms03-weight-primsub-next-equals@=ms03-weight-primsub-next-exists@>ms03-weight-primsub-next-forall
+Line too wide; lost "forall".
+
+Error in text.
+facilities-short.mss, line 8698:  ms03-weight-primsub-next-not-equals@=ms03-weight-primsub-next-not-proj@>ms03-weight-primsub-next-or
+Line too wide; lost "-next-or".
+
+Error in text.
+facilities-short.mss, line 8717:  ms03-weight-primsub-first-exists@=ms03-weight-primsub-first-forall@>ms03-weight-primsub-first-not-equals
+Line too wide; lost "t-equals".
+
+Error in text.
+facilities-short.mss, line 8718:  ms03-weight-primsub-first-not-proj@=ms03-weight-primsub-first-or@>ms03-weight-primsub-first-proj
+Line too wide; lost "j".
+
+Error in text.
+facilities-short.mss, line 8719:  ms03-weight-primsub-next-and@=ms03-weight-primsub-next-equals@>ms03-weight-primsub-next-exists
+Line too wide; lost "ists".
+
+Error in text.
+facilities-short.mss, line 8720:  ms03-weight-primsub-next-forall@=ms03-weight-primsub-next-not-equals@>ms03-weight-primsub-next-not-proj
+Line too wide; lost "ext-not-proj".
+
+Error in text.
+facilities-short.mss, line 8730:  ms04-max-flexrigid-neg-mates@=ms04-max-flexrigid-neg-proj-mates@>ms04-max-flexrigid-proj-mates
+Line too wide; lost "es".
+
+Error in text.
+facilities-short.mss, line 8858:  ms03-weight-primsub-first-and@=ms03-weight-primsub-first-equals@>ms03-weight-primsub-first-exists
+Line too wide; lost "sts".
+
+Error in text.
+facilities-short.mss, line 8859:  ms03-weight-primsub-first-forall@=ms03-weight-primsub-first-not-equals@>ms03-weight-primsub-first-not-proj
+Line too wide; lost "st-not-proj".
+
+Error in text.
+facilities-short.mss, line 8861:  ms03-weight-primsub-next-equals@=ms03-weight-primsub-next-exists@>ms03-weight-primsub-next-forall
+Line too wide; lost "forall".
+
+Error in text.
+facilities-short.mss, line 8862:  ms03-weight-primsub-next-not-equals@=ms03-weight-primsub-next-not-proj@>ms03-weight-primsub-next-or
+Line too wide; lost "-next-or".

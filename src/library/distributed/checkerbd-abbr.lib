@@ -1,0 +1,165 @@
+(:name CKB-FIN
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA k(OII).~CKB-INF k(OII)"
+:needed-objects   (CKB-INF)
+:mhelp "[CKB-FIN k] means that the set k of ordered pairs is finite (when the parameter n
+denotes a set of ordered pairs which intersects k)"
+:other-attributes ((FACE XFIN) (PRINTNOTYPE T) (TYPE "O(OII)"))
+:other-remarks "
+")
+
+
+(:name CKB-HXFIN
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA s(OII) FORALL k(OII).k(OII) SUBRELATION(O(OII)(OII)) s(OII) IMPLIES CKB-FIN k(OII)"
+:needed-objects   (SUBRELATION CKB-FIN)
+:mhelp "[HXFIN s] means that s is
+hereditarily xfinite, i.e., all subrelations of s are xfinite"
+:other-attributes ((FACE HXFIN) (PRINTNOTYPE T) (TYPE "O(OII)"))
+:other-remarks "
+")
+
+
+(:name CKB-INF
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA k(OII) EXISTS h(OIIII) EXISTS m(I) EXISTS n(I).CKB-INJ h(OIIII) AND [h(OIIII) CKB-XPL k(OII)] m(I) n(I)"
+:needed-objects   (CKB-INJ CKB-XPL)
+:mhelp "[CKB-INF k] means that the set k of ordered pairs is infinite;
+let the pair <m,n> be called 0;
+then 0, h0, h(h0), h(h(h0)), ..., etc., are all distinct members of k."
+:other-attributes ((FACE XINF) (PRINTNOTYPE T) (TYPE "O(OII)"))
+:other-remarks "
+")
+
+
+(:name CKB-XPL
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA h(OIIII) LAMBDA k(OII) LAMBDA m(I) LAMBDA n(I).k(OII) m(I) n(I) AND FORALL x(I) FORALL y(I).k(OII) x(I) y(I) IMPLIES EXISTS u(I) EXISTS v(I).h(OIIII) x(I) y(I) u(I) v(I) AND k(OII) u(I) v(I) AND ~.u(I) =(OII) m(I) AND v(I) =(OII) n(I)"
+:needed-objects   NIL
+:mhelp "[CKB-XPL h k m n] means that h (regarded as a function mapping
+ordered pairs to ordered pairs) eXPLores the set k of ordered pairs
+starting from <m,n>."
+:other-attributes ((FACE XPL) (PRINTNOTYPE T) (INFIX 9) (TYPE "OII(OII)(OIIII)"))
+:other-remarks "
+")
+
+
+(:name CKB6-BLACK
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA u(I) LAMBDA v(I) FORALL w(OII).w(OII) 1(I) 1(I) AND FORALL j(I) FORALL k(I) [w(OII) j(I) k(I) IMPLIES w(OII) [s(II).s(II) j(I)] k(I) AND w(OII) [s(II) j(I)].s(II) k(I)] IMPLIES w(OII) u(I) v(I)"
+:needed-objects   NIL
+:mhelp "Inductive definition of the set of black squares for TOUGHNUT2; we take advantage of the fact that the board may be
+regarded as wrapped around a torus."
+:other-attributes ((FACE BLACK) (PRINTNOTYPE T) (TYPE "OII"))
+:other-remarks "
+")
+
+
+(:name CKB6-H
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(I) LAMBDA y(I) LAMBDA u(I) LAMBDA v(I).CKB6-BLACK x(I) y(I) AND.g(III) [s(II).s(II) x(I)] [s(II) y(I)] =(OII) 1(I) AND u(I) =(OII) s(II) [s(II).s(II) x(I)] AND v(I) =(OII) s(II) y(I) OR g(III) [s(II).s(II) x(I)] [s(II) y(I)] =(OII) 2(I) AND u(I) =(OII) s(II) [s(II) x(I)] AND v(I) =(OII) s(II) [s(II) y(I)] OR g(III) [s(II).s(II) x(I)] [s(II) y(I)] =(OII) 3(I) AND u(I) =(OII) s(II) x(I) AND v(I) =(OII) s(II) y(I) OR g(III) [s(II).s(II) x(I)] [s(II) y(I)] =(OII) 4(I) AND u(I) =(OII) s(II) [s(II) x(I)] AND v(I) =(OII) y(I)"
+:needed-objects   (CKB6-BLACK)
+:mhelp "Mapping for the proof of TOUGHNUT2.
+CKB6-H maps the black square <x,y> to the black square <u,v> which is
+covered by the same domino as the white square <ssx,sy>"
+:other-attributes ((FACE H) (TYPE "OIIII"))
+:other-remarks "
+")
+
+
+(:name CKB6-NUM
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(I) FORALL p(OI).p(OI) 1(I) AND FORALL w(I) [p(OI) w(I) IMPLIES p(OI).s(II) w(I)] IMPLIES p(OI) x(I)"
+:needed-objects   NIL
+:mhelp "Inductive definition of the set of numbers for TOUGHNUT2; there are actually just 8 of these."
+:other-attributes ((FACE NUM) (PRINTNOTYPE T) (TYPE "OI"))
+:other-remarks "
+")
+
+
+(:name CKB-INJ
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA h(OIIII) FORALL x1(I) FORALL y1(I) FORALL x2(I) FORALL y2(I) FORALL u(I) FORALL v(I).h(OIIII) x1(I) y1(I) u(I) v(I) AND h(OIIII) x2(I) y2(I) u(I) v(I) IMPLIES x1(I) =(OII) x2(I) AND y1(I) =(OII) y2(I)"
+:needed-objects   NIL
+:mhelp "[ckb-inj h] means that h is injective
+when it is regarded as (the relation corresponding to) a function mapping
+ordered pairs to ordered pairs."
+:other-attributes ((FACE INJ) (PRINTNOTYPE T) (TYPE "O(OIIII)"))
+:other-remarks "
+")
+
+
+(:name CKB6-NUM8
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(I) FALSEHOOD ADD1(OII(OI)) 1(I) ADD1(OII(OI)) 2(I) ADD1(OII(OI)) 3(I) ADD1(OII(OI)) 4(I) ADD1(OII(OI)) 5(I) ADD1(OII(OI)) s(II) 5(I) ADD1(OII(OI)) s(II) [s(II) 5(I)] ADD1(OII(OI)) 8(I)"
+:needed-objects   (ADD1)
+:mhelp "The set of numbers for TOUGHNUT2"
+:other-attributes ((FACE NUM8) (PRINTNOTYPE T) (TYPE "OI"))
+:other-remarks "
+")
+
+
+(:name CKB-E2
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(I) LAMBDA y(I) FORALL p(OI).p(OI) x(I) AND FORALL u(I) [p(OI) u(I) IMPLIES p(OI).s(II).s(II) u(I)] IMPLIES p(OI) y(I)"
+:needed-objects   NIL
+:mhelp "[ckb-e2 x y] means that x and y have the same parity; that is, they are congruent modulo 2."
+:other-attributes ((FACE * EQUIV *) (PRINTNOTYPE T) (INFIX 12) (TYPE "OII"))
+:other-remarks "
+")
+
+
+(:name CKB6-SEG
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA z(I) LAMBDA y(I) FORALL p(OI).p(OI) 1(I) AND FORALL w(I) [p(OI) w(I) AND ~[w(I) =(OII) z(I)] IMPLIES p(OI).s(II) w(I)] IMPLIES p(OI) y(I)"
+:needed-objects   NIL
+:mhelp "Inductive definition of the set {1, ... , z} for TOUGHNUT2; part of the proof that NUM is FINITE."
+:other-attributes ((FACE SEG) (PRINTNOTYPE T) (TYPE "OII"))
+:other-remarks "
+")
+
+

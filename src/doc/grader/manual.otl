@@ -1,0 +1,51 @@
+@Comment{OUTLINE of manual.mss by Scribe 8.2 on 25 June 2007 at 14:43}
+1. Introduction                                           1 intro.mss, line 1
+2. How it works                                           3 howit.mss, line 1
+                              howit                       3 howit.mss, line 1
+  2.1. The Record                                         3 howit.mss, line 3
+3. Coming and Going                                       5 coming.mss, line 1
+  3.1. Getting into @hGRADER                              5 coming.mss, line 3
+  3.2. @hGRADER Top-Level: HELP                           5 coming.mss, line 29
+  3.3. Getting out: GR-EXIT and EXIT                      5 coming.mss, line 61
+4. Setting Up                                             7 setup.mss, line 1
+                              setup                       7 setup.mss, line 1
+  4.1. Variables: CHG-VARS and GR-REVIEW                  7 setup.mss, line 47
+                              chg-vars                    7 setup.mss, line 48
+  4.2. The Grade-File: CREATE-GRADEFILE                   8 setup.mss, line 151
+                              creating                    8 setup.mss, line 152
+  4.3. Precautions and Protections                        9 setup.mss, line 235
+                              Precautions                 9 setup.mss, line 236
+5. Keeping Records                                       11 records.mss, line 1
+                              keepbook                   11 records.mss, line 1
+  5.1. Manual Grades: INSERT-GRADES, @W{RESUME-INSERT-G  11 records.mss, line 4
+                              insertg                    11 records.mss, line 5
+  5.2. Making the Output Convenient: ALIASES, COMMENT    12 records.mss, line 191
+                              alias                      12 records.mss, line 191
+  5.3. Automatic Grades: ETPS-GRADE, DUE-DATES           13 records.mss, line 268
+  5.4. Updating the Class List: ADD-STUDENTS, @w(DELETE  15 records.mss, line 402
+  5.5. Generated Values: STATISTICS                      16 records.mss, line 478
+                              Stats                      16 records.mss, line 478
+  5.6. Displaying Information: DISPLAY, @w(NUMBER-OF-ST  16 records.mss, line 509
+6. Figuring Grades                                       17 figures.mss, line 1
+                              calc                       17 figures.mss, line 1
+  6.1. Totaling: CHANGE-WEIGHT, CALCULATE-GRADE, PENALT  17 figures.mss, line 21
+                              penalty-fns                17 figures.mss, line 22
+  6.2. Sorting: SORT-FN                                  19 figures.mss, line 214
+  6.3. Letter Grades: LETTER-GRADE                       21 figures.mss, line 316
+ Index                                                   23 ScribePnqmPr, line 3
+ Table of Contents                                       25 ScribeZcUiwo, line 2
+       Alphabetic Listing of Cross-Reference Tags and Labels
+
+Tag or Label Name                    Page   Label Value  Source file Location
+-----------------------------------------------------------------------------
+ALIAS                                  12         5.2  records.mss, line 191
+CALC                                   17           6  figures.mss, line 1
+CHG-VARS                                7         4.1  setup.mss, line 48
+CREATING                                8         4.2  setup.mss, line 152
+HOWIT                                   3           2  howit.mss, line 1
+INSERTG                                11         5.1  records.mss, line 5
+KEEPBOOK                               11           5  records.mss, line 1
+PENALTY-FNS                            17         6.1  figures.mss, line 22
+PRECAUTIONS                             9         4.3  setup.mss, line 236
+SETUP                                   7           4  setup.mss, line 1
+STATS                                  16         5.5  records.mss, line 478

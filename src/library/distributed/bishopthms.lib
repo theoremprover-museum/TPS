@@ -1,0 +1,42 @@
+(:name CR-THEOREM
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:14:35."
+:description "FORALL R(OTT).REFLEXIVE(O(OTT)) R(OTT) AND TRANSITIVE(O(OTT)) R(OTT) AND DIAM R(OTT) IMPLIES FORALL M(T) FORALL N(T).EQ* R(OTT) M(T) N(T) IMPLIES COMMON-REWRITE R(OTT) M(T) N(T)"
+:needed-objects   (DIAM EQ* REFLEXIVE TRANSITIVE COMMON-REWRITE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name DISTRIB-THM
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:14:36."
+:description "FORALL JOIN(AAA) FORALL MEET(AAA).LATTICE(O(AAA)(AAA)) JOIN(AAA) MEET(AAA) IMPLIES.DISTRIBUTIVE(O(AAA)(AAA)) JOIN(AAA) MEET(AAA) EQUIV DISTRIBUTIVE(O(AAA)(AAA)) MEET(AAA) JOIN(AAA)"
+:needed-objects   (LATTICE DISTRIBUTIVE)
+:mhelp "In a lattice, join distributes over meet iff meet distributes over join."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name INDISCRETE-TOPOLOGY
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, September 20, 2001 at 15:10:04."
+:description "TOPOLOGY(O(O(OA))).LAMBDA X(OA).X(OA) =(O(OA)(OA)) LAMBDA y(A) FALSEHOOD OR X(OA) =(O(OA)(OA)) LAMBDA y(A).~FALSEHOOD"
+:needed-objects   (TOPOLOGY)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

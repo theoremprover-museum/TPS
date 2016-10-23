@@ -1,0 +1,44 @@
+(:name THM150
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:50."
+:description "FORALL r(OAA) TRANSITIVE(O(OAA)).TC2(OAA(OAA)) r(OAA)"
+:needed-objects   (TRANSITIVE TC2)
+:mhelp "The transitive closure TC2 of a relation is transitive."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM151
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:50."
+:description "FORALL r(OAA).r(OAA) SUBRELATION(O(OAA)(OAA)) TC2(OAA(OAA)) r(OAA)"
+:needed-objects   (TC2 SUBRELATION)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM152
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Monday, November 23, 1998 at 16:19:31."
+:description "FORALL r(OII) FORALL x(I) FORALL y(I).FORALL q(OI) [FORALL w(I) [r(OII) x(I) w(I) IMPLIES q(OI) w(I)] AND FORALL v(I) FORALL w(I) [q(OI) v(I) AND r(OII) v(I) w(I) IMPLIES q(OI) w(I)] IMPLIES q(OI) y(I)] EQUIV FORALL p(OII).r(OII) SUBRELATION(O(OII)(OII)) p(OII) AND TRANSITIVE(O(OII)) p(OII) IMPLIES p(OII) x(I) y(I)"
+:needed-objects   (SUBRELATION TRANSITIVE)
+:mhelp "Equivalence of two definitions of transitive closure.
+Modified version of T146 (THM146). Is this a theorem?
+Theorem suggested by Dana Scott."
+:other-attributes NIL
+:other-remarks "
+")
+
+

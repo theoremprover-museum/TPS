@@ -1,0 +1,86 @@
+
+# SCRIBE DOCUMENTATION:
+# The files in this directory can be used to generate a listing of the current
+# commands, flags, inference rules, abbreviations, etc. in TPS.  To get the
+# listing, load the file scribe-facilities.lisp (for a long and pretty comprehensive
+# version) or scribe-facilities-short.lisp (for a shorter version which basically
+# includes only commands and flags that an everyday user would care about).
+# Part of the lisp function in these files specifies the output file; EDITn
+# THAT PATHNAME to put the file into the facilities directory.
+# 
+# Note: If you a tps3 core image into which you have already loaded
+# certain wffs from your library, these will show up in the facilities
+# guide.
+# 
+# tload "/home/theorem/project/doc/facilities/scribe-facilities.lisp"
+# or
+# tload "/home/theorem/project/doc/facilities/scribe-facilities-short.lisp"
+# 
+# Compile file /home/theorem/project/doc/facilities/scribe-facilities.lisp?>n
+# 
+# Then do:
+# % cd doc/facilities
+# % scribe scribe-manual 
+# 
+# or, if you used facilities-short.lisp,
+# 
+# % scribe scribe-manual-short
+# 
+# See the end of the User's Guide for a more complete discussion.
+# 
+# The facilities-cmd.lisp and manual-cmd.mss files are intended to produce
+# a manual which contains only commands and flags (i.e. the short facilities guide
+# without information on tactics, tacticals, binders, abbreviations, types, 
+# subjects, modes, events, styles etc). It also omits grader commands, and prints with 
+# narrower page margins. To produce this manual, replace "-short"
+# with "-cmd" in the above. At the time of writing, scribe-manual-cmd.mss ran to 90 pages,
+# scribe-manual-short.mss was 156 pages, and scribe-manual.mss was 246 pages.
+# 
+# If you want a very short manual containing just a little information,
+# (such as a summary of a new search procedure) use facilities-temp. Edit
+# facilities-temp.lisp to contain just the categories you wish, and
+# FLAG. In TPS
+# tload "/home/theorem/project/doc/facilities/scribe-facilities-temp.lisp"
+# Then edit /home/theorem/project/doc/facilities/scribe-facilities-temp.mss
+# to eliminate all the flags you do not want in this manual, and 
+# scribe the file.
+# 
+# Since there are now gzipped versions for the Web, you can run this README file
+# as a script to gzip the postscript file and create a pdf file:
+cp scribe-manual.ps  scribe-man.ps
+gzip scribe-man.ps
+ps2pdf scribe-manual.ps
+
+# and the equivalent with manual-short:
+cp  scribe-manual-short.ps  scribe-mans.ps
+gzip  scribe-mans.ps
+ps2pdf scribe-manual-short.ps
+
+# Note: this is a long manual; print it on a printer
+# which prints two-sided copy.
+
+# LATEX-DOCUMENTATION:
+# Latex documentation can be processed similarly to the Scribe one. Just
+# use the "latex-facilities.lisp" or "latex-facilities-(short/cmd/temp).lisp"
+# instead of "scribe-facilities.lisp" or "scribe-facilities-(short/cmd/temp).lisp".
+# Thus, in TPS you should execute:
+# tload "/home/theorem/project/doc/facilities/latex-facilities.lisp"
+# Compile file /home/theorem/project/doc/facilities/latex-facilities.lisp?>n
+# 
+# This produces tex files which can be finally compiled using, e.g. :
+# % cd doc/facilities
+# % latex latex-manual
+# % dvips latex-manual
+#
+# If you want to produce the short facilities guide, in TPS you should execute:
+# tload "/home/theorem/project/doc/facilities/latex-facilities-short.lisp"
+# Compile file /home/theorem/project/doc/facilities/latex-facilities-short.lisp?>n
+# This produces tex files which can be finally compiled using, e.g. :
+# % cd doc/facilities
+# % latex latex-manual-short
+# % dvips latex-manual-short
+
+
+
+# See the end of User's Guide for a more complete discussion.
+  

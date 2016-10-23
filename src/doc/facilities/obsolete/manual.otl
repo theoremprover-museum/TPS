@@ -1,0 +1,663 @@
+@Comment{OUTLINE of manual.mss by Scribe 8.2 on 26 January 2010 at 15:56}
+1. Introduction                                           1 preamble.mss, line 1
+2. Top-Level Commands                                     2 facilities.mss, line 1
+  2.1. Top Levels                                         2 facilities.mss, line 7
+  2.2. Help                                               3 facilities.mss, line 162
+  2.3. Collecting Help                                    4 facilities.mss, line 234
+  2.4. Concept                                            5 facilities.mss, line 277
+  2.5. Starting and Finishing                             5 facilities.mss, line 286
+  2.6. Printing                                           5 facilities.mss, line 334
+  2.7. Saving Work                                        7 facilities.mss, line 476
+  2.8. Saving Wffs                                        8 facilities.mss, line 579
+  2.9. Printing Proofs into Files                         8 facilities.mss, line 591
+  2.10. Proof Outline                                     9 facilities.mss, line 621
+  2.11. Expansion Trees                                   9 facilities.mss, line 691
+  2.12. Search Suggestions                               10 facilities.mss, line 711
+  2.13. Mating search                                    10 facilities.mss, line 738
+  2.14. MS91-6 and MS91-7 search procedures              11 facilities.mss, line 838
+  2.15. Proof Translation                                11 facilities.mss, line 853
+  2.16. Unification                                      12 facilities.mss, line 904
+  2.17. Search Analysis                                  12 facilities.mss, line 912
+  2.18. Tactics                                          13 facilities.mss, line 954
+  2.19. suggestions                                      13 facilities.mss, line 964
+  2.20. Vpforms                                          13 facilities.mss, line 996
+  2.21. Rearranging the Proof                            13 facilities.mss, line 1011
+  2.22. Status                                           14 facilities.mss, line 1074
+  2.23. Miscellaneous Rules                              14 facilities.mss, line 1099
+  2.24. Propositional Rules                              15 facilities.mss, line 1125
+  2.25. Negation Rules                                   16 facilities.mss, line 1203
+  2.26. Quantifier Rules                                 16 facilities.mss, line 1227
+  2.27. Substitution Rules                               17 facilities.mss, line 1257
+  2.28. Equality Rules                                   17 facilities.mss, line 1267
+  2.29. Definition Rules                                 17 facilities.mss, line 1314
+  2.30. Lambda Conversion Rules                          18 facilities.mss, line 1326
+  2.31. Rewriting commands                               18 facilities.mss, line 1361
+  2.32. Events                                           19 facilities.mss, line 1442
+  2.33. Statistics                                       19 facilities.mss, line 1449
+  2.34. Maintenance                                      19 facilities.mss, line 1475
+  2.35. Modules                                          22 facilities.mss, line 1681
+  2.36. Rules Module                                     22 facilities.mss, line 1693
+  2.37. Lisp packages                                    22 facilities.mss, line 1709
+  2.38. Display                                          22 facilities.mss, line 1723
+  2.39. Best modes                                       22 facilities.mss, line 1735
+  2.40. Library Classification                           23 facilities.mss, line 1742
+  2.41. Bugs                                             23 facilities.mss, line 1752
+  2.42. Interface                                        23 facilities.mss, line 1786
+3. Inference Rules                                       24 facilities.mss, line 1792
+  3.1. Miscellaneous Rules                               24 facilities.mss, line 1798
+                              HYP                        24 facilities.mss, line 1801
+                              LEMMA                      24 facilities.mss, line 1809
+                              SAME                       24 facilities.mss, line 1817
+  3.2. Propositional Rules                               24 facilities.mss, line 1825
+                              ASSOC-LEFT                 24 facilities.mss, line 1828
+                              CASES                      24 facilities.mss, line 1837
+                              CASES3                     24 facilities.mss, line 1849
+                              CASES4                     24 facilities.mss, line 1863
+                              DEDUCT                     25 facilities.mss, line 1879
+                              DISJ-IMP                   25 facilities.mss, line 1888
+                              DISJ-IMP-L                 25 facilities.mss, line 1896
+                              DISJ-IMP-R                 25 facilities.mss, line 1904
+                              ECONJ                      25 facilities.mss, line 1912
+                              EQUIV-IMPLICS              25 facilities.mss, line 1921
+                              ICONJ                      25 facilities.mss, line 1929
+                              IDISJ-LEFT                 26 facilities.mss, line 1938
+                              IDISJ-RIGHT                26 facilities.mss, line 1946
+                              IMP-DISJ                   26 facilities.mss, line 1954
+                              IMP-DISJ-L                 26 facilities.mss, line 1962
+                              IMP-DISJ-R                 26 facilities.mss, line 1970
+                              IMPLICS-EQUIV              26 facilities.mss, line 1978
+                              INDIRECT                   26 facilities.mss, line 1986
+                              INDIRECT1                  26 facilities.mss, line 1995
+                              INDIRECT2                  26 facilities.mss, line 2004
+                              ITRUTH                     27 facilities.mss, line 2014
+                              MP                         27 facilities.mss, line 2021
+                              SUBST-EQUIV                27 facilities.mss, line 2030
+  3.3. Negation Rules                                    27 facilities.mss, line 2041
+                              ABSURD                     27 facilities.mss, line 2044
+                              ENEG                       27 facilities.mss, line 2052
+                              INEG                       27 facilities.mss, line 2061
+                              NNF                        27 facilities.mss, line 2070
+                              NNF-EXPAND                 27 facilities.mss, line 2079
+                              PULLNEG                    28 facilities.mss, line 2088
+                              PUSHNEG                    28 facilities.mss, line 2097
+  3.4. Quantifier Rules                                  28 facilities.mss, line 2106
+                              AB*                        28 facilities.mss, line 2109
+                              ABE                        28 facilities.mss, line 2118
+                              ABU                        28 facilities.mss, line 2128
+                              EGEN                       28 facilities.mss, line 2138
+                              RULEC                      28 facilities.mss, line 2147
+                              RULEC1                     29 facilities.mss, line 2158
+                              UGEN                       29 facilities.mss, line 2170
+                              UI                         29 facilities.mss, line 2179
+  3.5. Substitution Rules                                29 facilities.mss, line 2188
+                              SUBSTITUTE                 29 facilities.mss, line 2191
+  3.6. Equality Rules                                    29 facilities.mss, line 2200
+                              EQUIV-EQ                   29 facilities.mss, line 2203
+                              EQUIV-EQ-CONTR             30 facilities.mss, line 2215
+                              EQUIV-EQ-CONTR*            30 facilities.mss, line 2224
+                              EQUIV-EQ-EXPD              30 facilities.mss, line 2233
+                              EQUIV-EQ-EXPD*             30 facilities.mss, line 2241
+                              EXT=                       30 facilities.mss, line 2249
+                              EXT=0                      30 facilities.mss, line 2258
+                              LET                        30 facilities.mss, line 2266
+                              SUBST=                     31 facilities.mss, line 2278
+                              SUBST=L                    31 facilities.mss, line 2289
+                              SUBST=R                    31 facilities.mss, line 2300
+                              SYM=                       31 facilities.mss, line 2311
+  3.7. Definition Rules                                  31 facilities.mss, line 2319
+                              EDEF                       31 facilities.mss, line 2322
+                              EQUIV-WFFS                 31 facilities.mss, line 2331
+                              IDEF                       32 facilities.mss, line 2340
+  3.8. Lambda Conversion Rules                           32 facilities.mss, line 2349
+                              BETA*                      32 facilities.mss, line 2352
+                              ETA*                       32 facilities.mss, line 2362
+                              LAMBDA*                    32 facilities.mss, line 2372
+                              LCONTR*                    32 facilities.mss, line 2382
+                              LCONTR*-BETA               32 facilities.mss, line 2391
+                              LCONTR*-ETA                32 facilities.mss, line 2399
+                              LEXPD*                     32 facilities.mss, line 2407
+                              LEXPD*-BETA                33 facilities.mss, line 2416
+                              LEXPD*-ETA                 33 facilities.mss, line 2424
+  3.9. Rewriting commands                                33 facilities.mss, line 2432
+                              REWRITE-SUPP*              33 facilities.mss, line 2435
+                              REWRITE-SUPP1              33 facilities.mss, line 2444
+                              SIMPLIFY-PLAN              33 facilities.mss, line 2453
+                              SIMPLIFY-PLAN*             33 facilities.mss, line 2462
+                              SIMPLIFY-SUPP              33 facilities.mss, line 2471
+                              SIMPLIFY-SUPP*             33 facilities.mss, line 2480
+                              UNREWRITE-PLAN*            33 facilities.mss, line 2489
+                              UNREWRITE-PLAN1            34 facilities.mss, line 2497
+                              USE-RRULES                 34 facilities.mss, line 2506
+4. Extensional Sequent Commands                          35 facilities.mss, line 2515
+  4.1. Top Levels                                        35 facilities.mss, line 2521
+  4.2. Proof Translation                                 35 facilities.mss, line 2527
+  4.3. Extensional Sequent Entering                      35 facilities.mss, line 2535
+  4.4. Extensional Sequent Printing                      35 facilities.mss, line 2572
+  4.5. Extensional Sequent Rules                         35 facilities.mss, line 2584
+  4.6. Extensional Sequent Derived Rules                 36 facilities.mss, line 2707
+  4.7. Extensional Sequent Files                         37 facilities.mss, line 2763
+  4.8. Compound                                          37 facilities.mss, line 2796
+5. Tactics                                               38 facilities.mss, line 2801
+  5.1. Compound                                          38 facilities.mss, line 2807
+  5.2. Propositional                                     42 facilities.mss, line 3242
+  5.3. Quantifiers                                       48 facilities.mss, line 3801
+  5.4. Equality                                          50 facilities.mss, line 3995
+  5.5. Definitions                                       51 facilities.mss, line 4117
+  5.6. Lambda                                            52 facilities.mss, line 4162
+  5.7. Auxiliary                                         54 facilities.mss, line 4336
+6. Tacticals                                             56 facilities.mss, line 4470
+  6.1. Tactics                                           56 facilities.mss, line 4476
+7. Mating-Search Commands                                57 facilities.mss, line 4541
+  7.1. Top Levels                                        57 facilities.mss, line 4547
+  7.2. Printing                                          57 facilities.mss, line 4555
+  7.3. Recording                                         57 facilities.mss, line 4613
+  7.4. Expansion Trees                                   58 facilities.mss, line 4623
+  7.5. Search Suggestions                                58 facilities.mss, line 4710
+  7.6. Mating search                                     59 facilities.mss, line 4716
+  7.7. MS88 search procedure                             59 facilities.mss, line 4737
+  7.8. MS89 search procedure                             59 facilities.mss, line 4793
+  7.9. MS90-3 search procedure                           60 facilities.mss, line 4804
+  7.10. MS90-9 search procedure                          60 facilities.mss, line 4821
+  7.11. MS91-6 and MS91-7 search procedures              60 facilities.mss, line 4832
+  7.12. MS92-9 search procedure                          61 facilities.mss, line 4881
+  7.13. MS93-1 search procedure                          61 facilities.mss, line 4896
+  7.14. MS98-1 search procedure                          61 facilities.mss, line 4909
+  7.15. Proof Translation                                61 facilities.mss, line 4923
+  7.16. Vpforms                                          61 facilities.mss, line 4931
+  7.17. Moving Commands                                  62 facilities.mss, line 4975
+  7.18. Statistics                                       62 facilities.mss, line 5007
+  7.19. Miscellaneous                                    62 facilities.mss, line 5018
+8. Extensional Expansion Dag Commands                    63 facilities.mss, line 5035
+  8.1. Top Levels                                        63 facilities.mss, line 5041
+  8.2. Printing                                          63 facilities.mss, line 5047
+  8.3. Extensional Search                                63 facilities.mss, line 5086
+  8.4. Proof Translation                                 63 facilities.mss, line 5111
+  8.5. Vpforms                                           64 facilities.mss, line 5120
+  8.6. Extensional Expansion Dags                        64 facilities.mss, line 5142
+  8.7. Moving Commands                                   65 facilities.mss, line 5222
+9. Matingstree Commands                                  66 facilities.mss, line 5254
+  9.1. Top Levels                                        66 facilities.mss, line 5260
+  9.2. Mtree Operations                                  66 facilities.mss, line 5266
+  9.3. Mtree Printing                                    67 facilities.mss, line 5343
+  9.4. Mtree Auto                                        67 facilities.mss, line 5435
+10. Unification Commands                                 69 facilities.mss, line 5478
+  10.1. Top Levels                                       69 facilities.mss, line 5484
+  10.2. Unification                                      69 facilities.mss, line 5490
+  10.3. Dpairs                                           70 facilities.mss, line 5614
+11. Test-Top Commands                                    71 facilities.mss, line 5649
+  11.1. Top Levels                                       71 facilities.mss, line 5655
+  11.2. Mating search                                    71 facilities.mss, line 5661
+  11.3. Searchlists                                      72 facilities.mss, line 5759
+  11.4. Library                                          73 facilities.mss, line 5854
+12. Models Commands                                      74 facilities.mss, line 5870
+  12.1. Top Levels                                       74 facilities.mss, line 5876
+  12.2. Printing                                         74 facilities.mss, line 5882
+  12.3. Models                                           75 facilities.mss, line 5964
+13. Editor Commands                                      76 facilities.mss, line 6024
+  13.1. Top Levels                                       76 facilities.mss, line 6030
+  13.2. Printing                                         76 facilities.mss, line 6042
+  13.3. Weak Labels                                      76 facilities.mss, line 6057
+  13.4. Saving Wffs                                      76 facilities.mss, line 6081
+  13.5. Recording                                        76 facilities.mss, line 6094
+  13.6. Vpforms                                          77 facilities.mss, line 6107
+  13.7. Moving Commands                                  77 facilities.mss, line 6151
+  13.8. Changing Commands                                77 facilities.mss, line 6190
+  13.9. Recursively Changing Commands                    78 facilities.mss, line 6284
+  13.10. Embedding Commands                              79 facilities.mss, line 6368
+  13.11. Rewriting commands                              79 facilities.mss, line 6427
+  13.12. Substitution                                    80 facilities.mss, line 6488
+  13.13. Basic Abbreviations                             80 facilities.mss, line 6527
+  13.14. Lambda-Calculus                                 80 facilities.mss, line 6567
+  13.15. Negation movers                                 81 facilities.mss, line 6613
+  13.16. Primitive Substitutions                         81 facilities.mss, line 6628
+  13.17. Miscellaneous                                   81 facilities.mss, line 6638
+  13.18. RuleP                                           81 facilities.mss, line 6663
+  13.19. Skolemizing                                     81 facilities.mss, line 6672
+  13.20. Quantifier Commands                             82 facilities.mss, line 6686
+  13.21. Wellformedness                                  82 facilities.mss, line 6698
+14. Replaceable Symbols                                  83 facilities.mss, line 6716
+  14.1. Basic Abbreviations                              83 facilities.mss, line 6722
+15. Theorems                                             84 facilities.mss, line 6750
+  15.1. Book Theorems                                    84 facilities.mss, line 6752
+  15.2. First-Order Logic                                84 facilities.mss, line 6778
+  15.3. Higher-Order Logic                               85 facilities.mss, line 6879
+16. Logical Abbreviations                                87 facilities.mss, line 6962
+  16.1. Basic Abbreviations                              87 facilities.mss, line 6968
+  16.2. Set Abbreviations                                87 facilities.mss, line 7003
+17. Binders                                              88 facilities.mss, line 7025
+  17.1. wff Primitives                                   88 facilities.mss, line 7031
+  17.2. Basic Abbreviations                              88 facilities.mss, line 7039
+18. Logical Constants                                    89 facilities.mss, line 7061
+  18.1. wff Primitives                                   89 facilities.mss, line 7067
+19. Polymorphic Proper Symbols                           90 facilities.mss, line 7089
+  19.1. wff Primitives                                   90 facilities.mss, line 7095
+20. Typeconstants                                        91 facilities.mss, line 7104
+  20.1. wff Primitives                                   91 facilities.mss, line 7110
+21. Type Abbreviations                                   92 facilities.mss, line 7118
+  21.1. wff Primitives                                   92 facilities.mss, line 7124
+22. Library Commands                                     93 facilities.mss, line 7129
+  22.1. Top Levels                                       93 facilities.mss, line 7135
+  22.2. Display                                          93 facilities.mss, line 7141
+  22.3. Reading                                          95 facilities.mss, line 7297
+  22.4. Library Structure                                95 facilities.mss, line 7330
+  22.5. Editing                                          96 facilities.mss, line 7418
+  22.6. Keywords                                         97 facilities.mss, line 7536
+  22.7. Best modes                                       98 facilities.mss, line 7568
+  22.8. Library Classification                           98 facilities.mss, line 7619
+23. Library Objects                                     101 facilities.mss, line 7793
+  23.1. Miscellaneous                                   101 facilities.mss, line 7799
+  23.2. Library                                         101 facilities.mss, line 7854
+24. Classification Scheme For The Library.s             102 facilities.mss, line 7859
+  24.1. Modules                                         102 facilities.mss, line 7865
+25. Library Command Using A Unix Style Interfaces       103 facilities.mss, line 7875
+  25.1. Top Levels                                      103 facilities.mss, line 7881
+  25.2. Display                                         103 facilities.mss, line 7887
+  25.3. Reading                                         103 facilities.mss, line 7935
+  25.4. Library Classification                          103 facilities.mss, line 7944
+26. Review Commands                                     105 facilities.mss, line 7976
+  26.1. Top Levels                                      105 facilities.mss, line 7982
+  26.2. Flags                                           105 facilities.mss, line 7988
+  26.3. Modes                                           106 facilities.mss, line 8059
+  26.4. Unification                                     106 facilities.mss, line 8082
+  26.5. Best modes                                      106 facilities.mss, line 8094
+27. Subjects                                            107 facilities.mss, line 8102
+  27.1. Top Levels                                      107 facilities.mss, line 8108
+  27.2. OTL Object                                      107 facilities.mss, line 8134
+  27.3. Printing                                        107 facilities.mss, line 8158
+  27.4. Flavors of Labels                               108 facilities.mss, line 8213
+  27.5. Saving Work                                     108 facilities.mss, line 8222
+  27.6. Expansion Trees                                 108 facilities.mss, line 8231
+  27.7. Mtree Operations                                109 facilities.mss, line 8249
+  27.8. Mating search                                   109 facilities.mss, line 8267
+  27.9. MS88 search procedure                           111 facilities.mss, line 8411
+  27.10. MS89 search procedure                          112 facilities.mss, line 8433
+  27.11. MS90-3 search procedure                        112 facilities.mss, line 8456
+  27.12. MS90-9 search procedure                        112 facilities.mss, line 8479
+  27.13. MS91-6 and MS91-7 search procedures            113 facilities.mss, line 8503
+  27.14. MS92-9 search procedure                        114 facilities.mss, line 8559
+  27.15. MS93-1 search procedure                        114 facilities.mss, line 8581
+  27.16. MS98-1 search procedure                        114 facilities.mss, line 8604
+  27.17. Extensional Search                             115 facilities.mss, line 8633
+  27.18. Proof Translation                              116 facilities.mss, line 8745
+  27.19. Unification                                    117 facilities.mss, line 8758
+  27.20. Tactics                                        117 facilities.mss, line 8784
+  27.21. suggestions                                    117 facilities.mss, line 8795
+  27.22. Vpforms                                        117 facilities.mss, line 8804
+  27.23. Semantics                                      117 facilities.mss, line 8819
+  27.24. wff Primitives                                 118 facilities.mss, line 8828
+  27.25. Wff Parsing                                    118 facilities.mss, line 8838
+  27.26. Primitive Substitutions                        118 facilities.mss, line 8848
+  27.27. Events                                         118 facilities.mss, line 8873
+  27.28. Grader                                         119 facilities.mss, line 8893
+  27.29. Maintenance                                    119 facilities.mss, line 8912
+  27.30. Rules object                                   119 facilities.mss, line 8937
+  27.31. Library                                        119 facilities.mss, line 8945
+28. Flag Or Parameters                                  120 facilities.mss, line 8958
+  28.1. Top Levels                                      120 facilities.mss, line 8964
+  28.2. Style                                           121 facilities.mss, line 9038
+  28.3. Review                                          121 facilities.mss, line 9046
+  28.4. Flags                                           121 facilities.mss, line 9063
+  28.5. Modes                                           121 facilities.mss, line 9072
+  28.6. Help                                            121 facilities.mss, line 9087
+  28.7. Collecting Help                                 122 facilities.mss, line 9096
+  28.8. Starting and Finishing                          122 facilities.mss, line 9125
+  28.9. OTL Object                                      122 facilities.mss, line 9159
+  28.10. Printing                                       123 facilities.mss, line 9198
+  28.11. Printing                                       123 facilities.mss, line 9228
+  28.12. Internal for Printing                          125 facilities.mss, line 9345
+  28.13. TeX                                            125 facilities.mss, line 9359
+  28.14. X Windows                                      125 facilities.mss, line 9401
+  28.15. Weak Labels                                    126 facilities.mss, line 9425
+  28.16. Flavors of Labels                              126 facilities.mss, line 9434
+  28.17. Saving Work                                    126 facilities.mss, line 9452
+  28.18. Recording                                      126 facilities.mss, line 9468
+  28.19. Printing Proofs into Files                     127 facilities.mss, line 9513
+  28.20. Proof Outline                                  128 facilities.mss, line 9593
+  28.21. Expansion Trees                                129 facilities.mss, line 9673
+  28.22. Mtree Operations                               131 facilities.mss, line 9839
+  28.23. Mtree Auto                                     131 facilities.mss, line 9864
+  28.24. Mating search                                  132 facilities.mss, line 9932
+  28.25. MS88 search procedure                          134 facilities.mss, line 10133
+  28.26. MS89 search procedure                          136 facilities.mss, line 10270
+  28.27. MS90-3 search procedure                        137 facilities.mss, line 10300
+  28.28. MS91-6 and MS91-7 search procedures            137 facilities.mss, line 10345
+  28.29. MS98-1 search procedure                        140 facilities.mss, line 10545
+  28.30. Extensional Search                             144 facilities.mss, line 10855
+  28.31. Proof Translation                              154 facilities.mss, line 11536
+  28.32. Unification                                    154 facilities.mss, line 11587
+  28.33. Tactics                                        157 facilities.mss, line 11848
+  28.34. suggestions                                    158 facilities.mss, line 11872
+  28.35. Searchlists                                    158 facilities.mss, line 11904
+  28.36. Vpforms                                        160 facilities.mss, line 12045
+  28.37. Semantics                                      162 facilities.mss, line 12199
+  28.38. Printing                                       162 facilities.mss, line 12220
+  28.39. Applying Rules                                 162 facilities.mss, line 12235
+  28.40. Propositional Rules                            163 facilities.mss, line 12286
+  28.41. Wff Editor                                     163 facilities.mss, line 12298
+  28.42. wff Primitives                                 164 facilities.mss, line 12351
+  28.43. Wff Parsing                                    164 facilities.mss, line 12381
+  28.44. Basic Abbreviations                            164 facilities.mss, line 12411
+  28.45. Lambda-Calculus                                165 facilities.mss, line 12440
+  28.46. Primitive Substitutions                        165 facilities.mss, line 12450
+  28.47. Miscellaneous                                  168 facilities.mss, line 12725
+  28.48. RuleP                                          168 facilities.mss, line 12750
+  28.49. Skolemizing                                    168 facilities.mss, line 12759
+  28.50. Quantifiers                                    169 facilities.mss, line 12767
+  28.51. Auxiliary                                      169 facilities.mss, line 12776
+  28.52. Events                                         169 facilities.mss, line 12792
+  28.53. Grader                                         170 facilities.mss, line 12871
+  28.54. Maintenance                                    171 facilities.mss, line 12958
+  28.55. Rules object                                   172 facilities.mss, line 13084
+  28.56. Unclassified                                   173 facilities.mss, line 13102
+  28.57. Library                                        174 facilities.mss, line 13166
+  28.58. Library Classification                         174 facilities.mss, line 13228
+  28.59. Bugs                                           175 facilities.mss, line 13257
+29. Modes                                               176 facilities.mss, line 13276
+  29.1. Collecting Help                                 176 facilities.mss, line 13282
+  29.2. OTL Object                                      176 facilities.mss, line 13348
+  29.3. Printing                                        177 facilities.mss, line 13442
+  29.4. Recording                                       178 facilities.mss, line 13477
+  29.5. Expansion Trees                                 178 facilities.mss, line 13543
+  29.6. MS91-6 and MS91-7 search procedures             178 facilities.mss, line 13568
+  29.7. wff Primitives                                  180 facilities.mss, line 13706
+  29.8. Maintenance                                     181 facilities.mss, line 13734
+  29.9. Unclassified                                    181 facilities.mss, line 13760
+30. Flag Setting Or Other Piece Of Informations         183 facilities.mss, line 13833
+  30.1. Top Levels                                      183 facilities.mss, line 13839
+  30.2. Printing                                        183 facilities.mss, line 13913
+  30.3. Proof Outline                                   184 facilities.mss, line 13932
+  30.4. Expansion Trees                                 184 facilities.mss, line 13963
+  30.5. Mtree Operations                                185 facilities.mss, line 14052
+  30.6. Mtree Auto                                      185 facilities.mss, line 14097
+  30.7. Mating search                                   186 facilities.mss, line 14137
+  30.8. MS88 search procedure                           186 facilities.mss, line 14193
+  30.9. MS89 search procedure                           186 facilities.mss, line 14211
+  30.10. MS91-6 and MS91-7 search procedures            186 facilities.mss, line 14218
+  30.11. Extensional Search                             187 facilities.mss, line 14312
+  30.12. Unification                                    188 facilities.mss, line 14346
+  30.13. Tactics                                        189 facilities.mss, line 14438
+  30.14. suggestions                                    189 facilities.mss, line 14464
+  30.15. Searchlists                                    189 facilities.mss, line 14484
+  30.16. wff Primitives                                 189 facilities.mss, line 14519
+  30.17. Basic Abbreviations                            190 facilities.mss, line 14539
+  30.18. Lambda-Calculus                                190 facilities.mss, line 14566
+  30.19. Primitive Substitutions                        190 facilities.mss, line 14584
+  30.20. Maintenance                                    191 facilities.mss, line 14680
+  30.21. Modules                                        191 facilities.mss, line 14693
+31. Grader Commands                                     195 facilities.mss, line 14799
+  31.1. Getting Out and Help                            195 facilities.mss, line 14805
+  31.2. Variables                                       195 facilities.mss, line 14817
+  31.3. The Grade-File                                  195 facilities.mss, line 14826
+  31.4. Manual Grades                                   195 facilities.mss, line 14832
+  31.5. Automatic Grades                                195 facilities.mss, line 14851
+  31.6. The Class List                                  195 facilities.mss, line 14860
+  31.7. Making the Output Convenient                    195 facilities.mss, line 14869
+  31.8. Generating Values                               196 facilities.mss, line 14884
+  31.9. Displaying Information                          196 facilities.mss, line 14890
+  31.10. Totaling                                       196 facilities.mss, line 14903
+  31.11. Sorting                                        196 facilities.mss, line 14915
+  31.12. Letter-Grades                                  196 facilities.mss, line 14921
+32. Events                                              197 facilities.mss, line 14926
+  32.1. MS88 search procedure                           197 facilities.mss, line 14932
+  32.2. Events                                          197 facilities.mss, line 14985
+33. Lisp Packages                                       198 facilities.mss, line 15008
+  33.1. Lisp packages                                   198 facilities.mss, line 15014
+34. Modules                                             199 facilities.mss, line 15032
+  34.1. Modules                                         199 facilities.mss, line 15038
+35. Files                                               208 facilities.mss, line 16039
+  35.1. Lisp Source                                     208 facilities.mss, line 16046
+36. Top Levels                                          219 facilities.mss, line 17128
+  36.1. Top Levels                                      219 facilities.mss, line 17134
+  36.2. Mating search                                   219 facilities.mss, line 17209
+  36.3. Unification                                     220 facilities.mss, line 17217
+  36.4. Grader                                          220 facilities.mss, line 17225
+  36.5. Unclassified                                    220 facilities.mss, line 17233
+37. Contexts                                            221 facilities.mss, line 17240
+38. Argument Types                                      227 facilities.mss, line 17746
+  38.1. Style                                           227 facilities.mss, line 17752
+  38.2. Review                                          227 facilities.mss, line 17762
+  38.3. Flags                                           229 facilities.mss, line 17956
+  38.4. Help                                            233 facilities.mss, line 18090
+  38.5. Collecting Help                                 233 facilities.mss, line 18099
+  38.6. Starting and Finishing                          239 facilities.mss, line 18459
+  38.7. Printing                                        239 facilities.mss, line 18472
+  38.8. Printing                                        239 facilities.mss, line 18483
+  38.9. Saving Wffs                                     239 facilities.mss, line 18493
+  38.10. Proof Outline                                  240 facilities.mss, line 18502
+  38.11. Expansion Trees                                240 facilities.mss, line 18548
+  38.12. Mtree Printing                                 240 facilities.mss, line 18585
+  38.13. Mating search                                  241 facilities.mss, line 18595
+  38.14. Unification                                    242 facilities.mss, line 18672
+  38.15. Tactics                                        242 facilities.mss, line 18678
+  38.16. suggestions                                    243 facilities.mss, line 18694
+  38.17. Searchlists                                    243 facilities.mss, line 18705
+  38.18. Vpforms                                        243 facilities.mss, line 18711
+  38.19. Propositional Rules                            243 facilities.mss, line 18740
+  38.20. Theorems                                       243 facilities.mss, line 18747
+  38.21. Wff Editor                                     243 facilities.mss, line 18771
+  38.22. Wff Types                                      244 facilities.mss, line 18785
+  38.23. Rewriting commands                             245 facilities.mss, line 18944
+  38.24. Substitution                                   246 facilities.mss, line 18965
+  38.25. Basic Abbreviations                            246 facilities.mss, line 18971
+  38.26. Skolemizing                                    246 facilities.mss, line 18993
+  38.27. Grader                                         246 facilities.mss, line 19029
+  38.28. Maintenance                                    246 facilities.mss, line 19038
+  38.29. Basics                                         247 facilities.mss, line 19047
+  38.30. Modules                                        247 facilities.mss, line 19095
+  38.31. Rules Module                                   248 facilities.mss, line 19115
+  38.32. Lisp packages                                  248 facilities.mss, line 19126
+  38.33. Library                                        248 facilities.mss, line 19139
+  38.34. Best modes                                     249 facilities.mss, line 19225
+39. Utilities                                           250 facilities.mss, line 19232
+  39.1. Top Levels                                      250 facilities.mss, line 19238
+  39.2. Review                                          250 facilities.mss, line 19318
+  39.3. Flags                                           251 facilities.mss, line 19346
+  39.4. Collecting Help                                 251 facilities.mss, line 19363
+  39.5. Starting and Finishing                          251 facilities.mss, line 19390
+  39.6. Predicates on Wffs                              252 facilities.mss, line 19423
+  39.7. Wff Types                                       252 facilities.mss, line 19434
+  39.8. Basics                                          252 facilities.mss, line 19449
+40. Wff Operations                                      254 facilities.mss, line 19534
+  40.1. OTL Object                                      254 facilities.mss, line 19540
+  40.2. Printing                                        254 facilities.mss, line 19546
+  40.3. Printing                                        254 facilities.mss, line 19554
+  40.4. Internal for Printing                           255 facilities.mss, line 19621
+  40.5. Weak Labels                                     255 facilities.mss, line 19641
+  40.6. Saving Wffs                                     255 facilities.mss, line 19661
+  40.7. Recording                                       255 facilities.mss, line 19674
+  40.8. Expansion Trees                                 256 facilities.mss, line 19683
+  40.9. Mtree Operations                                256 facilities.mss, line 19755
+  40.10. Mtree Printing                                 257 facilities.mss, line 19787
+  40.11. Mtree Auto                                     258 facilities.mss, line 19877
+  40.12. Mating search                                  258 facilities.mss, line 19918
+  40.13. MS88 search procedure                          259 facilities.mss, line 19927
+  40.14. Vpforms                                        259 facilities.mss, line 19976
+  40.15. wff Primitives                                 260 facilities.mss, line 20044
+  40.16. Equality between Wffs                          260 facilities.mss, line 20092
+  40.17. Predicates on Wffs                             261 facilities.mss, line 20121
+  40.18. Moving Commands                                262 facilities.mss, line 20254
+  40.19. Changing Commands                              263 facilities.mss, line 20299
+  40.20. Recursively Changing Commands                  264 facilities.mss, line 20423
+  40.21. Rewriting commands                             265 facilities.mss, line 20486
+  40.22. Substitution                                   266 facilities.mss, line 20579
+  40.23. Basic Abbreviations                            266 facilities.mss, line 20625
+  40.24. Lambda-Calculus                                267 facilities.mss, line 20681
+  40.25. Negation movers                                268 facilities.mss, line 20755
+  40.26. Primitive Substitutions                        268 facilities.mss, line 20770
+  40.27. Miscellaneous                                  268 facilities.mss, line 20780
+  40.28. RuleP                                          269 facilities.mss, line 20805
+  40.29. Skolemizing                                    269 facilities.mss, line 20814
+  40.30. Quantifier Commands                            269 facilities.mss, line 20831
+  40.31. Wellformedness                                 269 facilities.mss, line 20846
+  40.32. Statistics                                     269 facilities.mss, line 20859
+41. Recursive Wff Functions                             270 facilities.mss, line 20869
+  41.1. Top Levels                                      270 facilities.mss, line 20875
+  41.2. OTL Object                                      270 facilities.mss, line 20881
+  41.3. Printing                                        270 facilities.mss, line 20890
+  41.4. wff Primitives                                  270 facilities.mss, line 20896
+  41.5. Equality between Wffs                           270 facilities.mss, line 20908
+  41.6. Predicates on Wffs                              270 facilities.mss, line 20923
+  41.7. Moving Commands                                 270 facilities.mss, line 20935
+  41.8. Substitution                                    271 facilities.mss, line 20941
+  41.9. Basic Abbreviations                             271 facilities.mss, line 20952
+  41.10. Lambda-Calculus                                271 facilities.mss, line 20961
+  41.11. Quantifier Commands                            271 facilities.mss, line 20970
+42. Wff Reference Formats                               272 facilities.mss, line 20978
+  42.1. Top Levels                                      272 facilities.mss, line 20984
+  42.2. Weak Labels                                     272 facilities.mss, line 20993
+  42.3. Flavors of Labels                               272 facilities.mss, line 20999
+  42.4. Proof Outline                                   272 facilities.mss, line 21005
+  42.5. Expansion Trees                                 272 facilities.mss, line 21011
+  42.6. Mating search                                   272 facilities.mss, line 21017
+  42.7. Vpforms                                         272 facilities.mss, line 21026
+  42.8. Theorems                                        272 facilities.mss, line 21032
+  42.9. Wff Editor                                      272 facilities.mss, line 21038
+  42.10. Wff Parsing                                    273 facilities.mss, line 21050
+  42.11. Wff Types                                      273 facilities.mss, line 21059
+43. Flavors                                             274 facilities.mss, line 21064
+  43.1. Weak Labels                                     274 facilities.mss, line 21070
+  43.2. Flavors of Labels                               274 facilities.mss, line 21077
+  43.3. Expansion Trees                                 274 facilities.mss, line 21084
+  43.4. Vpforms                                         274 facilities.mss, line 21140
+  43.5. wff Primitives                                  275 facilities.mss, line 21162
+44. Styles                                              276 facilities.mss, line 21170
+  44.1. Review                                          276 facilities.mss, line 21176
+  44.2. Concept                                         276 facilities.mss, line 21182
+  44.3. Printing                                        276 facilities.mss, line 21191
+  44.4. SAIL characters                                 276 facilities.mss, line 21204
+  44.5. TeX                                             276 facilities.mss, line 21210
+  44.6. X Windows                                       276 facilities.mss, line 21221
+45. Printing Properties                                 277 facilities.mss, line 21227
+  45.1. Printing                                        277 facilities.mss, line 21233
+  45.2. wff Primitives                                  277 facilities.mss, line 21253
+46. Faces                                               278 facilities.mss, line 21275
+47. Theories                                            279 facilities.mss, line 21280
+48. Tex Special Characters                              280 facilities.mss, line 21285
+  48.1. TeX                                             280 facilities.mss, line 21291
+49. Rewriting Commands                                  286 facilities.mss, line 21888
+  49.1. Top Levels                                      286 facilities.mss, line 21894
+  49.2. Starting and Finishing                          286 facilities.mss, line 21922
+  49.3. Printing                                        287 facilities.mss, line 21967
+  49.4. Applying Rules                                  287 facilities.mss, line 21984
+  49.5. Rearranging the Derivation                      288 facilities.mss, line 22065
+  49.6. Lambda Conversion                               288 facilities.mss, line 22089
+  49.7. Theories                                        288 facilities.mss, line 22113
+50. Scribe Special Characters                           289 facilities.mss, line 22130
+  50.1. Script Letters                                  289 facilities.mss, line 22136
+  50.2. Subscripts                                      289 facilities.mss, line 22193
+  50.3. Superscripts                                    290 facilities.mss, line 22227
+  50.4. Lowercase Greek                                 290 facilities.mss, line 22312
+  50.5. Uppercase Greek                                 291 facilities.mss, line 22367
+  50.6. Greek Subscripts                                291 facilities.mss, line 22420
+  50.7. Bold Letters                                    292 facilities.mss, line 22473
+  50.8. Other Symbols                                   292 facilities.mss, line 22530
+51. Saved Wffs                                          295 facilities.mss, line 22699
+  51.1. First-Order Logic                               295 facilities.mss, line 22705
+52. Intermediate Rule Definitions                       296 facilities.mss, line 22752
+  52.1. Modules                                         296 facilities.mss, line 22758
+53. Rewrite Rules                                       299 facilities.mss, line 23011
+54. Argument For Order-Componentses                     300 facilities.mss, line 23016
+  54.1. Vpforms                                         300 facilities.mss, line 23022
+55. Monitor Functions                                   301 facilities.mss, line 23079
+  55.1. Mating search                                   301 facilities.mss, line 23085
+56. Pair Of List Of Modes And List Of Gwffses           302 facilities.mss, line 23164
+  56.1. Maintenance                                     302 facilities.mss, line 23170
+  56.2. Modules                                         302 facilities.mss, line 23176
+57. Menu Item For The User Interfaces                   303 facilities.mss, line 23183
+  57.1. Top Levels                                      303 facilities.mss, line 23189
+  57.2. Flags                                           313 facilities.mss, line 24087
+  57.3. Unification                                     313 facilities.mss, line 24095
+  57.4. Vpforms                                         314 facilities.mss, line 24219
+  57.5. Maintenance                                     314 facilities.mss, line 24227
+  57.6. Display                                         328 facilities.mss, line 25485
+  57.7. Best modes                                      329 facilities.mss, line 25499
+  57.8. Library Classification                          329 facilities.mss, line 25505
+58. Menu For The User Interfaces                        330 facilities.mss, line 25514
+  58.1. Top Levels                                      330 facilities.mss, line 25520
+  58.2. Unification                                     331 facilities.mss, line 25622
+  58.3. Maintenance                                     331 facilities.mss, line 25632
+  58.4. Display                                         333 facilities.mss, line 25805
+59. Intermediate Rule Definitions                       334 facilities.mss, line 25810
+60. Concept Special Characters                          335 facilities.mss, line 25815
+  60.1. Concept                                         335 facilities.mss, line 25821
+ Index                                                  340 ScribeoLEqJY, line 3
+ Table of Contents                                      371 Scribe45yXOd, line 2
+       Alphabetic Listing of Cross-Reference Tags and Labels
+
+Tag or Label Name                    Page   Label Value  Source file Location
+-----------------------------------------------------------------------------
+AB*                                    28         3.4  facilities.mss, line 2109
+ABE                                    28         3.4  facilities.mss, line 2118
+ABSURD                                 27         3.3  facilities.mss, line 2044
+ABU                                    28         3.4  facilities.mss, line 2128
+ASSOC-LEFT                             24         3.2  facilities.mss, line 1828
+BETA*                                  32         3.8  facilities.mss, line 2352
+CASES                                  24         3.2  facilities.mss, line 1837
+CASES3                                 24         3.2  facilities.mss, line 1849
+CASES4                                 25         3.2  facilities.mss, line 1863
+DEDUCT                                 25         3.2  facilities.mss, line 1879
+DISJ-IMP                               25         3.2  facilities.mss, line 1888
+DISJ-IMP-L                             25         3.2  facilities.mss, line 1896
+DISJ-IMP-R                             25         3.2  facilities.mss, line 1904
+ECONJ                                  25         3.2  facilities.mss, line 1912
+EDEF                                   31         3.7  facilities.mss, line 2322
+EGEN                                   28         3.4  facilities.mss, line 2138
+ENEG                                   27         3.3  facilities.mss, line 2052
+EQUIV-EQ                               29         3.6  facilities.mss, line 2203
+EQUIV-EQ-CONTR                         30         3.6  facilities.mss, line 2215
+EQUIV-EQ-CONTR*                        30         3.6  facilities.mss, line 2224
+EQUIV-EQ-EXPD                          30         3.6  facilities.mss, line 2233
+EQUIV-EQ-EXPD*                         30         3.6  facilities.mss, line 2241
+EQUIV-IMPLICS                          25         3.2  facilities.mss, line 1921
+EQUIV-WFFS                             31         3.7  facilities.mss, line 2331
+ETA*                                   32         3.8  facilities.mss, line 2362
+EXT=                                   30         3.6  facilities.mss, line 2249
+EXT=0                                  30         3.6  facilities.mss, line 2258
+HYP                                    24         3.1  facilities.mss, line 1801
+ICONJ                                  25         3.2  facilities.mss, line 1929
+IDEF                                   32         3.7  facilities.mss, line 2340
+IDISJ-LEFT                             26         3.2  facilities.mss, line 1938
+IDISJ-RIGHT                            26         3.2  facilities.mss, line 1946
+IMP-DISJ                               26         3.2  facilities.mss, line 1954
+IMP-DISJ-L                             26         3.2  facilities.mss, line 1962
+IMP-DISJ-R                             26         3.2  facilities.mss, line 1970
+IMPLICS-EQUIV                          26         3.2  facilities.mss, line 1978
+INDIRECT                               26         3.2  facilities.mss, line 1986
+INDIRECT1                              26         3.2  facilities.mss, line 1995
+INDIRECT2                              26         3.2  facilities.mss, line 2004
+INEG                                   27         3.3  facilities.mss, line 2061
+ITRUTH                                 27         3.2  facilities.mss, line 2014
+LAMBDA*                                32         3.8  facilities.mss, line 2372
+LCONTR*                                32         3.8  facilities.mss, line 2382
+LCONTR*-BETA                           32         3.8  facilities.mss, line 2391
+LCONTR*-ETA                            32         3.8  facilities.mss, line 2399
+LEMMA                                  24         3.1  facilities.mss, line 1809
+LET                                    30         3.6  facilities.mss, line 2266
+LEXPD*                                 33         3.8  facilities.mss, line 2407
+LEXPD*-BETA                            33         3.8  facilities.mss, line 2416
+LEXPD*-ETA                             33         3.8  facilities.mss, line 2424
+MP                                     27         3.2  facilities.mss, line 2021
+NNF                                    27         3.3  facilities.mss, line 2070
+NNF-EXPAND                             28         3.3  facilities.mss, line 2079
+PULLNEG                                28         3.3  facilities.mss, line 2088
+PUSHNEG                                28         3.3  facilities.mss, line 2097
+REWRITE-SUPP*                          33         3.9  facilities.mss, line 2435
+REWRITE-SUPP1                          33         3.9  facilities.mss, line 2444
+RULEC                                  28         3.4  facilities.mss, line 2147
+RULEC1                                 29         3.4  facilities.mss, line 2158
+SAME                                   24         3.1  facilities.mss, line 1817
+SIMPLIFY-PLAN                          33         3.9  facilities.mss, line 2453
+SIMPLIFY-PLAN*                         33         3.9  facilities.mss, line 2462
+SIMPLIFY-SUPP                          33         3.9  facilities.mss, line 2471
+SIMPLIFY-SUPP*                         33         3.9  facilities.mss, line 2480
+SUBST-EQUIV                            27         3.2  facilities.mss, line 2030
+SUBST=                                 31         3.6  facilities.mss, line 2278
+SUBST=L                                31         3.6  facilities.mss, line 2289
+SUBST=R                                31         3.6  facilities.mss, line 2300
+SUBSTITUTE                             29         3.5  facilities.mss, line 2191
+SYM=                                   31         3.6  facilities.mss, line 2311
+UGEN                                   29         3.4  facilities.mss, line 2170
+UI                                     29         3.4  facilities.mss, line 2179
+UNREWRITE-PLAN*                        34         3.9  facilities.mss, line 2489
+UNREWRITE-PLAN1                        34         3.9  facilities.mss, line 2497
+USE-RRULES                             34         3.9  facilities.mss, line 2506

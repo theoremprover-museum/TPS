@@ -1,0 +1,658 @@
+(:name GVB-A2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "x(I) GVB-IN y(I) IMPLIES GVB-M x(I)"
+:needed-objects   (GVB-IN GVB-M)
+:mhelp "Axiom for GVB-M"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-A3
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL u(I) [GVB-M u(I) IMPLIES.u(I) GVB-IN x(I) EQUIV u(I) GVB-IN y(I)] IMPLIES x(I) =(OII) y(I)"
+:needed-objects   (GVB-IN GVB-M)
+:mhelp "Extensionality"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-A4
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "u(I) GVB-IN GVB-NOP x(I) y(I) EQUIV GVB-M u(I) AND.u(I) =(OII) x(I) OR u(I) =(OII) y(I)"
+:needed-objects   (GVB-IN GVB-M GVB-NOP)
+:mhelp "Existence of GVB-NOP"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-A4A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GVB-M.GVB-NOP x(I) y(I)"
+:needed-objects   (GVB-M GVB-NOP)
+:mhelp "GVB-NOP is a little set"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-AX-APP2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GVB-APP2 f(I) x(I) y(I) =(OII) GVB-APPLY f(I).GVB-OP x(I) y(I)"
+:needed-objects   (GVB-APPLY GVB-OP GVB-APP2)
+:mhelp "Defn of application."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-AX-APPLY
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "z(I) GVB-IN GVB-APPLY f(I) y(I) EQUIV GVB-M z(I) AND EXISTS w(I).GVB-M w(I) AND GVB-OPP w(I) AND w(I) GVB-IN f(I) AND GVB-FIRST w(I) =(OII) y(I) AND z(I) GVB-IN GVB-SECOND w(I)"
+:needed-objects   (GVB-APPLY GVB-OPP GVB-SECOND GVB-FIRST GVB-M GVB-IN)
+:mhelp "Axiom defining GVB-APPLY."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-AX-CLOSED
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GVB-CLOSED x(I) f(I) EQUIV GVB-M x(I) AND GVB-M f(I) AND GVB-MAPS f(I) [x(I) GVB-CROSS x(I)] x(I)"
+:needed-objects   (GVB-M GVB-MAPS GVB-CROSS GVB-CLOSED)
+:mhelp "Defn of f maps (x GVB-CROSS x) to x."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-AX-COMPOSE
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "z(I) GVB-IN [g(I) GVB-COMPOSE f(I)] EQUIV GVB-M z(I) AND EXISTS x(I) EXISTS y(I) EXISTS w(I).GVB-M x(I) AND GVB-M y(I) AND GVB-M w(I) AND z(I) =(OII) GVB-OP x(I) y(I) AND GVB-OP x(I) w(I) GVB-IN f(I) AND GVB-OP w(I) y(I) GVB-IN g(I)"
+:needed-objects   (GVB-IN GVB-COMPOSE GVB-M GVB-OP)
+:mhelp "Axiom defining GVB-COMPOSE."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-AX-DISJOINT
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GVB-DISJOINT x(I) y(I) EQUIV FORALL u(I).GVB-M u(I) IMPLIES ~.u(I) GVB-IN x(I) AND u(I) GVB-IN y(I)"
+:needed-objects   (GVB-M GVB-IN GVB-DISJOINT)
+:mhelp "Defn of a GVB-DISJOINTness."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-AX-FIRST
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "z(I) GVB-IN GVB-FIRST x(I) EQUIV GVB-M z(I) AND EXISTS u(I) EXISTS v(I).GVB-M u(I) AND GVB-M v(I) AND x(I) =(OII) GVB-OP u(I) v(I) AND z(I) GVB-IN u(I)"
+:needed-objects   (GVB-IN GVB-M GVB-OP GVB-FIRST)
+:mhelp "Axiom defining GVB-FIRST"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-AX-FUNCTION
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GVB-FUNCTION z(I) EQUIV GVB-RELATION z(I) AND GVB-SING-VAL z(I)"
+:needed-objects   (GVB-RELATION GVB-SING-VAL GVB-FUNCTION)
+:mhelp "Defn of a GVB-FUNCTION."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-AX-HOMOM
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GVB-HOMOM h(I) s1(I) f1(I) s2(I) f2(I) EQUIV GVB-CLOSED s1(I) f1(I) AND GVB-CLOSED s2(I) f2(I) AND GVB-MAPS h(I) s1(I) s2(I) AND FORALL x(I) FORALL y(I).x(I) GVB-IN s1(I) AND y(I) GVB-IN s1(I) IMPLIES GVB-APPLY h(I) [GVB-APP2 f1(I) x(I) y(I)] =(OII) GVB-APP2 f2(I) [GVB-APPLY h(I) x(I)].GVB-APPLY h(I) y(I)"
+:needed-objects   (GVB-CLOSED GVB-MAPS GVB-IN GVB-APPLY GVB-APP2 GVB-HOMOM)
+:mhelp "Defn of h is a homomorphism from s1 to s2 (f1 closed on s1, f2 closed on s2)."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-AX-IDENT
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "z(I) GVB-IN GVB-IDENT EQUIV GVB-M z(I) AND GVB-OPP z(I) AND GVB-FIRST z(I) =(OII) GVB-SECOND z(I)"
+:needed-objects   (GVB-IDENT GVB-OPP GVB-SECOND GVB-FIRST GVB-M GVB-IN)
+:mhelp "Axiom defining GVB-IDENT."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-AX-MAPS
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GVB-MAPS f(I) x(I) y(I) EQUIV GVB-FUNCTION f(I) AND GVB-DOMAIN f(I) =(OII) x(I) AND GVB-SUBSET [GVB-RANGE f(I)] y(I)"
+:needed-objects   (GVB-MAPS GVB-FUNCTION GVB-DOMAIN GVB-SUBSET GVB-RANGE)
+:mhelp "Defn of f maps x to y."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-AX-ONE-ONE
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GVB-ONE-ONE f(I) EQUIV GVB-FUNCTION f(I) AND GVB-FUNCTION.GVB-CONVERSE f(I)"
+:needed-objects   (GVB-FUNCTION GVB-CONVERSE GVB-ONE-ONE)
+:mhelp "Defn of a GVB-ONE-ONE GVB-FUNCTION."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-AX-OP
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GVB-OP x(I) y(I) =(OII) GVB-NOP [GVB-SING x(I)].GVB-NOP x(I) y(I)"
+:needed-objects   (GVB-OP GVB-NOP GVB-SING)
+:mhelp "Defn of ordered pair."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-AX-OPP
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GVB-OPP x(I) EQUIV EXISTS y(I) EXISTS z(I).GVB-M y(I) AND GVB-M z(I) AND x(I) =(OII) GVB-OP y(I) z(I)"
+:needed-objects   (GVB-OP GVB-M GVB-OPP)
+:mhelp "Defn of ordered pair predicate."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-AX-PROP-SUBSET
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GVB-PROP-SUBSET x(I) y(I) EQUIV GVB-SUBSET x(I) y(I) AND ~.x(I) =(OII) y(I)"
+:needed-objects   (GVB-SUBSET GVB-PROP-SUBSET)
+:mhelp "Defn of GVB-SUBSET relation."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-AX-RANGE
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "z(I) GVB-IN GVB-RANGE x(I) EQUIV GVB-M z(I) AND EXISTS t(I).GVB-M t(I) AND GVB-OPP t(I) AND t(I) GVB-IN x(I) AND z(I) =(OII) GVB-SECOND t(I)"
+:needed-objects   (GVB-RANGE GVB-OPP GVB-SECOND GVB-M GVB-IN)
+:mhelp "Axiom defining GVB-RANGE."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-AX-RELATION
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GVB-RELATION z(I) EQUIV FORALL x(I).GVB-M x(I) IMPLIES.x(I) GVB-IN z(I) IMPLIES GVB-OPP x(I)"
+:needed-objects   (GVB-OPP GVB-M GVB-RELATION GVB-IN)
+:mhelp "Defn of a GVB-RELATION."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-AX-RESTRICT
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GVB-RESTRICT x(I) y(I) =(OII) x(I) GVB-INTERSECT.y(I) GVB-CROSS GVB-V"
+:needed-objects   (GVB-INTERSECT GVB-CROSS GVB-RESTRICT GVB-V)
+:mhelp "Defn of GVB-RESTRICTion of x to y."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-AX-SECOND
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "z(I) GVB-IN GVB-SECOND x(I) EQUIV GVB-M z(I) AND EXISTS u(I) EXISTS v(I).GVB-M u(I) AND GVB-M v(I) AND x(I) =(OII) GVB-OP u(I) v(I) AND z(I) GVB-IN v(I)"
+:needed-objects   (GVB-IN GVB-M GVB-OP GVB-SECOND)
+:mhelp "Axiom defining GVB-SECOND"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-AX-SING
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GVB-SING x(I) =(OII) GVB-NOP x(I) x(I)"
+:needed-objects   (GVB-NOP GVB-SING)
+:mhelp "Defn of singleton set."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-AX-SING-VAL
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GVB-SING-VAL x(I) EQUIV FORALL u(I) FORALL v(I) FORALL w(I).GVB-M u(I) AND GVB-M v(I) AND GVB-M w(I) IMPLIES.GVB-OP u(I) v(I) GVB-IN x(I) AND GVB-OP u(I) w(I) GVB-IN x(I) IMPLIES v(I) =(OII) w(I)"
+:needed-objects   (GVB-OP GVB-M GVB-IN GVB-SING-VAL)
+:mhelp "Defn of a single valued set."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-AX-SUBSET
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GVB-SUBSET x(I) y(I) EQUIV FORALL u(I).GVB-M u(I) AND.u(I) GVB-IN x(I) IMPLIES u(I) GVB-IN y(I)"
+:needed-objects   (GVB-M GVB-IN GVB-SUBSET)
+:mhelp "Defn of GVB-SUBSET relation."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-AX-SUCC
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GVB-SUCC x(I) =(OII) GVB-UNION x(I).GVB-SING x(I)"
+:needed-objects   (GVB-UNION GVB-SING GVB-SUCC)
+:mhelp "Defn of successor."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-AX-UNION
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GVB-UNION x(I) y(I) =(OII) GVB-COMPLEMENT.GVB-COMPLEMENT x(I) GVB-INTERSECT GVB-COMPLEMENT y(I)"
+:needed-objects   (GVB-COMPLEMENT GVB-INTERSECT GVB-UNION)
+:mhelp "Defn of GVB-UNION of sets."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-AX-V
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "z(I) GVB-IN GVB-V EQUIV GVB-M z(I)"
+:needed-objects   (GVB-IN GVB-V GVB-M)
+:mhelp "Defn of GVB-V."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-AX-ZERO
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "~z(I) GVB-IN GVB-ZERO"
+:needed-objects   (GVB-IN GVB-ZERO)
+:mhelp "Defn of GVB-ZERO."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-B1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "z(I) GVB-IN GVB-ESTIN EQUIV GVB-M z(I) AND GVB-OPP z(I) AND GVB-FIRST z(I) GVB-IN GVB-SECOND z(I)"
+:needed-objects   (GVB-ESTIN GVB-IN GVB-M GVB-OPP GVB-FIRST GVB-SECOND)
+:mhelp "Axiom defining GVB-ESTIN"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-B2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "z(I) GVB-IN [x(I) GVB-INTERSECT y(I)] EQUIV GVB-M z(I) AND z(I) GVB-IN x(I) AND z(I) GVB-IN y(I)"
+:needed-objects   (GVB-INTERSECT GVB-M GVB-IN)
+:mhelp "Axiom defining GVB-INTERSECT"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-B3
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "z(I) GVB-IN GVB-COMPLEMENT x(I) EQUIV GVB-M z(I) AND ~z(I) GVB-IN x(I)"
+:needed-objects   (GVB-COMPLEMENT GVB-M GVB-IN)
+:mhelp "Axiom defining GVB-COMPLEMENT"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-B4
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "z(I) GVB-IN GVB-DOMAIN x(I) EQUIV GVB-M z(I) AND EXISTS t(I).GVB-M t(I) AND GVB-OPP t(I) AND t(I) GVB-IN x(I) AND z(I) =(OII) GVB-FIRST t(I)"
+:needed-objects   (GVB-DOMAIN GVB-OPP GVB-FIRST GVB-M GVB-IN)
+:mhelp "Axiom defining GVB-DOMAIN."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-B5
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "z(I) GVB-IN [x(I) GVB-CROSS y(I)] EQUIV GVB-M z(I) AND GVB-OPP z(I) AND GVB-FIRST z(I) GVB-IN x(I) AND GVB-SECOND z(I) GVB-IN y(I)"
+:needed-objects   (GVB-CROSS GVB-M GVB-OPP GVB-FIRST GVB-SECOND GVB-IN)
+:mhelp "Axiom defining GVB-CROSS."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-B6
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "z(I) GVB-IN GVB-CONVERSE x(I) EQUIV GVB-M z(I) AND GVB-OPP z(I) AND GVB-OP [GVB-SECOND z(I)] [GVB-FIRST z(I)] GVB-IN x(I)"
+:needed-objects   (GVB-CONVERSE GVB-M GVB-OP GVB-OPP GVB-FIRST GVB-SECOND GVB-IN)
+:mhelp "Axiom defining GVB-CONVERSE."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-B7
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "z(I) GVB-IN GVB-ROT-RIGHT x(I) EQUIV GVB-M z(I) AND EXISTS u(I) EXISTS v(I) EXISTS w(I).GVB-M u(I) AND GVB-M v(I) AND GVB-M w(I) AND z(I) =(OII) GVB-OP u(I) [GVB-OP v(I) w(I)] AND GVB-OP v(I) [GVB-OP w(I) u(I)] GVB-IN x(I)"
+:needed-objects   (GVB-ROT-RIGHT GVB-M GVB-OP GVB-IN)
+:mhelp "Axiom defining GVB-ROT-RIGHT."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-B8
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "z(I) GVB-IN GVB-FLIP-RANGE x(I) EQUIV GVB-M z(I) AND EXISTS u(I) EXISTS v(I) EXISTS w(I).GVB-M u(I) AND GVB-M v(I) AND GVB-M w(I) AND z(I) =(OII) GVB-OP u(I) [GVB-OP v(I) w(I)] AND GVB-OP u(I) [GVB-OP w(I) v(I)] GVB-IN x(I)"
+:needed-objects   (GVB-ROT-RIGHT GVB-FLIP-RANGE GVB-M GVB-OP GVB-IN)
+:mhelp "Axiom defining GVB-FLIP-RANGE."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-C1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS y(I).GVB-M y(I) AND GVB-ZERO GVB-IN y(I) AND FORALL x(I).x(I) GVB-IN y(I) IMPLIES GVB-SUCC x(I) GVB-IN y(I)"
+:needed-objects   (GVB-IN GVB-ZERO GVB-SUCC GVB-M)
+:mhelp "GVB axiom of infinity."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-C2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "z(I) GVB-IN GVB-SIGMA x(I) EQUIV GVB-M z(I) AND EXISTS y(I).GVB-M y(I) AND y(I) GVB-IN x(I) AND z(I) GVB-IN y(I)"
+:needed-objects   (GVB-IN GVB-SIGMA GVB-M)
+:mhelp "GVB axiom of union of elements."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-C2A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GVB-M u(I) IMPLIES GVB-M.GVB-SIGMA u(I)"
+:needed-objects   (GVB-SIGMA GVB-M)
+:mhelp "GVB-SIGMA of a little set is little."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-C3
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "z(I) GVB-IN GVB-POWERSET x(I) EQUIV GVB-M z(I) AND GVB-SUBSET z(I) x(I)"
+:needed-objects   (GVB-IN GVB-POWERSET GVB-M GVB-SUBSET)
+:mhelp "GVB axiom of power set."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-C3A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GVB-M u(I) IMPLIES GVB-M.GVB-POWERSET u(I)"
+:needed-objects   (GVB-POWERSET GVB-M)
+:mhelp "Little sets are preserved under power set."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-C4
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "z(I) GVB-IN GVB-IMAGE x(I) f(I) EQUIV GVB-M z(I) AND EXISTS y(I).GVB-M y(I) AND GVB-OPP y(I) AND y(I) GVB-IN f(I) AND GVB-FIRST y(I) GVB-IN x(I) AND GVB-SECOND y(I) =(OII) z(I)"
+:needed-objects   (GVB-IN GVB-IMAGE GVB-M GVB-OPP GVB-FIRST GVB-SECOND)
+:mhelp "GVB axiom of GVB-IMAGE and substitution."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-C4A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GVB-M x(I) AND GVB-FUNCTION f(I) IMPLIES GVB-M.GVB-IMAGE x(I) f(I)"
+:needed-objects   (GVB-FUNCTION GVB-IMAGE GVB-M)
+:mhelp "Little sets are preserved under GVB-FUNCTIONs."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-D
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "~[x(I) =(OII) GVB-ZERO] IMPLIES EXISTS u(I).GVB-M u(I) AND u(I) GVB-IN x(I) AND GVB-DISJOINT u(I) x(I)"
+:needed-objects   (GVB-ZERO GVB-DISJOINT GVB-IN GVB-M)
+:mhelp "GVB axiom of regularity."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-E
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS u(I).GVB-FUNCTION u(I) AND FORALL x(I).GVB-M x(I) AND ~[x(I) =(OII) GVB-ZERO] IMPLIES EXISTS y(I).GVB-M y(I) AND y(I) GVB-IN x(I) AND GVB-OP x(I) y(I) GVB-IN u(I)"
+:needed-objects   (GVB-ZERO GVB-M GVB-FUNCTION GVB-OP GVB-IN)
+:mhelp "GVB axiom of choice."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-HOMOM-THM
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GVB-HOMOM h1(I) s1(I) f1(I) s2(I) f2(I) AND GVB-HOMOM h2(I) s2(I) f2(I) s3(I) f3(I) IMPLIES GVB-HOMOM [h2(I) GVB-COMPOSE h1(I)] s1(I) f1(I) s3(I) f3(I)"
+:needed-objects   (GVB-COMPOSE GVB-HOMOM)
+:mhelp "GVB version of THM15b."
+:other-attributes NIL
+:other-remarks "
+")
+
+

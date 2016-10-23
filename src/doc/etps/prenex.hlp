@@ -1,0 +1,129 @@
+	HELP FOR PRENEX NORMAL FORM EXERCISES
+
+See /home/theorem/project/doc/etps/submit-prenex.mss
+
+
+Subject: PRENEX-ITERATE
+Date: Fri, 16 Oct 1998 14:45:11 -0400
+From: Matt Bishop <Matt_Bishop@FTPS.TPS.CS.CMU.EDU>
+
+
+If prenex.lisp isn't loaded by the patch file, then load it (it's not
+currently part of any module, so it won't get built in to the core image).
+
+The command PRENEX-ITERATE takes a list of exercises as an argument,
+and the name of the tex file to generate as a report.  PRENEX-ITERATE
+checks the names of all saved wffs in memory to see if they are
+of the form X????-NAME or NAME-X???? where X???? is one of the exercises
+listed in the first argument.
+
+It checks both that the longer name represents a wff in prenex normal form,
+and that the two wffs are equivalent. Since the latter needs a call to 
+mating search, I've added a new command to bail out of mating search:
+q<return> will abandon the current search and start on the next one.
+
+All of the wffs X2200 to X2214 have been added as saved wffs in TPS.
+(Please check them against your copy of the book, especially those that 
+are assigned as exercises!)
+
+At the end of PRENEX-ITERATE, you get a report like this:
+
+RESULTS:
+
+
+X2200-BANANA  'ui'Roii'Qoii'Z4ii.[~R yi[Z4 y] \ R xi u] [ .~Q u y \ R x u
+ is dubious: it's in prenex nf, but I can't prove the equivalence.
+
+
+X2200-MBISHOP  'yi[~;zi Roii y z - Qoii ui y] [ ~;xi R x u
+ is incorrect: not in prenex normal form
+
+[etc]
+
+Also, a tex file with this report is created.
+
+PRENEX-ITERATE sorts the output alphabetically, grouping exercises together.
+
+----------------------------------------------------------------------------
+EXAMPLE:
+
+<1>tload "prenex"
+Compile file /home/theorem/tps/lisp/prenex.lisp?>y
+; Loading /home/theorem/tps/lisp/prenex.lisp
+
+
+<2>tload "savedwffs"   ; This should be the file with the students electronic submissions
+Compile file /afs/andrew.cmu.edu/mcs/math/TPS/cebrown/savedwffs.lisp?>n
+; Loading /afs/andrew.cmu.edu/mcs/math/TPS/cebrown/savedwffs.lisp
+
+<3>mode MODE-X2129-A 		seems to work well
+TEST-PRENEX1 also ok
+
+
+<4>prenex-iterate
+NAMESTEMS (SYMBOLLIST): Exercises to check [No Default]>X2200 X2201 X2202
+TEXFILE (FILESPEC): tex file for report ["/afs/andrew.cmu.edu/mcs/math/TPS/cebrown/prenex-report.tex"]>"my-prenex-report"
+
+. . . lots of output about search . . .
+
+
+
+
+RESULTS:
+
+
+Results for X2200:
+
+
+
+BANANA-X2200  EXISTS x(I) FORALL y(I) FORALL z(I).~R(OII) x u(I) AND.~R y z IMPLIES Q(OII) u y
+ is dubious: it's in prenex nf, but I can't prove the equivalence.
+
+
+X2200-CEBROWN  EXISTS x(I) EXISTS y(I) FORALL z(I).~R(OII) x u(I) AND.~R y z IMPLIES Q(OII) u y
+ is correct (prenex nf and equivalent to X2200 )
+
+
+Results for X2201:
+
+
+
+
+BANANA-X2201  FORALL x(I) FORALL z(I) EXISTS u(I) FORALL v(I).~.Q(OII) x y(I) IMPLIES ~.P(OIII) u y z IMPLIES ~R(OI) v
+ is dubious: it's in prenex nf, but I can't prove the equivalence.
+
+
+X2201-CEBROWN  FORALL x(I) FORALL z(I) EXISTS u(I) FORALL v(I).~.Q(OII) x y(I) IMPLIES ~.P(OIII) u y z IMPLIES ~R(OI) v
+ is dubious: it's in prenex nf, but I can't prove the equivalence.
+
+
+Results for X2202:
+
+
+
+X2202-CEBROWN  FORALL x(I) P(OI) x EQUIV EXISTS y(I) Q(OI) y
+ is incorrect: not in prenex normal form: contains an embedded quantifier.
+Written file my-prenex-report.tex.
+
+--------------------------------------------------------------------------
+The user can now perform "tex my-prenex-report" in UNIX to generate
+the dvi file "my-prenex-report.dvi".
+
+=================================================
+commands used fall 1999
+
+tload "prenex"
+
+tload "/home/pa01/grades/prenex-300"
+
+(In a separate session)
+tload "/home/pa01/grades/prenex-600"
+
+mode MODE-X2129-A
+
+prenex-iterate
+X2204 X2205 X2206 X2212 X2213
+
+"prenex300-report.tex"
+
+"prenex600-report.tex"

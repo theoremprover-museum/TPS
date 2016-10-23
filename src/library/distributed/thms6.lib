@@ -1,0 +1,187 @@
+(:name THM60
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, November 30, 2000 at  0:51:00."
+:description "SETINTERSECT(OA(O(OA))) W(O(OA)) UNION(OA(OA)(OA)) Z(OA) EQUIVS(O(OA)(OA)) SETINTERSECT(OA(O(OA))).%(O(OA)(O(OA))(OA(OA))) [LAMBDA X(OA).Z(OA) UNION(OA(OA)(OA)) X(OA)] W(O(OA))"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM61
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, November 28, 2000 at 22:00:28."
+:description "SETUNION(OA(O(OA))) W(O(OA)) INTERSECT(OA(OA)(OA)) Z(OA) EQUIVS(O(OA)(OA)) SETUNION(OA(O(OA))).%(O(OA)(O(OA))(OA(OA))) [LAMBDA X(OA).Z(OA) INTERSECT(OA(OA)(OA)) X(OA)] W(O(OA))"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM67
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:11."
+:description "FORALL S(OA) FORALL T(OA) [S(OA) SUBSET(O(OA)(OA)) T(OA) IMPLIES F(OA(OA)) T(OA) SUBSET(O(OA)(OA)) F(OA(OA)) S(OA)] AND [FORALL S(OA) [S(OA) SUBSET(O(OA)(OA)) F(OA(OA)).G(OA(OA)) S(OA)] AND FORALL S(OA).S(OA) SUBSET(O(OA)(OA)) G(OA(OA)).F(OA(OA)) S(OA)] IMPLIES FORALL S(OA).F(OA(OA)) [G(OA(OA)).F(OA(OA)) S(OA)] EQUIVS(O(OA)(OA)) F(OA(OA)) S(OA)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM68
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, June  3, 1997 at 17:22:49."
+:description "FORALL X(I) LIKES(OII) X(I) BRUCE(I) AND FORALL Y(I) [EXISTS Z(I) LIKES(OII) Y(I) Z(I) IMPLIES LIKES(OII) LYLE(I) Y(I)] IMPLIES EXISTS U(I) FORALL V(I) LIKES(OII) U(I) V(I)"
+:needed-objects   NIL
+:mhelp "IF EVERYONE LIKES BRUCE AND LYLE LIKES EVERYONE WHO LIKES SOMEONE, THEN SOMEONE LIKES EVERYONE"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM68B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, April 29, 1999 at 14:06:45."
+:description "FORALL X(I) [X(I) LIKES-INFIX(OII) BRUCE(I)] AND FORALL Y(I) [EXISTS Z(I) [Y(I) LIKES-INFIX(OII) Z(I)] IMPLIES LYLE(I) LIKES-INFIX(OII) Y(I)] IMPLIES EXISTS U(I) FORALL V(I).U(I) LIKES-INFIX(OII) V(I)"
+:needed-objects   (LIKES-INFIX)
+:mhelp "IF EVERYONE LIKES BRUCE AND LYLE LIKES EVERYONE WHO LIKES SOMEONE, THEN SOMEONE LIKES EVERYONE"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM69
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, June  3, 1997 at 17:23:51."
+:description "FORALL X(I) [EXISTS Y(I) P(OII) X(I) Y(I) IMPLIES FORALL Z(I) P(OII) Z(I) Z(I)] AND FORALL R(I) EXISTS S(I) [P(OII) R(I) S(I) OR M(OI) R(I) AND Q(OI).F(III) R(I) S(I)] AND FORALL W(I) [Q(OI) W(I) IMPLIES ~M(OI).G(II) W(I)] IMPLIES FORALL U(I) EXISTS V(I).P(OII) [G(II) U(I)] V(I) AND P(OII) U(I) U(I)"
+:needed-objects   NIL
+:mhelp "PROOF REQUIRES NESTED QUANTIFIER DUPLICATIONS"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM62
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:37."
+:description "FORALL U(I) P(OII) A(I) U(I) OR FORALL V(I) P(OII) V(I) B(I) IMPLIES EXISTS X(I) P(OII) X(I) X(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM63
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:37."
+:description "FORALL U(I) FORALL V(I) FORALL W(I) [P(OII) U(I) V(I) OR P(OII) V(I) W(I)] IMPLIES EXISTS X(I) FORALL Y(I) P(OII) X(I) Y(I)"
+:needed-objects   NIL
+:mhelp "REALLY EASY BUT REQUIRES QUANTIFIER DUPLICATION"
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM64
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:37."
+:description "EXISTS X(I).P(OI) X(I) IMPLIES FORALL Y(I) P(OI) Y(I)"
+:needed-objects   NIL
+:mhelp "1979 OCT 6 INTERACTIVE MIPAS PROOF  
+ 
+DATES  "
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM65
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:38."
+:description "FORALL W(I) [~R(OII) W(I) W(I)] IMPLIES EXISTS X(I) EXISTS Y(I).~R(OII) X(I) Y(I) AND.Q(OII) Y(I) X(I) IMPLIES FORALL Z(I) Q(OII) Z(I) Z(I)"
+:needed-objects   NIL
+:mhelp "1979-OCT-16 INTERACTIVE MIPAS PROOF  
+ 
+DATES  "
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM66
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:38."
+:description "EXISTS X(I) FORALL Y(I) [P(OI) X(I) IMPLIES P(OI) Y(I)] EQUIV EXISTS X(I).P(OI) X(I) IMPLIES FORALL Y(I) P(OI) Y(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM67A
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:42."
+:description "FORALL S(OA) FORALL T(OA) [S(OA) SUBSET(O(OA)(OA)) T(OA) IMPLIES F(OA(OA)) T(OA) SUBSET(O(OA)(OA)) F(OA(OA)) S(OA)] AND FORALL S(OA) [S(OA) SUBSET(O(OA)(OA)) F(OA(OA)) [G(OA(OA)) S(OA)] AND S(OA) SUBSET(O(OA)(OA)) G(OA(OA)).F(OA(OA)) S(OA)] IMPLIES FORALL S(OA).F(OA(OA)) [G(OA(OA)).F(OA(OA)) S(OA)] EQUIVS(O(OA)(OA)) F(OA(OA)) S(OA)"
+:needed-objects   NIL
+:mhelp "LIKE THM67 BUT MUCH HARDER BECAUSE QUANTIFIER WITH CONJUNCTION IN SCOPE HAS TO BE DUPLICATED"
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM68A
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:43."
+:description "FORALL X(I) LIKES(OII) X(I) BRUCE(I) AND FORALL Y(I) [EXISTS Z(I) LIKES(OII) Y(I) Z(I) IMPLIES LIKES(OII) LYLE(I) Y(I)] IMPLIES EXISTS U(I) FORALL V(I) LIKES(OII) U(I) V(I)"
+:needed-objects   NIL
+:mhelp "IF EVERYONE LIKES BRUCE AND LYLE LIKES EVERYONE WHO LIKES SOMEONE  
+THEN SOMEONE LIKES EVERYONE"
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+

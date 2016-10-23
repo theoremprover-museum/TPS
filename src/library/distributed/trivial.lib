@@ -1,0 +1,14 @@
+(:name TRANS-ID
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "TRANSITIVE1(O(OII)).LAMBDA x(I) LAMBDA y(I).x(I) =(OII) y(I)"
+:needed-objects   (TRANSITIVE1)
+:mhelp "The identity relation is transitive"
+:other-attributes NIL
+:other-remarks "
+")
+
+

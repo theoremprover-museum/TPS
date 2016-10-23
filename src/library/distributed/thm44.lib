@@ -1,0 +1,70 @@
+(:name THM44-90
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:06."
+:description "EXISTS S(OI) FORALL X(I) [[S(OI) X(I) OR P(OI) X(I)] AND.~S(OI) X(I) OR Q(OI) X(I)] EQUIV FORALL Y(I).P(OI) Y(I) OR Q(OI) Y(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM44-90-AGAIN
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:07."
+:description "EXISTS S(OI) FORALL X(I) [[S(OI) X(I) OR P(OI) X(I)] AND.~S(OI) X(I) OR Q(OI) X(I)] EQUIV FORALL Y(I).P(OI) Y(I) OR Q(OI) Y(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM44-AGAIN
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:07."
+:description "EXISTS S(OI) FORALL X(I) [[S(OI) X(I) OR P(OI) X(I)] AND.~S(OI) X(I) OR Q(OI) X(I)] EQUIV FORALL Y(I).P(OI) Y(I) OR Q(OI) Y(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM44-FAST
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:07."
+:description "EXISTS S(OI) FORALL X(I) [[S(OI) X(I) OR P(OI) X(I)] AND.~S(OI) X(I) OR Q(OI) X(I)] EQUIV FORALL Y(I).P(OI) Y(I) OR Q(OI) Y(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM44-SLOW
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:08."
+:description "EXISTS S(OI) FORALL X(I) [[S(OI) X(I) OR P(OI) X(I)] AND.~S(OI) X(I) OR Q(OI) X(I)] EQUIV FORALL Y(I).P(OI) Y(I) OR Q(OI) Y(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

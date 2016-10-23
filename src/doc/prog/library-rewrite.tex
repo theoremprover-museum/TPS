@@ -1,0 +1,52 @@
+\chapter{Library}
+
+% @comment(the old library documentation, which is misleading, is in library.mss)
+
+The library commands are documented in the user manual.
+
+A library can currently only occupy one directory (i.e. subdirectories
+may not be used), although users are given the ability to refer additionally to a
+common directory of basic definitions by using the \indexflag{BACKUP-LIB-DIR} flag.
+
+Many library commands are essentially written as two copies of the same function, 
+the first of which checks the default library directory and the second of which
+checks the backup directory. The second piece of code is surrounded by {\tt unwind-protect}
+commands in order to make sure that the \indexflag{DEFAULT-LIB-DIR} and \indexflag{BACKUP-LIB-DIR}
+flags always end up correct. Users may not write to the backup directory.
+
+The index for each library directory is stored in the {\it libindex.rec} file in that directory;
+this file that is read every time the directory is changed. Objects are removed from the library 
+by deleting them from the appropriate {\it .lib} file and removing their entry from the {\it libindex.rec}
+file. This may result in a {\it .lib} file of zero length, in which case the file is deleted.
+
+Objects which are loaded by the user are re-defined as \TPS objects; library objects of type 
+MODE or MODE1 become \TPS modes, whereas gwffs and abbreviations each become both theorems
+(of type {\it library}) and abbreviations. Notice that this blurs the distinction between a gwff and an 
+abbreviation. Users are allowed to redefine \TPS theorems of type {\it library}, and their corresponding
+abbreviations; theorems of other types may not be redefined (this is to prevent users from accidentally
+overwriting standard abbreviations with their own library definitions).
+
+Library definitions are parsed every time they are written, and this involves re-loading all of the
+needed objects. Since the needed objects are often abbreviations, this will frequently result in 
+their redefinition, and so \lisp will generate warning messages. If a large file is being re-parsed,
+this can take a long time and produce a huge number of warnings.
+
+\section{Converting TPTP Problems to \TPS~library items}
+
+Every needed function or flag is set in {\it library2.lisp}. The utility is made of
+two library commands: \indexcommand{INSERT-TPTP}, to insert one TPTP problem into \TPS, and
+\indexcommand{INSERT-TPTP*} to automatically call insert-tptp on an entire directory. These
+two commands act on .tps files, which are generated using the TPTP2X utility. One flag, \indexflag{INSERT-LIB-DIR}, 
+defines the output directory for the newly created items.
+
+Please note that a modified format.tps file is used, in order to prevent
+conflit with other objects inside of tps. The original file uses 'const', 'def',
+'axiom' and 'thm' as functions: they have been replaced by 'const-insert',
+'def-insert', 'axiom-insert' and 'thm-insert'.
+
+The principal issue when converting TPTP problems into TPS items is to avoid
+using already defined objects. For this reason, every inserted item is
+suffixed, usually with the name of the destination library file (e.g. 'one'
+becomes 'one-ALG2684').
+
+More information about how to process this conversion are available in the User's guide.

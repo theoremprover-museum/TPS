@@ -1,0 +1,14 @@
+(:name THM210
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:29:34."
+:description "[EAST(O) IMPLIES SUNSHINE(O)] AND [COLD(O) AND FOGGY(O) IMPLIES FLUTE(O)] AND [FIRE(O) AND SMOKE(O) IMPLIES OPEN-DOOR(O)] AND [COLD(O) AND RHEUMATIC(O) IMPLIES FIRE(O)] AND [EAST(O) AND GUSTY(O) IMPLIES SMOKES(O)] AND [OPEN-DOOR(O) IMPLIES ~HEADACHE(O)] AND [FOGGY(O) IMPLIES ~OPEN-WINDOW(O)] AND [~GUSTY(O) AND FIRE(O) AND ~OPEN-DOOR(O) IMPLIES ~RHEUMATIC(O)] AND [SUNSHINE(O) IMPLIES FOGGY(O)] AND [FLUTE(O) IMPLIES ~OPEN-DOOR(O)] AND [FOGGY(O) AND EAST(O) IMPLIES RHEUMATIC(O)] IMPLIES.EAST(O) IMPLIES ~OPEN-WINDOW(O)"
+:needed-objects   NIL
+:mhelp "Lewis Carroll's problem of the winds and windows; from the Ninth Paper on Logic, November 1892."
+:other-attributes NIL
+:other-remarks "
+")
+
+

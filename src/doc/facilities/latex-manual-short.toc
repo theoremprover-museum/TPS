@@ -1,0 +1,312 @@
+\contentsline {chapter}{\numberline {1}Introduction}{9}
+\contentsline {chapter}{\numberline {2}Top-Level Commands}{10}
+\contentsline {section}{\numberline {2.1}Top Levels}{10}
+\contentsline {section}{\numberline {2.2}Help}{13}
+\contentsline {section}{\numberline {2.3}Collecting Help}{14}
+\contentsline {section}{\numberline {2.4}Concept}{15}
+\contentsline {section}{\numberline {2.5}Starting and Finishing}{15}
+\contentsline {section}{\numberline {2.6}Printing}{16}
+\contentsline {section}{\numberline {2.7}Saving Work}{18}
+\contentsline {section}{\numberline {2.8}Saving Wffs}{20}
+\contentsline {section}{\numberline {2.9}Printing Proofs into Files}{20}
+\contentsline {section}{\numberline {2.10}Proof Outline}{21}
+\contentsline {section}{\numberline {2.11}Expansion Trees}{22}
+\contentsline {section}{\numberline {2.12}Search Suggestions}{22}
+\contentsline {section}{\numberline {2.13}Mating search}{23}
+\contentsline {section}{\numberline {2.14}MS91-6 and MS91-7 search procedures}{25}
+\contentsline {section}{\numberline {2.15}Proof Translation}{25}
+\contentsline {section}{\numberline {2.16}Unification}{26}
+\contentsline {section}{\numberline {2.17}Search Analysis}{26}
+\contentsline {section}{\numberline {2.18}Tactics}{27}
+\contentsline {section}{\numberline {2.19}suggestions}{27}
+\contentsline {section}{\numberline {2.20}Vpforms}{28}
+\contentsline {section}{\numberline {2.21}Rearranging the Proof}{28}
+\contentsline {section}{\numberline {2.22}Status}{29}
+\contentsline {section}{\numberline {2.23}Miscellaneous Rules}{30}
+\contentsline {section}{\numberline {2.24}Propositional Rules}{30}
+\contentsline {section}{\numberline {2.25}Negation Rules}{32}
+\contentsline {section}{\numberline {2.26}Quantifier Rules}{32}
+\contentsline {section}{\numberline {2.27}Substitution Rules}{33}
+\contentsline {section}{\numberline {2.28}Equality Rules}{33}
+\contentsline {section}{\numberline {2.29}Definition Rules}{34}
+\contentsline {section}{\numberline {2.30}Lambda Conversion Rules}{34}
+\contentsline {section}{\numberline {2.31}Rewriting commands}{35}
+\contentsline {section}{\numberline {2.32}Events}{36}
+\contentsline {section}{\numberline {2.33}Statistics}{36}
+\contentsline {section}{\numberline {2.34}Maintenance}{37}
+\contentsline {section}{\numberline {2.35}Modules}{40}
+\contentsline {section}{\numberline {2.36}Rules Module}{41}
+\contentsline {section}{\numberline {2.37}Lisp packages}{41}
+\contentsline {section}{\numberline {2.38}Display}{41}
+\contentsline {section}{\numberline {2.39}Best modes}{42}
+\contentsline {section}{\numberline {2.40}Library Classification}{42}
+\contentsline {section}{\numberline {2.41}Bugs}{42}
+\contentsline {section}{\numberline {2.42}Interface}{43}
+\contentsline {chapter}{\numberline {3}Inference Rules}{44}
+\contentsline {section}{\numberline {3.1}Miscellaneous Rules}{44}
+\contentsline {section}{\numberline {3.2}Propositional Rules}{44}
+\contentsline {section}{\numberline {3.3}Negation Rules}{48}
+\contentsline {section}{\numberline {3.4}Quantifier Rules}{49}
+\contentsline {section}{\numberline {3.5}Substitution Rules}{51}
+\contentsline {section}{\numberline {3.6}Equality Rules}{51}
+\contentsline {section}{\numberline {3.7}Definition Rules}{53}
+\contentsline {section}{\numberline {3.8}Lambda Conversion Rules}{53}
+\contentsline {section}{\numberline {3.9}Rewriting commands}{55}
+\contentsline {chapter}{\numberline {4}Extensional Sequent Commands}{57}
+\contentsline {section}{\numberline {4.1}Top Levels}{57}
+\contentsline {section}{\numberline {4.2}Proof Translation}{57}
+\contentsline {section}{\numberline {4.3}Extensional Sequent Entering}{57}
+\contentsline {section}{\numberline {4.4}Extensional Sequent Printing}{58}
+\contentsline {section}{\numberline {4.5}Extensional Sequent Rules}{58}
+\contentsline {section}{\numberline {4.6}Extensional Sequent Derived Rules}{59}
+\contentsline {section}{\numberline {4.7}Extensional Sequent Files}{60}
+\contentsline {section}{\numberline {4.8}Compound}{60}
+\contentsline {chapter}{\numberline {5}Tactics}{61}
+\contentsline {section}{\numberline {5.1}Compound}{61}
+\contentsline {section}{\numberline {5.2}Propositional}{66}
+\contentsline {section}{\numberline {5.3}Quantifiers}{73}
+\contentsline {section}{\numberline {5.4}Equality}{75}
+\contentsline {section}{\numberline {5.5}Definitions}{77}
+\contentsline {section}{\numberline {5.6}Lambda}{78}
+\contentsline {section}{\numberline {5.7}Auxiliary}{80}
+\contentsline {chapter}{\numberline {6}Tacticals}{82}
+\contentsline {section}{\numberline {6.1}Tactics}{82}
+\contentsline {chapter}{\numberline {7}Mating-Search Commands}{84}
+\contentsline {section}{\numberline {7.1}Top Levels}{84}
+\contentsline {section}{\numberline {7.2}Printing}{84}
+\contentsline {section}{\numberline {7.3}Recording}{85}
+\contentsline {section}{\numberline {7.4}Expansion Trees}{85}
+\contentsline {section}{\numberline {7.5}Search Suggestions}{86}
+\contentsline {section}{\numberline {7.6}Mating search}{86}
+\contentsline {section}{\numberline {7.7}MS88 search procedure}{86}
+\contentsline {section}{\numberline {7.8}MS89 search procedure}{87}
+\contentsline {section}{\numberline {7.9}MS90-3 search procedure}{87}
+\contentsline {section}{\numberline {7.10}MS90-9 search procedure}{87}
+\contentsline {section}{\numberline {7.11}MS91-6 and MS91-7 search procedures}{88}
+\contentsline {section}{\numberline {7.12}MS92-9 search procedure}{88}
+\contentsline {section}{\numberline {7.13}MS93-1 search procedure}{89}
+\contentsline {section}{\numberline {7.14}MS98-1 search procedure}{89}
+\contentsline {section}{\numberline {7.15}Proof Translation}{89}
+\contentsline {section}{\numberline {7.16}Vpforms}{89}
+\contentsline {section}{\numberline {7.17}Moving Commands}{90}
+\contentsline {section}{\numberline {7.18}Statistics}{90}
+\contentsline {section}{\numberline {7.19}Miscellaneous}{90}
+\contentsline {chapter}{\numberline {8}Extensional Expansion Dag Commands}{92}
+\contentsline {section}{\numberline {8.1}Top Levels}{92}
+\contentsline {section}{\numberline {8.2}Printing}{92}
+\contentsline {section}{\numberline {8.3}Extensional Search}{93}
+\contentsline {section}{\numberline {8.4}Proof Translation}{93}
+\contentsline {section}{\numberline {8.5}Vpforms}{93}
+\contentsline {section}{\numberline {8.6}Extensional Expansion Dags}{94}
+\contentsline {section}{\numberline {8.7}Moving Commands}{95}
+\contentsline {chapter}{\numberline {9}Matingstree Commands}{96}
+\contentsline {section}{\numberline {9.1}Top Levels}{96}
+\contentsline {section}{\numberline {9.2}Mtree Operations}{96}
+\contentsline {section}{\numberline {9.3}Mtree Printing}{97}
+\contentsline {section}{\numberline {9.4}Mtree Auto}{99}
+\contentsline {chapter}{\numberline {10}Unification Commands}{100}
+\contentsline {section}{\numberline {10.1}Top Levels}{100}
+\contentsline {section}{\numberline {10.2}Unification}{100}
+\contentsline {section}{\numberline {10.3}Dpairs}{102}
+\contentsline {chapter}{\numberline {11}Test-Top Commands}{103}
+\contentsline {section}{\numberline {11.1}Top Levels}{103}
+\contentsline {section}{\numberline {11.2}Mating search}{103}
+\contentsline {section}{\numberline {11.3}Searchlists}{105}
+\contentsline {section}{\numberline {11.4}Library}{106}
+\contentsline {chapter}{\numberline {12}Models Commands}{107}
+\contentsline {section}{\numberline {12.1}Top Levels}{107}
+\contentsline {section}{\numberline {12.2}Printing}{107}
+\contentsline {section}{\numberline {12.3}Models}{108}
+\contentsline {chapter}{\numberline {13}Editor Commands}{110}
+\contentsline {section}{\numberline {13.1}Top Levels}{110}
+\contentsline {section}{\numberline {13.2}Printing}{110}
+\contentsline {section}{\numberline {13.3}Weak Labels}{110}
+\contentsline {section}{\numberline {13.4}Saving Wffs}{111}
+\contentsline {section}{\numberline {13.5}Recording}{111}
+\contentsline {section}{\numberline {13.6}Vpforms}{111}
+\contentsline {section}{\numberline {13.7}Moving Commands}{112}
+\contentsline {section}{\numberline {13.8}Changing Commands}{112}
+\contentsline {section}{\numberline {13.9}Recursively Changing Commands}{113}
+\contentsline {section}{\numberline {13.10}Embedding Commands}{114}
+\contentsline {section}{\numberline {13.11}Rewriting commands}{115}
+\contentsline {section}{\numberline {13.12}Substitution}{116}
+\contentsline {section}{\numberline {13.13}Basic Abbreviations}{117}
+\contentsline {section}{\numberline {13.14}Lambda-Calculus}{117}
+\contentsline {section}{\numberline {13.15}Negation movers}{118}
+\contentsline {section}{\numberline {13.16}Primitive Substitutions}{118}
+\contentsline {section}{\numberline {13.17}Miscellaneous}{118}
+\contentsline {section}{\numberline {13.18}RuleP}{119}
+\contentsline {section}{\numberline {13.19}Skolemizing}{119}
+\contentsline {section}{\numberline {13.20}Quantifier Commands}{119}
+\contentsline {section}{\numberline {13.21}Wellformedness}{119}
+\contentsline {chapter}{\numberline {14}Replaceable Symbols}{121}
+\contentsline {section}{\numberline {14.1}Basic Abbreviations}{121}
+\contentsline {chapter}{\numberline {15}Theorems}{122}
+\contentsline {section}{\numberline {15.1}Book Theorems}{122}
+\contentsline {section}{\numberline {15.2}First-Order Logic}{122}
+\contentsline {section}{\numberline {15.3}Higher-Order Logic}{124}
+\contentsline {chapter}{\numberline {16}Logical Abbreviations}{127}
+\contentsline {section}{\numberline {16.1}Basic Abbreviations}{127}
+\contentsline {section}{\numberline {16.2}Set Abbreviations}{128}
+\contentsline {chapter}{\numberline {17}Binders}{129}
+\contentsline {section}{\numberline {17.1}wff Primitives}{129}
+\contentsline {section}{\numberline {17.2}Basic Abbreviations}{129}
+\contentsline {chapter}{\numberline {18}Logical Constants}{130}
+\contentsline {section}{\numberline {18.1}wff Primitives}{130}
+\contentsline {chapter}{\numberline {19}Polymorphic Proper Symbols}{131}
+\contentsline {section}{\numberline {19.1}wff Primitives}{131}
+\contentsline {chapter}{\numberline {20}Typeconstants}{132}
+\contentsline {section}{\numberline {20.1}wff Primitives}{132}
+\contentsline {chapter}{\numberline {21}Type Abbreviations}{133}
+\contentsline {section}{\numberline {21.1}wff Primitives}{133}
+\contentsline {chapter}{\numberline {22}Library Commands}{134}
+\contentsline {section}{\numberline {22.1}Top Levels}{134}
+\contentsline {section}{\numberline {22.2}Display}{134}
+\contentsline {section}{\numberline {22.3}Reading}{136}
+\contentsline {section}{\numberline {22.4}Library Structure}{137}
+\contentsline {section}{\numberline {22.5}Editing}{138}
+\contentsline {section}{\numberline {22.6}Keywords}{141}
+\contentsline {section}{\numberline {22.7}Best modes}{141}
+\contentsline {section}{\numberline {22.8}Library Classification}{142}
+\contentsline {chapter}{\numberline {23}Library Objects}{146}
+\contentsline {section}{\numberline {23.1}Miscellaneous}{146}
+\contentsline {section}{\numberline {23.2}Library}{147}
+\contentsline {chapter}{\numberline {24}Classification Scheme For The Library.s}{148}
+\contentsline {section}{\numberline {24.1}Modules}{148}
+\contentsline {chapter}{\numberline {25}Library Command Using A Unix Style Interfaces}{149}
+\contentsline {section}{\numberline {25.1}Top Levels}{149}
+\contentsline {section}{\numberline {25.2}Display}{149}
+\contentsline {section}{\numberline {25.3}Reading}{151}
+\contentsline {section}{\numberline {25.4}Library Classification}{151}
+\contentsline {chapter}{\numberline {26}Review Commands}{153}
+\contentsline {section}{\numberline {26.1}Top Levels}{153}
+\contentsline {section}{\numberline {26.2}Flags}{153}
+\contentsline {section}{\numberline {26.3}Modes}{154}
+\contentsline {section}{\numberline {26.4}Unification}{155}
+\contentsline {section}{\numberline {26.5}Best modes}{155}
+\contentsline {chapter}{\numberline {27}Subjects}{156}
+\contentsline {section}{\numberline {27.1}Top Levels}{156}
+\contentsline {section}{\numberline {27.2}OTL Object}{156}
+\contentsline {section}{\numberline {27.3}Printing}{157}
+\contentsline {section}{\numberline {27.4}Flavors of Labels}{159}
+\contentsline {section}{\numberline {27.5}Saving Work}{159}
+\contentsline {section}{\numberline {27.6}Expansion Trees}{159}
+\contentsline {section}{\numberline {27.7}Mtree Operations}{160}
+\contentsline {section}{\numberline {27.8}Mating search}{160}
+\contentsline {section}{\numberline {27.9}MS88 search procedure}{163}
+\contentsline {section}{\numberline {27.10}MS89 search procedure}{163}
+\contentsline {section}{\numberline {27.11}MS90-3 search procedure}{164}
+\contentsline {section}{\numberline {27.12}MS90-9 search procedure}{165}
+\contentsline {section}{\numberline {27.13}MS91-6 and MS91-7 search procedures}{165}
+\contentsline {section}{\numberline {27.14}MS92-9 search procedure}{167}
+\contentsline {section}{\numberline {27.15}MS93-1 search procedure}{168}
+\contentsline {section}{\numberline {27.16}MS98-1 search procedure}{169}
+\contentsline {section}{\numberline {27.17}Extensional Search}{169}
+\contentsline {section}{\numberline {27.18}Proof Translation}{173}
+\contentsline {section}{\numberline {27.19}Unification}{173}
+\contentsline {section}{\numberline {27.20}Tactics}{173}
+\contentsline {section}{\numberline {27.21}suggestions}{174}
+\contentsline {section}{\numberline {27.22}Vpforms}{174}
+\contentsline {section}{\numberline {27.23}Semantics}{174}
+\contentsline {section}{\numberline {27.24}wff Primitives}{174}
+\contentsline {section}{\numberline {27.25}Wff Parsing}{175}
+\contentsline {section}{\numberline {27.26}Primitive Substitutions}{175}
+\contentsline {section}{\numberline {27.27}Events}{175}
+\contentsline {section}{\numberline {27.28}Grader}{176}
+\contentsline {section}{\numberline {27.29}Maintenance}{176}
+\contentsline {section}{\numberline {27.30}Rules object}{177}
+\contentsline {section}{\numberline {27.31}Library}{177}
+\contentsline {chapter}{\numberline {28}Flag Or Parameters}{178}
+\contentsline {section}{\numberline {28.1}Top Levels}{178}
+\contentsline {section}{\numberline {28.2}Style}{180}
+\contentsline {section}{\numberline {28.3}Review}{180}
+\contentsline {section}{\numberline {28.4}Flags}{180}
+\contentsline {section}{\numberline {28.5}Modes}{181}
+\contentsline {section}{\numberline {28.6}Help}{181}
+\contentsline {section}{\numberline {28.7}Collecting Help}{181}
+\contentsline {section}{\numberline {28.8}Starting and Finishing}{182}
+\contentsline {section}{\numberline {28.9}OTL Object}{183}
+\contentsline {section}{\numberline {28.10}Printing}{184}
+\contentsline {section}{\numberline {28.11}Printing}{184}
+\contentsline {section}{\numberline {28.12}Internal for Printing}{187}
+\contentsline {section}{\numberline {28.13}TeX}{187}
+\contentsline {section}{\numberline {28.14}X Windows}{188}
+\contentsline {section}{\numberline {28.15}Weak Labels}{189}
+\contentsline {section}{\numberline {28.16}Flavors of Labels}{189}
+\contentsline {section}{\numberline {28.17}Saving Work}{189}
+\contentsline {section}{\numberline {28.18}Recording}{190}
+\contentsline {section}{\numberline {28.19}Printing Proofs into Files}{191}
+\contentsline {section}{\numberline {28.20}Proof Outline}{193}
+\contentsline {section}{\numberline {28.21}Expansion Trees}{194}
+\contentsline {section}{\numberline {28.22}Mtree Operations}{198}
+\contentsline {section}{\numberline {28.23}Mtree Auto}{199}
+\contentsline {section}{\numberline {28.24}Mating search}{200}
+\contentsline {section}{\numberline {28.25}MS88 search procedure}{205}
+\contentsline {section}{\numberline {28.26}MS89 search procedure}{208}
+\contentsline {section}{\numberline {28.27}MS90-3 search procedure}{209}
+\contentsline {section}{\numberline {28.28}MS91-6 and MS91-7 search procedures}{210}
+\contentsline {section}{\numberline {28.29}MS98-1 search procedure}{214}
+\contentsline {section}{\numberline {28.30}Extensional Search}{221}
+\contentsline {section}{\numberline {28.31}Proof Translation}{239}
+\contentsline {section}{\numberline {28.32}Unification}{240}
+\contentsline {section}{\numberline {28.33}Tactics}{245}
+\contentsline {section}{\numberline {28.34}suggestions}{246}
+\contentsline {section}{\numberline {28.35}Searchlists}{247}
+\contentsline {section}{\numberline {28.36}Vpforms}{250}
+\contentsline {section}{\numberline {28.37}Semantics}{253}
+\contentsline {section}{\numberline {28.38}Printing}{253}
+\contentsline {section}{\numberline {28.39}Applying Rules}{254}
+\contentsline {section}{\numberline {28.40}Propositional Rules}{255}
+\contentsline {section}{\numberline {28.41}Wff Editor}{255}
+\contentsline {section}{\numberline {28.42}wff Primitives}{257}
+\contentsline {section}{\numberline {28.43}Wff Parsing}{257}
+\contentsline {section}{\numberline {28.44}Basic Abbreviations}{258}
+\contentsline {section}{\numberline {28.45}Lambda-Calculus}{259}
+\contentsline {section}{\numberline {28.46}Primitive Substitutions}{259}
+\contentsline {section}{\numberline {28.47}Miscellaneous}{264}
+\contentsline {section}{\numberline {28.48}RuleP}{265}
+\contentsline {section}{\numberline {28.49}Skolemizing}{265}
+\contentsline {section}{\numberline {28.50}Quantifiers}{265}
+\contentsline {section}{\numberline {28.51}Auxiliary}{265}
+\contentsline {section}{\numberline {28.52}Events}{266}
+\contentsline {section}{\numberline {28.53}Grader}{268}
+\contentsline {section}{\numberline {28.54}Maintenance}{270}
+\contentsline {section}{\numberline {28.55}Rules object}{272}
+\contentsline {section}{\numberline {28.56}Unclassified}{273}
+\contentsline {section}{\numberline {28.57}Library}{274}
+\contentsline {section}{\numberline {28.58}Editing}{276}
+\contentsline {section}{\numberline {28.59}Library Classification}{276}
+\contentsline {section}{\numberline {28.60}Bugs}{277}
+\contentsline {chapter}{\numberline {29}Modes}{278}
+\contentsline {section}{\numberline {29.1}Collecting Help}{278}
+\contentsline {section}{\numberline {29.2}OTL Object}{279}
+\contentsline {section}{\numberline {29.3}Printing}{280}
+\contentsline {section}{\numberline {29.4}Recording}{281}
+\contentsline {section}{\numberline {29.5}Expansion Trees}{282}
+\contentsline {section}{\numberline {29.6}MS91-6 and MS91-7 search procedures}{282}
+\contentsline {section}{\numberline {29.7}wff Primitives}{284}
+\contentsline {section}{\numberline {29.8}Maintenance}{284}
+\contentsline {section}{\numberline {29.9}Unclassified}{285}
+\contentsline {chapter}{\numberline {30}Grader Commands}{286}
+\contentsline {section}{\numberline {30.1}Getting Out and Help}{286}
+\contentsline {section}{\numberline {30.2}Variables}{286}
+\contentsline {section}{\numberline {30.3}The Grade-File}{286}
+\contentsline {section}{\numberline {30.4}Manual Grades}{286}
+\contentsline {section}{\numberline {30.5}Automatic Grades}{287}
+\contentsline {section}{\numberline {30.6}The Class List}{287}
+\contentsline {section}{\numberline {30.7}Making the Output Convenient}{287}
+\contentsline {section}{\numberline {30.8}Generating Values}{287}
+\contentsline {section}{\numberline {30.9}Displaying Information}{287}
+\contentsline {section}{\numberline {30.10}Totaling}{288}
+\contentsline {section}{\numberline {30.11}Sorting}{288}
+\contentsline {section}{\numberline {30.12}Letter-Grades}{288}
+\contentsline {chapter}{\numberline {31}Events}{289}
+\contentsline {section}{\numberline {31.1}MS88 search procedure}{289}
+\contentsline {section}{\numberline {31.2}Events}{290}
+\contentsline {chapter}{\numberline {32}Styles}{291}
+\contentsline {section}{\numberline {32.1}Review}{291}
+\contentsline {section}{\numberline {32.2}Concept}{291}
+\contentsline {section}{\numberline {32.3}Printing}{291}
+\contentsline {section}{\numberline {32.4}SAIL characters}{292}
+\contentsline {section}{\numberline {32.5}TeX}{292}
+\contentsline {section}{\numberline {32.6}X Windows}{292}

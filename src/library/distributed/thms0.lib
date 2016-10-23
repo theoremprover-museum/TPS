@@ -1,0 +1,236 @@
+(:name THM2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Saturday, April  3, 2004 at  7:04:34."
+:description "FORALL K(OI(OI)).FORALL x(OI) FORALL y(OI) [x(OI) SUBSET(O(OI)(OI)) y(OI) IMPLIES K(OI(OI)) x(OI) SUBSET(O(OI)(OI)) K(OI(OI)) y(OI)] IMPLIES EXISTS u(OI).K(OI(OI)) u(OI) EQUIVS(O(OI)(OI)) u(OI)"
+:needed-objects   NIL
+:mhelp "This is a fixed point theorem for sets.
+  We assume K is a monotonic operator on sets with respect to inclusion
+  and conclude that K has a fixed point.
+  Taken from Kolodner's paper on Schroder-Bernstein theorem."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM2A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL K(OI(OI)).FORALL x(OI) FORALL y(OI) [x(OI) SUBSET(O(OI)(OI)) y(OI) IMPLIES K(OI(OI)) x(OI) SUBSET(O(OI)(OI)) K(OI(OI)) y(OI)] IMPLIES K(OI(OI)) [SETUNION(OI(O(OI))).LAMBDA x(OI).x(OI) SUBSET(O(OI)(OI)) K(OI(OI)) x(OI)] EQUIVS(O(OI)(OI)) SETUNION(OI(O(OI))).LAMBDA x(OI).x(OI) SUBSET(O(OI)(OI)) K(OI(OI)) x(OI)"
+:needed-objects   NIL
+:mhelp "Easier version of THM2 "
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM3
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, May  7, 1998 at 15:15:54."
+:description "EXISTS f(OII) INJECTIVE(O(OII)) f(OII)"
+:needed-objects   (INJECTIVE)
+:mhelp "Hard theorem. See THM104 for a solution"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM4
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Interactive natural deduction proof"
+:proof-date "Tuesday, June 15, 1999 at 17:41:16."
+:description "FORALL P(OI) FORALL Q(OI) [FORALL X(I) [P(OI) X(I) EQUIV Q(OI) X(I)] IMPLIES P(OI) =(O(OI)(OI)) Q(OI)] IMPLIES FORALL T(O(OI)).TOPSPACE(O(O(OI))) T(O(OI)) IMPLIES FORALL U(OI) FORALL V(OI).T(O(OI)) -OPEN(O(OI)(O(OI))) U(OI) AND T(O(OI)) -OPEN(O(OI)(O(OI))) V(OI) IMPLIES T(O(OI)) -OPEN(O(OI)(O(OI))).U(OI) UNION(OI(OI)(OI)) V(OI)"
+:needed-objects   (TOPSPACE -OPEN)
+:mhelp "The union of open sets is open; extensionality is built into the statement of the theorem."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM7
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:12."
+:description "INJECTIVE(O(OII)).LAMBDA x(I) LAMBDA y(I).x(I) =(OII) y(I)"
+:needed-objects   (INJECTIVE)
+:mhelp "Unitset is injective. Like THM104"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM3-TPS2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:29:45."
+:description "EXISTS f(OII) INJECTIVE(O(OII)) f(OII)"
+:needed-objects   (INJECTIVE)
+:mhelp "Hard theorem. See THM104 for a solution"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM7-TPS2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:48."
+:description "INJECTIVE(O(OII)).LAMBDA x(I) LAMBDA y(I).x(I) =(OII) y(I)"
+:needed-objects   (INJECTIVE)
+:mhelp "Unitset is injective. Like THM104"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name SSS
+:type ABBR
+:context NIL
+:keywords (UNPROVEN WITHOUT-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X(OI).X(OI) SUBSET(O(OI)(OI)) K(OI(OI)) X(OI)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((PRINTNOTYPE T) (TYPE "O(OI)"))
+:other-remarks "
+")
+
+
+(:name THM4A
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL P(OI) FORALL Q(OI) [FORALL X(I) [P(OI) X(I) EQUIV Q(OI) X(I)] IMPLIES P(OI) =(O(OI)(OI)) Q(OI)] IMPLIES FORALL T(O(OI)) FORALL U(OI) FORALL V(OI).T(O(OI)) [SETUNION(OI(O(OI))).LAMBDA W(OI).W(OI) =(O(OI)(OI)) U(OI) OR W(OI) =(O(OI)(OI)) V(OI)] IMPLIES T(O(OI)).U(OI) UNION(OI(OI)(OI)) V(OI)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM5
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:21."
+:description "~EXISTS G(OII) FORALL F(OI) EXISTS J(I).G(OII) J(I) =(O(OI)(OI)) F(OI)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM6
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:34."
+:description "FORALL M(I) [~.S(II) M(I) =(OII) M(I)] IMPLIES ~EXISTS G(III) FORALL F(II) EXISTS J(I).G(III) J(I) =(O(II)(II)) F(II)"
+:needed-objects   NIL
+:mhelp "COMPLETE AUTOMATIC PROOF  
+CORE 90000  
+COST $ 34.0  
+29-DEC-77 16:18:32  
+DATES  "
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM8
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:59."
+:description "EXISTS F(II) INJECTIVE(O(II)) F(II)"
+:needed-objects   (INJECTIVE)
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM9
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:31:10."
+:description "FORALL G(II) [TM(III) [TH(I(II)) G(II)] =(O(II)(II)) G(II)] IMPLIES FORALL F(II) EXISTS N(I).TM(III) [F(II) N(I)] =(O(II)(II)) TM(III) N(I)"
+:needed-objects   NIL
+:mhelp "THIS IS A VERY NAIVE VERSION OF THE RECURSION THEOREM  
+TM AND TH ARE CONSTANTS  
+TM X Y  
+IS THE OUTPUT OF TURING MACHINE X ON INPUT Y  
+TH F  
+IS THE NUMBER OF A TURING MACHINE WHICH COMPUTES FUNCTION F"
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name UUU
+:type GWFF
+:context NIL
+:keywords (UNPROVEN WITHOUT-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "SETUNION(OI(O(OI))).LAMBDA X(OI).X(OI) SUBSET(O(OI)(OI)) K(OI(OI)) X(OI)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM2E
+:type GWFF
+:context NIL
+:keywords (UNPROVEN WITHOUT-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL X(OI) FORALL Y(OI) [X(OI) SUBSET(O(OI)(OI)) Y(OI) IMPLIES K(OI(OI)) X(OI) SUBSET(O(OI)(OI)) K(OI(OI)) Y(OI)] IMPLIES EXISTS U(OI).K(OI(OI)) U(OI) EQUIVS(O(OI)(OI)) U(OI)"
+:needed-objects   NIL
+:mhelp "1982-DEC-25 COMPLETE INTERACTIVE PROOF  
+RUNCOUNT 69.76423 CONSCOUNT 400185  
+SYSTEM TPS1  
+GENVPATHMATES GENVPATHMATES4  
+NEXTBADPATH NEXTBADPATH3  
+BESTPAIRS1RST BESTPAIRS1RST3  
+PATH-SEARCHLENGTH 5  
+EQUIV-CHOICE T  
+EQHEURISTIC  
+INITDEPTH 2  
+UNIDEPTH 3  
+PRINTFLAG ARCS  
+ 
+ 
+DATES  "
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+

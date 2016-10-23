@@ -1,0 +1,86 @@
+(:name D-FOR-X5309
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA z(I) EXISTS t(OI).~t(OI) [h(I(OI)) t(OI)] AND z(I) =(OII) h(I(OI)) t(OI)"
+:needed-objects   (IDIAG)
+:mhelp "Substitution term for X5309 with a short
+ face for writing compact proofs."
+:other-attributes ((FACE D) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPE "OI"))
+:other-remarks "
+")
+
+
+(:name GQ
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(A) LAMBDA y(A).x(A) =(OAA) y(A)"
+:needed-objects   NIL
+:mhelp "testing milind's gq"
+:other-attributes ((PRINTNOTYPE T) (INFIX 2) (TYPELIST ("A")) (TYPE "OAA"))
+:other-remarks "
+")
+
+
+(:name SUBREL
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA p(OBA) LAMBDA r(OBA) FORALL x(A) FORALL y(B).p(OBA) x(A) y(B) IMPLIES r(OBA) x(A) y(B)"
+:needed-objects   NIL
+:mhelp "experiment with def of subrelation; will give it a face this time; delete this after subrelation works right"
+:other-attributes ((FACE SUBSET) (FO-SINGLE-SYMBOL SUBSET) (PRINTNOTYPE T) (INFIX 8) (TYPELIST ("A" "B")) (TYPE "O(OBA)(OBA)"))
+:other-remarks "
+")
+
+
+(:name TEST-RELATION
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "TESTRELN(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((FACE A | | B | | | | C) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (INFIX 11) (TYPE "I"))
+:other-remarks "
+")
+
+
+(:name TEST-RELN3
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((FACE A | | B | | | | C) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (INFIX 11) (TYPELIST "A") (TYPE "OAA"))
+:other-remarks "
+")
+
+
+(:name INVISIBLE-RELATION2
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "INVISIBLE-RELATION2(OBA)"
+:needed-objects   NIL
+:mhelp "Example of how an invisible relation can be displayed in TPS,
+so that only the related arguments are seen."
+:other-attributes ((FACE | |) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (INFIX 11) (TYPELIST ("A" "B")) (TYPE "OBA"))
+:other-remarks "
+")
+
+

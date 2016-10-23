@@ -1,0 +1,151 @@
+@Comment{
+
+This file defines the "TPSTT" reference format for Scribe-generated 
+bibliographies.  This was stolen from the CACM reference, copyrighted
+by UNILOGIC.
+}
+@marker(References,TPSTT)
+
+@Style(Citations=1,CitationType Brackets)
+@Define(L1,Above 1,Break,Indent 0,Need 3 lines,Fill,Justification On)
+@TextForm(TAGGER="@b{@parm(TEXT).}@ @ ")
+
+@LibraryFile(ABBR2)
+
+@BibForm(Book=<
+
+@l1{@Tagger(@parm(Tag))@imbed(Author,def '@parm(Author)',
+			undef '@Parm(Editor) (Ed.)'),@:
+@imbed(Series,def '@i{@parm(Series).}  Volume @parm(Volume): @~
+				@i{@parm(Title)},',
+	      undef '@i{@parm(Title),}')
+@imbed(HowPublished,def '@Parm(HowPublished).  ')@Parm(Publisher)@imbed(Address,def ', @parm(Address)'), @parm(year).@imbed(note,def '  @parm(Note)')}
+>)
+
+@Bibform(Manual=<
+
+@imbed(Author,
+def '
+@l1{@Tagger(@parm(tag))@parm(Author),@:
+@i{@parm(Title),  }',
+undef '
+@l1{@Tagger(@parm(tag))@i{@parm(Title).  }')
+@imbed(Edition,def ' @parm(Edition) edition, ')@~
+    @imbed(Organization,def '@parm(Organization), ')@~
+    @imbed(Address,def '@parm(Address), ')@~
+    @parm(Year).
+@imbed(note,def '@parm(Note).')
+}>)
+
+@BibForm(Article=<
+
+@l1{@Tagger(@parm(Tag))@parm(Author),@:
+@i{@parm(Title)},@:
+@parm(Journal) @b(@parm(Volume)) @~
+(@parm(year))@imbed(Pages,def ', @parm(Pages)').@imbed(note,def '  @parm(Note)')}
+>)
+
+@BibForm(InBook=<
+
+@l1{@Tagger(@parm(Tag))@Parm(Author), "@parm(Title)," in @i[@parm(Booktitle)],
+@imbed(editor, def 'edited by @parm(editor), ')@~
+@imbed(editors, def 'edited by @parm(editors), ')@~
+@Parm(Publisher)@imbed(Address,def ', @parm(Address)'), @[[
+]]@parm(year)@imbed(chapter,def ', Chap. @parm(Chapter)')@[[
+]]@imbed(pages,def ', pp. @parm(pages)').@imbed(note,def '  @parm(Note)')}
+>)
+
+@BibForm(InCollection=<
+
+@l1{@Tagger(@parm(Tag))@Parm(Author).@:
+@parm(Title).
+In @i[@parm(Booktitle)],
+@imbed(editor, def '@parm(editor), Ed.,')@~
+@imbed(editors, def '@parm(editors), Eds.,')
+@parm(publisher), @imbed(address, def '@parm(Address),')
+@parm(year)@~
+@imbed(chapter, def ', ch. @parm(chapter)')@~
+@imbed(pages, def ', pp. @parm(pages)').}
+>)
+
+@BibForm(InSeries=<
+
+@l1{@Tagger(@parm(Tag))@Parm(Author)@~
+@imbed(booktitle, def ',@: "@parm(Title),"
+ in @i[@parm(Booktitle)]', undef '.@:  @i[@parm(Title)]'),
+@imbed(editor, def 'edited by @parm(editor), ')@~
+@imbed(editors, def 'edited by @parm(editors), ')@~
+@Parm(Series), @~
+@parm(publisher), @imbed(address, def '@parm(Address),')
+@parm(year)@imbed(pages, def ', @parm(pages)').}
+>)
+
+@BibForm(InProceedings=<
+
+@l1{@Tagger(@parm(Tag))@Parm(Author), "@parm(Title)," in @i[@parm(Booktitle)],
+@imbed(editor, def 'edited by @parm(editor), ')@~
+@imbed(editors, def 'edited by @parm(editors), ')@~
+@imbed(Organization,def '@Parm(Organization), ')@~
+@imbed(publisher, def '@parm(publisher), ')@~
+@imbed(Address,def '@parm(Address), ')@imbed(Month,def '@parm(Month), ')@~
+@parm(Year)@imbed(pages,def ', @parm(Pages)').
+@imbed(note,def '  @parm(Note)')}
+>)
+
+@BibForm(Proceedings=<
+
+@l1{@Tagger(@parm(Tag))@imbed(Organization,def ', @Parm(Organization).')
+@i[@Parm(Title)]@imbed(Address,def ', @parm(Address)')@imbed(Month,def ', @parm(Month)'), @parm(Year).@imbed(note,def '  @parm(Note)')}
+>)
+
+@BibForm(PhDThesis=<
+
+@l1{@Tagger(@parm(Tag))@parm(Author).@:
+@i{@parm(Title)},
+Ph.D. Thesis, @parm(School)@imbed(address, def ', @parm(address)'),@imbed(Month,def ' @parm(month)') @parm(year).@imbed(note,def '  @parm(Note)')}
+>)
+
+@BibForm(MastersThesis=<
+
+@l1{@Tagger(@parm(Tag))@parm(Author).@:
+@parm(Title).
+Master's Thesis, @parm(School)@imbed(address,def ', @parm(address)'),@imbed(Month,def ' @parm(month)') @parm(year).@imbed(note,def '  @parm(Note)')}
+>)
+
+@BibForm(TechReport=<
+
+@l1{@Tagger(@parm(Tag))@parm(Author).@:  @parm(Title).
+@imbed(Number,def '@imbed(type, def {@parm(type) },undef {Tech. Rept. })@parm(Number), ')@~
+@parm(Institution),@imbed(Address,def ' @parm(Address),') @imbed(Month,def '@parm(Month), ')@parm(year).@imbed(note,def '  @parm(Note)')}
+>)
+
+@BibForm(Booklet=<
+
+@l1{@Tagger(@parm(Tag))@parm(Author).@:
+@parm(Title).
+@imbed(HowPublished,def '@Parm(HowPublished).  ')@imbed(Address,def '@parm(Address), '),@imbed(Month,def '@parm(Month), ')@parm(year).@imbed(note,def '  @parm(Note)')}
+>)
+
+@BibForm(UnPublished=<
+
+@l1{@Tagger(@parm(Tag))@Parm(Author).@:
+@Parm(Title).  @parm(Note)}
+>)
+
+@BibForm(Misc=<
+
+@l1{@Tagger(@parm(Tag))@parm(Author).@:
+@parm(Title),
+@imbed(note,def '  @parm(Note)')}
+>)
+
+
+
+@Enter(Text,Spacing 1,Spread 0,Spaces Compact,Justification off)
+@Process(Bibliography)
+@Leave(Text)
+@Marker(References,ChangeLog)
+@Comment[
+28 Jul 81  MIS  Added @Style(CitationType Brackets) as default
+]
+@marker

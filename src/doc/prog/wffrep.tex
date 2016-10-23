@@ -1,0 +1,482 @@
+\chapter{Representing Well-formed formulae}
+
+\section{Types}
+
+\begin{description}
+\item [\indextypes{\it typeconstant} ] ::= Type Constant
+
+An identifier with a non-{\tt NIL} {\tt TypeConst} property.
+For example, {\tt O} and {\tt I}:
+%\begin{tpsexample}
+\begin{verbatim}
+(def-typeconst o
+  (mhelp "The type of truth values."))
+\end{verbatim}
+%\end{tpsexample}
+
+\item [\indextypes{\it typevariable} ] ::= Type Variable
+
+ An identifier with a non-{\tt NIL} {\tt TypeVar} property.
+\end{description}
+It is the parsers responsibility to give the {\tt TypeVar} property to types 
+not previously encountered.
+
+\begin{description}
+\item [\indextypes{\it typesymbol} ] ::= {\it typeconstant} | {\it typevariable} | 
+{\tt ({\it typesymbol} . {\it typesymbol})}
+\end{description}
+
+\section{Terminal Objects of the Syntax}\label{terminalobjects}
+
+Before going into detail about the terminal objects of the syntax,
+some general remarks about type polymorphism in \TPS are needed.
+
+\TPS supports polymorphic objects, like $\subseteq$ (subset), which is
+a relation that may hold between sets of any type.  It must be understood,
+however, that the parser completely eliminates this ambiguity of types,
+when actually reading a wff.  In a given wff every proper subwff has
+a type!  Therefore, there is a class of objects with polymorphic type,
+which never appear in a wff, but nevertheless may be typed by the user.
+The instances of those polymorphic abbreviations or polymorphic proper
+symbols inside the formula will refer, however, to those polymorphic primitive
+symbols or polymorphic abbreviating symbols.
+
+For reasons of efficiency, binders are handled slightly differently.
+Binders are also polymorphic in the sense that a certain binder, say
+$\forall$, may bind variables of any type.  The case of binder, however,
+is slightly different from that of polymorphic abbreviations, since
+a binder is not a proper subwff.   Binders, therefore, are left without
+having a proper type.  We must, however, be able to figure out the type
+of any given bound wff.  Thus each binder carries the information
+about the type of the scope, the bound variable and the resulting bound
+wff with it.  See Section ~\ref{Binders} for more details.
+
+The list below introduces syntactic categories of objects known to the
+parser only, which are not legal in wffs themselves.
+
+\begin{description}
+\item [\indexSyntax{pmprsym} ] ::= Polymorphic Primitive Symbol
+
+ {\it pmprsyms} are the {\tt STANDS-FOR} property of 
+{\it pmpropsyms}, but cannot appear in {\it gwffs} themselves.  
+Examples would be {\tt PI} or {\tt IOTA}.
+
+\item [\indexSyntax{pmabbsym} ] ::= Polymorphic Abbreviating Symbol
+
+ \indexSyntax{pmabbsym} are the {\tt STANDS-FOR} property of 
+{\it pmabbrevs}, but cannot appear in {\it gwffs} themselves. 
+Examples are {\tt SUBSET}, {\tt UNION}, or {\tt IMAGE}.
+
+\end{description}
+
+The following categories are the ``terminal'' objects of proper wffs.
+The parser may not produce a formula with any other atomic (in the 
+Lisp sense) object then from the list below.
+
+\begin{description}
+\item [\indexSyntax{logconst} ] ::= Logical Constants
+
+ For example: {\tt AND,} {\tt OR,} {\tt IMPLIES,} {\tt NOT,} {\tt FALSEHOOD,} {\tt TRUTH}:
+%\begin{tpsexample}
+\begin{verbatim}
+(def-logconst and
+   (type "OOO")
+   (printnotype t)
+   (infix 5)
+   (prt-associative t)
+   (fo-single-symbol and)
+   (mhelp "Denotes conjunction."))
+\end{verbatim}
+%\end{tpsexample}
+
+\item [\indexSyntax{propsym} ] ::= Proper Symbols
+
+ For example: {\tt P<OA>}, {\tt x<A>}, {\tt y<A>}, {\tt Q<OB>}, {\tt x<B>} are
+proper symbols after parsing
+$ \forall \,x \forall \,y . \,P_{\greeko\greeka\greeka} \,x \,y \land \,Q_{\greeko\greeka} \,x$.
+This example
+demonstrates part of the parser.  Since in a given wff, a proper symbol
+may appear with more than one type, the type of each proper must somehow
+be encoded in its name.  \TPS does this by appending the type, {\tt (} and
+{\tt )} replaced by {\tt <} and {\tt >}, respectively, to the print name of the
+symbol.
+
+\item [\indexSyntax{pmpropsym} ] ::= Polymorphic Proper Symbols
+
+ These are just like \indexSyntax{propsym}, except that they also have 
+a {\tt STANDS-FOR} property, which is the polymorphic primitive symbol
+(\indexSyntax{pmprsym}) this polymorphic proper symbol was constructed
+from.  Note that this particular instance of the polymorphic primitive
+symbol always has a specific given type.  For example: {\tt IOTA<I<OI>>}
+is a pmpropsym after parsing $y_{\greeki} = \iota [QQ y]$:
+%\begin{tpsexample}
+\begin{verbatim}
+(def-pmpropsym iota
+  (type "A(OA)")
+  (typelist ("A"))
+  (printnotype t)
+  (fo-single-symbol iota)
+  (mhelp "Description operator"))
+\end{verbatim}
+%\end{tpsexample}
+
+\item [\indexSyntax{abbrev} ] ::= Abbreviations
+
+ For example: @EQUIV.  This is separate category from polymorphic
+abbreviations only for reasons of efficiency.  An abbreviation could
+be thought of as a polymorphic abbreviation with an empty list of
+type variables. For example:
+%\begin{tpsexample}
+\begin{verbatim}
+(def-abbrev equiv
+  (type "OOO")
+  (printnotype t)
+  (fo-single-symbol equiv)
+  (infix 2)
+  (defn "[=(OOO)]"))
+\end{verbatim}
+%\end{tpsexample}
+
+\item [\indexSyntax{pmabbrev} ] ::= Polymorphic Abbreviations
+
+ For example: {\tt SUBSET<O<OA><OA>>}, {\tt SUBSET<O<OB><OB>>} are polymorphic
+abbreviations after parsing {\wt A@f12(oa) @SUBSET B @or [R@f12(obb) a] @~
+@SUBSET [R b]}. For example:
+%\begin{tpsexample}
+\begin{verbatim}
+(def-abbrev subset
+   (type "O(OA)(OA)")
+   (typelist ("A"))
+   (printnotype t)
+   (infix 8)
+   (fo-single-symbol subset)
+   (defn "lambda P(OA) lambda R(OA). forall x . P x implies R x"))
+\end{verbatim}
+%\end{tpsexample}
+
+\item [\indexSyntax{binder} ] ::=  Variable Binders
+
+For example: $\forall$, $\exists$, $\lambda$, $\exists_1$. See the section below.
+
+\item [\indexSyntax{label} ] ::= A Label referring to one or more other wffs.
+
+ For example: {\tt AXIOM1}, {\tt ATM15}, {\tt LABEL6}.  See Section ~\ref{labels}.
+\end{description}
+
+In principle, the implementation is completely free to choose the
+representation of the different terminal objects of the syntax.
+The functions with test whether a given terminal object is of a given
+kind is the only user visible functions.  Once defined, the particular
+implementation of the object should not be needed or relied upon
+by other functions.
+
+It is explained more precisely what is meant by ``quick'' and ``slow''
+predicates to decide whether a given object is in a certain syntactic
+category in section ~\ref{quickslow}.  Here is a table of the different
+syntactic categories with the ``slow'' test function for it and
+the properties that are required or must be absent.
+Keep in mind that the list reflects the current implementation, and
+may not be reliable.
+
+%\begin{Format, Group}
+%@TabSet(1inch,2.25inch,4inch)
+\begin{tabular}{lll}
+Category & Predicate & Required Properties \\
+& & Absent Properties \\
+\\
+{\it pmprsym} & {\tt PMPRSYM-P} & {\tt TYPE}, {\tt TYPELIST} \\ & & {\tt DEFN} \\
+{\it pmabbsym} & {\tt PMABBSYM-P} & {\tt TYPE}, {\tt TYPELIST}, {\tt DEFN} \\
+ \\
+{\it logconst} & {\tt LOGCONST-P} & {\tt TYPE}, {\tt LOGCONST} \\
+{\it propsym} & {\tt PROPSYM-P} & {\tt TYPE} \\ & & {\tt LOGCONST}, {\tt STANDS-FOR} \\
+{\it pmpropsym} & {\tt PMPROPSYM-P} & {\tt TYPE}, {\tt POLYTYPELIST}, {\tt STANDS-FOR}
+(a {\it pmprsym}) \\ 
+\\
+{\it pmabb} & {\tt PMPROPSYM-P} & {\tt TYPE}, {\tt POLYTYPELIST}, {\tt STANDS-FOR}
+(a {\it pmabbsym}) \\
+\\
+{\it abbrev} & {\tt ABBREV-P} & {\tt TYPE}, {\tt DEFN} \\ & & {\tt TYPELIST} \\
+{\it label} & {\tt LABEL-P} & {\tt FLAVOR} \\
+ \\
+{\it binder} & {\tt BINDER-P} & {\tt VAR-TYPE}, {\tt SCOPE-TYPE}, {\tt WFF-TYPE} \\ \\
+\end{tabular}
+%\end{Format}
+
+\section{Explanation of Properties}
+The various properties mentioned above are as follows:
+\begin{description}
+\item [{\tt TYPE} ] The type of the object.  Common are {\tt "OOO"} for
+binary connectives and {\tt "I"} for individual constants.
+
+\item [{\tt PRINTNOTYPE} ] In first-order mode, this is insignificant, but
+if specified and {\tt T}, \TPS will never print types following the object.
+It is almost always appropriate to specify this.
+
+\item [{\tt INFIX} ] The binding priority of an infix operator.  This will declare
+the connective to be infix.  The absolute value of {\tt INFIX} is irrelevant,
+only the relative precedence of the infix and prefix operators matters.
+If two binders have identical precedence, association will be to the left.
+For example, if R1 and R2 are operators with {\tt INFIX} equal to 1 and 2,
+respectively, {\tt "p R1 q R2 r R2 s"} will parse as 
+{\tt "[p R1 [[q R2 r] R2 s]]"}.
+
+\item [{\tt PREFIX} ] The binding priority of a prefix operator.  Binders are considered
+prefix operators (see about binders below) and thus have a binding
+priority.  The main purpose of a prefix binding priority is to allow
+formulas like {\tt "~a=b"} to be parsed correctly as {\tt "~[a = b]"} by
+giving {\tt =} precedence over {\tt ~}.
+
+\item [{\tt PRT-ASSOCIATIVE} ] indicates whether to assume that the operator is
+left associative during printing.  You may want to switch this off (specify
+{\tt NIL}) for an infix operator like equivalence, say {\tt <=>}, since
+{\tt "p <=> q <=> r"} is often considered to mean {\tt "p <=> q \& q <=> r"}.
+
+\item [{\tt FO-SINGLE-SYMBOL} ] this is meaningful only in first-order mode and
+declares the object to be a ``keyword'' in the sense that
+it may be typed in all upper or lower case.  Moreover, the printer will
+surround it by blanks if necessary to set off surrounding text.  Also
+the parser will expect that the symbol is delimited by spaces, dots,
+brackets, unless the symbol just consists of one letter, in which case
+it doesn't matter.  You {\bf MUST} use this attribute in first-order
+mode for an identifier with more than one character.
+
+\item [{\tt MHELP} ] An optional help string.
+\end{description}
+
+Properties specific to binders are described in the section below about binders.
+Here are some more examples. These examples do not actually exist under these names in \tps.
+%\begin{tpsexample}
+\begin{verbatim}
+(def-logconst &
+   (type "OOO")
+   (printnotype t)
+   (infix 5)
+   (prt-associative t)
+   (fo-single-symbol &)
+   (mhelp "Conjunction."))
+\end{verbatim}
+
+Note that the {\tt (fo-single-symbol \&)} will make sure that spaces are printed
+around {\tt \&} in formulas.
+
+In the next example the character {\tt /} is used to make sure that the
+disjunction is printed in lowercase, that is as {\tt v} instead of {\tt V}.
+
+\begin{verbatim}
+(def-logconst /v
+   (type "OOO")
+   (printnotype t)
+   (infix 4)
+   (prt-associative t)
+   (fo-single-symbol /v)
+   (mhelp "Disjunction."))
+
+(def-logconst =>
+   (type "OOO")
+   (printnotype t)
+   (infix 3)
+   (fo-single-symbol =>)
+   (mhelp "Implication."))
+\end{verbatim}
+
+We do not like spaces after negation.  So we do not declare it to be
+a {\tt fo-single-symbol}.  That works only because {\tt -} consists of only
+one character.
+
+\begin{verbatim}
+(def-logconst -
+   (type "OO")
+   (printnotype t)
+   (prefix 6)
+   (mhelp "Negation."))
+
+\end{verbatim}
+%\end{tpsexample}
+
+\section{Non-terminal Objects of the Syntax}
+
+%@TabSet(1inch)
+%\begin{Format, Group}
+\begin{tabular}{ll}
+\indexSyntax[lsymbol] ::= &  {\it logconst} \\
+&  | {\it propsym} \\
+&  | {\it pmpropsym} \\
+&  | {\it abbrev} \\
+&  | {\it pmabbrev} \\
+%\end{Format}
+\end{tabular}
+
+{\it lsymbol} roughly corresponds to what was called
+\indexSyntax{hatom} {for Huet-atom from Huet's unification algorithm}
+in the old representation.
+
+{\bf Generalized WFFs}
+
+%\begin{Format, Group}
+\begin{tabular}{ll}
+{\it gwff} ::=&   {\it lsymbol} \\
+&  | {\tt (({\it propsym} . {\it binder}) . {\it gwff})}  ; Generalized binder \\
+&  | {\tt ({\it gwff1} . {\it gwff2})}  where {\tt (cdr (type {\it gwff1}))} = {\tt (type {\it gwff2})} \\
+&  | {\it label} \\
+%\end{Format}
+\end{tabular}
+
+\section{Binders in TPS}\label{Binders} 
+
+In the discussion about the internal representation of wffs the issue
+of binders has been neglected so far.  Currently, TPS allows three
+binders, $\lambda$, $\forall$, $\exists$ (plus some ``buggy'' fragments of
+support for the $\exists_{1}$ binder).
+
+Since most binders are inherently polymorphic, there is only one kind of
+binder.  Notice that the definition is formulated such that a binder may
+have a definition, but need not.
+
+In order to determine the type of a bound wff, the type of the scope of
+the binder must be matched against the type stored in the {\tt SCOPE-TYPE}
+property.  Also, the type of the bound variable must match the
+type in the {\tt VAR-TYPE} property.  These matches are performed, keeping
+in mind that all types in the {\tt TYPELIST} property are considered to
+be variables.  Then the bindings established during the match are used
+to construct the type of the whole bound wff, using the {\tt WFF-TYPE}
+property of the binder.
+
+An example may illustrate this process.  The binder {\tt LAMBDA} has the
+following properties
+
+% @TabDivide(4)
+\begin{tabular}{ll}
+TYPELIST & (A B) \\
+VAR-TYPE & B \\
+SCOPE-TYPE & A \\
+WFF-TYPE & (A . B)
+\end{tabular}
+
+When trying to determine the type of 
+$\lambda x_\greeki . R_{\greeko\greeki\greeki} x$,
+\TPS determines that {\tt A} must be $\greeki$, and that {\tt B} must be $\greeko\greeki$.
+The type of the original formula is {\wt (A . B)} which then turns out to
+be $\greeko\greeki\greeki$.
+
+Note that {\tt TYPELIST} may be absent, i.e.  could be {\wt ()}, which
+amounts to stating that the binder has no variable types.  Currently, we
+are not using such binders.  An example would be {\it Foralln} , which can
+bind only variables of type $\sigma$.
+
+In addition to the properties mentioned above, a binder (except $\lambda$)
+would have a definition.  One can then instantiate a binder just as a 
+definition can be instantiated.  The definition is to be written with
+two designated variables, one for the bound variable and one for the scope.
+For example 
+{\it THAT} {\it has definition}
+$$\iota_{\greeka(\greeko\greeka)} . \lambda b_\greeka S_\greeko$$
+Here the {\tt TypeList} would be ($\greeka$), designation for the bound
+variable would be $b_\greeka$, designation for the scope would be
+$S_\greeko$.
+
+The internal representation for a binder inside a wff is always the
+same and simply {\tt ((bdvar .  binder) .  scope)}, but all of the above
+information must be present to determine the type of a wff, or to check
+whether formulas are well-formed.
+
+Fancy ``special effects'' such as 
+$\forall x\in S . A$
+must be handled
+via special flavors of labels and are not treated as proper binders themselves.
+
+Here are some examples of binders:
+%\begin{tpsexample}
+\begin{verbatim}
+
+(def-binder lambda
+   (typelist ("A" "B"))
+   (var-type "A")
+   (scope-type "B")
+   (wff-type "BA")
+   (prefix 100)
+   (fo-single-symbol lambda)
+   (mhelp "Church's lambda binder."))
+
+(def-binder forall
+   (typelist ())
+   (var-type "I")
+   (scope-type "O")
+   (wff-type "O")
+   (prefix 100)
+   (fo-single-symbol forall)
+   (mhelp "Universal quantifier."))
+{\it The above definition is for math-logic-1, where forall can only bind individual 
+variables. In math-logic-2, the definition is as follows:}
+
+(def-binder forall
+   (typelist ("A"))
+   (var-type "A")
+   (scope-type "O")
+   (wff-type "O")
+   (prefix 100)
+   (fo-single-symbol forall)
+   (mhelp "Universal quantifier."))
+\end{verbatim}
+%\end{tpsexample}
+
+\subsection{An example: How to See the Wff Representations}
+
+You can see examples of how wffs are represented by comparing the output 
+of the editor commands \indexedop{P} and \indexedop{edwff}:
+
+%\begin{tpsexample}
+\begin{verbatim}
+<44>ed x2106
+<Ed45>p
+
+FORALL x(I) [R(OI) x IMPLIES P(OI) x] AND FORALL x [~Q(OI) x IMPLIES R x]
+ IMPLIES FORALL x.P x OR Q x
+
+<Ed46>edwff
+((IMPLIES (AND (|x<I>| . FORALL) (IMPLIES R<OI> . |x<I>|) P<OI> . |x<I>|) 
+ (|x<I>| . FORALL) (IMPLIES NOT Q<OI> . |x<I>|) R<OI> . |x<I>|) 
+ (|x<I>| . FORALL) (OR P<OI> . |x<I>|) Q<OI> . |x<I>|)
+\end{verbatim}
+%\end{tpsexample}
+
+Another way to do this is as follows:
+
+%\begin{tpsexample}
+\begin{verbatim}
+<3>ed x2106
+<Ed4>cw
+LABEL (SYMBOL):  [No Default]>x2106a
+<Ed5>(plist 'x2106a)
+(REPRESENTS ((IMPLIES (AND (|x<I>| . FORALL) (IMPLIES R<OI> . |x<I>|) 
+ P<OI> . |x<I>|) (|x<I>| . FORALL) (IMPLIES NOT Q<OI> . |x<I>|) R<OI> . |x<I>|) 
+ (|x<I>| . FORALL) (OR P<OI> . |x<I>|) Q<OI> . |x<I>|) FLAVOR WEAK)
+\end{verbatim}
+%\end{tpsexample}
+
+And another way:
+
+%\begin{tpsexample}
+\begin{verbatim}
+<2>(getwff-subtype 'gwff-p 'x2106) 
+
+((IMPLIES (AND (|x<I>| . FORALL) 
+                 (IMPLIES R<OI> . |x<I>|) P<OI> . |x<I>|) (|x<I>| . FORALL)
+               (IMPLIES NOT Q<OI> . |x<I>|) R<OI> . |x<I>|) 
+     (|x<I>| . FORALL) (OR P<OI> . |x<I>|) Q<OI> . |x<I>|)
+\end{verbatim}
+%\end{tpsexample}
+
+And finally a way that only works at type O (the 0 below is a zero, not a capital O):
+
+%\begin{tpsexample}
+\begin{verbatim}
+<3>(get-gwff0 'x2106)
+
+((IMPLIES (AND (|x<I>| . FORALL) 
+                 (IMPLIES R<OI> . |x<I>|) P<OI> . |x<I>|)
+                  (|x<I>| . FORALL)
+                   (IMPLIES NOT Q<OI> . |x<I>|) R<OI> . |x<I>|) 
+                     (|x<I>| . FORALL)
+                      (OR P<OI> . |x<I>|) Q<OI> . |x<I>|)
+\end{verbatim}
+%\end{tpsexample}

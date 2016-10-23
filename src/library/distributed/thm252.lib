@@ -1,0 +1,43 @@
+(:name CLOSURE
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA property(O(OAA)) LAMBDA r(OAA) LAMBDA x(A) LAMBDA y(A) FORALL p(OAA).r(OAA) SUBRELATION(O(OAA)(OAA)) p(OAA) AND property(O(OAA)) p(OAA) IMPLIES p(OAA) x(A) y(A)"
+:needed-objects   (SUBRELATION)
+:mhelp "The closure of a relation R under a property is the intersection of 
+all the relations P containing R and having the property"
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "OAA(OAA)(O(OAA))"))
+:other-remarks "
+")
+
+
+(:name THM252A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL P(O(OAA)) FORALL R(OAA) FORALL S(OAA).CLOSURE(OAA(OAA)(O(OAA))) P(O(OAA)) [CLOSURE(OAA(OAA)(O(OAA))) P(O(OAA)) R(OAA) PAIRUNION(OAA(OAA)(OAA)) CLOSURE(OAA(OAA)(O(OAA))) P(O(OAA)) S(OAA)] SUBRELATION(O(OAA)(OAA)) CLOSURE(OAA(OAA)(O(OAA))) P(O(OAA)).R(OAA) PAIRUNION(OAA(OAA)(OAA)) S(OAA)"
+:needed-objects   (PAIRUNION CLOSURE SUBRELATION)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM252B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL P(O(OAA)) FORALL R(OAA) FORALL S(OAA).CLOSURE(OAA(OAA)(O(OAA))) P(O(OAA)) [R(OAA) PAIRUNION(OAA(OAA)(OAA)) S(OAA)] SUBRELATION(O(OAA)(OAA)) CLOSURE(OAA(OAA)(O(OAA))) P(O(OAA)).CLOSURE(OAA(OAA)(O(OAA))) P(O(OAA)) R(OAA) PAIRUNION(OAA(OAA)(OAA)) CLOSURE(OAA(OAA)(O(OAA))) P(O(OAA)) S(OAA)"
+:needed-objects   (PAIRUNION CLOSURE SUBRELATION)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

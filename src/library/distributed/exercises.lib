@@ -1,0 +1,576 @@
+(:name X2108B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Monday, May 22, 2000 at 17:37:09."
+:description "FORALL x(I) FORALL y(I) EXISTS u(I) EXISTS v(I).P(OI) x(I) AND Q(OI) y(I) IMPLIES P(OI) u(I) AND Q(OI) v(I)"
+:needed-objects   NIL
+:mhelp "enhanced version of x2108"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X2109
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:15."
+:description "EXISTS x(I) [p(O) AND Q(OI) x(I)] EQUIV p(O) AND EXISTS x(I) Q(OI) x(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X2112
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:17."
+:description "EXISTS v(I) FORALL x(I) P(OII) x(I) v(I) AND FORALL x(I) [S(OI) x(I) IMPLIES EXISTS y(I) Q(OII) y(I) x(I)] AND FORALL x(I) FORALL y(I) [P(OII) x(I) y(I) IMPLIES ~Q(OII) x(I) y(I)] IMPLIES EXISTS u(I).~S(OI) u(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X2115
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, November 18, 1998 at 16:40:40."
+:description "FORALL x(I) [EXISTS y(I) P(OII) x(I) y(I) IMPLIES FORALL z(I) P(OII) z(I) z(I)] AND FORALL u(I) EXISTS v(I) [P(OII) u(I) v(I) OR M(OI) u(I) AND Q(OI).f(III) u(I) v(I)] AND FORALL w(I) [Q(OI) w(I) IMPLIES ~M(OI).g(II) w(I)] IMPLIES FORALL u(I) EXISTS v(I).P(OII) [g(II) u(I)] v(I) AND P(OII) u(I) u(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X2116
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:18."
+:description "FORALL x(I) EXISTS y(I) [P(OI) x(I) IMPLIES R(OII) x(I) [g(II).h(II) y(I)] AND P(OI) y(I)] AND FORALL w(I) [P(OI) w(I) IMPLIES P(OI) [g(II) w(I)] AND P(OI).h(II) w(I)] IMPLIES FORALL x(I).P(OI) x(I) IMPLIES EXISTS y(I).R(OII) x(I) y(I) AND P(OI) y(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X2125
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:19."
+:description "EXISTS x(I) FORALL y(I) [P(OI) x(I) EQUIV P(OI) y(I)] EQUIV.EXISTS x(I) P(OI) x(I) EQUIV FORALL y(I) P(OI) y(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X2128
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, July 21, 1998 at 11:26:11."
+:description "FORALL x(I) [P(OI) x(I) EQUIV FORALL y(I) P(OI) y(I)] EQUIV.EXISTS x(I) P(OI) x(I) EQUIV FORALL y(I) P(OI) y(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X2129
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, July 21, 1998 at 12:21:42."
+:description "EXISTS x(I) FORALL y(I) [P(OI) x(I) EQUIV P(OI) y(I)] EQUIV [EXISTS x(I) Q(OI) x(I) EQUIV FORALL y(I) P(OI) y(I)] EQUIV.EXISTS x(I) FORALL y(I) [Q(OI) x(I) EQUIV Q(OI) y(I)] EQUIV.EXISTS x(I) P(OI) x(I) EQUIV FORALL y(I) Q(OI) y(I)"
+:needed-objects   NIL
+:mhelp "Challenge Problem 1 for CADE-5"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X2133
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, July 21, 1998 at 13:47:01."
+:description "FORALL x(I) [EXISTS y(I) Q(OII) x(I) y(I) IMPLIES P(OI) x(I)] AND FORALL v(I) EXISTS u(I) Q(OII) u(I) v(I) AND FORALL w(I) FORALL z(I) [Q(OII) w(I) z(I) IMPLIES Q(OII) z(I) w(I) OR Q(OII) z(I) z(I)] IMPLIES FORALL z(I) P(OI) z(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X2134
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, July 21, 1998 at 13:49:36."
+:description "FORALL z(I) EXISTS x(I) [FORALL y(I) P(OII) x(I) y(I) OR Q(OII) x(I) z(I)] IMPLIES FORALL y(I) EXISTS x(I).P(OII) x(I) y(I) OR Q(OII) x(I) y(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X2150
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, June  3, 1997 at 17:25:05."
+:description "EXISTS W(I).FORALL X(I) EXISTS Y(I) P(OIII) W(I) X(I) Y(I) IMPLIES EXISTS Z(I) P(OIII) Z(I) Z(I) W(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X3411
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, June  3, 1997 at 17:25:19."
+:description "FORALL y(I) [FORALL x(I) P(OII) x(I) y(I) IMPLIES FORALL u(I) Q(OII) u(I) y(I)] IMPLIES EXISTS z(I).EXISTS v(I) P(OII) v(I) z(I) IMPLIES EXISTS w(I).P(OII) z(I) w(I) OR Q(OII) w(I) z(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X5200
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:21."
+:description "x(OA) UNION(OA(OA)(OA)) y(OA) =(O(OA)(OA)) SETUNION(OA(O(OA))).LAMBDA v(OA).v(OA) =(O(OA)(OA)) x(OA) OR v(OA) =(O(OA)(OA)) y(OA)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X5201
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Monday, January 26, 1998 at 10:37:54."
+:description "x(OA) INTERSECT(OA(OA)(OA)) y(OA) =(O(OA)(OA)) SETINTERSECT(OA(O(OA))).LAMBDA v(OA).v(OA) =(O(OA)(OA)) x(OA) OR v(OA) =(O(OA)(OA)) y(OA)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X5201A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "U(OA) INTERSECT(OA(OA)(OA)) W(OA) SUBSET(O(OA)(OA)) SETINTERSECT(OA(O(OA))).LAMBDA v(OA).v(OA) =(O(OA)(OA)) U(OA) OR v(OA) =(O(OA)(OA)) W(OA)"
+:needed-objects   NIL
+:mhelp "Half of X5201"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X5202
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:22."
+:description "%(OA(OB)(AB)) f(AB) [x(OB) UNION(OB(OB)(OB)) y(OB)] =(O(OA)(OA)) %(OA(OB)(AB)) f(AB) x(OB) UNION(OA(OA)(OA)) %(OA(OB)(AB)) f(AB) y(OB)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X5203
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:24."
+:description "%(OA(OB)(AB)) f(AB) [x(OB) INTERSECT(OB(OB)(OB)) y(OB)] SUBSET(O(OA)(OA)) %(OA(OB)(AB)) f(AB) x(OB) INTERSECT(OA(OA)(OA)) %(OA(OB)(AB)) f(AB) y(OB)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X5205
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:26."
+:description "%(OA(OB)(AB)) f(AB) [SETINTERSECT(OB(O(OB))) w(O(OB))] SUBSET(O(OA)(OA)) SETINTERSECT(OA(O(OA))).%(O(OA)(O(OB))(OA(OB))) [%(OA(OB)(AB)) f(AB)] w(O(OB))"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X5209
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Friday, February  5, 1999 at  9:08:21."
+:description "POWERSET(O(OA)(OA)) [D(OA) INTERSECT(OA(OA)(OA)) E(OA)] =(O(O(OA))(O(OA))) POWERSET(O(OA)(OA)) D(OA) INTERSECT(O(OA)(O(OA))(O(OA))) POWERSET(O(OA)(OA)) E(OA)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X5211
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:28."
+:description "y(OA) =(O(OA)(OA)) SETUNION(OA(O(OA))).LAMBDA z(OA) EXISTS x(A).y(OA) x(A) AND z(OA) =(O(OA)(OA)) [=(OAA) x(A)]"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X5212
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:29."
+:description "LAMBDA z(A) EXISTS x(B) [g(OB) x(B) AND z(A) =(OAA) f(AB) x(B)] =(O(OA)(OA)) %(OA(OB)(AB)) f(AB) g(OB)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X5304
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:31."
+:description "~EXISTS g(OAA) FORALL f(OA) EXISTS j(A).g(OAA) j(A) =(O(OA)(OA)) f(OA)"
+:needed-objects   NIL
+:mhelp "Simple Cantor's Theorem for Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X5304A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, February 28, 2002 at 14:12:12."
+:description "~EXISTS g(OII) FORALL f(OI) EXISTS j(I).g(OII) j(I) =(O(OI)(OI)) f(OI)"
+:needed-objects   NIL
+:mhelp "The Surjective Cantor Theorem"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X5304CAPS
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "~EXISTS G(OAA) FORALL F(OA) EXISTS J(A).G(OAA) J(A) =(O(OA)(OA)) F(OA)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X5305
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, April  3, 1997 at 17:17:27."
+:description "FORALL s(OA).~EXISTS g(OAA) FORALL f(OA).f(OA) SUBSET(O(OA)(OA)) s(OA) IMPLIES EXISTS j(A).s(OA) j(A) AND g(OAA) j(A) =(O(OA)(OA)) f(OA)"
+:needed-objects   NIL
+:mhelp "Cantor's general theorem for sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X5305A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:32."
+:description "FORALL s(OA).~EXISTS g(OAA) FORALL f(OA).f(OA) IN(O(O(OA))(OA)) POWERSET(O(OA)(OA)) s(OA) IMPLIES EXISTS j(A).j(A) IN(O(OA)A) s(OA) AND g(OAA) j(A) =(O(OA)(OA)) f(OA)"
+:needed-objects   (IN)
+:mhelp "Restatement of Cantor's Theorem x5305"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X5305B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:34."
+:description "FORALL s(OA).~EXISTS g(OAA).POWERSET(O(OA)(OA)) s(OA) SUBSET(O(O(OA))(O(OA))) %(O(OA)(OA)(OAA)) g(OAA) s(OA)"
+:needed-objects   NIL
+:mhelp "Cantor's Theorem for Sets stated in terms of powerset and image;
+for any set s, the image of s cannot include the power set of s"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X5308
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:35."
+:description "EXISTS j(B(OB)) FORALL p(OB) [EXISTS x(B) p(OB) x(B) IMPLIES p(OB).j(B(OB)) p(OB)] IMPLIES.FORALL x(A) EXISTS y(B) P(OBA) x(A) y(B) EQUIV EXISTS f(BA) FORALL x(A) P(OBA) x(A).f(BA) x(A)"
+:needed-objects   NIL
+:mhelp "Shows a consequence of the Axiom of Choice"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X5309
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "~EXISTS h(I(OI)) FORALL p(OI) FORALL q(OI).h(I(OI)) p(OI) =(OII) h(I(OI)) q(OI) IMPLIES p(OI) =(O(OI)(OI)) q(OI)"
+:needed-objects   NIL
+:mhelp "Another form of Cantor's Theorem"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X5309A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "~EXISTS h(I(OI)) INJECTIVE(O(I(OI))) h(I(OI))"
+:needed-objects   (INJECTIVE)
+:mhelp "Another form of X5309, which is a form of Cantor's Theorem."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X5311
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "~[x(I) =(OII) y(I)] IMPLIES EXISTS f(II).f(II) x(I) =(OII) a(I) AND f(II) y(I) =(OII) b(I)"
+:needed-objects   NIL
+:mhelp "Nice little exercise which requires descriptions. Not provable owithout descriptions."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X6004
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, March 16, 1999 at 14:34:29."
+:description "EQP(O(OA)(OB)) [=(OBB) x(B)].=(OAA) y(A)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X6007
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:37."
+:description "LAMBDA N(S) FORALL P(OS) [P(OS) 0(S) AND FORALL X(S) [P(OS) X(S) IMPLIES P(OS).S(SS) X(S)] IMPLIES P(OS) N(S)] =(O(OS)(OS)) SETINTERSECT(OS(O(OS))).LAMBDA P(OS).P(OS) 0(S) AND FORALL X(S).P(OS) X(S) IMPLIES P(OS).S(SS) X(S)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X6101
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, March 18, 1999 at 15:19:57."
+:description "ONE =(OSS) SIGMA1(O(OI))"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X6101-EXT
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL f(II) FORALL g(II) [FORALL x(I) [f(II) x(I) =(OII) g(II) x(I)] IMPLIES f(II) =(O(II)(II)) g(II)] IMPLIES ONE =(OSS) SIGMA1(O(OI))"
+:needed-objects   NIL
+:mhelp "X6101 with extensionality made explicit"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X6104
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:38."
+:description "EXISTS i(O(AA)(AA)).FORALL g(AA) [i(O(AA)(AA)) g(AA) [LAMBDA x(A) x(A)] AND i(O(AA)(AA)) g(AA).LAMBDA x(A) g(AA).g(AA) x(A)] AND FORALL f(AA) FORALL y(A).i(O(AA)(AA)) [LAMBDA x(A) y(A)] f(AA) IMPLIES f(AA) y(A) =(OAA) y(A)"
+:needed-objects   NIL
+:mhelp "Properties of iterate of a function"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name Y2141
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, June  3, 1997 at 17:25:32."
+:description "FORALL x(I) EXISTS y(I) [P(OI) x(I) AND.Q(OI) y(I) OR Q(OI) x(I)] IMPLIES EXISTS z(I).P(OI) z(I) AND Q(OI) z(I)"
+:needed-objects   NIL
+:mhelp "Proposed additional exercise"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X6007A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, June 18, 1997 at 15:10:24."
+:description "LAMBDA N(S) FORALL P(OS) [P(OS) ZERO(S) AND FORALL X(S) [P(OS) X(S) IMPLIES P(OS).SUCC(SS) X(S)] IMPLIES P(OS) N(S)] =(O(OS)(OS)) SETINTERSECT(OS(O(OS))).LAMBDA P(OS).P(OS) ZERO(S) AND FORALL X(S).P(OS) X(S) IMPLIES P(OS).SUCC(SS) X(S)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X6102-A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL p(OS).p(OS) ZERO(S) AND FORALL x(S) [NAT x(S) IMPLIES.p(OS) x(S) IMPLIES p(OS).SUCC(SS) x(S)] IMPLIES FORALL m(S).FORALL p(OS) [p(OS) ZERO(S) AND FORALL x(S) [p(OS) x(S) IMPLIES p(OS).SUCC(SS) x(S)] IMPLIES p(OS) m(S)] IMPLIES p(OS) m(S)"
+:needed-objects   NIL
+:mhelp "needs no definitions rewritten, and one sub of
+lambda x . NAT x and p x"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X6102-B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL p(OS).p(OS) ZERO(S) AND FORALL x(S) [NAT x(S) IMPLIES.p(OS) x(S) IMPLIES p(OS).SUCC(SS) x(S)] IMPLIES FORALL m(S).NAT ZERO(S) AND p(OS) ZERO(S) AND FORALL x(S) [NAT x(S) AND p(OS) x(S) IMPLIES NAT [SUCC(SS) x(S)] AND p(OS).SUCC(SS) x(S)] IMPLIES NAT m(S) AND p(OS) m(S) IMPLIES p(OS) m(S)"
+:needed-objects   NIL
+:mhelp "x6102-a with the primsub already in place"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X6102-C
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL p(OS).p(OS) ZERO(S) AND FORALL x(S) [NAT x(S) IMPLIES.p(OS) x(S) IMPLIES p(OS).SUCC(SS) x(S)] IMPLIES FORALL m(S).FORALL p(OS) [p(OS) ZERO(S) AND FORALL x(S) [p(OS) x(S) IMPLIES p(OS).SUCC(SS) x(S)] IMPLIES p(OS) ZERO(S)] AND p(OS) ZERO(S) AND FORALL x(S) [FORALL p(OS) [p(OS) ZERO(S) AND FORALL x(S) [p(OS) x(S) IMPLIES p(OS).SUCC(SS) x(S)] IMPLIES p(OS) x(S)] AND p(OS) x(S) IMPLIES FORALL p(OS) [p(OS) ZERO(S) AND FORALL x(S) [p(OS) x(S) IMPLIES p(OS).SUCC(SS) x(S)] IMPLIES p(OS).SUCC(SS) x(S)] AND p(OS).SUCC(SS) x(S)] IMPLIES NAT m(S) AND p(OS) m(S) IMPLIES p(OS) m(S)"
+:needed-objects   NIL
+:mhelp "rewrite-defns NONE"
+:other-attributes NIL
+:other-remarks "
+")
+
+

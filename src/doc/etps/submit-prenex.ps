@@ -1,0 +1,264 @@
+%!PS-Adobe-2.0
+%%Title: submit-prenex.mss
+%%DocumentFonts: (atend)
+%%Creator: Peter B Andrews,Dept of Mathematical Sciences,,, and Scribe 8.2
+%%CreationDate: 25 October 1999 10:11
+%%Pages: (atend)
+%%EndComments
+% PostScript Prelude for Scribe.
+/BS {/SV save def 0.0 792.0 translate .01 -.01 scale} bind def
+/ES {showpage SV restore} bind def
+/SC {setrgbcolor} bind def
+/FMTX matrix def
+/RDF {WFT SLT 0.0 eq 
+  {SSZ 0.0 0.0 SSZ neg 0.0 0.0 FMTX astore}
+  {SSZ 0.0 SLT neg sin SLT cos div SSZ mul SSZ neg 0.0 0.0 FMTX astore}
+  ifelse makefont setfont} bind def
+/SLT 0.0 def
+/SI { /SLT exch cvr def RDF} bind def
+/WFT /Courier findfont def
+/SF { /WFT exch findfont def RDF} bind def
+/SSZ 1000.0 def
+/SS { /SSZ exch 100.0 mul def RDF} bind def
+/AF { /WFT exch findfont def /SSZ exch 100.0 mul def RDF} bind def
+/MT /moveto load def
+/XM {currentpoint exch pop moveto} bind def
+/UL {gsave newpath moveto dup 2.0 div 0.0 exch rmoveto
+   setlinewidth 0.0 rlineto stroke grestore} bind def
+/LH {gsave newpath moveto setlinewidth
+   0.0 rlineto
+   gsave stroke grestore} bind def
+/LV {gsave newpath moveto setlinewidth
+   0.0 exch rlineto
+   gsave stroke grestore} bind def
+/BX {gsave newpath moveto setlinewidth
+   exch
+   dup 0.0 rlineto
+   exch 0.0 exch neg rlineto
+   neg 0.0 rlineto
+   closepath
+   gsave stroke grestore} bind def
+/BX1 {grestore} bind def
+/BX2 {setlinewidth 1 setgray stroke grestore} bind def
+/PB {/PV save def newpath translate
+    100.0 -100.0 scale pop /showpage {} def} bind def
+/PE {PV restore} bind def
+/GB {/PV save def newpath translate rotate
+    div dup scale 100.0 -100.0 scale
+    /showpage {} def
+    /letter {} def
+    /lettersmall {} def
+    /note {} def
+    /setpagedevice {pop} def
+    } bind def
+/GE {PV restore} bind def
+/FB {dict dup /FontMapDict exch def begin} bind def
+/FM {cvn exch cvn exch def} bind def
+/FE {end /original-findfont /findfont load def  /findfont
+   {dup FontMapDict exch known{FontMapDict exch get} if
+   original-findfont} def} bind def
+/BC {gsave moveto dup 0 exch rlineto exch 0 rlineto neg 0 exch rlineto closepath clip} bind def
+/EC /grestore load def
+/SH /show load def
+/MX {exch show 0.0 rmoveto} bind def
+/W {0 32 4 -1 roll widthshow} bind def
+/WX {0 32 5 -1 roll widthshow 0.0 rmoveto} bind def
+/RC {100.0 -100.0 scale
+612.0 0.0 translate
+-90.0 rotate
+.01 -.01 scale} bind def
+/URC {100.0 -100.0 scale
+90.0 rotate
+-612.0 0.0 translate
+.01 -.01 scale} bind def
+/RCC {100.0 -100.0 scale
+0.0 -792.0 translate 90.0 rotate
+.01 -.01 scale} bind def
+/URCC {100.0 -100.0 scale
+-90.0 rotate 0.0 792.0 translate
+.01 -.01 scale} bind def
+%%EndProlog
+%%Page: 1 1
+
+61200 79200 BS
+0 SI
+13 /Times-Bold AF
+18647 8071 MT
+(Submitting Prenex Normal Form Solutions)SH
+10 /Times-Roman AF
+26087 10444 MT
+(for 21-300 and 21-600)SH
+7200 13818 MT
+(You must submit your solutions)
+39 W( to prenex normal form exercises \050from section 22\051 in two forms, machine-readable)38 W
+7200 15285 MT
+(and human-readable. You need not show how you obtained your answers.)SH
+12 /Times-Bold AF
+7200 17134 MT
+(Creating the prenex normal form in ETPS)SH
+10 /Times-Roman AF
+7200 18601 MT
+(All of the exercises from x2200 to x2214 have been added to ETPS)
+1 W( as saved wffs. This means that, for example, you)2 W
+7200 20068 MT
+(can type)SH
+/Courier SF
+10810 XM
+(ED X2201)SH
+/Times-Roman SF
+15860 XM
+(to examine and manipulate X2201 in the editor.)SH
+7200 23442 MT
+(You may wish to issue the command)11 W
+/Courier SF
+22304 XM
+(setflag style)11 W
+/Times-Roman SF
+(, and then, at)
+11 W( the subsequent prompt,)10 W
+/Courier SF
+45131 XM
+(generic)SH
+/Times-Roman SF
+49591 XM
+(so that you)10 W
+7200 24909 MT
+(can see examples of how to type these)
+88 W( wffs into ETPS.  You may find it convenient to write your prenex normal)89 W
+7200 26376 MT
+(forms in a text file and then copy them into the ETPS editor.)SH
+7200 29750 MT
+(However, a better procedure is to use the commands in the ETPS editor)
+70 W( to transform the wff given in the exercise)69 W
+7200 31217 MT
+(into the desired prenex normal form. Editor commands which you)
+24 W( may find useful include CW, AB, DB, MBED-E,)25 W
+7200 32684 MT
+(and MBED-F.  These are discussed in the ETPS manual, and you)
+93 W( can also find out about them by using the help)92 W
+7200 34151 MT
+(command in ETPS. For example, type)53 W
+/Courier SF
+23073 XM
+(HELP MBED-F)53 W
+/Times-Roman SF
+(. Note)
+356 W( that if you use DB)
+53 W( to delete a quantifier, the current)54 W
+7200 35618 MT
+(wff in the editor \050edwff\051 will become the former scope of that quantifier, and you may wish to use the moving)139 W
+7200 37085 MT
+(command ^ to go back to the top \050front\051 of the wff.)SH
+12 /Times-Bold AF
+7200 38934 MT
+(Machine-readable submissions)SH
+10 /Times-Roman AF
+7200 40401 MT
+(Suppose you are creating a prenex normal form for X2201.)
+99 W( From the editor, you can use the SAVE command to)100 W
+7200 41868 MT
+(store your answer in a file. \050Note: this command will save the "current" edwff,)
+150 W( not the entire wff of which the)149 W
+7200 43335 MT
+(current edwff may be a subformula.\051  You will be prompted for a name for this wff; please use the format)228 W
+7200 44802 MT
+(EXERCISE-NAME for the name. For example, if your name is Jim Smith,)
+25 W( you should give the prenex normal form)24 W
+7200 46269 MT
+(of X2201 the name X2201-SMITH.)SH
+7200 49643 MT
+(This will create a)
+19 W( file savedwffs.lisp in the directory from which you are running ETPS. In this file, you will find an)20 W
+7200 51110 MT
+(expression of the form)SH
+/Courier SF
+7200 52765 MT
+(\050DEFSAVEDWFF X2201-SMITH)SH
+8400 53796 MT
+(\050REPRESENTS "some well-formed formula"\051\051)SH
+/Times-Roman SF
+7200 57170 MT
+(If ETPS asks)
+83 W( you to choose another name for saving \050as it will, if you already have a wff called X2201-SMITH\051,)82 W
+7200 58637 MT
+(save it under a different name and then edit the savedwffs.lisp file. There will be some expression of the form)SH
+/Courier SF
+7200 60292 MT
+(\050DEFSAVEDWFF THE-NAME-YOU-CHOSE)SH
+8400 61323 MT
+(\050REPRESENTS "some well-formed formula"\051\051)SH
+/Times-Roman SF
+7200 63040 MT
+(Just change THE-NAME-YOU-CHOSE to X2201-SMITH before you submit it.)SH
+7200 66414 MT
+(If you cannot finish all the prenex normal form exercises in the)
+30 W( same session with ETPS, you can load the wffs that)31 W
+7200 67881 MT
+(you previously saved in savedwffs.lisp into ETPS by using the)
+147 W( command)146 W
+/Courier SF
+38314 XM
+(QLOAD "savedwffs.lisp")146 W
+/Times-Roman SF
+52056 XM
+(from)SH
+7200 69348 MT
+(ETPS.)SH
+ES
+%%Page: 2 2
+
+61200 79200 BS
+0 SI
+10 /Times-Roman AF
+30350 4286 MT
+(2)SH
+30350 75600 MT
+(2)SH
+7200 7886 MT
+(Please email the file containing the answers)
+72 W( to all the assigned prenex normal form exercises, and nothing else, as)73 W
+7200 9353 MT
+(plain text \050not an)
+337 W( attachment\051, to okv@andrew.cmu.edu, with Subject "prenex-21-300" or "prenex-21-600",)336 W
+7200 10820 MT
+(depending on which class you are registered for. It is important that you use exactly this subject heading)
+36 W( so that the)37 W
+7200 12287 MT
+(procedure for collecting these homework submissions will)
+261 W( not miss yours.  Be careful to include the)260 W
+/Times-Italic SF
+51667 XM
+(entire)SH
+/Times-Roman SF
+7200 13754 MT
+(expression for each exercise answer.)SH
+12 /Times-Bold AF
+7200 15603 MT
+(Human-readable submissions)SH
+10 /Times-Roman AF
+7200 17070 MT
+(Please also hand in a paper showing what your answers look like, in traditional logical notation. This can)
+199 W( be)200 W
+7200 18537 MT
+(handwritten, but as long as you already have these in ETPS, you may find it convenient to proceed)
+24 W( as follows:  give)23 W
+7200 20004 MT
+(your answers temporary names by using the CW command)
+10 W( before you leave the editor, create a proof of an arbitrary)11 W
+7200 21471 MT
+(wff like p with the command)33 W
+/Courier SF
+19230 XM
+(PROVE "p")33 W
+/Times-Roman SF
+(, insert your wffs in this proof by using the LEMMA command,)
+33 W( indicate)32 W
+7200 22938 MT
+(which wff corresponds to which exercise by using the LINE-COMMENT command or by numbering the lines)
+SH( of the)1 W
+7200 24405 MT
+(proof appropriately, and use TEXPROOF or SCRIBEPROOF to get a nice printout.)SH
+ES
+%%Trailer
+%%Pages: 2
+%%DocumentFonts: Times-Roman Times-Bold Courier Times-Italic

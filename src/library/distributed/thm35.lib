@@ -1,0 +1,14 @@
+(:name THM350
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:00."
+:description "EVEN(OI) 0(I) AND FORALL n(I) [EVEN(OI) n(I) IMPLIES EVEN(OI).S(II).S(II) n(I)] AND [ODD(OI) [S(II) 0(I)] AND FORALL n(I).ODD(OI) n(I) IMPLIES ODD(OI).S(II).S(II) n(I)] AND [NUMBER(OI) 0(I) AND NUMBER(OI) [S(II) 0(I)] AND FORALL x(I) [NUMBER(OI) x(I) AND NUMBER(OI) [S(II) x(I)] IMPLIES NUMBER(OI) [S(II) x(I)] AND NUMBER(OI).S(II).S(II) x(I)] IMPLIES FORALL x(I).NUMBER(OI) x(I) AND NUMBER(OI).S(II) x(I)] AND FORALL n(I) [NUMBER(OI) n(I) EQUIV EVEN(OI) n(I) OR ODD(OI) n(I)] IMPLIES FORALL n(I) NUMBER(OI) n(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

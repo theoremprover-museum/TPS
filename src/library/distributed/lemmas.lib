@@ -1,0 +1,29 @@
+(:name DOMLEMMA1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FINITESET(O(OA)).UNITSET(OAA) t(A)"
+:needed-objects   (FINITESET)
+:mhelp "Another lemma about finite sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name DOMLEMMA2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FINITESET(O(OA)) E(OA) AND FINITESET(O(OA)) F(OA) IMPLIES FINITESET(O(OA)).E(OA) UNION(OA(OA)(OA)) F(OA)"
+:needed-objects   (FINITESET)
+:mhelp "A lemma we need to prove that the intersection of two opens is open:
+The union of two finite sets is finite."
+:other-attributes NIL
+:other-remarks "
+")
+
+

@@ -1,0 +1,21 @@
+@Comment{OUTLINE of etps-andrew.mss by Scribe 8.2 on 2 November 2002 at 18:17}
+0. Documentation                                          1 etps-andrew.mss, line 18
+1. Starting @HETPS                                        1 etps-andrew.mss, line 27
+2. Using @HETPS under X11                                 1 etps-andrew.mss, line 73
+  2.1. Setting the Fontpath                               1 etps-andrew.mss, line 80
+  2.2. XETPS and XETPS-BIG                                2 etps-andrew.mss, line 94
+  2.3. Proofwindows                                       2 etps-andrew.mss, line 127
+3. Running @HETPS Remotely                                2 etps-andrew.mss, line 145
+  3.1. Using Muptime                                      3 etps-andrew.mss, line 156
+  3.2. Xhost                                              3 etps-andrew.mss, line 174
+  3.3. An Alternative to etps.cshrc                       3 etps-andrew.mss, line 183
+  3.4. Running XETPS Remotely with the ETPS Fonts         3 etps-andrew.mss, line 198
+    3.4.1. One Student's Experience Running XETPS on a    3 etps-andrew.mss, line 214
+    3.4.2. Another Student's Experience Running XETPS o   4 etps-andrew.mss, line 232
+    3.4.3. Another Student's Experience Running XETPS o   4 etps-andrew.mss, line 250
+4. Aborting a Command                                     4 etps-andrew.mss, line 257
+5. Stopping @HETPS                                        4 etps-andrew.mss, line 264
+6. Filenames                                              4 etps-andrew.mss, line 281
+7. Tex, Scribe and Printing                               4 etps-andrew.mss, line 295
+8. Possible Problems                                      5 etps-andrew.mss, line 336
+ Table of Contents                                        1 ScribejAYad9, line 3

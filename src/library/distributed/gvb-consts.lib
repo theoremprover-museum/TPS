@@ -1,0 +1,560 @@
+(:name GVB-APP2
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "Successor."
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE APP2) (TYPE "IIII"))
+:other-remarks "
+")
+
+
+(:name GVB-APPLY
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "GVB function application."
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE APPLY) (TYPE "III"))
+:other-remarks "
+")
+
+
+(:name GVB-CLOSED
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "Successor."
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE CLOSED) (TYPE "OII"))
+:other-remarks "
+")
+
+
+(:name GVB-COMPLEMENT
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "GVB set complement."
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE ~) (TYPE "II"))
+:other-remarks "
+")
+
+
+(:name GVB-COMPOSE
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "GVB function composition."
+:other-attributes ((FO-SINGLE-SYMBOL T) (INFIX 10) (PRINTNOTYPE T) (FACE COMPOSE) (TYPE "III"))
+:other-remarks "
+")
+
+
+(:name GVB-CONVERSE
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "GVB converse relation"
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE CONVERSE) (TYPE "II"))
+:other-remarks "
+")
+
+
+(:name GVB-CROSS
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "GVB cross product"
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (INFIX 10) (FACE CROSS) (TYPE "III"))
+:other-remarks "
+")
+
+
+(:name GVB-DISJOINT
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "Successor."
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE DISJOINT) (TYPE "OII"))
+:other-remarks "
+")
+
+
+(:name GVB-DOMAIN
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "GVB domain function"
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE DOM) (TYPE "II"))
+:other-remarks "
+")
+
+
+(:name GVB-ESTIN
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "Element relation"
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPE "I"))
+:other-remarks "
+")
+
+
+(:name GVB-FIRST
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "First predicate, for ordered pairs"
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE FST) (TYPE "II"))
+:other-remarks "
+")
+
+
+(:name GVB-FLIP-RANGE
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "GVB flip-range relation"
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE FLIP-RANGE) (TYPE "II"))
+:other-remarks "
+")
+
+
+(:name GVB-FUNCTION
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "Successor."
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE FUNCTION) (TYPE "OI"))
+:other-remarks "
+")
+
+
+(:name GVB-HOMOM
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "Successor."
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE HOMOM) (TYPE "OIIIII"))
+:other-remarks "
+")
+
+
+(:name GVB-IDENT
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "GVB identity reln."
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE ID) (TYPE "I"))
+:other-remarks "
+")
+
+
+(:name GVB-IMAGE
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "GVB image relation"
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE IM) (TYPE "III"))
+:other-remarks "
+")
+
+
+(:name GVB-IN
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "GVB set membership"
+:other-attributes ((FACE EPSILON) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (INFIX 10) (TYPE "OII"))
+:other-remarks "
+")
+
+
+(:name GVB-INTERSECT
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "GVB set intersection."
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE CAP) (INFIX 10) (TYPE "III"))
+:other-remarks "
+")
+
+
+(:name GVB-ITERATE
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "Successor."
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE ITERATE) (TYPE "OII"))
+:other-remarks "
+")
+
+
+(:name GVB-M
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "Predicate for \"little\" sets."
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE M) (TYPE "OI"))
+:other-remarks "
+")
+
+
+(:name GVB-MAPS
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "Successor."
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE MAPS) (TYPE "OIII"))
+:other-remarks "
+")
+
+
+(:name GVB-NOP
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "GVB non-ordered pair."
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE NOP) (TYPE "III"))
+:other-remarks "
+")
+
+
+(:name GVB-ONE-ONE
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "Successor."
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE 1-1) (TYPE "OI"))
+:other-remarks "
+")
+
+
+(:name GVB-OP
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "Ordered pair set"
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE OP) (TYPE "III"))
+:other-remarks "
+")
+
+
+(:name GVB-OPP
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "Ordered pair predicate"
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE OPP) (TYPE "OI"))
+:other-remarks "
+")
+
+
+(:name GVB-POWERSET
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "GVB powerset relation"
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE POWERSET) (TYPE "II"))
+:other-remarks "
+")
+
+
+(:name GVB-PROP-SUBSET
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "Successor."
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE SUBSETEQ) (TYPE "OII"))
+:other-remarks "
+")
+
+
+(:name GVB-RANGE
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "GVB range function"
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE RAN) (TYPE "II"))
+:other-remarks "
+")
+
+
+(:name GVB-RELATION
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "Successor."
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE RELATION) (TYPE "OI"))
+:other-remarks "
+")
+
+
+(:name GVB-RESTRICT
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "Successor."
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE "|") (TYPE "III"))
+:other-remarks "
+")
+
+
+(:name GVB-ROT-RIGHT
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "GVB rotate-right relation"
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE ROTATE-RIGHT) (TYPE "II"))
+:other-remarks "
+")
+
+
+(:name GVB-SECOND
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "Second predicate, for ordered pairs"
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE SND) (TYPE "II"))
+:other-remarks "
+")
+
+
+(:name GVB-SIGMA
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "GVB union of elements"
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE SIGMA) (TYPE "II"))
+:other-remarks "
+")
+
+
+(:name GVB-SING
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "Singleton set"
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE SINGLETON) (TYPE "II"))
+:other-remarks "
+")
+
+
+(:name GVB-SING-VAL
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "Successor."
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE SINGLE-VALUE) (TYPE "OI"))
+:other-remarks "
+")
+
+
+(:name GVB-SUBSET
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "Successor."
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE SUBSET) (TYPE "OII"))
+:other-remarks "
+")
+
+
+(:name GVB-SUCC
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "Successor."
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE S) (TYPE "II"))
+:other-remarks "
+")
+
+
+(:name GVB-UNION
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "Union of sets"
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE UNION) (TYPE "III"))
+:other-remarks "
+")
+
+
+(:name GVB-V
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "GVB universal set"
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE V) (TYPE "I"))
+:other-remarks "
+")
+
+
+(:name GVB-ZERO
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "GVB empty set"
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (FACE "0") (TYPE "I"))
+:other-remarks "
+")
+
+

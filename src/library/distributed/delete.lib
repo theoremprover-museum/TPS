@@ -1,0 +1,37 @@
+(:name TRIV0TESTMODE
+:type MODE1
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description (
+   (DEFAULT-MS MS90-3)
+   (MAX-MATES 3)
+   (MAX-PRIM-DEPTH 1)
+   (MAX-PRIM-LITS 4)
+   (MAX-SEARCH-DEPTH 18)
+   (MAX-SEARCH-LIMIT NIL)
+   (MAX-SUBSTS-QUICK NIL)
+   (MAX-SUBSTS-VAR NIL)
+   (MAX-UTREE-DEPTH 10)
+   (MIN-PRIM-DEPTH 1)
+   (MIN-PRIM-LITS 2)
+   (NUM-OF-DUPS 1)
+   (ORDER-COMPONENTS T)
+   (PR97C-MAX-ABBREVS 1)
+   (PR97C-PRENEX T)
+   (PRIM-BDTYPES ("I"))
+   (PRIM-BDTYPES-AUTO REPLACE)
+   (PRIMSUB-METHOD PR93)
+   (REWRITE-DEFNS (LAZY1))
+   (REWRITE-EQUALITIES ALL)
+   (REWRITE-EQUIVS 1)
+   (SEARCH-TIME-LIMIT 60)
+   (TOTAL-NUM-OF-DUPS NIL)) 
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

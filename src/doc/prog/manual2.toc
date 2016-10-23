@@ -1,0 +1,7 @@
+\contentsline {chapter}{\tocchapter {Chapter}{}{Preface}}{v}
+\contentsline {chapter}{\tocchapter {Chapter}{1}{Set Variables}}{1}
+\contentsline {section}{\tocsection {}{1}{Primitive Substitutions}}{1}
+\contentsline {section}{\tocsection {}{2}{Using Unification to Compute Setsubs}}{1}
+\contentsline {section}{\tocsection {}{3}{Set Constraints}}{2}
+\contentsline {subsection}{\tocsubsection {}{3.1}{Knaster-Tarski Fixed Point Theorem}}{5}
+\contentsline {subsection}{\tocsubsection {}{3.2}{Tracing Through An Example}}{8}

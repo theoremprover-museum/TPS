@@ -1,0 +1,126 @@
+Things I wish I'd known about LaTeX2e
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+There's lots of useful stuff at the TeX Users' Group:  www.tug.org
+
+
+This directory contains:
+
+The blackboard bold font and its style files (in fonts/bbold). Load it using \usepackage{bbold}; use it in
+  math mode with \mathbb{N}, \mathbb{Z}, or whatever.
+
+The named bibliography style, in two variants, one which forces article titles into lowercase and
+  one which doesn't. Load both of them with \usepackage{named}, and then make your choice of either
+  \bibliographystyle{named} or \bibliographystyle{named-upcase}.
+
+The file amsbook2.cls, which is a hacked version of amsbook that I used for my thesis. The only new
+  command is \boilerplate{foo}, for the title page, because I couldn't find any other way 
+  to get "Submitted in partial fulfillment..." on there.
+
+Documentation for the amsbook style: instr-l.dvi
+
+The brief xypic manual: xypic.dvi.
+
+The texdraw package, in the directory texdraw.
+
+The directory above this contains the TPS files:
+  tps.tex : defines all of the TeX characters used by TPS.
+  vpd.tex : defines everything you need (apart from what's in tps.tex) to print vpforms in TeX
+  tps.sty : a style file used from within TPS. Don't use it for your own documents.
+  logictex.bib : the main bibliography file for TPS papers.
+  logic.bib : an older subset of the above, for Scribe.
+  si.bib : Sunil's thesis bibliography; mostly but not entirely contained in logictex.bib.
+----------------------------------------------------------
+
+There are a number of environment variables that can make your life easier.
+If you set them properly, you can remove all of the path names from your tex files, which makes them
+portable between different computers. The suffix // means "all directories below this point"; //foo
+means "all directories called foo below this point".
+Of the following, the first is used by tex/latex, the second by bibtex, and the others by metafont:
+
+setenv TEXINPUTS .:/afs/cs/user/mbishop/tex/thesis/amslatex//:/usr/local/lib/texmf/tex/macros//:/afs/cs/project/tps/tps/doc/lib//:
+setenv BIBINPUTS .:/afs/cs/project/tps/tps/doc/lib/:
+setenv TEXFONTS .:/usr/local/lib/texmf/fonts//tfm:/afs/cs/user/mbishop/tex/thesis/amslatex/fonts//:
+setenv TEXPOOL .:/usr/local/lib/texmf/ini:/afs/cs/user/mbishop/tex/thesis/amslatex/fonts//:
+setenv MFINPUTS .:/usr/local/lib/texmf/mf//:/usr/local/lib/texmf/fonts//sc//:/afs/cs/user/mbishop/tex/thesis/amslatex/fonts//:
+setenv MFBASES .:/usr/local/lib/texmf/ini:/afs/cs/user/mbishop/tex/thesis/amslatex/fonts//:
+----------------------------------------------------------
+
+There are two drawing packages available: texdraw and xypic.
+
+Texdraw is a lot like the inbuilt picture-drawing routines. From my perspective,
+its major advantage is that you can specify the endpoints of a line rather 
+than having to give its gradient, start point and length.
+The package, and documentation, is in the tex-help/texdraw directory. Start it up with:
+\usepackage{texdraw}
+\input txdtools
+
+Xypic is *much* more flexible (of course, I only found this out after doing almost
+everything I needed with texdraw); it works more or less like LaTeX tables, but you
+get to put arrows between the cells. Curved arrows, broken arrows, and so on are easily done.
+The only minor problem is that, like a table, your picture will get automatically 
+resized so that everything fits properly; if you need things to stay fixed then use texdraw.
+There's a brief manual for the "matrix-like" parts of xypic in this directory (xypic.dvi),
+and more extensive documentation at http://www.tug.org/applications/Xy-pic/Xy-pic.html
+Start it up by using:
+\usepackage[all]{xy}
+
+----------------------------------------------------------
+
+I think that LaTeX2e can probably do bold small caps without help (Latex 2.09 can't),
+but you can also get them by doing this:
+\usepackage[T1]{fontenc}
+\newfont{\bsc}{ecxc1200}
+Then {\bsc foo} prints "foo" in bold small caps.
+----------------------------------------------------------
+
+To get an index, put \makeindex in the preamble of your file,
+and \printindex at the end. Within the text, \index{foo} gets you 
+an entry "foo" in the index, while \index{foo!bar} gets a subheading
+"bar" under that entry.
+The Unix command "makeindex" does the same thing for indexes that 
+"bibtex" does for bibliographies (i.e. turns output data into something LaTeX
+can use). I can't think why that isn't in the manual.
+
+Indexing can be made somewhat automatic. For example, I wrote algorithm names as \alg{Merge}, \alg{Reduce}
+throughout the text, so that I could change the style of all of them at once. This also meant I could index
+them all at once, by using:
+\newcommand{\alg}[1]{\emph{#1}\index{#1 algorithm}} 
+----------------------------------------------------------
+
+This is documented somewhere or other, but you can make all of your definitions, lemmas, theorems,
+and so on share a numbering sequence. Here's how:
+
+\newtheorem{definition}{Definition}[section] % a definition is labelled Definition and is numbered by section
+\newtheorem{lemma}[definition]{Lemma} % lemmas are labelled Lemma and use the same numbering as definitions.
+\newtheorem{example}[definition]{Example} % etc...
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{algorithm}[definition]{Algorithm}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{conjecture}[definition]{Conjecture}
+\numberwithin{figure}{chapter} % figures are 3.1, 3.2, 5.1,... rather than 1, 2, 3,...
+----------------------------------------------------------
+
+You can mimic the Scribe comment command with:
+\newcommand{\comment}[1]{} 
+----------------------------------------------------------
+
+The following can be put into a file called index.el for use in emacs:
+(defun index-region ()
+  (interactive)
+  (save-excursion
+    (save-restriction
+      (narrow-to-region (point) (mark))
+      (copy-region-as-kill (point) (mark))
+      (goto-char (point-max))
+      (insert "\\index{")
+      (yank)
+      (insert "}"))))
+
+Then if your .emacs file contains
+(global-set-key "\C-ci" 'index-region)
+(autoload 'index-region "index" "Indexing regions" t)
+
+you can highlight a phrase and press C-c i 
+to index it.
+----------------------------------------------------------

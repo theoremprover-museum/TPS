@@ -1,0 +1,139 @@
+;;; ******************************************************************* ;;;
+;;;         (c) Copyrighted 1988 by Carnegie Mellon University.         ;;;
+;;;                        All rights reserved.                         ;;;
+;;;         This code was written as part of the TPS project.           ;;;
+;;;   If you want to use this code or any part of TPS, please contact   ;;;
+;;;               Peter B. Andrews (Andrews@CS.CMU.EDU)                 ;;;
+;;; ******************************************************************* ;;;
+;;; Updated context 7/21/87 DAN
+(context rules-2-prop)
+
+(defirule disj-imp
+  (lines (d1 (h) () "~ A(O) or B")
+	 (d2 (h) () "A implies B" ("Disj-Imp" () (d1))))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Line with Disjunction")
+	     (d2 "Line with Implication")
+	     ("A(O)" "Antecedent of Implication")
+	     ("B(O)" "Succedent of Implication"))
+  (mhelp "Rule to replace a disjunction by an implication."))
+
+(defirule imp-disj
+  (lines (d1 (h) () "A implies B")
+	 (d2 (h) () "~ A(O) or B" ("Imp-Disj" () (d1))))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Line with Implication")
+	     (d2 "Line with Disjunction")
+	     ("A(O)" "Antecedent of Implication")
+	     ("B(O)" "Succedent of Implication"))
+  (mhelp "Rule to replace an implication by a disjunction."))
+
+(context rules-4-quant)
+
+(defirule abu
+  (lines (p1 (h) () "forall y. `(S y x A)")
+	 (p2 (h) () "forall x. A" ("AB" ("x") (p1))))
+  (restrictions (free-for "y" "x" "A(O)")
+		(is-variable "y") (is-variable "x")
+		(not-free-in "y" "A(O)"))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (itemshelp (p1 "Lower Universally Quantified Line")
+	     (p2 "Higher Universally Quantified Line")
+	     ("x(I)" "Universally Quantified Variable in Higher Line")
+	     ("A(O)" "Scope of Quantifier in Higher Line")
+	     ("y(I)" "Universally Quantified Variable in Lower Line")
+	     (S "Scope of Quantifer in Lower Line"))
+  (mhelp "Rule to change a top level occurrence of a universally quantified
+variable."))
+
+(defirule abe
+  (lines (d1 (h) ()  "exists x. A")
+	 (d2 (h) () "exists y `(S y x A)" ("AB" ("y") (d1))))
+  (restrictions (free-for "y" "x" "A(O)")
+		(is-variable "y") (is-variable "x")
+		(not-free-in "y" "A(O)"))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Lower Existentially Quantified Line")
+	     (d2 "Higher Existentially Quantified Line")
+	     ("x(I)" "Existentially Quantified Variable in Lower Line")
+	     ("A(O)" "Scope of Existential Quantifier in Lower Line")
+	     ("y(I)" "Existentially Quantified Variable in Higher Line")
+	     (S "Scope of Existential Quantifier in Higher Line"))
+  (mhelp "Rule to change a top level occurrence of an existentially quantified
+variable."))
+
+(defirule ab*
+  (lines (d1 (h) () "A")
+	 (d2 (h) () "B" ("AB" () (d1))))
+  (restrictions (wffeq-ab "A(O)" "B(O)"))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Lower Line")
+	     (d2 "Higher Line")
+	     ("A(O)" "Assertion of Lower Line")
+	     ("B(O)" "Assertion of Higher Line"))
+  (mhelp "Rule to alphabetically change embedded quantified variables."))
+
+(context rules-7-defn)
+
+(defirule edef
+  (lines (d1 (h) () "A")
+	 (d2 (h) () "`(INST-DEF A)" ("Defn" () (d1))))
+  (restrictions (top-level-defn "A(O)"))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Line with Top Level Definition")
+	     (d2 "Line with Instantiated Definition")
+	     ("A(O)" "Wff with Definition")
+	     (inst-def "Wff After Instantiating Definition"))
+  (mhelp "Rule to eliminate top level definition."))
+
+(defirule idef
+  (lines (p1 (h) () "`(INST-DEF A)")
+	 (p2 (h) () "A" ("Defn" () (p1))))
+  (restrictions (top-level-defn "A(O)"))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (itemshelp (p2 "Line with Top Level Definition")
+	     (p1 "Line with Instantiated Definition")
+	     ("A(O)" "Wff with Definition")
+	     (inst-def "Wff After Instantiating Definition"))
+  (mhelp "Rule to introduce a top level definition."))
+
+(context rules-5-subst)
+
+(defirule subst-term
+  (lines (d1 (h) () "A")
+	 (d2 (h) () "`(S t x A)" ("Subst" ("t" "x") (d1))))
+  (restrictions  (not-free-in-hyps "x")
+		 (is-variable "x")
+		 (free-for "t" "x" "A(O)"))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss d1)))
+  (itemshelp (d1 "Line Before Substitution")
+	     (d2 "Line After Substitution")
+	     ("A(O)" "Wff to Substitute into")
+	     ("x" "Variable to Substitute for")
+	     ("t" "Term to Substitute")
+	     (S "Wff after Substitution"))
+  (mhelp "Rule to substitute a term for an individual variable."))
+
+
+(defirule subst-wff
+  (lines (d1 (h) () "A")
+	 (d2 (h) () "`(S B(O) C(O) A)" ("Subst" ("B(O)" "C(O)") (d1))))
+  (restrictions (not-free-in-hyps "C(O)")
+		(free-for "B(O)" "C(O)" "A(O)"))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Line Before Substitution")
+	     (d2 "Line After Substitution")
+	     ("A(O)" "Wff to Substitute into")
+	     ("C(O)" "Propositional Variable to Substitute for")
+	     ("B(O)" "Wff to Substitute")
+	     (S "Wff after Substitution"))
+  (mhelp "Rule to substitute a wff for a propositional variable."))
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,86 @@
+\chapter{Top-Levels}\label{toplev}
+
+\section{Defining a Top Level}
+
+Top levels are a \TPS category, whose definition is given in section ~\ref{categories}.
+For an example, let's look at the editor top level:
+
+%\begin{lispcode}
+\begin{verbatim}
+(deftoplevel ed-top
+  (top-prompt-fn ed-top-prompt)
+  (command-interpreter ed-command-interpreter)
+  (print-* ed-print-*)
+  (top-level-category edop)
+  (top-level-ctree ed-command-ctree)
+  (top-cmd-decode opdecode)
+  (mhelp "The top level of the formula editor."))
+\end{verbatim}
+%\end{lispcode}
+
+This says that the top level {\tt ed-top} identifies itself by the function {\tt ed-top-prompt},
+which is one of the more complicated prompt functions in \TPS; its only purpose is to 
+print the {\tt <ed34>} messages at the start of each line in the editor, but the complications
+are necessary because the editor can be entered recursively.
+
+The next line of the toplevel definition gives the name of the command interpreter function.
+The {\tt print-*} function is a function that gets called after every line; in this case, it's the
+{\tt ed-print-*} function, which prints out the current wff if it has changed due to the last command.
+The top level category is {\tt edop}, which is defined as follows:
+
+%\begin{lispcode}
+\begin{verbatim}
+(defcategory edop
+  (define defedop)
+  (properties
+   (alias single)
+   (result-> singlefn)
+   (edwff-argname single)
+   (defaultfns multiplefns)
+   (move-fn singlefn)
+   (mhelp single))
+  (global-list global-edoplist)
+  (shadow t)
+  (mhelp-line "editor command")
+  (scribe-one-fn
+    (lambda (item)
+      (maint::scribe-doc-command 
+       (format nil "@IndexEdop(~A)" (symbol-name item))
+       (remove (get item 'edwff-argname) 
+	       (get (get item 'alias) 'argnames))
+       (or (cdr (assoc 'edop (get item 'mhelp)))
+	   (cdr (assoc 'wffop (get (get item 'alias) 'mhelp)))))))
+  (mhelp-fn edop-mhelp)))
+\end{verbatim}
+%\end{lispcode}
+
+This category defines the sort of command found in the editor top level (compare 
+the above definition with that of {\tt mexpr}, for example). So all the commands 
+that can only be seen from the editor top level are defined with the {\tt defedop} 
+command, as follows:
+
+%\begin{lispcode}
+\begin{verbatim}
+(defedop o
+  (alias invert-printedtflag)
+  (mhelp "Invert PRINTEDTFLAG, that is switch automatic recording of wffs
+in a file either on or off.  When switching on, the current wff will be
+written to the PRINTEDTFILE. Notice that the resulting file will be in 
+Scribe format; if you want something you can reload into TPS, then use
+the SAVE command."))
+\end{verbatim}
+%\end{lispcode}
+
+The {\tt top-command-ctree} is used for command completion, and the {\tt mhelp} 
+property is obvious. This leaves {\tt top-cmd-decode}, which is the name of the
+function that is called by the command interpreter to, for example, fill in the 
+default arguments for an edop.
+
+\section{Command Interpreters}
+
+Each top level has its own command interpreter. The actual command interpreters
+in much of the code are older versions; the code has since been simplified
+considerably. New command interpreters, which may in time replace the older versions,
+and which should certainly be used as the models for the command interpreters
+of any new top levels, are in the two files \indexfile{command-interpreters-core.lisp} 
+and \indexfile{command-interpreters-auto.lisp}.

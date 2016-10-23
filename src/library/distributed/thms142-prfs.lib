@@ -1,0 +1,29 @@
+(:name MEMBER
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(A) LAMBDA p(OA) p(OA) x(A)"
+:needed-objects   NIL
+:mhelp "membership relation"
+:other-attributes ((FACE EPSILON) (FO-SINGLE-SYMBOL EPSILON) (PRINTNOTYPE T) (INFIX 10) (TYPELIST ("A")) (TYPE "O(OA)A"))
+:other-remarks "
+")
+
+
+(:name THM142-1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (PROVEN WITH-EQUALITY WITH-DEFN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, February 19, 1997 at 14:24:04."
+:description "FORALL a(OAB) FORALL y(A) FORALL r(OB).r(OB) =(O(OB)(OB)) LAMBDA j(B) [y(A) MEMBER(O(OA)A) a(OAB) j(B)] IMPLIES EXISTS p(O(OB)(OB)) FORALL s(OB).y(A) MEMBER(O(OA)A) SETINTERSECT(OA(O(OA))) [%(O(OA)(OB)(OAB)) a(OAB) s(OB)] EQUIV p(O(OB)(OB)) r(OB) s(OB)"
+:needed-objects   (MEMBER)
+:mhelp "Lemma used in proving Principle of Inclusion & Exclusion;
+TPS must find that [p r s] should be [s is a subset of r]"
+:other-attributes NIL
+:other-remarks "
+")
+
+

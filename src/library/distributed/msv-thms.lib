@@ -1,0 +1,14 @@
+(:name THM112
+:type GWFF
+:context UNCLASSIFIED
+:keywords (PROVEN WITHOUT-EQUALITY WITH-DEFN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, June 18, 1997 at 16:50:49."
+:description "FORALL P(OI) EXISTS M(O(II)) FORALL G(II) FORALL H(II).M(O(II)) G(II) AND M(O(II)) H(II) IMPLIES M(O(II)) [G(II) COMPOSE(II(II)(II)) H(II)] AND FORALL Y(I).P(OI) Y(I) IMPLIES P(OI).G(II) Y(I)"
+:needed-objects   (COMPOSE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

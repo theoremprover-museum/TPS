@@ -1,0 +1,47 @@
+;;; ******************************************************************* ;;;
+;;;         (c) Copyrighted 1988 by Carnegie Mellon University.         ;;;
+;;;                        All rights reserved.                         ;;;
+;;;         This code was written as part of the TPS project.           ;;;
+;;;   If you want to use this code or any part of TPS, please contact   ;;;
+;;;               Peter B. Andrews (Andrews@CS.CMU.EDU)                 ;;;
+;;; ******************************************************************* ;;;
+;;; Updated context 7/20/87 DAN
+(context rules-6-equality)
+
+(defirule ext=0
+  (lines (p1 (h) () "P equiv R")
+         (p2 (h) () "P(O) = R(O)" ("Ext=" () (p1))))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (itemshelp (p1 "Line with Equivalence")
+	     (p2 "Line with Equality")
+	     ("P(O)" "Left Equivalent")
+    	     ("R(O)" "Right Equivalent"))
+  (mhelp "Rule to convert equality at type o into an equivalence."))
+
+(defirule sym=
+  (lines (p1 (h) () "A(A) = B(A)")
+	 (p2 (h) () "B(A) = A(A)" ("Sym=" () (p1))))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (itemshelp (p1 "Lower Line")
+	     (p2 "Higher Line")
+	     ("A(A)" "Left Hand Side of Lower Equality")
+	     ("B(A)" "Right Hand Side of Lower Equality"))
+  (mhelp "Rule of Symmetry of Equality."))
+
+;;; Added subst= rule 6MAR91 DAN
+
+(defirule subst=
+  (lines (p1 (h) () "P(O)")
+	 (d2 (h) () "s(A) = t(A)")
+	 (d3 (h) () "R(O)" ("Sub=" () (p1 d2))))
+  (support-transformation (('pp d2 'ss)) ((p1 'ss) ('pp d3 'ss p1 d2)))
+  (itemshelp (p1 "Line before Substituting Some Occurrences")
+	     (d2 "Line with Equality")
+	     (d3 "Line after Substituting Some Occurrences")
+	     ("P(O)" "Formula Before Substitution")
+	     ("R(O)" "Formula After Substitution")
+	     ("s(A)" "Left-Hand Side of Equality")
+	     ("t(A)" "Right-Hand Side of Equality"))
+  (restrictions (same-modulo-equality  "P(O)" "R(O)" "s(A)" "t(A)"))
+  (mhelp "Substitution of Equality.  Usable when R and P are the same modulo
+the equality s=t."))

@@ -1,0 +1,422 @@
+%%% Macros for Typesetting Natural Deductions
+%%% A combination of Frank Pfenning's cdsty.sty file (Computation and Deduction style file)
+%%% and Frank Pfenning's macros.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Editorials
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\long\def\ednote#1{\footnote{[{\it #1\/}]}\message{ednote!}}
+% \long\def\note#1{\begin{quote}[{\it #1\/}]\end{quote}\message{note!}}
+\newenvironment{metanote}{\begin{quote}\message{note!}[\begingroup\it}%
+	                 {\endgroup]\end{quote}}
+\long\def\ignore#1{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Typesetting Deductions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newbox\tempa
+\newbox\tempb
+\newdimen\tempc
+\newbox\tempd
+
+\def\mud#1{\hfil $\displaystyle{#1}$\hfil}
+\def\rig#1{\hfil $\displaystyle{#1}$}
+
+\def\inruleanhelp#1#2#3{\setbox\tempa=\hbox{$\displaystyle{\mathstrut #2}$}%
+                        \setbox\tempd=\hbox{$\; #3$}%
+		        \setbox\tempb=\vbox{\halign{##\cr
+	\mud{#1}\cr
+	\noalign{\vskip\the\lineskip}%
+	\noalign{\hrule height 0pt}%
+	\rig{\vbox to 0pt{\vss\hbox to 0pt{\copy\tempd \hss}\vss}}\cr
+	\noalign{\hrule}%
+	\noalign{\vskip\the\lineskip}%
+	\mud{\copy\tempa}\cr}}%
+		      \tempc=\wd\tempb
+		      \advance\tempc by \wd\tempa
+		      \divide\tempc by 2 }
+
+\def\inrulean#1#2#3{{\inruleanhelp{#1}{#2}{#3}%
+		     \hbox to \wd\tempa{\hss \box\tempb \hss}}}
+\def\inrulebn#1#2#3#4{\inrulean{#1\quad\qquad #2}{#3}{#4}}
+
+\def\ian#1#2#3{{\lineskip 4pt\inrulean{#1}{#2}{#3}}}
+\def\ibn#1#2#3#4{{\lineskip 4pt\inrulebn{#1}{#2}{#3}{#4}}}
+
+\def\lowerhalf#1{\hbox{\raise -0.8\baselineskip\hbox{#1}}}
+
+\def\ianc#1#2#3{{\lineskip 4pt\lowerhalf{\inruleanhelp{#1}{#2}{#3}%
+		   \box\tempb\hskip\wd\tempd}}}
+\def\ibnc#1#2#3#4{{\lineskip 4pt\ianc{#1\quad\qquad #2}{#3}{#4}}}
+
+\def\rulespacing{\renewcommand{\arraystretch}{3} \arraycolsep 5em}
+\def\rulestretch{\renewcommand{\arraystretch}{3}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Common abbreviations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\bnfas{\mathrel{::=}}
+\def\bnfalt{\mid}
+
+\def\lam{\lambda}
+\def\Lam{\Lambda}
+\def\arrow{\rightarrow}
+\def\oftp{\mathord{:}}
+\def\hastype{\mathrel{:}}
+
+\def\ldot{\mathord{.}\;}
+\def\ldott{\mathrel{.}}
+\def\oftpp{\mathrel{:}}
+\def\dot{\cdot}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Judgments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\vd{\null\mathrel{\vdash}}
+\def\gvd{\Gamma \vd}
+
+\def\th{\null\mathrel{\vdash\!\!\!\vdash}}
+\def\gth{\Gamma \th}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Code
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\ttuscore{{\tt\char`\_}}
+\def\ttlbrace{{\tt\char`\{}}
+\def\ttrbrace{{\tt\char`\}}}
+% ----------------------------------------------------------------------
+% Environments
+% ----------------------------------------------------------------------
+
+%\newenvironment{lfsig}{%
+%   \par\vspace{\abovedisplayskip}\(\begin{array}{lcl@{\hspace{5em}}}}{%
+%   \end{array}\)\par\vspace{\belowdisplayskip}\noindent\ignorespaces}
+\newenvironment{lfsig}{%
+   \par\vspace{\abovedisplayskip}\(\begin{array}{lcl}}{%
+   \end{array}\)\par\vspace{\belowdisplayskip}\noindent\ignorespaces}
+
+% \newenvironment{proofquote}{\begin{quote}\small}{\end{quote}}
+% \newenvironment{proofquote}{\begin{minipage}{4.5in}}{\end{minipage}}
+\long\def\proofbox#1{\[\fbox{\parbox{4.5in}{\small #1}}\]}
+
+\newenvironment{progexample}{%
+   \par\vspace{\abovedisplayskip}\(\begin{array}{@{\hspace*{2em}}l}}{%
+   \end{array}\)\par\vspace{\belowdisplayskip}\noindent\ignorespaces}
+
+% ----------------------------------------------------------------------
+% Symbols
+% ----------------------------------------------------------------------
+
+\def\of{\mathrel{::}}
+
+% --------------------
+% Mini-ML (Chapter 1)
+% --------------------
+
+\def\z{\mbox{\bldf z\/}} % \def\z{\mbox{\cf z\/}}
+\def\s{\mbox{\bldf s\/}} % \def\s{\mbox{\cf s\/}}
+% \def\pred{\mbox{\cf pred\/}}
+% \def\zerop{\mbox{\cf zerop\/}}
+\def\fst{\mbox{\bldf fst\/}}
+\def\snd{\mbox{\bldf snd\/}}
+\def\llam{\mbox{\bldf lam\/}}
+\def\llet{\mbox{\bldf let\/}}
+\def\lletn{\mbox{\bldf let\/}\,\mbox{\bldf name}}
+\def\lletv{\mbox{\bldf let\/}\,\mbox{\bldf val}}
+\def\iin{\mbox{\bldf in\/}}
+\def\fix{\mbox{\bldf fix\/}}
+
+% evaluation
+
+\def\evalsto{\mathrel{\hookrightarrow}}
+% \def\ev#1{\mbox{\cf ev\_#1}}
+
+% value proof
+
+\def\value{\mbox{\it Value}}
+% \def\val#1{\mbox{\cf val\_#1}}
+
+% types
+
+\def\nat{\mbox{\cf nat\/}}
+\def\bool{\mbox{\cf bool\/}}
+\def\cross{\times}
+% \def\arrow{\mathrel{\rightarrow}} % in fpstd.
+
+% typing rules
+
+\def\vdml{\mathrel{\triangleright}}
+\def\gvdml{\Gamma \vdml}
+% \def\tp#1{\mbox{\cf tp\_#1}}
+
+% conversion
+
+% \def\conv{\simeq}
+\def\conv{\equiv}
+\def\freein{\mathrel{\mbox{free in}}}
+\def\notfreein{\mathrel{\mbox{not free in}}}
+
+% in exercises and language extensions
+
+\def\ccase{\mbox{\bldf case\/}}
+\def\oof{\mbox{\bldf of\/}}
+\def\bar{\mathrel{\mbox{\tt |}}}
+\def\to{\Rightarrow}
+% \def\pair{\mbox{\bldf pair\/}}
+\def\split{\mbox{\bldf split\/}}
+\def\as{\mbox{\bldf as\/}}
+\def\inl{\mbox{\bldf inl\/}}
+\def\inr{\mbox{\bldf inr\/}}
+
+\def\double{\mbox{\it double}}
+
+\def\vnat{v_{\mbox{\scriptsize \rm nat}}}     % \sf not available this size!
+\def\enat{e_{\mbox{\scriptsize \rm nat}}}     % \sf not available this size!
+\def\mn#1{[\![#1]\!]}
+
+% ---------------
+% LF (Chapter 2)
+% ---------------
+
+\def\rep#1{\lceil #1 \rceil} % AMS symbol improvement:
+% \def\rep#1{\ulcorner #1\urcorner}  % I don't have ulcorner and urcorner -- ceb
+% \def\drep#1{\ulcorner\renewcommand{\arraystretch}{1}\arraycolsep 5pt
+% \begin{array}[t]{c}#1\end{array}\urcorner}
+\def\lf#1{\mbox{\rm #1}}
+\def\type{\mbox{\rm type}}
+\def\vdlf{\vd} % \def\vdlf{\vd^{\!\!\rm LF}}
+\def\gvdlf{\Gamma \vdlf}
+\def\vdslf{\vdlf_{\!\!\scriptscriptstyle \Sigma}}
+\def\gvdslf{\Gamma \vdslf}
+\def\isakind{\mbox{\it Kind}}
+\def\isactx{\mbox{\it Ctx}}
+\def\isasig{\mbox{\it Sig}}
+% \def\valid{\mbox{\it Valid}}
+% \def\betaconv{=_\beta}
+
+\def\exp{\lf{exp}}
+% \def\canon{\mathrel{:_c}} % \def\canon{\mathrel{\Rightarrow}}
+% \def\atm{\mathrel{:_a}}   % \def\atm{\mathrel{\leadsto}}
+\def\canon{\Uparrow}
+\def\can{\canon}
+\def\atm{\downarrow}
+
+\def\vdsub#1{\vd_{\!\! \scriptscriptstyle #1}}
+\def\gvdsub{\Gamma \vdsub}
+\def\unrep#1{\llcorner #1\lrcorner}
+
+\def\eval{\lf{eval}}
+\def\tp{\lf{tp}}
+\def\dvdml{\Delta \vdml}
+
+\def\lfvalue{\lf{value}}
+\def\redv{\Longrightarrow}
+\def\vs{\lf{vs}}
+\def\redtriv{\stackrel{\it triv}{\redv}}
+
+\def\closed{\mbox{\it Closed}}
+\def\open{\mbox{\it Open}}
+\def\lfclosed{\lf{closed}}
+
+\def\limplies{\mathbin{\supset}}
+
+\def\inst{\preceq}
+\def\vdsml{\mathrel{\triangleright\!\triangleright}}
+
+% -----------------------
+% Compilation (Chapter 6)
+% -----------------------
+
+\def\shift{\mathord{\uparrow}}
+
+\def\trans{\mathrel{\leftrightarrow}}
+\def\vtrans{\mathrel{\Leftrightarrow}}
+\def\fevalsto{\evalsto}
+
+\def\lletnp{\mbox{\bldf let\/}'\,\mbox{\bldf name}}
+\def\lletvp{\mbox{\bldf let\/}'\,\mbox{\bldf val}}
+
+\def\ssucc{\mbox{\cf succ\/}}
+
+\def\KS{{\it KS}}
+\def\amp{\mathop{\&}}
+\def\done{{\it done}}
+\def\St{{\it St}}
+\def\goesto{\mathrel{\Longrightarrow}}
+\def\goestos{\stackrel{*}{\Longrightarrow}}
+\def\goestoss{\stackrel{*}{\makebox[0pt][l]{$\Longrightarrow$}\Longrightarrow}}
+% \def\evl{\mbox{\it Evl}}
+
+\def\return{\mbox{\bldf return}}
+\def\answer{\mbox{\bldf answer}}
+\def\init{\mbox{\bldf init}}
+\def\cpm{\mathop{\diamond}}
+\def\app{\mbox{\bldf app}}
+\def\cevalsto{\stackrel{c}{\hookrightarrow}}
+\def\corr{\sim}
+
+% ------------------------------
+% Natural Deduction (Chapter 7)
+% ------------------------------
+
+
+\def\andi{\land{\rm I}}
+\def\andel{\land{\rm E}_{\rm L}}
+\def\ander{\land{\rm E}_{\rm R}}
+\def\oril{\lor{\rm I}_{\rm L}}
+\def\orir{\lor{\rm I}_{\rm R}}
+\def\ore{\lor{\rm E}}
+\def\impi{\mathord{\limplies{\rm I}}}
+\def\impe{\mathord{\limplies{\rm E}}}
+\def\noti{\mathord{\lnot{\rm I}}}
+\def\note{\mathord{\lnot{\rm E}}}
+\def\topi{\top{\rm I}}
+\def\bote{\mathord{\bot{\rm E}}}
+\def\foralli{\forall{\rm I}}
+\def\foralle{\forall{\rm E}}
+\def\existsi{\exists{\rm I}}
+\def\existse{\exists{\rm E}}
+
+\def\botc{\mathord{\bot_C}}
+\def\eec{\lnot\lnot_C}
+\def\exm{{\rm XM}}
+
+\def\ndredl{\quad\Longrightarrow_{L}\quad}
+\def\rf{\quad\leadsto\quad}
+\def\rfand{\quad\mbox{\it and}\quad}
+\def\rfdone{\mbox{\it done}}
+\def\rfs{\quad\stackrel{*}{\leadsto}\quad}
+
+\def\lfi{\lf{i}}
+\def\lfo{\lf{o}}
+\def\lfnd{\lf{nd}}
+\def\lfnj{\lf{nj}}
+\def\lfnk{\lf{nk}}
+\def\repA{\rep{A}}
+\def\repB{\rep{B}}
+
+\def\pfof{\mathrel{:\!\cdot}}
+
+\def\lredl{\longrightarrow_{L}}
+\def\lred{\longrightarrow}
+\def\Arrow{\Rightarrow}
+\def\abort{\mbox{\bf abort}}
+
+\def\tpj{\mathrel{\triangleright}}
+\def\gtpj{\Gamma \tpj}
+
+\newsavebox{\tempsrc}
+
+\def\bigrep#1{\savebox{\tempsrc}{$\displaystyle
+#1$}\raisebox{\ht\tempsrc}{$\ulcorner$}\;\usebox{\tempsrc}\;\raisebox{\ht\tempsrc}{$\urcorner$}}
+
+\def\nati{{\rm NI}}
+\def\nate{{\rm NE}}
+\def\prim{\mbox{\bldf prim\/}}
+
+\def\ttrue{\mbox{\cf true\/}}
+\def\ffalse{\mbox{\cf false\/}}
+\def\iif{\mbox{\bldf if\/}}
+\def\tthen{\mbox{\bldf then\/}}
+\def\eelse{\mbox{\bldf else\/}}
+
+\def\ue{\langle\, \rangle}
+\def\extr#1{\left|#1\right|}
+\def\iso{\cong}
+
+% ------------------------------
+% Logic Programming (Chapter 8)
+% ------------------------------
+
+\def\whr{\stackrel{whr}{\longrightarrow}}
+\def\dvd{\Delta \vd}
+\def\id{{\it id}}
+
+\def\seq{\mathrel{\longrightarrow}}
+\def\imm{\gg}
+\def\sequ{\stackrel{u}{\seq}}
+\def\dsequ{\Delta \sequ}
+
+% \def\GL{{\cal GL}}
+% \def\IM{{\cal IM}}
+\def\SS{{\cal S}}
+\def\II{{\cal I}}
+\def\RR{{\cal R}}
+
+\def\rsd{\mathrel{\backslash}}
+\def\seqr{\stackrel{r}{\seq}}
+\def\dseqr{\Delta \seqr}
+
+\def\dseqc{D \stackrel{c}{\seq}}
+
+% \def\gsequ{\Gamma \sequ}
+% \def\gseqr{\Gamma \seqr}
+
+% ----------------------------------------------------------------------
+% Deductions
+% ----------------------------------------------------------------------
+
+\def\CC{{\cal C}}
+\def\DD{{\cal D}}
+\def\EE{{\cal E}}
+\def\PP{{\cal P}}
+\def\QQ{{\cal Q}}
+\def\UU{{\cal U}}
+
+\def\above#1#2{\begin{array}[b]{c}\relax #1\\ \relax #2\end{array}}
+\def\abovec#1#2{\begin{array}{c}\relax #1\\ \relax #2\end{array}}
+
+\def\cian#1#2#3{\ctr{\ianc{#1}{#2}{#3}}}
+\def\cibn#1#2#3#4{\ctr{\ibnc{#1}{#2}{#3}{#4}}}
+
+\def\hypo#1#2{\begin{array}[b]{c}\relax #1\\ \vdots \\ \relax #2\end{array}}
+\def\hypoc#1#2{\begin{array}{c}\relax #1\\ \vdots \\ \relax #2\end{array}}
+\def\hypol#1#2#3{\begin{array}[b]{c}\relax #1\\ #2 \\ \relax #3\end{array}}
+\def\hypolc#1#2#3{\begin{array}{c}\relax #1\\ #2 \\ \relax #3\end{array}}
+
+\def\ctr#1{\begin{array}{c} #1\end{array}}
+
+\newsavebox{\tempded}
+\newsavebox{\tempdedA}
+\newsavebox{\tempdedB}
+
+% ----------------------------------------------------------------------
+% Indexing and Cross-Referencing
+% ----------------------------------------------------------------------
+
+
+% Chad's Macros
+\def\kolm{\rightarrow}
+\def\kolmand{\land{\rm K}}
+\def\kolmimp{\limplies{\rm K}}
+\def\kolmor{\lor{\rm K}}
+\def\kolmnot{\lnot{\rm K}}
+\def\kolmtrue{\top{\rm K}}
+\def\kolmfalse{\bot{\rm K}}
+\def\kolmforall{\forall{\rm K}}
+\def\kolmexists{\exists{\rm K}}
+
+\def\dne{\lnot\lnot{\rm R}} 
+\def\dni{\lnot\lnot{\rm X}}
+\def\tnr{\lnot\lnot\lnot{\rm R}}
+\def\dnfe{\lnot\lnot\bot{\rm R}}
+
+\def\nk{\vdash_{\rm NK}} 
+\def\nj{\vdash_{\rm NJ}} 
+\def\nd{\vdash}
+
+\def\ail{{a_1,\ldots,a_n}}
+\def\pol{{p_1,\ldots,p_m}}
+%\def\kolmhyp{p_1\kolm \lnot\lnot p_1,\ldots,p_m\kolm \lnot\lnot p_m}
+\def\hyl{H_1,\ldots,H_k}
+\def\hypl{\nk H_1,\ldots,\nk H_k}
+\def\hypjl{\nj H_1,\ldots,\nj H_k}
+%\def\kolmhypl{KH_1::H_1\kolm H_1',\ldots,KH_k::H_k\kolm H_k'}
+\def\hyplp{\nj H_1^*,\ldots,\nj H_k^*}
+
+

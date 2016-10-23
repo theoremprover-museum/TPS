@@ -1,0 +1,112 @@
+(:name AXIOM6
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS r(OII) FORALL x(I) FORALL y(I) FORALL z(I).EXISTS w(I) r(OII) x(I) w(I) AND ~r(OII) x(I) x(I) AND.r(OII) x(I) y(I) IMPLIES.r(OII) y(I) z(I) IMPLIES r(OII) x(I) z(I)"
+:needed-objects   NIL
+:mhelp "Axiom 6 from tttp"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TTTP2129
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, October  6, 1999 at 10:50:49."
+:description "FORALL x(I) [P(OII) x(I) y(I) AND Q(OII) x(I) y(I)] EQUIV FORALL x(I) P(OII) x(I) y(I) AND FORALL x(I) Q(OII) x(I) y(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TTTP5243
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:15."
+:description "EXISTS U(BA) FORALL V(A).U(BA) V(A) =(OBB) A(B)"
+:needed-objects   NIL
+:mhelp "Comprehension Theorem"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TTTP5306A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, March 26, 1997 at 14:21:58."
+:description "SIGMA1(O(OA)) p(OA) EQUIV SIGMA1A(O(OA)) p(OA)"
+:needed-objects   (SIGMA1A)
+:mhelp "Closely related to theorem 5306 in TTTP."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TTTP5311A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Not proven"
+:proof-date "Thursday, March 27, 1997 at 12:50:30."
+:description "FORALL y(A) [IOTA(A(OA)) [=(OAA) y(A)] =(OAA) y(A)] IMPLIES FORALL p(OA).SIGMA1A(O(OA)) p(OA) IMPLIES p(OA).IOTA(A(OA)) p(OA)"
+:needed-objects   (SIGMA1A)
+:mhelp "Closely related to theorem 5311 in TTTP"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TTTP6100
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, June 18, 1997 at 13:01:06."
+:description "NAT ZERO(S)"
+:needed-objects   NIL
+:mhelp "Theorem 6100 in TTTP"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TTTP6101
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, June 18, 1997 at 13:22:26."
+:description "FORALL x(S).NAT x(S) IMPLIES NAT.SUCC(SS) x(S)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X5311A-EXT
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, March 18, 1999 at 16:14:43."
+:description "FORALL y(A) [IOTA(A(OA)) [=(OAA) y(A)] =(OAA) y(A)] AND FORALL p(OA) FORALL q(OA) [FORALL x(A) [p(OA) x(A) EQUIV q(OA) x(A)] IMPLIES FORALL r(O(OA)).r(O(OA)) p(OA) IMPLIES r(O(OA)) q(OA)] IMPLIES FORALL p(OA).SIGMA1A(O(OA)) p(OA) IMPLIES p(OA).IOTA(A(OA)) p(OA)"
+:needed-objects   (SIGMA1A)
+:mhelp "Variant of tttp5311a, with extensionality added. Probably needs a primsub for one of the sets in extensionality."
+:other-attributes NIL
+:other-remarks "
+")
+
+

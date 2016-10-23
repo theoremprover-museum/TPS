@@ -1,0 +1,1034 @@
+;;; -*- Mode:LISP; Package:CORE -*-
+;;; ******************************************************************* ;;;
+;;;         (c) Copyrighted 1988 by Carnegie Mellon University.         ;;;
+;;;                        All rights reserved.                         ;;;
+;;;         This code was written as part of the TPS project.           ;;;
+;;;   If you want to use this code or any part of TPS, please contact   ;;;
+;;;               Peter B. Andrews (Andrews@CS.CMU.EDU)                 ;;;
+;;; ******************************************************************* ;;;
+(in-package :CORE)
+
+(export '(lib-display library lib-bugs lib-structure))
+(export '(lib-reading lib-writing))
+(export '(contexts-core)) ;; new file 9/10/87 dan
+(export '(stats))
+(export '(global-repsymbollist))
+(export '(equiv-to))
+(export '(defrepsymbol))
+(export '(rp rpall))
+(export '(replace-equiv replace-equiv-all))
+(export '(repsym))
+(export '(replace-equiv-wff wffrec%))
+(export
+ '(rpin replace-equiv replace-equiv-all repsym-p replace-equiv-wff get-pmequiv
+    get-equiv princ-rephelp read-equiv-to))
+(export '(repsymbol))
+(export '(deftrap))
+(export '(*trap-errors*))
+(export
+ '(rule-error input-error command advice-asked remark proof-action done-exc))
+(export '(done-exc-hook count-errors))
+(export '(dt computed-code err-count max-err-count userid))
+(export
+ '(rule-error-file input-error-file command-file advice-file remarks-file
+  proof-file score-file error-file user-passwd-file))
+(export '(etps-events))
+(export '(write-events))
+(export '(hook-write-events write-all-events count-events signal-event))
+(export '(events))
+(export '(disable-events))
+(export '(init-event-expand event-p princ-event-help))
+(export
+ '(mhelp write-hook signal-hook write-file write-when template-names template
+    event-args))
+(export '(init-events init-event defevent))
+(export '(event))
+(export '(global-eventlist input-counter never))
+(export '(events-enabled event-cycle quiet-events))
+(export '(events))
+(export '(tps-events))
+(export '(events-mac))
+(export '(get-meta-alist get-meta-assertion assert-legal assert% assert2
+	  assert%-generic assert2-generic))
+(export '(otl-schema2))
+(export '(*advice-hint-given-p* *advice-sorted-rules* *advice-plan-support*))
+(export
+ '(joint-hyps check-hyps-main give-rules give-hint give-hints init-advice
+    advice-main advice add-special-lines dependent-lines slinelist dangling-lines
+    dangle-main check-structure))
+(export '(advice check-structure))
+(export '(otl-advice))
+(export
+ '(change-ref cleanup-same justifying-hyps cleanup-hypotheses justifying-lines
+    cleanup-justifying cleanup))
+(export '(cleanup))
+(export '(otl-cleanup))
+(export '(list-rules list-rules* suggest))
+(export
+ '(list-rules suggest ask-apply-rule multiple-suggestions-p first-rule
+    fill-args-$ comdecode-rule apply-rule find-action go-main go-wild))
+(export '(otl-go))
+(export '(quietly-use-defaults resolve-conflict go-instructions))
+(export '(suggests))
+(export '(exec-form-p get-exec-form go-instruct-p))
+(export '(exec-form go-instruct))
+(export '(otl-go-mac))
+(export '(sort-rules rule-compfn find-suggests show-suggestions))
+(export '(otl-suggest))
+(export '(princ-srulehelp))
+(export '(shortfn match1fn matchfn))
+(export '(global-srulelist))
+(export '(defsrule))
+(export '(srule))
+(export '(suggestions))
+(export '(otl-sugg-mac))
+(export '(rulep-defaults ;;;rulep-main rulep-ck removed 7/31/87
+	  rulep-simple rulep-deluxe rulep-enter rulep-minimize-supports
+	  rulep-legal-hyps deepify-list))
+(export '(otl-rulep))   ;;; added 7/31/87
+(export '(print-line-scribe scribeproof slideproof))
+(export '(scribeproof slideproof setup-slide-style))
+(export '(scribe-line-width turnstyle-indent slides-turnstyle-indent compress 
+turnstile-indent slides-turnstile-indent turnstile-indent-auto min fix vary indentation
+turnstyle-indent-auto))
+(export '(scribe-postamble scribe-preamble auto-doc-flag))
+(export '(otl-scribeout))
+(export '(print-line-tex texproof))
+(export '(texproof))
+(export '(tex-postamble tex-preamble tex-1-preamble tex-1-postamble tpstex))
+(export
+ '(unsponsor sponsor subproof pstatus prtstatus pline prtactive ^p pall ^pn pl pplan
+    pwscope pw depth prfw-^p prfw-pall prfw-^pn print-function print-function-list
+    prtactivenos tableau contains-lists flatten-mstlist all-nils calc-tabstops
+    print-unordered-symbol-table))
+(export
+ '(unsponsor sponsor subproof pstatus pline ^p pall pl pplan pwscope pw depth))
+(export '(pl*)) ; added 11nov90 dan
+(export '(otl-prt))
+(export '(introduce-gap modify-gaps squeeze renumberall plan move))
+(export '(move* delete*)) ; added 11nov90 dan
+(export
+ '(introduce-gap modify-gaps renumberall plan-again plan move
+		 benign-delete-line delete-line dellines))
+(export '(otl-rearrange))
+(export '(printproof))
+(export '(printproof))
+(export '(otl-files))
+(export '(otl-fileout))
+(export '(shownotypes showtypes pwtypes))
+(export
+ '(shownotypes showtypes princjustification justlength prtlines %prtlines prtline
+    %prtline print-line-generic princsans cstatus))
+(export '(prtotl))
+(export '(remark problems reconsider prove exercise done summary prooflist))
+(export '(nextplan-no remarks-file mail-remarks))
+(export
+ '(abbreviations remark problems reconsider prove2 prove1 remprop-lines prove numalias nextplan
+    ck-hyp ck-just maxline lineordering %linealias linealias exercise done
+    pline-default iota combine current-plan-lines))
+(export '(otlnl))
+(export
+ '(find-support-lines update-plan-pairs find-new-lines modify-just planp
+    find-new-pairs insert-new-line find-old-label hyp-eq update-plan2
+    update-plan1 update-plan set-intersect-p introduce-new-plan-line
+    remove-unnecessary-gaps find-previous-gap find-closest-gap find-all-gaps
+    update-gaps update-gaps1 line-no-defaults-from find-defaults
+    find-closest-plan-line minimize-num maximize-num match-variables
+    find-next-line find-defaults-for-pair line-no-defaults-to-main
+    line-no-defaults-to))
+(export '(linenumber1 linenumber2))
+(export '(occlist pline existing-linelist existing-line linelist line))
+(export '(line-range line-range-list)) ; added 11nov90 dan
+(export '(occlistp getocclist get-pline get-existingline get-line-assertion))
+(export '(line-number))
+(export '(proof-outline))
+(export '(otl-typ))
+(export '(dproof *dproof-list*))
+(export '(cleanup-same cleanup-rulec short-help print-dots printlineflag))
+; mkaminski 10/1/2005
+(export '(assert-rrules))
+(export '(otl-vars))
+(export '(otl-status otl-printing otl-rearranging otl-entering otl-object))
+(export '(scribe-otl))
+(export '(tex-otl))
+(export '(otl-macros))
+(export '(gaps line-hypotheses line-just-rule line-just-terms line-justification
+	  line-just-lines line-assertion proof-lines proof-plans line-linenumber line-support
+	  proof-linealiases proof-key proof-assertion proof-nodealiases line-node line-mating))
+(export '(code-list mark-list))
+(export '(*modulo*))
+(export '(event-signal-utils))
+(export
+ '(print-ps-pair print-rule-help get-rule-help prepare-rule-help prep-print-help
+    rule-help find-rule-file help-rule drop-prop))
+(export '(mhelp itemshelp support-transformation restrictions lines))
+(export '(global-irulelist))
+(export '(defrulehelp))
+(export '(rulehelp))
+(export '(otl-help))
+(export
+ '(hypnums subst-labels line-label-vec meet-h join-h contained-p ordered-join-h
+    set-eq hypsetdiff strong-hyp-p existent-label-p existent-p specified-p))
+(export '(otl-aux))
+(export '(auto-generate-hyps))
+(export
+ '(eval-destruct setq-destruct-multi setq-destruct-rec setq-destruct
+    setq-resolve-conflict macro-do defrulewffs defrulefile))
+(export '(rules-table))
+(export '(meta-ize-gwff-ext))
+(export '(rule-commands))
+(export '(otl-cmddef))
+(export
+ '(lambda-conv  beta-eta-together beta-eta-separate beta-only beta eta lambda
+         lnorm lnorm-beta lnorm-eta 
+	 ab-change is-variable subst-some-occs inst-def non-atomic non-atomic-or-truthvalue
+	 not-free-in-hyps not-free-in-wffset not-free-in free-for free-in-hyps))
+(export
+ '(lnorm lnorm-beta lnorm-eta
+	 ab-change is-variable subst-some-occs inst-def non-atomic
+	 not-free-in-hyps not-free-in-wffset not-free-in free-for))
+(export '(wffop-otl))
+(export '(lvarconst))
+(export
+ '(rec-push-types find-type-vars read-itemhelp read-items read-restriction
+    read-restrictions read-lines read-linespec read-typesyms read-lvarconsts
+    lvarconst-p))
+(export '(read-ruledefs))
+(export '(rlinelist-p gettypedgwff getjust gwfflist-p just-p))
+(export '(rlinelist rline justification wffset))
+(export '(mapargtypelist mapargtype mapdigest))
+(export '(hline-justification treat-hlines-as-dlines))
+(export '(read-rdef-mac))
+(export '(theorem-type))
+(export
+ '(mhelp remarks score allowed-cmd-p allowed-lemma-p required-lemmas thm-type
+    assertion fol))
+(export '(global-theoremlist))
+(export '(deftheorem))
+(export '(%theorem%))
+(export '(test-problem practice exercise book-theorem theoremlist theorem))
+(export
+ '(disallow-rulep-help disallow-rulep allow-all-help allow-all
+    allow-rulep-help allow-rulep
+    only-required-lemmas theorem-no allow-lower-nos allow-no-lemmas
+    theorem-help practice-p book-theorem-p theorem-p
+    only-required-lemmas-help theorem-no-help allow-lower-nos-help
+    allow-no-lemmas-help))
+(export '(tps-theorems))
+(export '(lib-theorem library-theorem-p))
+(export '(theorem-mac))
+(export '(meta-subst1 meta-subst))
+(export '(match))
+(export
+ '(meta-label-eval meta-subst-if-wff meta-label-subst meta-subst-meta-bd
+    meta-subst-meta-var meta-subst1 meta-subst msubst same-const-p
+    meta-label-match-bind meta-bdvar-match-bind meta-var-match-bind match-bind
+    match princsubstpair getsubstpair))
+(export '(match-wffs))
+(export '(gwffalist))
+(export '(rules))
+(export '(default-wffeq))
+(export '(outline))
+(export '(same-match-p wffeval wffset mismatch%))
+(export '(match-macros))
+(export '(make-wffschema1))
+(export
+ '(generate-meta-var create-meta-var-name make-bdwffschema make-wffschema-if-wff
+    make-meta-label-wffschema make-wffschema1 meta-ize-gwff make-wffschema))
+(export '(make-wffschema))
+(export '(meta-bd meta-var))
+(export '(meta-bdvar-name meta-var-name))
+(export '(meta-var))
+(export '(nth-prefix-arg))
+(export '(ntharg))
+(export '(copy-props))
+(export
+ '(nth-infix-arg nth-prefix-arg ntharg rename-wffop-label generate-wffop-label))
+(export '(meta))
+(export '(meta-label-name make-wffops-labels print-meta))
+(export '(meta-label))
+(export '(update-flag))
+(export '(leave mode key search search2 compare-modes setflag setflags1 setflags2 update subjects))
+(export '(tpsflag))
+(export
+ '(exit-review describe-flag review-keys update-flag update-flags update describe*
+    list-flag list-flags list-subjects subjects review-command-interpreter
+    review-print-* review-top-prompt reviewtop review tpsflag-p describe-mode))
+(export '(flag-modes flag-review))
+(export '(mhelp closefns mainfns defaultfns arghelp argnames argtypes))
+(export '(review-command-ctree global-reviewlist))
+(export '(defreview))
+(export '(reviewcmd))
+(export '(review))
+(export '(review-top))
+(export '(review))
+(export '(environment))
+(export '(show-all-packages))
+(export '(environment))
+(export '(environ))
+(export '(destructive-push))
+(export '(insert-object insert-context reorganize-global-list split-list))
+(export '(read-help))
+(export '(rd-help))
+(export '(read-help))
+(export
+ '(feat-help1 feat-help top-help category-items-help category-items-short-help
+    category-help category-short-help print-tps-format
+    print-tps-format* princ-arghelps edop-mhelp
+    operation-mhelp command-mhelp category-mhelp-list category-mhelp
+    princ-short-mhelp princ-mhelp categ-mhelp cat-help-fn cat-hack mhelp-for-cat
+    mhelp help* help-group))
+(export '(show-all-packages))
+(export '(help-obj))
+(export '(mhelp))
+(export
+ '(notnot existsnot forallnot andnot ornot defn contraction mix cut existsi
+  foralli andi ori sup9 sup8 sup7 sup6 sup5 sup4 sup3 sup2 sup1 sup0 sub9 sub8
+  sub7 sub6 sub5 sub4 sub3 sub2 sub1 sub0 scripte scriptd bot ai ae ->e ->i elbow
+  bottom arrow exists forall implies))
+(export '(texchr))
+(export '(mhelp texname))
+(export '(global-texcharlist))
+(export '(deftexfont))
+(export '(tex-char))
+(export
+ '(text-postfix-tex text-prefix-tex display-postfix-tex display-prefix-tex
+    indent-tex print-type-char-tex pp-typesym-tex terpri-heuristics-tex
+    pp-space-p-tex pp-tex-special-symbol pp-symbol-tex))
+(export '(tex));;i don't export tex-1 because it is useless to export!
+(export '(in-tex-math-mode pagelength tex-mimic-scribe pagewidth))
+(export '(tex-style))
+(export '(deftex))
+(export
+ '(valid truth tensor superset subset star square southeast south similar
+  setunion setintersect propersuperset propersubset plusmin phi2 notvalid
+  notequiv noteq notassert northwest northeast north norm nonmember newpar
+  minplus member1 meet lesseq join intersect infinity impliedby implied2 implied1
+  imp3 imp2 imp1 iff2 iff1 greateq gradient floor2 floor1 falsehood doubtilde
+  divide directsum diamond del compose circleminus circledot ceiling2 ceiling1
+  asterisk assertedby approx aleph supz supy supx supw supv supu supt sups
+  suprparen supr supq supplus supp supo supn supminus supm suplparen supl supk
+  supj supi suph supg supf supe supd supc supb supa sup9 sup8 sup7 sup6 sup5 sup4
+  sup3 sup2 sup1 sup0 subomega subpsi subchi subphi subupsilon subtau subsigma
+  subrho subpi subomicron subxi subnu submu sublambda subkappa subiota subtheta
+  subeta subzeta subepsilon subdelta subgamma subbeta subalpha subrparen
+  subnullset submember sublparen sub9 sub8 sub7 sub6 sub5 sub4 sub3 sub2 sub1
+  sub0 scriptz scripty scriptx scriptw scriptv scriptu scriptt scripts scriptr
+  scriptq scriptp scripto scriptn scriptm scriptl scriptk scriptj scripti scripth
+  scriptg scriptf scripte scriptd scriptc scriptb scripta boldz boldy boldx boldw
+  boldv boldu boldt bolds boldr boldq boldp boldo boldn boldm boldl boldk boldj
+  boldi boldh boldg boldf bolde boldd boldc boldb bolda capomega cappsi capchi
+  capphi capupsilon captau capsigma caprho cappi capomicron capxi capnu capmu
+  caplambda capkappa capiota captheta capeta capzeta capepsilon capdelta capgamma
+  capbeta capalpha omega psi chi phi upsilon tau sigma rho omicron xi nu mu kappa
+  iota theta eta zeta epsilon delta beta alpha 
+  cond eqp finite nat nc one recursion zero succ))
+(export
+ '(superscripts greek-subscripts subscripts script-letters bold-letters
+  greek-letters-uppercase greek-letters-lowercase))
+(export '(dfont))
+(export '(exists forall neg implies equiv))
+(export '(ml1-scribe))
+(export '(dfont))
+(export '(global-scribecharlist slides-preamble))
+(export '(defscribefont))
+(export '(scribe-char))
+(export
+ '(end-env-scribe begin-env-scribe display-postfix-scribe display-prefix-scribe
+    margin-scribe nextpar-scribe indent-scribe pp-typesym-scribe
+    terpri-heuristics-scribe pp-space-p-scribe pp-scribe-special-symbol
+    pp-symbol-scribe))
+(export '(scribe))
+(export '(misc-symbols))
+(export '(scribe))
+(export '(tab-scribe))
+(export '(sailcharacters))
+(export '(pp-space-p-sail pp-symbol-sail))
+(export '(sail))
+(export '(sail-chars))
+(export '(sail))
+(export '(aleph alpha 
+angle approx assertedby asterisk bar beta bigbar bolda 
+boldb boldc boldd bolde boldf boldg boldh boldi boldj 
+boldk boldl boldm boldn boldo boldp boldq boldr bolds 
+boldt boldu boldv boldw boldx boldy boldz capdelta capgamma 
+caplambda capomega capphi cappi cappsi capsigma captheta capupsilon capxi 
+ceiling1 ceiling2 chi circledot circleminus compose congruent defineeq del 
+delta diamond directsum divide doubtilde epsilon equiv eta exists 
+falsehood flat floor1 floor2 forall gradient greateq iff1 
+iff2 imp1 imp2 imp3 implied1 implied2 impliedby implies infinity 
+integral2 intersect iota join kappa  leftcorner lesseq meet 
+member1 minplus monus mu natural neg newpar nonmember norm 
+north northeast northwest notassert noteq notequiv notvalid nu 
+nullset omega omicron parallelogram phi phi2  plusmin 
+powerset propersubset propersuperset psi quantifier rho rightcorner scripta scriptb 
+scriptc scriptd scripte scriptf scriptg scripth scripti scriptj scriptk 
+scriptl scriptm scriptn scripto scriptp scriptq scriptr scripts scriptt 
+scriptu scriptv scriptw scriptx scripty scriptz setintersect setunion sigma 
+similar south southeast southwest  square star sub0 sub1 
+sub2 sub3 sub4 sub5 sub6 sub7 sub8 sub9 subalpha 
+subbeta subchi subdelta subepsilon subeta subgamma subiota subkappa sublambda 
+sublparen submember submu subnu subnullset subomega subomicron subphi subpi 
+subpsi subrho subrparen subset subsigma subtau subtheta subupsilon subxi 
+subzeta sup0 sup1 sup2 sup3 sup4 sup5 sup6 sup7 
+sup8 sup9 supa supb supc supd supe superset supf 
+supg suph supi supj supk supl suplparen supm supminus 
+supn supo supp supplus supq supr suprparen sups supt 
+supu supv supw supx supy supz tau tensor theta 
+truth uncappi  untilde upsilon valid xi zeta))
+(export '(cfont))
+(export '(mhelp end-symbol cfont))
+(export '(global-cfontlist))
+(export '(defcfont))
+(export '(concept-char))
+(export
+ '(init-cfonttable terpri-heuristics-concept pp-typesym-concept-s
+    pp-space-p-concept-s pp-concept-special-symbol pp-symbol-concept-s))
+(export '(concept-s concept))
+(export '(consty))
+(export '(cnf conjunctive-normal-form hvars head min-scope rewrite-equiv min-quant-scope rewrite-all-equivalence
+	      cohead mqs-applicable misc-edops))
+(export
+ '(neg nnf pull-neg push-neg abnorm etab leta etax etan etac lexp red 
+       lnorm ulnorm lnorm-beta lnorm-eta))
+(export '(lambda-op))
+(export '(edlmbd))
+(export '(sv-wff))
+(export '(sv-wff append-wff help-string-default append-wffs))
+(export '(append-wff append-wffs))
+(export '(wffsav))
+(export '(write-single-wff))
+(export '(default-lsp-file))
+(export '(mhelp represents))
+(export '(global-savedwfflist))
+(export '(defsavedwff))
+(export '(savedwff))
+(export '(read-weak-label savedwff-mhelp weak-label-p))
+(export '(weak-label-list weak-label))
+(export '(saving-wffs))
+(export '(wffsav-mac))
+(export '(name dw* dw delweak rw cw))
+(export '(name-wff dissolve-weak* dissolve-weak delete-weak redef-weak create-weak))
+(export
+ '(name-wff dissolve-weak* dissolve-weak extract-gop recover-place-rec 
+recover-place	       
+    delete-weak redef-weak create-weak put-weak get-weak weak-getfn weak-ckfn))
+(export '(weak-type))
+(export '(weak))
+(export '(print-weak))
+(export '(weak-labels))
+(export '(weak-mac))
+(export '(ib ab substyp sub))
+(export '(instantiate-binder wff-identity decode-typed))
+(export '(instantiate-binder wff-identity))
+(export '(substitution))
+(export '(edsub))
+(export '(edill ill wffp))
+(export '(find-culprit culprit-p locateunwffs))
+(export '(ill-formed))
+(export '(edill))
+(export '(pt ps pp))
+(export '(defedprtop))
+(export '(wff-printing))
+(export '(edprt))
+(export '(inst1 install install-rec inst expand=))
+(export '(abbrev-ops))
+(export '(edabb))
+(export '(find-binder find-infix replace-grr grr replace-glr glr))
+(export '(\0 fb fi l d a xtr undo))
+(export
+ '(find-binder find-infix grr replace-grr glr replace-glr xtr-func undo-last
+    move-all-up))
+(export '(edmove))
+(export '(mrg mrg* cmrg cmrg* dist-exp dist-exp*
+          dist-ctr dist-ctr* asrb asrb* cntop dl delete-topconn-lscope
+          assl assl* assr assr* cmut cmut* dr delete-topconn-rscope
+	  pmut pmut* dneg dneg* subim subim*
+	  subeq subeq*))
+(export '(edchange))
+(export '(dupw tp))
+(export '(miscellaneous))
+(export '(edopera))
+(export '(edsearch))
+(export '(remark-printedtfile))
+(export '(noop o))
+(export '(edit-wff last-edwff-type edwff-type))
+(export
+ '(edsearch abort-exit move-exit move-up ednoop invert-printedtflag ed-print-*
+    ed-command-interpreter ed-top-prompt edtop get-edit-wff edit-wff-p
+    last-edwff-getfn last-edwff-ckfn edwff-getfn edwff-ckfn wff-ed
+    initialize-ed-ctree))
+(export '(write-edwff remark-printedtfile)) ;; were in edtop dan
+(export '(scribe-edwff))
+(export '(printedtops printedtfile printedtflag-slides printedtflag
+		      edprintdepth edppwfflag edwin-vpform edwin-current edwin-top
+		      edwin-top-width edwin-top-height edwin-current-width edwin-current-height
+		      edwin-vpform-width edwin-vpform-height))
+(export '(msglistlist msglist ed-command))
+(export '(mhelp move-fn defaultfns edwff-argname result-> alias))
+(export
+ '(last-edwff ed-command-ctree ed-level ;;; printvpdflag exported in auto 9/17/87 dan
+   edt-written-p strong-defaults
+  printedtfile-preamble global-edoplist))
+(export '(defedop multiple-prin1))
+(export '(edop))
+(export '(editor-obj scribe-record))
+(export '(editor))
+(export '(ed-top))
+(export '(edtop))
+(export '(wffeq-lnorm-basis collect2 collect1))
+(export '(wffeq-def1 wffeq-lnorm1 wffeq-nnf1))
+(export
+ '(wffeq-def1 wffeq-def-lsym-bind-chk inmost-gar wffeq-def wffeq-lnorm-bdwff2
+    wffeq-lnorm-bdwff1 wffeq-lnorm-lsym2 wffeq-lnorm-lsym1 wffeq-lnorm1
+    wffeq-lnorm wffeq-nnf1 wffeq-nnf))
+(export '(inmost-gar wffeq-def wffeq-defeq wffeq-lnorm wffeq-nnf))
+(export '(wffequ2))
+(export '(prepare-for lexpd-rec))
+(export
+ '(long-eta-feed long-eta eta-to-base eta-exp etacontr etanorm
+    ab-normalize-rename ab-normalize-main ab-normalize ab-normal-p1 ab-normal-p
+    lambda-norm untyped-lambda-norm lcontr exceeds prepare-for lexpd-rec lexpd))
+(export
+ '(long-eta eta-to-base eta-exp etacontr etanorm ab-normalize ab-normal-p
+    lambda-norm lcontr lexpd rew-equiv wffeq-ab-lambda wffeq-ab-eta wffeq-ab-beta))
+(export '(wfflmbd2))
+(export '(substitute-l-term-var subst-l-term-rec))
+(export '(wffsub2))
+(export '(instantiate-1 instantiate-all instantiate-defn
+                        instantiate-equalities instantiate-all-rec
+	  expand-all-equalities instantiate-equality-smart
+          instantiate-equality-basic instantiate-equality-extensional
+          rewrite-equal-ext rewrite-only-ext
+))
+(export '(wffabb2))
+(export '(lcontr))
+(export '(wfflcontr-fake))
+(export '(wffeq-ab1))
+(export '(wffeq true-correspondence wffeq-ab1 wffeq-ab wffmember not-wffeq))
+(export '(wffeq wffeq-ab not-wffeq))
+(export '(wffequal))
+(export '(wffequ1))
+(export '(neg-norm push-negation negwff pull-negation))
+(export '(neg-ops))
+(export '(wffneg1))
+(export '(s-s-o-rec subst-term-var-rec))
+(export '(s-s-o-rec subst-some-occurrences substitute-term-var subst-occs
+		    r-prime-restr same-modulo-equality
+	  substitute-term-term wff-length subst-occs***))
+(export '(subst-some-occurrences substitute-term-var subst-occs r-prime-restr))
+(export '(wffsub1))
+(export '(changing recursively-changing))
+(export '(merge-idempotent merge-idempotent*))
+(export '(merge-constant merge-constant*))
+(export '(wff-dist-expand wff-dist-expand*))
+(export '(wff-dist-contract wff-dist-contract*))
+(export '(wff-absorb wff-absorb*))
+(export '(change-top))
+(export '(wff-associative-l wff-associative-l*))
+(export '(wff-associative-r wff-associative-r*))
+(export '(wff-commutative wff-commutative*))
+(export '(wff-permute wff-permute*))
+(export '(wff-double-negation wff-double-negation*))
+(export '(wff-sub-implies wff-sub-implies*))
+(export '(wff-sub-equiv wff-sub-equiv*))
+(export '(wffchange))
+(export '(instantiate-definitions))
+(export
+ '(contains-defn contains-equality top-level-defn instantiate-definitions get-def-binder1
+    get-def-binder substitute-bdvar-scope))
+(export '(contains-defn top-level-defn substitute-bdvar-scope))
+(export '(wffabb))
+(export
+ '(inittypevar cdrtype cartype inittypes next-proposed-tvar next-final-tvar
+    next-temp-tvar collecttype findfullname finaltype1 finaltype containp
+    matchtwo getmetatype getpolytype binder-type typeatom typeinfer finalscan 
+    untyped-lambda-calculus encode-untyped))
+(export
+ '(putfinaltype tsubstp gettsubst puttsubst tconstp tvarp put-temp-symtype
+    putsymtype get-temp-symtype getsymtype))
+(export '(global-type make-wffops-labels))
+(export '(tpinf))
+(export '(rd-type))
+(export '(bytestream-tty rd-getfn rd-ckfn rd))
+(export '(wffing))
+(export '(string-bound-var string-type))
+(export
+ '(rd-string-bound stringbound-p parse-type peel-list peel-token
+    lexscan-quoted-token lexscan-sp lexscan maketerm infixscan groupscan
+    lexlist-parse get-stringtype rd-string intern-str intern-char single-string
+    empty-fill-string char-member))
+(export '(set-superscript-face last-^-with-int))
+(export '(spacelist stoplist))
+(export '(wffin))
+(export '(bind-priority))
+(export '(type-iota-mode lowercaseraise first-order-mode-parse base-type))
+(export '(parsing))
+(export '(wff-parsing))
+(export '(wffinm))
+(export '(ppw pwtypes pwscope pw))
+(export '(defprtop))
+(export '(prtcmd))
+(export '(prt-associative-p prt-prefix-op prt-infix-op prt-aplicn-p prt-symbol-p))
+(export '(print-internals))
+(export '(prtop))
+(export
+ '(sprintpplist sprintaplicn singleaplicn printpplist pp-lowercase pptyos pptyo0
+    pptyo pprinc0 pp-enter-kset indentation genchar atomvalterpri aplicnlistdepth))
+(export '(printwff))
+(export
+ '(pp-typesym pp-lsymbol pp-space-p pp-symbol-space pp-lsymbol-space
+    need-no-brackets-on-right need-no-brackets printwff printwffplain
+    printwffscope pwff printwffhere flatsym flatstring flatwff hatomalist))
+(export '(curpos))
+(export '(prt))
+(export '(princ-mhelp-char))
+(export '(mhelp face))
+(export '(global-facelist))
+(export '(defface))
+(export '(print-face))
+(export '(faces))
+(export '(prt-associative fo-single-symbol infix prefix printnotype))
+(export '(process-printing-property))
+(export '(mhelp readfn printproptype))
+(export '(global-printproplist))
+(export '(defprintprop))
+(export '(printprop))
+(export '(prtprp))
+(export '(re-read))
+(export
+ '(indent-generic pp-typesym-generic terpri-heuristics-generic pp-space-p-generic
+    pp-symbol-generic doublequotes-terpri terpri-doublequotes doublequotes))
+(export '(generic-string))
+(export '(styles))
+(export '(ppwfflength ppwfflist  ppvirtflag))
+(export
+ '(retain-initial-type use-dot scope rightmargin leftmargin printtypes
+   printdepth ppwfflag localleftflag flushleftflag first-order-print-mode 
+   fillineflag displaywff charsize blank-lines-inserted atomvalflag allscopeflag))
+(export '(printing printing-tex window-props))
+(export '(wffout))
+(export '(replace-gdr gdr replace-gar gar replace-wff-posn get-wff-posn))
+(export '(moving))
+(export '(wffmve))
+(export '(free-vars))
+(export '(typealist))
+(export
+ '(dupwff ab-change type-of-arg-1 apply-wff bindhead bindvar binding
+  free-vars-of subst-1-type substitute-types rename-bd-var change-print-type
+  intern-subst))
+(export '(ren-var-fn rename-all-bd-vars)) ; dan 2-22-88
+(export
+ '(dupwff match-con-rec ds-con-match ab-change apply-wff-n apply-wff
+  function-of inmost-car cartsqproj-type fntype-list multiset-to-set
+  type-of-arg-1 attach-head bind-var-wff-n bind-var-wff fresh-var-1 fresh-var
+  bindhead bindvar binding free-vars free-vars-of boundwfftype type-consp
+  type-cdr type-car get-type-def typeabbrev-p subst-1-type substitute-types
+  rename-bd-var intern-subst create-propsym type-to-lib-stream
+  type-to-stream type-to-string unabbreviated-type
+  fullname get-defn-1 get-defn get-pmdefn inherit-abbrev getren-counter
+  setren-counter ren-var-x11 digits nameroot name-eq
+  ren-var-x1 ren-var-xa nameroot-type getnameroot))
+(export '(wff-prims))
+(export '(prim-obj))
+(export '(wffprim))
+(export '(essuniv essexist))
+(export '(boolean-recursion boolean-recursion-escape))
+(export '(wffrec))
+(export '(higher-order first-order))
+(export '(wffmodes))
+(export '(princ-mhelp-defn))
+(export
+ '(defn-fun def-scope def-var wff-type scope-type var-type typelist type-defn
+  mhelp defn))
+(export
+ '(global-abbrevlist global-binderlist global-pmpropsymlist global-logconstlist
+  global-typeabbrevlist global-typeconstlist))
+(export
+ '(def-abbrev def-binder def-pmpropsym def-logconst def-typeabbrev def-typeconst))
+(export '(abbrev binder pmpropsym logconst typeabbrev typeconst))
+(export '(wffcat))
+(export '(binder bdvar bdhead))
+(export '(legal-type-p1 gwff-q))
+(export
+ '(infix-op e-bd-wff-p a-bd-wff-p free-in lambda-bd-p ae-bd-wff-p not-p
+    or-p and-p equiv-p implies-p equal-type-p type-equal infix-op-p infix-p
+    legal-boundwfftype-p1 legal-type-p1 legal-type-p reduct-p label-q label-p
+    gvar-q gvar-p gwff-q gwff-p binder-p binder-q boundwff-p boundwff-q lsymbol-p
+    lsymbol-q anypropsym-p anypropsym-q anyabbrev-p anyabbrev-q abbrev-p abbrev-q
+    pmabbsym-q pmabbsym-p pmabbrev-p pmabbrev-q pmprsym-q pmprsym-p pmpropsym-p
+    pmpropsym-q propsym-p propsym-q logconst-p logconst-q equality-p 
+    contains-= contains-ext= wff-applic-p))
+(export
+ '(e-bd-wff-p a-bd-wff-p free-in lambda-bd-p ae-bd-wff-p not-p
+    or-p and-p equiv-p implies-p equal-type-p type-equal infix-op-p infix-p
+    legal-type-p reduct-p label-p gvar-p gwff-p boundwff-p lsymbol-p anypropsym-p
+    anyabbrev-p abbrev-p pmabbrev-p pmpropsym-p propsym-p logconst-p
+    equals-p))
+(export '(defwfftest))
+(export '(wfftst-obj))
+(export '(wfftst))
+(export '(flavor-type))
+(export '(internal-names))
+(export '(mhelp inherit-properties))
+(export '(global-flavorlist *flavor-hash-table* structured
+          constructor-fun wffop-hash-table flavor-constructor-fun
+          flavor-wffop-hash-table flavor-mhelp flavor-name
+	  include instance-attributes))
+(export '(flavor))
+(export '(flavor-obj))
+(export
+ '(flavor-getfn flavor-ckfn reset-name-counter create-name create-namestring
+    create-namestring-with-hyphen read-flavor-fn apply-label-error defflavorstruct))
+(export '(defflavor apply-label define-label))
+(export '(flavoring))
+(export '(wffop-type))
+(export
+ '(wffop-getfn wffop-ckfn printype typesym-p good-occ getrwff get-only-rwff
+    getwff-subtype get-gwff0))
+(export
+ '(symbollist fsym typesymlist-nil typesym-nil typesymlist typesym occ-list
+  gvarlist gvar gwfflist gwffpair gwffpairlist gwff0 gwff-ill gwff))
+(export
+ '(print-op replaces applicable-p applicable-q mainfns defaultfns arghelp
+  wffop-type resulttype wffop-typelist wffargtypes argtypes getfn checkfn mhelp
+  multiple-recursion argnames))
+(export '(global-wffoplist global-gwfftypelist global-wffreclist))
+(export '(wffop getgwfftype wffrec))
+(export '(prtwff))
+(export '(defwffop defgwff-type defwffrec prtwff))
+(export '(wfftyp-obj))
+(export '(wfftyp))
+(export '(typevar-in typevar-in-typesym not-typevar-in-wffset typevar-p))
+(export
+ '(save-command resume-save applicable-p-restore-work restore-work stop-save
+    finish-save open-save-file applicable-p-resume-save continue-save-after-restore))
+(export
+ '(saving-work-p restore-work-echo-stream *standard-input*-save
+  save-work-echo-stream save-work-output-stream last-restored-file 
+  save-work-file restore-work-infile restore-file-p))
+(export '(restore-work resume-save execute-file stop-save save-work 
+	  script unscript ;; added 19sep88 dan
+          save-flags-and-work))
+(export '(save-interval save-work-on-start-up save-work-p))
+(export '(saving-work))
+(export '(save-work-obj))
+(export '(save-work))
+(export '(saveproof restoreproof defsavedproof)) ; dan 14mar89
+(export '(secondary-top-main))
+(export '(core-name news-dir source-path source-extension compiled-extension
+	  date-tps3-saved save-file expert-list building-start-time
+	  etps-core-name sys-dir compiled-dir source-dir ini-file-dir
+	  patch-file-dir))
+(export '(linereadp linereadpp alias unalias *all* history-size
+	  history *command-history*))
+(export '(reroute-output))
+(export
+ '(time0 runtime0 gctime0 reroute-close-message init-dialogue-fn init-dialogue))
+(export '(err-protect reroute-output reroute-output-append dont-count))
+(export '(terminal news))
+(export
+ '(filetype create-sorted-ctree initialize-top-level-ctree
+    initialize-top-command-ctree cmd-completion terminal terminaltypep stringdt
+    stringdtl setcurpos curpos news userexit filespecp terminalp fileprinc))
+(export '(terminaltype filespec dirspec dirspeclist))
+(export '(system))
+(export '(macsys))
+(export
+ '(find-event eval-princ show-history prompt2 top-prompt interpret-tps-top
+    print-*-tps-top redo-top tps-top-level sec-tps-top-prompt exit-top
+    tps-sub-top top absolute-top-top secondary-top))
+(export '(cmd-top))
+(export '(max-top-event-nr))
+(export
+ '(print-* command-interpreter 
+   consp-interpreter flag-interpreter 
+   mexpr-interpreter misc-interpreter 
+   top-prompt-fn beep-flag curr-cmd top-level-level top-levels
+   top-level top-history top-event-nr absolute-top-p expertflag save-work-p
+   restore-file-p))
+(export '(top))
+(export '(unuse))
+(export '(lisp-package lisp-package-list))
+(export '(unuse use-one pack-status print-lisp-package-name
+		get-lisp-package-name lisp-package-p))
+(export '(lisp-packages))
+(export '(control-g-char control-d-char control-e-char escape-char system))
+(export '(tpsbell throw-^g %top-catch% make-pathname%))
+(export '(initialize-news-dir write-^g terminal-image-mode linewidth linelength
+			      tps3-save exit-from-lisp call-system))
+(export '(style window-style use-window-style))
+(export '(pcall))
+(export '(generic))
+(export '(margin-generic-tps tab-generic nextpar-generic noop-1 noop))
+(export '(dev-style))
+(export
+ '(mhelp char-cat text-postfix text-prefix end-environment begin-environment
+    display-postfix display-prefix margin-correct print-line print-nextpar
+    print-tab print-indent print-type-char print-typesym terpri-heuristics
+    print-space-p print-symbol))
+(export '(global-stylelist))
+(export '(pcall defstyle))
+(export '(device-style))
+(export '(gensty))
+(export '(in-mode))
+(export '(set-flag mode tps-mode-p subject-p))
+(export '(tps-mode subjectlist subject))
+(export '(flag-settings subjects pre-change-fn change-fn default flagtype mhelp))
+(export '(global-modelist global-flaglist global-subjectlist))
+(export '(in-mode defmode defflag defsubject defsynonym synonym))
+(export '(flag-mode flag review-subject))
+(export '(flags))
+(export '(flagging))
+(export '(global-lib-argtypelist))
+(export '(yesno posinteger posintegerlist integer+  anything  anylist null-or-posinteger null-or-integer 
+		lib-argtype lib-argtype-or-nil posnumber symbol-or-integer))
+(export '(defconstype deflisttype))
+(export '(mhelp short-prompt printfn getfn testfn))
+(export '(global-argtypelist))
+(export '(defconstype deflisttype deftype%))
+(export '(argtype))
+(export '(basics))
+(export '(argtyp))
+(export
+ '(match-strong-types apply-defaultspec get-defaults gettype same-dollars
+    fill-in-defaults use-defaults get-args fill-args prompt-values
+    initial-polytypevarlist strong-ed-defaults opdecode comdecode run-command))
+(export '(query prompt-read))
+(export '(getkey query prompt-read 
+	  prompt-read-return-vals ;;added 30aug90 dan
+)) 
+(export '(argnumbers ordinals max-short-prompt max-prompt-col))
+(export '(subtoplevels))
+(export '(tpstop))
+(export '(well-ff))
+(export
+ '(ml-etr-tactics mating-transform unification unification-interface
+;tait cpk-primitive-subst 
+;sieg-1 sieg-1-rules 
+;sieg-1-theorems sieg-1-wffs 
+  primitive-subst etps-events events report
+  math-logic-2 math-logic-1 math-logic-2-rules
+  math-logic-1-rules math-logic-2-exercises
+  math-logic-1-exercises math-logic-2-wffs math-logic-1-wffs tps2-rules
+  otlschema2 otladvice otlcleanup otlgo otlsuggest otlscribe otlrulep otlnl
+  event-signal otlhelp otlrules rules ops-otlrules read-rules theorems wffmatch
+  metawffs tps2-rulep vpforms jforms saving-modes review-flags auto-doc
+  environment tps-help tex-wff scribe-wff logic-scribe sail-wff concept-wff
+  tps2-logic development-seqs skolemizing auto-basic expansion-tree mst ext-dags
+  lambda-calc save-wffs weak-label wff-editor wff-ops2 wff-ops1 wff-ops-abb
+  wff-parse mating ; mating-search new-mating-search 
+  ms88 ms89 ms90-3 ms90-9 ms98 ms91-6 ms91-7 ms92-9 ms93-1 ms98-1; changed 23may90 dan
+  mating-search important
+  grader-top grader
+  library wff-print wffs save-tps-work maintain concept-bare file-ops
+  tps-modules external-services
+ bare tpsdef bootstrap tactics ml-tactics etr-nat tactics-nd
+  option-tree))
+(export '(ms91 ms91-basic ms91-weights ms91-enumerate  ms91-search))
+(export '(ml logic0 auto maint core teacher)) ;sieg tait 
+(export '(defpck))
+(export
+ '(complain ttymsg msgf msg throwfail %throw% %catch% copy set-of
+    for-each tps-warning))
+(export
+ '(system-news core-image indirect batch command-declaration lisp-source
+  unclassified define-categ))
+(export '(files macro-files lisp-pack  mhelp needed-lisp-packages
+          auto-load-files ; dan 27sep89
+))
+(export
+ '(*pack-warn-p* *only-sources* *source-files-only* source-path source-extension
+  compiled-extension global-lisp-packagelist))
+(export
+ '(destructive-push categ-context part-of defpackage def-lisp-package
+    def-lisp-package1))
+(export '(lisp-package))
+(export '(boot1))
+(export
+ '(cload 
+   qload tload find-lisp-package locate-tps-file locate-file 
+    insert-object
+    insert-context reorganize-global-list split-list mhelp-file
+    organize-global-list organize-cat-contxt unique-sort reorganize organize-all
+    needed-mfs needed-macro-files sys-load
+   defunobsolete module defmodule global-modulelist module-help needed-modules
+   module-package sys-load-module module-p module-loaded-p load-modules
+   load-module load-all-modules load-all-modules-except cload-module 
+   cload-modules module-lisp-pack module-files module-macro-files 
+   module-needed-modules module-mhelp load-macro-files
+))
+(export
+ '(part-of extension tps-export tps-import short-id keywords form-type
+    top-cmd-decode top-cmd-interpret top-level-ctree top-level-category print-*
+    command-interpreter top-prompt-fn mhelp dont-restore print-command closefns
+    enterfns mainfns defaultfns arghelp argnames wffop-typelist wffargtypes
+    argtypes order scribe-one-fn
+   singlefn multiplefns
+))
+(export '(tps-file context utility toplevel mexpr))
+(export
+ '(global-filelist global-contextlist current-context global-utilist
+  global-toplevellist global-mexprlist global-definelist load-warn-p
+  global-categorylist ))
+(export
+ '(deffile deffile1 defcontext context defutil deftoplevel defmexpr defcategory
+    msgf  complain ttymsg msg  setintersect
+    setdiff  ascii  flatc 
+ throwfail-on throwfail %throw%  neq 
+    spaces tabx copy set-of forall exists for-each 
+    max-with-key prepend pairp apply-fn-with-key
+    conc-strings fixp plist expand-%catch% %catch% putprop
+    defautoloadfn ; dan 27sep89
+))
+(export
+ '(new-filename context-p getargnames get-fnspec read-n-arg-fnspec
+		read-multiple read-single read-mhelp define-properties
+		prop-error  tyo alphalessp new-tmp-filename
+    collapse-face conc-names conc-stringlist 
+     prinlc tab expand-set-of
+    expand-ex expand-fe dsubst status-daytime status-date status-userid
+    compile-warn-obsolete shadow-copy accessible-p 
+    always-true always-nil ; added 25feb89
+))
+(export '(boot0))
+(export '(*user*))
+(export '(transparent-mode))
+(export '(reset loadkey))
+(export
+ '(transparent-mode-on transparent-mode-off shortreset reset enter-kset loadkey
+    load-kset-keys tyos tyoi tyol))
+(export '(concept-terminal))
+(export '(concpt))
+(export '(define-mode save-flags))
+(export '(xterm xterm-ansi-bold))
+(export '(xwindows))
+(export '(prfw))
+(export '(prfw-top begin-prfw end-prfw proofw-all proofw-active proofw-all-height proofw-all-width
+		   proofw-active-height proofw-active-width proofw-active+nos-width
+		   proofw-active+nos-height proofw-active+nos))
+(export '(create-lib-dir create-lib-subdir delete-lib-dir))
+(export '(lib insert delete get-lib-attr-readfn show show-wff show-help show-wff&help show*-wff
+	      get-lib-descr-readfn get-lib-printfn restore-lib-hashtable show-all-wffs
+ 	      restore-masterindex list-of-libobjects reformat fetch initialise-new-index
+	      librarycmd abbr lib-masterindex-file dpairset show-wffs-in-file 
+	      show-objects-in-file scribelibfile scribelibdir texlibdir
+	      texlibfile stringlist libfiles move-libobject key sort libobject auto-keywords))
+(export '(auto-lib-dir insert-libobject-auto insert-libobject-tptp insert-tptp
+	  const-insert def-insert axiom-insert thm-insert insert-libobject-tptp* insert-tptp*))
+(export '(displayfile daterec retrieve-file libobjects-in-file copy-libobject copy-libfile
+reindex spring-clean))
+(export '(default-libfile-type default-libindex-type default-lib-dir
+           backup-lib-dir recordflags tpsflaglist))
+(export '(mode1  slist))
+(export '(integer+-or-infinity posinteger-or-infinity infinity infinite-p))
+(export '(last-mode-name))
+(export '(tex-line-width scribe-slides))
+(export '(quit-inferior-top quit-this-top-level push pop))
+(export '(typesym-cons gwff0-or-label filespeclist library-top southwest supset
+		       turnstile tex-1-otl mode-ml tex-1))
+(export '(lib-macros lib-objects lib-ops lsppck-core macsys-3 test-top-lib
+		     tps3-error tops20 wfflmbd-macros wffmacros show-timing))
+(export '(mbed-al mbed-and-left mbed-ar mbed-and-right mbed-e mbed-e1 
+		  mbed-existential mbed-existential1
+		  mbed-f mbed-forall mbed-il mbed-implics-left 
+		  mbed-ir mbed-implics-right mbed-ol mbed-or-left
+		  mbed-or mbed-or-right embedding mbed-l mbed-lambda
+		  mbed-ql mbed-equiv-left mbed-qr mbed-equiv-right
+		  mbed=l mbed=left mbed=r mbed=right))
+(export '(machine-type short-site-name machine-instance lisp-implementation-type prim-subst))
+(export '(bug-save bug-restore bug-delete bug-list bug-help closeness-filter2 abbr lib-abbr
+		   lib-abbr-list constants const-list abbr-list lib-const assoc-l add-subdirectories
+		   default-bug-dir use-default-bug-dir lib-bug edmbed wffmbed show-all-libobjects destroy
+		   move-libfile remove-trailing-dir change-provability find-provable))
+(export '(support-numbers gap plan use-internal-print-mode prw infix-notation save-subproof
+			  fix-modes new-defs find-line line-comment print-comments are-we-using
+			  count-lines proof-comment create-subproof merge-proofs transfer-lines))
+(export '(rrule rrules lib-promptfn-rewrite libparse-rewrite get-lib-rewrite libprint-rewrite make-abbrev-rrule
+		rewriting rewrite-rule after before rewfn rtypelist rewrule-p defrewrule apply-rrule-1 
+		arr1 apply-rrule-1 arr1* apply-rrule-1* arr apply-rrule-any arr* apply-rrule-any*
+		unarr1 unapply-rrule-1 unarr1* unapply-rrule-1* unarr unapply-rrule-any unarr* unapply-rrule-any*
+		simplify-up simplify-down simplify-up* simplify-down*
+		use-theory activate-rules deactivate-rules
+		make-inverse-rrule get-rewrule bidirectional appfn active active-p do ask show forget
+		make-rrule list-rrules rrulelist permute-rrules delete-rrule create-rewrite-rule))
+(export '(theory lib-promptfn-theory libparse-theory get-lib-theory libprint-theory gwffs other-stuff
+		 instance-of-rewriting make-theory subformulas find-subformulas variable-list
+		 global-theory-list global-rewrite-rule-list theory-p rewrule-p extends jform vpformat vpstyle
+		 rewrite-equalities leibniz lazy1 lazy2 dual parity1 all none only-ext eager ordercom global-ordercomlist))
+(export '(rightsemanticbracket leftsemanticbracket findproof both alpha-lower-flag changed-flags
+			       completion-options oops sk-first-order sk-higher-order with-equality proven unproven 
+			       with-defn auto-proof all scribe-all-wffs tex-all-wffs elim-defns pause plans linealiases
+;			       rewrite-defns-eager ;so that fix-modes will work!
+			       definfo info copy-mode add-flag-to-mode remove-flag-from-mode rename-object *executing*
+			       vpdtex latex-emulation latex-preamble latex-postamble))
+(export '(printtypes-all pbrief explain build-proof-hierarchy print-proof-structure *first-equiv* rewrite-equivs
+			 print-combined-uis print-combined-ugens print-combined-egens print-until-ui-or-egen
+			 tps-get-internal-run-time suppress-flags suppress-flags-list
+			 suppress-irrelevance-warnings))
+(export '(update-keywords change-keywords show-keywords add-keyword lib-keyword-file without-defn no-auto-proof
+			  more instantiate-top-equality instantiate-= expand=* *doing-html*
+			  lock-line unlock-line locked command-line-switches without-equality))
+(export '(ep op db))
+(export '(develop-seqs))
+(export '(eddev))
+(export '(openwffe1 openwffe openwffa1 openwffa delete-binder delete-leftmost-binder))
+(export '(consp-interpreter flag-interpreter mexpr-interpreter misc-interpreter lib-keys lib-modes moderec))
+(export '(lib-bestmode-file show-bestmode add-bestmode lib-bestmodes find-mode delete-bestmode modify-bestmode
+			    show-bestmode-thms
+			    show-new-bestmodes find-dup-modes update-provability))
+(export '(copy-libdir delete-libfile rename-libfile check-needed-objects import-needed-objects rename-libdir
+		      update-libdir))
+(export '(add-hyps delete-hyps make-assert-a-hyp))
+(export '(relevant-kids irrelevant-kids relevancy-preconditions irrelevancy-preconditions subject-flags update-relevant 
+			analyze-flag-dependencies save-flag-relevancy-info show-relevance-paths))
+(export '(gwff-name))
+(export '(keyword-prop keyword-list))
+(export '(common-defn-lam-reduct common-defn-eq-lam-reduct common-defn-eq-refl=-lam-reduct 
+				 first-unblocked-pos wffs-do-not-match REFL))
+(export '(*tps-server-name* def-abbr-quick extens))
+
+(export '(class-scheme classification create-class-scheme
+           pclass pschemes goto-class classify-class unclassify-class
+           classify-item unclassify-item fetch-libclass fetch-libclass*
+           create-libclass pclass-scheme-tree pclass-tree lib-class libclass
+           CLASS-DIRECTION FETCH-UP FETCH-DOWN updown up down root-class
+	   def-class-scheme
+	   global-class-scheme-list pintersect pintersect*))
+
+(export '(unix-library unix-library-top unixlib unixlib-showpath
+		       pwd libdir mkdir ln cp mv ls-items*
+		       pintersect pintersect* unix-librarycmd
+		       locate pup pdown copy-class-scheme))
+(export '(*using-interface* *running-remotely* *command-process* RESPONSE istyle
+			    *simple-interface-prompts* *remote-userid*
+			    interface))
+(export '(start-option-prompt start-prompt-msg start-prompt-name
+			      start-prompt-argtyp start-prompt-options
+			      start-prompt-help start-prompt-default end-prompt
+			      command-finished open-window-with-socket clear-window
+			      close-window))
+(export '(remote-expert die-with-broken-output
+	  *expert-running-remotely*
+	  change-color black red green blue))
+(export '(dont-auto-test get-all-defns get-all-defns-rec generate-class-scheme
+			 import-class rename-class find-generated-class
+			 core-abbrevlist core-theoremlist core-binderabbrevlist
+			 core-constlist))
+(export '(menu menuitem defmenu defmenuitem parent placement display-name hotkey etps tps mbar
+	       global-menulist global-menuitemlist))
+(export '(javawin java-comm fontsizestring encrypt-password))
+(export '(modes-gwffs modes-gwffs-modes modes-gwffs-gwffs add-goodmodes remove-goodmodes def-modes-gwffs
+		      GOODMODES EMPTYGOODMODES global-modes-gwffs))
+(export '(tex-break-before-symbols *executing-batch* *last-gwff-typed* *lastmode*))
+(export '(get-a-number))
+
+; mkaminski -- 10/7/2005
+
+(export '(apply-rrule-poly variables used-vars ren-vars rrule-instance-poly replace-rrule-poly *type-subs* *binding-subs* *binding-subs-bdstack* suggest-types *hopeless-fail* substitute-lt-term-var use-rrules-defaults use-rrules-build wffbindings meta-assertion use-rrules-mv0 use-rrules-mv1 use-rrules-p1 use-rrules-p2 deactivate-theory active-theory *active-rewrite-theory* relation-sign reflexive rrules-used-by texproof-generic derived-appfn derived-rewfn retrieve-libobject-real parse-comment))
+
+(export '(prfw-comdecode *prfw-pall-window* *prfw-^p-window* *prfw-^pn-window*
+*prfw-pall-process* *prfw-^p-process* *prfw-^pn-process* *big-proofwindow*
+setup-prfw-^p-window setup-prfw-^pn-window setup-prfw-pall-window
+kill-xterm-window finish-output save-rrule derived-in print-line-tex-plain
+write-saved-proof-real comment))

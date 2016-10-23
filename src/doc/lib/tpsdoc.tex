@@ -1,0 +1,151 @@
+%Note: you will need to \usepackage{alltt} and \usepackage{makeidx} so that alltt can be used below
+
+\makeatletter %one column index
+\renewcommand{\theindex}{\if@twocolumn\@restonecolfalse\else \@restonecoltrue\fi%
+\onecolumn\section*{\indexname}\@mkboth{\MakeUppercase\indexname} {\MakeUppercase\indexname}%
+\thispagestyle{plain}\parindent\z@\parskip\z@\@plus.3\p@\relax\let \item\@idxitem}
+\renewcommand{\endtheindex}{\if@restonecol\clearpage\else\twocolumn \fi}
+\makeatother
+
+\makeatletter %set the space between numbers and sections in the table of contents
+\renewcommand*\l@section{\@dottedtocline{1}{0em}{2.8em}}
+\makeatother
+
+\makeatletter %new title page
+\renewcommand{\maketitle}{
+    \vspace*{5cm}
+    \begin{center}
+    {\textbf{\LARGE \@title} \par}
+    \vskip 2em
+    {\large
+     \lineskip .75em
+      \begin{tabular}[t]{c}
+        \@author
+      \end{tabular}\par}
+      \vskip 1.5em
+    {\large \@date \par}
+    \end{center}\par
+    \vskip 15.5em
+    \copyrightandresearchcredit
+    \thispagestyle{empty}
+    \setcounter{page}{0}
+}
+\makeatother
+
+\def\research-credit{
+This material is based upon work supported by NSF grants 
+MCS81-02870, DCR-8402532, CCR-8702699, CCR-9002546, 
+CCR-9201893, CCR-9502878, CCR-9624683, CCR-9732312, 
+CCR-0097179, and a grant from the Center for Design of 
+Educational Computing, Carnegie Mellon University. Any 
+opinions, findings, and conclusions or recommendations 
+are those of the authors and do not necessarily reflect 
+the views of the National Science Foundation.
+}
+
+\def\CMU-copyright{
+Copyright \copyright Carnegie Mellon University 2005 
+}
+
+\def\copyrightandresearchcredit{
+Copyright \copyright Carnegie Mellon University 2005.
+This material is based upon work supported by NSF grants 
+MCS81-02870, DCR-8402532, CCR-8702699, CCR-9002546, 
+CCR-9201893, CCR-9502878, CCR-9624683, CCR-9732312, 
+CCR-0097179, and a grant from the Center for Design of 
+Educational Computing, Carnegie Mellon University. Any 
+opinions, findings, and conclusions or recommendations 
+are those of the authors and do not necessarily reflect 
+the views of the National Science Foundation.
+}
+
+%The commands below are copied from 
+%/home/theorem/project/doc/prog/manual.tex
+\newtheorem{definition}{Definition}[section] % a definition is labelled Definition and is numbered by section
+\newtheorem{lemma}[definition]{Lemma} % lemmas are labelled Lemma and use the same numbering as definitions.
+\newtheorem{example}[definition]{Example} % etc...
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{algorithm}[definition]{Algorithm}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{conjecture}[definition]{Conjecture}
+%\numberwithin{figure}{chapter} % figures are 3.1, 3.2, 5.1,... rather than 1, 2, 3,...
+\newenvironment{notation}{{\sc Notation}\it\ }{\rm}
+\newenvironment{remark}{{\sc Remark}\ }{}
+\newcommand{\missing}{\par{\bf *****INSERT PROOF HERE*****}\par} % a little reminder that something's missing...
+\newcommand{\reml}{[\![}        % Left valuation-bracket, meaning ``remove this''
+\newcommand{\remr}{]\!]}        % Right ditto
+\newcommand{\uglylabel}[1]{{\hspace{-0.35in}\mbox{\small\bf #1}\hspace*{0.3in}}}
+\newcommand{\fixme}{\marginpar[{\bf fix me! $\longrightarrow$}]{{\bf $\longleftarrow$ fix me!}}} % arrows in the margins...
+\newcommand{\nchoose}[2]{$($\raisebox{-2pt}{$\stackrel{#1}{\scriptstyle #2}$}$)$} % in-line printing for `n choose k'.
+%\newcommand{\cal}{\mathfrak} % calligraphic font is really fraktur.
+\newcommand{\foobar}[1]{\makebox[1.5em]{\rule[-.5ex]{0cm}{2ex}#1}} % used to label lattices in the results section
+%\newcommand{\comment}[1]{} % mimic the Scribe `comment' command.
+\newcommand{\alg}[1]{{\em #1}\index{#1 algorithm}} % how to print the name of an algorithm and index it as well
+\newcommand{\mmm}[2]{\alg{Merge}$(#1,#2)$} % \mmm{a}{b} prints Merge(a,b).
+\newcommand{\flag}[1]{{\sc #1}\index{#1}} % flags are in small caps, and indexed
+\newcommand{\bflag}[1]{{\bsc #1}\index{#1}} % bold flags, for appendix a.
+\newcommand{\fval}[1]{{\sc #1}} % flag values in small caps...
+\newcommand{\bfval}[1]{{\bsc #1}} % ...or bold ditto, in {description} contexts
+\newcommand{\ftyp}[1]{{\sc #1}} % flag types, also in small caps.
+\newcommand{\mexpr}[1]{{\tt #1}\index{#1}} % how to index a command (\command is already taken)
+\newcommand{\simj}{\sim_{\!_J}} % twiddle-J.
+\newcommand{\ssim}{\sim\!\!} % not, but with less space after it.
+\newcommand{\nconv}{\stackrel{\sim}{\longrightarrow}}
+\newcommand{\bconv}{\stackrel{\scriptscriptstyle\beta}{\displaystyle\longrightarrow}}
+\newcommand{\nquiv}{\stackrel{\scriptscriptstyle\beta\sim}{\displaystyle =}}
+\newcommand{\bquiv}{\stackrel{\beta}{\displaystyle =}}
+\newcommand{\dquiv}{\stackrel{\scriptscriptstyle {\rm def}}{\displaystyle =}}
+\newcommand{\rquiv}[1]{\stackrel{\scriptscriptstyle #1}{\displaystyle \longrightarrow}}
+\newcommand{\cons}{\!^\frown} % list cons, like the ^ in a^(b)
+\newcommand{\mystrut}{\rule[-0.75ex]{0ex}{2.5ex}}
+\def\TPS{{\sc Tps}}  % We had a \, to ensure a space, but it looks better if we always put {\TPS}
+\def\ETPS{{\sc Etps}} % or {\ETPS} (in curly brackets) and let latex determine the space.
+\def\OMEGA{\mbox{$\Omega${\sc mega}}}
+\def\LOUI{{\sc L$\Omega$UI}}
+\def\SPASS{{\sc Spass}}
+\def\OTTER{{\sc Otter}}
+\def\PROTEIN{{\sc Protein}}
+\def\CLAM{{\rm CL\raise.5ex\hbox{\sc a}M}}
+
+% This is for Scribe compatibility, so that for some
+% Scribe commands we can simply change the @ to a \
+\def\wt{\sf}
+\def\w{\sf}
+\def\lisp{{\sc lisp}}
+\newcommand{\indexother}[1]{#1\index{#1}}
+\newcommand{\indexflag}[1]{#1\index{#1, Flag}}
+\newcommand{\indexcommand}[1]{#1\index{#1, Command}}
+\newcommand{\indexedop}[1]{#1\index{#1, EdOp}}
+\newcommand{\indexmexpr}[1]{#1\index{#1, MExpr}}
+\newcommand{\indexparameter}[1]{#1\index{#1, Parameter}}
+\newcommand{\indexdata}[1]{#1\index{#1, Data}}
+\newcommand{\indexfile}[1]{#1{\it \index{#1, File}}}
+\newcommand{\indexfunction}[1]{#1\index{#1, Function}}
+\newcommand{\indexstyle}[1]{#1\index{#1, Style}}
+\newcommand{\indextypes}[1]{#1\index{#1, Type}}
+\newcommand{\indexargtypes}[1]{#1\index{#1, Argument Type}}
+\newcommand{\indexSyntax}[1]{#1\index{#1, Syntax}}
+\newcommand{\indexProperty}[1]{#1\index{#1, Property}}
+\newcommand{\indexData}[1]{#1\index{#1, Data}}
+\newenvironment{Example}{ \\}{\\}
+
+%%Those below were developed by pba
+
+\newcommand{\indexsubject}[1]{#1\index{#1, REVIEW subject}}
+\newcommand{\indexsyntax}[1]{#1\index{#1, Syntactic Object}}
+
+\newenvironment{tpsexample}{\begin{alltt}}{\end{alltt}}
+\newenvironment{lispcode}{\begin{alltt}}{\end{alltt}}
+\def\not{\mathord{\sim}}
+
+\def\and{\mathord{\wedge}}
+\def\implies{\mathord{\supset}}
+\def\union{\mathord{\cup}}
+\def\assert{\mathord{\vdash}}
+\def\one{\mathord{\overline{1}}}
+
+%\land, \lor are defined correctly in TeX itself.
+%the \or command below was found to cause trouble for the
+%tabular command, and should not be used.
+%Use the tex \lor command instead or \or
+%\def\or{\mathord{\vee}}

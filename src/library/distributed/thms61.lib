@@ -1,0 +1,28 @@
+(:name THM613
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL a(I) FORALL b(I) [a(I) =(OII) b(I)] IMPLIES FORALL f(II) FORALL g(II).f(II) =(O(II)(II)) g(II)"
+:needed-objects   NIL
+:mhelp "If there's one individual, then there's only one function."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM616
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April  6, 2004 at 14:51:15."
+:description "FORALL G(O(OI)) [G(O(OI)) SUBSET(O(O(OI))(O(OI))) OPEN(O(OI)) IMPLIES OPEN(O(OI)).SETUNION(OI(O(OI))) G(O(OI))] IMPLIES FORALL B(OI).FORALL x(I) [B(OI) x(I) IMPLIES EXISTS D(OI).OPEN(O(OI)) D(OI) AND D(OI) x(I) AND D(OI) SUBSET(O(OI)(OI)) B(OI)] IMPLIES OPEN(O(OI)) B(OI)"
+:needed-objects   NIL
+:mhelp "A version of BLEDSOE-FENG-SV-10 requiring extensionality."
+:other-attributes NIL
+:other-remarks "
+")
+
+

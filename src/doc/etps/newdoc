@@ -1,0 +1,7 @@
+		NEWDOC
+
+Documentation not quite ready to go into manuals
+goes into newdoc in the appropriate directory.
+If it's not quite clear which manual it goes into,
+or if it needs to be divided up, put it into
+/afs/cs/project/tps/tps/doc/user/newdoc

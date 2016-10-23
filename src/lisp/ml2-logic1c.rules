@@ -1,0 +1,36 @@
+;;; ******************************************************************* ;;;
+;;;         (c) Copyrighted 1988 by Carnegie Mellon University.         ;;;
+;;;                        All rights reserved.                         ;;;
+;;;         This code was written as part of the TPS project.           ;;;
+;;;   If you want to use this code or any part of TPS, please contact   ;;;
+;;;               Peter B. Andrews (Andrews@CS.CMU.EDU)                 ;;;
+;;; ******************************************************************* ;;;
+;;; Updated contexts 7/20/87 DAN
+(context rules-2-prop)
+
+(defirule indirect2
+  (lines (h1 (h) (h1) "not A" ("Assume negation" () ()))
+	 (p2 (h) (h1) "B")
+	 (p3 (h) (h1) "not B")
+	 (p4 (h) () "A" ("Indirect" () (p2 p3))))
+  (support-transformation ((p4 'ss)) ((p2 h1 'ss) (p3 h1 'ss)))
+  (itemshelp (h1 "Line with Assumed Negation")
+	     (p2 "Line with Positive Consequence of Assumption")
+	     (p3 "Line with Negated Consequence of Assumption")
+	     (p4 "Line to be Proven by Contradiction")
+	     ("A(O)" "Assertion to be Proven by Contradiction")
+	     ("B(O)" "One of Two Contradictory Consequences of Assumption"))
+  (mhelp "Rule of Indirect Proof Using Two Contradictory Lines."))
+
+(defirule indirect
+  (lines (h1 (h) (h1) "not A" ("Assume negation" () ()))
+	 (p2 (h) (h1) "FALSEHOOD" )
+	 (p3 (h) () "A" ("Indirect" () (p2))))
+  (support-transformation ((p3 'ss)) ((p2 h1 'ss)))
+  (itemshelp (h1 "Line with Assumed Negation")
+	     (p2 "Line with Contradiction")
+	     (p3 "Line to be Proven by Contradiction")
+	     ("A(O)" "Assertion to be Proven by Contradiction"))
+  (mhelp "Rule of Indirect Proof."))
+
+

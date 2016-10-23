@@ -1,0 +1,84 @@
+\chapter{Setting and Varying Flags}
+\label{flags}
+
+%Some facilities which can be helpful in finding modes
+%appropriate for proving particular theorems automatically are
+%discussed in section \ref{modes}.  
+
+
+
+
+
+The settings of flags are very important during automatic search.  For
+example, flags like \indexflag{REWRITE-DEFNS} and
+\indexflag{REWRITE-EQUALITIES} must be set to T (true) if you want
+definitions and equalities, respectively, to be rewritten when the
+expansion tree is created from the formula to be proved.  To see all
+of the flags which will affect mating-search, check the facilities
+guide.
+
+Since there are many flags in {\TPS}, the flags which are most crucial
+to mating search have been collected together under the subject
+\indexother{IMPORTANT}, so that typing LIST IMPORTANT will produce a
+list of the settings of the dozen or so most important flags for
+mating search.
+
+{\TPS} has a facility called \indexcommand{UNIFORM-SEARCH},
+which attempts to find the correct flag settings
+on its own; it is capable of finding correct settings for many of the theorems
+which {\TPS} has proven to date. See section \ref{testtop} for more details.
+
+
+\section{Review, flags, and modes}
+
+
+The Review top-level is provided to make it easier to update flag-settings.
+Enter the top-level with the command \indexcommand{REVIEW}.  The commands provided
+in this top-level (for a listing, enter \indexcommand{?}) give information about the
+various flags available.  Each flag is listed under one or more subjects.
+You may use the command \indexcommand{SETFLAG} to change the value of a flag, or
+you may simply type the name of the flag itself. When entering the argument for
+a flag, you may type \indexcommand{??} for more information about the argument
+type. In some cases, {\TPS} will warn the user that the flag is irrelevant, given
+the settings of other flags.
+File names and extensions should be entered as strings (i.e. surrounded
+by double quotes); although in some circumstances one can omit the quotes, it
+is never an error to include them.
+
+All the flags for a subject can be listed by using the \indexcommand{LIST} command;
+{\tt help list} will tell you more. You may search the help messages of flags by
+using the \indexcommand{KEY} command; for example {\tt key `unification' all} will
+find the flags whose help messages mention unification, in all subjects. A similar
+command \indexcommand{SEARCH} allows you to search the help messages of all {\TPS}
+objects.
+
+To update many flags at once, use \indexcommand{UPDATE} or 
+\indexcommand{UPDATE-RELEVANT}.
+The \indexcommand{UPDATE} commmand 
+allows the user to set all the flags in given subjects.
+Since certain flag values render some other flags
+irrelevant, there is a command called \indexcommand{UPDATE-RELEVANT} which
+allows users to conveniently take into account the relationships
+between flags and the decisions previously made while setting flags
+interactively.  Since proof procedures are constantly being developed
+or refined, when \indexcommand{UPDATE-RELEVANT} is called, the user is given the
+option of using the current flag relevancy information in memory,
+loading flag relevancy information which has been saved to a file, or
+rebuilding flag relevancy information automatically by processing the Lisp
+source files.  
+
+Modes are collections of flags with specified settings.  By selecting a
+mode, you simultaneously set all the included flags.  You can also
+define your own modes and save them.  See the \indexcommand{INSERT} command,
+in the library top level, for more information.
+
+See section \ref{searchanalysis} for information on how to use
+a known proof to suggest {\TPS} flag settings, and Chapter
+\ref{ms-guide} for information about certain flags which affect the
+search processes.
+
+Currently defined flags and modes are listed in the facilities guide
+\cite{AndrewsTPS88e}.
+
+\input{testtop}
+\input{searchanalysis}

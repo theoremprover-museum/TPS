@@ -1,0 +1,74 @@
+		TPSDOC.HLP
+Help with Tps Documentation
+There are separate sections for Latex and Scribe
+
+==================================================================
+	Help for Tps Documentation formatted for Latex
+
+	It is generally better to use alltt instead of
+verbatim. This requires
+\usepackage{alltt}.
+Any document that uses tpsdoc.tex will need this in the heading.
+To insert a math formula,  note that `$' just produces a dollar sign,
+  so you'll have to type `\(...\)' or `\[...\]'.  Also, `^' and `_'
+  just produce their characters; use `\sp' or `\sb' for super- and
+  subscripts, as in `\(x\sp{2}\)'.
+
+The tpsexample environment is alltt. See comments about alltt above.
+
+
+==================================================================
+	Help for Tps Documentation formatted for Scribe
+-------------------------------------------------------
+		INDEXING
+
+The basic mechanisms are in /afs/cs/project/tps/tps/doc/lib/index.lib
+and /afs/cs/project/tps/tps/doc/lib/indexcat.mss. Note the comment on
+the use of @IndexCategory in the former file.
+
+	SIMPLE INDEXING
+@IndexOther(DIY-TAC) in the text on page <pagenumber> puts
+DIY-TAC <pagenumber> 
+into the index.
+
+	COMPLEX INDEXING
+@index*X*(WORD) in the text on page <pagenumber> puts
+WORD, *Y* <pagenumber>
+into the index.
+
+Example:
+@indexcommand(DO-GRADES) in the text on page <pagenumber> puts
+DO-GRADES, System Command <pagenumber>
+into the index.
+
+	*X*		*Y*
+	command		System Command 
+	edop		 Editor command
+	flag		flag
+	function	function
+	style		style
+(See  /afs/cs/project/tps/tps/doc/lib/indexcat.mss for the complete list.)
+More examples:
+@indexfunction(tactic-output)
+@indexstyle(GENERIC)
+
+See "quitting" in the index of the ETPS manual to see the 
+effect of the following lines in the file
+/afs/cs/project/tps/tps/doc/etps/system.mss:
+
+@seealso[Primary="Quitting",Other="@t(EXIT)"]
+@seealso[Primary="Quitting",Other="@t(END-PRFW)"]
+@seealso[Primary="Quitting",Other="@t(OK)"]
+@indexentry[key="Quitting",entry="Quitting"]
+
+	COMBINING FONT CONTROL WITH INDEXING
+This works:
+@t{@indexother(CURRENT-EPROOF)}
+
+----------------------------------------------------------------
+@t(restore-masterindex) puts the command restore-masterindex
+into a wider font in the text, but does not put it into the
+index. Use this font for commands.
+
+Use italics for names of flags
+

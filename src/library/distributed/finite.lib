@@ -1,0 +1,14 @@
+(:name THM626
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FINITE1(O(OI)) X(OI) IMPLIES FINITE1(O(O(OI))).POWERSET(O(OI)(OI)) X(OI)"
+:needed-objects   (FINITE1)
+:mhelp "The power set of a finite set is finite (using inductive FINITE1 definition of finite)."
+:other-attributes NIL
+:other-remarks "
+")
+
+

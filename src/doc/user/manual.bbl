@@ -1,0 +1,245 @@
+\begin{thebibliography}{10}
+
+\bibitem{Andrews71}
+Peter~B. Andrews.
+\newblock Resolution in Type Theory.
+\newblock {\em Journal of Symbolic Logic}, 36:414--432, 1971.
+
+\bibitem{Andrews76}
+Peter~B. Andrews.
+\newblock Refutations by Matings.
+\newblock {\em IEEE Transactions on Computers}, C-25:801--807, 1976.
+
+\bibitem{Andrews80}
+Peter~B. Andrews.
+\newblock Transforming Matings into Natural Deduction Proofs.
+\newblock In W.~Bibel and R.~Kowalski, editors, {\em Proceedings of the 5th
+  International Conference on Automated Deduction}, volume~87 of {\em Lecture
+  Notes in Computer Science}, pages 281--292, Les Arcs, France, 1980.
+  Springer-Verlag.
+
+\bibitem{Andrews81}
+Peter~B. Andrews.
+\newblock Theorem Proving via General Matings.
+\newblock {\em Journal of the ACM}, 28:193--214, 1981.
+
+\bibitem{Andrews87}
+Peter~B. Andrews.
+\newblock Typed $\lambda$-calculus and Automated Mathematics.
+\newblock In David~W. Kueker, Edgar G.~K. Lopez-Escobar, and Carl~H. Smith,
+  editors, {\em Mathematical Logic and Theoretical Computer Science}, Lecture
+  Notes in Pure and Applied Mathematics, vol.\ 106, pages 1--14. Marcel Dekker,
+  1987.
+
+\bibitem{Andrews89}
+Peter~B. Andrews.
+\newblock On Connections and Higher-Order Logic.
+\newblock {\em Journal of Automated Reasoning}, 5:257--291, 1989.
+\newblock Reprinted in \cite{Benzmuller2008d}.
+
+\bibitem{Andrews00c}
+Peter~B. Andrews.
+\newblock Classical Type Theory.
+\newblock In Alan Robinson and Andrei Voronkov, editors, {\em Handbook of
+  Automated Reasoning}, volume~2, chapter~15, pages 965--1007. Elsevier
+  Science, Amsterdam, 2001.
+
+\bibitem{Andrews2002a}
+Peter~B. Andrews.
+\newblock {\em An Introduction to Mathematical Logic and Type Theory: To Truth
+  Through Proof}.
+\newblock Kluwer Academic Publishers, second edition, 2002.
+
+\bibitem{Andrews00a}
+Peter~B. Andrews, Matthew Bishop, and Chad~E. Brown.
+\newblock System Description: TPS: A Theorem Proving System for Type Theory.
+\newblock In David McAllester, editor, {\em Proceedings of the 17th
+  International Conference on Automated Deduction}, volume 1831 of {\em Lecture
+  Notes in Artificial Intelligence}, pages 164--169, Pittsburgh, PA, USA, 2000.
+  Springer-Verlag.
+\newblock \newline http://dx.doi.org/10.1007/10721959\underline{ }11.
+
+\bibitem{Andrews95b}
+Peter~B. Andrews, Matthew Bishop, Sunil Issar, Dan Nesmith, Frank Pfenning, and
+  Hongwei Xi.
+\newblock {{\sc TPS}}: A Theorem Proving System for Classical Type Theory.
+\newblock {\em Journal of Automated Reasoning}, 16:321--353, 1996.
+\newblock Reprinted in \cite{Benzmuller2008d}. \newline
+  http://dx.doi.org/10.1007/BF00252180.
+
+\bibitem{AndrewsBrown2005}
+Peter~B. Andrews and Chad~E. Brown.
+\newblock TPS: A Hybrid Automatic-Interactive System for Developing Proofs.
+\newblock {\em Journal of Applied Logic}, 4:367--395, 2006.
+\newblock \newline http://dx.doi.org/10.1016/j.jal.2005.10.002.
+
+\bibitem{Andrews2004b}
+Peter~B. Andrews, Chad~E. Brown, Frank Pfenning, Matthew Bishop, Sunil Issar,
+  and Hongwei Xi.
+\newblock ETPS: A System to Help Students Write Formal Proofs.
+\newblock {\em Journal of Automated Reasoning}, 32:75--92, 2004.
+\newblock \newline http://journals.kluweronline.com/article.asp?PIPS=5264938.
+
+\bibitem{AndrewsTPS88d}
+Peter~B. Andrews, Sunil Issar, Dan Nesmith, Frank Pfenning, Hongwei Xi, Matthew
+  Bishop, and Chad~E. Brown.
+\newblock {\em {{\sc TPS3}} Facilities Guide for Programmers and Users}, 2004.
+\newblock 364+x pp.
+
+\bibitem{AndrewsTPS88e}
+Peter~B. Andrews, Sunil Issar, Dan Nesmith, Frank Pfenning, Hongwei Xi, Matthew
+  Bishop, and Chad~E. Brown.
+\newblock {\em {{\sc TPS3}} Facilities Guide for Users}, 2004.
+\newblock 199+vi pp.
+
+\bibitem{Andrews84}
+Peter~B. Andrews, Dale~A. Miller, Eve~Longini Cohen, and Frank Pfenning.
+\newblock Automating Higher-Order Logic.
+\newblock In W.~W. Bledsoe and D.~W. Loveland, editors, {\em Automated Theorem
+  Proving: After 25 Years}, Contemporary Mathematics series, vol.\ 29, pages
+  169--192. American Mathematical Society, 1984.
+\newblock Proceedings of the Special Session on Automatic Theorem Proving, 89th
+  Annual Meeting of the American Mathematical Society, held in Denver,
+  Colorado, January 5-9, 1983.
+
+\bibitem{Benzmuller97}
+C.~Benzm{\"{u}}ller, L.~Cheikhrouhou, D.~Fehrer, A.~Fiedler, X.~Huang,
+  M.~Kerber, M.~Kohlhase, K.~Konrad, E.~Melis, A.~Meier, W.~Schaarschmidt,
+  J.~Siekmann, and V.~Sorge.
+\newblock {{\sc {$\Omega$}mega}}: Towards a Mathematical Assistant.
+\newblock In William McCune, editor, {\em Proceedings of the 14th International
+  Conference on Automated Deduction}, volume 1249 of {\em Lecture Notes in
+  Artificial Intelligence}, pages 252--255, Townsville, North Queensland,
+  Australia, 1997. Springer-Verlag.
+
+\bibitem{Benzmuller2008d}
+Christoph Benzm{\"u}ller, Chad~E. Brown, J{\"{o}}rg Siekmann, and Richard
+  Statman, editors.
+\newblock {\em Reasoning in Simple Type Theory. Festschrift in Honour of Peter
+  B. Andrews on his 70$^{th}$ Birthday}.
+\newblock College Publications, King's College London, 2008.
+\newblock Reviewed in Bulletin of Symbolic Logic 16 (3), September 2010,
+  409-411. \newline http://www.collegepublications.co.uk/logic/mlf/?00010.
+
+\bibitem{Benzmuller98b}
+Christoph Benzm{\"{u}}ller and Volker Sorge.
+\newblock Integrating {{\sc TPS}} with {{\sc {$\Omega$}mega}}.
+\newblock Technical Report, Universit{\"{a}}t des Saarlandes, 1998.
+
+\bibitem{Bishop99}
+Matthew Bishop.
+\newblock A Breadth-First Strategy for Mating Search.
+\newblock In Harald Ganzinger, editor, {\em Proceedings of the 16th
+  International Conference on Automated Deduction}, volume 1632 of {\em Lecture
+  Notes in Artificial Intelligence}, pages 359--373, Trento, Italy, 1999.
+  Springer-Verlag.
+
+\bibitem{Bishop99a}
+Matthew Bishop.
+\newblock {\em Mating Search Without Path Enumeration}.
+\newblock PhD thesis, Department of Mathematical Sciences, Carnegie Mellon
+  University, April 1999.
+\newblock Department of Mathematical Sciences Research Report No.\ 99--223.
+
+\bibitem{Bishop98}
+Matthew Bishop and Peter~B. Andrews.
+\newblock Selectively Instantiating Definitions.
+\newblock In Claude Kirchner and H{\'{e}}l{\`{e}}ne Kirchner, editors, {\em
+  Proceedings of the 15th International Conference on Automated Deduction},
+  volume 1421 of {\em Lecture Notes in Artificial Intelligence}, pages
+  365--380, Lindau, Germany, 1998. Springer-Verlag.
+\newblock \newline http://dx.doi.org/10.1007/BFb0054272.
+
+\bibitem{Brown2002}
+Chad~E. Brown.
+\newblock Solving for Set Variables in Higher-Order Theorem Proving.
+\newblock In Andrei Voronkov, editor, {\em Proceedings of the 18th
+  International Conference on Automated Deduction}, volume 2392 of {\em Lecture
+  Notes in Artificial Intelligence}, pages 408--422, Copenhagen, Denmark, 2002.
+  Springer-Verlag.
+
+\bibitem{Brown2004a}
+Chad~E. Brown.
+\newblock {\em Set Comprehension in {C}hurch's Type Theory}.
+\newblock PhD thesis, Department of Mathematical Sciences, Carnegie Mellon
+  University, 2004.
+
+\bibitem{Felty86}
+Amy~P. Felty.
+\newblock Using Extended Tactics to Do Proof Transformations.
+\newblock Technical Report MS-CIS--86--89, Department of Computer and
+  Information Science, University of Pennsylvania, 1986.
+
+\bibitem{GORDON79}
+Michael~J. Gordon, Arthur~J. Milner, and Christopher~P. Wadsworth.
+\newblock {\em {E}dinburgh {LCF}. A Mechanised Logic of Computation}, volume~78
+  of {\em Lecture Notes in Computer Science}.
+\newblock Springer-Verlag, 1979.
+
+\bibitem{huet75}
+G\'{e}rard~P. Huet.
+\newblock A Unification Algorithm for Typed $\lambda$-Calculus.
+\newblock {\em Theoretical Computer Science}, 1:27--57, 1975.
+
+\bibitem{issar90}
+Sunil Issar.
+\newblock Path-Focused Duplication: A Search Procedure for General Matings.
+\newblock In {\em AAAI--90. Proceedings of the Eighth National Conference on
+  Artificial Intelligence}, volume~1, pages 221--226. AAAI Press/The MIT Press,
+  1990.
+
+\bibitem{AndrewsTPS88c}
+Sunil Issar, Peter~B. Andrews, Frank Pfenning, and Dan Nesmith.
+\newblock {\em {GRADER} Manual}, 2004.
+\newblock 24+i pp.
+
+\bibitem{Miller83}
+Dale~A. Miller.
+\newblock {\em Proofs in Higher-Order Logic}.
+\newblock PhD thesis, Carnegie Mellon University, Department of Mathematics,
+  1983.
+\newblock 81 pp.
+
+\bibitem{Miller84}
+Dale~A. Miller.
+\newblock Expansion Tree Proofs and Their Conversion to Natural Deduction
+  Proofs.
+\newblock In Shostak \cite{cade7}, pages 375--393.
+
+\bibitem{Miller87}
+Dale~A. Miller.
+\newblock A Compact Representation of Proofs.
+\newblock {\em Studia Logica}, 46(4):347--370, 1987.
+
+\bibitem{Miller82}
+Dale~A. Miller, Eve~Longini Cohen, and Peter~B. Andrews.
+\newblock A Look at {{\sc TPS}}.
+\newblock In Donald~W. Loveland, editor, {\em Proceedings of the 6th
+  International Conference on Automated Deduction}, volume 138 of {\em Lecture
+  Notes in Computer Science}, pages 50--69, New York, USA, 1982.
+  Springer-Verlag.
+
+\bibitem{Pfenning84}
+Frank Pfenning.
+\newblock Analytic and Non-Analytic Proofs.
+\newblock In Shostak \cite{cade7}, pages 394--413.
+
+\bibitem{Pfenning86}
+Frank Pfenning.
+\newblock {\em Proof Transformations in Higher-Order Logic}.
+\newblock PhD thesis, Carnegie Mellon University, 1987.
+\newblock 156 pp.
+
+\bibitem{AndrewsTPS88b}
+Frank Pfenning, Sunil Issar, Dan Nesmith, Peter~B. Andrews, Hongwei Xi, Matthew
+  Bishop, and Chad~E. Brown.
+\newblock {\em {{\sc ETPS}} User's Manual}, 2004.
+\newblock 64+ii pp.
+
+\bibitem{cade7}
+R.~E. Shostak, editor.
+\newblock {\em Proceedings of the 7th International Conference on Automated
+  Deduction}, volume 170 of {\em Lecture Notes in Computer Science}, Napa,
+  California, USA, 1984. Springer-Verlag.
+
+\end{thebibliography}

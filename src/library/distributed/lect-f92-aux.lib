@@ -1,0 +1,70 @@
+(:name STHM137
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) R(OII) x(I) a(I) IMPLIES EXISTS y(I) R(OII) b(I) y(I)"
+:needed-objects   NIL
+:mhelp "thm137"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name STHM47
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) FORALL y(I).x(I) =(OII) y(I) EQUIV FORALL R(OII).FORALL z(I) R(OII) z(I) z(I) IMPLIES R(OII) x(I) y(I)"
+:needed-objects   NIL
+:mhelp "thm47"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name STHM52
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "[p(O) EQUIV q(O) EQUIV r(O)] IMPLIES.p(O) EQUIV.q(O) EQUIV r(O)"
+:needed-objects   NIL
+:mhelp "thm52"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name STHM76
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "y(I) =(OII) x(I) IMPLIES x(I) =(OII) y(I)"
+:needed-objects   NIL
+:mhelp "thm76"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name STHM88
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL u(OA) FORALL v(OA).u(OA) SUBSET(O(OA)(OA)) v(OA) IMPLIES POWERSET(O(O(OA))(O(OA))) [POWERSET(O(OA)(OA)) u(OA)] SUBSET(O(O(O(OA)))(O(O(OA)))) POWERSET(O(O(OA))(O(OA))).POWERSET(O(OA)(OA)) v(OA)"
+:needed-objects   NIL
+:mhelp "thm88"
+:other-attributes NIL
+:other-remarks "
+")
+
+

@@ -1,0 +1,161 @@
+(:name CANTOR-DPAIR
+:type DPAIRSET
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description (
+("~q(O(OA)).G^1(OAA).J^1(A(OA)) f(OA)"  .  "q(O(OA)) f(OA)"))
+:needed-objects   NIL
+:mhelp "DPairs from X5304"
+:other-attributes ((VARIABLE-LIST (|q<O<OA>>| |f<OA>|)))
+:other-remarks "
+")
+
+
+(:name X5305-DPAIR
+:type DPAIRSET
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description (
+("f^8(OA) x^9(A)"  .  "S^1(OA).J^1(A(OA)).LAMBDA w^22(A).f^7(OA) w^22(A) AND f^8(OA) w^22(A)")
+("f^8(OA).X^1(A(OA)).LAMBDA w^22(A).f^7(OA) w^22(A) AND f^8(OA) w^22(A)"  .  "S^1(OA).X^1(A(OA)).LAMBDA w^22(A).f^7(OA) w^22(A) AND f^8(OA) w^22(A)")
+("f^7(OA) x^9(A)"  .  "~G^1(OAA) [J^1(A(OA)).LAMBDA w^22(A).f^7(OA) w^22(A) AND f^8(OA) w^22(A)] x^9(A)")
+("f^7(OA) x^9(A)"  .  "~G^1(OAA) [J^1(A(OA)).LAMBDA w^22(A).f^7(OA) w^22(A) AND f^8(OA) w^22(A)] x^9(A)"))
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name INV+1
+:type DPAIRSET
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description (
+("+(II(II)(II(II))(II(II))) G(II(II)) INV+G(II(II))"  .  "0(II(II))")
+("G(II(II)) h(II).h(II) a(I)"  .  "h(II).G(II(II)) h(II) a(I)")
+("G(II(II)) f(II).f(II) a(I)"  .  "f(II).G(II(II)) f(II) a(I)")
+("0(II(II))"  .  "LAMBDA x(II) LAMBDA y(I) y(I)")
+("+(II(II)(II(II))(II(II)))"  .  "LAMBDA u(II(II)) LAMBDA v(II(II)) LAMBDA x(II) LAMBDA y(I) u(II(II)) x(II).v(II(II)) x(II) y(I)"))
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((VARIABLE-LIST (+<II<II><II<II>><II<II>>> 0<II<II>> G<II<II>> H<II<II>> INV+G<II<II>>)))
+:other-remarks "
+")
+
+
+(:name INV+2
+:type DPAIRSET
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description (
+("N(II(II))"  .  "LAMBDA x(II) LAMBDA y(I) x(II).x(II) y(I)")
+("vorg(II(II)(II(II))).nachf(II(II)(II(II))) N(II(II))"  .  "O(II(II))")
+("0(II(II))"  .  "LAMBDA x(II) LAMBDA y(I) y(I)")
+("nachf(II(II)(II(II)))"  .  "LAMBDA u(II(II)) LAMBDA x(II) LAMBDA y(I) x(II).u(II(II)) x(II) y(I)"))
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((VARIABLE-LIST (|nachf<II<II><II<II>>>| |vorg<II<II><II<II>>>| O<II<II>> N<II<II>>)))
+:other-remarks "
+")
+
+
+(:name PRIM1
+:type DPAIRSET
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description (
+("*(II(II)(II(II))(II(II))) 0(II(II)) H(II(II))"  .  "0(II(II))")
+("0(II(II))"  .  "LAMBDA X(II) LAMBDA Y(I) Y(I)")
+("*(II(II)(II(II))(II(II)))"  .  "LAMBDA u(II(II)) LAMBDA v(II(II)) LAMBDA z(II) u(II(II)).v(II(II)) z(II)"))
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((VARIABLE-LIST (H<II<II>> *<II<II><II<II>><II<II>>> 0<II<II>> 1<II<II>>)))
+:other-remarks "
+")
+
+
+(:name PRIM2
+:type DPAIRSET
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description (
+("*(II(II)(II(II))(II(II))) 1(II(II)) H(II(II))"  .  "H(II(II))")
+("1(II(II))"  .  "LAMBDA x(II) LAMBDA y(I) x(II) y(I)")
+("*(II(II)(II(II))(II(II)))"  .  "LAMBDA u(II(II)) LAMBDA v(II(II)) LAMBDA z(II) u(II(II)).v(II(II)) z(II)"))
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((VARIABLE-LIST (H<II<II>> *<II<II><II<II>><II<II>>> 0<II<II>> 1<II<II>>)))
+:other-remarks "
+")
+
+
+(:name PRIM3
+:type DPAIRSET
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description (
+("H(II(II))"  .  "LAMBDA X(II) LAMBDA Y(I) X(II) Y(I)")
+("*(II(II)(II(II))(II(II))) 0(II(II)) H(II(II))"  .  "0(II(II))")
+("0(II(II))"  .  "LAMBDA X(II) LAMBDA Y(I) Y(I)")
+("*(II(II)(II(II))(II(II)))"  .  "LAMBDA u(II(II)) LAMBDA v(II(II)) LAMBDA z(II) u(II(II)).v(II(II)) z(II)"))
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((VARIABLE-LIST (*<II<II><II<II>><II<II>>> 0<II<II>> H<II<II>>)))
+:other-remarks "
+")
+
+
+(:name VIELF1
+:type DPAIRSET
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description (
+("*(II(II)(II(II))(II(II))) 3(II(II)) G(II(II))"  .  "H(II(II))")
+("G(II(II)) f(II).f(II) a(I)"  .  "f(II).G(II(II)) f(II) a(I)")
+("G(II(II)) h(II).h(II) a(I)"  .  "h(II).G(II(II)) h(II) a(I)")
+("3(II(II))"  .  "LAMBDA x(II) LAMBDA y(I) x(II).x(II).x(II) y(I)")
+("*(II(II)(II(II))(II(II)))"  .  "LAMBDA u(II(II)) LAMBDA v(II(II)) LAMBDA z(II) u(II(II)).v(II(II)) z(II)"))
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name VIELF2
+:type DPAIRSET
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description (
+("+(II(II)(II(II))(II(II))) R(II(II)) G(II(II))"  .  "H(II(II))")
+("R(II(II)) f(II) a(I)"  .  "f(II).R(II(II)) f(II) a(I)")
+("R(II(II)) h(II).h(II) a(I)"  .  "h(II).R(II(II)) h(II) a(I)")
+("G(II(II)) f(II).f(II) a(I)"  .  "f(II).G(II(II)) f(II) a(I)")
+("G(II(II)) h(II).h(II) a(I)"  .  "h(II).G(II(II)) h(II) a(I)")
+("+(II(II)(II(II))(II(II)))"  .  "LAMBDA u(II(II)) LAMBDA v(II(II)) LAMBDA x(II) LAMBDA y(I) u(II(II)) x(II).v(II(II)) x(II) y(I)"))
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

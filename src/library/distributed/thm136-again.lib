@@ -1,0 +1,42 @@
+(:name SUBTRANS
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA r(OAA) LAMBDA p(OAA).r(OAA) SUBRELATION(O(OAA)(OAA)) p(OAA) AND TRANSITIVE(O(OAA)) p(OAA)"
+:needed-objects   (SUBRELATION TRANSITIVE)
+:mhelp "for thm136-again"
+:other-attributes ((TYPELIST ("a")) (TYPE "O(OAA)(OAA)"))
+:other-remarks "
+")
+
+
+(:name THM136-AGAIN
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL r(OAA) TRANSITIVE(O(OAA)).TRCL2(OAA(OAA)) r(OAA)"
+:needed-objects   (TRANSITIVE TRCL2)
+:mhelp "thm136, using the suggested defn of SUBTRANS"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TRCL2
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA r(OAA) LAMBDA x(A) LAMBDA y(A) FORALL p(OAA).SUBTRANS(O(OAA)(OAA)) r(OAA) p(OAA) IMPLIES p(OAA) x(A) y(A)"
+:needed-objects   (SUBTRANS)
+:mhelp "for thm136-again"
+:other-attributes ((TYPELIST ("a")) (TYPE "OAA(OAA)"))
+:other-remarks "
+")
+
+

@@ -1,0 +1,88 @@
+(:name CHURCH-NUM1
+:type DPAIRSET
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description (
+("*(II(II)(II(II))(II(II))) 2(II(II)) 3(II(II))"  .  "*(II(II)(II(II))(II(II))) G(II(II)) H(II(II))")
+("3(II(II))"  .  "LAMBDA x(II) LAMBDA y(I) x(II).x(II).x(II) y(I)")
+("2(II(II))"  .  "LAMBDA x(II) LAMBDA y(I) x(II).x(II) y(I)")
+("*(II(II)(II(II))(II(II)))"  .  "LAMBDA u(II(II)) LAMBDA v(II(II)) LAMBDA z(II) u(II(II)).v(II(II)) z(II)"))
+:needed-objects   NIL
+:mhelp "Multiplication with church numerals"
+:other-attributes ((VARIABLE-LIST (3<II<II>> 2<II<II>> *<II<II><II<II>><II<II>>> G<II<II>> H<II<II>>)))
+:other-remarks "
+")
+
+
+(:name CHURCH-NUM1B
+:type DPAIRSET
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description (
+("*(II(II)(II(II))(II(II))) A(II(II)) B(II(II))"  .  "*(II(II)(II(II))(II(II))) G(II(II)) H(II(II))")
+("B(II(II))"  .  "LAMBDA x(II) LAMBDA y(I) x(II).x(II).x(II) y(I)")
+("A(II(II))"  .  "LAMBDA x(II) LAMBDA y(I) x(II).x(II) y(I)")
+("*(II(II)(II(II))(II(II)))"  .  "LAMBDA u(II(II)) LAMBDA v(II(II)) LAMBDA z(II) u(II(II)).v(II(II)) z(II)"))
+:needed-objects   NIL
+:mhelp "Multiplication with church numerals"
+:other-attributes ((VARIABLE-LIST (B<II<II>> A<II<II>> *<II<II><II<II>><II<II>>> G<II<II>> H<II<II>>)))
+:other-remarks "
+")
+
+
+(:name CHURCH-NUM2
+:type DPAIRSET
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description (
+("*(II(II)(II(II))(II(II))) 1(II(II)) 2(II(II))"  .  "*(II(II)(II(II))(II(II))) G(II(II)) H(II(II))")
+("2(II(II))"  .  "LAMBDA x(II) LAMBDA y(I) x(II).x(II) y(I)")
+("1(II(II))"  .  "LAMBDA x(II) LAMBDA y(I) x(II) y(I)")
+("*(II(II)(II(II))(II(II)))"  .  "LAMBDA u(II(II)) LAMBDA v(II(II)) LAMBDA z(II) u(II(II)).v(II(II)) z(II)"))
+:needed-objects   NIL
+:mhelp "Multiplication with Church numerals"
+:other-attributes ((VARIABLE-LIST (1<II<II>> 2<II<II>> *<II<II><II<II>><II<II>>> G<II<II>> H<II<II>>)))
+:other-remarks "
+")
+
+
+(:name CHURCH-NUM3
+:type DPAIRSET
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description (
+("4(II(II))"  .  "*(II(II)(II(II))(II(II))) G(II(II)) H(II(II))")
+("4(II(II))"  .  "LAMBDA x(II) LAMBDA y(I) x(II).x(II).x(II).x(II) y(I)")
+("*(II(II)(II(II))(II(II)))"  .  "LAMBDA u(II(II)) LAMBDA v(II(II)) LAMBDA z(II) u(II(II)).v(II(II)) z(II)"))
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((VARIABLE-LIST (4<II<II>> *<II<II><II<II>><II<II>>> G<II<II>> H<II<II>>)))
+:other-remarks "
+")
+
+
+(:name CHURCH-NUM4
+:type DPAIRSET
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description (
+("6(II(II))"  .  "*(II(II)(II(II))(II(II))) G(II(II)) H(II(II))")
+("6(II(II))"  .  "LAMBDA x(II) LAMBDA y(I) x(II).x(II).x(II).x(II).x(II).x(II) y(I)")
+("*(II(II)(II(II))(II(II)))"  .  "LAMBDA u(II(II)) LAMBDA v(II(II)) LAMBDA z(II) u(II(II)).v(II(II)) z(II)"))
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((VARIABLE-LIST (6<II<II>> *<II<II><II<II>><II<II>>> G<II<II>> H<II<II>>)))
+:other-remarks "
+")
+
+

@@ -1,0 +1,517 @@
+\chapter{Using the library}\label{library}
+A library facility exists, and can be accessed by
+entering the library top-level via the \indexcommand{LIB} command
+or by entering the Unix-style library top-level via the \indexcommand{UNIXLIB}.
+The library provides a way of storing various types of objects
+(e.g., gwff, abbreviation, etc.) in files, which are collected in directories.
+A library directory is a directory of the file system containing an index file whose
+name is determined by the flag \indexflag{LIB-MASTERINDEX-FILE}.
+(The default value for \indexflag{LIB-MASTERINDEX-FILE} is currently
+{\tt `libindex.rec'}, so that a library directory is a directory containing
+a file named {\tt `libindex.rec'}.)  This index file associates the objects
+stored in the directory with the type of the object and the file in which
+the object is stored.
+{\TPS} automatically maintains the index file as objects are inserted, deleted, renamed, etc.
+Also, index files are affected when library files are manipulated.
+The objects in the library can be classified into classification schemes.
+Classification schemes themselves are objects which can be stored in the
+library.
+
+The user has the option of using multiple libraries at the same time. The names
+of these libraries are
+stored in the flags \indexflag{DEFAULT-LIB-DIR} (for the libraries which the user can both read
+and write) and \indexflag{BACKUP-LIB-DIR} (for the libraries which the user can read only).
+It is a good idea to have a line such as
+{\tt (set-flag default-lib-dir '(`/afs/cs/project/tps/tps/tpslib/andrews/'))}
+in your {\it tps3.ini} file, to save having to type this every time {\TPS} is loaded.
+Note the {\tt `/'} at the end of the string!
+Changing the value of this flag will make {\TPS} reload the library index files.
+(Note that including a directory in the value of these flags does not
+create the library directory.  See the next paragraph.)
+If \indexflag{ADD-SUBDIRECTORIES}
+is T, then at the same time {\TPS} will look for any subdirectories of the library directories which are
+in themselves library directories, and add them to \indexflag{DEFAULT-LIB-DIR} or \indexflag{BACKUP-LIB-DIR} as appropriate.
+Note that \indexflag{DEFAULT-LIB-DIR} and \indexflag{BACKUP-LIB-DIR}
+are flags.  As such their values can be explicitly changed by the user to any list
+of library directories.
+
+The TPS distribution includes a library directory called
+`distributed'.  This directory contains a variety of library
+objects which have been defined over the years.
+To have access to this directory, the user should include
+the {\tt `/whatever/tps/library/distributed'} directory in the value of
+\indexflag{BACKUP-LIB-DIR}.
+
+Library directories can be created using \indexcommand{CREATE-LIB-DIR}, and
+library subdirectories can be created using \indexcommand{CREATE-LIB-SUBDIR}.
+Library subdirectories may be used to allow overloading of names for library objects.
+For example, one could have two different abbreviations {\tt GROUP} with different
+definitions as long as they are stored in different library directories.
+It is illegal to have two different library objects with the same name and type in the same
+library directory.  (WARNING:  Not all TPS library commands currently enforce this.)
+The intended use of BACKUP-LIB-DIR is, of course, to make it possible for a group of
+users to have a common library of useful definitions in addition to their own private library
+workspace. If there is no such common library, set BACKUP-LIB-DIR to NIL.
+
+When {\TPS} starts up,
+it creates a master index by loading the index files in the library directories listed
+in DEFAULT-LIB-DIR and BACKUP-LIB-DIR.  This master index is recreated by certain
+commands involving library directories (such as \indexcommand{CREATE-LIB-DIR}) or when either
+DEFAULT-LIB-DIR
+or BACKUP-LIB-DIR is changed.  The master index can be explicitly recreated by
+the command \indexcommand{RESTORE-MASTERINDEX}.
+
+Within the library top-level, the user can
+\begin{itemize}
+\item save and retrieve {\TPS} objects. {\tt HELP LIB-ARGTYPE} provides a list of types of objects
+that can be saved in the library. When saving objects in the library, the user
+will be prompted for any attributes that are required. This includes other
+library objects that must be retrieved before the object that is currently
+being saved is retrieved.
+
+\item modify existing library objects (by using the \indexcommand{INSERT}
+command with the name of an existing object)
+
+\item display objects, parts of objects, or even entire files from the library, and produce lists of
+all the files in the directory, all the objects in a file, or all the objects in a directory.
+
+\item output this information in a format suitable for processing and printing by Scribe or TeX.
+
+\item perform simple file maintenance tasks such as copying, deleting and moving objects
+(or entire files or directories), or listing all the files in a directory.
+
+\item reformat library files. For sake of efficiency, when modifying existing
+objects in the library, no formatting is done for the objects that
+follow or precede the object that is being modified. Hence, over a period
+of time, the library files may be in a form that you may find difficult to
+read. At such times you may want to reformat the files, so that they are
+in a more readable form.
+\end{itemize}
+
+\section{Storing and Retrieving Objects}
+
+All of the following types of object can be stored in the library: gwff, abbreviation, constant,
+mode, mode1, rewrite rule, theory, searchlist and dpairset. Some of these require extra input from the
+user, and are discussed in more detail here; the others are discussed elsewhere in this manual,
+and once defined can be saved in the library without extra input. (For example, dpairsets are discussed
+in the section about the unification top level, and searchlists in the section about the test top level.)
+
+A list of keywords is stored in the library directory in the file specified by \indexflag{LIB-KEYWORD-FILE}.
+An arbitrary list of keywords can be attached to each library object; these keywords can then be used for
+searches using \indexcommand{KEY} or \indexcommand{SHOW-ALL-WFFS}. The keyword list is user-specifiable,
+using the \indexcommand{ADD-KEYWORD} and \indexcommand{SHOW-KEYWORDS} commands.  For more information
+on keywords, see section \ref{KEYWORDS}.
+
+The library also stores a file {\it bestmodes.rec} which associates theorems to modes in which those theorems
+can be proven automatically. All of the {\it bestmodes.rec} files in any library directory are available
+simultaneously. The commands \indexcommand{FIND-MODE} and \indexcommand{SHOW-BESTMODE} search this
+file, and new modes can be inserted either during a call to \indexcommand{DATEREC}, or by using the command
+\indexcommand{ADD-BESTMODE}. The \indexcommand{MODEREC} command invokes ADD-BESTMODE with the name of the
+most recently proven theorem and mode.
+
+Assume that the user wishes to define his own abbreviation for an {\tt EMPTYSET}.
+He should enter the library top-level, and use the command
+\indexcommand{INSERT}. He'll then be prompted for various attributes that are
+necessary. As usual, \indexcommand{?} will provide some help on the
+appropriate responses.
+In this session, and in all subsequent sessions {\TPS} will recognize
+{\tt EMPTYSET} as a library object. When the user needs to use the
+library object {\tt EMPTYSET}, he should first use the library command
+\indexcommand{FETCH} to make this library object available within {\TPS}.
+If objects in several directories have the same name, and \indexflag{SHOW-ALL-LIBOBJECTS} is set to T,
+the user will be asked which one to FETCH. Otherwise, the directories are taken in the order given in
+DEFAULT-LIB-DIR, and then BACKUP-LIB-DIR, and the first directory containing such an object will be
+used.
+
+A mode can be stored in the library. This is a list of flag settings (for convenience,
+there is also an object called a \indexother{MODE1}; this consists of
+all the flags belonging to a given list of subjects, and this may also be stored
+in the library). Users who discover that a particular collection of flag settings
+produces a fast proof of a theorem may find it useful to record these settings
+as a mode in their library. See chapter \ref{flags} for more information about
+modes.
+
+When entering abbreviations, if the \indexother{FO-SINGLE-SYMBOL} property is
+T, you can specify the abbreviation in uppercase, lowercase,  or any
+combination of these. Otherwise it has to be specified as an uppercase
+symbol only.
+
+The \indexother{FACE} property controls how the abbreviation will be printed by {\TPS}.
+It should be a list of symbols (which may include special printing
+symbols such as POWERSET); type ? at the prompt for more information.
+
+Also, the correct format for typelists in abbreviations entered in
+the library is that illustrated by {\tt (`A' `B')}.  The user who types
+{\tt ?} when prompted for the typelist will see the example. See the programmer's
+manual for more information about defining abbreviations, logical constants, etc.
+
+A library object is allowed to depend on other library objects, called needed-objects
+(for example, one might define an abbreviation {\tt BIJECTIVE} in terms of
+other abbreviations {\tt INJECTIVE} and {\tt SURJECTIVE}). {\TPS} will attempt
+to type-check all objects it inserts into the library, and for this reason all definitions
+must be made from the bottom up (in our example, {\tt INJECTIVE} and {\tt SURJECTIVE}
+would have to already exist at the time when we attempt to define {\tt BIJECTIVE}).
+When a definition is {\tt FETCH}ed, all the needed-objects will be retrieved with it;
+an error will be signalled if they cannot be found.  Needed objects will be loaded
+from the same directory as the original object if this is possible, and otherwise from the first
+place in which they are found.
+Definitions may be nested arbitrarily deeply, and needed-objects are assumed to
+be abbreviations, unless no abbreviation of the right name can be
+found in the library, in which case they're assumed to be gwffs.
+The command \indexcommand{CHECK-NEEDED-OBJECTS} can be used to check if a library
+directory is closed with respect to needed-objects.  The command
+\indexcommand{IMPORT-NEEDED-OBJECTS}
+can be used to copy any extra needed-objects into a directory (so the directory
+will be closed with respect to needed-objects).
+
+Gwffs stored in the library are also equipped with a PROVABILITY property, which
+indicates the current state of attempts to prove them in {\TPS}. This property can only be changed by the user
+({\TPS} will never automatically change it), using the commands \indexcommand{DATEREC} or
+\indexcommand{CHANGE-PROVABILITY}. The command \indexcommand{FIND-PROVABLE} looks for all gwffs
+with a specified provability status.
+
+The command \indexcommand{RETRIEVE-FILE} will load all the objects in a given library file.
+
+There are various commands in other top levels that affect the library. For example,
+\indexcommand{DATEREC} stores timing information, and the \indexcommand{TEST} top level
+has its own commands for saving and loading searchlists. Also the commands \indexcommand{BUG-SAVE},
+\indexcommand{BUG-RESTORE}, and their associated commands, create a separate library of
+bugs in the directory given by \indexflag{DEFAULT-BUG-DIR} (although these commands can also
+save bugs to your personal library if you prefer).
+
+\section{Displaying Objects}
+The \indexcommand{SHOW} command displays a single object from the library.
+Library objects can be very long (particularly if the object is a gwff, and
+\indexcommand{DATEREC} has
+been used to append information regarding attempts at proving the gwff), and
+there are commands \indexcommand{SHOW-WFF}, \indexcommand{SHOW-MHELP} and
+\indexcommand{SHOW-WFF\&HELP} which display only a part of a stored object.
+
+The user can also display the names of all the objects in a file, using
+\indexcommand{LIBOBJECTS-IN-FILE}, or all the wffs in a file with
+\indexcommand{SHOW-WFFS-IN-FILE}.
+The analogues of these commands for the entire directory, rather than just one
+file, are \indexcommand{LIST-OF-LIBOBJECTS}
+and \indexcommand{SHOW-ALL-WFFS}; the latter can take some time.
+
+To find an object whose name you only partly remember, use the command \indexcommand{KEY}.
+For example, {\tt KEY `THM135' !} will list all objects, of any type, in the current and
+backup directories, whose names contain
+the string `THM135'. The \indexcommand{SEARCH} and \indexcommand{SEARCH2} commands do similar
+things, but search the entire text of library objects rather than just their names.
+
+\section{File Maintenance}
+Library directories and subdirectories can be created using \indexcommand{CREATE-LIB-DIR} and
+\indexcommand{CREATE-LIB-SUBDIR}, deleted using
+\indexcommand{DELETE-LIB-DIR}, copied using \indexcommand{COPY-LIBDIR}, and
+renamed using \indexcommand{RENAME-LIBDIR}.  The command \indexcommand{CREATE-LIB-DIR}
+will add the new library directory to DEFAULT-LIB-DIR.
+Also, \indexcommand{DELETE-LIB-DIR}
+will delete the directory from DEFAULT-LIB-DIR, if it was an entry in this list.
+(All changes to DEFAULT-LIB-DIR only apply during the current {\TPS} session.)
+The command \indexcommand{COPY-LIBDIR} can be used in two ways.  First, it can
+be used to create a new library directory (which will be added to DEFAULT-LIB-DIR)
+and copy the contents of an existing directory into this new directory.  Second,
+it can be used to copy the contents of an existing directory into an existing directory.
+In this second case, if an object with the same name and type exists already in both
+the source and destination directories, the object will not be copied.  Instead, the
+original object in the destination directory will be kept.  Also,
+\indexcommand{COPY-LIBDIR} will copy the bestmodes and keywords information files
+from the source directory to the target directory.  If the target directory
+already contains a bestmodes or keywords information file, \indexcommand{COPY-LIBDIR}
+will merge the information from both directories.
+
+A `common' library directory containing a copy of all library objects
+in every directory in \indexflag{DEFAULT-LIB-DIR} and \indexflag{BACKUP-LIB-DIR}
+can be created and maintained using the command \indexcommand{UPDATE-LIBDIR}.
+\indexcommand{UPDATE-LIBDIR} has the same effect as calling \indexcommand{COPY-LIBDIR}
+on each directory in \indexflag{DEFAULT-LIB-DIR} and \indexflag{BACKUP-LIB-DIR}.
+
+Library files can be created implicitly by \indexcommand{INSERT} when a new object is placed in
+the file.  Library files can be deleted implicitly when the last object stored in
+the file is deleted using \indexcommand{DELETE} or moved into a different file
+using \indexcommand{MOVE-LIBOBJECT}.  Library files can also be deleted explicitly, along
+with all the objects stored in the file, using \indexcommand{DELETE-LIBFILE}.  Files
+can be renamed (within the same directory) using \indexcommand{RENAME-LIBFILE},
+moved (into a different directory) using \indexcommand{MOVE-LIBFILE}, and
+copied (into a different directory) using \indexcommand{COPY-LIBFILE}.
+
+As discussed above, new objects can be inserted into the library using \indexcommand{INSERT}.
+The \indexcommand{INSERT} command can also be used to modify an existing library object.
+A library object can be deleted using \indexcommand{DELETE}, renamed (within the same library
+file) using \indexcommand{RENAME-OBJECT}, and moved (into a new file and possibly new directory)
+using \indexcommand{MOVE-LIBOBJECT}.  (In fact, \indexcommand{MOVE-LIBOBJECT} can be used
+more generally to move several objects of the same type at once.)
+Users are encouraged to have many small library files, rather than a few large
+files, as this makes many of the library commands much faster. The command
+\indexcommand{MOVE-LIBOBJECT} can be used to break up a large file into several smaller files,
+if need be.
+It is a (fairly) general principle that if \indexflag{SHOW-ALL-LIBOBJECTS} is set to T,
+and more than one object of a given name (and type if the type is specified) is found,
+then the user is prompted to choose one.
+
+The command
+\indexcommand{LIBFILES} lists all the files referred to in the directories
+listed in DEFAULT-LIB-DIR, the directories listed in BACKUP-LIB-DIR, all the
+directories listed in DEFAULT-LIB-DIR or BACKUP-LIB-DIR, or a single directory
+chosen by the user.
+
+The \indexcommand{REFORMAT} command reads in a whole file and writes it out again;
+this is useful if you have manually edited it and it's become a bit messy.
+The \indexcommand{SORT} command puts a file into alphabetical order.
+
+Finally, the command \indexfile{SPRING-CLEAN} will do any or all of: delete non-library
+files in your library directory, reindex all library files in that directory, reformat
+all library files in that directory, and sort all library files in that directory.
+
+\section{Printed Output}
+The commands \indexcommand{SCRIBE-LIBFILE} and \indexcommand{TEX-LIBFILE}
+print the contents of a library file (or a list of library files)
+in a form suitable for Scribe or TeX.
+The commands prompt for the required degree of verbosity; the various options
+for this are described in the help messages for the commands.
+
+\section{Expert Users}
+Expert users (i.e. those with \indexflag{EXPERTFLAG} set to T)
+are allowed to use library gwffs and
+abbreviations in proofs, by using the \indexcommand{ASSERT}
+command; they may also instantiate gwffs and
+abbreviations while in the editor.
+
+\section{Keywords}\label{KEYWORDS}
+Library objects may have associated keywords.  Some keywords
+are automatically generated when the objects is created.
+Examples of such keywords are PROVEN, UNPROVEN,
+WITH-EQUALITY, and WITHOUT-EQUALITY.  The user can create a
+new keyword using \indexcommand{ADD-KEYWORD}.  The command
+\indexcommand{SHOW-KEYWORDS}
+shows a list of acceptable keywords
+with help messages.
+The keywords
+associated with an object can be changed using
+\indexcommand{CHANGE-KEYWORDS}.
+The command \indexcommand{UPDATE-KEYWORDS}
+updates the keywords field to include all of those
+keywords that can be determined automatically (leaving
+all other keywords untouched).
+
+The keywords associated with an object are printed by
+the commands \indexcommand{SHOW} and \indexcommand{SHOW-WFF\&HELP}.
+Keywords of objects are also printed by the commands
+\indexcommand{TEXLIBFILE}, \indexcommand{SCRIBELIBFILE},
+\indexcommand{TEX-ALL-WFFS}, and \indexcommand{SCRIBE-ALL-WFFS},
+as long as the verbosity setting is MED or MAX.  The commands
+\indexcommand{TEX-ALL-WFFS} and \indexcommand{SCRIBE-ALL-WFFS}
+also use keywords
+as a filter so the user to select certain classes of gwffs.
+The user can also use keywords to find certain objects
+using the commands \indexcommand{SEARCH} and \indexcommand{SEARCH2}.
+
+A file containing keywords and help messages for keywords is
+stored in each library directory.  The name of this file is
+determined by the flag \indexflag{LIB-KEYWORD-FILE}.
+
+\section{Classification Schemes}
+
+A `classification scheme' for the library is a directed acyclic
+graph of `classes'.  The graph has a root class with the same
+name as the \indexother{classification scheme}.  Each class other than the
+root class has a primary parent.  There may also be other parents
+of the class.  Each class may have child classes.  Each item in
+the library can be associated with multiple classes.
+
+More than one class can have the same name.  Any particular
+path can only be uniquely identified by a full path from
+the root.  Similarly, the name of a library item does not
+uniquely identify the item.  It is, in fact, common practice
+for different files in the library to contain separate copies
+of theorems and abbreviations.  Usually the definitions of
+the items are the same, but the `other-remarks' property
+often differs.  Several library items with the same name
+can be classified in the same class.  The user is asked to
+disambiguate when necessary.
+
+The value of the flag \indexflag{CLASS-SCHEME} is the name of
+the current classification scheme.  Classification schemes
+can be stored in and retrieved from the library in the usual
+way (via the library commands \indexcommand{INSERT} and \indexcommand{FETCH})
+as items of type CLASS-SCHEME.
+To find out what classification schemes are in the library,
+use the command \indexcommand{LIST-OF-LIBOBJECTS} with type CLASS-SCHEME
+as an argument.
+The top-level command \indexcommand{PSCHEMES} lists the classification
+schemes currently in memory.
+
+Once \indexflag{CLASS-SCHEME} is set, there is always a
+`current class'.  One can change the current class using
+the library commands \indexflag{GOTO-CLASS} and \indexflag{ROOT-CLASS}.
+
+In the library top-level, the following commands can be used
+to modify and use classification schemes.
+
+\begin{itemize}
+\item {\bf CREATE-CLASS-SCHEME}  Creates a new classification scheme
+which can be the value of \indexcommand{CLASS-SCHEME}
+and can be stored and fetched from the library.
+
+\item {\bf CREATE-LIBCLASS}  Creates a new class in the classification scheme.
+
+\item {\bf ROOT-CLASS}  Makes the root class the current class.
+
+\item {\bf CLASSIFY-CLASS}  Classify one class as the child of another.
+
+\item {\bf UNCLASSIFY-CLASS}  Remove a class as a child of another.
+
+\item {\bf CLASSIFY-ITEM}  Classify a library item in a class.
+
+\item {\bf UNCLASSIFY-ITEM}  Remove a library item from a class.
+
+\item {\bf FETCH-LIBCLASS}  Fetches all the library items in a class.
+
+\item {\bf FETCH-DOWN}  Fetches all the library items in a class
+as well as those classified in descendent classes.
+
+\item {\bf FETCH-UP}  Fetches all the library items in a class
+as well as those classified in ancestor classes.
+
+\item {\bf FETCH-LIBCLASS*}  This behaves as FETCH-UP or FETCH-DOWN
+depending on the value of the flag \indexflag{CLASS-DIRECTION}.
+
+\item {\bf PCLASS}  Prints information (parents, children,
+and classified library items) about the current class.
+
+\item {\bf PCLASS-SCHEME-TREE}  Print the classification scheme as a tree
+starting from the root.
+
+\item {\bf PCLASS-TREE}  Print the classification scheme as a tree starting
+from the current class.
+\end{itemize}
+
+\section{The Unix-style Library Top Level}
+
+The command \indexcommand{UNIXLIB} can be used to enter a top level
+that uses a Unix-style interface to access the TPS library.
+The classification scheme named by the value of the flag \indexflag{CLASS-SCHEME}
+is used to create a virtual directory structure.  Many of the commands one
+can use at this top level correspond to Unix commands:
+
+\begin{itemize}
+\item {\bf ls}  Lists the child classes (as subdirectories) of the current class.
+
+\item {\bf cd}  Changes the current class.
+
+\item {\bf pwd}  Prints the full path to the current class.
+This full path is shown in the prompt if the flag \indexflag{UNIXLIB-SHOWPATH}
+is set to T.
+
+\item {\bf mkdir}  Creates a new class as a child of the current class.
+
+\item {\bf ln}  Links a class to be a child of another class.  This is a
+command that enables the user to create a class with several parents.
+
+\item {\bf cp}  Copies library items classified in one class to be classified
+under another class as well.  The \indexcommand{cp} command can be
+used in two ways.  If the user specifies an item to copy, that
+particular item is copied.  If the user specifies a class to copy from,
+all the items classified in that class are copied.
+
+\item {\bf rm}  Removes a child class or library item from the current class.
+
+\end{itemize}
+
+To specify a class or item, one can use the Unix-style path notation,
+for example, /a/b, b/c, ../a/b, etc.
+
+Some library commands (e.g., \indexcommand{fetch}, \indexcommand{show})
+are also commands in the UNIXLIB top-level.  These commands
+in the UNIXLIB top-level use the current class to determine where
+to look for library items.
+
+\section{Cautions}
+The user should note a distinction between a library object and a {\TPS}
+object. A {\TPS} object is represented in a form most congenial to internal
+manipulation, while a library object is represented in a form that
+is easy to specify, and these two forms may not be the same. The library
+operation \indexcommand{FETCH} takes a library object, and makes it
+available within {\TPS}{by converting it to the appropriate internal form.}
+
+Once an object has been loaded from the library and turned into a {\TPS} object,
+the \indexcommand{FETCH} command will query any attempt to load another library object
+of the same name. A previously loaded object can be removed from {\TPS} by using the \indexcommand{DESTROY}
+command.
+
+\section{How to insert TPTP Problems into the \TPS~Library}
+
+TPTP Problems can be converted into \TPS~library items thanks to the utility TPTP2X, available with the TPTP Library. You need to have a Prolog interpreter installed prior to using the TPTP2X
+utility. SWIPL for instance.\\
+
+Important note: versions prior to SWIPL 5.10.1 may cause some TPTP Problems
+not to be processed by TPTP2X. SWIPL 5.8.2 could not handle the following
+ones: CSR130\textasciicircum 1, CSR144\textasciicircum 1,
+CSR153\textasciicircum 1 and SYN000\textasciicircum 2.
+
+\begin{enumerate}
+
+\item Download the latest version of TPTP Library, including the TPTP2X utility.
+
+\item Once extracted, install TPTP2X, using the tptp2X\_install script (in
+Prolog).Example:
+\begin{alltt}
+whatever/TPTP-v5.0.0/TPTP2X\% ./tptp2X\_install
+\end{alltt}
+
+Follow the instructions.
+
+\item In the TPTP2X directory, replace the original {\it format.tps} by the one
+avaibable in the {\it utilities} directory. Example:
+\begin{alltt}
+mv format.tps format.tps.old
+mv /afs/andrew.cmu.edu/mcs/math/TPS/utilities/format.tps whatever/TPTP-v5.0.0/TPTP2X/
+\end{alltt}
+
+\item Use TPTP2X on THF problems, whose name have the following structure:
+DOM***\textasciicircum *.p.
+To convert a specific Problem, use the syntax:
+\begin{alltt}
+./tptp2X -f tps <the problem you need> \# e.g. ALG268\textasciicircum 4, whitout quotes
+\end{alltt}
+To convert every THF problem, you can use:
+\begin{alltt}
+./tptp2X -f tps "whatever/TPTP-v5.0.0/Problems/**/*\textasciicircum* .p" \# Note the quotes
+\end{alltt}
+
+The converted files will be in {\it whatever/TPTP-v5.0.0/TPTP2X/tps}.
+
+\item Create the needed library (sub)directories to receive the converted
+TPTP theorems. You can either use the CREATE-LIB-SUBDIR command, or manually
+create the directories, an empty {\it libindex.rec} file and a copied
+{\it keywords.rec} file.
+
+\item In your {\it tps3.ini} file, or directly inside of a \TPS~instance, set the flag
+\indexflag{AUTO-LIB-DIR} to the destination library directory. For instance, if you want
+to convert the ALG Problems of TPTP, you may set the flag to
+{\it your-lib-directory/ALG/}.\\
+Example:
+\begin{alltt}
+(set-flag 'auto-lib-dir
+"/afs/andrew.cmu.edu/mcs/math/TPS/tpslib/chretien/tptp/ALG/")
+\end{alltt}
+\item In \TPS , use the library command \indexcommand{INSERT-TPTP*} to automatically convert a
+directory of .tps files (converted TPTP problems) into TPS library
+items. Example:
+\begin{alltt}
+insert-tptp* "whatever/TPTP-v5.0.0/TPTP2X/tps/ALG"
+\end{alltt}
+You can also use the \indexcommand{INSERT-TPTP} command to insert only one problem at a
+time. Example:
+\begin{alltt}
+insert-tptp "whatever/TPTP-v5.0.0/TPTP2X/tps/ALG/ALG268\textasciicircum 4.tps" "ALG2684.lib"
+"ALG2684"
+\end{alltt}
+The last argument provides a suffix added to every abbreviation or theorem, in
+order to prevent any conflit with buil-in \TPS~items.
+
+\item The newly created items are usually called {\it con-<suffix>} (for conjecture)
+or {\it thm-<suffix>}, the suffix being the last argument of INSERT-TPTP or the
+name of the library file, if you used INSERT-TPTP*.
+\end{enumerate}

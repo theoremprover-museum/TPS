@@ -1,0 +1,179 @@
+\chapter{Help and Documentation}
+\label{help}
+
+\section{Providing Help}
+
+When the user types the command \indexcommand{HELP object}, \TPS will first
+try to determine which category {\tt object} is in (it may be in several, in which case it will 
+produce a list of categories and then print the help for each separately).
+
+Recall from the entry about categories (section ~\ref{categories}) that each category has 
+{\tt mhelp-line} and {\tt mhelp-fn} properties. The {\tt mhelp-line} is a short phrase that describes 
+each object in the category (for example the category {\tt PMPROPSYM} has the mhelp line 
+"polymorphic proper symbol"). The mhelp-fn is a function that will print out the help for a specific
+object. For many simple categories (e.g. {\tt context}), 
+the function {\tt \indexother{princ-mhelp}} is sufficient; this simply 
+prints the {\tt mhelp} string attached to the object in question. Other categories need more complex
+help (for example {\tt mexpr}), and so have their own specially-defined mhelp functions.
+
+An example of a {\tt mexpr} which has some automatically constructed help information
+is the function \indexcommand{EXTRACT-TEST-INFO} in \indexfile{maint.lisp}.
+
+When writing help messages or mhelp functions, keep in mind that the information given 
+should contain all the information that a {\it user} would want to know. 
+More detailed help for maintainers and programmers should 
+be written down and incorporated into this manual, not added into the online documentation.
+
+\subsection{Mhelp and Scribe}
+The online documentation can be used to generate a facilities guide, so
+it is important that you be aware that the mhelp properties and mhelp functions
+you define for new objects or categories will be used to generate Scribe
+files.  Take a look at the files {\it mhelp.lisp} and {\it scrdoc.lisp} and see
+how this works.  You may need to set things up properly so that the entries you
+are introducing are put into the index of such guides.  Look at the
+file {\it tpsdoc.mss} in the doc/lib area to see how the indexing is done.
+
+\subsection{Mhelp and \LaTeX }
+The online documentation can also be used to generate a facilities guide using \LaTeX. 
+Take a look at the files {\it mhelp.lisp} and {\it latexdoc.lisp} and see
+how this works. Because of the restrictions of \LaTeX concerning special command characters, such as
+``\$ '' or ``\textbackslash '', the help processing may need special care: an alternative to the usual
+{\tt \indexother{princ-mhelp}} function is provided to handle such characters in {\it latexdoc.lisp} as
+{\tt \indexother{princ-mhelp-latex}}. Many specific \LaTeX commands are defined in the {\it tps.tex} and
+{\it tpsdoc.tex} files in the doc/lib area. The User's guide describes how the processing of such manuals
+is done.
+You may need to set things up properly so that the entries you
+are introducing are put into the index of such guides.  Look at the
+file {\it latexdoc.lisp} in the lisp area to see how the indexing is done.
+
+\section{The Info Category}
+
+There is a category of objects called \indexother{INFO} which is used solely for providing
+help on symbols that would otherwise not have help messages (for example, the various settings
+of some of the flags, such as PR97 or APPLY-MATCH-ALL-FRDPAIRS). You can attach a help message
+to any symbol {\it foo} with:
+
+%\begin{tpsexample}
+\begin{verbatim}
+(definfo foo (mhelp "Help text."))
+\end{verbatim}
+%\end{tpsexample}
+
+\section{Printed Documentation}
+
+The directories with root {\it /home/theorem} mentioned below are
+on gtps.
+
+{\it /home/theorem/project/doc/files.dir} contains information about
+\TPS documentation files.
+
+{\it /home/theorem/project/doc/etps/tps-cs.mss} describes how to
+access \TPS in the cmu cs cell.
+
+{\it /home/theorem/project/doc/etps/etps-andrew.mss} describes how
+to access \ETPS in the andrew cell.
+
+{\it /home/theorem/project/doc/<topic>/manual.mss} is the main file
+for the manual on <topic> (one of: {\tt char}, {\tt etps}, {\tt facilities}, 
+{\tt grader}, {\tt prog}, {\tt teacher} and {\tt user}).
+
+See the \TPS User Manual for additional information.
+
+When new facilities are added to \ETPS, copy the information
+about them from the automatically produced {\it facilities.mss} and {\it facilities.tex} into the
+appropriate \ETPS mss/tex file.
+
+\section{Indexing in the Manuals}
+
+The basic mechanisms are in {\it /home/theorem/project/doc/lib/index.lib}
+and {\it /home/theorem/project/doc/lib/indexcat.mss}. Note the comment on
+the use of {\tt @IndexCategory} in the former file.  In the \TeX
+version of the Programmer's Guide, there are indexing commands defined
+which mimic the role of the corresponding Scribe commands.
+
+{\tt @indexother{DIY-TAC}} in the text on page <pagenumber> puts
+{\tt DIY-TAC <pagenumber>} into the index.
+
+{\tt @index*X*(WORD}) in the text on page <pagenumber> puts
+{\tt WORD, *Y* <pagenumber>} into the index.
+
+Example:
+{\tt @indexcommand{DO-GRADES}} in the text on page <pagenumber> puts
+{\tt DO-GRADES, System Command <pagenumber>}
+into the index. Here is a partial list of 
+of possible values for {\tt *X*} and {\tt *Y*}, where the complete
+list is in {\it /home/theorem/project/doc/lib/indexcat.mss}.
+
+\begin{itemize}
+\item {\tt *X*} = command gives {\tt *Y*} = System Command
+ 
+\item {\tt *X*} = edop gives {\tt *Y*} = Editor Command
+ 
+\item {\tt *X*} = flag gives {\tt *Y*} = flag
+ 
+\item {\tt *X*} = function gives {\tt *Y*} = function
+ 
+\item {\tt *X*} = style gives {\tt *Y*} = style
+
+\item {\tt *X*} = mexpr gives {\tt *Y*} = mexpr
+\end{itemize}
+
+See "quitting" in the index of the ETPS manual to see the 
+effect of the following lines in the file
+{\it /home/theorem/project/doc/etps/system.mss}:
+
+%\begin{tpsexample}
+\begin{verbatim}
+@@seealso[Primary="Quitting",Other="@{\tt EXIT}"]
+@@seealso[Primary="Quitting",Other="@{\tt END-PRFW}"]
+@@seealso[Primary="Quitting",Other="@{\tt OK}"]
+@@indexentry[key="Quitting",entry="Quitting"]
+\end{verbatim}
+%\end{tpsexample}
+
+\section{Other commands in the manuals}
+
+Any other Scribe commands may be used in the manuals; for example
+we use the {\tt typewriter} font given by @t for command 
+names, and the {\it italic} font given by @i for file names.
+
+In the \TeX versions of the manuals, one uses the corresponding
+\TeX commands.
+
+We also have @TPS in Scribe (and \verb+\TPS+ in \TeX)
+to print the string "\TPS", and @HTPS in Scribe to do the
+same in headers.
+
+\section{Converting Scribe to \LaTeX ~documentation}
+
+The aime of this section is to provide helpful information on how to
+program a new documentation device.
+
+\subsection{The {\it latexdoc.lisp} file}
+
+This file was written as an equivalent to {\it scrdoc.lisp}. Functions and macros
+are essentially equivalent. Nevertheless, while the Scribe documentation
+system contains several calls to special function, such as {\tt scribe-one-fn}, which
+are internal properties of special objects (e.g. tactics), {\it latex-doc.lisp} contains
+every \LaTeX -specific help-formatting function.
+
+Some of these functions uses the tex style in the \TPS system, which is described in
+{\it deftex.lisp}. As the style properties were thought to be used with Scribe, some
+of them cannot be easily translated in \LaTeX . This obstacle occurs for instance when
+using the Scribe \verb+@Tabset+ function, which has no strict equivalent in \LaTeX , where it
+is usually replaced by the \verb+Description+ environment.
+
+\subsection{Special Characters}
+
+The mhelp properties of many \TPS objects present special characters: when Scribe prevents the use
+of \@ , a lot of characters have to be escaped, using a prefixed ``\textbackslash '', when generating a \LaTeX ~document. The most common are: \~ , \@ , \# , \$ , \% , and \& . Note that the backslash character in \LaTeX ~is
+\verb+\textbackslash+ and the character ``\textasciicircum '' is \verb+\textasciicircum+.
+
+In order to prevent the programmer from editing every mhelp property, a function {\tt princ-mhelp-latex} is used
+instead of the regular {\tt princ-mhelp}. This function simply replaces every occurence of a protected character
+by the correspondant \LaTeX ~sequence.
+
+\subsection{\LaTeX ~Macros}
+
+To facilitate the conversion from Scribe to \LaTeX ~commands, a great number of new commands and macros for \LaTeX
+~are defined in {\it tps.tex} and {\it tpsdoc.tex}. These commands enable us to use commands such as \verb+\greeka+ instead of the regular \verb+\alpha+.

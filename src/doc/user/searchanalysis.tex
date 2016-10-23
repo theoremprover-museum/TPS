@@ -1,0 +1,573 @@
+\section{Search Analysis: Facilities for Setting Flags and Tracing Automatic Search}\label{searchanalysis}
+
+If one has a natural deduction proof of a theorem, one can use the
+command \indexcommand{AUTO-SUGGEST} to obtain suggested settings for certain flags of
+a mode with which that theorem can be proved automatically.
+\indexcommand{AUTO-SUGGEST} will also show all of the instantiations of quantifiers
+that are necessary for that proof.  The command \indexcommand{ETR-AUTO-SUGGEST} does
+the same thing when given an expansion proof. Such an expansion proof
+could be the result of translating a natural deduction proof into an
+expansion proof using the command \indexcommand{NAT-ETREE}.
+The commands \indexcommand{MS03-LIFT} and \indexcommand{MS04-LIFT} 
+in the \indexother{EXT-MATE} top level
+suggests flag settings for the corresponding extensional search
+procedures when given an extensional expansion proof.
+
+One can obtain an expansion proof for a gwff by several methods,
+including constructing a mating by hand
+in the \indexcommand{MATE} top level.
+An easier way is to use \indexcommand{NAT-ETREE} (see section \ref{natetr})
+to translate a natural deduction proof into an expansion proof.
+Once we have an expansion proof, we can use this to suggest
+flag values and to trace the \indexother{MS98-1} search procedure.
+
+In this section we will consider two examples: THM12
+and X2116.
+
+\subsection{Example: Setting Flags for THM12}\label{THM12-NAT-ETREE}
+
+Our first example concerns THM12:
+
+$\forall R _{\greeko\greeki}   \forall S _{\greeko\greeki} .R = S \implies  \forall X _{\greeki} .S X \implies R X$
+
+The following excerpts from a TPS session shows how we can
+use \indexcommand{NAT-ETREE} to get an expansion proof
+and then use this expansion proof to suggest flag settings.
+
+\begin{tpsexample}
+<401>prove THM12
+. . . ; ***prove the theorem, perhaps interactively***
+<431>pstatus
+ No planned lines
+<432>nat-etree
+PREFIX (SYMBOL): Name of the Proof [THM12]>
+Proof THM12-2 restored.
+
+. . . ; ***nat-etree preprocesses the proof,
+. . . ;    converts it to a sequent calculus derivation,
+. . . ;    performs cut elimination
+. . . ;    then translates to an expansion tree with a complete mating.***
+|            L117             |
+| \(\sim\)R^152 X^141 OR S^17 X^141  |
+|                             |
+|            L115             |
+| \(\sim\)S^17 X^141 OR R^152 X^141  |
+|                             |
+|            L116             |
+|\(\sim\)[\(\sim\)S^17 X^141 OR R^152 X^141]|
+Number of vpaths: 1
+((L115  . L116 ))    ; note this is a connection between nonatomic wffs
+
+Adding new connection: (L115 . L116)
+If you want to translate the expansion proof back to a natural deduction proof,
+you must first merge the etree.  If you want to use the expansion proof to determine
+flag settings for automatic search, you should not merge the etree.
+Merge The Etree? [Yes]>n           ; ***we don't merge the tree***
+The expansion proof Eproof:EPR122  can be used to trace MS98-1 search procedure.
+The current natural deduction proof THM12-2 is a modified version
+of the original natural deduction proof.
+
+Use RECONSIDER THM12 to return to the original proof.
+
+<433>mate
+GWFF (GWFF0-OR-LABEL-OR-EPROOF): Gwff or Eproof [Eproof:EPR122 ]>
+DEEPEN (YESNO): Deepen? [Yes]>n
+REINIT (YESNO): Reinitialize Variable Names? [Yes]>n
+WINDOW (YESNO): Open Vpform Window? [No]>
+. . .
+<Mate437>etr-info  ; ***etr-info lists the expansion terms***
+Expansion Terms:
+X^141(I)           ; ***only one (easy) expansion term in the proof***
+
+<Mate438>etr-auto-suggest
+. . .
+MS98-INIT suggestion: 1
+MAX-SUBSTS-VAR should be 1
+NUM-OF-DUPS should be 0
+MS98-NUM-OF-DUPS should be 1
+MAX-MATES should be 1
+Do you want to define a mode with these settings? [Yes]>
+Name for mode?  [MODE-THM12-2-SUGGEST]>
+
+<Mate439>leave
+Merge the expansion tree? [Yes]>n   ; ***let's still not merge***
+
+
+<440>mode MODE-THM12-2-SUGGEST
+\end{tpsexample}
+
+This suggested mode will prove the theorem.  In a later
+section we will continue this example to see how we can
+use the eproof to trace the \indexother{MS98-1} search procedure.
+
+\subsection{Example: Setting Flags for X2116}\label{X2116-NAT-ETREE}
+
+Suppose we have a natural deduction proof for X2116:
+
+$\forall x _{\greeki}   \exists y _{\greeki}  [P _{\greeko\greeki}  x \implies R _{\greeko\greeki\greeki}  x [g _{\greeki\greeki}  .h _{\greeki\greeki}  y] \and P y] \and  \forall w _{\greeki}  [P w \implies P [g w] \and P .h w]
+ \implies  \forall x .P x \implies  \exists y .R x y \and P y$
+
+The following excerpts from a TPS session shows how we can
+use \indexcommand{NAT-ETREE} to get an expansion proof
+and then use this expansion proof to suggest flag settings.
+
+\begin{tpsexample}
+<405>nat-etree
+PREFIX (SYMBOL): Name of the Proof [X2116]>
+. . .
+|              |        L90        |   |
+|    L89       |R x^329 [g .h y^70]|   |
+|  \(\sim\)P x^329 OR |                   |   |
+|              |       L92         |   |
+|              |      P y^70       |   |
+|                                      |
+|                   |    L102     |    |
+|        L99        |P [g .h y^70]|    |
+|    \(\sim\)P [h y^70] OR |             |    |
+|                   |    L104     |    |
+|                   |P [h .h y^70]|    |
+|                                      |
+|                  |   L100   |        |
+|         L96      |P [g y^70]|        |
+|       \(\sim\)P y^70 OR |          |        |
+|                  |   L98    |        |
+|                  |P [h y^70]|        |
+|                                      |
+|                 L88                  |
+|               P x^329                |
+|                                      |
+|        L91                  L103     |
+|\(\sim\)R x^329 [g .h y^70] OR \(\sim\)P [g .h y^70]|
+Number of vpaths: 16
+((L102  . L103 ) (L98  . L99 ) (L92  . L96 ) (L88  . L89 ) (L90  . L91 ) (L88  . L89 ))
+
+. . .
+If you want to translate the expansion proof back to a natural deduction proof,
+you must first merge the etree.  If you want to use the expansion proof to determine
+flag settings for automatic search, you should not merge the etree.
+Merge The Etree? [Yes]>n
+The expansion proof Eproof:EPR116  can be used to trace MS98-1 search procedure.
+The current natural deduction proof X2116-1 is a modified version
+of the original natural deduction proof.
+
+Use RECONSIDER X2116 to return to the original proof.
+
+<406>mate
+GWFF (GWFF0-OR-LABEL-OR-EPROOF): Gwff or Eproof [Eproof:EPR116 ]>
+DEEPEN (YESNO): Deepen? [Yes]>n
+REINIT (YESNO): Reinitialize Variable Names? [Yes]>n
+WINDOW (YESNO): Open Vpform Window? [No]>n
+. . .
+<Mate409>show-mating   ; ***note the mating has six connections***
+
+Active mating:
+(L88 . L89)  (L90 . L91)  (L88 . L89)
+(L92 . L96)  (L98 . L96.1)  (L100.1 . L103)
+
+<Mate410>etr-info  ; ***there are 4 expansion terms, with reasonable sizes***
+Expansion Terms:
+g(II).h(II) y^70(I)
+h(II) y^70(I)
+y^70(I)
+x^329(I)
+
+<Mate411>etr-auto-suggest ; ***to get suggested flag settings***
+. . .
+MS98-INIT suggestion: 1
+MAX-SUBSTS-VAR should be 3
+NUM-OF-DUPS should be 1
+MS98-NUM-OF-DUPS should be 1
+MAX-MATES should be 1
+Do you want to define a mode with these settings? [Yes]>
+Name for mode?  [MODE-X2116-1-SUGGEST]>
+
+
+<Mate412>mode MODE-X2116-1-SUGGEST
+\end{tpsexample}
+
+These flag settings are sufficient for \indexother{MS98-1} to prove the
+theorem.  Later we will continue this example to show how
+to use the expansion proof to trace \indexother{MS98-1}.
+
+\subsection{Tracing MS98-1}\label{ms98-trace}
+
+Currently there are some facilities for tracing the automatic search
+procedure \indexother{MS98-1} (see Matt Bishop's thesis for details
+of this search procedure).  The flag \indexflag{MS98-VERBOSE} can
+be set to {\tt T} to simply obtain more output.  If we have an expansion
+proof already given, we can obtain a finer trace on MS98-1 to find
+information about the search.  For example, we may be able to find
+which connections failed to be added to the mating.
+
+A background expansion proof may be the result of calling
+\indexcommand{NAT-ETREE} as described above.
+We may also construct a complete mating interactively
+in the \indexcommand{MATE} top level, then use
+\indexcommand{SET-BACKGROUND-EPROOF} to save this expansion
+proof as the one to use for tracing.  Consider the following
+example session showing how we might get a mating
+for X2116 (instead of using \indexcommand{NAT-ETREE}
+as in section \ref{X2116-NAT-ETREE}).
+
+\begin{tpsexample}
+<0>exercise x2116
+Would you like to load a mode for this theorem? [No]>y
+2 modes for this theorem are known:
+1) MODE-X2116  1999-04-23  0 seconds  (read only)
+2) MS98-FO-MODE  1999-04-23  1 seconds  (read only)
+3) None of these.
+Input a number between 1 and 3: [1]>
+. . .
+
+<1>mate 100 y n n
+<Mate2>go
+. . .
+Eureka!  Proof complete..
+. . .
+<Mate3>show-mating
+
+Active mating:
+(L21.1 . L14.1)  (L20.1 . L9)  (L12.1 . L15)
+(L7.1 . L10)  (L12 . L10)  (L7 . L17)
+(L21 . L15)
+is complete.
+
+<Mate4>set-background-eproof
+EPR (EPROOF): Eproof [Eproof:EPR0 ]>
+\end{tpsexample}
+
+Once there is a background expansion proof,
+the information given by the mating in the background proof
+can be transferred to a search expansion tree via `colors'.
+For each connection, we create a `color' (really just
+a generated symbol) which is associated with all nodes
+in the search expansion tree which could correspond to the connected
+nodes in the background tree.  The examples in subsections
+\ref{THM12-NAT-ETREE} and \ref{X2116-NAT-ETREE}
+should make the role of colors clearer.
+
+The flag \indexflag{MS98-TRACE} can
+be used to obtain information about how the search is performing
+relative to the background eproof.  The value of this flag is a list of
+values.  Ordinarily, when tracing is off, \indexflag{MS98-TRACE}
+will have the value NIL.  Certain symbols have the following meanings
+if they occur on the value of \indexflag{MS98-TRACE}:
+
+\begin{description}
+\item[] {\tt MATING} -- If the symbol MATING is on the list,
+search as usual, printing when `good' connections and components
+are found.
+A `good' connection is one in which the two nodes share a common color.
+A `good' component contains only good connections.
+A search succeeds when it generates all the good connections, and combines
+these into good components, merging these components until the complete mating
+is generated.  Note that successfully generating connections and merging components
+depends on unification, and in particular, on the value of \indexflag{MAX-SUBSTS-VAR}.
+
+\item[] {\tt MATING-FILTER} -- This prints the same information as {\tt MATING}, but
+only generates good connections and only builds good components.
+This value is useful for finding if the unification bounds (\indexflag{MAX-SUBSTS-VAR})
+are set in such a way that the search can possibly succeed.
+
+\end{description}
+
+After setting \indexflag{MS98-VERBOSE} and \indexflag{MS98-TRACE},
+one can invoke the search procedure \indexother{MS98-1} using
+the mate command \indexcommand{MS98-1} or the mate command
+\indexcommand{GO} if \indexflag{DEFAULT-MS} is set to \indexother{MS98-1}.
+
+The next two subsections show how the tracing works
+in practice by continuing the examples in subsections
+\ref{THM12-NAT-ETREE} and \ref{X2116-NAT-ETREE}.
+
+\subsection{Example: Tracing THM12}\label{THM12-MS98-TRACE}
+
+Suppose the background expansion proof is a proof for THM12,
+and suppose we are in a mode such as the suggested mode
+from \indexcommand{ETR-AUTO-SUGGEST} in section \ref{THM12-NAT-ETREE}.
+
+First, examine the background expansion proof more closely.
+The expansion proof and jform are shown in Figure \ref{thm12-vp}.
+
+\begin{figure}
+\begin{tpsexample}
+<459>ptree*
+                                        [SEL11]
+                                      [ R^152(OI) ]
+                                            |
+                                            |
+                                            |
+                                        [SEL10]
+                                      [ S^17(OI) ]
+                                            |
+                                            |
+                                            |
+                                        [IMP86]
+            R^152(OI) = S^17(OI) IMPLIES FORALL X(I).S^17 X IMPLIES R^152 X
+                                            |
+                      /-------------------------------------------\
+                      |                                           |
+                  [REW10]                                      [SEL9]
+                   [EXT=]                                   [ X^141(I) ]
+                      |                                           |
+                      |                                           |
+                      |                                           |
+                   [EXP7]                                      [L116]
+                [ X^141(I) ]                  S^17(OI) X^141(I) IMPLIES R^152(OI) X^141
+                      |                                           |
+                      |
+                      |
+                   [REW9]
+                   [EXT=]
+                      |
+                      |
+                      |
+                   [REW8]
+              [EQUIV-IMPLICS]
+                      |
+                      |
+                      |
+                  [CONJ74]
+                      *
+                      |
+           /---------------------\
+           |                     |
+        [L117]                [L115]
+           * S^17(OI) X^141(I) IMPLIES R^152(OI) X^141
+
+<460>vp ; ***JFORM***
+|                       SEL11                        |
+|EXISTS R EXISTS S [R = S AND EXISTS X .S X AND \(\sim\)R X]|
+|                                                    |
+|                        L117                        |
+|             \(\sim\)R^152 X^141 OR S^17 X^141             |
+|                                                    |
+|                        L115                        |
+|             \(\sim\)S^17 X^141 OR R^152 X^141             |
+|                                                    |
+|                       L116                         |
+|           \(\sim\)[\(\sim\)S^17 X^141 OR R^152 X^141]            |
+Number of vpaths: 1
+
+<461>show-mating   ; ***Complete Mating***
+(L115 . L116)
+\end{tpsexample}
+\caption{Expansion Tree and JForm for THM12}
+\label{thm12-vp}
+\end{figure}
+
+There is only one connection, so this should correspond to a single
+color.  This is an interesting example because the search expansion tree will
+have a somewhat different form.  Since an EQUIV occurs in the formula,
+the form of the tree will depend on the value of \indexflag{REWRITE-EQUIVS}.
+
+First, suppose \indexflag{REWRITE-EQUIVS} is set to 1.  The search
+expansion tree in this case is shown in Figure \ref{thm12-search-etree1}.
+
+\begin{figure}
+\begin{tpsexample}
+<466>ptree*
+                                        [SEL11]
+                                      [ R^152(OI) ]
+                                            |
+                                            |
+                                            |
+                                        [SEL10]
+                                      [ S^17(OI) ]
+                                            |
+                                            |
+                                            |
+                                        [IMP86]
+                                            |
+                                            |
+                      /-------------------------------------------\
+                      |                                           |
+                  [REW10]                                      [SEL9]
+                   [EXT=]                                   [ X^141(I) ]
+                      |                                           |
+                      |                                           |
+                      |                                           |
+                   [EXP7]                                      [L116]
+                [ X^141(I) ]                                      |
+                      |                                           |
+                      |
+                      |
+                   [REW9]
+                   [EXT=]
+                      |
+                      |
+                      |
+                   [REW8]
+              [EQUIV-IMPLICS]
+                      |
+                      |
+                      |
+                  [CONJ74]
+                      |
+                      |
+           /---------------------\
+           |                     |
+        [L117]                [L115]
+           |                     |
+\end{tpsexample}
+\caption{Search Expansion Tree with REWRITE-EQUIVS 1}
+\label{thm12-search-etree1}.
+\end{figure}
+
+To use tracing, set MS98-TRACE to an appropriate value,
+such as (MATING) or (MATING MATING-FILTER).
+Then execute the DIY command (or the MS98-1 command in
+the mate top level), and {\TPS} will color the nodes
+before performing mating search.
+
+A new color corresponding to the (L115 . L116) connection is created.
+{\TPS} needs to ensure all nodes corresponding to L115 and L116 are given this color.
+When trying to find the nodes that correspond to L115 (in the background),
+{\TPS} first runs into a problem at the correspondence between
+REW8 (in the background) to REW2 (in the search expansion tree).  In REW8,
+EQUIV is expanded as a conjunction of implications.  In the search
+tree, EQUIV is expanded as a disjunction of conjunctions.
+So, {\TPS} colors every node beneath REW2.  To find the nodes that correspond
+to L116.  {\TPS} finds IMP1 corresponds structurally, so {\TPS} colors every node
+beneath IMP1.  As a result, every leaf gets the single color in this case.
+So, tracing is basically useless in this case.  Every two literals will
+share the only color, and so will be considered `good'.
+
+However, if REWRITE-EQUIVS is set to 4, the EQUIV in the search expansion tree
+will be expanded as a conjunction of implications.  This will make
+the search expansion tree correspond more closely to the background tree.
+This is shown in Figure \ref{thm12-search-etree2}.
+
+\begin{figure}
+\begin{tpsexample}
+<475>ptree*
+                                         [SEL0]
+                                      [ R^159(OI) ]
+                                            |
+                                            |
+                                            |
+                                         [SEL1]
+                                      [ S^24(OI) ]
+                                            |
+                                            |
+                                            |
+                                         [IMP0]
+                                            |
+                                            |
+                      /-------------------------------------------\
+                      |                                           |
+                   [REW0]                                      [SEL2]
+                   [EXT=]                                   [ X^148(I) ]
+                      |                                           |
+                      |                                           |
+                      |                                           |
+                   [EXP0]                                      [IMP3]
+                [ x^346(I) ]                                      |
+                      |                                           |
+                      |                                /---------------------\
+                      |                                |                     |
+                   [REW1]                            [L16]                 [L17]
+                   [EXT=]                              |                     |
+                      |                                |                     |
+                      |
+                      |
+                   [REW2]
+              [EQUIV-IMPLICS]
+                      |
+                      |
+                      |
+                  [CONJ0]
+                      |
+                      |
+           /---------------------\
+           |                     |
+        [IMP1]                [IMP2]
+           |                     |
+           |                     |
+      /---------\           /---------\
+      |         |           |         |
+    [L11]     [L12]       [L13]     [L14]
+      |         |           |         |
+
+\end{tpsexample}
+\caption{Search Expansion Tree with REWRITE-EQUIVS 4}
+\label{thm12-search-etree2}.
+\end{figure}
+
+In this case, we can see that L115 corresponds to the node IMP2.
+So, {\TPS} colors IMP2, L13, and L14.  L116 corresponds to the node IMP3,
+so {\TPS} colors IMP3, L16, and L17.
+This time the leaves L11 and L12 are left uncolored,
+so the trace should have an effect.
+
+Suppose \indexflag{MS98-TRACE} is set to (MATING MATING-FILTER).
+
+\begin{tpsexample}
+<Mate500>ms98-1
+Substitutions in this jform:
+None.
+Transfering mating information from background eproof
+Eproof:EPR122
+transfering conn (L115 . L116)
+COLORS:
+COLOR62 - L14 L13 L17 L16
+. . .
+Trying to Unify L17 with L14  ; ***both have COLOR62***
+Component 1 is good:
+. . .
+Trying to Unify L16 with L13  ; ***both have COLOR62***
+Component 2 is good:
+. . .
+Component 3 is good:
+Success! The following is a complete mating:
+((L17 . L14) (L16 . L13))
+. . .
+\end{tpsexample}
+
+\subsection{Example: Tracing X2116}\label{X2116-MS98-TRACE}
+
+Suppose the background expansion proof is a proof for X2116,
+and suppose we are in a mode such as the suggested mode
+from \indexcommand{ETR-AUTO-SUGGEST} in section \ref{THM12-NAT-ETREE}.
+
+Since the mating in this example has six connections, there
+will be six colors.
+
+\begin{tpsexample}
+<414>exercise x2116
+. . .
+<415>mate 100 y n n
+. . .
+<Mate417>ms98-trace
+MS98-TRACE [(MATING MATING-FILTER)]>
+
+<Mate418>ms98-1
+Substitutions in this jform:
+None.
+Transfering mating information from background eproof
+Eproof:EPR116
+transfering conn (L88 . L89)
+transfering conn (L90 . L91)
+transfering conn (L88 . L89)
+transfering conn (L92 . L96)
+transfering conn (L98 . L99)
+transfering conn (L102 . L103)
+COLORS:
+COLOR50 - L14 L14.1 L21 L21.1
+COLOR49 - L15 L15.1 L12 L12.1
+COLOR48 - L10 L10.1 L12 L12.1
+COLOR47 - L17 L7 L7.1
+COLOR46 - L9 L9.1 L20 L20.1
+COLOR45 - L17 L7 L7.1
+\end{tpsexample}
+
+We can see in this example that the colors closely correspond
+to the literals used in each connection.  Note also that
+duplicate leaves get a common color, because any of the
+children of an expansion node can correspond to any children
+of the corresponding expansion node.  For example, L102
+in the background tree could correspond to either
+L14 or L14.1 in the search expansion tree.
+
+In the session, {\TPS} continues searching, printing information about
+`good' components, and filtering out those which are not `good'.

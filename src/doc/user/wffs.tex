@@ -1,0 +1,71 @@
+\chapter{How to define wffs, abbrevs, etc}
+\label{wffs}
+
+There are several ways to define wffs so that they persist and
+can be reused, saving typing and allowing them to be used to
+extend the logical system.  For examples of how to represent
+wffs, see sections 1.6 and 5.1.3 of the {\ETPS} User's Manual.
+
+Abbreviations must usually be capitalized; for example, one should write
+`ASSOCIATIVE p(AAA)' rather than `associative p(AAA)'. (Specifically, abbreviations
+must be capitalized unless the \indexother{FO-SINGLE-SYMBOL} property is T. See chapter \ref{library}
+for more details.) For reasons
+to do with the internal workings of {\TPS}, please avoid using superscripts
+on variables in wffs, and do not use the variables h or w in wffs or
+abbreviations. In general, it is better (and certainly more readable)
+to use lowercase letters for variables and uppercase for constants.
+
+The first type of wff is good for wffs which you think of as static,
+and for which you just want a short name.  These are called weak labels,
+and can be created by the editor command \indexedop{CW}.  They may then be
+stored in a file with the editor command \indexedop{SAVE}.  Other editor
+commands allow you to delete the labels, replacing the short name
+with its definition.  Weak labels are really weak.  When you wish to
+refer to a weak label inside another wff, you must put the weak label
+in all capitals, so that the parser will know how to find it when trying
+to parse the wff.  In addition, operations like $\lambda$-contraction will
+cause weak labels to be deleted in favor of their definitions.  In
+short, weak labels are just a convenient shorthand for wffs and you
+can use them to save typing.  They may also be saved in library files;
+see chapter \ref{library}. In the editor, command names which end in `*'
+are recursive; they will find the outermost appropriate node(s) and apply
+the operation there. Non-recursive commands generally only apply to the current
+node.
+
+Some new wffs are really extensions of the system.  These denote operators
+such as {\tt SUBSET}, {\tt INTERSECT}, etc.  Such wffs are called
+abbreviations, and they can be made polymorphic, so that they can be
+used for any types.  These wffs are more persistent than weak labels.
+The parser will recognize them even if in lower case letters, and they
+will be instantiated with their definitions only when specifically
+required.  They may be saved in library files; see chapter \ref{library}
+for more information.
+
+Other wffs you might wish to save are exercises and theorems.  These
+behave much like weak labels, but can have more properties.  At the
+present time, these must be placed in files manually.  See the source
+files {\tt ml1-theorems.lisp} and {\tt ml2-theorems.lisp} for how they
+are defined.
+
+Within the editor, you can record wffs as they are created as follows.
+(By creating weak labels for the wffs you generate in the editor, you can
+also save them in the library, which is more useful in that it allows you
+to read them back into {\TPS} at a later date.)
+If \indexflag{PRINTEDTFLAG} is T, the editor will every once in a while
+write the edwff into a file \indexflag{PRINTEDTFILE} (global variable,
+initialised to \indexfile{edt.mss}).  The criterion can be set as a lisp function, but at
+the moment it will write whenever you call an edop whose result replaces
+the current edwff.  Moving wffs (like A,D,L,R etc), non-editor commands
+and printing command do not cause the
+new edwff to be written.  Just so you can keep track of when things
+are written, the prompt in the editor is modified.  Whenever
+\indexflag{PRINTEDTFLAG} is T, it will either be
+{\tt <-Edn>} or {\tt <+Edn>}
+where the former means nothing has been written and the latter means the wff
+which is now current has just been written. The wffs are appended to the end of
+the file, which is written in style SCRIBE; also see the help messages
+for the commands \indexcommand{O} and \indexcommand{REM}.
+
+If you change the flag \indexflag{PRINTVPDFLAG} to T, it will print a
+vertical path diagram into the file given by \indexflag{VPD-FILENAME} whenever
+i

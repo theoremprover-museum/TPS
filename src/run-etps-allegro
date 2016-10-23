@@ -1,0 +1,5 @@
+#csh -f
+lisp -I /whatever/tps/etps.dxl -- $*
+
+
+

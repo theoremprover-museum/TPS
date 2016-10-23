@@ -1,0 +1,15 @@
+(:name GOODFOO
+:type MODES-GWFFS
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description 
+(NIL (THM2))
+:needed-objects   NIL
+:mhelp "foo"
+:other-attributes NIL
+:other-remarks "
+")
+
+

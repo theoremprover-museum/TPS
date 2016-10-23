@@ -1,0 +1,22 @@
+	USEFUL COMMANDS FROM ETPS-ANDREW.MSS FOR STARTING ETPS:
+
+Start up etps (if you really don't want to use xetps)
+by executing the command:
+/afs/andrew/mcs/math/etps/bin/etps
+
+Add  to your ~/.cshrc file:
+source /afs/andrew/mcs/math/etps/etps.cshrc
+
+Add to your ~/.Xclients or your ~/.xinitrc file,
+or issue at the shell prompt once the window system has started up:
+/afs/andrew/mcs/math/etps/etps.Xclients
+
+Start up xetps by executing the command:
+xterm -geometry 80x54 -rw -fn vtsingle -fb vtsymbold -sb -n ETPS -T ETPS -e /afs/andrew/mcs/math/etps/bin/etps &
+
+
+-----------------------------------------------------------------------
+Incidentally, the interface with the X11 window system still has some
+bugs, so using the BEGIN-PRFW command in ETPS may cause everything to
+crash. If this happens, don't use BEGIN-PRFW. Please let me know
+whether  or not it works for you.

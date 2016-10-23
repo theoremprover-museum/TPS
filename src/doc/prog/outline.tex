@@ -1,0 +1,554 @@
+
+\section{Defaults for Line Numbers - a Specification}
+
+There will never be an absolutely correct way
+of assigning default for line numbers; we can merely make sure that
+the result will always be logically correct - the rest is often
+a matter of style and the kind of heuristics used.
+
+Below we give a description of the tasks to be done by a function
+\indexfunction{LINE-NO-DEFAULTS} which is called during the application of every
+inference rule {in interactive mode}.  We will set the stage by giving
+some, not necessarily exhaustive, examples of what meaning to assign
+to the data structures and what output to expect from the function.
+
+\subsection{The {\it support} data structure}
+
+At each stage in a proof, we have associated with it a {\it \indexother{support}} structure,
+which, for any given planned line ({\it \indexother{pline}}), tells us which deduced lines
+({\it \indexother{dline}s}), we expect to use in the proof of the {\it pline}.
+
+Thus the support structure is of the form
+$$((p_1\; d_{11} \ldots d_{1x_1})\ldots (p_p\; d_{p1}\ldots d_{px_p}))$$
+
+One may assume the following:
+\begin{enumerate}
+\item The $p_i$ are pairwise distinct.
+
+\item The $d_{ik}$ are pairwise distinct for every fixed $i$ and $1\leq k \leq x_i$.
+
+\item For each $i$, $d_{ik} < p_i$ for all $1\leq k \leq x_i$.
+
+\item The planned lines $p_i$ are ordered such that the ones the user is
+expected to work on first appear closer to the front.  In particular,
+$p_1$ is the planned line worked on most recently.
+
+\item Similarly, for a given $i$, the $d_{ik}$ are ordered such that the
+one the user is expected to use first appear earlier.
+\end{enumerate}
+
+With each rule definition, there will be a description of how the {\it support}
+structure changes.  This is given as two {\it support} structure templates,
+using the name given to the lines in the rule specification.
+
+\subsection{Examples}
+
+The examples below are not complete, in the sense that not the full
+description of the rule (for the rules module) is given, we have merely
+extracted what is important in our context.  {\it p} and {\it d} are
+placeholders for a {\it pline} or any number of {\it dlines}, respectively,
+which are found in the support structure of the current proof, but are
+merely copied in the application of the particular rule described.
+
+\begin{verbatim}
+Rule of Cases
+
+*(D1)  H      !A(O) OR B(O)                                          
+ (H2)  H,H2   !A(O)                                Case 1: D1
+ (P3)  H,H2   !C(O)                                          
+ (H4)  H,H4   !B(O)                                Case 2: D1
+ (P5)  H,H4   !C(O)                                          
+*(P6)  H      !C(O)                           Cases: D1 P3 P5
+
+Support Transformation: (P6 D1 ss) ==> (P3 H2 ss) (P5 H4 ss) 
+\end{verbatim}
+
+Note that the specified support transformation tells \TPS what lines
+it expects to be there, when the rule is applied, and which lines
+should be new.  In this case, {\tt P} and {\tt Dab} are expected to be new,
+the others are to be constructed.  Of course, these are only defaults,
+and the user can apply the rule with any combination of lines present or
+absent.
+
+
+\begin{verbatim}
+Induction Rule
+
+ (D1) H     ! P 0
+ (H2) H,H2  ! P m                           Inductive Assumption on m
+ (D3) H,H2  ! P . Succ m
+*(P4) H     ! FORALL n . NAT n IMPLIES P n           Induction: D1 D3
+
+Support Transformation: (P4 ss) ==> (D1 ss) (D3 H2 ss)
+\end{verbatim}
+
+\begin{verbatim}
+  Forward Conjunction Rule
+
+ (P1)  H      !A(O)                                          
+ (P2)  H      !B(O)                                          
+*(P3)  H      !A(O) AND B(O)                               Conj: P1 P2
+
+Support Transformation: (P3 ss) ==> (P1 ss) (P2 ss) 
+\end{verbatim}
+
+
+\begin{verbatim}
+Backward Conjunction Rule
+
+*(D1)  H      !A(O) AND B(O)                                          
+ (D2)  H      !A(O)                                  Conj: D1
+ (D3)  H      !B(O)                                  Conj: D1
+
+Support Transformation: (pp D1 ss) ==> (pp D2 D3 ss) 
+\end{verbatim}
+
+
+\subsection{The LINE-NO-DEFAULTS functions}
+
+There are two functions whose job it is to determine defaults for line
+numbers.  The reason we need two functions is, that some of the lines
+which appear on the left-hand side of the {\it support-transformation},
+may reappear on the right.  The way we handle these connections, is
+that we first determine the defaults for lines which are supposed
+to exist (the left-hand side of the {\it support-transformation}), then
+substitute those values into the right-hand side and call the second
+default function.
+
+The function \indexfunction{LINE-NO-DEFAULTS-FROM} is called with one argument
+{\wt {line-no-defaults-from {\it default-exist}}} and \indexfunction{LINE-NO-DEFAULTS-TO}
+is called with two arguments
+{\wt {line-no-defaults-to {\it default-exist} {\it default-new}}}
+where
+
+\begin{description}
+\item [{\it default-exist} ]  is the left hand side of the support transformation
+specified for the rule, with lines that we need the default replaced
+by a {\tt \$}, while the other lines are numbers (which means they either have
+been figured out by an earlier default function or specified by the user).
+Something which is neither {\tt \$} nor a number is one of the ``variables''
+{\it d} or {\it p} standing for other {\it dlines} or {\it plines} in the current
+{\it support} structure.  They must simply be returned (in the proper place,
+of course).
+
+\item [{\it default-new} ]  is the right hand side of the support transformation
+specified for the rule, with the same interpretation as for {\it default-exist}.
+\end{description}
+
+The output of {\tt LINE-NO-DEFAULTS-FROM} should be a
+{\tt {\it default-exists-figured}}, the output of {\tt LINE-NO-DEFAULTS-TO} is
+a list {\wt ({\it default-exists-figured} {\it default-new-figured})} in
+which all {\tt \$} of the arguments have been filled in.  These functions may
+also do a {\tt THROWFAIL}, if one of the requirements R for logical
+correctness cannot be satisfied in the given proof structure.
+
+Also note that all lines in {\it default-exists} have already been determined,
+when {\it default-new} is called.
+
+The specification which must be meet by the {\tt LINE-NO-DEFAULTS-{\it x}}
+functions can be grouped into three classes: requirements which ensure
+the logical correctness of the rule application (R), requirements which
+make the defaults sensible for the ``usual'' application of the rule (D)
+and should never be deviated from, and desired properties, which need
+not be satisfied, but approximate what the user would like to see most
+of the time.
+
+Note that the scope in this function is restricted by the fact that
+it does not examine the logical structure assertions or hypotheses
+of the lines in the proof.  This is accomplished by a completely different
+mechanism and is not the responsibility of the function.  For instance,
+it is perfectly sensible for {\tt LINE-NO-DEFAULTS} to suggest the first
+{\it pline} in the current support structure for the backwards conjunction
+rule, even though it may not be a conjunction at all! [This may cause mayhem
+in rule tactics. The latter assumes that if there is a correct default,
+the default function will choose it. Since a new line, properly located,
+is always a correct, and possibly a useful default, tactics may miss
+an opportunity to apply a rule.]
+
+Subsequently, we will assume that
+\begin{description}
+\item [{\it default-exist} is ]  $((p_1\; d_{11} \ldots d_{1x_1})\ldots (p_p\; d_{p1}\ldots d_{px_p}))$
+
+\item [{\it default-new} is ]  $((q_1\; e_{11} \ldots e_{1y_1})\ldots (q_q\; e_{q1}\ldots e_{qy_q}))$
+\end{description}
+
+\begin{center}
+{\bf Requirements for Logical Correctness}
+\end{center}
+
+\begin{description}
+\item [$R_{1}$ ]  $q_j < p_i$ for all $1\leq i \leq p$, $1\leq j \leq q$.
+
+\item [$R_{2}$ ]  $e_{jk} < q_j$ for all $1\leq j \leq q$, $1\leq k \leq y_j$
+
+\item [$R_{3}$ ]  $d_{ik} < p_i$ for all $1 \leq i \leq p$, $1\leq k \leq x_i$
+\end{description}
+
+\begin{center}
+{\bf Sensible Defaults Requirements}
+\end{center}
+
+The requirements below only make sense, if the lines specified by the user
+do not already violate them.  In that case, they must be relaxed to
+apply only to the remaining unspecified lines.
+\begin{description}
+\item [$D_{1}$ ]  A {\it plan-support} pair suggested for an element of {\it default-exist}
+must always match a {\it plan-support} pair in the current {\it support} structure
+of the (incomplete) proof.
+
+\item [$D_{2}$ ]  A {\it plan-support} pair suggested for an element of {\it default-new}
+must consist of entirely new lines, and no two lines among all the suggested
+defaults may have the same number.
+\end{description}
+
+\begin{center}
+{\bf Wishful Thinking}
+\end{center}
+
+The following are constraints we would like to met, but is of course
+not always possible.
+
+\begin{description}
+\item [$W_{1}$ ]  $q_j < q_{j+1}$ for all $1 \leq j < q$
+
+\item [$W_{2}$ ]  $q_j < e_{j+1,k}$ for all $1 \leq j < q$ and 
+$1 \leq j \leq q_{j+1}$
+
+\item [$W_{3}$ ]  $d_{ik} < e_{jl}$ for all $1\leq i \leq p$,
+$1\leq k \leq x_i$, $1\leq j \leq q$, $1\leq l \leq y_j$.
+
+\item [$W_{4}$ ]  $\lnot\exists {\tt L}. \max{e_{jk}} < {\tt L} < q_j$ for
+all $1 \leq j \leq q$.
+
+\item [$W_{5}$ ]  Let $gap_{j} = q_j - \max{e_{jk}}$ for $1 \leq j \leq q$, if
+$\{e_{jk} | 1 \leq k \leq y_j\}$ is non-empty, otherwise let $gap_{j} =
+q_j - \max{\{{\tt L} | {\tt L} < q_j \lor \exists n\neq j . {\tt L} = q_n\}}$.
+Then maximize $gap_{j}$, giving equal ``weight'' to all $1\leq j \leq q$.
+
+\item [$W_{6}$ ]  Minimize $b = \min{e_{jl}} - \max{d_{ik}}$, with an alternative
+similar to $W_{5}$ in case any of the sets is empty.
+
+\item [$W_{7}$ ]  Minimize $t = \min{p_i} - \max{q_j}$, with an alternative similar
+to $W_{5}$ in case any of the sets is empty.
+\end{description}
+
+
+\section{Updating the {\it support} structure}
+
+Part of the execution of a rule application, is updating the plan
+structure; this is one of the reasons why with every rule there 
+comes a description of how the plan structure should be updated.
+Below we will give a description of what the
+function \indexfunction{UPDATE-PLAN} is supposed to accomplish, even in cases
+when the rule is used in a way different from the defaults.  Again,
+we assume the {\tt UPDATE-PLAN} is called as in 
+
+{\tt (update-plan {\it default-exist} {\it default-new})} \\
+where
+
+\begin{description}
+\item [{\it default-exist} is ]  $((p_1\; d_{11} \ldots d_{1x_1})\ldots (p_p\; d_{p1}\ldots d_{px_p}))$
+
+\item [{\it default-new} is ]  $((q_1\; e_{11} \ldots e_{1y_1})\ldots (q_q\; e_{q1}\ldots e_{qy_q}))$
+\end{description}
+
+Recall that there may be variables appearing in place of a line number.
+The following restrictions should be noted:
+
+\begin{itemize}
+\item For each {\it plan-support} pair
+$(p_i\; d_{i1} \ldots  d_{ix_i})$ in {\it default-exist}, there is at most one
+occurrence of a variable among $d_{i1},\ldots,d_{ix_i}$.
+
+\item Any occurrence of a variable in {\it default-exist} is unique.
+\end{itemize}
+
+When {\tt UPDATE-PLAN} is called, all arguments are filled in, that is each
+place is occupied either by a variable or a line number.
+
+\subsection{{\it support} Structure Transformation in the Default Case}
+
+If the rule is used completely in the default direction, i.e. all
+{\it plan-support} pairs in {\it default-exist} exist in the current
+{\it support} structure and all pairs in {\it default-new} consist of new lines,
+then the effect of the rule application on the {\it support} structure is
+straightforward:
+
+\begin{itemize}
+\item Delete all pairs matching $(p_i\; d_{i1}\ldots d_{ix_i})$ from the
+{\it support} structure and attach to the front the pairs 
+$(q_j\; e_{j1} \ldots e_{jy})$.
+
+\item A variable in place of a $p_i$ matches {\bf any} {\it plan-support} pair in the
+current proof, as long as the $d_{ik}$ match the corresponding support
+lines.
+
+\item A variable in place of a $d_{ik}$ matches the lines which are not matched by
+any of the line numbers.  If $p_i$ is a variable, every match for $p_i$
+produces a corresponding match of $d_{ik}$.
+
+\item A variable in place of $q_j$ must occur as some $p_i$ and as many copies
+of $(q_j\; e_{j1}\ldots e_{jy_j})$
+are produced as there are matches of $p_i$.
+
+\item A variable in place of $e_{jl}$ must occur as some $d_{ik}$ and the matched
+list of lines in filled in.
+\end{itemize}
+
+\subsection{What if ...?}
+
+We will go through all cases which differ from the default application
+of the rule and specify what should happen to the {\it support} structure.
+Of course, \TPS can not always correctly predict what the user had in
+mind, when applying a rule, so the following must partly be considered
+heuristics, but they will not always implement the user's devious
+intentions.
+
+\begin{enumerate}
+
+\item \label{backtrack} % @tag(backtrack)
+{\bf What if . . . } a $p_i$ exists, but is not a {\it pline?}  This case is
+delicate and perhaps frequently occurs, if the user does not bother deleting
+some lines before backtracking after some previous mistake.  Here execute
+a {\tt PLAN-AGAIN} (which may become smart about support lines)\footnote{This is
+a small project in itself!}.  This will make $p_i$ into a planned line and
+we can handle it the usual way.
+
+\item {\bf What if . . . } a $p_i$ does not exist?  Then, very likely, a rule meant to be used
+backwards, was applied in a forward way.  We can't do much here: just ignore
+the relevant part of {\it default-exist} completely.
+
+\item {\bf What if . . . } a $p_i$ is a variable, but $d_{ik}$ don't match anything in the current
+{\it support} structure.  This is already a special case of something discussed
+in the previous section.
+
+\item {\bf What if . . . } a $d_{ik}$ does not exist?  Then we must enter it as a planned line, collecting
+$\{d_{il} | l \lneq k\}$ as its support lines.
+
+\item {\bf What if . . . } a $d_{ik}$ does exist, but does not support $p_i$ ($p_i$ not a variable)?  Then
+somehow $d_{ik}$ was improperly erased form the supports of $p_i$.
+Just treat $d_{ik}$, as if it were supporting $p_i$.
+
+\item {\bf What if . . . } a $q_j$ is a variable (thus exists as a {\it pline})
+and matched a line number identical to a $e_{jk}$?  Then we are closing a
+gap with a forward rule:  Do not enter the $j^{th}$ {\it plan-support} pair
+into the {\it support} structure.
+
+\item {\bf What if . . . } a $q_j$ already exists as a {\it pline}?  In this (probably very rare case)
+we are reducing the proof of one planned line to the proof of another planned
+line.  Add the $e_{jk}$ as additional support lines (also, of course, pulling it
+to the front of the {\it support} structure).
+
+\item {\bf What if . . . } a $q_j$ exists as a {\it dline}?  Here we already proved what we need,
+so leave this {\it plan-support} pair out when constructing the new {\it support}
+structure.
+
+\item \label{dlineexist} % @tag(dlineexist)
+{\bf What if . . . } a $e_{jk}$ exists as a {\it dline}?  Here we may be in a situation similar to
+~\ref{backtrack}.  The justification of $e_{jk}$ will be changed according to
+the current rule applied.  As far as the {\it support} structure is concerned,
+we don't treat it specially.
+
+\item {\bf What if . . . } a $e_{jk}$ exists as a {\it pline}?  Here we are justifying a planned line.
+Delete the {\it plan-support} pair for $e_{jk}$ from the current {\it support}
+structure.  The justification of $e_{jk}$ will be changed appropriately.
+
+\item {\bf What if . . . } a $e_{jk}$ exists as a {\it hline}?  If {\tt TREAT-HLINES-AS-DLINES} is {\tt T}, do
+what you would do to a {\it dlines} (see ~\ref{dlineexist}).  Otherwise, nothing
+special is done.
+
+\end{enumerate}
+
+\subsection{Entering Lines into the Proof Outline}
+
+The descriptions in the previous section can, when read carefully, also
+serve as a guide to what should happen when entering a line into the
+proof outline.  Of course, what should be done is clear, if we are in the
+all-default case.  Otherwise we may have to change some justifications
+as indicated in the previous section, but otherwise existing lines are left
+alone.
+
+Entering lines into the proof could be taken over by the same function, if
+we handed it linelabels instead of line numbers in {\it default-exist} and
+{\it default-new}.
+
+\section{Defaults for Sets of Hypothesis}
+
+In \tps, the user will rarely ever have to deal explicitly with sets of
+hypothesis.  However the detail can be controlled by a flag
+called \indexflag{AUTO-GENERATE-HYPS}.  If this flag is {\tt T}, \TPS will not only
+generate smart defaults for sets of hypothesis, but make them strong
+defaults, which means that the user will never be asked to specify
+hypotheses for a line.
+
+There some restrictions on what the user of the {\tt RULES} module may
+specify as hypothesis in a rule.  Ignoring for the moment the problem of
+fixed hypotheses, like sets representing axioms of extensionality of an
+axiom of infinity, the hypotheses for each line $l$ may have the form
+$H, s_{1}, \ldots , s_{n}$, where $H$ is a
+meta-notation for a set of lines and the $s_i$ are labels for lines
+present elsewhere in the rule specification.  Let us use $H_l$ for
+this set of specified hypotheses for line $l$.
+
+Note the restriction that there may be only one variable standing for
+``arbitrary'' sets of lines in any single rule description.
+
+Defaults {strong or not} for the hypotheses of lines are only calculated
+after all line numbers have been specified.  This includes existent and
+non-existent lines equally.  The algorithm below will always generate
+legal applications of the rule, at the same time generating the ``correct''
+set of hypotheses for each line.  The algorithm will almost always be
+adequate, in the sense that the user will almost never need to explicitly
+add hypotheses to a deduced line or drop hypotheses from a planned line.
+There are cases, however, where this may still be necessary (see discussion
+below).
+
+\subsection{The Algorithm}
+
+Here, unlike in other parts of the {\tt OUTLINE} modules, we do not need to
+refer to the {\it support} structure.  Instead let us view the rule as if
+we were to infer the {\it plines} from all the {\it dlines} specified in the rule,
+and let us disregard hypothesis lines ({\it hlines}) for the moment.
+
+For a given line {\it l} (in the rule specification) we now let $S_l$ stand
+for the set of lines in the hypotheses which were explicitly specified
+in the rule description (corresponds to $s_1,\ldots,s_n$
+above) and let $L_l$ the actual list of hypotheses for the
+line, which must either be matched or constructed (depending on whether
+the line existed or not).  Furthermore let $H$ stand for the unique
+name for an ``arbitrary'' set of lines which appears in zero or more of
+the lines in the rule description.
+
+Let us first consider the case that the hypotheses specified in the rule
+description do not contain $H$.  For {\it dlines} {\it d} we must check
+
+$L_d\subseteq S_d$
+
+and for {\it plines} {\it p} we need to check
+
+$S_p \subseteq L_p$
+
+For {\it dlines} $d$ which contain $H$ among their hypotheses,
+we must satisfy
+
+$L_d \subseteq H \cup S_d$
+
+and, if we are filling in hypotheses for a new line, we would like to choose
+$L_d$ as large as possible, so it satisfies this equation.  From another point
+of view, namely when we match existent lines, we find out some constraint on
+$H$:
+
+$L_d \setminus S_d \subseteq H$
+
+On the other hand, for any given {\it pline} $p$, we obtain
+
+$H \cup S_p \subseteq L_p$ 
+
+or equivalently 
+
+$H \subseteq L_p$ and $S_p \subseteq L_p$
+
+Here we would like to make $L_p$ as small as possible (the fewer hypotheses
+we used, the stronger the statement result).  Alternatively, the second line
+can again be viewed as a constraint on $H$ when matching an existent
+{\it pline}.
+
+This leads to the following algorithm for determining set of hypothesis:
+
+\begin{enumerate}
+\item Let $D_{exist}$ be the set of {\it dlines} which exist in the current proof.
+Then set 
+$$H_{lower} = \bigcup \{L_d - S_d | d \in D_{exist} \land
+H \in H_d\}.$$
+  Also let $L_d$ be the strong default for the
+hypotheses of line $d$ for each $d\in D_{exists}$.
+
+\item \label{latermodified} % @tag(latermodified)
+Let $P_{exist}$ be the set of {\it plines} which exist in the current proof.
+Then set 
+$$H_{upper} = \bigcap \{L_p |  p \in P_{exist} \land
+H\in H_p\}.$$
+Also let $L_p$ be the strong default for the
+hypotheses of line $p$ for each $p\in P_{exists}$.
+
+\item If {\it not}  $H_{lower} \subseteq H_{upper}$   the application of the inference
+rule is illegal. (Do a {\tt THROWFAIL} with proper message.)
+
+\item If both, $H_{lower}$ and $H_{upper}$ are undefined (empty intersection or union,
+respectively), do not fill in any further defaults.
+
+\item If exactly one of $H_{lower}$ and $H_{upper}$ is undefined, let $H_{lower} := H_{upper}$
+or vice versa.
+
+\item For non-existent {\it dlines} {\it d}, we let $L_d = H_{upper} \cup S_d$.
+If {\tt AUTO-GENERATE-HYPS} is {\tt T}, make $L_d$ the strong default for that
+argument, otherwise just a regular default.
+
+\item For non-existent {\it plines} {\it p}, we let $L_p = H_{lower} \cup S_p$.
+If {\tt AUTO-GENERATE-HYPS} is {\tt T}, make $L_d$ the strong default for that
+argument, otherwise just a regular default.
+\end{enumerate}
+
+This algorithm is coded in a separate function for each rule.
+For the rule {\it rule}, the function is called {\wt {\it rule}-HYP-DEFAULTS}
+and is called (when appropriate) form within {\wt {\it rule}-DEFAULTS}.
+
+\subsection{When the Algorithm is not Sufficient}
+
+We must of course consider the case, when a restriction like
+``x not free in $H$'' is imposed upon applications of the inference
+rule.  Since we fill in $H_{upper}$ for the hypotheses of the {\it dlines} which
+do not exist, we must check whether ``x not free in $H_{upper}$''.  It may
+be the case, however, that all {\it dlines} actually already existed.  In this
+case, it would be sufficient for the validity of the rule application, to check
+whether ``x not free in $H_{lower}$''.  To see this may think of the rule as
+first a legal application of the inference rule, leaving out the extra
+hypotheses, then enlarging the set of hypotheses of the inferred line,
+possibly with lines which contain ``x'' free.
+
+This situation can also come up, when  not all the {\it dlines} are specified.
+Then we may have been able to make the inference rule application legal,
+by leaving out the lines {\tt H} from $H_{upper}$, which violate the condition
+``x not free in (the assertion of) {\tt H}''.
+
+This leads to a simple modification of the algorithm above, which would need
+much more information about the rule (namely the restrictions), where
+we modify the definition of $H_{upper}$ in step ~\ref{latermodified} by 
+
+~\ref{latermodified}$^{*}$.
+$H_{upper} = \bigcap \{L_p | p \in P_{exist} \land H\in H_p
+\land L_p \;{\rm satisfies\; any\; restriction\; on\; } H\}$.
+
+It seems more reasonable, however, not to place that restriction, but rather
+give an error message.  Otherwise the user may only find out much later, that
+some of the hypotheses he expected to be able to use, have not been included
+in the {\it dlines}, since they violated a restriction.  This makes it necessary,
+however, to give the user explicit rules which allow adding hypotheses to
+a deduced line or dropping hypotheses from a planned line.
+
+\subsection{Hypothesis Lines}
+
+There are two principal ways hypothesis lines ({\it hlines}) can be treated
+in \TPS and since there is very little extra work required, both are
+provided for.  The flag \indexflag{TREAT-HLINES-AS-DLINES} controls how hypotheses
+lines are handled.
+
+If {\tt TREAT-HLINES-AS-DLINES} is {\tt T}, an {\it hline} may have more
+hypotheses than simply {\it hline}.  Also, {\it hlines} may have descriptive
+justifications like ``Case {a}'' or ``Ind. Hyp. for n''.  The price you
+pay is that hypotheses lines become unique to a subproof and should not
+be used elsewhere.  In this case, {\it hlines} are truly treated as
+{\it dlines}, and in the above algorithm for determining default for
+lines, we mean {\it dline} or {\it hline} whenever we say {\it dline}.
+
+If {\tt TREAT-HLINES-AS-DLINES} is {\tt NIL}, every {\it hline} has exactly
+one hypothesis: itself.  Also the justification for any {\it hline} will
+be the same, namely the value of the flag \indexflag{HLINE-JUSTIFICATION}
+(by default {\tt Hyp}).  What you gain in this case is, that the same
+hypothesis line may used many different places in the given proof.  The
+default for the hypotheses of an {\it hline} will always be strong and
+equal to {\tt ({\it hline})}, anything else will result in an error, even if
+perhaps logically correct. Also, in this case, 
+if \indexflag{CLEANUP-SAME} is {\tt T}, then \indexcommand{CLEANUP} will
+eliminate unnecessary hypotheses.
+

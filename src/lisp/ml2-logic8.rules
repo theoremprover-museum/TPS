@@ -1,0 +1,35 @@
+;;; ******************************************************************* ;;;
+;;;         (c) Copyrighted 1988 by Carnegie Mellon University.         ;;;
+;;;                        All rights reserved.                         ;;;
+;;;         This code was written as part of the TPS project.           ;;;
+;;;   If you want to use this code or any part of TPS, please contact   ;;;
+;;;               Peter B. Andrews (Andrews@CS.CMU.EDU)                 ;;;
+;;; ******************************************************************* ;;;
+;;; Updated context 7/21/87 DAN
+
+;; not used in the current incarnation of math-logic-2 ; MB 2/94
+
+
+(context rules-7-DEFN)
+
+(defirule erp
+  (lines (d1 (h) () "A")
+	 (d2 (h) () "`(RPIN A)" ("Defn" () (d1))))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Line with Definition")
+	     (d2 "Line with Instantiated Definition")
+	     ("A(O)" "Wff with Definition")
+	     (RPIN "Wff after replacing symbol"))
+  (mhelp "Rule to replace a replacable symbol in a support line.
+Replaces first occurrence from left to right."))
+
+(defirule irp
+  (lines (p1 (h) () "`(RPIN A)")
+	 (p2 (h) () "A" ("Defn" () (p1))))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (itemshelp (p2 "Line with Definition")
+	     (p1 "Line with Instantiated Definition")
+	     ("A(O)" "Wff with Definition")
+	     (RPIN "Wff after replacing symbol"))
+  (mhelp "Rule to replace a replacable symbol in a planned line.
+Replaces first occurrence from left to right."))

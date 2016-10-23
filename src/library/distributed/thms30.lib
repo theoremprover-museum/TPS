@@ -1,0 +1,99 @@
+(:name THM300
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:05."
+:description "DOUBLE(OII) 0(I) 0(I) AND FORALL x(I) FORALL y(I) [DOUBLE(OII) x(I) y(I) IMPLIES DOUBLE(OII) [S(II) x(I)].S(II).S(II) y(I)] AND FORALL Q(OII) FORALL u(I) FORALL v(I) [HALF(OII) u(I) v(I) AND [Q(OII) 0(I) 0(I) AND Q(OII) [S(II) 0(I)] 0(I) AND FORALL x(I) FORALL y(I).Q(OII) x(I) y(I) IMPLIES Q(OII) [S(II).S(II) x(I)].S(II) y(I)] IMPLIES Q(OII) u(I) v(I)] IMPLIES FORALL u(I) FORALL v(I).HALF(OII) u(I) v(I) IMPLIES DOUBLE(OII) v(I) u(I) OR DOUBLE(OII) [S(II) v(I)].S(II) u(I)"
+:needed-objects   NIL
+:mhelp "relation between HALF and DOUBLE functions"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM300A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Friday, June  6, 1997 at 11:30:55."
+:description "FORALL u(I) FORALL v(I) [HALF(OII) u(I) v(I) EQUIV FORALL Q(OII).Q(OII) 0(I) 0(I) AND Q(OII) [S(II) 0(I)] 0(I) AND FORALL x(I) FORALL y(I) [Q(OII) x(I) y(I) IMPLIES Q(OII) [S(II).S(II) x(I)].S(II) y(I)] IMPLIES Q(OII) u(I) v(I)] AND DOUBLE(OII) 0(I) 0(I) AND FORALL x(I) FORALL y(I) [DOUBLE(OII) x(I) y(I) IMPLIES DOUBLE(OII) [S(II) x(I)].S(II).S(II) y(I)] IMPLIES FORALL u(I) FORALL v(I).HALF(OII) u(I) v(I) IMPLIES DOUBLE(OII) v(I) u(I) OR DOUBLE(OII) [S(II) v(I)].S(II) u(I)"
+:needed-objects   NIL
+:mhelp "DOUBLEuv means that 2u = v; HALFuv means that the greatest integer in u/2 is v;
+requires 3 copies of [DOUBLE x y IMPLIES DOUBLE [S x].S.S y]."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM301
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:05."
+:description "FORALL Q(OII) FORALL u(I) FORALL v(I) [DOUBLE(OII) u(I) v(I) AND [Q(OII) 0(I) 0(I) AND FORALL x(I) FORALL y(I).Q(OII) x(I) y(I) IMPLIES Q(OII) [S(II) x(I)].S(II).S(II) y(I)] IMPLIES Q(OII) u(I) v(I)] AND [HALF(OII) 0(I) 0(I) AND HALF(OII) [S(II) 0(I)] 0(I) AND FORALL x(I) FORALL y(I).HALF(OII) x(I) y(I) IMPLIES HALF(OII) [S(II).S(II) x(I)].S(II) y(I)] IMPLIES FORALL u(I) FORALL v(I).DOUBLE(OII) u(I) v(I) IMPLIES HALF(OII) v(I) u(I)"
+:needed-objects   NIL
+:mhelp "relation between HALF and DOUBLE functions"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM301A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:06."
+:description "FORALL u(I) FORALL v(I) [DOUBLE(OII) u(I) v(I) EQUIV FORALL Q(OII).Q(OII) 0(I) 0(I) AND FORALL x(I) FORALL y(I) [Q(OII) x(I) y(I) IMPLIES Q(OII) [S(II) x(I)].S(II).S(II) y(I)] IMPLIES Q(OII) u(I) v(I)] AND HALF(OII) 0(I) 0(I) AND HALF(OII) [S(II) 0(I)] 0(I) AND FORALL x(I) FORALL y(I) [HALF(OII) x(I) y(I) IMPLIES HALF(OII) [S(II).S(II) x(I)].S(II) y(I)] IMPLIES FORALL u(I) FORALL v(I).DOUBLE(OII) u(I) v(I) IMPLIES HALF(OII) v(I) u(I)"
+:needed-objects   NIL
+:mhelp "DOUBLEuv means that 2u = v; HALFuv means that the greatest integer in u/2 is v."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM303A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "IND AND EVEN(OI) 0(I) AND FORALL n(I) [EVEN(OI) n(I) IMPLIES EVEN(OI).S(II).S(II) n(I)] AND [ODD(OI) [S(II) 0(I)] AND FORALL n(I).ODD(OI) n(I) IMPLIES ODD(OI).S(II).S(II) n(I)] AND FORALL n(I) [NUMBER(OI) n(I) EQUIV EVEN(OI) n(I) OR ODD(OI) n(I)] IMPLIES FORALL n(I) NUMBER(OI) n(I)"
+:needed-objects   (IND)
+:mhelp "Variant of THM303 with hypotheses rearranged"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM300B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL u(I) FORALL v(I) [HALF(OII) u(I) v(I) IMPLIES FORALL Q(OII).Q(OII) 0(I) 0(I) AND Q(OII) [S(II) 0(I)] 0(I) AND FORALL x(I) FORALL y(I) [Q(OII) x(I) y(I) IMPLIES Q(OII) [S(II).S(II) x(I)].S(II) y(I)] IMPLIES Q(OII) u(I) v(I)] AND DOUBLE(OII) 0(I) 0(I) AND FORALL x(I) FORALL y(I) [DOUBLE(OII) x(I) y(I) IMPLIES DOUBLE(OII) [S(II) x(I)].S(II).S(II) y(I)] IMPLIES FORALL u(I) FORALL v(I).HALF(OII) u(I) v(I) IMPLIES DOUBLE(OII) v(I) u(I) OR DOUBLE(OII) [S(II) v(I)].S(II) u(I)"
+:needed-objects   NIL
+:mhelp "thm300a variant"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM300C
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL u(I) FORALL v(I) [HALF(OII) u(I) v(I) IMPLIES FORALL Q(OII).Q(OII) 0(I) 0(I) AND Q(OII) [S(II) 0(I)] 0(I) AND FORALL x(I) FORALL y(I) [Q(OII) x(I) y(I) IMPLIES Q(OII) [S(II).S(II) x(I)].S(II) y(I)] IMPLIES Q(OII) u(I) v(I)] AND DOUBLE(OII) 0(I) 0(I) AND [FORALL x(I) FORALL y(I) [DOUBLE(OII) x(I) y(I) IMPLIES DOUBLE(OII) [S(II) x(I)].S(II).S(II) y(I)] AND FORALL x(I) FORALL y(I) [DOUBLE(OII) x(I) y(I) IMPLIES DOUBLE(OII) [S(II) x(I)].S(II).S(II) y(I)] AND FORALL x(I) FORALL y(I).DOUBLE(OII) x(I) y(I) IMPLIES DOUBLE(OII) [S(II) x(I)].S(II).S(II) y(I)] IMPLIES FORALL u(I) FORALL v(I).HALF(OII) u(I) v(I) IMPLIES DOUBLE(OII) v(I) u(I) OR DOUBLE(OII) [S(II) v(I)].S(II) u(I)"
+:needed-objects   NIL
+:mhelp "thm300b with duplications built-in"
+:other-attributes NIL
+:other-remarks "
+")
+
+

@@ -1,0 +1,16 @@
+(:name NUM016-1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, April  2, 2003 at 10:49:15."
+:description "~.FORALL X(I) [~less(OII) X(I) X(I)] AND FORALL X(I) FORALL Y(I) [~less(OII) X(I) Y(I) OR ~less(OII) Y(I) X(I)] AND FORALL X(I) divides(OII) X(I) X(I) AND FORALL X(I) FORALL Y(I) FORALL Z(I) [~divides(OII) X(I) Y(I) OR ~divides(OII) Y(I) Z(I) OR divides(OII) X(I) Z(I)] AND FORALL X(I) FORALL Y(I) [~divides(OII) X(I) Y(I) OR ~less(OII) Y(I) X(I)] AND FORALL X(I) less(OII) X(I) [factorial_plus_one(II) X(I)] AND FORALL X(I) FORALL Y(I) [~divides(OII) X(I) [factorial_plus_one(II) Y(I)] OR less(OII) Y(I) X(I)] AND FORALL X(I) [prime(OI) X(I) OR divides(OII) [prime_divisor(II) X(I)] X(I)] AND FORALL X(I) [prime(OI) X(I) OR prime(OI).prime_divisor(II) X(I)] AND FORALL X(I) [prime(OI) X(I) OR less(OII) [prime_divisor(II) X(I)] X(I)] AND prime(OI) a(I) AND FORALL X(I).~prime(OI) X(I) OR ~less(OII) a(I) X(I) OR less(OII) [factorial_plus_one(II) a(I)] X(I)"
+:needed-objects   NIL
+:mhelp "NUM016-1 from TPTP library;
+also known as ls17; There exist infinitely many primes. Original
+source probably [Luckham, 1968]."
+:other-attributes NIL
+:other-remarks "
+")
+
+

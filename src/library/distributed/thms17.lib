@@ -1,0 +1,131 @@
+(:name THM171
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:52."
+:description "f(II) COMPOSE(II(II)(II)) g(II) =(O(II)(II)) g(II) COMPOSE(II(II)(II)) f(II) IMPLIES.EXISTS x(I) [g(II) x(I) =(OII) x(I) AND FORALL z(I).g(II) z(I) =(OII) z(I) IMPLIES z(I) =(OII) x(I)] IMPLIES EXISTS y(I).f(II) y(I) =(OII) y(I)"
+:needed-objects   (COMPOSE)
+:mhelp "Part of the series THM170-THM172, which provides a nice example of cut. If g commutes with f, and g has a unique fixed point, then f has a fixed point. 
+Similar to THM141."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM171A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, August  2, 2000 at 15:27:44."
+:description "f(II) COMPOSE(II(II)(II)) g(II) =(O(II)(II)) g(II) COMPOSE(II(II)(II)) f(II) IMPLIES FORALL x(I).g(II) x(I) =(OII) x(I) AND FORALL z(I) [g(II) z(I) =(OII) z(I) IMPLIES z(I) =(OII) x(I)] IMPLIES f(II) x(I) =(OII) x(I)"
+:needed-objects   (COMPOSE)
+:mhelp "If g commutes with f, any unique fixed point of g
+ is a fixed point of f."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM172
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:53."
+:description "ITERATE+(O(II)(II)) f(II) g(II) IMPLIES.EXISTS x(I) [g(II) x(I) =(OII) x(I) AND FORALL z(I).g(II) z(I) =(OII) z(I) IMPLIES z(I) =(OII) x(I)] IMPLIES EXISTS y(I).f(II) y(I) =(OII) y(I)"
+:needed-objects   (ITERATE+)
+:mhelp "Part of the series THM170-THM172, which provides a nice example of cut. If g is an iterate of f, and g has a unique fixed point, then f has a fixed point.
+Closely related to THM15B."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM173
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:53."
+:description "FORALL x(B) FORALL y(A) FORALL s(OAB) FORALL k(OAB).k(OAB) SUBRELATION(O(OAB)(OAB)) ADDPAIR(OABAB(OAB)) s(OAB) x(B) y(A) AND ~k(OAB) x(B) y(A) IMPLIES k(OAB) SUBRELATION(O(OAB)(OAB)) s(OAB)"
+:needed-objects   (SUBRELATION ADDPAIR)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM174
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:54."
+:description "FORALL r(OAB) FORALL s(OAB).FORALL x(B) FORALL y(A) [r(OAB) x(B) y(A) EQUIV s(OAB) x(B) y(A)] IMPLIES r(OAB) =(O(OAB)(OAB)) s(OAB)"
+:needed-objects   NIL
+:mhelp "Principle of extensionality for binary relations"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM175
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:54."
+:description "FORALL s(OII).s(OII) SUBRELATION(O(OII)(OII)) s(OII)"
+:needed-objects   (SUBRELATION)
+:mhelp "Reflexivity of subrelation"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM176
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:55."
+:description "FORALL x(B) FORALL y(A) FORALL s(OAB) FORALL k(OAB).k(OAB) SUBRELATION(O(OAB)(OAB)) ADDPAIR(OABAB(OAB)) s(OAB) x(B) y(A) IMPLIES SUBTRACTPAIR(OABAB(OAB)) k(OAB) x(B) y(A) SUBRELATION(O(OAB)(OAB)) s(OAB)"
+:needed-objects   (SUBRELATION ADDPAIR SUBTRACTPAIR)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM177
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:55."
+:description "FORALL x(B) FORALL y(A) FORALL k(OAB).k(OAB) x(B) y(A) IMPLIES ADDPAIR(OABAB(OAB)) [SUBTRACTPAIR(OABAB(OAB)) k(OAB) x(B) y(A)] x(B) y(A) =(O(OAB)(OAB)) k(OAB)"
+:needed-objects   (ADDPAIR SUBTRACTPAIR)
+:mhelp "Proof needs extensionality for relations (THM174)."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM178
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, January 14, 1997 at 16:23:26."
+:description "FORALL P(OI) [FORALL n(I) [FORALL m(I) [m(I) INFIX-LESS(OII) n(I) IMPLIES P(OI) m(I)] IMPLIES P(OI) n(I)] IMPLIES FORALL n(I) P(OI) n(I)] EQUIV FORALL P(OI).EXISTS n(I) P(OI) n(I) IMPLIES EXISTS n(I).P(OI) n(I) AND FORALL m(I).m(I) INFIX-LESS(OII) n(I) IMPLIES ~P(OI) m(I)"
+:needed-objects   (INFIX-LESS)
+:mhelp "Every nonempty set has a minimal element
+is equivalent to the assertion that complete induction holds.
+Suggested by John Harrison 1997 Jan 5."
+:other-attributes NIL
+:other-remarks "
+")
+
+

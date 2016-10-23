@@ -1,0 +1,57 @@
+(:name THM270
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, January 28, 1999 at 16:06:56."
+:description "FORALL f(BA) FORALL g(CA) FORALL h(CB).FORALL x(A) [h(CB) [f(BA) x(A)] =(OCC) g(CA) x(A)] AND FORALL y(B) EXISTS x(A) [f(BA) x(A) =(OBB) y(B)] AND GEN-HOM(O(BA)) f(BA) AND GEN-HOM(O(CA)) g(CA) IMPLIES GEN-HOM(O(CB)) h(CB)"
+:needed-objects   (GEN-HOM)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM271
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, July 21, 1998 at 13:37:23."
+:description "FORALL x(I) [EXISTS y(I) [M(OII) x(I) y(I) OR N(OII) x(I) y(I)] IMPLIES P(OI) x(I)] AND FORALL w(I) EXISTS u(I) [FORALL v(I) M(OII) u(I) v(I) OR N(OII) u(I) w(I)] AND FORALL w(I) FORALL z(I) [M(OII) w(I) z(I) OR N(OII) w(I) z(I) IMPLIES M(OII) z(I) w(I) OR N(OII) z(I) w(I) OR.M(OII) z(I) z(I) OR N(OII) z(I) z(I)] IMPLIES FORALL z(I) P(OI) z(I)"
+:needed-objects   NIL
+:mhelp "Combination of X2133 and X2134"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM275
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, February 17, 1999 at 22:46:21."
+:description "FORALL r(OAA) EXISTS p(OAA).r(OAA) SUBRELATION(O(OAA)(OAA)) p(OAA) AND TRANSITIVE(O(OAA)) p(OAA)"
+:needed-objects   (SUBRELATION TRANSITIVE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM275A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, February 17, 2004 at 16:41:27."
+:description "FORALL r(OAA) EXISTS p(OAA).r(OAA) SUBRELATION(O(OAA)(OAA)) p(OAA) AND TRANSITIVE(O(OAA)) p(OAA) AND FORALL s(OAA).r(OAA) SUBRELATION(O(OAA)(OAA)) s(OAA) AND TRANSITIVE(O(OAA)) s(OAA) IMPLIES p(OAA) SUBRELATION(O(OAA)(OAA)) s(OAA)"
+:needed-objects   (SUBRELATION TRANSITIVE)
+:mhelp "TPS must define the transitive closure of r.
+Variant of THM275 which rules out the trivial universal relation."
+:other-attributes NIL
+:other-remarks "
+")
+
+

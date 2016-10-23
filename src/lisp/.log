@@ -1,0 +1,38 @@
+This is TeX, Version 3.14159 (Web2C 7.2) (format=latex 1998.10.11)  5 MAR 2001 18:43
+**summary01
+(/usr/share/texmf/tex/latex/tools/.tex
+LaTeX2e <1998/06/01>
+Babel <v3.6j> and hyphenation patterns for american, french, german, italian, n
+ohyphenation, loaded.
+File ignored)
+*exit
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+<*> e
+     xit
+? q
+OK, entering \batchmode...
+Missing character: There is no e in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no t in font nullfont!
+! Emergency stop.
+<*> exit
+        
+*** (job aborted, no legal \end found)
+
+ 
+Here is how much of TeX's memory you used:
+ 4 strings out of 10906
+ 83 string characters out of 71921
+ 43107 words of memory out of 263001
+ 3010 multiletter control sequences out of 10000+0
+ 3640 words of font info for 14 fonts, out of 200000 for 1000
+ 15 hyphenation exceptions out of 1000
+ 5i,0n,4p,83b,14s stack positions out of 300i,100n,500p,30000b,4000s
+No pages of output.

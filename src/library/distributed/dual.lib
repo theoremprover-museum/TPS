@@ -1,0 +1,56 @@
+(:name DUAL-EG1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITH-DEFN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) [A(OI) x(I) IMPLIES B(OI) x(I)] OR A(OI) SUBSET(O(OI)(OI)) B(OI) IMPLIES A(OI) SUBSET(O(OI)(OI)) B(OI)"
+:needed-objects   NIL
+:mhelp "example for dual inst of OR"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name DUAL-EG2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "[A(OI) SUBSET(O(OI)(OI)) B(OI) IMPLIES G(O)] OR [FORALL x(I) [A(OI) x(I) IMPLIES B(OI) x(I)] IMPLIES G(O)] IMPLIES.A(OI) SUBSET(O(OI)(OI)) B(OI) IMPLIES G(O)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name DUAL-EG3
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITH-DEFN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "[A(OI) SUBSET(O(OI)(OI)) B(OI) AND FORALL x(I) [A(OI) x(I) IMPLIES B(OI) x(I)] IMPLIES G(O)] OR [FORALL x(I) [A(OI) x(I) IMPLIES B(OI) x(I)] IMPLIES G(O)] IMPLIES.A(OI) SUBSET(O(OI)(OI)) B(OI) IMPLIES G(O)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name DUAL-EG5
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) [A(OI) x(I) IMPLIES B(OI) x(I)] OR A(OI) SUBSET(O(OI)(OI)) B(OI) IMPLIES FORALL x(I) [A(OI) x(I) IMPLIES B(OI) x(I)] AND A(OI) SUBSET(O(OI)(OI)) B(OI)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

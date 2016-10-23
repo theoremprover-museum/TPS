@@ -1,0 +1,163 @@
+		PROVEJOBS
+
+THMS to try. Create modes which can be used to prove these automatically.
+Improve these modes using PUSH-DOWN
+Check records first, since some of these may have already been proven.
+Also see /afs/cs/project/tps/tps/tpslib/andrews/thmideas
+	In some cases you will find that there is no hope of proving a
+theorem automatically at present, but you can prove it interactively,
+using TPS to do certain parts of the proof automatically. These parts
+can yield new examples.
+====================================
+====================================
+							UNIFORM SEARCH
+UNIFORM SEARCH WORKS ON THESE:
+
+X2112 THM30 THM47 THM67 THM112 THM117C THM129 THM130 THM133 THM134 BLEDSOE-FENG-SV-I1 
+X2115 X2116 X2129 X2138 X5205 X5304 X5305 X5308 THM301A THM48 THM15B THM120B
+
+--------------------------------------------------------------------
+UNIFORM SEARCH HAS BEEN TRIED AND FAILED ON THESE:
+
+THM303A		tried 6 days
+successful mode has MAX-DUP-PATHS 2, but UNIFORM-SEARCH doesn't vary this flag
+ With  MAX-DUP-PATHS INFINITY, the search succeedsin the second oset (disunction)
+in about 41 minutes
+
+try again when UNIFORM-SEARCH is fixed so that it won't vary REWRITE-EQUALITIES
+when there are no equalities.
+========================================
+tttp5311a [may also be same problem as thm4, below; needs extensionality and Leibniz equality.
+See X5311A-EXT, which is provable in MODE-X5311A.]
+
+x6101-ext
+Note that x6101 is provable
+
+=================================
+THM2. May require instanatiation with K[primsub wff]
+[May be the same problem as THM4, below. Requires lots of primsubs/duplications]
+
+THM4: topspace
+[MB : The problem here is in reasoning about equality; we need to fill in the gap 
+between:
+T(O(OI)) .LAMBDA x(I) EXISTS S(OI). [S = U(OI) OR S = V(OI)] AND S x
+               ...
+T(O(OI)) .LAMBDA x(I) .U(OI) x OR V(OI) x
+]
+
+
+THM118 Cantor's thm with injectivity. Need description axiom?
+THM118 Alt cantor thm. Needs primsubs. Related to x5309 and x5309a.
+    compare THM143a, which has now been proven.
+
+x5309
+
+SET005-1	LS108
+
+% File     : MSC004=HasParts2-1 : TPTP v1.1.1. Bugfixed v1.0.0.
+% Names    : HASPARTS-T2 [Wilson & Minker, 1976]
+
+
+====================================================
+THM303a
+note thm303a.vpw on dtps has many option sets repeated
+but with different names [try MS91-7 instead of ms90-9...MB]
+	Simialr to THM303, which we can prove, but rearranging
+the hypothese seems to drastically affect the search
+
+=====================================================
+
+THM42 Huet
+
+Examples from Bledsoe's SET-VAR paper
+See how many of Bledsoe's examples we can do.
+
+Zwinogrodzki 74
+
+-----------------------------
+THM138
+[HX] To prove such sentences, my feeling is that
+max-mates has to be very big while num-of-dups
+could be 1 or 2.
+-------------------------------------------
+
+THM116. Fixed point. Do interactively first. TPS incomplete here?
+THM90A dual to it
+THM90A B C?
+============================================================
+	Is THM116 too hard?
+
+HX  Yes, THM116 is very hard. Applying partial substitution to the jform
+might be needed to search for the proof. It is certainly a very challenging theorem
+for TPS. I have put a proof thm116-1s.prf in the proof directory. THM116-1s
+in my directory asserts half what thm116 does. (Sept. 1st, 93)
+
+Hx   Hopefully, we have a big chance to accomplish proving the least fixed 
+point theorem because the unification tree is very very shallow (5 or 6 ?)
+(Sept. 1st, 93)
+
+------------------------------------------------------------------
+THM120 (and variants)
+There exists a transitive relation on sets
+
+THM120B and THM120H; are these of interest now that we
+have proved THM120I?
+
+Check first in MATE. Does the primitive substitution mechanism
+suffice in principle to prove this?
+
+The modified version of thm120b is called thm120h in
+my directory, and the mode mode-thm120b will let you
+prove thm120h in around 20 minutes(on atps).
+
+
+-----------------------------------------------------
+THM117A. Prove interactively first
+----------------------------------
+
+THM67. Can prove with ms88, not with ms90-3. (Tried with MODE-THM67-c.)
+Be sure we can still prove it with ms88. Need max-mates?
+
+70 tried several times in Feb. did interactively 1992 Aug 17
+Try with mode-thm70-c. Done March 29.
+Unificatioin is rather trivial.
+Needs 3 copies of transitivity condition.
+
+ 74b(adjust superscripts?) (Zwinogrodski; do interactively first.)
+
+Bailin & Barker-Plummer examples in Z-Match paper
+Try 117a interactively; may not be a theorem.
+One form of transfinite induction due to Bailin & Barker-Plummer
+
+
+	Relations between Axiom of Choice, well-ordering, Zorn's lemma, etc.
+Be sure the relative types are right.  Consider X5008 and X5009 in TPTT. These
+would have to be translated into our current type system, of course.  You may
+need some form of the axiom of descriptions. Note DESCR-CHURCH, DESCR-CHURCH1,
+and DESCR-CHURCH1T in my library. Also, show that AC at one type is implied by
+AC at a higher type.
+	Good sources for the informal proofs are:
+Kelley, General Topology
+Rubin & Rubin, Equivalents of the Axiom of Choice
+set theory books
+
+	Theorems about finiteness. Use the definition FINITE1 in PBA's library.
+FINITE1 p(OI) EQUIV FINITE p
+
+THM160
+FORALL p(OA) FORALL q(OA).FINITE1 p(OA) and [q SUBSET p] IMPLIES .FINITE1 q
+Note: look at the vpform for this within MATE. It probably contains something
+like ~w^8 [LAMBDA t^6 .R^1 w^8 t^6 OR t^6 = X^1 w^8].
+The = formula has not been expanded using the Leibniz definition, since it
+occurs inside the argument to w. This may be a fundamental problem within
+the context of our current search methods.
+Prove it interactively first.
+
+THM161. PBA started proving this interactively
+/afs/cs/project/tps/tps/proofs/incomplete/thm161-interactive.mss  
+and thm161-interactive.prf
+
+FINITE1 p(OA) and FINITE1 q IMPLIES .FINITE1 [p X q]
+
+
+

@@ -1,0 +1,53 @@
+;;ISSAR saving into file PS:<ISSAR.CLISP>X5209.WORK.1 on 
+;;Thursday, January 15, 1987 at 12:49:33.
+Exercise X5209
+ext=
+
+
+"S(OA)"
+ugen !
+ext=0
+
+
+implics-equiv
+
+
+iconj !
+subproof
+95
+deduct !
+idef !
+edef !
+^P
+econj !
+edef !
+edef 
+52
+
+^P
+edef 53
+
+edef 54
+
+idef !
+^P
+ui 55
+
+"x(A)"
+ui 56
+
+(ed 56)
+a
+ok
+ugen !
+deduct !
+idef !
+^P
+unsponsor
+
+(55 56)
+rulep !
+pall
+
+
+

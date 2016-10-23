@@ -1,0 +1,81 @@
+\section{Simple MetaWffs in TPS3}
+
+Even though in \TPS the principle metalanguage is of course Lisp, it is
+often convenient to be able to use simple notations from the metalanguage
+and include them directly in the input format for Wffs.  In \TPS this is
+achieved by providing a notation for certain kinds of {\tt WFFOPS} inside
+an external specification of a wff.  This method is not perfect, but has
+other advantages as well, as we shall see.
+
+\subsection{The Notation}
+
+The motivation behind the notation is an analogy to Lisp: we use the
+backquote to introduce some Lisp form which is to be evaluated and
+inserted into the Wff.  One restriction is that the wffop must return
+a {\it gwff} (or a subtype, like a {\it gvar}).  The other is that \TPS must
+have certain pieces of knowledge about the {\it wffop} used, in order to be
+able to determine the type of the result of applying the {\it wffop}.
+
+Some examples of external format and what they are parsed to:
+\begin{verbatim}
+"forall x. `(lcontr [[lambda x. P x x x] [f x]])"
+\end{verbatim}
+to
+$$\forall x.P\; [f\; x]\; [f\; x]\; [f\; x]$$
+
+\begin{verbatim}
+"forall x exists y.
+  `(lexpd z [f x] `(lexpd z [f x] [Q [f x] [f x] y] `(1)) `t)"
+\end{verbatim}
+to
+$$\forall x\exists y.[\lambda z\; [\lambda z^{1}\; Q\; z^{1}\; z\; y]\; z]\; [f\; x]$$
+
+\begin{verbatim}
+"`(substitute-types `((A . (O . I))) [P(OA) subset Q(OA)])"
+\end{verbatim}
+to
+$$P_{\greeko(\greeko\greeki)} \subseteq Q_{\greeko(\greeko\greeki)}.$$
+(The latter could have been more easily specified as
+\begin{verbatim}
+(substitute-types (("A" "OI")) "[P(OA) subset Q]")
+\end{verbatim}
+but that is no longer possible when the formula is to be embedded
+in another.)
+
+
+Here are the general rules:
+\begin{itemize}
+\item In an ordinary wff, a backquote may precede something of the form
+{\wt ({\it wffop} {\it arg} ... {\it arg})}, where {\it wffop} has all the necessary
+type information.  The typecase of {\it wffop} is irrelevant.
+
+\item Among {\wt ({\it arg} ... {\it arg})}, each argument is either a gwff (and may
+contain other backquoted expressions) or a Lisp expression, which
+is considered a constant.  This is necessary to supply arguments which
+are not gwffs to a {\it wffop}.  Notice, that it must be the internal
+representation of the argument!\footnote{At some point one could work at
+removing this restriction, if types are handled properly.}
+\end{itemize}
+
+\section{More about Jforms}
+
+Much of the code for handling jforms is in {\it jforms-labels.lisp}; see
+{\tt defflavor jform} in this file for the definition.
+
+In the same file we see:
+
+%\begin{tpsexample}
+\begin{verbatim}
+(eval-when (load compile eval)
+  (defflavor disjunction
+    (mhelp "A disjunction label stands for a disjunction of wffs.")
+    (inherit-properties jform)
+    (include jform (type 'disjunction))
+\end{verbatim}
+%\end{tpsexample}
+
+This tell us that a jform can be a disjunction.
+
+
+
+

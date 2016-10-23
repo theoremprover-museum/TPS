@@ -1,0 +1,131 @@
+(:name PORKCHOP
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "[L(O) AND P(O) IMPLIES M(O)] AND [G(O) AND ~R(O) IMPLIES M(O)] AND [~K(O) AND N(O) AND M(O) IMPLIES F(O)] AND [~G(O) AND ~P(O) IMPLIES R(O)] AND [K(O) AND B(O) IMPLIES C(O)] AND [R(O) AND ~N(O) AND ~F(O) IMPLIES P(O)] AND [L(O) AND M(O) IMPLIES C(O)] AND [E(O) AND ~K(O) AND G(O) AND ~N(O) IMPLIES ~M(O)] AND [~G(O) AND ~R(O) IMPLIES K(O)] AND [K(O) AND L(O) AND E(O) IMPLIES ~M(O)] AND [R(O) AND E(O) IMPLIES ~C(O)] AND [G(O) AND ~K(O) AND ~M(O) IMPLIES ~B(O)] AND [N(O) AND ~P(O) AND ~F(O) IMPLIES C(O)] AND [G(O) AND B(O) AND ~R(O) IMPLIES ~C(O)] AND.R(O) AND ~K(O) AND ~M(O) IMPLIES G(O)"
+:needed-objects   NIL
+:mhelp "The hypotheses of Carroll's pork chop problem"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PORKCHOP1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "[LOGICIAN(O) AND EATS-PORKCHOPS(O) IMPLIES LIKELY-LOSE-MONEY(O)] AND [GAMBLER(O) AND ~RAVENOUS(O) IMPLIES LIKELY-LOSE-MONEY(O)] AND [~LIVELY(O) AND HAS-LOST-MONEY(O) AND LIKELY-LOSE-MONEY(O) IMPLIES RISES-AT-FIVE(O)] AND [~GAMBLER(O) AND ~EATS-PORKCHOPS(O) IMPLIES RAVENOUS(O)] AND [LIVELY(O) AND IN-BED-BEFORE-FOUR(O) IMPLIES BETTER-TAKE-TO-CAB-DRIVING(O)] AND [RAVENOUS(O) AND ~HAS-LOST-MONEY(O) AND ~RISES-AT-FIVE(O) IMPLIES EATS-PORKCHOPS(O)] AND [LOGICIAN(O) AND LIKELY-LOSE-MONEY(O) IMPLIES BETTER-TAKE-TO-CAB-DRIVING(O)] AND [EARNEST(O) AND ~LIVELY(O) AND GAMBLER(O) AND ~HAS-LOST-MONEY(O) IMPLIES ~LIKELY-LOSE-MONEY(O)] AND [~GAMBLER(O) AND ~RAVENOUS(O) IMPLIES LIVELY(O)] AND [LIVELY(O) AND LOGICIAN(O) AND EARNEST(O) IMPLIES ~LIKELY-LOSE-MONEY(O)] AND [RAVENOUS(O) AND EARNEST(O) IMPLIES ~BETTER-TAKE-TO-CAB-DRIVING(O)] AND [GAMBLER(O) AND ~LIVELY(O) AND ~LIKELY-LOSE-MONEY(O) IMPLIES ~IN-BED-BEFORE-FOUR(O)] AND [HAS-LOST-MONEY(O) AND ~EATS-PORKCHOPS(O) AND ~RISES-AT-FIVE(O) IMPLIES BETTER-TAKE-TO-CAB-DRIVING(O)] AND [GAMBLER(O) AND IN-BED-BEFORE-FOUR(O) AND ~RAVENOUS(O) IMPLIES ~BETTER-TAKE-TO-CAB-DRIVING(O)] AND [RAVENOUS(O) AND ~LIVELY(O) AND ~LIKELY-LOSE-MONEY(O) IMPLIES GAMBLER(O)] IMPLIES.EARNEST(O) AND LOGICIAN(O) IMPLIES RISES-AT-FIVE(O) AND ~IN-BED-BEFORE-FOUR(O)"
+:needed-objects   NIL
+:mhelp "Another version of the pork chop problem; the answer is supplied and merely has to be verified."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PORKCHOP1B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "[L(O) AND P(O) IMPLIES M(O)] AND [G(O) AND ~R(O) IMPLIES M(O)] AND [~K(O) AND N(O) AND M(O) IMPLIES F(O)] AND [~G(O) AND ~P(O) IMPLIES R(O)] AND [K(O) AND B(O) IMPLIES C(O)] AND [R(O) AND ~N(O) AND ~F(O) IMPLIES P(O)] AND [L(O) AND M(O) IMPLIES C(O)] AND [E(O) AND ~K(O) AND G(O) AND ~N(O) IMPLIES ~M(O)] AND [~G(O) AND ~R(O) IMPLIES K(O)] AND [K(O) AND L(O) AND E(O) IMPLIES ~M(O)] AND [R(O) AND E(O) IMPLIES ~C(O)] AND [G(O) AND ~K(O) AND ~M(O) IMPLIES ~B(O)] AND [N(O) AND ~P(O) AND ~F(O) IMPLIES C(O)] AND [G(O) AND B(O) AND ~R(O) IMPLIES ~C(O)] AND [R(O) AND ~K(O) AND ~M(O) IMPLIES G(O)] IMPLIES.E(O) AND L(O) IMPLIES F(O) AND ~B(O)"
+:needed-objects   NIL
+:mhelp "porkchop1 with more concise names"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PORKCHOP1C
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "~.L(O) AND E(O) AND [~F(O) OR B(O)] AND [~L(O) OR ~P(O) OR M(O)] AND [~G(O) OR R(O) OR M(O)] AND [G(O) OR P(O) OR R(O)] AND [~K(O) OR ~B(O) OR C(O)] AND [~L(O) OR ~M(O) OR C(O)] AND [G(O) OR R(O) OR K(O)] AND [~R(O) OR ~E(O) OR ~C(O)] AND [~R(O) OR N(O) OR F(O) OR P(O)] AND [~K(O) OR ~L(O) OR ~E(O) OR ~M(O)] AND [~G(O) OR K(O) OR M(O) OR ~B(O)] AND [~N(O) OR P(O) OR F(O) OR C(O)] AND [~G(O) OR ~B(O) OR R(O) OR ~C(O)] AND [K(O) OR ~N(O) OR ~M(O) OR F(O)] AND [~R(O) OR K(O) OR M(O) OR G(O)] AND.~E(O) OR K(O) OR ~G(O) OR N(O) OR ~M(O)"
+:needed-objects   NIL
+:mhelp "porkchop1b, ordered."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PORKCHOP2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL L(O) FORALL P(O) FORALL M(O) FORALL G(O) FORALL R(O) FORALL E(O) FORALL N(O) FORALL F(O) FORALL K(O) FORALL B(O) FORALL C(O).[L(O) AND P(O) IMPLIES M(O)] AND [G(O) AND ~R(O) IMPLIES M(O)] AND [~K(O) AND N(O) AND M(O) IMPLIES F(O)] AND [~G(O) AND ~P(O) IMPLIES R(O)] AND [K(O) AND B(O) IMPLIES C(O)] AND [R(O) AND ~N(O) AND ~F(O) IMPLIES P(O)] AND [L(O) AND M(O) IMPLIES C(O)] AND [E(O) AND ~K(O) AND G(O) AND ~N(O) IMPLIES ~M(O)] AND [~G(O) AND ~R(O) IMPLIES K(O)] AND [K(O) AND L(O) AND E(O) IMPLIES ~M(O)] AND [R(O) AND E(O) IMPLIES ~C(O)] AND [G(O) AND ~K(O) AND ~M(O) IMPLIES ~B(O)] AND [N(O) AND ~P(O) AND ~F(O) IMPLIES C(O)] AND [G(O) AND B(O) AND ~R(O) IMPLIES ~C(O)] AND [R(O) AND ~K(O) AND ~M(O) IMPLIES G(O)] IMPLIES.E(O) AND L(O) IMPLIES F(O) AND ~B(O)"
+:needed-objects   NIL
+:mhelp "Another version of the pork chop problem; the answer is supplied and merely has to be verified."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name SIXFRIENDS
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS a(I) EXISTS aa(I) EXISTS b(I) EXISTS bb(I) EXISTS c(I) EXISTS cc(I) EXISTS d(I) EXISTS dd(I) EXISTS e(I) EXISTS ee(I) EXISTS h(I) EXISTS hh(I).~[a(I) =(OII) aa(I)] AND ~[a(I) =(OII) b(I)] AND ~[a(I) =(OII) bb(I)] AND ~[a(I) =(OII) c(I)] AND ~[a(I) =(OII) cc(I)] AND ~[a(I) =(OII) d(I)] AND ~[a(I) =(OII) dd(I)] AND ~[a(I) =(OII) e(I)] AND ~[a(I) =(OII) ee(I)] AND ~[a(I) =(OII) h(I)] AND ~[a(I) =(OII) hh(I)] AND ~[aa(I) =(OII) b(I)] AND ~[aa(I) =(OII) bb(I)] AND ~[aa(I) =(OII) c(I)] AND ~[aa(I) =(OII) cc(I)] AND ~[aa(I) =(OII) d(I)] AND ~[aa(I) =(OII) dd(I)] AND ~[aa(I) =(OII) e(I)] AND ~[aa(I) =(OII) ee(I)] AND ~[aa(I) =(OII) h(I)] AND ~[aa(I) =(OII) hh(I)] AND ~[b(I) =(OII) bb(I)] AND ~[b(I) =(OII) c(I)] AND ~[b(I) =(OII) cc(I)] AND ~[b(I) =(OII) d(I)] AND ~[b(I) =(OII) dd(I)] AND ~[b(I) =(OII) e(I)] AND ~[b(I) =(OII) ee(I)] AND ~[b(I) =(OII) h(I)] AND ~[b(I) =(OII) hh(I)] AND ~[c(I) =(OII) cc(I)] AND ~[c(I) =(OII) d(I)] AND ~[c(I) =(OII) dd(I)] AND ~[c(I) =(OII) e(I)] AND ~[c(I) =(OII) ee(I)] AND ~[c(I) =(OII) h(I)] AND ~[c(I) =(OII) hh(I)] AND ~[cc(I) =(OII) d(I)] AND ~[cc(I) =(OII) dd(I)] AND ~[cc(I) =(OII) e(I)] AND ~[cc(I) =(OII) ee(I)] AND ~[cc(I) =(OII) h(I)] AND ~[cc(I) =(OII) hh(I)] AND ~[d(I) =(OII) dd(I)] AND ~[d(I) =(OII) e(I)] AND ~[d(I) =(OII) ee(I)] AND ~[d(I) =(OII) h(I)] AND ~[d(I) =(OII) hh(I)] AND ~[dd(I) =(OII) e(I)] AND ~[dd(I) =(OII) ee(I)] AND ~[dd(I) =(OII) h(I)] AND ~[dd(I) =(OII) hh(I)] AND ~[e(I) =(OII) ee(I)] AND ~[e(I) =(OII) h(I)] AND ~[e(I) =(OII) hh(I)] AND ~[ee(I) =(OII) h(I)] AND ~[ee(I) =(OII) hh(I)] AND ~[h(I) =(OII) hh(I)] IMPLIES FORALL P(II).[P(II) a(I) =(OII) P(II) aa(I) AND P(II) b(I) =(OII) P(II) bb(I) AND P(II) e(I) =(OII) P(II) hh(I) IMPLIES P(II) c(I) =(OII) P(II) dd(I)] AND [P(II) a(I) =(OII) P(II) aa(I) AND P(II) h(I) =(OII) P(II) hh(I) AND P(II) b(I) =(OII) P(II) cc(I) IMPLIES ~.P(II) d(I) =(OII) P(II) ee(I)] AND [P(II) c(I) =(OII) P(II) cc(I) AND P(II) cc(I) =(OII) P(II) d(I) AND P(II) d(I) =(OII) P(II) dd(I) AND ~[P(II) a(I) =(OII) P(II) bb(I)] IMPLIES ~.P(II) e(I) =(OII) P(II) hh(I)] AND [P(II) a(I) =(OII) P(II) aa(I) AND P(II) d(I) =(OII) P(II) dd(I) AND ~[P(II) b(I) =(OII) P(II) cc(I)] IMPLIES P(II) e(I) =(OII) P(II) hh(I)] AND [P(II) e(I) =(OII) P(II) ee(I) AND P(II) h(I) =(OII) P(II) hh(I) AND P(II) c(I) =(OII) P(II) dd(I) IMPLIES ~.P(II) a(I) =(OII) P(II) bb(I)] AND [P(II) b(I) =(OII) P(II) bb(I) AND P(II) bb(I) =(OII) P(II) c(I) AND P(II) c(I) =(OII) P(II) cc(I) AND ~[P(II) e(I) =(OII) P(II) hh(I)] IMPLIES P(II) d(I) =(OII) P(II) ee(I)] IMPLIES ~[P(II) a(I) =(OII) P(II) aa(I)] OR ~[P(II) b(I) =(OII) P(II) bb(I)] OR ~[P(II) c(I) =(OII) P(II) cc(I)] OR ~[P(II) d(I) =(OII) P(II) dd(I)] OR ~[P(II) e(I) =(OII) P(II) ee(I)] OR ~.P(II) h(I) =(OII) P(II) hh(I)"
+:needed-objects   NIL
+:mhelp "Lewis Carroll's problem of the six friends and their wives."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name SIXFRIENDS-AGAIN
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL P(OII).[P(OII) a(I) =(O(OI)(OI)) P(OII) aa(I) AND P(OII) b(I) =(O(OI)(OI)) P(OII) bb(I) AND P(OII) e(I) =(O(OI)(OI)) P(OII) hh(I) IMPLIES P(OII) c(I) =(O(OI)(OI)) P(OII) dd(I)] AND [P(OII) a(I) =(O(OI)(OI)) P(OII) aa(I) AND P(OII) h(I) =(O(OI)(OI)) P(OII) hh(I) AND P(OII) b(I) =(O(OI)(OI)) P(OII) cc(I) IMPLIES ~.P(OII) d(I) =(O(OI)(OI)) P(OII) ee(I)] AND [P(OII) c(I) =(O(OI)(OI)) P(OII) cc(I) AND P(OII) cc(I) =(O(OI)(OI)) P(OII) d(I) AND P(OII) d(I) =(O(OI)(OI)) P(OII) dd(I) AND ~[P(OII) a(I) =(O(OI)(OI)) P(OII) bb(I)] IMPLIES ~.P(OII) e(I) =(O(OI)(OI)) P(OII) hh(I)] AND [P(OII) a(I) =(O(OI)(OI)) P(OII) aa(I) AND P(OII) d(I) =(O(OI)(OI)) P(OII) dd(I) AND ~[P(OII) b(I) =(O(OI)(OI)) P(OII) cc(I)] IMPLIES P(OII) e(I) =(O(OI)(OI)) P(OII) hh(I)] AND [P(OII) e(I) =(O(OI)(OI)) P(OII) ee(I) AND P(OII) h(I) =(O(OI)(OI)) P(OII) hh(I) AND P(OII) c(I) =(O(OI)(OI)) P(OII) dd(I) IMPLIES ~.P(OII) a(I) =(O(OI)(OI)) P(OII) bb(I)] AND [P(OII) b(I) =(O(OI)(OI)) P(OII) bb(I) AND P(OII) bb(I) =(O(OI)(OI)) P(OII) c(I) AND P(OII) c(I) =(O(OI)(OI)) P(OII) cc(I) AND ~[P(OII) e(I) =(O(OI)(OI)) P(OII) hh(I)] IMPLIES P(OII) d(I) =(O(OI)(OI)) P(OII) ee(I)] IMPLIES ~[P(OII) a(I) =(O(OI)(OI)) P(OII) aa(I)] OR ~[P(OII) b(I) =(O(OI)(OI)) P(OII) bb(I)] OR ~[P(OII) c(I) =(O(OI)(OI)) P(OII) cc(I)] OR ~[P(OII) d(I) =(O(OI)(OI)) P(OII) dd(I)] OR ~[P(OII) e(I) =(O(OI)(OI)) P(OII) ee(I)] OR ~.P(OII) h(I) =(O(OI)(OI)) P(OII) hh(I)"
+:needed-objects   NIL
+:mhelp "Lewis Carroll's problem of the six friends and their wives 
+(polygamous transsexual hermaphrodite version, in which the twelve 
+people need not all be distinct...)"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name SIXFRIENDS-EASIER
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL ACRES(I) FORALL MRSACRES(I) FORALL BARRY(I) FORALL MRSBARRY(I) FORALL COLE(I) FORALL MRSCOLE(I) FORALL DIX(I) FORALL MRSDIX(I) FORALL EDEN(I) FORALL MRSEDEN(I) FORALL HALL(I) FORALL MRSHALL(I).[ACRES(I) =(OII) MRSACRES(I) AND BARRY(I) =(OII) MRSBARRY(I) AND EDEN(I) =(OII) MRSHALL(I) IMPLIES COLE(I) =(OII) MRSDIX(I)] AND [ACRES(I) =(OII) MRSACRES(I) AND HALL(I) =(OII) MRSHALL(I) AND BARRY(I) =(OII) MRSCOLE(I) IMPLIES ~.DIX(I) =(OII) MRSEDEN(I)] AND [COLE(I) =(OII) MRSCOLE(I) AND DIX(I) =(OII) MRSDIX(I) AND DIX(I) =(OII) COLE(I) AND ~[ACRES(I) =(OII) MRSBARRY(I)] IMPLIES ~.EDEN(I) =(OII) MRSHALL(I)] AND [ACRES(I) =(OII) MRSACRES(I) AND DIX(I) =(OII) MRSDIX(I) AND ~[BARRY(I) =(OII) MRSCOLE(I)] IMPLIES EDEN(I) =(OII) MRSHALL(I)] AND [EDEN(I) =(OII) MRSEDEN(I) AND HALL(I) =(OII) MRSHALL(I) AND COLE(I) =(OII) MRSDIX(I) IMPLIES ~.ACRES(I) =(OII) MRSBARRY(I)] AND [BARRY(I) =(OII) MRSBARRY(I) AND COLE(I) =(OII) MRSCOLE(I) AND COLE(I) =(OII) BARRY(I) AND ~[EDEN(I) =(OII) MRSHALL(I)] IMPLIES DIX(I) =(OII) MRSEDEN(I)] IMPLIES ~[ACRES(I) =(OII) MRSACRES(I)] OR ~[BARRY(I) =(OII) MRSBARRY(I)] OR ~[COLE(I) =(OII) MRSCOLE(I)] OR ~[DIX(I) =(OII) MRSDIX(I)] OR ~[EDEN(I) =(OII) MRSEDEN(I)] OR ~.HALL(I) =(OII) MRSHALL(I)"
+:needed-objects   NIL
+:mhelp "Lewis Carroll's problem of the six friends and their wives 
+(version in which the people are identified with their parties)"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name SIXFRIENDS-PTH
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS a(I) EXISTS aa(I) EXISTS b(I) EXISTS bb(I) EXISTS c(I) EXISTS cc(I) EXISTS d(I) EXISTS dd(I) EXISTS e(I) EXISTS ee(I) EXISTS h(I) EXISTS hh(I) FORALL P(II).[P(II) a(I) =(OII) P(II) aa(I) AND P(II) b(I) =(OII) P(II) bb(I) AND P(II) e(I) =(OII) P(II) hh(I) IMPLIES P(II) c(I) =(OII) P(II) dd(I)] AND [P(II) a(I) =(OII) P(II) aa(I) AND P(II) h(I) =(OII) P(II) hh(I) AND P(II) b(I) =(OII) P(II) cc(I) IMPLIES ~.P(II) d(I) =(OII) P(II) ee(I)] AND [P(II) c(I) =(OII) P(II) cc(I) AND P(II) cc(I) =(OII) P(II) d(I) AND P(II) d(I) =(OII) P(II) dd(I) AND ~[P(II) a(I) =(OII) P(II) bb(I)] IMPLIES ~.P(II) e(I) =(OII) P(II) hh(I)] AND [P(II) a(I) =(OII) P(II) aa(I) AND P(II) d(I) =(OII) P(II) dd(I) AND ~[P(II) b(I) =(OII) P(II) cc(I)] IMPLIES P(II) e(I) =(OII) P(II) hh(I)] AND [P(II) e(I) =(OII) P(II) ee(I) AND P(II) h(I) =(OII) P(II) hh(I) AND P(II) c(I) =(OII) P(II) dd(I) IMPLIES ~.P(II) a(I) =(OII) P(II) bb(I)] AND [P(II) b(I) =(OII) P(II) bb(I) AND P(II) bb(I) =(OII) P(II) c(I) AND P(II) c(I) =(OII) P(II) cc(I) AND ~[P(II) e(I) =(OII) P(II) hh(I)] IMPLIES P(II) d(I) =(OII) P(II) ee(I)] IMPLIES ~[P(II) a(I) =(OII) P(II) aa(I)] OR ~[P(II) b(I) =(OII) P(II) bb(I)] OR ~[P(II) c(I) =(OII) P(II) cc(I)] OR ~[P(II) d(I) =(OII) P(II) dd(I)] OR ~[P(II) e(I) =(OII) P(II) ee(I)] OR ~.P(II) h(I) =(OII) P(II) hh(I)"
+:needed-objects   NIL
+:mhelp "Lewis Carroll's problem of the six friends and their wives 
+(polygamous transsexual hermaphrodite version, in which the twelve 
+people need not all be distinct...)"
+:other-attributes NIL
+:other-remarks "
+")
+
+

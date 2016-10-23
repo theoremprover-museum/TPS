@@ -1,0 +1,96 @@
+(:name AC*
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA TYPE(A) EXISTS j(A(OA)) FORALL p(OA).EXISTS x(A) p(OA) x(A) IMPLIES p(OA).j(A(OA)) p(OA)"
+:needed-objects   NIL
+:mhelp "Axiom of Choice as in TTTP.
+To get AC of type B, write AC* t(B) and use the install command in the
+editor to get rid of the vacuous binder which simply specifies the type."
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "OA"))
+:other-remarks "
+")
+
+
+(:name AC1*
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA TYPE(A) FORALL s(O(OA)).FORALL X(OA) [s(O(OA)) X(OA) IMPLIES EXISTS t(A) X(OA) t(A)] IMPLIES EXISTS f(A(OA)) FORALL X(OA).s(O(OA)) X(OA) IMPLIES X(OA).f(A(OA)) X(OA)"
+:needed-objects   NIL
+:mhelp "Axiom of Choice AC1 from Rubin & Rubin.
+To get AC1 of type B, write AC1* t(B) and use the install command in the
+editor to get rid of the vacuous binder which simply specifies the type."
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "OA"))
+:other-remarks "
+")
+
+
+(:name AC17*
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA TYPE(A) FORALL g(OA(A(OA))).FORALL h(A(OA)) EXISTS u(A) g(OA(A(OA))) h(A(OA)) u(A) IMPLIES EXISTS f(A(OA)) g(OA(A(OA))) f(A(OA)).f(A(OA)).g(OA(A(OA))) f(A(OA))"
+:needed-objects   NIL
+:mhelp "Axiom of Choice AC17 from Rubin & Rubin.
+To get AC17 of type B, write AC17* t(B) and use the install command in the
+editor to get rid of the vacuous binder which simply specifies the type."
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "OA"))
+:other-remarks "
+")
+
+
+(:name AC3*
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA TYPE1(B) LAMBDA TYPE2(A) FORALL r(OBA) EXISTS g(BA) FORALL x(A).EXISTS y(B) r(OBA) x(A) y(B) IMPLIES r(OBA) x(A).g(BA) x(A)"
+:needed-objects   NIL
+:mhelp "Axiom of Choice AC3 from Rubin & Rubin.
+To get AC3(B,A), write AC3* t(B) u(A) and use the install command in the
+editor to get rid of the vacuous binders which simply specify the types."
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPELIST ("B" "A")) (TYPE "OAB"))
+:other-remarks "
+")
+
+
+(:name DESCR-CHURCH1
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS j(A(OA)) FORALL f(OA) FORALL x(A).f(OA) x(A) IMPLIES.FORALL y(A) [f(OA) y(A) IMPLIES x(A) =(OAA) y(A)] IMPLIES f(OA).j(A(OA)) f(OA)"
+:needed-objects   NIL
+:mhelp "Axiom of Descriptions (9) as in Church's 1940 JSL paper,
+but with quantifiers added."
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O"))
+:other-remarks "
+")
+
+
+(:name DESCR-CHURCH1T
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA t(A) EXISTS j(A(OA)) FORALL f(OA) FORALL x(A).f(OA) x(A) IMPLIES.FORALL y(A) [f(OA) y(A) IMPLIES x(A) =(OAA) y(A)] IMPLIES f(OA).j(A(OA)) f(OA)"
+:needed-objects   NIL
+:mhelp "Axiom of Descriptions (9) as in Church's 1940 JSL paper,
+but with quantifiers added,
+and a dummy variable to identify the type.
+Use DESCR-CHURCH1T T(A) as an axiom of descriptions at type A."
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "OA"))
+:other-remarks "
+")
+
+

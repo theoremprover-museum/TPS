@@ -1,0 +1,4 @@
+#this file is used only by windowfix.lisp
+xset -fp /afs/cs/project/tps/tps/fonts/
+echo > $2
+tail -f $1

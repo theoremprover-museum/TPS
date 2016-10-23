@@ -1,0 +1,15 @@
+#!/bin/tcsh
+echo "\nChecking and installing core images"
+cd /whatever/tps/
+if (-f "etps") then
+	    if (-f "etps.dxl") then
+		mv etps.dxl etps.dxl.bak
+		echo "\nMoving old etps.dxl to etps.dxl.bak"
+	    else
+		echo "\nOld etps.dxl does not exist; not creating .bak file"
+	    endif 
+	    mv etps etps.dxl
+	    echo "\nInstalled new allegro etps."
+else
+        echo "\nNew allegro core image is not there"
+endif

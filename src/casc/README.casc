@@ -1,0 +1,39 @@
+	NOTES ON SETTING TPS FOR CASC
+
+Step 1: Compile TPS using CMU Common Lisp.
+
+The file README.unix has information about compiling TPS.
+You should use CMU Common Lisp for the CASC version.
+After compiling TPS, there should be an image file named tps3.
+
+Step 2: Replace the tps3.ini file.
+
+The ini file used for tps3.ini is distributed as casc/tps3.ini.
+
+cp casc/tps3.ini tps3.ini
+
+Step 3: Put the controller Perl script whereever is appropriate.
+
+For the CASC competition, the perl script (written by Geoff Sutcliffe)
+distributed as casc/run-tps-GOOD1 is used.
+
+cp casc/run-tps-GOOD1 <AppropriateDirectory>
+
+--------------------------
+Here is some more information which may be useful.
+
+The script casc/run-tps-GOOD1 is used to convert the TPTP format to
+TPS format and then call tps on a sequence of modes (those from
+GOODMODES1) for a certain number of seconds.  To see the modes used,
+see the Modes variable in run-tps-GOOD1.  To see the minimum amount of
+time given to each mode, see ModeCPUMins.  To see the maximum amount
+of time given to each mode, see ModeCPUMaxs.
+
+To directly call TPS on a TPTP problem file (in "tps" format) with a
+particular mode, do the following.
+
+<FullPathToLispDir>/lisp -core <FullPathToTpsDir>/tps3 -mode <modename> -prob <FullPathToTPTPProblemFileInTPSFormat>
+
+The modes available are in the casc/modes/ subdirectory as files named <modename>.lisp.
+
+

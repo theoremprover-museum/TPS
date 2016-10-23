@@ -1,0 +1,238 @@
+@Comment{OUTLINE of manual.mss by Scribe 8.2 on 12 February 2010 at 15:06}
+1. @HETPS User Interface                                  1 user.mss, line 2
+  1.1. Introduction                                       1 user.mss, line 4
+                              introduction                1 user.mss, line 4
+  1.2. Saving and Restoring Your Work                     2 user.mss, line 130
+  1.3. Exiting and Reentering @HETPS                      3 user.mss, line 229
+                              reentering                  3 user.mss, line 229
+  1.4. Top-level Interaction                              3 user.mss, line 294
+                              top-level                   3 user.mss, line 294
+  1.5. Using Commands and Defining Wffs                   4 user.mss, line 363
+  1.6. Flags and Amenities                                7 user-end.mss, line 208
+  1.7. Bugs and Error Messages                            7 user-end.mss, line 230
+2. System Commands                                        9 system.mss, line 2
+                              system                      9 system.mss, line 2
+  2.1. Communication                                      9 system.mss, line 3
+                              problems                    9 system.mss, line 17
+  2.2. Starting and Finishing                             9 system.mss, line 27
+                              start-finish                9 system.mss, line 28
+  2.3. Starting the Java Interface                       10 system.mss, line 111
+                              JavaInterface              10 system.mss, line 111
+  2.4. Proofwindows                                      10 system.mss, line 134
+                              Proofwindows               10 system.mss, line 134
+  2.5. The Current Subproof                              10 system.mss, line 171
+                              proofstatus                10 system.mss, line 171
+  2.6. Saving Work                                       11 system.mss, line 215
+                              savework                   11 system.mss, line 215
+  2.7. Printing                                          12 system.mss, line 299
+                              printing                   12 system.mss, line 299
+  2.8. Rearranging the Proof                             12 system.mss, line 359
+  2.9. Proof Assistance                                  13 system.mss, line 428
+  2.10. Higher-Order Logic                               13 system.mss, line 461
+  2.11. Flags and Review                                 14 system.mss, line 472
+                              flags                      14 system.mss, line 472
+  2.12. @HETPS Editor                                    14 edtop.mss, line 1
+                              locating                   14 edtop.mss, line 1
+    2.12.1. Top-Levels                                   15 editor.mss, line 1
+    2.12.2. Printing                                     15 editor.mss, line 6
+    2.12.3. Labels                                       15 editor.mss, line 20
+                              CW                         15 editor.mss, line 22
+    2.12.4. Moving Commands                              15 editor.mss, line 27
+    2.12.5. Substitution                                 15 editor.mss, line 60
+    2.12.6. Negation movers                              16 editor.mss, line 147
+3. Inference Rules                                       17 infrul.mss, line 1
+                              inference                  17 infrul.mss, line 1
+  3.1. How to Read Inference Rules                       17 infrul.mss, line 2
+                              InfeRead                   17 infrul.mss, line 2
+  3.2. Quick Reference to Rules                          18 quick-ref.mss, line 1
+  3.3. Special Rules                                     19 inference-rules.mss, line 28
+                              RULEP                      19 inference-rules.mss, line 31
+                              ASSERT                     20 inference-rules.mss, line 51
+                              ADD-HYPS                   20 inference-rules.mss, line 64
+                              DELETE-HYPS                20 inference-rules.mss, line 73
+  3.4. Miscellaneous Rules                               20 inference-rules.mss, line 84
+                              HYP                        20 inference-rules.mss, line 87
+                              LEMMA                      20 inference-rules.mss, line 97
+                              SAME                       20 inference-rules.mss, line 107
+  3.5. Propositional Rules                               20 inference-rules.mss, line 116
+                              CASES                      20 inference-rules.mss, line 119
+                              DEDUCT                     20 inference-rules.mss, line 133
+                              DISJ-IMP                   21 inference-rules.mss, line 144
+                              ECONJ                      21 inference-rules.mss, line 154
+                              EQUIV-IMPLICS              21 inference-rules.mss, line 165
+                              ICONJ                      21 inference-rules.mss, line 175
+                              IMP-DISJ                   21 inference-rules.mss, line 186
+                              IMPLICS-EQUIV              21 inference-rules.mss, line 196
+                              INDIRECT                   21 inference-rules.mss, line 206
+                              INDIRECT1                  21 inference-rules.mss, line 217
+                              INDIRECT2                  22 inference-rules.mss, line 228
+                              MP                         22 inference-rules.mss, line 240
+  3.6. Negation Rules                                    22 inference-rules.mss, line 250
+                              ABSURD                     22 inference-rules.mss, line 253
+                              ENEG                       22 inference-rules.mss, line 263
+                              INEG                       22 inference-rules.mss, line 274
+                              PULLNEG                    22 inference-rules.mss, line 285
+                              PUSHNEG                    22 inference-rules.mss, line 296
+  3.7. Quantifier Rules                                  23 inference-rules.mss, line 307
+                              AB*                        23 inference-rules.mss, line 310
+                              ABE                        23 inference-rules.mss, line 321
+                              ABU                        23 inference-rules.mss, line 333
+                              EGEN                       23 inference-rules.mss, line 345
+                              RULEC                      23 inference-rules.mss, line 355
+                              UGEN                       23 inference-rules.mss, line 369
+                              UI                         23 inference-rules.mss, line 380
+  3.8. Substitution Rules                                24 inference-rules.mss, line 389
+                              SUBSTITUTE                 24 inference-rules.mss, line 392
+  3.9. Equality Rules                                    24 inference-rules.mss, line 404
+                              EXT=                       24 inference-rules.mss, line 407
+                              EXT=0                      24 inference-rules.mss, line 417
+                              LET                        24 inference-rules.mss, line 427
+                              SUBST=                     24 inference-rules.mss, line 441
+                              SUBST=L                    24 inference-rules.mss, line 454
+                              SUBST=R                    25 inference-rules.mss, line 467
+                              SUBST-EQUIV                25 inference-rules.mss, line 480
+                              SYM=                       25 inference-rules.mss, line 493
+  3.10. Definition Rules                                 25 inference-rules.mss, line 503
+                              EDEF                       25 inference-rules.mss, line 506
+                              EQUIV-WFFS                 25 inference-rules.mss, line 517
+                              IDEF                       25 inference-rules.mss, line 528
+  3.11. Lambda Conversion Rules                          26 inference-rules.mss, line 539
+                              LAMBDA*                    26 inference-rules.mss, line 542
+                              BETA*                      26 inference-rules.mss, line 554
+                              ETA*                       26 inference-rules.mss, line 568
+                              LCONTR*                    26 inference-rules.mss, line 582
+                              LCONTR*-BETA               26 inference-rules.mss, line 593
+                              LCONTR*-ETA                26 inference-rules.mss, line 603
+                              LEXPD*                     26 inference-rules.mss, line 613
+                              LEXPD*-BETA                26 inference-rules.mss, line 624
+                              LEXPD*-ETA                 27 inference-rules.mss, line 634
+4. Sample Proofs                                         29 photo.mss, line 2
+                              examples                   29 photo.mss, line 2
+  4.1. Example 1                                         29 photo.mss, line 15
+  4.2. Example 2                                         32 photo.mss, line 245
+  4.3. Example 3                                         34 photo.mss, line 360
+5. Type Theory in @HETPS                                 39 hol.mss, line 2
+                              hol                        39 hol.mss, line 2
+  5.1. Using @HETPS for Type Theory                      39 hol.mss, line 4
+    5.1.1. Types in Higher-Order Logic                   39 hol.mss, line 33
+                              holwffs                    39 hol.mss, line 33
+    5.1.2. Abbreviations and Special Symbols             39 hol.mss, line 65
+    5.1.3. Some Examples of Higher-Order Wffs            41 hol.mss, line 202
+                              holwffex                   41 hol.mss, line 202
+  5.2. Example of a Proof of a Higher-Order Theorem      42 hol-exampl.mss, line 1
+I. Amenities                                             47 top-level-amenities.mss, line 1
+                              amenities                  47 top-level-amenities.mss, line 1
+  I.1. Control characters for Unix                       47 top-level-amenities.mss, line 11
+                              control-characters         47 top-level-amenities.mss, line 11
+  I.2. Command Sequences                                 47 top-level-amenities.mss, line 33
+  I.3. History Substitutions                             47 top-level-amenities.mss, line 49
+  I.4. Aliases                                           49 top-level-amenities.mss, line 190
+                              aliases                    49 top-level-amenities.mss, line 190
+II. More Editor Commands                                 51 editor-long.mss, line 1
+                              more-editor                51 editor-long.mss, line 1
+  II.1. Labels                                           51 editor-long.mss, line 10
+  II.2. Basic Abbreviations                              51 editor-long.mss, line 63
+  II.3. Lambda-Calculus                                  51 editor-long.mss, line 79
+  II.4. Quantifier Commands                              52 editor-long.mss, line 131
+  II.5. Embedding Commands                               52 editor-long.mss, line 144
+  II.6. Changing and Recursive Changing Commands         53 editor-long.mss, line 181
+  II.7. Miscellaneous                                    53 editor-long.mss, line 241
+  II.8. Wellformedness                                   54 editor-long.mss, line 257
+  II.9. Saving and Recording Wffs                        54 editor-long.mss, line 277
+III. Wff Operations                                      55 restrict.mss, line 1
+                              wffops                     55 restrict.mss, line 1
+  III.1. Equality between Wffs                           55 restrict.mss, line 6
+  III.2. Predicates on Wffs                              55 restrict.mss, line 28
+  III.3. Substitution                                    55 restrict.mss, line 56
+  III.4. Basic Abbreviations                             55 restrict.mss, line 62
+  III.5. Lambda-Calculus                                 56 restrict.mss, line 71
+  III.6. Negation movers                                 56 restrict.mss, line 87
+IV. Theorems and Exercises                               57 thms.mss, line 1
+                              theorem                    57 thms.mss, line 1
+  IV.1. Book Theorems                                    57 thms.mss, line 8
+  IV.2. First-Order Logic                                57 thms.mss, line 31
+  IV.3. Higher-Order Logic                               58 thms.mss, line 100
+ Index                                                   61 Scribe7Mav2e, line 3
+ Table of Contents                                       65 ScribeHtUwRJ, line 2
+       Alphabetic Listing of Cross-Reference Tags and Labels
+
+Tag or Label Name                    Page   Label Value  Source file Location
+-----------------------------------------------------------------------------
+AB*                                    23         3.7  inference-rules.mss, line 310
+ABE                                    23         3.7  inference-rules.mss, line 321
+ABSURD                                 22         3.6  inference-rules.mss, line 253
+ABU                                    23         3.7  inference-rules.mss, line 333
+ADD-HYPS                               20         3.3  inference-rules.mss, line 64
+ALIASES                                49         I.4  top-level-amenities.mss, line 190
+AMENITIES                              47           I  top-level-amenities.mss, line 1
+ASSERT                                 20         3.3  inference-rules.mss, line 51
+BETA*                                  26        3.11  inference-rules.mss, line 554
+CASES                                  20         3.5  inference-rules.mss, line 119
+CONTROL-CHARACTERS                     47         I.1  top-level-amenities.mss, line 11
+CW                                     15      2.12.3  editor.mss, line 22
+DEDUCT                                 21         3.5  inference-rules.mss, line 133
+DELETE-HYPS                            20         3.3  inference-rules.mss, line 73
+DISJ-IMP                               21         3.5  inference-rules.mss, line 144
+ECONJ                                  21         3.5  inference-rules.mss, line 154
+EDEF                                   25        3.10  inference-rules.mss, line 506
+EGEN                                   23         3.7  inference-rules.mss, line 345
+ENEG                                   22         3.6  inference-rules.mss, line 263
+EQUIV-IMPLICS                          21         3.5  inference-rules.mss, line 165
+EQUIV-WFFS                             25        3.10  inference-rules.mss, line 517
+ETA*                                   26        3.11  inference-rules.mss, line 568
+EXAMPLES                               29           4  photo.mss, line 2
+EXT=                                   24         3.9  inference-rules.mss, line 407
+EXT=0                                  24         3.9  inference-rules.mss, line 417
+FLAGS                                  14        2.11  system.mss, line 472
+HOL                                    39           5  hol.mss, line 2
+HOLWFFEX                               41       5.1.3  hol.mss, line 202
+HOLWFFS                                39       5.1.1  hol.mss, line 33
+HYP                                    20         3.4  inference-rules.mss, line 87
+ICONJ                                  21         3.5  inference-rules.mss, line 175
+IDEF                                   25        3.10  inference-rules.mss, line 528
+IMP-DISJ                               21         3.5  inference-rules.mss, line 186
+IMPLICS-EQUIV                          21         3.5  inference-rules.mss, line 196
+INDIRECT                               21         3.5  inference-rules.mss, line 206
+INDIRECT1                              22         3.5  inference-rules.mss, line 217
+INDIRECT2                              22         3.5  inference-rules.mss, line 228
+INEG                                   22         3.6  inference-rules.mss, line 274
+INFEREAD                               17         3.1  infrul.mss, line 2
+INFERENCE                              17           3  infrul.mss, line 1
+INTRODUCTION                            1         1.1  user.mss, line 4
+JAVAINTERFACE                          10         2.3  system.mss, line 111
+LAMBDA*                                26        3.11  inference-rules.mss, line 542
+LCONTR*                                26        3.11  inference-rules.mss, line 582
+LCONTR*-BETA                           26        3.11  inference-rules.mss, line 593
+LCONTR*-ETA                            26        3.11  inference-rules.mss, line 603
+LEMMA                                  20         3.4  inference-rules.mss, line 97
+LET                                    24         3.9  inference-rules.mss, line 427
+LEXPD*                                 26        3.11  inference-rules.mss, line 613
+LEXPD*-BETA                            27        3.11  inference-rules.mss, line 624
+LEXPD*-ETA                             27        3.11  inference-rules.mss, line 634
+LOCATING                               14        2.12  edtop.mss, line 1
+MORE-EDITOR                            51          II  editor-long.mss, line 1
+MP                                     22         3.5  inference-rules.mss, line 240
+PRINTING                               12         2.7  system.mss, line 299
+PROBLEMS                                9         2.1  system.mss, line 17
+PROOFSTATUS                            10         2.5  system.mss, line 171
+PROOFWINDOWS                           10         2.4  system.mss, line 134
+PULLNEG                                22         3.6  inference-rules.mss, line 285
+PUSHNEG                                23         3.6  inference-rules.mss, line 296
+REENTERING                              3         1.3  user.mss, line 229
+RULEC                                  23         3.7  inference-rules.mss, line 355
+RULEP                                  19         3.3  inference-rules.mss, line 31
+SAME                                   20         3.4  inference-rules.mss, line 107
+SAVEWORK                               11         2.6  system.mss, line 215
+START-FINISH                            9         2.2  system.mss, line 28
+SUBST-EQUIV                            25         3.9  inference-rules.mss, line 480
+SUBST=                                 24         3.9  inference-rules.mss, line 441
+SUBST=L                                25         3.9  inference-rules.mss, line 454
+SUBST=R                                25         3.9  inference-rules.mss, line 467
+SUBSTITUTE                             24         3.8  inference-rules.mss, line 392
+SYM=                                   25         3.9  inference-rules.mss, line 493
+SYSTEM                                  9           2  system.mss, line 2
+THEOREM                                57          IV  thms.mss, line 1
+TOP-LEVEL                               3         1.4  user.mss, line 294
+UGEN                                   23         3.7  inference-rules.mss, line 369
+UI                                     24         3.7  inference-rules.mss, line 380
+WFFOPS                                 55         III  restrict.mss, line 1

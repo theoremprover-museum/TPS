@@ -1,0 +1,40 @@
+\begin{enumerate}
+\item {\em Natural ordering} for paths based on the jform. Defined by 
+induction on jforms. Let paths(J) denote the set of all full paths through 
+jform J.
+\begin{itemize}
+\item $J = \bigvee^{n}_{i=1} jform_{i}$. Let $P_{i} \in paths(jform_{i})$. Then
+$P_{i} < P_{j}$ if $i < j$.
+
+\item $J = \bigwedge^{n}_{i=1} jform_{i}$. Let $P_{i} \in paths(jform_{i})$. 
+Then \[P_{1}@P_{2}\ldots @P_{n} < P_{1}@P_{2}\ldots%
+@P_{j-1}@P^{1}_{j}\ldots @P^{1}_{n} \mbox{\/\rm if\/} P_{j} < P^{1}_{j}\]
+
+\end{itemize}
+
+\item {\em Cheapest Paths}. By Induction on Jforms.
+\begin{itemize}
+\item $J = \bigvee^{n}_{i=1} jform_{i}$. Cheapest path in $paths(jform_{1})$.
+
+\item $J = \bigwedge^{n}_{i=1} jform_{i}$. Let $P_{i} \in paths(jform_{i})$
+such that $P_{i}$ is the cheapest path in $paths(jform_{i})$.
+Then $P_{1}@P_{2}\ldots @P_{n}$ is the cheapest path in $J$.
+
+\end{itemize}
+
+\item {\em Finding the next path}. Given a path P, find the next path in
+the ordering described above.
+
+\begin{enumerate}
+\item Backtracking to the last point at which there is an alternate choice.
+This is the last disjunction where another choice can be made. Because we
+are using full paths, this just requires removing elements from the path P
+until such a disjunction is found.
+
+\item Find the next path through this disjunction.
+
+\item Complete this path wrt the entire jform. This requires starting from
+the beginning until disjunction in step 1 is reached and then finding
+the cheapest path.
+\end{enumerate}
+\end{enumerate}

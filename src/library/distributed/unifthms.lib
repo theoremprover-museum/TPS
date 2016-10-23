@@ -1,0 +1,14 @@
+(:name UNIFTHM1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL P(O(I(II))(I(II))) EXISTS X(I(II)).FORALL z(I(II)) P(O(I(II))(I(II))) z(I(II)) z(I(II)) IMPLIES P(O(I(II))(I(II))) [LAMBDA U(II) U(II).X(I(II)).LAMBDA V(I) V(I)] X(I(II))"
+:needed-objects   NIL
+:mhelp "Theorem to illustrate Huet's unification example on page 55 of 1975 TCS paper."
+:other-attributes NIL
+:other-remarks "
+")
+
+

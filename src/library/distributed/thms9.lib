@@ -1,0 +1,90 @@
+(:name THM90A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL X(OA) FORALL Y(OA) [X(OA) SUBSET(O(OA)(OA)) Y(OA) IMPLIES K(OA(OA)) X(OA) SUBSET(O(OA)(OA)) K(OA(OA)) Y(OA)] IMPLIES SETINTERSECT(OA(O(OA))) [LAMBDA P(OA).K(OA(OA)) P(OA) SUBSET(O(OA)(OA)) P(OA)] SUBSET(O(OA)(OA)) K(OA(OA)).SETINTERSECT(OA(O(OA))).LAMBDA P(OA).K(OA(OA)) P(OA) SUBSET(O(OA)(OA)) P(OA)"
+:needed-objects   NIL
+:mhelp "Dual to THM116A. Half of a fixed-point theorem.
+The other inclusion is also provable and should be called THM90B.
+May not be provable even with primsubs because too much structure
+is an argument to a constant function.
+Look at the jform."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM91
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:14."
+:description "FORALL X(OA) FORALL Y(OA) [X(OA) SUBSET(O(OA)(OA)) Y(OA) IMPLIES K(OA(OA)) X(OA) SUBSET(O(OA)(OA)) K(OA(OA)) Y(OA)] IMPLIES K(OA(OA)) S(OA) SUBSET(O(OA)(OA)) K(OA(OA)).SETUNION(OA(O(OA))).LAMBDA P(OA).P(OA) SUBSET(O(OA)(OA)) S(OA)"
+:needed-objects   NIL
+:mhelp "Easy theorem TPS3 may not be able to prove;
+example related to the completeness question."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM91A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, April 29, 1999 at 14:06:52."
+:description "S(OA) SUBSET(O(OA)(OA)) SETUNION(OA(O(OA))).LAMBDA P(OA).P(OA) SUBSET(O(OA)(OA)) S(OA)"
+:needed-objects   NIL
+:mhelp "Lemma for THM91."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM92
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, April 29, 1999 at 14:06:53."
+:description "FORALL f(AA) ITERATE(O(AA)(AA)) f(AA).f(AA) COMPOSE(AA(AA)(AA)) f(AA)"
+:needed-objects   (COMPOSE ITERATE)
+:mhelp "Trivial theorem which gives nice simple example of
+ an expansion proof."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM93
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER FALSE)
+:provability NIL
+:proof-date NIL
+:description "FORALL f(AA) FORALL g(AA) FORALL h(AA).ITERATE(O(AA)(AA)) f(AA) [g(AA) COMPOSE(AA(AA)(AA)) h(AA)] AND ITERATE(O(AA)(AA)) f(AA) h(AA) IMPLIES ITERATE(O(AA)(AA)) f(AA) g(AA)"
+:needed-objects   (COMPOSE ITERATE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM94
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL f(AA) FORALL g(AA) FORALL h(AA).ITERATE(O(AA)(AA)) f(AA) [g(AA) COMPOSE(AA(AA)(AA)) h(AA)] AND ITERATE(O(AA)(AA)) f(AA) h(AA) IMPLIES ITERATE(O(AA)(AA)) f(AA).h(AA) COMPOSE(AA(AA)(AA)) g(AA)"
+:needed-objects   (COMPOSE ITERATE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

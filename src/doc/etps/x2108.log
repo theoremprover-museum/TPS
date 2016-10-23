@@ -1,0 +1,206 @@
+
+
+@etps:etps
+
+ETPS for <FP01>. Version from Wednesday, July 16, 1986 at 20:16:39.
+[Loading changes ...
+                 ...done]
+;Loading from PS:<TPS>ETPS.INI.16.
+
+<1>@indexcommand{exercise} x2108
+(100)        !  FORALL x EXISTS y.P x IMPLIES P y                          PLAN1
+
+@\@i{Since this theorem is universally quantified, we will first use}
+@\@i{universal generalization.  Note that to accept the defaults that @ETPS}
+@\@i{offers, we just hit a <return>.}
+
+<2>@indexsrule(ugen)
+P2 (LINE): Universally Quantified Line [100]>
+P1 (LINE): Line with Scope of Universal Quantifier [99]>
+(99)         !  EXISTS y.P x IMPLIES P y                                   PLAN2
+
+
+@\@i{Now the formula we are trying to prove is existentially quantified,}
+@\@i{so we use the appropriate rule.}
+
+<3>@indexsrule(egen)
+P2 (LINE): Existentially Quantified Line [99]>
+P1 (LINE): Line to be Existentially Generalized [98]>
+t (GWFF): Term to be Generalized Upon [No Default]>(@indexedop(ed) 99)
+
+@\@i{Let's use the editor to pick out the variable we want from line 99.}
+
+<Ed1>p
+EXISTS y.P x IMPLIES P y     @i{Here's the current formula.}
+<Ed2>d
+P x IMPLIES P y              @i{We move inside the quantifier.}
+<Ed3>l d                     @i{We use two commands to get to x.}
+x
+<Ed4>ok                      @i{Return x as the GWFF we were asked for.}
+(98)         !  P x IMPLIES P x                                            PLAN3
+
+
+@\@i{All that remains is an easy application of RULEP.}
+
+<4>@indexsrule(rulep)
+P1 (PLINE): Plan Line [98]>
+L (EXISTING-LINELIST): List of Lines [()]>
+
+<5>@indexcommand(squeeze)
+
+
+@\@i{SQUEEZE removes any unnecessary gaps.  Now we take a look at the}
+@\@i{completed proof.}
+
+<6>@indexcommand(pall)
+
+(1)          !  P x IMPLIES P x                                            RuleP
+(2)          !  EXISTS y.P x IMPLIES P y                               EGen: x 1
+(3)          !  FORALL x EXISTS y.P x IMPLIES P y                      UGen: x 2
+
+	
+@\@i{Let's make a nice copy of this.}
+
+<7>@indexcommand(scribeproof)
+FILENAME (FILESPEC): Filename [X2108.mss]>
+Written file PS:<FP01>X2108.MSS.1.
+
+<8>@indexcommand(exit)
+File PS:<FP01>X2108.WORK.1 written.
+@\@i{Note that the EXIT command automatically closed our save-work file.}
+@@push 
+@\@i{This command preserves the contents of memory at the current TOPS-20}
+@\@i{command level, and creates a new TOPS-20 command level.  Thus our}
+@\@i{@ETPS job will not be disturbed.}
+ 
+ CMU TOPS-20 Command Processor 5.1(1602)-2
+@@scribe x2108
+Scribe 5(1500)  Copyright (C) 1981, 1984  UNILOGIC, Ltd.
+[Processing X2108.MSS.1
+    [Device "X9700"
+Remember to run your .X9700 file through XCHECK before printing.
+Type HELP XCHECK, if you need more information.
+    ]
+    [Document type "Text"
+        [FontFamily Helvetica10]
+    ]
+    [Subfile <ET99>TPS.MSS.2]
+]
+1.
+
+**PS:<FP01>X2108.X9700 for device X9700 has 1 page.
+@@pop          @i{We return to the previous TOPS-20 command level.}
+@@continue     @i{Let's return to @ETPS.}
+
+@\@i{Since we used the CONTINUE command to get back into @ETPS, we}
+@\@i{need to manually restart the saving of work.  This would have}
+@\@i{been done automatically if we had used the REENTER command.}
+<9>@indexcommand(resume-work)
+
+Resuming SAVE-WORK in file PS:<FP01>X2108.WORK.1
+
+<10>@indexcommand(done)
+Score file updated.
+
+@\@i{This command is critical!  You must use it in order to get credit}
+@\@i{for your work.  Now let's prove this same theorem in a different}
+@\@i{way.  Let's also save it in a new file.}
+
+<1>@indexcommand(stop-save)
+File PS:<NESMITH.TPS>X2108.WORK.1 written.
+
+<2>@indexcommand(save-work)
+SAVEFILE (FILESPEC): SAVE-WORK file [work.work]>x2108b.work
+
+<3>@indexcommand(exercise) x2108
+(100)        !  FORALL x EXISTS y.P x IMPLIES P y                          PLAN1
+
+<4>@indexsrule(indirect1)
+P3 (LINE): Line to be Proven by Contradiction [100]>
+P2 (LINE): Line with Contradiction [99]>
+H1 (LINE): Line with Assumed Negation [1]>
+B (GWFF): Positive Conjunct of Contradictory Assertion [No Default]>"A"
+(1)   1      !  ~ FORALL x EXISTS y.P x IMPLIES P y              Assume negation
+(99)  1      !  A AND ~ A                                                  PLAN2
+
+@\@i{We can always use indirect proof.  We used the GWFF "A" in our}
+@\@i{contradiction because no formula in particular seemed appropriate.}
+@\@i{As you can see, line @t(1) is negated, so let's push in that negation.}
+
+<5>pushneg
+D1 (LINE): Line with Negation [1]>
+D2 (LINE): Line after Pushing in Negation one Step [2]>
+(2)   1      !  EXISTS x.~ EXISTS y.P x IMPLIES P y                       Neg: 1
+
+@\@i{We use the ^P command to show the lines which are now relevant.}
+
+<6>@indexcommand(^p)
+(2)   1      !  EXISTS x.~ EXISTS y.P x IMPLIES P y                       Neg: 1
+               ...
+(99)  1      !  A AND ~ A                                                  PLAN2
+
+@\@i{@wt(RULEC) is often required when trying to prove a statement}
+@\@i{from an existentially quantified line.  It is probably the most}
+@\@i{complicated rule you will use, so you might wish to study the}
+@\@i{description of @wt(RULEC) in the previous chapter first, as well}
+@\@i{the description in the logic text.}
+
+<7>@indexsrule(rulec)
+P4 (LINE): Conclusion without Additional Hypothesis [98]>
+D1 (LINE): Existentially Quantified Line [2]>
+D3 (LINE): Conclusion with Additional Hypothesis [97]>
+H2 (LINE): Hypothesis with Chosen Variable [3]>
+y (GWFF): Chosen Variable Name [No Default]>"x"
+(3)   1,3    !  ~ EXISTS y.P x IMPLIES P y                             Choose: x
+(98)  1,3    !  A AND ~ A                                                  PLAN5
+
+@\@i{The last command created a negated statement, so we can use}
+@\@i{@wt(PUSHNEG) again.}
+
+<8>@indexsrule(pushneg) 3 4
+(4)   3,1    !  FORALL y.~.P x IMPLIES P y                                Neg: 3
+
+<9>@indexsrule(ui)
+D1 (LINE): Universally Quantified Line [4]>
+D2 (LINE): Instantiated Line [5]>
+t (GWFF): Substitution Term [No Default]>"x"
+(5)   1,3    !  ~.P x IMPLIES P x                                        UI: x 4
+
+<10>@indexcommand(^p)
+(4)   3,1    !  FORALL y.~.P x IMPLIES P y                                Neg: 3
+(5)   1,3    !  ~.P x IMPLIES P x                                        UI: x 4
+               ...
+(98)  1,3    !  A AND ~ A                                                  PLAN5
+
+<1>@indexsrule(rulep) 98
+L (EXISTING-LINELIST): List of Lines [(5 4)]>(5)
+
+<2>@indexcommand(pall)
+
+(1)   1      !  ~ FORALL x EXISTS y.P x IMPLIES P y              Assume negation
+(2)   1      !  EXISTS x.~ EXISTS y.P x IMPLIES P y                       Neg: 1
+(3)   1,3    !  ~ EXISTS y.P x IMPLIES P y                             Choose: x
+(4)   3,1    !  FORALL y.~.P x IMPLIES P y                                Neg: 3
+(5)   1,3    !  ~.P x IMPLIES P x                                        UI: x 4
+(98)  1,3    !  A AND ~ A                                               RuleP: 5
+(99)  1      !  A AND ~ A                                            RuleC: 2 98
+(100)        !  FORALL x EXISTS y.P x IMPLIES P y                   Indirect: 99
+
+<3>@indexcommand(squeeze)
+
+@\@i{Have we finished?  Yes.}
+
+<4>@indexsrule(done)
+Score file updated.
+
+@\@i{Note that we have to specify a new file name to keep @ETPS from}
+@\@i{overwriting the first file we made.}
+
+<5>@indexcommand(scribeproof)
+FILENAME (FILESPEC): Filename [PS:<FP01>X2108.MSS.1]>x2108b
+Written file PS:<NESMITH.TPS>X2108B.MSS.1.
+
+<6>@indexcommand(exit)
+File PS:<NESMITH.TPS>X2108B.WORK.1 written.
+
+

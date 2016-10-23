@@ -1,0 +1,15 @@
+(:name DOMTHM6
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "T0SPACE(O(O(OA))(OA)) T(OA) O(O(OA)) AND A(O(O(OA))) =(O(O(O(OA)))(O(O(OA)))) LAMBDA V(O(OA)) EXISTS x(A) [T(OA) x(A) AND V(O(OA)) =(O(O(OA))(O(OA))) LAMBDA U(OA).O(O(OA)) U(OA) AND U(OA) x(A)] IMPLIES HOMEOMORPHIC(O(O(O(O(OA))))(O(O(OA)))(O(OA))(OA)) T(OA) O(O(OA)) A(O(O(OA))).SET-TOPOLOGY(O(O(O(OA)))(O(O(OA)))) A(O(O(OA)))"
+:needed-objects   (T0SPACE HOMEOMORPHIC SET-TOPOLOGY)
+:mhelp "Domain Theory Slides.
+The Representation Theorem for T0 Spaces as sets of sets."
+:other-attributes NIL
+:other-remarks "
+")
+
+

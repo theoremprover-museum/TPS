@@ -1,0 +1,106 @@
+This is METAFONT, Version 2.718 (Web2C 7.2) (base=mf 1998.10.11)  30 AUG 2000 14:01
+**\mode:=lexmarkr; mag:=1+0/1200; nonstopmode; input ecrm0800
+(/var/lib/texmf/source/jknappen/ec/ecrm0800.mf
+(/usr/share/texmf/fonts/source/jknappen/ec/exbase.mf)
+(/usr/share/texmf/fonts/source/jknappen/ec/ecrm.mf
+(/usr/share/texmf/fonts/source/jknappen/ec/exroman.mf
+ Ok (/usr/share/texmf/fonts/source/jknappen/ec/exaccess.mf
+ Ok) (/usr/share/texmf/fonts/source/jknappen/ec/expseudo.mf
+ Ok) (/usr/share/texmf/fonts/source/jknappen/ec/exruwest.mf
+ Ok
+The letter A with gravis [192]
+The letter A with acute [193]
+The letter A with circumflex [194]
+The letter A with tilde [195]
+The letter A with umlaut [196]
+The letter A with ring [197]
+The ligature AE [198]
+The letter cedilla C [199]
+The letter E with gravis [200]
+The letter E with acute [201]
+The letter E with circumflex [202]
+The letter E with umlaut [203]
+The letter I with gravis [204]
+The letter I with acute [205]
+The letter I with circumflex [206]
+The letter I with umlaut [207]
+The letter (Eth) bar D [208]
+The letter N with tilde [209]
+The letter O with gravis [210]
+The letter O with acute [211]
+The letter O with circumflex [212]
+The letter O with tilde [213]
+The letter O with umlaut [214]
+The ligature OE [215]
+Scandinavian letter O/slash [216]
+The letter U with gravis [217]
+The letter U with acute [218]
+The letter U with circumflex [219]
+The letter U with umlaut [220]
+The letter Y with acute [221]
+The letter Thorn [222]
+The letter Sharp S (SS) [223])
+(/usr/share/texmf/fonts/source/jknappen/ec/exrlwest.mf
+ Ok
+The letter a with gravis [224]
+The letter a with acute [225]
+The letter a with circumflex [226]
+The letter a with tilde [227]
+The letter a with umlaut [228]
+The letter a with ring [229]
+The ligature ae [230]
+The letter cedilla c [231]
+The letter e with gravis [232]
+The letter e with acute [233]
+The letter circumflex e [234]
+The letter e with umlaut [235]
+The letter i with gravis [236]
+The letter i with acute [237]
+The letter circumflex i [238]
+The letter i with umlaut [239]
+The letter edh [240]
+The letter n with tilde [241]
+The letter o with gravis [242]
+The letter o with acute [243]
+The letter o with circumflex [244]
+The letter o with tilde [245]
+The letter o with umlaut [246]
+The ligature oe [247]
+Scandinavian letter o/slash [248]
+The letter u with gravis [249]
+The letter u with acute
+! Interruption.
+<to be read again> 
+                   known
+mark_height->if.known
+                     .sharp_calc:charht:=if.is_cap:h/vppp.else:(EXPR0)fi;if\...
+
+put_accent->...ved_height:=h;fi.mark_height(a_ht#)
+                                                  ;penlabels([ii],[jj]);
+<for(1)> ...erif_drop));fi.hpos_corr=-u;put_accent
+                                                  ; ENDFOR
+l.905 repeat_once
+                 ;
+? 
+! Emergency stop.
+<to be read again> 
+                   known
+mark_height->if.known
+                     .sharp_calc:charht:=if.is_cap:h/vppp.else:(EXPR0)fi;if\...
+
+put_accent->...ved_height:=h;fi.mark_height(a_ht#)
+                                                  ;penlabels([ii],[jj]);
+<for(1)> ...erif_drop));fi.hpos_corr=-u;put_accent
+                                                  ; ENDFOR
+l.905 repeat_once
+                 ;
+End of file on the terminal!
+
+ 
+Here is how much of METAFONT's memory you used:
+ 556 strings out of 5358
+ 5984 string characters out of 71003
+ 42045 words of memory out of 263001
+ 1432 symbolic tokens out of 9500
+ 13i,79n,0r,23p,236b stack positions out of 300i,300n,1000r,150p,3000b
+Output written on ecrm0800.1200gf (58 characters, 20920 bytes).

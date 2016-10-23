@@ -1,0 +1,14 @@
+(:name THM627
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "P(O(OO)) F(OO) AND P(O(OO)) G(OO) IMPLIES P(O(OO)) [LAMBDA x(O).F(OO) x(O) OR G(OO) x(O)] OR P(O(OO)).LAMBDA x(O).~F(OO) x(O) OR G(OO) x(O)"
+:needed-objects   NIL
+:mhelp "Similar to one of Chris Benzmuller's examples, but at type (OO)."
+:other-attributes NIL
+:other-remarks "
+")
+
+

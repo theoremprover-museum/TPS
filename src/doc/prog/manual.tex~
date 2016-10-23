@@ -1,0 +1,158 @@
+% The outline for this is copied from Matt Bishop's Thesis.
+\documentclass[11pt]{amsbook}
+\usepackage{amsmath}
+\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage[T1]{fontenc} % encoding for european computer modern, loaded below
+\usepackage[all]{xy} % commutative diagrams
+\usepackage{bbold} % blackboard bold font
+\usepackage{named} % the named bibliography style
+\newfont{\bsc}{ecxc1200} % european computer modern, used for bold small caps in appendix a.
+\makeindex % generate index data
+\input tps.tex %requires TPSINPUTS to have the right path; these are in $tps/doc/lib
+\input ndmacros.tex
+\input vpd.tex
+\newtheorem{definition}{Definition}[section] % a definition is labelled Definition and is numbered by section
+\newtheorem{lemma}[definition]{Lemma} % lemmas are labelled Lemma and use the same numbering as definitions.
+\newtheorem{example}[definition]{Example} % etc...
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{algorithm}[definition]{Algorithm}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{conjecture}[definition]{Conjecture}
+\numberwithin{figure}{chapter} % figures are 3.1, 3.2, 5.1,... rather than 1, 2, 3,...
+\newenvironment{notation}{{\sc Notation}\it\ }{\rm}
+\newenvironment{remark}{{\sc Remark}\ }{}
+\newcommand{\missing}{\par{\bf *****INSERT PROOF HERE*****}\par} % a little reminder that something's missing...
+\newcommand{\reml}{[\![}        % Left valuation-bracket, meaning ``remove this''
+\newcommand{\remr}{]\!]}        % Right ditto
+\newcommand{\uglylabel}[1]{{\hspace{-0.35in}\mbox{\small\bf #1}\hspace*{0.3in}}}
+\newcommand{\fixme}{\marginpar[{\bf fix me! $\longrightarrow$}]{{\bf $\longleftarrow$ fix me!}}} % arrows in the margins...
+\newcommand{\nchoose}[2]{$($\raisebox{-2pt}{$\stackrel{#1}{\scriptstyle #2}$}$)$} % in-line printing for `n choose k'.
+\newcommand{\cal}{\mathfrak} % calligraphic font is really fraktur.
+\newcommand{\foobar}[1]{\makebox[1.5em]{\rule[-.5ex]{0cm}{2ex}#1}} % used to label lattices in the results section
+\newcommand{\comment}[1]{} % mimic the Scribe `comment' command.
+\newcommand{\alg}[1]{{\em #1}\index{#1 algorithm}} % how to print the name of an algorithm and index it as well
+\newcommand{\mmm}[2]{\alg{Merge}$(#1,#2)$} % \mmm{a}{b} prints Merge(a,b).
+\newcommand{\flag}[1]{{\sc #1}\index{#1}} % flags are in small caps, and indexed
+\newcommand{\bflag}[1]{{\bsc #1}\index{#1}} % bold flags, for appendix a.
+\newcommand{\fval}[1]{{\sc #1}} % flag values in small caps...
+\newcommand{\bfval}[1]{{\bsc #1}} % ...or bold ditto, in {description} contexts
+\newcommand{\ftyp}[1]{{\sc #1}} % flag types, also in small caps.
+\newcommand{\mexpr}[1]{{\tt #1}\index{#1}} % how to index a command (\command is already taken)
+\newcommand{\simj}{\sim_{\!_J}} % twiddle-J.
+\newcommand{\ssim}{\sim\!\!} % not, but with less space after it.
+\newcommand{\nconv}{\stackrel{\sim}{\longrightarrow}}
+\newcommand{\bconv}{\stackrel{\scriptscriptstyle\beta}{\displaystyle\longrightarrow}}
+\newcommand{\nquiv}{\stackrel{\scriptscriptstyle\beta\sim}{\displaystyle =}}
+\newcommand{\bquiv}{\stackrel{\beta}{\displaystyle =}}
+\newcommand{\dquiv}{\stackrel{\scriptscriptstyle {\rm def}}{\displaystyle =}}
+\newcommand{\rquiv}[1]{\stackrel{\scriptscriptstyle #1}{\displaystyle \longrightarrow}}
+\newcommand{\cons}{\!^\frown} % list cons, like the ^ in a^(b)
+\newcommand{\mystrut}{\rule[-0.75ex]{0ex}{2.5ex}}
+\def\TPS{{\sc Tps3 }}
+\def\ETPS{{\sc Etps }}
+\def\OMEGA{\mbox{$\Omega${\sc mega}}}
+\def\tps{{\sc Tps3}}
+\def\LOUI{{\sc L$\Omega$UI}}
+\def\SPASS{{\sc Spass}}
+\def\OTTER{{\sc Otter}}
+\def\PROTEIN{{\sc Protein}}
+\def\CLAM{{\rm CL\raise.5ex\hbox{\sc a}M}}
+
+% This is for Scribe compatibility, so that for some
+% Scribe commands we can simply change the @ to a \
+\def\wt{\sf}
+\def\w{\sf}
+\def\lisp{{\sc lisp}}
+\newcommand{\indexother}[1]{#1\index{#1}}
+\newcommand{\indexflag}[1]{#1\index{#1, Flag}}
+\newcommand{\indexcommand}[1]{#1\index{#1, Command}}
+\newcommand{\indexedop}[1]{#1\index{#1, EdOp}}
+\newcommand{\indexmexpr}[1]{#1\index{#1, MExpr}}
+\newcommand{\indexparameter}[1]{#1\index{#1, Parameter}}
+\newcommand{\indexdata}[1]{#1\index{#1, Data}}
+\newcommand{\indexfile}[1]{#1{\it \index{#1, File}}}
+\newcommand{\indexfunction}[1]{#1\index{#1, Function}}
+\newcommand{\indexstyle}[1]{#1\index{#1, Style}}
+\newcommand{\indextypes}[1]{#1\index{#1, Type}}
+\newcommand{\indexargtypes}[1]{#1\index{#1, Argument Type}}
+\newcommand{\indexSyntax}[1]{#1\index{#1, Syntax}}
+\newcommand{\indexProperty}[1]{#1\index{#1, Property}}
+\newcommand{\indexData}[1]{#1\index{#1, Data}}
+\newenvironment{Example}{ \\}{\\}
+
+\begin{document}
+\bibliographystyle{alpha}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%List of NSF grants below copied from tpsdoc.lib
+\frontmatter
+\title{\TPS Programmer's Guide\thanks{
+copyright \copyright 2000. Carnegie Mellon University.  All rights reserved.)
+This manual is based upon work supported by
+NSF grants MCS81-02870, DCR-8402532, CCR-8702699, 
+CCR-9002546, CCR-9201893, CCR-9502878, CCR-9624683, CCR-9732312, CCR-0097179,
+and a grant from the Center for Design of Educational Computing,
+Carnegie Mellon University. Any opinions, findings, and conclusions or
+recommendations are those of the author(s) and do not necessarily reflect
+the views of the National Science Foundation.}
+}
+\author{Peter B. Andrews \\
+Dan Nesmith \\
+Frank Pfenning \\
+Sunil Issar \\
+Hongwei Xi \\
+Matthew Bishop \\
+Chad E. Brown}
+\date{Working Edition \\
+\today}
+
+\maketitle
+
+\setcounter{tocdepth}{5}
+\tableofcontents
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\mainmatter
+%\input{results}
+%\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter*{Preface}
+\pagestyle{plain}
+The following is a \TeX (actually, \LaTeX) version of the \TPS Programmer's Guide.
+The original version is in Scribe format.
+\mainmatter\pagestyle{headings}
+\input{intro} 
+\input{tps-struct}
+\input{top-levels}
+\input{mexprs}
+\input{wffrep}
+\input{flavors}
+\input{wffprint}
+\input{vpforms}
+\input{printingproofs}
+\input{wffops}
+\input{help}
+\input{flags}
+\input{monitor}
+\input{rules}
+\input{etps}
+\input{mating}
+\input{merging}
+\input{unification}
+\input{setvars}
+\input{tactics}
+\input{translation}
+\input{library-rewrite}
+\input{teach}
+\input{grader}
+\input{interface}
+
+\backmatter
+
+\bibliography{logictex} %requires BIBINPUTS to point to $tps/doc/lib
+\printindex
+
+\end{document}
+

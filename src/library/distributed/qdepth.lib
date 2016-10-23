@@ -1,0 +1,70 @@
+(:name QDP0
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA z(I).z(I) =(OII) c(I)"
+:needed-objects   NIL
+:mhelp "testing a conjecture on quantification depth"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPE "OI"))
+:other-remarks "
+")
+
+
+(:name QDP1
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA z(OI).z(OI) =(O(OI)(OI)) QDP0(OI) AND EXISTS t(I) z(OI) t(I)"
+:needed-objects   (QDP0)
+:mhelp "testing a conjecture on quantification depth"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPE "O(OI)"))
+:other-remarks "
+")
+
+
+(:name QDP2
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA z(S).z(S) =(OSS) QDP1(O(OI)) AND EXISTS t(OI) z(S) t(OI)"
+:needed-objects   (QDP1)
+:mhelp "testing a conjecture on quantification depth"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPE "OS"))
+:other-remarks "
+")
+
+
+(:name QDTHM1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS s(OI) QDP1(O(OI)) s(OI)"
+:needed-objects   (QDP1)
+:mhelp "testing a conjecture on quantification depth"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name QDTHM2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS s(S) QDP2(OS) s(S)"
+:needed-objects   (QDP2)
+:mhelp "testing a conjecture on quantification depth"
+:other-attributes NIL
+:other-remarks "
+")
+
+

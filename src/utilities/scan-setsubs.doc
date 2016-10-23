@@ -1,0 +1,43 @@
+The file scan-setsubs contains functions
+for finding setsubs in natural deduction proofs.
+
+Call scan-setsubs with a list of proof files.
+For example, scan-setsubs can be called with
+a list of strings where each string is the name 
+of a .prf file in the proofs/complete directory.  
+
+Scan-setsubs prints which proofs have setsubs,
+which lines use the setsub, and prints the setsub.
+It also returns a list of elements of the form
+(<proof-file:string> <proof-name:symbol> <gwff-name-or-nil:symbol or nil> <setsub-info-list>)
+where <setsub-info-list> is a list of elements of the form
+(<line:nat> <setsub:gwff>).
+
+Example:
+
+<0>(load "/afs/andrew/mcs/math/TPS/utilities/scan-setsubs")
+; Loading /afs/andrew/mcs/math/TPS/utilities/scan-setsubs.lisp
+T
+
+<1>(setq result (scan-setsubs (list "church-rosser" "imv-sol" "x2134")))
+Proof CRTHM restored.
+Proof CRTHM in file church-rosser uses setsubs:
+Line 6 uses setsub LAMBDA M(T) LAMBDA N(T) EXISTS Z(T).RTCL R(OTT) M Z AND RTCL R N Z
+
+Proof IMV-SOL-12 restored.
+Proof IMV-SOL-12 in file imv-sol uses setsubs:
+Line 11 uses setsub LAMBDA z(I).~LESS(OII) b(I) z AND ~LESS O(I).f(II) z
+
+Proof X2134 restored.
+(("imv-sol" IMV-SOL-12 NIL ((11 ((|z<I>| . LAMBDA) (AND NOT (LESS<OII> . |b<I>|) . |z<I>|) NOT (LESS<OII> . O<I>) |f<II>| . |z<I>|)))) ("church-rosser" CRTHM NIL ((6 ((M<T> . LAMBDA) (N<T> . LAMBDA) (Z<T> . EXISTS) (AND ((RTCL . R<OTT>) . M<T>) . Z<T>) ((RTCL . R<OTT>) . N<T>) . Z<T>)))))
+
+          ;  Consider the first entry on the return value:
+<2>(car result)
+("imv-sol" IMV-SOL-12 NIL ((11 ((|z<I>| . LAMBDA) (AND NOT (LESS<OII> . |b<I>|) . |z<I>|) NOT (LESS<OII> . O<I>) |f<II>| . |z<I>|))))
+
+; "imv-sol"
+; IMV-SOL-12 is the name of the proof (the value of dproof after calling (restoreproof "imv-sol"))
+; NIL indicates that there was no gwff associated with the proof when the proof was saved,
+;     if it were non-NIL, it would be a symbol which is the name of a gwff in the library.
+; ((11 ((|z<I>| . LAMBDA) (AND NOT (LESS<OII> . |b<I>|) . |z<I>|) NOT (LESS<OII> . O<I>) |f<II>| . |z<I>|)))
+; This indicates that line 11 uses the setsub "[LAMBDA z(I).~LESS(OII) b(I) z AND ~LESS O(I).f(II) z]"

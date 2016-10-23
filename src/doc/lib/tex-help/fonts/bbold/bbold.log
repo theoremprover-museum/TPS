@@ -1,0 +1,384 @@
+This is TeX, Version 3.1415 (C version 6.1) (format=latex 96.3.14)  4 FEB 1999 14:34
+**&latex2e bbold.dtx
+(bbold.dtx
+LaTeX2e <1995/12/01> patch level 2
+
+LaTeX Warning: File `bbold.ins' already exists on the system.
+               Not generating it from this source.
+
+(/usr/local/lib/texmf/tex/latex2e/base/docstrip.tex
+\blockLevel=\count79
+\emptyLines=\count80
+\processedLines=\count81
+\commentsRemoved=\count82
+\commentsPassed=\count83
+\codeLinesPassed=\count84
+\NumberOfFiles=\count85
+\TotalprocessedLines=\count86
+\TotalcommentsRemoved=\count87
+\TotalcommentsPassed=\count88
+\TotalcodeLinesPassed=\count89
+\inFile=\read1
+\@tempa=\read2
+\@tempa=\read3
+\@tempa=\read4
+\@tempa=\read5
+\@tempa=\read6
+\@tempa=\read7
+\@tempa=\read8
+\@tempa=\read9
+\@tempa=\read10
+\@tempa=\read11
+\currbatchFile=\count90
+\off@0=\count91
+\off@1=\count92
+\off@2=\count93
+\off@3=\count94
+\off@4=\count95
+\off@5=\count96
+\off@6=\count97
+\off@7=\count98
+\off@8=\count99
+\off@9=\count100
+\off@10=\count101
+\off@11=\count102
+\off@12=\count103
+\off@13=\count104
+\off@14=\count105
+\off@15=\count106
+
+Utility: `docstrip' 2.3d <1995/11/17>
+English documentation    <1995/11/18>
+
+**********************************************************
+* This program converts documented macro-files into fast *
+* loadable files by stripping off (nearly) all comments! *
+**********************************************************
+
+
+Generating file(s) ./bbold.sty 
+
+Processing file bbold.dtx (package) -> bbold.sty
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % <*install . % % % % . . . . . . . . % % % % . . . . . . % % % >
+% % % % % % <*driver . . . . % % % . . . > % % % % % % <*package . . % % % % %
+% % . . . > % % % % % % % % % <*fontdef . . . . . . . > % % % % % % %
+<*fonttabl . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . > % % %
+File bbold.dtx ended by \endinput.
+Lines  processed: 245
+Comments removed: 137
+Comments  passed: 16
+Codelines passed: 82
+
+
+Generating file(s) ./fonttabl.sty 
+
+Processing file bbold.dtx (fonttabl) -> fonttabl.sty
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % <*install . % % % % . . . . . . . . % % % % . . . . . . % % % >
+% % % % % % <*driver . . . . % % % . . . > % % % % % % <*package . . % % % % %
+% % . . . > % % % % % % % % % <*fontdef . . . . . . . > % % % % % % %
+<*fonttabl . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . > % % %
+File bbold.dtx ended by \endinput.
+Lines  processed: 245
+Comments removed: 137
+Comments  passed: 16
+Codelines passed: 82
+
+
+Generating file(s) ./Ubbold.fd 
+
+Processing file bbold.dtx (fontdef) -> Ubbold.fd
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % <*install . % % % % . . . . . . . . % % % % . . . . . . % % % >
+% % % % % % <*driver . . . . % % % . . . > % % % % % % <*package . . % % % % %
+% % . . . > % % % % % % % % % <*fontdef . . . . . . . > % % % % % % %
+<*fonttabl . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . > % % %
+File bbold.dtx ended by \endinput.
+Lines  processed: 245
+Comments removed: 137
+Comments  passed: 16
+Codelines passed: 82
+
+Overall statistics:
+Files  processed: 3
+Lines  processed: 735
+Comments removed: 411
+Comments  passed: 48
+Codelines passed: 246
+) (/usr/local/lib/texmf/tex/latex2e/base/ltxdoc.cls
+Document Class: ltxdoc 1995/11/28 v2.0q Standard LaTeX documentation class
+(/usr/local/lib/texmf/tex/latex2e/base/article.cls
+Document Class: article 1995/12/20 v1.3q Standard LaTeX document class
+(/usr/local/lib/texmf/tex/latex2e/base/size10.clo
+File: size10.clo 1995/12/20 v1.3q Standard LaTeX file (size option)
+)
+\c@part=\count107
+\c@section=\count108
+\c@subsection=\count109
+\c@subsubsection=\count110
+\c@paragraph=\count111
+\c@subparagraph=\count112
+\c@figure=\count113
+\c@table=\count114
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/lib/texmf/tex/latex2e/base/doc.sty
+Package: doc 1995/11/03 v1.9v Standard LaTeX documentation package (FMi)
+\c@StandardModuleDepth=\count115
+\guard@level=\count116
+\MacrocodeTopsep=\skip43
+\MacroIndent=\dimen103
+\macro@cnt=\count117
+\MacroTopsep=\skip44
+\index@excludelist=\toks14
+
+(/usr/local/lib/texmf/tex/latex2e/packages/tools/multicol.sty
+Package: multicol 1995/10/19 v1.5l multicolumn formatting (FMi)
+\c@tracingmulticols=\count118
+\mult@box=\box26
+\multicol@leftmargin=\dimen104
+\c@unbalance=\count119
+\c@collectmore=\count120
+\doublecol@number=\count121
+\multicoltolerance=\count122
+\multicolpretolerance=\count123
+\full@width=\dimen105
+\page@free=\dimen106
+\premulticols=\dimen107
+\postmulticols=\dimen108
+\multicolsep=\skip45
+\multicolbaselineskip=\skip46
+\partial@page=\box27
+\last@line=\box28
+\mult@rightbox=\box29
+\mult@grightbox=\box30
+\mult@gfirstbox=\box31
+\mult@firstbox=\box32
+\@tempa=\box33
+\@tempa=\box34
+\@tempa=\box35
+\@tempa=\box36
+\@tempa=\box37
+\@tempa=\box38
+\@tempa=\box39
+\@tempa=\box40
+\@tempa=\box41
+\@tempa=\box42
+\@tempa=\box43
+\@tempa=\box44
+\@tempa=\box45
+\@tempa=\box46
+\@tempa=\box47
+\@tempa=\box48
+\@tempa=\box49
+\c@columnbadness=\count124
+\c@finalcolumnbadness=\count125
+\last@try=\dimen109
+\multicolovershoot=\dimen110
+\multicolundershoot=\dimen111
+\mult@nat@firstbox=\box50
+)
+\IndexMin=\dimen112
+\c@IndexColumns=\count126
+\GlossaryMin=\dimen113
+\c@GlossaryColumns=\count127
+\check@sum=\count128
+\bslash@cnt=\count129
+\wrong@table=\toks15
+\c@CodelineNo=\count130
+)) (bbold.sty
+Package: bbold 1994/04/06 Bbold symbol package
+)
+(fonttabl.sty
+\m=\count131
+\n=\count132
+\p=\count133
+\dim=\dimen114
+) (bbold.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+Package doc Info: Made | a short reference for \verb on input line 144.
+ (bbold.dtx
+***************************
+* Character table correct *
+***************************
+LaTeX Font Info:    Try loading font information for U+bbold on input line 56.
+(Ubbold.fd)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 56.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 56.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 56.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 65.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 65.
+Missing character: There is no ^^80 in font bbold10!
+Missing character: There is no ^^81 in font bbold10!
+Missing character: There is no ^^82 in font bbold10!
+Missing character: There is no ^^83 in font bbold10!
+Missing character: There is no ^^84 in font bbold10!
+Missing character: There is no ^^85 in font bbold10!
+Missing character: There is no ^^86 in font bbold10!
+Missing character: There is no ^^87 in font bbold10!
+Missing character: There is no ^^88 in font bbold10!
+Missing character: There is no ^^89 in font bbold10!
+Missing character: There is no ^^8a in font bbold10!
+Missing character: There is no ^^8b in font bbold10!
+Missing character: There is no ^^8c in font bbold10!
+Missing character: There is no ^^8d in font bbold10!
+Missing character: There is no ^^8e in font bbold10!
+Missing character: There is no ^^8f in font bbold10!
+Missing character: There is no ^^90 in font bbold10!
+Missing character: There is no ^^91 in font bbold10!
+Missing character: There is no ^^92 in font bbold10!
+Missing character: There is no ^^93 in font bbold10!
+Missing character: There is no ^^94 in font bbold10!
+Missing character: There is no ^^95 in font bbold10!
+Missing character: There is no ^^96 in font bbold10!
+Missing character: There is no ^^97 in font bbold10!
+Missing character: There is no ^^98 in font bbold10!
+Missing character: There is no ^^99 in font bbold10!
+Missing character: There is no ^^9a in font bbold10!
+Missing character: There is no ^^9b in font bbold10!
+Missing character: There is no ^^9c in font bbold10!
+Missing character: There is no ^^9d in font bbold10!
+Missing character: There is no ^^9e in font bbold10!
+Missing character: There is no ^^9f in font bbold10!
+Missing character: There is no ^^a0 in font bbold10!
+Missing character: There is no ^^a1 in font bbold10!
+Missing character: There is no ^^a2 in font bbold10!
+Missing character: There is no ^^a3 in font bbold10!
+Missing character: There is no ^^a4 in font bbold10!
+Missing character: There is no ^^a5 in font bbold10!
+Missing character: There is no ^^a6 in font bbold10!
+Missing character: There is no ^^a7 in font bbold10!
+Missing character: There is no ^^a8 in font bbold10!
+Missing character: There is no ^^a9 in font bbold10!
+Missing character: There is no ^^aa in font bbold10!
+Missing character: There is no ^^ab in font bbold10!
+Missing character: There is no ^^ac in font bbold10!
+Missing character: There is no ^^ad in font bbold10!
+Missing character: There is no ^^ae in font bbold10!
+Missing character: There is no ^^af in font bbold10!
+Missing character: There is no ^^b0 in font bbold10!
+Missing character: There is no ^^b1 in font bbold10!
+Missing character: There is no ^^b2 in font bbold10!
+Missing character: There is no ^^b3 in font bbold10!
+Missing character: There is no ^^b4 in font bbold10!
+Missing character: There is no ^^b5 in font bbold10!
+Missing character: There is no ^^b6 in font bbold10!
+Missing character: There is no ^^b7 in font bbold10!
+Missing character: There is no ^^b8 in font bbold10!
+Missing character: There is no ^^b9 in font bbold10!
+Missing character: There is no ^^ba in font bbold10!
+Missing character: There is no ^^bb in font bbold10!
+Missing character: There is no ^^bc in font bbold10!
+Missing character: There is no ^^bd in font bbold10!
+Missing character: There is no ^^be in font bbold10!
+Missing character: There is no ^^bf in font bbold10!
+Missing character: There is no ^^c0 in font bbold10!
+Missing character: There is no ^^c1 in font bbold10!
+Missing character: There is no ^^c2 in font bbold10!
+Missing character: There is no ^^c3 in font bbold10!
+Missing character: There is no ^^c4 in font bbold10!
+Missing character: There is no ^^c5 in font bbold10!
+Missing character: There is no ^^c6 in font bbold10!
+Missing character: There is no ^^c7 in font bbold10!
+Missing character: There is no ^^c8 in font bbold10!
+Missing character: There is no ^^c9 in font bbold10!
+Missing character: There is no ^^ca in font bbold10!
+Missing character: There is no ^^cb in font bbold10!
+Missing character: There is no ^^cc in font bbold10!
+Missing character: There is no ^^cd in font bbold10!
+Missing character: There is no ^^ce in font bbold10!
+Missing character: There is no ^^cf in font bbold10!
+Missing character: There is no ^^d0 in font bbold10!
+Missing character: There is no ^^d1 in font bbold10!
+Missing character: There is no ^^d2 in font bbold10!
+Missing character: There is no ^^d3 in font bbold10!
+Missing character: There is no ^^d4 in font bbold10!
+Missing character: There is no ^^d5 in font bbold10!
+Missing character: There is no ^^d6 in font bbold10!
+Missing character: There is no ^^d7 in font bbold10!
+Missing character: There is no ^^d8 in font bbold10!
+Missing character: There is no ^^d9 in font bbold10!
+Missing character: There is no ^^da in font bbold10!
+Missing character: There is no ^^db in font bbold10!
+Missing character: There is no ^^dc in font bbold10!
+Missing character: There is no ^^dd in font bbold10!
+Missing character: There is no ^^de in font bbold10!
+Missing character: There is no ^^df in font bbold10!
+Missing character: There is no ^^e0 in font bbold10!
+Missing character: There is no ^^e1 in font bbold10!
+Missing character: There is no ^^e2 in font bbold10!
+Missing character: There is no ^^e3 in font bbold10!
+Missing character: There is no ^^e4 in font bbold10!
+Missing character: There is no ^^e5 in font bbold10!
+Missing character: There is no ^^e6 in font bbold10!
+Missing character: There is no ^^e7 in font bbold10!
+Missing character: There is no ^^e8 in font bbold10!
+Missing character: There is no ^^e9 in font bbold10!
+Missing character: There is no ^^ea in font bbold10!
+Missing character: There is no ^^eb in font bbold10!
+Missing character: There is no ^^ec in font bbold10!
+Missing character: There is no ^^ed in font bbold10!
+Missing character: There is no ^^ee in font bbold10!
+Missing character: There is no ^^ef in font bbold10!
+Missing character: There is no ^^f0 in font bbold10!
+Missing character: There is no ^^f1 in font bbold10!
+Missing character: There is no ^^f2 in font bbold10!
+Missing character: There is no ^^f3 in font bbold10!
+Missing character: There is no ^^f4 in font bbold10!
+Missing character: There is no ^^f5 in font bbold10!
+Missing character: There is no ^^f6 in font bbold10!
+Missing character: There is no ^^f7 in font bbold10!
+Missing character: There is no ^^f8 in font bbold10!
+Missing character: There is no ^^f9 in font bbold10!
+Missing character: There is no ^^fa in font bbold10!
+Missing character: There is no ^^fb in font bbold10!
+Missing character: There is no ^^fc in font bbold10!
+Missing character: There is no ^^fd in font bbold10!
+Missing character: There is no ^^fe in font bbold10!
+Missing character: There is no ^^ff in font bbold10!
+ [1
+
+]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 84.
+ (/usr/local/lib/texmf/tex/latex2e/base/OMScmr.fd
+File: OMScmr.fd 1995/12/20 v2.4f Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 84.
+) [2]
+(bbold.aux) ) 
+Here is how much of TeX's memory you used:
+ 914 strings out of 10945
+ 9490 string characters out of 73447
+ 60558 words of memory out of 262141
+ 3750 multiletter control sequences out of 9500
+ 8166 words of font info for 30 fonts, out of 100000 for 255
+ 14 hyphenation exceptions out of 607
+ 30i,6n,21p,234b,368s stack positions out of 300i,40n,60p,3000b,4000s
+
+Output written on bbold.dvi (2 pages, 8004 bytes).

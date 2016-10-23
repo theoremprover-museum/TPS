@@ -1,0 +1,28 @@
+(:name TEST1MODE
+:type MODE
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description (
+   (MAX-PRIM-DEPTH 1)
+   (MAX-PRIM-LITS 4)
+   (MIN-PRIM-DEPTH 1)
+   (MIN-PRIM-LITS 2)
+   (MS91-INTERLEAVE 5)
+   (NEG-PRIM-SUB NIL)
+   (PR97C-MAX-ABBREVS 1)
+   (PR97C-PRENEX T)
+   (PRIM-BDTYPES (I))
+   (PRIM-BDTYPES-AUTO REPLACE)
+   (PRIM-PREFIX PRIM)
+   (PRIM-QUANTIFIER T)
+   (PRIMSUB-METHOD PR93)
+   (PRIMSUB-VAR-SELECT T)) 
+:needed-objects   NIL
+:mhelp "testtt"
+:other-attributes NIL
+:other-remarks "
+")
+
+

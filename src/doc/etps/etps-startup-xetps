@@ -1,0 +1,4 @@
+xterm -geometry 80x54+505+0 '#+723+0' -fn vtsingle -fb vtsymbold -sb -n ETPS -T ETPS -e  /afs/andrew/mcs/math/etps/bin/etps-from-cs &
+
+#klog first:
+#klog pa01 -c andrew.cmu.edu

@@ -1,0 +1,14 @@
+(:name THM120I-1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (PROVEN WITH-EQUALITY WITH-DEFN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, May 15, 1997 at 18:32:05."
+:description "EXISTS R(O(OI)(OI)).REFLEXIVE(O(O(OI)(OI))) R(O(OI)(OI)) AND TRANSITIVE(O(O(OI)(OI))) R(O(OI)(OI)) AND FORALL X(OI) FORALL Y(OI).R(O(OI)(OI)) X(OI) Y(OI) AND R(O(OI)(OI)) Y(OI) X(OI) IMPLIES X(OI) EQUIVS1(O(OI)(OI)) Y(OI)"
+:needed-objects   (REFLEXIVE TRANSITIVE EQUIVS1)
+:mhelp "thm120i using EQUIVS1 instead of EQUIVS"
+:other-attributes NIL
+:other-remarks "
+")
+
+

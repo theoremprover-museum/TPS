@@ -1,0 +1,14 @@
+(:name EXT=0
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL p(O) FORALL q(O).[p(O) EQUIV q(O)] IMPLIES p(O) =(OOO) q(O)"
+:needed-objects   NIL
+:mhelp "Extensionality at type omicron"
+:other-attributes NIL
+:other-remarks "
+")
+
+

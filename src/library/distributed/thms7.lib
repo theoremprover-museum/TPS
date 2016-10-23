@@ -1,0 +1,267 @@
+(:name THM70
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:13."
+:description "FORALL S(O(OAA)) TRANSITIVE(O(OAA)).SETPAIRSINTERSECT(OAA(O(OAA))).LAMBDA R(OAA).TRANSITIVE(O(OAA)) R(OAA) AND S(O(OAA)) R(OAA)"
+:needed-objects   (TRANSITIVE SETPAIRSINTERSECT)
+:mhelp "THE INTERSECTION OF ANY CLASS OF TRANSITIVE RELATIONS IS TRANSITIVE.
+ For an efficient proof, instantiate TRANSITIVE only once, but apply RULEP to
+ several instances of TRANSITIVE. Nice example of a theorem in which some,
+ but not all, occurrences of quantifiers should be instantiated."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM72
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, June  3, 1997 at 17:24:33."
+:description "FORALL X(I) EXISTS Y(I) [P(OI) X(I) IMPLIES L(OII) X(I) [G(II).H(II) Y(I)] AND P(OI) Y(I)] AND FORALL W(I) [P(OI) W(I) IMPLIES P(OI) [G(II) W(I)] AND P(OI).H(II) W(I)] IMPLIES FORALL X(I).P(OI) X(I) IMPLIES EXISTS Y(I).L(OII) X(I) Y(I) AND P(OI) Y(I)"
+:needed-objects   NIL
+:mhelp "Simple theorem used for example in CADE-5 lecture."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM74B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) FORALL y(I) FORALL Q(OII).EXISTS Q^1(OII) EXISTS Q^2(OII) [Q^1(OII) [f(III) x(I).g(II) x(I)] y(I) AND FORALL y(I) [[~Q^1(OII) x(I) y(I) OR P(OI) x(I) OR Q(OII) x(I).g(II) y(I)] AND [~Q^1(OII) x(I) y(I) OR ~R(OII) [g(II) y(I)] k(I) OR Q(OII) x(I).g(II) y(I)] AND.~Q^1(OII) x(I) y(I) OR ~P(OI) x(I) OR R(OII) [g(II) y(I)] k(I) OR Q^2(OII) x(I) y(I)] AND FORALL y(I).[~Q^2(OII) x(I) y(I) OR P(OI) x(I) OR Q^2(OII) x(I).g(II) y(I)] AND.~Q^2(OII) x(I) y(I) OR ~P(OI) x(I) OR Q^1(OII) x(I).g(II) y(I)] EQUIV EXISTS Q^1(OII).[P(OI) [f(III) x(I).g(II) x(I)] OR Q(OII) [f(III) x(I).g(II) x(I)].g(II) y(I)] AND [~P(OI) [f(III) x(I).g(II) x(I)] OR Q^1(OII) [f(III) x(I).g(II) x(I)] y(I)] AND FORALL y(I).[~Q^1(OII) x(I) y(I) OR ~R(OII) [g(II) y(I)] k(I) OR Q(OII) x(I).g(II) y(I)] AND.~Q^1(OII) x(I) y(I) OR R(OII) [g(II) y(I)] k(I) OR Q^1(OII) x(I).g(II) y(I)"
+:needed-objects   NIL
+:mhelp "CORRECTED VERSION OF PROBLEM PROPOSED BY ZWINOGRODZKI. EXPRESSES EQUIVALENCE OF PROGRAM SCHEMATA."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM75
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, June  3, 1997 at 17:24:44."
+:description "EXISTS v(I) FORALL j(I) EXISTS q(I).P(OIII) a(I) j(I) [h(II) j(I)] OR P(OIII) v(I) j(I) [k(II) j(I)] IMPLIES P(OIII) v(I) j(I) q(I)"
+:needed-objects   NIL
+:mhelp "RELATED TO THM87, WHICH WAS USED FOR CADE-6"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM76
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, April 29, 1999 at 14:06:47."
+:description "Y(I) =(OII) X(I) IMPLIES X(I) =(OII) Y(I)"
+:needed-objects   NIL
+:mhelp "Symmetry of equality"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM71
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:51."
+:description "FORALL X(I) EXISTS Y(I) [X(I) LT(OII) G(II) Y(I) AND.[~P(OI) X(I) OR ~P(OI).G(II) Y(I)] AND.P(OI) X(I) OR P(OI).G(II) Y(I)] AND FORALL U(I) FORALL V(I) FORALL W(I) [U(I) LT(OII) V(I) AND V(I) LT(OII) W(I) IMPLIES U(I) LT(OII) W(I)] IMPLIES FORALL X(I).P(OI) X(I) IMPLIES EXISTS Z(I).X(I) LT(OII) G(II) Z(I) AND P(OI).G(II) Z(I)"
+:needed-objects   (LT)
+:mhelp "1980-MAY-19 RUNTIME 34.481586 CONS COUNT 209273  
+SYSTEM System III  
+GENVPATHMATES GENVPATHMATES1  
+NEXTBADPATH NEXTBADPATH3  
+BESTPAIRS1RST BESTPAIRS1RST3  
+PATH-SEARCHLENGTH 5  
+EQUIV-CHOICE T  
+EQHEURISTIC EQHEURISTIC  
+INITDEPTH 2  
+UNIDEPTH 3  
+PRINTFLAG ARCS  
+*** COMPLETE MATING PROOF WITH INTERACTIVE REPLICATION  
+***  
+1982 FEB 27 WRONG PROOF IN TPS1  
+QUANTIFIERS WERE DUPLICATED  
+SEARCH GOT LOST  
+DAM  
+ 
+DATES  "
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM71A
+:type GWFF
+:context NIL
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL X(I) EXISTS Y(I) [X(I) LT(OII) G(II) Y(I) AND.P(OI) X(I) EQUIV ~P(OI).G(II) Y(I)] AND [TRANS(O(OII)) LT(OII)] IMPLIES FORALL X(I).P(OI) X(I) IMPLIES EXISTS Z(I).X(I) LT(OII) G(II) Z(I) AND P(OI).G(II) Z(I)"
+:needed-objects   (LT)
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM73
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:54."
+:description "FORALL X(I) EXISTS Y(I) [P(OI) X(I) IMPLIES L(OII) X(I) [G(II).H(II) Y(I)] AND P(OI) Y(I)] AND FORALL W(I) [P(OI) W(I) IMPLIES P(OI) [G(II) W(I)] AND P(OI).H(II) W(I)] IMPLIES FORALL X(I).P(OI) X(I) IMPLIES EXISTS Z(I).L(OII) X(I) Z(I) AND P(OI) Z(I)"
+:needed-objects   NIL
+:mhelp "DIFFERS FROM THM72 ONLY BY A VARIABLE CHANGE  
+SIMPLE THEOREM BUT REQUIRES QUANTIFIER DUPLICATION"
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM74A
+:type GWFF
+:context NIL
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL X(I) FORALL Y(I) FORALL Q(OII).EXISTS Q1(OII) EXISTS Q2(OII) [Q1(OII) [F(III) X(I).G(II) X(I)] Y(I) AND FORALL Y(I) [[~Q1(OII) X(I) Y(I) OR P(OI) X(I) OR Q(OII) X(I).G(II) Y(I)] AND [~Q1(OII) X(I) Y(I) OR ~R(OII) [G(II) Y(I)] K(I) OR Q(OII) X(I).G(II) Y(I)] AND.~Q1(OII) X(I) Y(I) OR ~P(OI) X(I) OR R(OII) [G(II) Y(I)] K(I) OR Q2(OII) X(I) Y(I)] AND FORALL Y(I).[~Q2(OII) X(I) Y(I) OR P(OI) X(I) OR Q2(OII) X(I).G(II) Y(I)] AND.~Q2(OII) X(I) Y(I) OR ~P(OI) X(I) OR Q1(OII) X(I).G(II) Y(I)] EQUIV EXISTS Q1(OII).[P(OI) [F(III) X(I).G(II) Y(I)] OR Q(OII) [F(III) X(I).G(II) Y(I)].G(II) Y(I)] AND [~P(OI) [F(III) X(I).G(II) Y(I)] OR Q1(OII) [F(III) X(I).G(II) Y(I)] Y(I)] AND FORALL Y(I).[~Q1(OII) X(I) Y(I) OR ~R(OII) [G(II) Y(I)] K(I) OR Q(OII) X(I).G(II) Y(I)] AND.~Q1(OII) X(I) Y(I) OR R(OII) [G(II) Y(I)] K(I) OR Q1(OII) X(I).G(II) Y(I)"
+:needed-objects   NIL
+:mhelp "1980-NOV-08 GOT THE VPFORM  
+1980-NOV-08 RUNTIME 62.73924 CONS COUNT 340651  
+SYSTEM System III  
+GENVPATHMATES GENVPATHMATES1  
+NEXTBADPATH NEXTBADPATH3  
+BESTPAIRS1RST BESTPAIRS1RST3  
+PATH-SEARCHLENGTH 5  
+EQUIV-CHOICE T  
+EQHEURISTIC EQHEURISTIC  
+INITDEPTH 2  
+UNIDEPTH 3  
+PRINTFLAG ARCS  
+*** FOUND THAT THERE IS NO PROOF ON FIRST LEVEL AFTER LOOKING AT JUST ONE PATH  
+***  
+ALLOCATIONS 34000 11000 4000 3000 100000  
+ 
+DATES  "
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM74B-1
+:type GWFF
+:context NIL
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL X(I) FORALL Y(I) FORALL Q(OII).EXISTS Q1(OII) EXISTS Q2(OII) [Q1(OII) [F(III) X(I).G(II) X(I)] Y(I) AND FORALL Y(I) [[~Q1(OII) X(I) Y(I) OR P(OI) X(I) OR Q(OII) X(I).G(II) Y(I)] AND [~Q1(OII) X(I) Y(I) OR ~R(OII) [G(II) Y(I)] K(I) OR Q(OII) X(I).G(II) Y(I)] AND.~Q1(OII) X(I) Y(I) OR ~P(OI) X(I) OR R(OII) [G(II) Y(I)] K(I) OR Q2(OII) X(I) Y(I)] AND FORALL Y(I).[~Q2(OII) X(I) Y(I) OR P(OI) X(I) OR Q2(OII) X(I).G(II) Y(I)] AND.~Q2(OII) X(I) Y(I) OR ~P(OI) X(I) OR Q1(OII) X(I).G(II) Y(I)] EQUIV EXISTS Q1(OII).[P(OI) [F(III) X(I).G(II) X(I)] OR Q(OII) [F(III) X(I).G(II) X(I)].G(II) Y(I)] AND [~P(OI) [F(III) X(I).G(II) X(I)] OR Q1(OII) [F(III) X(I).G(II) X(I)] Y(I)] AND FORALL Y(I).[~Q1(OII) X(I) Y(I) OR ~R(OII) [G(II) Y(I)] K(I) OR Q(OII) X(I).G(II) Y(I)] AND.~Q1(OII) X(I) Y(I) OR R(OII) [G(II) Y(I)] K(I) OR Q1(OII) X(I).G(II) Y(I)"
+:needed-objects   NIL
+:mhelp "CORRECTED VERSION OF PROBLEM PROPOSED BY ZWINOGRODZKI  
+EXPRESSES EQUIVALENCE OF PROGRAM SCHEMATA  
+1512 PATHS 13776 CLAUSES  
+NO PROOF POSSIBLE WITHOUT QUANTIFIER DUPLICATION  
+MAY NOT BE PROVABLE BY FIRST ORDER METHODS  "
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM76A
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:56."
+:description "FORALL P(OI) [P(OI) Y(I) IMPLIES P(OI) X(I)] IMPLIES FORALL R(OI).R(OI) X(I) IMPLIES R(OI) Y(I)"
+:needed-objects   NIL
+:mhelp "THIS THEOREM HAS TWO PROOFS  "
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM77
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL X(I) FORALL Y(I).FORALL P(OI) [P(OI) X(I) IMPLIES P(OI) Y(I)] EQUIV FORALL R(OII).FORALL Z(I) R(OII) Z(I) Z(I) IMPLIES R(OII) X(I) Y(I)"
+:needed-objects   NIL
+:mhelp "1981-JUN-12 INTERACTIVE MIPAS PROOF  
+ 
+DATES  "
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM78
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:59."
+:description "FORALL R(I) M(OI) R(I) OR.EXISTS X(I) [~G(OI) X(I)] OR.~[FORALL Y(I) M(OI) Y(I) OR EXISTS S(I) N(OI) S(I)] OR ~.FORALL Z(I) [~N(OI) Z(I)] OR ~FORALL T(I) G(OI) T(I)"
+:needed-objects   NIL
+:mhelp "WFF S FROM FALSE LEMMAS IN HERBRAND"
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM79
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:59."
+:description "FORALL R(I) M(OI) R(I) OR.EXISTS X(I) [~G(OI) X(I)] OR.~FORALL Y(I) [M(OI) Y(I) OR EXISTS S(I) N(OI) S(I)] OR ~FORALL Z(I).~N(OI) Z(I) OR ~FORALL T(I) G(OI) T(I)"
+:needed-objects   NIL
+:mhelp "1981-JUL-23 MATING FOUND AUTOMATICALLY  
+RUNTIME 3.1420605 CONS COUNT 14239  
+SYSTEM System III  
+GENVPATHMATES GENVPATHMATES4  
+NEXTBADPATH NEXTBADPATH3  
+BESTPAIRS1RST BESTPAIRS1RST3  
+PATH-SEARCHLENGTH 5  
+EQUIV-CHOICE T  
+EQHEURISTIC  
+INITDEPTH 2  
+UNIDEPTH 3  
+PRINTFLAG ARCS  
+ 
+1981-JUL-26 PLAN FOUND AUTOMATICALLY  
+RUNTIME 7.4537096 CONS COUNT 32366  
+SYSTEM System III  
+GENVPATHMATES GENVPATHMATES4  
+NEXTBADPATH NEXTBADPATH3  
+BESTPAIRS1RST BESTPAIRS1RST3  
+PATH-SEARCHLENGTH 5  
+EQUIV-CHOICE T  
+EQHEURISTIC  
+INITDEPTH 2  
+UNIDEPTH 3  
+PRINTFLAG ARCS  
+ 
+ 
+DATES  "
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+

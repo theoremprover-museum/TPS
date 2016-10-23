@@ -1,0 +1,560 @@
+;;; -*- Mode:LISP; Package:ML -*-
+;;; ******************************************************************* ;;;
+;;;         (c) Copyrighted 1988 by Carnegie Mellon University.         ;;;
+;;;                        All rights reserved.                         ;;;
+;;;         This code was written as part of the TPS project.           ;;;
+;;;   If you want to use this code or any part of TPS, please contact   ;;;
+;;;               Peter B. Andrews (Andrews@CS.CMU.EDU)                 ;;;
+;;; ******************************************************************* ;;;
+(in-package :ML)
+
+;;; package: (math-logic-2
+;;;) (end of package math-logic-2)
+
+
+;;; package: (math-logic-1
+;;;) (end of package math-logic-1)
+
+
+;;; package: (math-logic-2-rules
+
+;;; file: (ml2-replace
+;;; category: repsymbol
+(export '(subset implies inverse)) ;; added inverse 9/7/87 dan
+;;; category: wffop
+(export '(rpin))
+;;;) (end of file ml2-replace)
+
+;;; file: (ml2-axioms
+;;; category: macro
+(export '(defaxiom))
+;;; category: axiom
+(export '(refl= sym= descr ext t5302 t5310 t5310a))
+;;;) (end of file ml2-axioms)
+
+;;; file: (ml2-logic7
+;;; category: function
+(export
+ '(sym=-legal-wffs sym=-legal-hyps sym=-legal sym=-match sym=-hyp-defaults
+    sym=-defaults sym=-enter sym=-build ext=0-legal-wffs ext=0-legal-hyps
+    ext=0-legal ext=0-match ext=0-hyp-defaults ext=0-defaults ext=0-enter
+    ext=0-build subst=r-legal-wffs subst=r-legal-hyps subst=r-legal subst=r-match
+    subst=r-hyp-defaults subst=r-defaults subst=r-enter subst=r-build
+    subst=l-legal-wffs subst=l-legal-hyps subst=l-legal subst=l-match
+    subst=l-hyp-defaults subst=l-defaults subst=l-enter subst=l-build
+    ext=-legal-wffs ext=-legal-hyps ext=-legal ext=-match ext=-hyp-defaults
+    ext=-defaults ext=-enter ext=-build
+    sym=-short sym=-match1
+    ext=0-short ext=0-match1
+    subst=r-short subst=r-match1
+    subst=l-short subst=l-match1
+    ext=-short ext=-match1
+   subst=-legal-wffs subst=-legal-hyps subst=-legal subst=-match
+    subst=-hyp-defaults subst=-defaults subst=-enter subst=-build
+    subst=-short subst=-match1
+    equiv-eq-build equiv-eq-enter equiv-eq-defaults equiv-eq-hyp-defaults equiv-eq-match equiv-eq-match1 equiv-eq-short
+    equiv-eq-legal equiv-eq-legal-hyps equiv-eq-legal-wffs
+equiv-eq-contr-build equiv-eq-contr-enter equiv-eq-contr-defaults equiv-eq-contr-hyp-defaults equiv-eq-contr-match equiv-eq-contr-match1 equiv-eq-contr-short
+    equiv-eq-contr-legal equiv-eq-contr-legal-hyps equiv-eq-contr-legal-wffs
+equiv-eq-expd-build equiv-eq-expd-enter equiv-eq-expd-defaults equiv-eq-expd-hyp-defaults equiv-eq-expd-match equiv-eq-expd-match1 equiv-eq-expd-short
+    equiv-eq-expd-legal equiv-eq-expd-legal-hyps equiv-eq-expd-legal-wffs
+))
+;;; category: srule
+(export '(let sym= ext=0 subst=r subst=l ext= lambda* beta* eta* subst= equiv-eq equiv-eq-contr equiv-eq-expd
+	      equiv-eq-contr* equiv-eq-expd*))
+;;; category: mexpr
+(export '(sym= ext=0 subst=r subst=l ext=))
+;;;) (end of file ml2-logic7)
+
+;;; file: (ml2-logic5
+;;; category: function
+(export
+ '(equiv-implics-legal-wffs equiv-implics-legal-hyps equiv-implics-legal
+    equiv-implics-match equiv-implics-hyp-defaults equiv-implics-defaults
+    equiv-implics-enter equiv-implics-build
+    lexpd*-legal-wffs lexpd*-legal-hyps lexpd*-legal lexpd*-match
+    lexpd*-hyp-defaults lexpd*-defaults lexpd*-enter lexpd*-build
+    lcontr*-legal-wffs lcontr*-legal-hyps lcontr*-legal lcontr*-match
+    lcontr*-hyp-defaults lcontr*-defaults lcontr*-enter lcontr*-build
+    lexpd*-beta-legal-wffs lexpd*-beta-legal-hyps lexpd*-beta-legal lexpd*-beta-match
+    lexpd*-beta-hyp-defaults lexpd*-beta-defaults lexpd*-beta-enter lexpd*-beta-build
+    lcontr*-beta-legal-wffs lcontr*-beta-legal-hyps lcontr*-beta-legal lcontr*-beta-match
+    lcontr*-beta-hyp-defaults lcontr*-beta-defaults lcontr*-beta-enter lcontr*-beta-build
+    lexpd*-eta-legal-wffs lexpd*-eta-legal-hyps lexpd*-eta-legal lexpd*-eta-match
+    lexpd*-eta-hyp-defaults lexpd*-eta-defaults lexpd*-eta-enter lexpd*-eta-build
+    lcontr*-eta-legal-wffs lcontr*-eta-legal-hyps lcontr*-eta-legal lcontr*-eta-match
+    lcontr*-eta-hyp-defaults lcontr*-eta-defaults lcontr*-eta-enter lcontr*-eta-build
+    subst-equal-legal-wffs subst-equal-legal-hyps subst-equal-legal
+    subst-equal-match subst-equal-hyp-defaults subst-equal-defaults
+    subst-equal-enter subst-equal-build equiv-wffs-legal-wffs
+    equiv-wffs-legal-hyps equiv-wffs-legal equiv-wffs-match
+    equiv-wffs-hyp-defaults equiv-wffs-defaults equiv-wffs-enter equiv-wffs-build
+    implics-equiv-legal-wffs implics-equiv-legal-hyps implics-equiv-legal
+    implics-equiv-match implics-equiv-hyp-defaults implics-equiv-defaults
+    implics-equiv-enter implics-equiv-build
+    equiv-implics-short equiv-implics-match1
+    lexpd*-short lexpd*-match1
+    lcontr*-short lcontr*-match1
+    lexpd*-beta-short lexpd*-beta-match1
+    lcontr*-beta-short lcontr*-beta-match1
+    lexpd*-eta-short lexpd*-eta-match1
+    lcontr*-eta-short lcontr*-eta-match1
+    equiv-wffs-short equiv-wffs-match1
+    implics-equiv-short implics-equiv-match1 
+))
+;;; category: srule
+(export '(equiv-implics lexpd* lcontr* lexpd*-beta lexpd*-eta lcontr*-eta lcontr*-beta 
+subst-equal equiv-wffs implics-equiv))
+;;; category: mexpr
+(export '(equiv-implics lexpd* lcontr* lexpd*-beta lexpd*-eta lcontr*-eta lcontr*-beta
+subst-equal equiv-wffs implics-equiv))
+;;;) (end of file ml2-logic5)
+
+;;; file: (ml2-logic4
+;;; category: function
+(export
+ '(idef-legal-wffs idef-legal-hyps idef-legal idef-match idef-hyp-defaults
+    idef-defaults idef-enter idef-build edef-legal-wffs edef-legal-hyps
+    edef-legal edef-match edef-hyp-defaults edef-defaults edef-enter edef-build
+    idef-short idef-match1
+    edef-short edef-match1
+
+))
+;;; category: srule
+(export '(idef edef))
+;;; category: mexpr
+(export '(idef edef))
+;;;) (end of file ml2-logic4)
+
+;;; file: (ml1-logic3
+;;; category: function
+(export
+ '(pullneg-legal-wffs pullneg-legal-hyps pullneg-legal pullneg-match
+    pullneg-hyp-defaults pullneg-defaults pullneg-enter pullneg-build
+    pushneg-legal-wffs pushneg-legal-hyps pushneg-legal pushneg-match
+    pushneg-hyp-defaults pushneg-defaults pushneg-enter pushneg-build
+    pullneg-short pullneg-match1
+    pushneg-short pushneg-match1
+    ineg-legal-wffs ineg-legal-hyps ineg-legal ineg-match
+    ineg-hyp-defaults ineg-defaults ineg-enter ineg-build
+    ineg-short ineg-match1
+    eneg-legal-wffs eneg-legal-hyps eneg-legal eneg-match
+    eneg-hyp-defaults eneg-defaults eneg-enter eneg-build
+    eneg-short eneg-match1
+    absurd-legal-wffs absurd-legal-hyps absurd-legal absurd-match
+    absurd-hyp-defaults absurd-defaults absurd-enter absurd-build
+    absurd-short absurd-match1
+))
+;;; category: srule
+(export '(pullneg pushneg ineg eneg absurd))
+;;; category: mexpr
+(export '(pullneg pushneg ineg eneg absurd))
+;;;) (end of file ml1-logic3)
+
+;;; file: (ml2-logic2
+;;; category: function
+(export
+ '(egen-legal-wffs egen-legal-hyps egen-legal egen-match egen-hyp-defaults
+    egen-defaults egen-enter egen-build rulec-legal-wffs rulec-legal-hyps
+    rulec-legal rulec-match rulec-hyp-defaults rulec-defaults rulec-enter
+    rulec-build ui-legal-wffs ui-legal-hyps ui-legal ui-match ui-hyp-defaults
+    ui-defaults ui-enter ui-build ugen-legal-wffs ugen-legal-hyps ugen-legal
+    ugen-match ugen-hyp-defaults ugen-defaults ugen-enter ugen-build
+    egen-short egen-match1
+    rulec-short rulec-match1
+    ui-short ui-match1
+    ugen-short ugen-match1
+))
+;;; category: srule
+
+;;; category: mexpr
+(export '(#-:ergo egen rulec ui ugen))
+;;;) (end of file ml2-logic2)
+
+;;; file: (ml2-logic11 and ml2-logic12
+;;; category: function
+(export
+ '(indirect2-legal-wffs indirect2-legal-hyps indirect2-legal indirect2-match
+    indirect2-hyp-defaults indirect2-defaults indirect2-enter indirect2-build
+    indirect1-legal-wffs indirect1-legal-hyps indirect1-legal indirect1-match
+    indirect1-hyp-defaults indirect1-defaults indirect1-enter indirect1-build
+    cases-legal-wffs cases-legal-hyps cases-legal cases-match cases-hyp-defaults
+    cases-defaults cases-enter cases-build iconj-legal-wffs iconj-legal-hyps
+    iconj-legal iconj-match iconj-hyp-defaults iconj-defaults iconj-enter
+    iconj-build econj-legal-wffs econj-legal-hyps econj-legal econj-match
+    econj-hyp-defaults econj-defaults econj-enter econj-build mp-legal-wffs
+    mp-legal-hyps mp-legal mp-match mp-hyp-defaults mp-defaults mp-enter mp-build
+    deduct-legal-wffs deduct-legal-hyps deduct-legal deduct-match
+    deduct-hyp-defaults deduct-defaults deduct-enter deduct-build
+   indirect-legal-wffs indirect-legal-hyps indirect-legal indirect-match
+    indirect-hyp-defaults indirect-defaults indirect-enter indirect-build
+    indirect-short indirect-match1
+    indirect2-short indirect2-match1
+    indirect1-short indirect1-match1
+    cases-short cases-match1
+    iconj-short iconj-match1
+    econj-short econj-match1
+    mp-short mp-match1
+    deduct-short deduct-match1 itruth-short itruth-match1
+))
+;;; category: srule
+(export '(indirect2 cases iconj econj mp deduct indirect1))
+;;; category: mexpr
+(export '(indirect2 cases iconj econj mp deduct indirect1))
+;;;) (end of file ml2-logic1)
+
+;;; file: (ml1-logic0
+;;; category: function
+(export
+ '(same-legal-wffs same-legal-hyps same-legal same-match same-hyp-defaults
+    same-defaults same-enter same-build lemma-legal-wffs lemma-legal-hyps
+    lemma-legal lemma-match lemma-hyp-defaults lemma-defaults lemma-enter
+    lemma-build hyp-legal-wffs hyp-legal-hyps hyp-legal hyp-match
+    hyp-hyp-defaults hyp-defaults hyp-enter hyp-build
+    same-short same-match1
+    lemma-short lemma-match1
+    hyp-short hyp-match1
+))
+;;; category: srule
+(export '(same lemma hyp))
+;;; category: mexpr
+(export '(same lemma hyp))
+;;;) (end of file ml1-logic0)
+
+;;; file: (ml2-prior
+;;; category: context
+(export
+ '(rules-6-equality rules-8-lambda rules-5-subst rules-7-defn rules-3-neg
+		  rules-4-quant rules-2-prop rules-1-misc))
+(export '(typesubst typesubst-defaults typesubst-legal typesubst-build))
+
+
+;;; category: mexpr
+(export '(assert rulep))
+;;; category: macro
+(export '(defhint defprior))
+;;; category: flag-mode
+(export '(math-logic-2-mode))
+;;; category: flag
+(export '(rulep-mainfn-list rulep-mainfn-type))
+(export '(rulep-mainfn)) ;; added 7/31/87 dan
+;;; category: function
+(export '(rulep-mainfun))  ;; added 7/31/87 dan
+;;; category: tps-file
+(export '(ml2-prior))
+;;;) (end of file ml2-prior)
+;;;) (end of package math-logic-2-rules)
+
+
+;;; package: (math-logic-1-rules
+
+;;; file: (ml1-logic4
+;;; category: function
+(export
+ '(subst-wff-legal-wffs subst-wff-legal-hyps subst-wff-legal subst-wff-match
+  subst-wff-hyp-defaults subst-wff-defaults subst-wff-enter subst-wff-build
+  subst-term-legal-wffs subst-term-legal-hyps subst-term-legal subst-term-match
+  subst-term-hyp-defaults subst-term-defaults subst-term-enter subst-term-build
+  idef-legal-wffs idef-legal-hyps idef-legal idef-match idef-hyp-defaults
+  idef-defaults idef-enter idef-build edef-legal-wffs edef-legal-hyps edef-legal
+  edef-match edef-hyp-defaults edef-defaults edef-enter edef-build ab*-legal-wffs
+  ab*-legal-hyps ab*-legal ab*-match ab*-hyp-defaults ab*-defaults ab*-enter
+  ab*-build abe-legal-wffs abe-legal-hyps abe-legal abe-match abe-hyp-defaults
+  abe-defaults abe-enter abe-build abu-legal-wffs abu-legal-hyps abu-legal
+  abu-match abu-hyp-defaults abu-defaults abu-enter abu-build imp-disj-legal-wffs
+  imp-disj-legal-hyps imp-disj-legal imp-disj-match imp-disj-hyp-defaults
+  imp-disj-defaults imp-disj-enter imp-disj-build disj-imp-legal-wffs
+  disj-imp-legal-hyps disj-imp-legal disj-imp-match disj-imp-hyp-defaults
+  disj-imp-defaults disj-imp-enter disj-imp-build
+  abu-match1 abu-short disj-imp-match1 disj-imp-short
+  imp-disj-match1 imp-disj-short idef-short idef-match1
+  edef-short edef-match1 ab*-match1 ab*-short abe-match1 abe-short))
+;;; category: srule
+(export '(subst-wff subst-term idef edef ab* abe abu imp-disj disj-imp))
+;;; category: mexpr
+(export '(subst-wff subst-term idef edef ab* abe abu imp-disj disj-imp))
+;;;) (end of file ml1-logic4)
+
+;;; file: (ml1-logic3
+;;; category: function
+(export
+ '(pullneg-legal-wffs pullneg-legal-hyps pullneg-legal pullneg-match
+    pullneg-hyp-defaults pullneg-defaults pullneg-enter pullneg-build
+    pushneg-legal-wffs pushneg-legal-hyps pushneg-legal pushneg-match
+    pushneg-hyp-defaults pushneg-defaults pushneg-enter pushneg-build))
+;;; category: srule
+(export '(pullneg pushneg))
+;;; category: mexpr
+(export '(pullneg pushneg))
+;;;) (end of file ml1-logic3)
+
+;;; file: (ml1-logic4
+;;; category: function
+(export
+ '(egen-legal-wffs egen-legal-hyps egen-legal egen-match egen-hyp-defaults
+    egen-defaults egen-enter egen-build rulec-legal-wffs rulec-legal-hyps
+    rulec-legal rulec-match rulec-hyp-defaults rulec-defaults rulec-enter
+    rulec-build ui-legal-wffs ui-legal-hyps ui-legal ui-match ui-hyp-defaults
+    ui-defaults ui-enter ui-build ugen-legal-wffs ugen-legal-hyps ugen-legal
+    ugen-match ugen-hyp-defaults ugen-defaults ugen-enter ugen-build))
+;;; category: srule
+(export '(#-:ergo egen rulec ui ugen))
+;;; category: mexpr
+(export '(#-:ergo egen rulec ui ugen))
+;;;) (end of file ml1-logic2)
+
+;;; file: (ml1-logic1
+;;; category: function
+(export
+ '(indirect-legal-wffs indirect-legal-hyps indirect-legal indirect-match
+    indirect-hyp-defaults indirect-defaults indirect-enter indirect-build
+    idisj-left-legal-wffs idisj-left-legal-hyps idisj-left-legal idisj-left-match
+    idisj-left-hyp-defaults idisj-left-defaults idisj-left-enter idisj-left-build
+    idisj-right-legal-wffs idisj-right-legal-hyps idisj-right-legal
+    idisj-right-match idisj-right-hyp-defaults idisj-right-defaults
+    idisj-right-enter idisj-right-build cases-legal-wffs cases-legal-hyps
+    cases-legal cases-match cases-hyp-defaults cases-defaults cases-enter
+    cases-build iconj-legal-wffs iconj-legal-hyps iconj-legal iconj-match
+    iconj-hyp-defaults iconj-defaults iconj-enter iconj-build econj-legal-wffs
+    econj-legal-hyps econj-legal econj-match econj-hyp-defaults econj-defaults
+    econj-enter econj-build mp-legal-wffs mp-legal-hyps mp-legal mp-match
+    mp-hyp-defaults mp-defaults mp-enter mp-build deduct-legal-wffs
+    deduct-legal-hyps deduct-legal deduct-match deduct-hyp-defaults
+    deduct-defaults deduct-enter deduct-build itruth-match 
+    itruth-enter itruth-build itruth-legal itruth-defaults))
+;;; category: srule
+(export '(indirect idisj-left idisj-right cases iconj econj mp deduct itruth))
+;;; category: mexpr
+(export '(indirect idisj-left idisj-right cases iconj econj mp deduct itruth))
+;;;) (end of file ml1-logic1)
+
+;;; file: (ml1-logic0
+;;; category: function
+(export
+ '(same-legal-wffs same-legal-hyps same-legal same-match same-hyp-defaults
+    same-defaults same-enter same-build lemma-legal-wffs lemma-legal-hyps
+    lemma-legal lemma-match lemma-hyp-defaults lemma-defaults lemma-enter
+    lemma-build hyp-legal-wffs hyp-legal-hyps hyp-legal hyp-match
+    hyp-hyp-defaults hyp-defaults hyp-enter hyp-build))
+;;; category: srule
+(export '(same lemma hyp))
+;;; category: mexpr
+(export '(same lemma hyp))
+;;;) (end of file ml1-logic0)
+
+;;; file: (ml1-prior
+;;; category: context
+(export
+ '(rules-5-subst rules-7-defn rules-3-neg
+		  rules-4-quant rules-2-prop rules-1-misc))
+;*;(export '(subst-rules defn-rules neg-rules quant-rules prop-rules
+;*;                      misc-rules))
+;;; category: macro
+(export '(defhint defprior))
+;;; category: flag-mode
+(export '(math-logic-1-mode))
+;;;) (end of file ml1-prior)
+;;;) (end of package math-logic-1-rules)
+
+
+;;; package: (math-logic-2-exercises
+
+;;; file: (ml2-theorems
+;;; category: context
+(export '(ml2-exercises))
+;;; category: theorem
+(export
+ '(x8030a x6201 x6106 x6105 x6104 x6101 x6004 x5500 x5310 x5309 x5308 
+x5305 x5304 x5212 x5211 x5210 x5209 x5208 x5207 x5206
+  x5205 x5204 x5203 x5202 x5201 x5200 x5303))
+;;; category: function
+;*; now in core.exp. file theorem-mac -	si (3-2-87)
+;*;(export '(allow-all-help allow-all))
+;;;) (end of file ml2-theorems)
+;;;) (end of package math-logic-2-exercises)
+
+
+;;; package: (math-logic-1-exercises
+
+;;; file: (ml1-theorems
+;;; category: context
+(export '(ml1-exercises))
+;;; category: theorem
+(export
+ '(x2138 x2137 x2136 x2135 x2134 x2133 x2132 x2131 x2130 x2129 x2128 x2127 x2126
+  x2125 x2124 x2123 x2122 x2121 x2120 x2119 x2118 x2117 x2116 x2115 x2114 x2113
+  x2112 x2111 x2110 x2109 x2108 x2107 x2106))
+;;; category: function
+(export
+ '(disallow-rulep-help disallow-rulep allow-all-help allow-all allow-rulep-help
+    allow-rulep assoc-left))
+;;;) (end of file ml1-theorems)
+;;;) (end of package math-logic-1-exercises)
+
+
+;;; package: (math-logic-2-wffs
+
+;;; file: (ml2-abbrev2
+;;; category: binder
+(export '(mu-bind existsn foralln that exists1))
+;;; category: abbrev
+(export '(recursion mu finite  nat one succ zero nc eqp sigma1 sigma pi))
+;;;) (end of file ml2-abbrev2)
+
+;;; file: (ml2-abbrev
+;;; category: context
+(export '(abbrev-set-ops))
+;;; category: abbrev
+(export
+ '(unitset powerset % complement setintersect setunion equivs setequiv
+	   intersect subset equiv))
+;;; category: binder
+(export '(exists forall))
+;;; category: tps-file
+(export '(ml2-abbrev))
+;;;) (end of file ml2-abbrev)
+
+;;; file: (ml2-const
+;;; category: logconst
+(export '(implies))
+;;; category: pmpropsym
+(export '(iota))
+;;; category: typeconst
+(export '(i o))
+;;; category: tps-mode
+(export '(ml))
+;;; category: tps-file
+(export '(ml2-const))
+;;;) (end of file ml2-const)
+;;;) (end of package math-logic-2-wffs)
+
+
+;;; package: (math-logic-1-wffs
+
+;;; file: (ml1-abbrev
+;;; category: abbrev
+(export '(equiv))
+;;; category: tps-file
+(export '(ml1-abbrev))
+;;;) (end of file ml1-abbrev)
+
+;;; file: (ml1-const
+;;; category: binder
+(export '(exists forall))
+;;; category: logconst
+(export '(implies))
+;;; category: typeconst
+(export '(i o))
+;;; category: tps-file
+(export '(ml1-const))
+;;;) (end of file ml1-const)
+;;;) (end of package math-logic-1-wffs)
+
+;;; package: ml-tactics
+;;; file: ml-tactics-aux
+(export '(
+;;; file
+ ml-tactics-aux
+;;; tactic
+ universal-goal-p
+))
+;;; file: ml-tactics-prop
+(export '(
+;;; file
+ ml-tactics-prop
+;;; tactic
+ same-tac deduct-tac mp-tac econj-tac econj*-tac iconj-tac iconj*-tac cases-tac indirect-tac truth-tac
+ pushneg-tac pullneg-tac ineg-tac disj-imp-tac imp-disj-tac implics-equiv-tac
+ equiv-implics-tac indirect2-tac prop-prim propositional rulep-tac absurd-tac
+ eneg-tac
+))
+;;; file: ml-tactics-quant
+(export '(
+;;; file
+ ml-tactics-quant
+;;; tactic
+ ugen-tac ui-tac rulec-tac egen-tac abu-tac quantificational fol*
+idef-tac edef-tac sym=-tac lexpd*-tac lexpd*-beta-tac lexpd*-eta-tac 
+lcontr*-tac lcontr*-beta-tac lcontr*-eta-tac lexpd*-vary-tac lcontr*-vary-tac
+beta-eta-together-tac beta-only-tac beta-eta-separate-tac equiv-eq-expd-tac equiv-eq-contr-tac
+;;; function
+ get-wff
+))
+;;; package: ml-etr-tactics
+;;; file: ml-etr-tactics-main
+(export '(ml-etr-tactics-main
+	  rewrite-pline-tac rewrite-sline-tac
+          complete-transform-tac complete-transform*-tac pfenning-tac
+	  pfenning*-tac
+	  ))
+;;; file: ml-etr-tactics-book
+(export '(ml-etr-tactics-book unsponsor-tac unnec-exp-tac book-tac))
+;;; file: ml-etr-tactics-sline
+(export '(ml-etr-tactics-sline
+	  neg-neg-sline-tac neg-and-sline-tac neg-or-sline-tac 
+	  neg-imp-sline-tac neg-equal-sline-tac
+	  neg-sel-sline-tac neg-exp-sline-tac equiv-disj-tac
+	  equiv-wffs-sline-tac ab-sline-tac ruleq-sline-tac
+	  sline-tac lcontr*-tac lcontr*-beta-tac lcontr*-eta-tac
+	  rewrite-sline-p-tac absurd-tac
+	  neg-sline-p-tac equality-sline-tac neg-rew-sline-tac
+	  leibniz=-sline-tac ext=-sline-tac))
+;;; file: ml-etr-tactics-pline
+(export '(ml-etr-tactics-pline 
+          idisj-left-tac idisj-right-tac pline-tac truth-tac iness-pline-tac
+	  idisj-tac disj-equiv-tac
+	  class-disj-tac equiv-wffs-plan-tac
+	  ab-plan-tac ruleq-plan-tac
+	  neg-neg-plan-tac neg-and-plan-tac neg-or-plan-tac
+	  neg-imp-plan-tac 
+	  neg-sel-plan-tac neg-exp-plan-tac
+	  rewrite-pline-p-tac neg-pline-p-tac
+	  restrict-mating-tac neg-rew-plan-tac
+	  equality-plan-tac lexpd*-tac lexpd*-beta-tac lexpd*-eta-tac 
+	  leibniz=-plan-tac ext=-plan-tac))
+;;; file: ml-etr-tactics-eq
+(export '(ml-etr-tactics-eq
+          refl=-tac
+          subst=l-tac subst=r-tac subst=-tac))
+;;; file: ml-etr-tactics-neg
+(export '(eneg-tac
+	   neg-atom-elim-tac neg-neg-elim-tac neg-and-elim-tac
+	    neg-imp-elim-tac neg-univ-elim-tac
+	    neg-exists-elim-simple-tac neg-exists-elim-dup-tac
+	    neg-or-elim-simple-tac neg-or-elim-dup-tac
+	    neg-equal-elim-tac))
+;;; file: ml-etr-tactics-symsimp
+(export '(exists-lemma-tac or-lemma-left-tac or-lemma-right-tac or-lemma-tac
+			   symsimp-tac))
+
+;;; file: ml-etr-tactics-symsimp2
+(export '(backchain-lemma-tac subst=-backchain-lemma-tac ))
+
+
+;;; end package ml-tactics
+
+
+;;; package: tactics-nd
+;;; file: master-tactic
+(export '(monstro-tac prop-intro-rules-tac prop-elim-rules-tac
+	  elim-defns-tac sub=-tac indirect-exists-pline-tac
+	  ui-herbrand-tac ui-herbrand-limit))
+
+
+;;;cleaning up (mb 8/11/94)
+(export '(indirect-disj-pline-tac ext=-tac ext=0-tac book-theorems))
+(export '(contexts-ml master-tactic ml-etr-tactics-symsimp ml-etr-tactics-symsimp2 
+		      ml-mode ml-nat-etr1 ml-nat-etr2 ml1-logic-3b ml1-theorems 
+		      ml2-abbrev2 ml2-axioms ml2-replace ml2-theorems
+		      ml-etr-tactics-neg cases3 cases4 assoc-left rulec1
+		      idisj-left idisj-right subst-equiv rewrite1 unrewrite1 rewrite*
+		      unrewrite*))
+
+(export '(x2200 x2201 x2202 x2203 x2204 x2205 x2206 x2207 x2208 x2209 x2210 x2211 x2212 x2213 x2214))
+(export '(use-rrules simplify-plan simplify-supp simplify-plan* simplify-supp* unrewrite-plan* 
+		     ext-leib disj-imp-l disj-imp-r imp-disj-l imp-disj-r rewrite-supp* unrewrite-plan1 rewrite-supp1 ))
+(export '(nnf nnf-expand nnf-tac BASIC-PROP-TAC))
+
+; new tactic for dealing with nonleaf conns - cebrown 11/29/00
+(export '(DUPLICATE-SUPPORT-TAC))
+

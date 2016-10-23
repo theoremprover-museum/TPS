@@ -1,0 +1,56 @@
+(:name THEO-SILLY
+:type THEORY
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description THEO-SILLY
+:needed-objects   (THM15B MODE-THM15B-MSV ADD-A ADD-B PLUS)
+:mhelp "theory of nothing in particular"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THEO1
+:type THEORY
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description THEO1
+:needed-objects   (ADD-A ADD-B)
+:mhelp "theory of arithmetic, sort of"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THEO2
+:type THEORY
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description THEO2
+:needed-objects   (THEO1 ONE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THEO3
+:type THEORY
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description THEO3
+:needed-objects   (THEO2 X2112 EQUIVS)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

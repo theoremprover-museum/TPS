@@ -1,0 +1,6 @@
+#csh -f
+lisp -I /whatever/tps/tps3.dxl -- -javainterface cd /whatever/tps/java/ \; /usr/bin/java TpsWin $* > /dev/null
+
+
+
+

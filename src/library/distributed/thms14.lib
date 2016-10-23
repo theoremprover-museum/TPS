@@ -1,0 +1,364 @@
+(:name T145
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL R(OAA) FORALL U(A(OA)).TRANSITIVE(O(OAA)) R(OAA) AND FORALL s(OA) [FORALL z(A) [s(OA) z(A) IMPLIES R(OAA) z(A).U(A(OA)) s(OA)] AND FORALL j(A).FORALL k(A) [s(OA) k(A) IMPLIES R(OAA) k(A) j(A)] IMPLIES R(OAA) [U(A(OA)) s(OA)] j(A)] IMPLIES FORALL f(AA).FORALL x(A) FORALL y(A) [R(OAA) x(A) y(A) IMPLIES R(OAA) [f(AA) x(A)].f(AA) y(A)] IMPLIES EXISTS w(A).R(OAA) w(A) [f(AA) w(A)] AND R(OAA) [f(AA) w(A)] w(A)"
+:needed-objects   (TRANSITIVE)
+:mhelp "Tarski's Fixed Point Theorem for Lattices;
+formulation due to Coquand;
+abstract version of THM2;
+In a complete lattice, every monotone function has a fixed point;
+U s is the least upper bound of the set S;
+R is a reflexive ordering, but we seem not to need reflexivity.
+find the fixed point [LAMBDA x(A). R(OAA) x .f x"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name T146
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL r(OII) FORALL x(I) FORALL y(I).FORALL p(OII) [r(OII) SUBRELATION(O(OII)(OII)) p(OII) AND FORALL u(I) FORALL v(I) FORALL w(I) [p(OII) u(I) v(I) AND r(OII) v(I) w(I) IMPLIES p(OII) u(I) w(I)] IMPLIES p(OII) x(I) y(I)] EQUIV FORALL p(OII).r(OII) SUBRELATION(O(OII)(OII)) p(OII) AND TRANSITIVE(O(OII)) p(OII) IMPLIES p(OII) x(I) y(I)"
+:needed-objects   (SUBRELATION TRANSITIVE)
+:mhelp "Equivalence of two definitions of transitive closure.
+Theorem suggested by Dana Scott."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name T146A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Friday, May 29, 1998 at 15:04:01."
+:description "FORALL r(OII) FORALL x(I) FORALL y(I).FORALL p(OII) [r(OII) SUBRELATION(O(OII)(OII)) p(OII) AND FORALL u(I) FORALL v(I) FORALL w(I) [p(OII) u(I) v(I) AND r(OII) v(I) w(I) IMPLIES p(OII) u(I) w(I)] IMPLIES p(OII) x(I) y(I)] IMPLIES FORALL p(OII).r(OII) SUBRELATION(O(OII)(OII)) p(OII) AND TRANSITIVE(O(OII)) p(OII) IMPLIES p(OII) x(I) y(I)"
+:needed-objects   (SUBRELATION TRANSITIVE)
+:mhelp "Half of T146"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name T146B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL r(OII) FORALL x(I) FORALL y(I).FORALL p(OII) [r(OII) SUBRELATION(O(OII)(OII)) p(OII) AND TRANSITIVE(O(OII)) p(OII) IMPLIES p(OII) x(I) y(I)] IMPLIES FORALL p(OII).r(OII) SUBRELATION(O(OII)(OII)) p(OII) AND FORALL u(I) FORALL v(I) FORALL w(I) [p(OII) u(I) v(I) AND r(OII) v(I) w(I) IMPLIES p(OII) u(I) w(I)] IMPLIES p(OII) x(I) y(I)"
+:needed-objects   (SUBRELATION TRANSITIVE)
+:mhelp "Other half of T146"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM140
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:43."
+:description "IND AND DOUBLE(OII) 0(I) 0(I) AND FORALL x(I) FORALL y(I) [DOUBLE(OII) x(I) y(I) IMPLIES DOUBLE(OII) [S(II) x(I)].S(II).S(II) y(I)] IMPLIES FORALL x(I) EXISTS y(I) DOUBLE(OII) x(I) y(I)"
+:needed-objects   (IND)
+:mhelp "DOUBLE x y means 2x = y. DOUBLE is a total function.
+Suggested by Pfenning."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM141
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:43."
+:description "FORALL f(II).EXISTS g(II) [f(II) COMPOSE(II(II)(II)) g(II) =(O(II)(II)) g(II) COMPOSE(II(II)(II)) f(II) AND EXISTS x(I).g(II) x(I) =(OII) x(I) AND FORALL z(I).g(II) z(I) =(OII) z(I) IMPLIES z(I) =(OII) x(I)] IMPLIES EXISTS y(I).f(II) y(I) =(OII) y(I)"
+:needed-objects   (COMPOSE)
+:mhelp "If some function which commutes with f has a unique fixed point,
+then f has a fixed point.
+Easier variant of THM15."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM142
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL a(OAB) FORALL y(A) FORALL r(OB).r(OB) =(O(OB)(OB)) LAMBDA j(B) [y(A) IN(O(OA)A) a(OAB) j(B)] IMPLIES EXISTS p(O(OB)(OB)) FORALL s(OB).y(A) IN(O(OA)A) SETINTERSECT(OA(O(OA))) [%(O(OA)(OB)(OAB)) a(OAB) s(OB)] EQUIV p(O(OB)(OB)) r(OB) s(OB)"
+:needed-objects   (IN)
+:mhelp "Lemma used in proving Principle of Inclusion and Exclusion;
+TPS must find that [p r s] should be [s is a subset of r]"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM143
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 29, 1997 at 17:38:52."
+:description "FORALL h(I(OI)).FORALL p(OI) FORALL q(OI) [h(I(OI)) p(OI) =(OII) h(I(OI)) q(OI) IMPLIES p(OI) =(O(OI)(OI)) q(OI)] AND d(OI) =(O(OI)(OI)) %(OI(O(OI))(I(OI))) h(I(OI)) [LAMBDA s(OI).~s(OI).h(I(OI)) s(OI)] IMPLIES ~d(OI).h(I(OI)) d(OI)"
+:needed-objects   NIL
+:mhelp "Essentially a lemma for the Injective Cantor Theorem X5309.
+Also see X5309a, THM118, and THM143A."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM143B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, January  4, 2000 at 15:17:18."
+:description "FORALL h(I(OI)).FORALL p(OI) FORALL q(OI) [h(I(OI)) p(OI) =(OII) h(I(OI)) q(OI) IMPLIES p(OI) =(O(OI)(OI)) q(OI)] IMPLIES ~IDIAG h(I(OI)).h(I(OI)).IDIAG h(I(OI))"
+:needed-objects   (IDIAG)
+:mhelp "Essentially a lemma for the Injective Cantor Theorem X5309.
+Also see X5309a, THM118, THM143, and THM143A"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM143C
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL h(I(OI)).FORALL p(OI) FORALL q(OI) [h(I(OI)) p(OI) =(OII) h(I(OI)) q(OI) IMPLIES p(OI) =(O(OI)(OI)) q(OI)] IMPLIES ~h(I(OI)) D-FOR-X5309 IN(O(OI)I) D-FOR-X5309"
+:needed-objects   (IN D-FOR-X5309)
+:mhelp "Essentially a lemma for the Injective Cantor Theorem X5309.
+Also see X5309a, THM118, THM143, THM143A, and THM143B."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM143D
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Friday, February 15, 2002 at 14:55:00."
+:description "FORALL h(I(OI)).INJECTIVE(O(I(OI))) h(I(OI)) IMPLIES ~IDIAG h(I(OI)).h(I(OI)).IDIAG h(I(OI))"
+:needed-objects   (INJECTIVE IDIAG)
+:mhelp "LEMMA FOR X5309A"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM144
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:45."
+:description "FORALL h(I(OI)) FORALL d(OI).d(OI) =(O(OI)(OI)) %(OI(O(OI))(I(OI))) h(I(OI)) [LAMBDA s(OI).~s(OI).h(I(OI)) s(OI)] IMPLIES d(OI).h(I(OI)) d(OI)"
+:needed-objects   NIL
+:mhelp "Essentially a lemma for the Injective Cantor Theorem X5309.
+Also see X5309a, THM118, THM143, THM143A, and THM144A."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM144A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:46."
+:description "FORALL h(I(OI)) %(OI(O(OI))(I(OI))) h(I(OI)) [LAMBDA s(OI).~s(OI).h(I(OI)) s(OI)].h(I(OI)).%(OI(O(OI))(I(OI))) h(I(OI)).LAMBDA s(OI).~s(OI).h(I(OI)) s(OI)"
+:needed-objects   NIL
+:mhelp "Essentially a lemma for the Injective Cantor Theorem X5309.
+Also see X5309a, THM118, THM143, THM143A, and THM144"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM144B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, January  4, 2000 at 15:18:41."
+:description "FORALL h(I(OI)) IDIAG h(I(OI)).h(I(OI)).IDIAG h(I(OI))"
+:needed-objects   (IDIAG)
+:mhelp "Essentially a lemma for the Injective Cantor Theorem X5309.
+Also see X5309a, THM118, THM143, THM143A, THM143B, THM144, THM143A"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM144C
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL h(I(OI)).h(I(OI)) D-FOR-X5309 IN(O(OI)I) D-FOR-X5309"
+:needed-objects   (IN D-FOR-X5309)
+:mhelp "Essentially a lemma for the Injective Cantor Theorem X5309.
+Also see THM144b"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM145A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL U(A(OA)).[TRANSITIVE(O(OAA)) LESSEQ(OAA)] AND FORALL s(OA) [FORALL z(A) [s(OA) z(A) IMPLIES z(A) LESSEQ(OAA) U(A(OA)) s(OA)] AND FORALL j(A).FORALL k(A) [s(OA) k(A) IMPLIES k(A) LESSEQ(OAA) j(A)] IMPLIES U(A(OA)) s(OA) LESSEQ(OAA) j(A)] IMPLIES FORALL f(AA).FORALL x(A) FORALL y(A) [x(A) LESSEQ(OAA) y(A) IMPLIES f(AA) x(A) LESSEQ(OAA) f(AA) y(A)] IMPLIES EXISTS w(A).w(A) LESSEQ(OAA) f(AA) w(A) AND f(AA) w(A) LESSEQ(OAA) w(A)"
+:needed-objects   (TRANSITIVE LESSEQ)
+:mhelp "Tarski's (actually Knaster's) Fixed Point Theorem for Lattices;
+formulation due to Coquand;
+In a complete lattice, every monotone function has a fixed point;
+U s is the least upper bound of the set S"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM145L1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL U(A(OA)).TRANSITIVE(O(OAA)) LQ(OAA) AND FORALL s(OA) [FORALL z(A) [s(OA) z(A) IMPLIES LQ(OAA) z(A).U(A(OA)) s(OA)] AND FORALL j(A).FORALL k(A) [s(OA) k(A) IMPLIES LQ(OAA) k(A) j(A)] IMPLIES LQ(OAA) [U(A(OA)) s(OA)] j(A)] IMPLIES FORALL f(AA).FORALL x(A) FORALL y(A) [LQ(OAA) x(A) y(A) IMPLIES LQ(OAA) [f(AA) x(A)].f(AA) y(A)] IMPLIES EXISTS w(A).LQ(OAA) w(A) [f(AA) w(A)] AND LQ(OAA) [f(AA) w(A)] w(A)"
+:needed-objects   (TRANSITIVE)
+:mhelp "Alphabetic variant of THM145A, but without infix constant."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM146
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Monday, November 23, 1998 at 18:12:16."
+:description "FORALL r(OII) FORALL x(I) FORALL y(I).FORALL p(OII) [r(OII) SUBRELATION(O(OII)(OII)) p(OII) AND TCLOSED p(OII) r(OII) IMPLIES p(OII) x(I) y(I)] EQUIV FORALL p(OII).r(OII) SUBRELATION(O(OII)(OII)) p(OII) AND TRANSITIVE(O(OII)) p(OII) IMPLIES p(OII) x(I) y(I)"
+:needed-objects   (SUBRELATION TRANSITIVE TCLOSED)
+:mhelp "Equivalence of two definitions of transitive closure.
+Theorem suggested by Dana Scott."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM147
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, June  3, 1997 at 16:24:21."
+:description "~.FORALL p(I) FORALL q(I) [~T(OI) [imp(III) p(I) q(I)] OR ~T(OI) p(I) OR T(OI) q(I)] AND FORALL p(I) FORALL q(I) T(OI) [imp(III) p(I).imp(III) q(I) p(I)] AND FORALL p(I) FORALL q(I) FORALL r(I) T(OI) [imp(III) [imp(III) p(I).imp(III) q(I) r(I)].imp(III) [imp(III) p(I) q(I)].imp(III) p(I) r(I)] AND FORALL p(I) FORALL q(I) T(OI) [imp(III) [imp(III) [nt(II) p(I)].nt(II) q(I)].imp(III) q(I) p(I)] AND EXISTS a(I).~T(OI).imp(III) a(I) a(I)"
+:needed-objects   NIL
+:mhelp "Related to lcl077-1, but simpler;
+theorem 211 on page 120 of Church's book"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM148
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:47."
+:description "FORALL r(OAA).FORALL x(A) FORALL y(A) r(OAA) x(A) y(A) EQUIV FORALL p(A(AAA)).p(A(AAA)) INREL1(O(OAA)(A(AAA))) r(OAA)"
+:needed-objects   (INREL1)
+:mhelp "Basic theorem about representing relations in terms of ordered pairs.
+     Essentially the same as THM184."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM149
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:48."
+:description "FORALL r(OAA).EXISTS x(A) EXISTS y(A) r(OAA) x(A) y(A) EQUIV EXISTS p(A(AAA)).p(A(AAA)) INREL1(O(OAA)(A(AAA))) r(OAA)"
+:needed-objects   (INREL1)
+:mhelp "Basic theorem about representing relations in terms of ordered pairs.
+  Essentially the same as THM185"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM145L
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, May 21, 2002 at 10:49:48."
+:description "FORALL L(OAA) FORALL U(A(OA)).TRANSITIVE(O(OAA)) L(OAA) AND FORALL s(OA) [FORALL z(A) [s(OA) z(A) IMPLIES L(OAA) z(A).U(A(OA)) s(OA)] AND FORALL j(A).FORALL k(A) [s(OA) k(A) IMPLIES L(OAA) k(A) j(A)] IMPLIES L(OAA) [U(A(OA)) s(OA)] j(A)] IMPLIES FORALL f(AA).FORALL x(A) FORALL y(A) [L(OAA) x(A) y(A) IMPLIES L(OAA) [f(AA) x(A)].f(AA) y(A)] IMPLIES EXISTS w(A).L(OAA) w(A) [f(AA) w(A)] AND L(OAA) [f(AA) w(A)] w(A)"
+:needed-objects   (TRANSITIVE)
+:mhelp "Alphabetic variant of THM145"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM145L2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL U(A(OA)).TRANSITIVE(O(OAA)) LESSQ(OAA) AND FORALL s(OA) [FORALL z(A) [s(OA) z(A) IMPLIES LESSQ(OAA) z(A).U(A(OA)) s(OA)] AND FORALL j(A).FORALL k(A) [s(OA) k(A) IMPLIES LESSQ(OAA) k(A) j(A)] IMPLIES LESSQ(OAA) [U(A(OA)) s(OA)] j(A)] IMPLIES FORALL f(AA).FORALL x(A) FORALL y(A) [LESSQ(OAA) x(A) y(A) IMPLIES LESSQ(OAA) [f(AA) x(A)].f(AA) y(A)] IMPLIES EXISTS w(A).LESSQ(OAA) w(A) [f(AA) w(A)] AND LESSQ(OAA) [f(AA) w(A)] w(A)"
+:needed-objects   (TRANSITIVE)
+:mhelp "Alphabetic variant of THM145A, but without infix constant."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM145B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Friday, May 14, 2004 at  3:20:41."
+:description "[TRANSITIVE(O(OAA)) LESSEQ(OAA)] AND FORALL s(OA) [FORALL z(A) [s(OA) z(A) IMPLIES z(A) LESSEQ(OAA) U(A(OA)) s(OA)] AND FORALL j(A).FORALL k(A) [s(OA) k(A) IMPLIES k(A) LESSEQ(OAA) j(A)] IMPLIES U(A(OA)) s(OA) LESSEQ(OAA) j(A)] IMPLIES FORALL f(AA).FORALL x(A) FORALL y(A) [x(A) LESSEQ(OAA) y(A) IMPLIES f(AA) x(A) LESSEQ(OAA) f(AA) y(A)] IMPLIES EXISTS w(A).w(A) LESSEQ(OAA) f(AA) w(A) AND f(AA) w(A) LESSEQ(OAA) w(A)"
+:needed-objects   (TRANSITIVE LESSEQ)
+:mhelp "Tarski's (actually Knaster's) Fixed Point Theorem for Lattices;
+formulation due to Coquand;
+In a complete lattice, every monotone function has a fixed point;
+U s is the least upper bound of the set S"
+:other-attributes NIL
+:other-remarks "
+")
+
+

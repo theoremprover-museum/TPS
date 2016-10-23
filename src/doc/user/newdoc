@@ -1,0 +1,94 @@
+		NEWDOC
+
+Documentation not quite ready to go into manuals
+goes into newdoc in the appropriate directory.
+If it's not quite clear which manual it goes into,
+or if it needs to be divided up, put it into
+/afs/cs/project/tps/tps/doc/user/newdoc
+
+=======================================================================
+
+=======================================================================
+
+FACE: Introducing an object in tps as a logical constant is a convenient way
+of giving it the appropriate face. While abbrs inserted in the library can
+also be given a face, once in the editor they are be replaced by the wff they
+represent when the INSTALL command is used.
+
+MS Fri Jul  7 05:28:13 1995
+---------------------------
+
+(defwffop dissolve-weak*
+  (argtypes gwff)
+  (argnames gwff)
+  (resulttype gwff)
+  (mhelp "Replace all occurrences of any weak label in a gwff by the wff it represents, instead of just the top level occurrences as with dw or all occurrences of a particular label as is the case with delweak."))
+
+MS Sun Aug 13 22:40:04 1995 Hopefully the above message clarifies distinction between dw, dw* & delweak in one help message so one doesn't have to look up all three.
+---------------------------
+(defwffop NAME
+  (argtypes gwff)
+  (argnames gwff)
+  (resulttype gwff)
+  (mhelp "Assign a label to the CURRENT edwff, and replace the CURRENT edwff with this label. DW* undoes the above."))
+
+MS Sun Aug 13 22:43:12 1995 This is to point out that dw* & NAME are essentially antithetical.
+----------------------------
+
+LIBRARY
+
+		FACES
+
+Etering the FACE as  (I\sP\a\i\r) when putting ISPAIR1
+into the library 
+causes this abbreviation to be printed as IsPair
+
+=========================================================
+*10
+
+add to chapter 10 (Testing for Satisfiability) of TPS User's Manual
+
+pw x2120b
+~.        FORALL u(I) FORALL v(I) FORALL w(I) [P(OII) u v OR P v w]
+   IMPLIES FORALL x(I) FORALL y(I) P x y
+
+<MODELS:31>solve
+INVARS (GVARLIST): Input Variables [()]>
+OUTVARS (GVARLIST): Output Variables [()]>("P(OII)")
+WFF (GWFF0): Proposition [No Default]>x2120b
+Solving Complete
+Every input has a solution.
+There are 2 solutions.
+Solutions:
+Poii 11
+-----
+Poii 13
+
+<MODELS:41>pelts-rec
+TP (TYPESYM): Type ["I"]>"(OII)"
+There are 16 elements in "OII"
+0   K(EMPTY)
+1   |0>{0},1>EMPTY|
+2   |0>{1},1>EMPTY|
+3   |0>FULL,1>EMPTY|
+4   |0>EMPTY,1>{0}|
+5   K({0})
+6   |0>{1},1>{0}|
+7   |0>FULL,1>{0}|
+8   |0>EMPTY,1>{1}|
+9   =
+10   K({1})
+11   |0>FULL,1>{1}|
+12   |0>EMPTY,1>FULL|
+13   |0>{0},1>FULL|
+14   |0>{1},1>FULL|
+15   K(FULL)
+NIL
+
+Solution 11
+The domain of the model is FULL, which is {0,1}.
+ P maps 0 to FULL,  and 1 to {1}. Thus, the diagram is
+P00, P10, P11. One can see that this is a model for X2120b.
+
+Solution 13 is similar.
+=========================================================

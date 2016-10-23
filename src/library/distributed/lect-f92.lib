@@ -1,0 +1,210 @@
+(:name LTHM137
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL X(I) R(OII) X(I) A(I) IMPLIES EXISTS Y(I) R(OII) B(I) Y(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name LTHM47
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL X(I) FORALL Y(I).X(I) =(OII) Y(I) EQUIV FORALL R(OII).FORALL Z(I) R(OII) Z(I) Z(I) IMPLIES R(OII) X(I) Y(I)"
+:needed-objects   NIL
+:mhelp "same as thm47"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name LTHM52
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "[P(O) EQUIV Q(O) EQUIV R(O)] IMPLIES.P(O) EQUIV.Q(O) EQUIV R(O)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name LTHM76
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "Y(I) =(OII) X(I) IMPLIES X(I) =(OII) Y(I)"
+:needed-objects   NIL
+:mhelp "same as thm76"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name LTHM88
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL U(OA) FORALL V(OA).U(OA) SUBSET(O(OA)(OA)) V(OA) IMPLIES POWERSET(O(O(OA))(O(OA))) [POWERSET(O(OA)(OA)) U(OA)] SUBSET(O(O(O(OA)))(O(O(OA)))) POWERSET(O(O(OA))(O(OA))).POWERSET(O(OA)(OA)) V(OA)"
+:needed-objects   NIL
+:mhelp "Same as THM88"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name LX1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, June  3, 1997 at 16:13:19."
+:description "R(OII) A(I) B(I) AND FORALL X(I) [EXISTS Y(I) R(OII) X(I) Y(I) IMPLIES Q(OII) X(I) X(I)] AND FORALL U(I) FORALL V(I) [Q(OII) U(I) V(I) IMPLIES FORALL Z(I) R(OII) Z(I) V(I)] IMPLIES EXISTS W(I).R(OII) B(I) W(I) AND Q(OII) W(I) A(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name LX2107
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "R(OII) A(I) B(I) AND FORALL X(I) FORALL Y(I) [R(OII) X(I) Y(I) IMPLIES R(OII) Y(I) X(I) AND Q(OII) X(I) Y(I)] AND FORALL U(I) FORALL V(I) [Q(OII) U(I) V(I) IMPLIES Q(OII) U(I) U(I)] IMPLIES Q(OII) A(I) A(I) AND Q(OII) B(I) B(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name LX2108
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL X(I) EXISTS Y(I).P(OI) X(I) IMPLIES P(OI) Y(I)"
+:needed-objects   NIL
+:mhelp "x2108 in capital letters"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name LX2115
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL X(I) [EXISTS Y(I) P(OII) X(I) Y(I) IMPLIES FORALL Z(I) P(OII) Z(I) Z(I)] AND FORALL U(I) EXISTS V(I) [P(OII) U(I) V(I) OR M(OI) U(I) AND Q(OI).F(III) U(I) V(I)] AND FORALL W(I) [Q(OI) W(I) IMPLIES ~M(OI).G(II) W(I)] IMPLIES FORALL U(I) EXISTS V(I).P(OII) [G(II) U(I)] V(I) AND P(OII) U(I) U(I)"
+:needed-objects   NIL
+:mhelp "X2115 in capitals"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name LX2125
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS X(I) FORALL Y(I) [P(OI) X(I) EQUIV P(OI) Y(I)] EQUIV.EXISTS X(I) P(OI) X(I) EQUIV FORALL Y(I) P(OI) Y(I)"
+:needed-objects   NIL
+:mhelp "x2125 in capital letters"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name LX2129
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS X(I) FORALL Y(I) [P(OI) X(I) EQUIV P(OI) Y(I)] EQUIV [EXISTS X(I) Q(OI) X(I) EQUIV FORALL Y(I) P(OI) Y(I)] EQUIV.EXISTS X(I) FORALL Y(I) [Q(OI) X(I) EQUIV Q(OI) Y(I)] EQUIV.EXISTS X(I) P(OI) X(I) EQUIV FORALL Y(I) Q(OI) Y(I)"
+:needed-objects   NIL
+:mhelp "x2129 in capitals"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name LX2138
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL X(I) EXISTS Y(I) F(OII) X(I) Y(I) AND EXISTS X(I) FORALL E(I) EXISTS N(I) FORALL W(I) [S(OII) N(I) W(I) IMPLIES D(OIII) W(I) X(I) E(I)] AND FORALL E(I) EXISTS G(I) FORALL A(I) FORALL B(I) [D(OIII) A(I) B(I) G(I) IMPLIES FORALL Y(I) FORALL Z(I).F(OII) A(I) Y(I) AND F(OII) B(I) Z(I) IMPLIES D(OIII) Y(I) Z(I) E(I)] IMPLIES EXISTS Y(I) FORALL E(I) EXISTS M(I) FORALL W(I).S(OII) M(I) W(I) IMPLIES FORALL Z(I).F(OII) W(I) Z(I) IMPLIES D(OIII) Z(I) Y(I) E(I)"
+:needed-objects   NIL
+:mhelp "x2138 in capitals with one variable name changed"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name LX5209
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "POWERSET(O(OA)(OA)) [D(OA) INTERSECT(OA(OA)(OA)) E(OA)] =(O(O(OA))(O(OA))) POWERSET(O(OA)(OA)) D(OA) INTERSECT(O(OA)(O(OA))(O(OA))) POWERSET(O(OA)(OA)) E(OA)"
+:needed-objects   NIL
+:mhelp "same as x5209"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name LX5304
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "~EXISTS G(OAA) FORALL F(OA) EXISTS J(A).G(OAA) J(A) =(O(OA)(OA)) F(OA)"
+:needed-objects   NIL
+:mhelp "Cantor's Theorem. x5304 in capitals"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name LX5305
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL S(OA).~EXISTS G(OAA) FORALL F(OA).F(OA) SUBSET(O(OA)(OA)) S(OA) IMPLIES EXISTS J(A).S(OA) J(A) AND G(OAA) J(A) =(O(OA)(OA)) F(OA)"
+:needed-objects   NIL
+:mhelp "Cantor's Theorem. x5305 in capitals"
+:other-attributes NIL
+:other-remarks "
+")
+
+

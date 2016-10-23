@@ -1,0 +1,46 @@
+(:name NON-PRIM-ENUM1
+:type DPAIRSET
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description (
+("G(II(II)) g(II).g(II) a(I)"  .  "g(II).G(II(II)) g(II) a(I)")
+("G(II(II)) f(II).f(II) a(I)"  .  "f(II).G(II(II)) f(II) a(I)")
+("G(II(II))"  .  "*(II(II)(II(II))(II(II))) F1(II(II)) F2(II(II))")
+("F1(II(II))"  .  "+(II(II)(II(II))(II(II))) 2(II(II)) H1(II(II))")
+("F2(II(II))"  .  "+(II(II)(II(II))(II(II))) 2(II(II)) H2(II(II))")
+("2(II(II))"  .  "LAMBDA x(II) LAMBDA y(I) x(II).x(II) y(I)")
+("+(II(II)(II(II))(II(II)))"  .  "LAMBDA u(II(II)) LAMBDA v(II(II)) LAMBDA x(II) LAMBDA y(I) u(II(II)) x(II).v(II(II)) x(II) y(I)")
+("*(II(II)(II(II))(II(II)))"  .  "LAMBDA u(II(II)) LAMBDA v(II(II)) LAMBDA z(II) u(II(II)).v(II(II)) z(II)"))
+:needed-objects   NIL
+:mhelp "enumeration of all non prim (church-)numbers"
+:other-attributes ((VARIABLE-LIST (*<II<II><II<II>><II<II>>> +<II<II><II<II>><II<II>>> G<II<II>> 2<II<II>> F1<II<II>> F2<II<II>> H1<II<II>> H2<II<II>>)))
+:other-remarks "
+")
+
+
+(:name NON-PRIM-ENUM2
+:type DPAIRSET
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description (
+("suc(II(II)(II(II))).suc(II(II)(II(II))) H2(II(II))"  .  "H(II(II))")
+("suc(II(II)(II(II))).suc(II(II)(II(II))) H1(II(II))"  .  "G(II(II))")
+("suc(II(II)(II(II)))"  .  "LAMBDA u(II(II)) LAMBDA x(II) LAMBDA y(I) x(II).u(II(II)) x(II) y(I)")
+("*(II(II)(II(II))(II(II)))"  .  "LAMBDA u(II(II)) LAMBDA v(II(II)) LAMBDA z(II) u(II(II)).v(II(II)) z(II)")
+("*(II(II)(II(II))(II(II))) G(II(II)) H(II(II))"  .  "M(II(II))")
+("G(II(II)) h(II).h(II) a(I)"  .  "h(II).G(II(II)) h(II) a(I)")
+("G(II(II)) f(II).f(II) a(I)"  .  "f(II).G(II(II)) f(II) a(I)")
+("H(II(II)) g(II).g(II) a(I)"  .  "g(II).H(II(II)) g(II) a(I)")
+("H(II(II)) f(II).f(II) a(I)"  .  "f(II).H(II(II)) f(II) a(I)"))
+:needed-objects   NIL
+:mhelp "enumeration if non-prim-numbers
+"
+:other-attributes ((VARIABLE-LIST (*<II<II><II<II>><II<II>>> G<II<II>> H<II<II>> H1<II<II>> H2<II<II>> M<II<II>> |suc<II<II><II<II>>>|)))
+:other-remarks "
+")
+
+

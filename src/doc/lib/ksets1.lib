@@ -1,0 +1,50 @@
+@Marker(Library,KSets18,Dover)
+@Define(FixWidth, Use Format, Rightmargin -0.25inches, 
+			LongLines Wrap, FaceCode F, EOFOK)
+@Modify(Verbatim, LongLines Wrap)
+@SpecialFont<
+	F0="SAILA  18",
+	F1="SAILA  14",
+	F2="Math   18",
+	F3="Hippo  18",
+	F4="GACHA18BRR",
+	F5="CMSY20S10",
+	F6="Hippo  14",
+	F8="Math   14",
+	F9="CMathX18S10">
+
+
+@Marker(Library,KSets18,Postscript)
+
+@Define(FixWidth, Use Format, RightMargin -0.25inches, 
+		LongLines Wrap, FaceCode F, EOFOK)
+@Modify(Verbatim, LongLines Wrap, size 18)
+@comment<@modify(text, size 18)>
+
+
+@Define(T, FaceCode F)
+@Define(J, FaceCode J, size +2)
+@define(jsym, facecode J)
+@define(ksym, facecode K)
+@Define(B, FaceCode B)
+@Define(D, FaceCode D)
+@Define(E, FaceCode E)
+@define(jsym2, facecode J, size -2)
+
+@specialfont(F0="Helvetica",
+             F1="Helvetica",
+	     F2="Symbol",
+             F6="Symbol",
+         )
+@modify(F6, size -2)
+@modify(F1, size -2)
+
+@TextForm(F4="@B{@F0{@parm{text}}}",
+	  F10="@+{@F1{@parm{text}}}",
+	  F11="@-{@F1{@parm{text}}}",
+	  F12="@-{@F6{@parm{text}}}",
+	  F13="@ovp(/)@jsym{@parm{text}}",
+          overlinecap="@ovp<@parm(text)>@~
+                        @begin(transparent,script 1line)@~
+                        @ux<@hsp(1 quad)>@end(transparent)",
+)

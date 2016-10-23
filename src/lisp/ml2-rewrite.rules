@@ -1,0 +1,110 @@
+;;; ******************************************************************* ;;;
+;;;         (c) Copyrighted 1988 by Carnegie Mellon University.         ;;;
+;;;                        All rights reserved.                         ;;;
+;;;         This code was written as part of the TPS project.           ;;;
+;;;   If you want to use this code or any part of TPS, please contact   ;;;
+;;;               Peter B. Andrews (Andrews@CS.CMU.EDU)                 ;;;
+;;; ******************************************************************* ;;;
+;;; Updated contexts 7/20/87 DAN
+
+(context rewriting)
+
+(defirule rewrite-supp1
+  (lines (d1 (h) () "A(O)")
+	 (d2 (h) () "`(APPLY-RRULE-ANY A(O))" ("Rewrite" () (d1))))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Line before rewriting (lower-numbered)")
+	     (d2 "Line after rewriting (higher-numbered)")
+	     ("A(O)" "Wff before rewriting")
+	     (APPLY-RRULE-ANY "Wff after rewriting"))
+  (mhelp "Rewrite a supporting line using the first rewrite 
+rule that applies."))
+
+(defirule unrewrite-plan1
+  (lines (p1 (h) () "`(UNAPPLY-RRULE-ANY A(O))")
+	 (p2 (h) () "A(O)" ("Rewrite" () (p1))))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (itemshelp (p1 "Line before rewriting (lower-numbered)")
+	     (p2 "Line after rewriting (higher-numbered)")
+	     ("A(O)" "Wff after rewriting")
+	     (UNAPPLY-RRULE-ANY "Wff before rewriting"))
+  (mhelp "Justify a planned line using the first rewrite rule that 
+applies."))
+
+(defirule rewrite-supp*
+  (lines (d1 (h) () "A(O)")
+	 (d2 (h) () "`(APPLY-RRULE-ANY* A(O))" ("Rewrites" () (d1))))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Line before rewriting (lower-numbered)")
+	     (d2 "Line after rewriting (higher-numbered)")
+	     ("A(O)" "Wff before rewriting")
+	     (APPLY-RRULE-ANY* "Wff after rewriting"))
+  (mhelp "Rewrite a supporting line using all rewrite rules 
+possible."))
+
+(defirule unrewrite-plan*
+  (lines (p1 (h) () "`(UNAPPLY-RRULE-ANY* A(O))")
+	 (p2 (h) () "A(O)" ("Rewrites" () (p1))))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (itemshelp (p1 "Line before rewriting (lower-numbered)")
+	     (p2 "Line after rewriting (higher-numbered)")
+	     ("A(O)" "Wff after rewriting")
+	     (UNAPPLY-RRULE-ANY* "Wff before rewriting"))
+  (mhelp "Justify a planned line using all rewrite rules possible."))
+
+(defirule simplify-supp*
+  (lines (d1 (h) () "A(O)")
+	 (d2 (h) () "`(SIMPLIFY-DOWN* A(O))" ("Rewrite" () (d1))))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Line before rewriting (lower-numbered)")
+	     (d2 "Line after rewriting (higher-numbered)")
+	     ("A(O)" "Wff before rewriting")
+	     (SIMPLIFY-DOWN* "Wff after rewriting"))
+  (mhelp "Rewrite a supporting line using the first rewrite 
+rule that applies."))
+
+(defirule simplify-plan*
+  (lines (p1 (h) () "`(SIMPLIFY-UP* A(O))")
+	 (p2 (h) () "A(O)" ("Rewrite" () (p1))))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (itemshelp (p1 "Line before rewriting (lower-numbered)")
+	     (p2 "Line after rewriting (higher-numbered)")
+	     ("A(O)" "Wff after rewriting")
+	     (SIMPLIFY-UP* "Wff before rewriting"))
+  (mhelp "Justify a planned line using the first rewrite rule that 
+applies."))
+
+(defirule simplify-supp
+  (lines (d1 (h) () "A(O)")
+	 (d2 (h) () "`(SIMPLIFY-DOWN A(O))" ("Rewrite" () (d1))))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Line before rewriting (lower-numbered)")
+	     (d2 "Line after rewriting (higher-numbered)")
+	     ("A(O)" "Wff before rewriting")
+	     (SIMPLIFY-DOWN "Wff after rewriting"))
+  (mhelp "Rewrite a supporting line using the first rewrite 
+rule that applies."))
+
+(defirule simplify-plan
+  (lines (p1 (h) () "`(SIMPLIFY-UP A(O))")
+	 (p2 (h) () "A(O)" ("Rewrite" () (p1))))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (itemshelp (p1 "Line before rewriting (lower-numbered)")
+	     (p2 "Line after rewriting (higher-numbered)")
+	     ("A(O)" "Wff after rewriting")
+	     (SIMPLIFY-UP "Wff before rewriting"))
+  (mhelp "Justify a planned line using the first rewrite rule that 
+applies."))
+
+(defirule use-rrules
+  (lines (p1 (h) () "A(O)")
+	 (p2 (h) () "B(O)" ("Rewrite" () (p1))))
+  (restrictions (INSTANCE-OF-REWRITING "A(o)" "B(o)"))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (itemshelp (p1 "Line before rewriting (lower-numbered)")
+	     (p2 "Line after rewriting (higher-numbered)")
+	     ("A(O)" "Wff before rewriting")
+	     ("B(O)" "Wff after rewriting"))
+  (mhelp "Rewrite a line. The line may be rewritten several steps,
+but rewrites may not be nested."))
+

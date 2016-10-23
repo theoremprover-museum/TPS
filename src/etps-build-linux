@@ -1,0 +1,6 @@
+#csh -f
+cd /whatever/tps/
+\rm -f *bak
+mv makeetps.log makeetps.log.bak
+\rm -f bin/*fasl
+make etps > makeetps.log

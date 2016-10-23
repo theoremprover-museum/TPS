@@ -1,0 +1,11 @@
+;;NOTE: Put items of the form (qload "file.lisp")
+;;rather than (qload "file") into GRADER patch files.
+;;Otherwise, further changes to the changed files
+;;cause qload to try to compile the new version
+;;when non-EXPERTs start up GRADER; they have no write
+;;access to the bin directory, so everything crashes
+
+(qload "grades1.lisp")
+(qload "grades2.lisp")
+
+

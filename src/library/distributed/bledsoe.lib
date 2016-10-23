@@ -1,0 +1,28 @@
+(:name BLEDSOE-FENG-SV-EO1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS A(OI) FORALL x(I).A(OI) x(I) EQUIV ~A(OI).s(II) x(I)"
+:needed-objects   NIL
+:mhelp "clearly not a theorem until we put some hypotheses on s(ii)..."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BLEDSOE-FENG-SV-IMV-SOL
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL r(OII) FORALL f(II) FORALL 0(I).FORALL A(OI) [EXISTS l(I) A(OI) l(I) AND EXISTS u(I) FORALL x(I) [A(OI) x(I) IMPLIES r(OII) x(I) u(I)] IMPLIES EXISTS l(I).FORALL x(I) [A(OI) x(I) IMPLIES r(OII) x(I) l(I)] AND FORALL y(I).FORALL x(I) [A(OI) x(I) IMPLIES r(OII) x(I) y(I)] IMPLIES r(OII) l(I) y(I)] AND FORALL x(I) [r(OII) 0(I) [f(II) x(I)] IMPLIES EXISTS t(I).r(OII) t(I) x(I) AND FORALL s(I).r(OII) t(I) s(I) AND r(OII) s(I) x(I) IMPLIES r(OII) 0(I).f(II) s(I)] AND FORALL x(I) [r(OII) [f(II) x(I)] 0(I) IMPLIES EXISTS t(I).r(OII) x(I) t(I) AND FORALL s(I).r(OII) s(I) t(I) AND r(OII) x(I) s(I) IMPLIES r(OII) [f(II) s(I)] 0(I)] AND r(OII) a(I) b(I) AND r(OII) [f(II) a(I)] 0(I) AND r(OII) 0(I) [f(II) b(I)] IMPLIES EXISTS x(I).r(OII) a(I) x(I) AND r(OII) x(I) b(I) AND r(OII) [f(II) x(I)] 0(I) AND r(OII) 0(I).f(II) x(I)"
+:needed-objects   NIL
+:mhelp "intermediate value theorem"
+:other-attributes NIL
+:other-remarks "
+")
+
+

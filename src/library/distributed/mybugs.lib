@@ -1,0 +1,14 @@
+(:name DISJ-THIRD
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "[FORALL x(I) P(OI) x(I) OR FORALL x(I) Q(OI) x(I)] AND [FORALL x(I) [P(OI) x(I) IMPLIES R(OI) x(I)] AND FORALL x(I).Q(OI) x(I) IMPLIES R(OI) x(I)] IMPLIES R(OI) a(I) AND R(OI) b(I) AND R(OI) c(I)"
+:needed-objects   NIL
+:mhelp "A flagrant bug with disjunction heuristic"
+:other-attributes NIL
+:other-remarks "
+")
+
+

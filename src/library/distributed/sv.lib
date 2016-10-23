@@ -1,0 +1,114 @@
+(:name SV10
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS v(OII) FORALL x(I).v(OII) x(I) 0(I) EQUIV A(OI) x(I) AND B(OII) x(I) x(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name SV2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Monday, October 22, 2001 at  1:13:35."
+:description "EXISTS u(OI).u(OI) =(O(OI)(OI)) LAMBDA x(I).A(OI) x(I) OR B(OI) x(I)"
+:needed-objects   NIL
+:mhelp "Setvar Example:  Existence of union -
+solvable using two min constraints, or a single max constraint."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name SV3
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Monday, October 22, 2001 at  1:14:04."
+:description "EXISTS u(OI).u(OI) =(O(OI)(OI)) LAMBDA x(I).A(OI) x(I) AND B(OI) x(I)"
+:needed-objects   NIL
+:mhelp "Setvar Example:  Existence of Intersection -
+solvable using two max constraints, or a single min constraint."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name SV7
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "INJECTIVE(O(AA)) f(AA) AND INJECTIVE(O(BB)) g(BB) IMPLIES EXISTS u(OBA) FORALL x(A) FORALL y(B).S(OBA) x(A) y(B) EQUIV u(OBA) [f(AA) x(A)].g(BB) y(B)"
+:needed-objects   (INJECTIVE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name SV8
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS u(OII).FORALL w(I) FORALL z(I) [A(OI) w(I) AND B(OII) z(I) w(I) IMPLIES u(OII) [f(II) w(I)] z(I)] AND FORALL z(I) [C(OI) z(I) IMPLIES u(OII) z(I) z(I)] AND FORALL v(OII).FORALL w(I) FORALL z(I) [A(OI) w(I) AND B(OII) z(I) w(I) IMPLIES v(OII) [f(II) w(I)] z(I)] AND FORALL z(I) [C(OI) z(I) IMPLIES v(OII) z(I) z(I)] IMPLIES FORALL x(I) FORALL y(I).u(OII) x(I) y(I) IMPLIES v(OII) x(I) y(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name SV9
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS v(OII) FORALL x(I).v(OII) x(I) 0(I) EQUIV A(OI) x(I) OR B(OII) x(I) x(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM594
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS v(OI).v(OI) 0(I) AND FORALL w(I) [v(OI) w(I) IMPLIES v(OI).S(II) w(I)] AND FORALL p(OI).p(OI) 0(I) AND FORALL w(I) [p(OI) w(I) IMPLIES p(OI).S(II) w(I)] IMPLIES v(OI) SUBSET(O(OI)(OI)) p(OI)"
+:needed-objects   NIL
+:mhelp "Existence of a least set containing 0 and closed under S."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM595
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, January 24, 2002 at  3:01:07."
+:description "EXISTS v(OB).FORALL x(B) [v(OB) x(B) IMPLIES P(OA).FST(AB) x(B)] AND FORALL x(B) [v(OB) x(B) IMPLIES v(OB).RST(BB) x(B)] AND FORALL u(OB).FORALL x(B) [u(OB) x(B) IMPLIES P(OA).FST(AB) x(B)] AND FORALL x(B) [u(OB) x(B) IMPLIES u(OB).RST(BB) x(B)] IMPLIES u(OB) SUBSET(O(OB)(OB)) v(OB)"
+:needed-objects   NIL
+:mhelp "Existence of a stream of P values"
+:other-attributes NIL
+:other-remarks "
+")
+
+

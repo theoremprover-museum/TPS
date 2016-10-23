@@ -1,0 +1,62 @@
+@Marker(Library,TPLDocuments,Postscript)
+@comment(This is just like tpmdoc.lib, but has top and bottom margins 1.2
+instead of 1.5.
+This was constructed from the postscript part of tpsdoc.lib, but margins 
+and font size are different.)
+@comment(Use tpndoc.lib if you want large font which will be reduced.
+It needs to be made like this.)
+
+@Style(Date "1952 March 8", Font TimesRoman, Fontscale 11,
+	Linewidth 5.5inches,TopMargin 1.2inches, BottomMargin 1.2inches,
+	Leftmargin 1.5inches, Spread 0,indent 5 characters,
+	FileDate "March 8, 1952")
+@style(scriptpush yes)
+@Style(Singlesided)
+@Libraryfile(mathematics10)
+@Define(T, FaceCode F)
+@Define(CB, size  9, FaceCode B)
+@CommandString(LISP="Lisp")
+@CommandString(TPS="@b[T]@cb[PS]")
+@CommandString(TPS1="@b[T]@cb[PS1]")
+@CommandString(TPS2="@b[T]@cb[PS2]")
+@CommandString(TPS3="@b[T]@cb[PS3]")
+@CommandString(ETPS="@b[E]@cb[TPS]",HETPS="ETPS")
+@CommandString{StopHeaders="@PageHeading(Right < >)"}
+@string(copyright-and-Research-Credit=
+"@copyrightnotice(Carnegie Mellon University.  All rights reserved.)
+@begin(researchcredit)
+This manual is based upon work supported by
+NSF grants MCS81-02870, DCR-8402532, CCR-8702699, and 
+CCR-9002546,
+and a grant from the Center for Design of Educational Computing,
+Carnegie Mellon University. Any opinions, findings, and conclusions or
+recommendations are those of the author(s) and do not necessarily reflect
+the views of the National Science Foundation.
+@end(researchcredit)")
+@String(NSF="NSF grants MCS81-02870, DCR-8402532, 
+CCR-8702699, and CCR-9002546")
+@CommandString(it = "@ref(TPSLineCounter)")
+@Counter(TpsLineCounter, Numbered [<@1>  ], Referenced [<@1>  ], IncrementedBy
+	 Reference)
+@Define(Tasks, Use Description, Counter TpsLineCounter, Spread 0.3)
+@TextForm(uxt = [@t{@ux@parmquote{text}}])
+@TextForm(wt = "@w{@t@ParmQuote[Text]}")
+@TextForm(IndText="@parm(text)@index@parmquote(text)")
+@comment[@Define(LispCode, Use verbatim, font bodyfont, facecode f,
+	LeftMargin +0.75inches)]
+@Define(LispCode, Use Verbatim, size 9, FaceCode F,
+	LeftMargin +4, Rightmargin -12)
+@Define(TPSExample, Use Verbatim, size 9, FaceCode F,
+	LeftMargin +4, Rightmargin -12)
+@Define(BigExample, Use Verbatim, LineWidth 80, Leftmargin -4)
+@CommandString( 0inf="@!@+{n}@/@-{0} ",
+		1inf="@!@+{n}@/@-{1} ")
+
+
+
+@CommandString( cc=";;")
+
+
+@LibraryFile(KSets)
+@LibraryFile(Symb10)
+@include (/afs/andrew/mcs/math/TPS/doc/lib/tps.mss)

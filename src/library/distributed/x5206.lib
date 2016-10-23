@@ -1,0 +1,14 @@
+(:name X5206
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Friday, March 19, 1999 at 14:48:10."
+:description "%(OA(OB)(AB)) f(AB) [x(OB) UNION(OB(OB)(OB)) y(OB)] =(O(OA)(OA)) %(OA(OB)(AB)) f(AB) x(OB) UNION(OA(OA)(OA)) %(OA(OB)(AB)) f(AB) y(OB)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

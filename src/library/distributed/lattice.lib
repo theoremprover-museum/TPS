@@ -1,0 +1,154 @@
+(:name BOTTOM-ELEMENT
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA JOIN(AAA) LAMBDA MEET(AAA) LAMBDA BOTTOM(A).FORALL x(A) [MEET(AAA) BOTTOM(A) x(A) =(OAA) BOTTOM(A)] AND FORALL x(A).JOIN(AAA) BOTTOM(A) x(A) =(OAA) x(A)"
+:needed-objects   NIL
+:mhelp "0(i) is the bottom element"
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "OA(AAA)(AAA)"))
+:other-remarks "
+")
+
+
+(:name CD-LATTICE
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA JOIN(AAA) LAMBDA MEET(AAA) LAMBDA TOP(A) LAMBDA BOTTOM(A).LATTICE(O(AAA)(AAA)) JOIN(AAA) MEET(AAA) AND DISTRIBUTIVE(O(AAA)(AAA)) MEET(AAA) JOIN(AAA) AND DISTRIBUTIVE(O(AAA)(AAA)) JOIN(AAA) MEET(AAA) AND TOP-ELEMENT(OA(AAA)(AAA)) JOIN(AAA) MEET(AAA) TOP(A) AND BOTTOM-ELEMENT(OA(AAA)(AAA)) JOIN(AAA) MEET(AAA) BOTTOM(A) AND COMPLEMENTED(OAA(AAA)(AAA)) JOIN(AAA) MEET(AAA) TOP(A) BOTTOM(A)"
+:needed-objects   (LATTICE TOP-ELEMENT BOTTOM-ELEMENT COMPLEMENTED DISTRIBUTIVE)
+:mhelp "Complemented distributive lattice"
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "OAA(AAA)(AAA)"))
+:other-remarks "
+")
+
+
+(:name CD-LATTICE-THM
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:14:25."
+:description "FORALL JOIN(AAA) FORALL MEET(AAA) FORALL TOP(A) FORALL BOTTOM(A).CD-LATTICE(OAA(AAA)(AAA)) JOIN(AAA) MEET(AAA) TOP(A) BOTTOM(A) IMPLIES FORALL x(A) FORALL y(A) FORALL z(A).LATTICE-COMP(OAAAA(AAA)(AAA)) JOIN(AAA) MEET(AAA) TOP(A) BOTTOM(A) x(A) y(A) AND LATTICE-COMP(OAAAA(AAA)(AAA)) JOIN(AAA) MEET(AAA) TOP(A) BOTTOM(A) x(A) z(A) IMPLIES y(A) =(OAA) z(A)"
+:needed-objects   (CD-LATTICE LATTICE-COMP)
+:mhelp "A complemented distributive lattice has unique complements"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name COMMUTATIVE
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA h(ABB) FORALL x(B) FORALL y(B).h(ABB) x(B) y(B) =(OAA) h(ABB) y(B) x(B)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A" "B")) (TYPE "O(ABB)"))
+:other-remarks "
+")
+
+
+(:name COMPLEMENTED
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA JOIN(AAA) LAMBDA MEET(AAA) LAMBDA TOP(A) LAMBDA BOTTOM(A) FORALL x(A) EXISTS y(A) LATTICE-COMP(OAAAA(AAA)(AAA)) JOIN(AAA) MEET(AAA) TOP(A) BOTTOM(A) x(A) y(A)"
+:needed-objects   (LATTICE-COMP)
+:mhelp "Complementation in a lattice"
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "OAA(AAA)(AAA)"))
+:other-remarks "
+")
+
+
+(:name DISTRIBUTIVE
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA G(AAA) LAMBDA H(AAA) FORALL x(A) FORALL y(A) FORALL z(A).G(AAA) x(A) [H(AAA) y(A) z(A)] =(OAA) H(AAA) [G(AAA) x(A) y(A)].G(AAA) x(A) z(A)"
+:needed-objects   NIL
+:mhelp "One definition of distributivity in a lattice"
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(AAA)(AAA)"))
+:other-remarks "
+")
+
+
+(:name IDEMPOTENT
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA P(AAA) FORALL x(A).P(AAA) x(A) x(A) =(OAA) x(A)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(AAA)"))
+:other-remarks "
+")
+
+
+(:name LATTICE
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA JOIN(AAA) LAMBDA MEET(AAA).IDEMPOTENT(O(AAA)) JOIN(AAA) AND IDEMPOTENT(O(AAA)) MEET(AAA) AND ASSOCIATIVE(O(AAA)) JOIN(AAA) AND ASSOCIATIVE(O(AAA)) MEET(AAA) AND COMMUTATIVE(O(AAA)) JOIN(AAA) AND COMMUTATIVE(O(AAA)) MEET(AAA) AND LATTICE-LAW(O(AAA)(AAA)) JOIN(AAA) MEET(AAA) AND LATTICE-LAW(O(AAA)(AAA)) MEET(AAA) JOIN(AAA)"
+:needed-objects   (ASSOCIATIVE IDEMPOTENT COMMUTATIVE LATTICE-LAW)
+:mhelp "definition of a lattice (join ~ OR, meet ~ AND)"
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(AAA)(AAA)"))
+:other-remarks "
+")
+
+
+(:name LATTICE-COMP
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA JOIN(AAA) LAMBDA MEET(AAA) LAMBDA TOP(A) LAMBDA BOTTOM(A) LAMBDA x(A) LAMBDA y(A).JOIN(AAA) x(A) y(A) =(OAA) TOP(A) AND MEET(AAA) x(A) y(A) =(OAA) BOTTOM(A)"
+:needed-objects   NIL
+:mhelp "Complementation in a lattice"
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "OAAAA(AAA)(AAA)"))
+:other-remarks "
+")
+
+
+(:name LATTICE-LAW
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA G(AAA) LAMBDA H(AAA) FORALL x(A) FORALL y(A).G(AAA) [H(AAA) x(A) y(A)] y(A) =(OAA) y(A)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(AAA)(AAA)"))
+:other-remarks "
+")
+
+
+(:name TOP-ELEMENT
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA JOIN(AAA) LAMBDA MEET(AAA) LAMBDA TOP(A).FORALL x(A) [MEET(AAA) TOP(A) x(A) =(OAA) x(A)] AND FORALL x(A).JOIN(AAA) TOP(A) x(A) =(OAA) TOP(A)"
+:needed-objects   NIL
+:mhelp "TOP is the top element"
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "OA(AAA)(AAA)"))
+:other-remarks "
+")
+
+

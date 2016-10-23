@@ -1,0 +1,340 @@
+
+%\chapter{Tactics and Tacticals}
+
+%{\bf Modify \(\sim\)theorem/exp/nesmith/tactics.mss}
+
+\subsection{Overview}
+
+Ordinarily in {\TPS}, the user proceeds by performing a series of
+atomic actions, each one specified directly.  For example, in constructing
+a proof, she may first apply the deduct rule, then the rule of cases, then
+the deduct rule again, etc..  These actions are related temporally, but
+not necessarily in any other way; the goal which is attacked by
+one action may result in several new goals, yet there is no distinction
+between goals produced by one action and those produced by another.
+In addition, this use of small steps prohibits the user from outlining
+a general procedure
+to be followed.  A complex strategy cannot be expressed in these terms,
+and thus
+the user must resign herself to proceeding by plodding along, using simple
+(often trivial and tedious) applications of rules.
+
+Tactics offer a way to encode strategies into new commands, using a
+goal-oriented approach.  With the use of tacticals, more complex tactics
+(and hence strategies) may be built.  Tactics and tacticals are, in essence,
+a programming language in which one may specify techniques for solving
+goals.
+
+Tactics are called  partial subgoaling methods by
+\cite{GORDON79}.  What this means is that a tactic is a
+function which, given a goal to be accomplished,
+will return a list of new goals, along with a procedure by which the
+original goal can be achieved given that the new goals are first
+achieved.  Tactics also may fail, that is, they may not be applicable
+to the goal with which they are invoked.
+
+Tacticals operate upon tactics in much the same way that functionals
+operate upon functions.  By the use of tacticals, one may create
+a tactic that repeatedly carries out a single tactic, or composes
+two or more tactics.  This allows one to combine many small tactics
+into a large tactic which represents a general strategy for solving goals.
+
+As implemented in {\TPS}, a tactic is a function which takes a goal
+as an argument and returns four values: a list of new goals, a message
+which tells what the tactic did (or didn't do), a token indicating what
+the tactic did, and a validation, which is a lambda expression which takes
+as many arguments as the number of new goals, and which, given solutions
+for the new goals, combines the solutions into a solution for the original
+goal.
+
+Consider this example.  Suppose we are trying to define tactics which
+will convert an arithmetic expression in infix form to one in
+prefix form and evaluate it.  One tactic might,
+if given a goal of the form `A / B', where A and B are themselves
+arithmetic expressions in infix form, return the list (`A' `B'),
+some message, the token `succeed', and the
+validation {\tt (lambda (x y) (/ x y))}.  If now we solve the new goals `A'
+and `B' (i.e., find their prefix forms and evaluate them),
+and apply the validation as a function to their solutions, we get
+a solution to the original goal `A / B'.
+
+When we use a tactic, we must know for what purpose the tactic is being
+invoked.  We call this purpose the {\it use} of the tactic.  Uses include
+{\tt nat-ded} for carrying out natural deduction proofs and
+{\tt etree-nat}
+for translating expansion proofs to natural deductions.  A single tactic may
+have definitions for each of these uses.  In contrast to tactics, tacticals
+are defined independent of any specific tactic use; some of the auxiliary
+functions they use, however, such as copying the current goal, may depend
+upon the current tactic use.  For this purpose, the current tactic use
+is determined by the flag \indexflag{TACUSE}.  Resetting this flag resets
+the default tactic use. Though a tactic can be called
+with only a single use, that tactic can call other tactics with different
+uses.  See the examples in the section `Using Tactics'.
+
+Another important parameter used by a tactic is the {\it mode}.  There are
+two tactic modes, {\tt auto} and {\tt interactive}.  The definition of
+a tactic may make a distinction between these two modes; the current
+mode is determined by the flag (\indexflag{TACMODE}, and resetting this
+flag resets the default tactic mode.  Ideally, a tactic
+operating in {\tt auto} mode should require no input from the user, while
+a tactic in {\tt interactive} mode may request that the user make some decisions,
+e.g., that the tactic actually be carried out.  It may be desirable, however,
+that some tactics ignore the mode, compound tactics (those tactics created
+by the use of tacticals and other tactics) among them.
+
+One may wish to have tactics print informative messages as they operate;
+the flag \indexflag{TACTIC-VERBOSE} can be set to {\tt MAX, MED} or {\tt MIN},
+and then corresponding amounts of output will be printed when a call to
+the function \indexfunction{tactic-output} is made by the tactic.
+
+\subsection{Syntax for Tactics and Tacticals}
+This section is of interest mainly to use who want to define new
+tactics and tacticals.
+
+The {\TPS} category for tactics is called {\tt tactic}.  The defining
+function for tactics is {\tt deftactic}.  Each tactic definition has
+the following form:
+
+\begin{lispcode}
+(deftactic tactic
+  \{({\it tactic-use} {\it tactic-defn} [{\it help-string}])\}$^{\hbox{+}}$
+)
+\end{lispcode}
+
+with components defined below:
+
+\index{tactic-use!Syntactic Object}
+\index{tactic-mode!Syntactic Object}      
+\index{tactic-defn!Syntactic Object}      
+\index{primitive-tactic!Syntactic Object} 
+\index{compound-tactic!Syntactic Object}  
+\index{tactic-exp!Syntactic Object}       
+\index{goal!Syntactic Object}             
+\index{goal-list!Syntactic Object}        
+\index{msg!Syntactic Object}              
+\index{token!Syntactic Object}            
+
+\begin{tabular}{ll}
+%\tabclear\\
+%\tabset{1.5 inches}\\
+%\indexsyntax{tactic-use} ::= &  {\tt nat-ded | etree-nat}\\
+tactic-use ::= &  {\tt nat-ded | etree-nat}\\
+tactic-mode ::= &  {\tt auto | interactive}\\
+tactic-defn ::= &  {\it primitive-tactic}  {\tt  |} {\it compound-tactic}\\
+primitive-tactic ::= &  {\tt (lambda (goal) \{{\it form}\}*)}\\
+ &  This lambda expression should return four values of the form:\\
+ &  {\it goal-list msg token validation}.\\
+compound-tactic ::= &  ({\it tactical} \{{\it tactic-exp}\}*)\\
+tactic-exp ::= &  {\tt tactic}  a tactic which is already defined\\
+ &  | ({\it tactic} {\tt [:use {\it tactic-use}] [:mode {\it tactic-mode}] [:goal {\it goal}]})\\
+ &  | {\it compound-tactic}\\
+ &  | ({\tt call} {\it command}) ; where {\it command} is a command which could be\\
+ &  given at the {\TPS} top level\\
+goal ::= &  a goal, which depends on the tactic's use,\\
+ &  e.g., a planned line when the tactic-use is {\tt nat-ded}.\\
+goal-list ::= &  (\{{\it goal}\}*)\\
+msg ::= &  {\it string}\\
+token ::= &  {\tt complete}  meaning that all goals have been exhausted\\
+ &  {\tt | succeed}  meaning that the tactic has succeeded\\
+ &  {\tt | nil}  meaning that the tactic was called only for side effect\\
+ &  {\tt | fail}  meaning that the tactic was not applicable\\
+ &  {\tt | abort}  meaning that something has gone wrong, such as an undefined\\
+ &  tactic\\
+\end{tabular}
+
+Tacticals are kept in the {\TPS} category {\tt tactical}, with defining
+function {\tt deftactical}.  Their definition has the following form:
+
+\begin{lispcode}
+(deftactical tactical
+  (defn {\it tacl-defn})
+  (mhelp {\it string}))
+\end{lispcode}
+
+\index{tacl-defn!Syntactic Object}
+\index{primitive-tacl-defn!Syntactic Object}      
+\index{compound-tacl-defn!Syntactic Object}      
+
+with
+
+\begin{tabular}{ll}
+%\tabclear\\
+%\tabset{1.5 inches}\\
+%tacl-defn ::= &  {\it primitive-tacl-defn | compound-tacl-defn}\\
+tacl-defn ::= &  {\it primitive-tacl-defn}  {\tt |} {\it compound-tacl-defn}\\
+primitive-tacl-defn ::= &  {\tt (lambda (goal tac-list) \{{\it form}\}*)}\\
+ &  This lambda-expression, where {\tt tac-list} stands for a possibly\\
+ &  empty list of tactic-exp's, should be independent of the tactic's\\
+ &  use and current mode.  It should return values like those returned\\
+ &  by a {\it primitive-tac-defn}.\\
+compound-tacl-defn ::= &  {\tt (tac-lambda (\{{\it symbol}\}*) {\it tactic-exp})}\\
+ &  Here the tactic-exp should use the symbols in the\\
+ &  tac-lambda-list as dummy variables.\\
+\end{tabular}
+
+Here is an example of a definition of a primitive tactic.
+\begin{lispcode}
+(deftactic finished-p
+ (nat-ded
+  (lambda (goal)
+    (if (proof-plans dproof)
+	(progn
+	 (tactic-output `Proof not complete.' nil)
+	 (values nil `Proof not complete.' 'fail))
+	(progn
+	 (tactic-output `Proof complete.' t)
+	 (values nil `Proof complete.' 'succeed))))
+  `Returns success if all goals have been met, otherwise
+returns failure.'))
+\end{lispcode}
+
+This tactic is defined for just one use, namely {\tt nat-ded}, or natural
+deduction.  It merely checks to see whether there are any planned lines
+in the current proof, returning failure if any remain, otherwise
+returning success.  This tactic is used only as a predicate, so the
+goal-list it returns is nil, as is the validation.  The function
+\indexfunction{tactic-output} is called with a string to be printed and
+whether the tactic succeeded or failed.  What will be printed will depend
+on the current value of \indexflag{tactic-verbose}.
+
+As an example of a compound tactic, we have
+\begin{lispcode}
+(deftactic make-nice
+  (nat-ded
+   (sequence (call cleanup) (call squeeze) (call pall))
+   `Calls commands to clean up the proof, squeeze the line
+numbers, and then print the result.'))
+\end{lispcode}
+
+Again, this tactic is defined only for the use {\tt nat-ded}.  {\tt sequence} is
+a tactical which calls the tactic expressions given it as arguments
+in succession.
+
+Here is an example of a primitive tactical.
+\begin{lispcode}
+(deftactical idtac
+  (defn
+    (lambda (goal tac-list)
+      (values (if goal (list goal)) `IDTAC' 'succeed
+	      '(lambda (x) x))))
+  (mhelp `Tactical which always succeeds, returns its goal
+unchanged.'))
+\end{lispcode}
+
+The following is an example of a compound tactical.  {\tt then} and {\tt orelse} are tacticals.
+
+\begin{lispcode}
+(deftactical then*
+  (defn
+    (tac-lambda (tac1 tac2)
+      (then tac1 (then (orelse tac2 (idtac)) (idtac)))))
+  (mhelp `(THEN* tactic1 tactic2) will first apply tactic1; if it
+fails then failure is returned, otherwise tactic2 is applied to
+each resulting goal.  If tactic2 fails on any of these goals,
+then the new goals obtained as a result of applying tactic1 are
+returned, otherwise the new goals obtained as the result of
+applying both tactic1 and tactic2 are returned.'))
+\end{lispcode}
+
+\subsection{Tacticals}
+There are several tacticals available.  Many of them are taken directly from
+\cite{GORDON79}.  After the name of each tactical is given
+an example of how it is used, followed by a description of the behavior
+of the tactical
+when called with {\tt goal} as its goal.  The newgoals and validation returned
+are described only when the tactical succeeds.
+
+
+\begin{enumerate}
+\item %\tabclear
+%\tabset{1 inch, 1.5 inches, 2 inches, 2.5 inches}
+{\tt \indexother{IDTAC}: (idtac)}\newline{}
+Returns {\tt (goal), (lambda (x) x)}.
+
+\item {\tt \indexother{FAILTAC}: (failtac)}\newline{}
+Returns failure
+
+\item {\tt \indexother{CALL}: (call command)}\newline{}
+Executes command as if it were entered at top level of {\TPS}.  This is used
+only for side-effects.  Returns {\tt (goal), (lambda (x) x)}.
+
+\item {\tt \indexother{ORELSE}: (orelse tactic1 tactic2 ... tacticN)}\newline{}
+If N=0 return failure, else apply {\tt tactic1} to {\tt goal}. If this fails, call {\tt (orelse tactic2 tactic3 ... tacticN)} on {\tt goal}, else return the result of applying {\tt tactic1} to {\tt goal}.
+
+\item {\tt \indexother{THEN}: (then tactic1 tactic2)}\newline{}
+Apply {\tt tactic1} to {\tt goal}. If this fails, return failure, else apply {\tt tactic2} to each of the subgoals generated by {\tt tactic1}.\newline{}
+If this fails on any subgoal, return failure, else return the list of new subgoals returned from the calls to {\tt tactic2}, and the lambda-expression representing the combination of applying {\tt tactic1} followed by {\tt tactic2}.\newline{}
+Note that if {\tt tactic1} returns no subgoals, {\tt tactic2} will not be called.
+
+\item {\tt \indexother{REPEAT}: (repeat tactic)}\newline{}
+Behaves like {\tt (orelse (then tactic (repeat tactic)) (idtac))}.
+
+\item {\tt \indexother{THEN*}: (then* tactic1 tactic2)}\newline{}
+Defined by:\newline{}
+{\tt (then tactic1 (then (orelse tactic2 (idtac)) (idtac)))}.  This tactical is taken from \cite{Felty86}.
+
+\item {\tt \indexother{THEN**}: (then** tactic1 tactic2)}\newline{}
+Acts like {\tt then}, except that no copying of the goal or related structures will be done.
+
+\item {\tt \indexother{IFTHEN}: (ifthen test tactic1)} or \newline{}
+        {\tt (ifthen test tactic1 tactic2)}\newline{}
+First evaluates {\tt test}, which may be either a tactic or (if user is an expert) an arbitrary LISP expression.  If test is a tactic and does not fail, or is an arbitrary LISP expression that does not evaluate to nil, then {\tt tactic1} will be called on {\tt goal} and its results returned. Otherwise, if {\tt tactic2} is present, the results of calling {\tt tactic2} on {\tt goal} will be returned, else failure is returned.  {\tt test} should be some kind of predicate; any new subgoals it returns will be ignored by {\tt ifthen}.
+
+\item {\tt \indexother{SEQUENCE}: (sequence tactic1 tactic2 ... tacticN)}\newline{}
+Applies {\tt tactic1, ... , tacticN} in succession regardless of their success or failure.  Their results are composed.
+
+\item {\tt \indexother{COMPOSE}: (compose tactic1 ... tacticN)}\newline{}
+Applies {\tt tactic1, ..., tacticN} in succession, composing their results until one of them fails.  Defined by:\newline{}
+{\tt (idtac)} if {\tt N}=0\newline{}
+{\tt (then* tactic1 (compose tactic2 ... tacticN))} if {\tt N} > 0.
+
+\item {\tt \indexother{TRY}: (try tactic)}\newline{}
+Defined by: {\tt (then tactic (failtac))}.  Succeeds only if tactic returns no new subgoals, in which case it returns the results from applying {\tt tactic}.
+
+\item {\tt \indexother{NO-GOAL}: (no-goal)}\newline{}
+Succeeds iff goal is nil.
+\end{enumerate}
+
+
+\subsection{Using Tactics}
+\label{usetac}
+
+To use a tactic from the top level, the command \indexmexpr{use-tactic} has
+been defined.  Use-tactic takes three arguments: a {\it tactic-exp}, a
+{\it tactic-use},
+and a {\it tactic-mode}.  The last two arguments default to the values of
+\indexflag{TACUSE} and \indexflag{TACMODE}, respectively.
+Remember that a {\it tactic-exp} can be either the name of
+a tactic or a compound tactic.  Here are some examples:
+
+\begin{alltt}
+<1> use-tactic propositional nat-ded auto
+
+<2> use-tactic (repeat (orelse same-tac deduct-tac))
+               \$ interactive
+
+<3> use-tactic (sequence (call pall) (call cleanup) (call pall)) !
+
+<4> use-tactic (sequence (foo :use nat-etree :mode auto)
+                         (bar :use nat-ded :mode interactive)) !
+\end{alltt}
+Note that in the fourth example, the default use and mode are overridden
+by the keyword specifications in the tactic-exp itself.  Thus during the
+execution of this compound tactic, {\tt foo} will be called for one use and
+in one mode, then {\tt bar} will be called with a different use and mode.
+
+Remember, the value of the flag \indexflag{TACTIC-VERBOSE}  will
+affect the amount of detail which is printed when the tactics execute.
+Other flags also have effect on tactics, most noticeably \indexflag{USE-RULEP}
+and \indexflag{LAMBDA-CONV}; look at the help messages of these flags, and at
+the use of \indexother{USE-RULEP-TAC} in \indexother{COMPLETE-TRANSFORM*-TAC}
+and of \indexother{LEXPD*-VARY-TAC} in \indexother{GO2-TAC} for examples.
+
+Two of the most useful tactics have been given their own commands:
+\indexmexpr{GO2} is equivalent to {\tt use-tactic go2-tac nat-ded}, and
+\indexmexpr{MONSTRO} is equivalent to {\tt use-tactic monstro-tac nat-ded}.
+Both of these tactics call a function \indexfunction{print-routines}, which
+sends output to the screen and/or proofwindows, as specified by the flag
+\indexflag{ETREE-NAT-VERBOSE}.
+

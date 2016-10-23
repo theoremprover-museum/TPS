@@ -1,0 +1,109 @@
+;;; ******************************************************************* ;;;
+;;;         (c) Copyrighted 1988 by Carnegie Mellon University.         ;;;
+;;;                        All rights reserved.                         ;;;
+;;;         This code was written as part of the TPS project.           ;;;
+;;;   If you want to use this code or any part of TPS, please contact   ;;;
+;;;               Peter B. Andrews (Andrews@CS.CMU.EDU)                 ;;;
+;;; ******************************************************************* ;;;
+;;; Updated context 7/20/87 DAN
+(context rules-6-equality)
+
+(defirule ext=
+  (lines (p1 (h) () "forall x(B) . f(AB) x = g(AB) x")
+	 (p2 (h) () "f(AB) = g(AB)" ("Ext=" () (p1))))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (restrictions (is-variable "x(B)") (not-free-in "x(B)" "f(AB)") (not-free-in "x(B)" "g(AB)"))
+  (itemshelp (p1 "Universally Quantified Equality")
+	     (p2 "Line with Equality")
+	     ("x(B)" "Universally Quantified Variable")
+	     ("f(AB)" "Function on Left Side of Equality")
+	     ("g(AB)" "Function on Right Side of Equality"))
+  (mhelp "Rule of Extensionality."))
+
+(defirule equiv-eq
+  (lines (d1 (h) () "A(O)")
+	 (d2 (h) () "B(O)" ("Equiv-eq" () (d1))))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Lower Line")
+	     (d2 "Higher Line")
+	     ("A(O)" "Wff on Lower Line")
+	     ("B(O)" "Wff on Higher Line"))
+  (restrictions (wffeq-defeq "A(O)" "B(O)"))
+  (mhelp "Rule to infer a line from one which is equal up to 
+definitions, lambda conversion, alphabetic change of bound variables 
+and the Leibniz definition of the symbol = . You may use the editor 
+command EXPAND= to create the desired line from the existing one."))
+
+(defirule equiv-eq-expd
+  (lines (d1 (h) () "A(O)")
+	 (d2 (h) () "`(INSTANTIATE-TOP-EQUALITY A(O))" ("Equiv-eq" () (d1))))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d2 "Line in Leibniz form")
+	     (d1 "Line in = form")
+	     ("A(O)" "Wff with = symbols")
+	     (INSTANTIATE-TOP-EQUALITY "Expanded wff"))
+  (mhelp "Rule to expand the outermost equality using the Leibniz definition."))
+
+(defirule equiv-eq-contr
+  (lines (p1 (h) () "`(INSTANTIATE-TOP-EQUALITY A(O))")
+	 (p2 (h) () "A(O)" ("Equiv-eq" () (p1))))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (itemshelp (p2 "Line in = form")
+	     (p1 "Line in Leibniz form")
+	     ("A(O)" "Wff with = symbols")
+	     (INSTANTIATE-TOP-EQUALITY "Expanded wff"))
+  (mhelp "Rule to contract the outermost instance of the Leibniz definition of 
+equality into instances of the symbol = ."))
+
+(defirule equiv-eq-expd*
+  (lines (d1 (h) () "A(O)")
+	 (d2 (h) () "`(INSTANTIATE-EQUALITIES A(O))" ("Equiv-eq" () (d1))))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d2 "Line in Leibniz form")
+	     (d1 "Line in = form")
+	     ("A(O)" "Wff with = symbols")
+	     (INSTANTIATE-EQUALITIES "Expanded wff"))
+  (mhelp "Rule to expand all equalities using the Leibniz definition."))
+
+(defirule equiv-eq-contr*
+  (lines (p1 (h) () "`(INSTANTIATE-EQUALITIES A(O))")
+	 (p2 (h) () "A(O)" ("Equiv-eq" () (p1))))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (itemshelp (p2 "Line in = form")
+	     (p1 "Line in Leibniz form")
+	     ("A(O)" "Wff with = symbols")
+	     (INSTANTIATE-EQUALITIES "Expanded wff"))
+  (mhelp "Rule to contract all instances of the Leibniz definition of 
+equality into instances of the symbol = ."))
+
+(defirule subst=l
+  (lines (p1 (h) () "P(O)")
+	 (d2 (h) () "s(A) = t(A)")
+	 (d3 (h) () "R(O)" ("Subst=" () (p1 d2))))
+  (support-transformation (('pp d2 'ss)) ((p1 'ss) ('pp d3 'ss p1 d2)))
+  (itemshelp (p1 "Line before Substituting Some Occurrences")
+	     (d2 "Line with Equality")
+	     (d3 "Line after Substituting Some Occurrences")
+	     ("P(O)" "Formula Before Substitution")
+	     ("R(O)" "Formula After Substitution")
+	     ("s(A)" "Left-Hand Side of Equality")
+	     ("t(A)" "Right-Hand Side of Equality"))
+  (restrictions (r-prime-restr "s(A)" "P(O)" "t(A)" "R(O)"))
+  (mhelp "Substitution of Equality.  Replaces some occurrences of the left hand
+side by the right hand side."))
+
+(defirule subst=r
+  (lines (p1 (h) () "P(O)")
+	 (d2 (h) () "t(A) = s(A)")
+	 (d3 (h) () "R(O)" ("Subst=" () (p1 d2))))
+  (support-transformation (('pp d2 'ss)) ((p1 'ss) ('pp d3 'ss p1 d2)))
+  (itemshelp (p1 "Line before Substituting Some Occurrences")
+	     (d2 "Line with Equality")
+	     (d3 "Line after Substituting Some Occurrences")
+	     ("P(O)" "Formula Before Substitution")
+	     ("R(O)" "Formula After Substitution")
+	     ("s(A)" "Right-Hand Side of Equality")
+	     ("t(A)" "Left-Hand Side of Equality"))
+  (restrictions (r-prime-restr "s(A)" "P(O)" "t(A)" "R(O)"))
+  (mhelp "Substitution of Equality.  Replaces some occurrences of the right
+hand side by the left hand side."))

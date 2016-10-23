@@ -1,0 +1,108 @@
+;;; ******************************************************************* ;;;
+;;;         (c) Copyrighted 1988 by Carnegie Mellon University.         ;;;
+;;;                        All rights reserved.                         ;;;
+;;;         This code was written as part of the TPS project.           ;;;
+;;;   If you want to use this code or any part of TPS, please contact   ;;;
+;;;               Peter B. Andrews (Andrews@CS.CMU.EDU)                 ;;;
+;;; ******************************************************************* ;;;
+;;; Updated contexts 7/20/87 DAN
+
+(context rules-8-lambda)
+
+(defirule lcontr*
+  (lines (d1 (h) () "A(O)")
+	 (d2 (h) () "`(LNORM A(O))" ("Lambda" () (d1))))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Line not in Lambda-normal Form")
+	     (d2 "Line in Lambda-normal Form")
+	     ("A(O)" "Wff not in Lambda-normal Form")
+	     (LNORM "Wff in Lambda-normal Form"))
+  (mhelp "Rule to put an inferred line into Lambda-normal form using both 
+beta and eta conversion."))
+
+(defirule lexpd*
+  (lines (p1 (h) () "`(LNORM A(O))")
+	 (p2 (h) () "A(O)" ("Lambda" () (p1))))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (itemshelp (p2 "Line not in Lambda-normal Form")
+	     (p1 "Line in Lambda-normal Form")
+	     ("A(O)" "Wff not in Lambda-normal Form")
+	     (LNORM "Wff in Lambda-normal Form"))
+  (mhelp "Rule to put a planned line into Lambda-normal form using both 
+beta and eta conversion."))
+
+(defirule lcontr*-beta
+  (lines (d1 (h) () "A(O)")
+	 (d2 (h) () "`(LNORM-BETA A(O))" ("Beta rule" () (d1))))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Line not in beta-normal Form")
+	     (d2 "Line in beta-normal Form")
+	     ("A(O)" "Wff not in beta-normal Form")
+	     (LNORM "Wff in beta-normal Form"))
+  (mhelp "Rule to put an inferred line into beta-normal form."))
+
+(defirule lexpd*-beta
+  (lines (p1 (h) () "`(LNORM-BETA A(O))")
+	 (p2 (h) () "A(O)" ("Beta rule" () (p1))))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (itemshelp (p2 "Line not in beta-normal Form")
+	     (p1 "Line in beta-normal Form")
+	     ("A(O)" "Wff not in beta-normal Form")
+	     (LNORM "Wff in beta-normal Form"))
+  (mhelp "Rule to put a planned line into beta-normal form."))
+
+(defirule lcontr*-eta
+  (lines (d1 (h) () "A(O)")
+	 (d2 (h) () "`(LNORM-ETA A(O))" ("Eta rule" () (d1))))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Line not in eta-normal Form")
+	     (d2 "Line in eta-normal Form")
+	     ("A(O)" "Wff not in eta-normal Form")
+	     (LNORM "Wff in eta-normal Form"))
+  (mhelp "Rule to put an inferred line into eta-normal form."))
+
+(defirule lexpd*-eta
+  (lines (p1 (h) () "`(LNORM-ETA A(O))")
+	 (p2 (h) () "A(O)" ("Eta rule" () (p1))))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (itemshelp (p2 "Line not in eta-normal Form")
+	     (p1 "Line in eta-normal Form")
+	     ("A(O)" "Wff not in eta-normal Form")
+	     (LNORM "Wff in eta-normal Form"))
+  (mhelp "Rule to put a planned line into eta-normal form."))
+
+;*; Subsumed by EQUIV-WFFS
+;*;
+;*;(defirule equiv-lambda
+;*;  (lines (d1 (h) () "P(O)")
+;*;	 (d2 (h) () "R(O)" ("Lambda" () (d1))))
+;*;  (restrictions (wffeq-lnorm "P(O)" "R(O)"))
+;*;  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+;*;  (itemshelp (d1 "Lower Line")
+;*;	     (d2 "Higher Line"))
+;*;  (mhelp
+;*;"Rule to assert equivalence of lines up to lambda conversion."))
+
+(context rules-2-prop)
+
+;*;(defirule equiv-implics
+;*;  (lines (p1 (h) () "P equiv R")
+;*;	 (p2 (h) () "[P implies R] and [R implies P]" ("EquivImp" () (p1))))
+;*;  (support-transformation ((p2 'ss)) ((p1 'ss)))
+;*;  (itemshelp (p1 "Line with Equivalence")
+;*;	     (p2 "Line with Implications in Both Directions")
+;*;	     ("P(O)" "Left Equivalent")
+;*;    	     ("R(O)" "Right Equivalent"))
+;*;  (mhelp "Rule to convert an equivalence into twin implications."))
+
+
+;;; Changed above so that default direction is forward 7/28/87 -- DAN
+(defirule equiv-implics
+  (lines (d1 (h) () "P equiv R")
+	 (d2 (h) () "[P implies R] and [R implies P]" ("EquivImp" () (d1))))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Line with Equivalence")
+	     (d2 "Line with Implications in Both Directions")
+	     ("P(O)" "Left Equivalent")
+    	     ("R(O)" "Right Equivalent"))
+  (mhelp "Rule to convert an equivalence into twin implications."))

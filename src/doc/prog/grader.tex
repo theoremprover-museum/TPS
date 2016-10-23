@@ -1,0 +1,25 @@
+\chapter{The Grader Program}
+
+(Programmers should be aware that the GRADER program has its own manual.)
+
+\section{The Startup Switch}
+
+In theory, adding the switch {\tt -grader} to the command line which 
+starts up \TPS should start up the Grader program directly. The code which 
+implements this is in \indexfile{tps3-save.lisp}.
+
+In practice, some modifications may be needed depending on the particular 
+Lisp being used. For example:
+
+\begin{itemize}
+\item When starting up in CMUlisp on an IBM RT, the error {\tt "Switch does not exist"}
+will be given. This is just Lisp complaining that it doesn't recognize the switch;
+it passes the switch on to \TPS anyway, so this is no cause for concern.
+
+\item When using Allegro Lisp version 4.1 or later, a {\tt --} symbol is used to separate
+Lisp options from user options. So, on early versions of Allegro Lisp the line to
+start up grader is:
+{\tt xterm {\it <many xterm switches>} -e /usr/theorem/bin/run-tps -grader \&}
+whereas for later versions it is:
+{\tt xterm {\it <many xterm switches>} -e /usr/theorem/bin/run-tps -- -grader \&}
+\end{itemize}

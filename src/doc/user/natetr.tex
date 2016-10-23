@@ -1,0 +1,49 @@
+\subsection{Translating from Natural Deduction to Expansion Proofs}\label{natetr}
+
+The flag \indexflag{NAT-ETREE-VERSION} determines which
+version of \indexcommand{NAT-ETREE} will be used.
+The latest version (as of 2001) is \indexother{CEB}.
+The basic steps of the \indexother{CEB} version of
+\indexcommand{NAT-ETREE} are as follows:
+
+\begin{description}
+\item[] 
+
+{\tt 1} -- The natural deduction
+proof is preprocessed to eliminate applications of RuleP, Subst=,
+and similar rules in favor of more basic inference rules.
+
+{\tt 2} -- The natural deduction proof is translated into a different
+structural form called a \indexother{natree}.  One can perform
+this part of the translation in isolation using the command
+\indexcommand{PFNAT}.  The current natree can be viewed using
+the command \indexcommand{PNTR}.
+
+{\tt 3} -- The natree representation is translated into a \indexother{sequent calculus}
+derivation.  The sequent calculus derivations in memory can be listed
+using the command \indexcommand{SEQLIST}.  A particular sequent calculus
+derivation can be viewed using the commands \indexcommand{PSEQ}
+or \indexcommand{PSEQL}.  The flag \indexflag{PSEQ-USE-LABELS} controls
+whether formulas are abbreviated by showing a symbol associated with
+the formula in a legend.
+
+{\tt 4} -- \indexother{Cut elimination} is performed on the sequent calculus derivation.
+This is not guaranteed to succeed or even terminate.  A common case
+where cut elimination will fail is when a nontrivial
+use of extensionality occurs.
+
+{\tt 5} -- If cut elimination succeeds, the cut-free derivation is translated
+to an expansion tree with a complete mating.  The user is given the
+option of merging this expansion proof.  Merging is appropriate if
+the user intends to translate this expansion proof back into a natural
+deduction proof.  If the user is trying to use this expansion proof
+to help determine flag settings to find the proof automatically, the
+user should not merge the tree. 
+\end{description}
+
+The expansion proof can be viewed by entering the \indexcommand{MATE} top level.
+Section \ref{searchanalysis} explains how this expansion proof can
+be used to suggest flag settings and to trace automatic search.
+
+The Programmers Guide has more information about \indexcommand{NAT-ETREE}.
+

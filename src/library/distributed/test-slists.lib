@@ -1,0 +1,21 @@
+(:name THM47-SLIST
+:type SLIST
+:context NIL
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description (
+(DEFAULT-MS MS90-9 MS91-7 (MS91-7 MS90-9) NIL (MS90-9 MS91-7))
+(MAX-SEARCH-DEPTH 12 12 (12 10 8) NIL NIL)
+(MAX-UTREE-DEPTH 12 12 (12 10 8) NIL NIL)
+(MAX-MATES 2 2 (2 1) NIL NIL)
+(MAX-SEARCH-LIMIT 5 5 (5 4 3) NIL NIL)
+(SEARCH-TIME-LIMIT 5 5 (5 4 3) NIL NIL)
+(NUM-OF-DUPS 1 1 (1 0) NIL NIL))
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

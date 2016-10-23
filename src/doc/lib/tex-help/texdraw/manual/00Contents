@@ -1,0 +1,11 @@
+total 1402
+-rw-rw-r--   1 ftpmaint server       669 Dec  5 07:52 00Contents
+-rw-rw-r--   1 ftpmaint server     22198 Dec 19  1995 getopt.c
+-rw-rw-r--   1 ftpmaint server      4455 Dec 19  1995 getopt.h
+-rw-rw-r--   1 ftpmaint server      3233 Dec 19  1995 texdraw.cps
+-rw-rw-r--   1 ftpmaint server      3283 Dec 19  1995 texdraw.fns
+-rw-rw-r--   1 ftpmaint server    330589 Dec 19  1995 texdraw.ps
+-rw-rw-r--   1 ftpmaint server    115615 Dec 19  1995 texdraw.texi
+-rw-rw-r--   1 ftpmaint server     10111 Dec 19  1995 texi2dvi
+-rw-rw-r--   1 ftpmaint server     39717 Dec 19  1995 texindex.c
+-rw-rw-r--   1 ftpmaint server    146156 Dec 19  1995 texinfo.tex

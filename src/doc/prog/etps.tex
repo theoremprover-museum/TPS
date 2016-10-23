@@ -1,0 +1,102 @@
+\chapter{ETPS}\label{etps}
+
+\section{The Outline Modules}
+
+The {\tt OUTLINE} modules in TPS have two main subparts; 
+the bookkeeping functions, and the \indexcommand{GO} command which
+gives sophisticated help or constructs a proof automatically.
+They are collected in the modules of the form {\tt OTL*}.
+
+In ETPS only the bookkeeping functions are present.
+
+The discussion below is aimed at understanding the {\tt OUTLINE} modules
+independently of the system, but we generally assume we are working in
+\ETPS.  If \TPS differs, this is noted.
+
+We often talk about {\it proofs}, even though they are properly only incomplete
+proofs or {\it proof outlines}.  It is assumed that the reader knows what
+planned lines ({\it plines}) and deduced lines ({\it dlines}) are.  This and 
+general familiarity with \ETPS are necessary to understand this discussion.
+
+\subsection{Proofs as a Data Structure}
+
+Proofs in \ETPS are represented by a single atom with a variety of properties.
+The global variable {\tt DPROOF} has as value the name of the current proof.
+In case you are working, say on exercise {\tt X6200}, {\tt DPROOF} will have the 
+value {\tt X6200}.  The current proof name then has a variety of properties.
+
+\begin{description}
+\item [{\tt LINES}] {\tt ({\it line} {\it line} ...)}.  This is simply an ordered list of all
+lines in the current proof without repetition.  The order is such that
+lines with a lower number appear first in the list.
+\\ {\bf WARNING}:  This property is frequently changed destructively.
+As a consequence it may never be empty and should be used for other
+purposes only in a copy.
+
+\item [{\tt LINEALIASES}] {\tt (({\it line} . {\it no})({\it line} . {\it no}) ...)}.  This is an 
+unordered association list correlating lines with their numbers.  No line 
+should ever appear in more than one pair, and neither should a number.  Try to 
+think of arguments for and against this representation, compared to one where
+the number of a line is stored on the line's property list.
+\\ {\bf WARNING}:  This property is frequently changed destructively.
+As a consequence it may never be empty and should be used for other
+purposes only in a copy.
+
+\item [{\tt PLANS}] {\tt {(({\it pline} . {\it supportlist})({\it pline} . {\it supportlist}) ...)}}.
+This stores the important {\it plan}-{\it support} {\it structure} of the current
+proof.  {\it pline} is a still unjustified line in the current proof,
+{\it supportlist} is a list of deduced lines supporting a {\it pline}.
+A {\it pline} may never have a justification other than {\tt PLAN}{\it i}, 
+a {\it sline} (support line) must always be completely justified, i.e.
+may not ultimately depend on a planned line.
+
+The association list is ordered such that the most recently affected
+{\it pline} is closer to the front of the list.  The order can be changed
+explicitly with the {\tt SUBPROOF} command.
+
+{\bf WARNING}:  This property is frequently changed destructively.
+As a consequence it may never be empty and should be used for other
+purposes only in a copy.
+
+\item [{\tt GAPS}] ({\it gap} {\it gap} ...). This is a list of the gaps between lines in the
+proof. Each gap has the properties ({\tt MIN-LABEL} {\it line}) and ({\tt MAX-LABEL} {\it line}).
+
+\item [{\tt NEXTPLAN-NO}] {\it integer}. This is just the next number that will be used for 
+a planned line.
+
+\item [{\tt ASSERTION}] {\it gwff}. This is the assertion being proven.
+\end{description}
+
+When a proof is saved using the \indexcommand{SAVEPROOF} command, a checksum may be generated.
+This is used by \ETPS to verify that the saved proof has not been manually edited by a student
+(otherwise it would be possible to edit out the planned lines and convince \ETPS to issue the 
+\indexcommand{DONE} command). Since it takes time to generate the checksum, it is only 
+generated if the flag \indexflag{EXPERTFLAG} is NIL. This means that proofs written by \TPS
+with \indexflag{EXPERTFLAG} T cannot be read into \ETPS with \indexflag{EXPERTFLAG} NIL.
+
+
+\subsection{Proof Lines as a Data Structure}
+
+Proof lines in \ETPS have a variety of properties:
+
+\begin{description}
+\item [{\tt REPRESENTS}] This is the wff asserted by the line.  In the original 
+TPS this had to be an
+atomized wff of very particular structure, which lead to numerous problems
+in higher-order logic.  In \ETPS this has been maintained for the present. Our
+goal, of course, is to allow arbitrary {\it gwffs} as {\tt REPRESENTS} of lines.
+
+\item [{\tt HYPOTHESES}] This is a list of lines assumed as hypotheses for the line.
+The list of hypotheses is ordered (lowest numbered line first), but to
+my knowledge no function assumes this.  It simply looks better in the output.
+No line should appear twice as an hypothesis (this fact may actually be used
+here and there).
+
+\item [{\tt JUSTIFICATION}]  {\tt {{\it RULE} {\it gwfflist} {\it linelist}}} The line can be
+inferred by an inference rule {\it RULE}from {\it linelist}.  
+{\it gwfflist} has somehow been used to infer the line.
+
+\item [{\tt LINENUMBER}] The line number associated with the line.
+\end{description}
+
+\input{outline}

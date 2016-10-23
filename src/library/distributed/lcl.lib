@@ -1,0 +1,16 @@
+(:name LCL077-1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Not proven"
+:proof-date "Thursday, June 12, 1997 at 13:16:33."
+:description "~.FORALL p(I) FORALL q(I) [~T(OI) [imp(III) p(I) q(I)] OR ~T(OI) p(I) OR T(OI) q(I)] AND FORALL p(I) FORALL q(I) T(OI) [imp(III) p(I).imp(III) q(I) p(I)] AND FORALL p(I) FORALL q(I) FORALL r(I) T(OI) [imp(III) [imp(III) p(I).imp(III) q(I) r(I)].imp(III) [imp(III) p(I) q(I)].imp(III) p(I) r(I)] AND FORALL p(I) FORALL q(I) T(OI) [imp(III) [imp(III) [nt(II) p(I)].nt(II) q(I)].imp(III) q(I) p(I)] AND EXISTS a(I).~T(OI).imp(III) [nt(II).nt(II) a(I)] a(I)"
+:needed-objects   NIL
+:mhelp "lcl077-1 from Sutcliffe's collection;
+Pelletier 67;Morgan C. (1984), Logic Problems, AAR Newsletter 3, 5-5;
+theorem 221 on page 121 of Church's book."
+:other-attributes NIL
+:other-remarks "
+")
+
+

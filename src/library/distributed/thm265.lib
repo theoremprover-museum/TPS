@@ -1,0 +1,56 @@
+(:name THM265
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS F(O(OA)(OAA)).FORALL R(OAA) [EQUIVALENCE-REL(O(OAA)) R(OAA) IMPLIES PARTITION(O(O(OA))).F(O(OA)(OAA)) R(OAA)] AND FORALL P(O(OA)) [PARTITION(O(O(OA))) P(O(OA)) IMPLIES EXISTS S(OAA).EQUIVALENCE-REL(O(OAA)) S(OAA) AND P(O(OA)) =(O(O(OA))(O(OA))) F(O(OA)(OAA)) S(OAA)] AND FORALL T(OAA) FORALL U(OAA).~[T(OAA) =(O(OAA)(OAA)) U(OAA)] AND EQUIVALENCE-REL(O(OAA)) T(OAA) AND EQUIVALENCE-REL(O(OAA)) U(OAA) IMPLIES ~.F(O(OA)(OAA)) T(OAA) =(O(O(OA))(O(OA))) F(O(OA)(OAA)) U(OAA)"
+:needed-objects   (EQUIVALENCE-REL PARTITION)
+:mhelp "There is a bijection between eq relns and partitions"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM266-LEMMA
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL T(O(OA)) FORALL U(O(OA)).~[T(O(OA)) =(O(O(OA))(O(OA))) U(O(OA))] AND PARTITION(O(O(OA))) T(O(OA)) AND PARTITION(O(O(OA))) U(O(OA)) IMPLIES EXISTS x(A) EXISTS y(A).EXISTS s(OA) [T(O(OA)) s(OA) AND s(OA) x(A) AND s(OA) y(A)] AND FORALL q(OA) [U(O(OA)) q(OA) IMPLIES ~q(OA) x(A) OR ~q(OA) y(A)] OR EXISTS s(OA) [U(O(OA)) s(OA) AND s(OA) x(A) AND s(OA) y(A)] AND FORALL q(OA).T(O(OA)) q(OA) IMPLIES ~q(OA) x(A) OR ~q(OA) y(A)"
+:needed-objects   (EQUIVALENCE-REL PARTITION)
+:mhelp "Lemma for THM266"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM266-SUB
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA p(O(OA)) LAMBDA x(A) LAMBDA y(A) EXISTS s(OA).p(O(OA)) s(OA) AND s(OA) x(A) AND s(OA) y(A)"
+:needed-objects   NIL
+:mhelp "The substitution for F in THM266"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM266-SUB1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA ss(OA).EXISTS zz(A) ss(OA) zz(A) AND FORALL xx(A).ss(OA) xx(A) IMPLIES FORALL yy(A).ss(OA) yy(A) EQUIV R(OAA) xx(A) yy(A)"
+:needed-objects   NIL
+:mhelp "The second substitution in THM266"
+:other-attributes NIL
+:other-remarks "
+")
+
+

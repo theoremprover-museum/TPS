@@ -1,0 +1,28 @@
+(:name X-2002-12-17
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, December 17, 2002 at 13:04:20."
+:description "EXISTS x(I).EXISTS z(I) FORALL y(I) R(OII) z(I) y(I) EQUIV FORALL w(I) R(OII) x(I) w(I)"
+:needed-objects   NIL
+:mhelp "Suggested by a student's answer on a test"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X-2002-12-17-B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, December 17, 2002 at 15:07:53."
+:description "EXISTS y(I).R(OII) x(I) y(I) IMPLIES EXISTS x(I) R(OII) y(I) x(I)"
+:needed-objects   NIL
+:mhelp "Suggested by a student's answer on a test"
+:other-attributes NIL
+:other-remarks "
+")
+
+

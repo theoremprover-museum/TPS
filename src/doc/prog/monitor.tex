@@ -1,0 +1,89 @@
+\chapter{The Monitor}
+\label{monitor}
+
+The \indexother{monitor} is designed to be called during automatic proof searches; its basic
+operation is described in the User Manual. There are three basic steps required to 
+write a new monitor function, which are described below, using the monitor function 
+\indexother{monitor-check} as an example. More examples are in the file {\it monitor.lisp}.
+
+\section{The Defmonitor Command}
+
+The command \indexcommand{defmonitor} behaves just like {\tt defmexpr}, the only difference being
+that the function it defines does not appear in the list when the user types {\tt ?}. This command
+will be called by the user before the search is begun, and should be able to accept any required 
+parameters (or to calculate them from globally accessible variables at the time the command is
+called).
+
+So, for example, the {\tt defmonitor} part of \indexother{monitor-check} looks like this:
+
+%\begin{tpsexample}
+\begin{verbatim}
+(defmonitor monitor-check
+  (argtypes string)
+  (argnames prefix)
+  (arghelp "Marker string")
+  (mainfns monitor-chk)
+  (mhelp "Prints out the given string every time the monitor is called, 
+followed by the place from which it was called."))
+
+(defun monitor-chk (string)
+  (setq *current-monitorfn* 'monitor-check)
+  (setq *current-monitorfn-params* string)
+  (setq *monitorfn-params-print* 'msg))
+\end{verbatim}
+%\end{tpsexample}
+
+Note that this accepts a marker string as input from the user (other monitor functions may 
+look for a list of connections, or flags, or the name of an option set; it may be necessary 
+to define a new data type to accommodate the desired input). It then calls a secondary 
+function, which in this case needs to do very little further processing in order to 
+establish the three parameters which are {\it required} for every such function: {\tt *current-monitorfn*}
+contains a symbol corresponding to the name of the monitor function, {\tt *current-monitorfn-params*} 
+contains the user-supplied parameters (in any form you like, since your function will be the only 
+place where they are used) and {\tt *monitorfn-params-print*} contains the name of a function that can 
+print out {\tt *current-monitorfn-params*} in a readable way, for use by the commands \indexcommand{monitor}
+and \indexcommand{nomonitor}. The latter should be set to {\tt nil} if you can't be bothered to write such 
+a function.
+
+\section{The Breakpoints}
+
+In the relevant parts of the mating search code, you should insert breakpoints of the form:
+
+%\begin{tpsexample}
+\begin{verbatim}
+(if monitorflag 
+    (funcall (symbol-function *current-monitorfn-params*) 
+             <place> <alist>))
+\end{verbatim}
+%\end{tpsexample}
+
+The value of {\it place} should reflect what part of the code the breakpoint is at. So, for example,
+it might be {\tt 'new-mating}, {\tt 'added-conn} or {\tt 'duplicating}.
+
+The value of {\it alist} should be an association list of local variables and things that your monitor
+function will need. For example, {\it alist} might be {\tt (('mating . active-mating) ('pfd . nil))}; it might 
+equally well be just {\tt nil}.
+
+All breakpoints should have exactly this pattern. By typing {\it grep "(if monitorflag (funcall" *.lisp} in
+the {\it tpslisp} directory, you can get a listing of all the currently defined breakpoints.
+
+\section{The Actual Function}
+
+This is the function which will actually be called during mating search. By convention, it has the
+same name as the {\tt defmonitor} function. Normally, it will first check the value of {\it place}, to
+see if it has been called from the correct place; it can then use the {\tt assoc} command to retrieve the
+relevant entries from {\it alist}. Theoretically, it should be completely non-destructive so as to ensure 
+that the mating search continues properly; of course, you may be as destructive as you like, provided 
+you understand what you're doing...
+
+The function for {\tt monitor-check} is as follows; notice that this does not check {\it place} since it 
+is intended to act at every single breakpoint.
+
+%\begin{tpsexample}
+\begin{verbatim}
+(defun monitor-check (place alist)
+  (declare (ignore alist))
+  (msg *current-monitorfn-params* place t)) 
+\end{verbatim}
+%\end{tpsexample}
+

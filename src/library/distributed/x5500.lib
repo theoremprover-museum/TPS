@@ -1,0 +1,14 @@
+(:name X5500
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Friday, March 19, 1999 at 15:13:11."
+:description "FORALL P(OB) [EXISTS x(B) P(OB) x(B) IMPLIES P(OB).J(B(OB)) P(OB)] IMPLIES FORALL f(AB) FORALL g(AB).f(AB) [J(B(OB)).LAMBDA x(B).~.f(AB) x(B) =(OAA) g(AB) x(B)] =(OAA) g(AB) [J(B(OB)).LAMBDA x(B).~.f(AB) x(B) =(OAA) g(AB) x(B)] IMPLIES f(AB) =(O(AB)(AB)) g(AB)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

@@ -1,0 +1,810 @@
+\begin{theindex}
+
+  \item *after-primsub*, 119
+  \item *banned-conns-list*, 118
+  \item *features*, 3, 5
+  \item *hacked-rewrites-list*, 118, 139
+  \item *ho-banned-conns-list*, 118
+  \item *instantiated-defs-list*, 118
+  \item *instantiated-eqs-list*, 118
+  \item *leibniz-var-list*, 119
+  \item *rew-unsubst-exps*, 119
+  \item *standard-output*, 14, 246
+  \item *unsubst-exp-vars*, 119
+  \item -big, 245
+  \item -bottomOffset, 245
+  \item -javainterface, 245
+  \item -maxChars, 245
+  \item -nopopups, 245
+  \item -rightOffset, 245
+  \item -screenx, 245
+  \item -screeny, 245
+  \item -x2, 245
+  \item -x4, 245
+  \item :ETPS, 4
+  \item :TPS, 4
+  \item [, Syntax, 38
+  \item \%SPrintAplicn, Function, 56
+  \item \%SPrintPPlist, Function, 56
+  \item \%VPForm, Function, 56
+  \item \%\%PRINC, Function, 56, 57
+  \item \it  Atom, Data, 55
+  \item \it  JForm, Data, 55
+  \item \it  Literal, Data, 55
+  \item \it  SignAtom, Data, 55
+  \item \it  Var, Data, 55
+  \item \it  typeconstant, Type, 33
+  \item \it  typesymbol, Type, 33
+  \item \it  typevariable, Type, 33
+  \item {\it  name}, 27, 29
+  \item {\tt  MARKATOM}, Data, 53
+
+  \indexspace
+
+  \item abbrev, Syntax, 34
+  \item ABBREV-Q, Function, 72
+  \item accept-socket-conn, Function, 6
+  \item active-mating, 136
+  \item ADD-EXT-LEMMAS, Command, 130
+  \item ADD-HYPS, Command, 97
+  \item ADD-TRUTH, 116
+  \item ADD-TRUTH, Flag, 116, 120, 136
+  \item ALL, 126
+  \item all-banned, 116, 117
+  \item allow-nonleaf-conns, 126
+  \item ALLOW-NONLEAF-CONNS, Flag, 126
+  \item ALLSCOPEFLAG, Flag, 63
+  \item AllScopeFlag, Flag, 47, 48
+  \item AndHeight, Parameter, 62
+  \item aplicn, Data, 52
+  \item aplicnlist, Data, 52
+  \item APPLY-LABEL, Function, 70
+  \item APPLY-MATCH, Flag, 90
+  \item apply-thm-146, Function, 141, 148, 149
+  \item ascnumber, Data, 52
+  \item ASSEMBLE-RULE, Command, 15
+  \item ASSERT, Command, 97
+  \item ASSERT-LEMMAS, Flag, 132
+  \item ATOMVALFLAG, Flag, 63
+  \item AtomValFlag, Flag, 47, 48
+  \item ATTACH-DUP-INFO-TO-NATREE, Function, 215
+  \item AUTO-GENERATE-HYPS, Flag, 106
+
+  \indexspace
+
+  \item BACKUP-LIB-DIR, Flag, 233
+  \item BASIC-PROP-TAC, 208
+  \item BETA, 115
+  \item binder, Syntax, 35
+  \item bktrack-limit, 117
+  \item bogus-slot, 24
+  \item BOOLEAN, Argument Type, 67
+  \item bound-must-avoid, 160, 161
+  \item bound-try-to-equate-bound, 160
+  \item bound-try-to-equate-to-free, 160
+  \item BOUNDWFF-Q, Function, 72
+  \item BRACKETS, Parameter, 50
+  \item ByteStream, Data, 83
+  \item bytestream-tty, Function, 83
+
+  \indexspace
+
+  \item call-system, Function, 6
+  \item ceb-nat-etr.lisp, File, 205
+  \item ceb-nat-etree, Function, 205
+  \item ceb-nat-seq.lisp, File, 205
+  \item ceb-proof-to-natree, Function, 205
+  \item CFONT, Property, 49
+  \item cfont.lisp, File, 49
+  \item CFontTable, Parameter, 62
+  \item cgraph, 117
+  \item char, Data, 52
+  \item check-conn, Function, 126
+  \item check-etree-structure, Function, 114
+  \item check-etree-structure-break, Function, 114
+  \item check-shallow-formula, Function, 156
+  \item check-shallow-formulas, Function, 141, 148, 149
+  \item CJFORM, Command, 127
+  \item CLEANUP, Command, 109
+  \item cleanup-all-expansions, Function, 154--156
+  \item cleanup-etree, Function, 136, 154
+  \item cleanup-expansion, Function, 154
+  \item cleanup-leibniz-expansions, Function, 141, 143, 147, 156
+  \item cleanup-rewrite-node, Function, 154
+  \item CLEANUP-SAME, Flag, 109
+  \item clist, 173
+  \item Cols, Data, 56
+  \item COMMAND, 246
+  \item command-interpreters-auto.lisp, File, 26
+  \item command-interpreters-core.lisp, File, 26
+  \item components, 111, 115, 116
+  \item compound-tacl-defn, Syntax, 196
+  \item compound-tactic, Syntax, 195
+  \item CONCEPT, Style, 48
+  \item CONCEPT-S, Style, 48
+  \item conn-unif-p, Function, 126
+  \item connect-socket, Function, 6
+  \item connection graph, 127
+  \item connections-array, 117
+  \item contains-some-defn, Function, 121
+  \item core-name, 7
+  \item create-skolem-node, Function, 121
+  \item CRLF, Data, 83
+  \item current-eproof, 115, 116, 119, 121, 126, 127, 203
+  \item current-topnode, 115
+  \item cutfree-ftree-seq-to-ftrees, Function, 205, 212
+  \item CUTFREE-TO-EDAG, Command, 231
+
+  \indexspace
+
+  \item datasize, 8
+  \item Debugging, 16
+  \item deepen-leaf-node-real, Function, 120, 121
+  \item deepen-negated-leaves, Function, 142
+  \item DEFAULT-EXPAND, Flag, 167
+  \item DEFAULT-LIB-DIR, Flag, 233
+  \item DEFAULT-MS, Flag, 167
+  \item defcategory, 22
+  \item defconstant, 6
+  \item defconstnt, 6
+  \item defcontext, 23
+  \item definfo, 15, 90
+  \item defmonitor, Command, 95
+  \item defpck.lisp, File, 2, 4
+  \item DEFPRTOP, 69
+  \item DEFREPORT, 240
+  \item DEFREPORT1, 240
+  \item defsynonym, Command, 90
+  \item defutil, Command, 12
+  \item DEFWFFOP, Function, 68
+  \item defwffrec, Function, 70
+  \item DELETE-HYPS, Command, 97
+  \item Desc-Jform, Data, 56
+  \item Descr-JForm, 55
+  \item Describe-VPAtom, Function, 56
+  \item Describe-VPForm, Function, 55, 56
+  \item Describe-VPLit, Function, 56
+  \item DFONT, Property, 49
+  \item dfont.lisp, File, 49
+  \item dissolve, 116, 126
+  \item DISSOLVE, Flag, 117, 126
+  \item DIY, Command, 132
+  \item dline, 101
+  \item DONE, Command, 100
+  \item dproof, 204
+  \item DUAL, 118
+  \item dumplisp, Function, 17
+
+  \indexspace
+
+  \item econjunction, 115
+  \item ED-COMMAND, Argument Type, 79
+  \item edisjunction, 115
+  \item edop, Data, 77
+  \item EDPPWFFLAG, Flag, 83
+  \item EDPRINTDEPTH, Flag, 62, 83
+  \item EDSEARCH, Function, 80
+  \item edtop.lisp, File, 14
+  \item edwff, Data, 77
+  \item edwff, EdOp, 40
+  \item eeod-to-eed-node, Function, 162
+  \item ELIMINATE-ALL-RULEP-APPS, Command, 208
+  \item ELIMINATE-CONJ*-RULEP-APPS, Command, 208
+  \item ELIMINATE-RULEP-LINE, Command, 208
+  \item email from Dan Nesmith about status, 112
+  \item empty-dup-info, 116
+  \item eproof, 12, 116, 200
+  \item eproof, Data, 115
+  \item EQUIV-DISJS, 116
+  \item EQUIV-IMPLICS, 116
+  \item EQUIVS, Data, 49
+  \item EQUIVWFFS, 115
+  \item ETA, 115
+  \item etags, 12
+  \item ETR-INFO, 204
+  \item etr-merge, Function, 135, 136
+  \item ETREE, 216
+  \item Etree, Data, 43
+  \item etree, Data, 111, 115
+  \item ETREE-AUTO-SUGGEST, Command, 204
+  \item ETREE-NAT, Command, 215, 216, 231
+  \item etree-nat, Command, 115
+  \item etree-to-ftree, Function, 119
+  \item etree-to-jform, Function, 117
+  \item ETREE-TO-JFORM-REC, Function, 216
+  \item etree-to-prop-jform, Function, 117
+  \item etrees-debug, File, 16, 114
+  \item etrees-labels.lisp, File, 111
+  \item etrees-wffops.lisp, File, 119, 120
+  \item EVENTS, 235
+  \item exit-from-lisp, Function, 6
+  \item EXP-VAR, 117
+  \item exp-var, Data, 115
+  \item expand-cases, Function, 207
+  \item expansion, 115
+  \item expansion proof, 115
+  \item EXPERTFLAG, Flag, 100
+  \item ext-exp-dag-debug, 132
+  \item ext-exp-dag-macros.lisp, File, 132, 231
+  \item ext-exp-dag-prettify, Function, 162
+  \item ext-exp-dag-verbose, 132
+  \item ext-exp-dags-nd.lisp, File, 231
+  \item ext-exp-dags.lisp, File, 162
+  \item ext-exp-open-dags.lisp, File, 162
+  \item EXT-MATE, 132, 231
+  \item ext-mate-top.lisp, File, 132
+  \item ext-search.lisp, File, 133
+  \item EXT-SEQ, 231
+  \item ext-seq, 230
+  \item ext-seq-top.lisp, File, 231
+  \item EXT=, 116
+  \item external-interface.lisp, Command, 246
+  \item external-interface.lisp, File, 246
+  \item EXTRACT-TEST-INFO, Command, 85
+
+  \indexspace
+
+  \item FACE, Property, 49
+  \item facilities-short.lisp, File, 16
+  \item facilities.lisp, File, 16
+  \item failure record, Data, 120
+  \item false, 116
+  \item fill-selected, Function, 116
+  \item FILLINEFLAG, Flag, 63
+  \item FilLineFlag, Flag, 48, 52
+  \item FinalScan, Function, 84
+  \item find, 12
+  \item FIND-ALT-CHEAPEST-CLIST-SPANNING-PATH, Function, 137
+  \item FIND-CHEAPEST-CLIST-SPANNING-PATH, Function, 137
+  \item finish-up-option-search, Function, 116
+  \item First-Order-Mode, Flag, 60
+  \item FIRST-ORDER-MODE-MS, Flag, 93
+  \item FIRST-ORDER-MODE-PARSE, Flag, 62
+  \item FIRST-ORDER-PRINT-MODE, Flag, 62
+  \item First-Order-Print-Mode, Flag, 60
+  \item fix-shallow-chain, Function, 140
+  \item flag-deps.lisp, File, 92
+  \item flagging.lisp, File, 15
+  \item FlatSym, Function, 56
+  \item FlatWff, Function, 56
+  \item flavors, 23
+  \item FLUSHLEFTFLAG, Flag, 63
+  \item FlushLeftFlag, Flag, 48
+  \item FlushleftFlag, Flag, 52
+  \item ForallIndent, Parameter, 62
+  \item free-must-avoid, 160
+  \item free-vars, 111
+  \item free-vars-in-etree, 117, 119
+  \item ftree-seq, File, 210
+  \item ftree-seq-bring-to-front, Function, 227
+  \item ftree-seq-cut-elim, Function, 205, 224
+  \item ftree-seq-invert-position-list, Function, 226
+  \item ftree-seq-merge-focus-all-pos, Function, 213
+  \item ftree-seq-mix-elim-1, Function, 223
+  \item ftree-seq-mix-elim-finish, Function, 225
+  \item ftree-seq-mix-elim-imitate-rule, Function, 227
+  \item ftree-seq-mix-elim-principal, Function, 223, 227
+  \item ftree-seq-replace-equivwffs, Function, 225
+  \item ftree-seq-weaken-early, Function, 205
+  \item ftree-seq.lisp, File, 209
+  \item ftree-solve-constraint-set, Function, 174
+  \item ftree-to-etree, Function, 119
+  \item ftrees, File, 119, 212
+  \item function-var, 161
+
+  \indexspace
+
+  \item GAR, Function, 71
+  \item garbage collection, 8
+  \item GDR, Function, 71
+  \item genchar, Data, 52
+  \item gencharlist, Data, 52
+  \item generate-java-menus, Command, 248
+  \item GENERIC, Style, 49
+  \item GENERIC-STRING, Style, 49
+  \item get-best-alt-bound-name, Function, 159, 161
+  \item get-best-alt-free-name, Function, 159, 161
+  \item get-best-alt-name, Function, 161
+  \item get-shallow, Function, 111, 115
+  \item GETWFF-SUBTYPE, Function, 67
+  \item global-categorylist, 23
+  \item global-contextlist, 23
+  \item global-definelist, 12
+  \item GO, Command, 99, 111
+  \item goal, Syntax, 195
+  \item goal-list, Syntax, 195
+  \item GroupList, Data, 83
+  \item GroupScan, Function, 84
+  \item GVAR, Argument Type, 67
+  \item GWFF, Argument Type, 67
+
+  \indexspace
+
+  \item hatom, Syntax, 38
+  \item heap space, 7
+  \item Height, Data, 56
+  \item HELP object, Command, 85
+  \item HISTORY-SIZE, Flag, 89
+  \item HLINE-JUSTIFICATION, Flag, 109
+  \item hx-natree-aux, File, 215
+  \item hx-natree-cleanup, File, 216
+  \item hx-natree-debug, File, 216
+  \item hx-natree-duplication, File, 215
+  \item hx-natree-rulep, File, 215
+  \item hx-natree-top, File, 215
+  \item hx-natree-top.lisp, File, 205
+
+  \indexspace
+
+  \item imitation-eta, Function, 165
+  \item implication, 115
+  \item in-package, 5
+  \item INCLUDE-INDUCTION-PRINCIPLE, Flag, 171, 175, 177, 179
+  \item incomp-clists, 117
+  \item incomp-clists-wrt-etree, 117
+  \item individual-var, 161
+  \item Infix, Property, 46
+  \item InfixScan, Function, 84
+  \item INFO, 86
+  \item INSERT-LIB-DIR, Flag, 234
+  \item INSERT-TPTP*, Command, 233
+  \item INSERT-TPTP, Command, 233
+  \item inst-exp-vars-params, 116, 117
+  \item interface-style.lisp, File, 246--248
+  \item ISTYLE, 246
+  \item istyle-characters, 248
+
+  \indexspace
+
+  \item JAVA-COMM, Flag, 246
+  \item JAVAWIN, Command, 246
+  \item JForm, 55
+  \item jform, 116
+  \item junctive, 111, 115, 116
+  \item justification, 115
+
+  \indexspace
+
+  \item Kset, Data, 49
+
+  \indexspace
+
+  \item label, Syntax, 35
+  \item LABEL-Q, Function, 71
+  \item LAMBDA, 115
+  \item LAZY2, 118
+  \item leaf, 116
+  \item Leaf, Data, 43
+  \item leaf-list, 117
+  \item leaf-p*, Function, 136, 141
+  \item LEFTMARGIN, Flag, 48, 50
+  \item Leftmargin, Parameter, 48
+  \item LEIBNIZ=, 116
+  \item lemmas, 117, 129
+  \item LexList, Data, 83
+  \item LexList, Parameter, 84
+  \item LexScan, Function, 83
+  \item LINE-NO-DEFAULTS, Function, 101
+  \item LINE-NO-DEFAULTS-FROM, Function, 102
+  \item LINE-NO-DEFAULTS-TO, Function, 102
+  \item linelength, Function, 6
+  \item LIST-RULES, Command, 97
+  \item list-rules, Function, 97
+  \item LOCALLEFTFLAG, Flag, 63
+  \item LocalLeftFlag, Flag, 48, 51
+  \item locate, 12
+  \item logconst, Syntax, 34
+  \item LOGCONST-Q, Function, 71
+  \item LOWERCASERAISE, Flag, 62
+  \item LSYMBOL-Q, Function, 71
+
+  \indexspace
+
+  \item maint.lisp, File, 85
+  \item make-assert-a-hyp, Function, 208
+  \item make-clos-setvar-ind-negf, Function, 181, 185, 186
+  \item make-clos-setvar-ind-negf-1, Function, 186, 189
+  \item make-clos-setvar-ind-negf-2, Function, 186, 187
+  \item make-clos-setvar-ind-negf-3, Function, 187, 188
+  \item make-clos-setvar-ind-negf-4, Function, 188, 189
+  \item make-clos-setvar-ind-negf-5, Function, 189
+  \item make-clos-setvar-lemma-negf, Function, 175, 179
+  \item make-clos-setvar-lemma-negf-0, Flag, 175
+  \item make-clos-setvar-lemma-negf-0, Function, 179
+  \item make-clos-setvar-lemma-negf-1, Function, 181
+  \item make-clos-setvar-lemma-negf-2, Function, 181, 183, 184
+  \item make-clos-setvar-lemma-negf-3, Function, 181, 182
+  \item make-clos-setvar-lemma-negf-4, Function, 181, 183
+  \item make-clos-setvar-lemma-negf-5, Function, 182, 183
+  \item make-clos-setvar-lemma-negf-6, Function, 183
+  \item make-clos-setvar-lemma-negf-7, Function, 183, 184
+  \item make-clos-setvar-lemma-negf-8, Function, 184, 185
+  \item make-clos-setvar-lemma-negf-9, Function, 185
+  \item make-ftree-setvar-soln, Function, 174
+  \item make-ftree-subst, Function, 189
+  \item make-knaster-tarski-gfp-lemma, Function, 172
+  \item make-knaster-tarski-gfp-negf, Function, 172
+  \item make-knaster-tarski-leastfp-lemma, Flag, 175
+  \item make-knaster-tarski-leastfp-lemma, Function, 172, 179, 191
+  \item make-knaster-tarski-leastfp-negf, Function, 172
+  \item make-knaster-tarski-lemma, Flag, 175
+  \item make-knaster-tarski-lemma, Function, 172
+  \item make-knaster-tarski-negf, Function, 172
+  \item make-left-side-refl, Function, 142, 144, 145
+  \item make-mating-lists, Function, 136
+  \item make-min-inv-princ, Function, 174, 175
+  \item make-min-inv-princ-2, Function, 175
+  \item make-min-inv-princ-3, Function, 175, 176
+  \item make-min-inv-princ-4, Function, 175, 176
+  \item make-min-inv-princ-5, Function, 176
+  \item make-min-inv-princ-6, Function, 176
+  \item make-min-setvar-lemma-negf, Function, 175
+  \item make-min-setvar-lemma-posf, Function, 174, 177
+  \item make-min-setvar-lemma-posf-1, Function, 177
+  \item make-min-setvar-lemma-posf-2, Function, 177
+  \item make-min-setvar-lemma-posf-3, Function, 177
+  \item make-min-setvar-lemma-posf-4, Function, 178
+  \item make-min-setvar-lemma-posf-5, Function, 178
+  \item make-min-setvar-lemma-posf-6, Function, 178
+  \item make-passive-socket, Function, 6
+  \item make-passive-socket-port, Function, 6
+  \item Makefile, File, 5
+  \item MakeTerm, Function, 84
+  \item master-eproof, 116
+  \item mating, Data, 120
+  \item mating-list, 117
+  \item mating-merge-eq.lisp, File, 141, 154, 157, 162
+  \item mating-merge.lisp, File, 136--139, 141
+  \item mating-merge2.lisp, File, 150
+  \item MATING-VERBOSE, Flag, 16
+  \item max-cgraph-counter, 117
+  \item max-incomp-clists-wrt-etree, 117
+  \item max-mates, Flag, 125
+  \item memory, 7
+  \item menu, 247
+  \item menuitem, 247
+  \item merge-all, Function, 136, 137
+  \item merge-debug, 135
+  \item MERGE-MINIMIZE-MATING, Flag, 135, 137
+  \item merge-tree-real, Function, 154, 159, 161
+  \item merged, 117
+  \item MIN-QUANT-ETREE, Flag, 129, 216
+  \item min-quant-scope, Function, 156
+  \item MIN-QUANTIFIER-SCOPE, Flag, 116, 120
+  \item ML::RULES-2-PROP, 97
+  \item mode, Function, 15
+  \item modify-dual-rewrites, Function, 135, 137, 139
+  \item mon-fn-negf, Function, 173, 180
+  \item monitor, 95
+  \item monitor, Command, 96
+  \item monitor-check, 95
+  \item ms, Function, 127
+  \item ms-director, Function, 127
+  \item ms-propositional, Function, 127
+  \item MS03-7, 231
+  \item MS04-2, 231
+  \item ms04-search.lisp, File, 133
+  \item MS91-6, 116
+  \item MS91-7, 116
+  \item ms91-basic.lisp, File, 116
+  \item ms91-search.lisp, File, 116
+  \item MS98-1, 167
+  \item MS98-INIT, Flag, 167
+  \item MS98-TRACE, Flag, 205
+  \item msearch, Function, 125
+  \item msg, 13
+  \item msg, Function, 14
+  \item msg, Syntax, 195
+  \item msgf, Function, 14
+
+  \indexspace
+
+  \item name, 111, 117
+  \item NAT-ETREE, Command, 116, 204, 205, 215, 216
+  \item NAT-ETREE-VERSION, Flag, 204, 205, 215, 216
+  \item NATREE-DEBUG, Flag, 204, 214
+  \item natree-to-ftree-main, Function, 205
+  \item natree-to-ftree-seq-extraction, Function, 205, 212
+  \item natree-to-ftree-seq-normal, Function, 205, 212
+  \item negation, 115
+  \item nomonitor, Command, 96
+  \item NONE, 121
+  \item NORMALIZE-PROOF, Command, 214
+  \item not-alpha-image, 160
+  \item NUM-OF-DUPS, Flag, 177, 178
+
+  \indexspace
+
+  \item one-step-mqe-bd, Function, 129
+  \item one-step-mqe-infix, Function, 129
+  \item option-set, 116
+  \item OPTIONS-VERBOSE, Flag, 16
+  \item order-components, Flag, 125
+  \item otl-help.lisp, File, 97
+
+  \indexspace
+
+  \item P, EdOp, 40
+  \item parent, 112
+  \item pass-socket-local-pass, Function, 6
+  \item PC, Parameter, 62
+  \item PCALL, Function, 51
+  \item pdepth, Data, 52
+  \item pgroup, Data, 52
+  \item plength, Data, 52
+  \item pline, 101
+  \item pmabbrev, Syntax, 35
+  \item PMABBREV-Q, Function, 72
+  \item pmabbsym, Syntax, 34
+  \item pmpropsym, Syntax, 34
+  \item PMPROPSYM-Q, Function, 72
+  \item pmprsym, Syntax, 34
+  \item positive, 111
+  \item PP-Enter-Kset, Function, 55
+  \item PP-SYMBOL-SCRIBE, Function, 51
+  \item PP-SYMBOL-XTERM, Function, 51
+  \item PPlist, 52, 53
+  \item pplist, Data, 52
+  \item PPrinc, Function, 55
+  \item PPrinc0, Function, 55
+  \item PPTyo, Function, 55
+  \item PPTyo0, Function, 55
+  \item PPTyos, Function, 55
+  \item pptyox, Function, 18
+  \item PPWFFLAG, Flag, 63
+  \item PPWfflag, Flag, 48, 51
+  \item PPWfflength, Parameter, 54
+  \item PPWfflist, Parameter, 54
+  \item PR00, 167
+  \item pre-process-nonleaf-leibniz-connections, Function, 141, 143
+  \item predecessor, 112, 116
+  \item predicate-var, 161
+  \item prettify-bound-bound-legal-p, Function, 161
+  \item prettify-bound-legal-p, Function, 160, 161
+  \item prettify-bound-rename, Function, 160
+  \item prettify-etree, Function, 136, 159
+  \item prettify-free-bound-legal-p, Function, 161
+  \item prettify-free-legal-p, Function, 160, 161
+  \item prettify-free-rename, Function, 160
+  \item prettify-identify-bound-bound, Function, 159, 161
+  \item prettify-identify-free-bound, Function, 159, 161
+  \item prettify-process-vars-in-etree, Function, 159, 160
+  \item pretty-var-p, Function, 161
+  \item PreWff, Data, 83
+  \item prfw.lisp, File, 14
+  \item prim-vars, 115
+  \item primitive-tacl-defn, Syntax, 196
+  \item primitive-tactic, Syntax, 195
+  \item PRIMSUB-METHOD, Flag, 90, 167
+  \item princ-mhelp, 85
+  \item princ-mhelp-latex, 85
+  \item Print, Function, 56
+  \item print-symbol, Function, 51
+  \item PRINTDEPTH, Flag, 62, 83
+  \item PrintDepth, Parameter, 47, 48
+  \item PRINTEDTFILE, Flag, 82
+  \item PRINTEDTFLAG, Flag, 82
+  \item PRINTEDTFLAG-SLIDES, Flag, 82
+  \item PRINTEDTOPS, Flag, 82
+  \item PrintFnDover, Function, 54
+  \item PrintFnTTY, Function, 54
+  \item PrintPPlist, Function, 54
+  \item PRINTTYPES, Flag, 61, 62
+  \item PrintTypes, Flag, 47, 48
+  \item PRINTVPDFLAG, Flag, 82
+  \item PrintWff, Function, 51, 54
+  \item PrintWffPlain, Function, 50, 54
+  \item PrintWffScope, Function, 50, 54
+  \item prompt-read, 13
+  \item prompt-read, Function, 13
+  \item proof-to-natree, Function, 205
+  \item PROP-FIND-CHEAPEST-PATH, Function, 138
+  \item PROP-MSEARCH, Function, 138
+  \item prop-msearch, Function, 127
+  \item proposition-var, 161
+  \item propsym, Syntax, 34
+  \item PROPSYM-Q, Function, 72
+  \item prt.lisp, File, 62
+  \item PrtWff, Function, 48, 50
+  \item prune-status-0, Function, 136
+  \item prune-unmated-branches, Function, 135, 137, 139, 141
+  \item PWff, Function, 50, 54
+  \item PWScope GWff, MExpr, 47
+
+  \indexspace
+
+  \item QUERY-USER, Flag, 16
+  \item quick-unification-connection, Function, 118
+
+  \indexspace
+
+  \item raise-lambda-nodes, Function, 150, 151
+  \item raise-lambda-nodes-ab, Function, 150
+  \item raise-lambda-nodes-aux1, Function, 150
+  \item raise-lambda-nodes-equiv, Function, 150
+  \item raise-lambda-nodes-neg, Function, 150
+  \item raise-lambda-nodes-skol, Function, 150
+  \item randomvars, Function, 161
+  \item RdCList, Data, 83
+  \item read-line-sym, Function, 246
+  \item reduce-rewrites, Function, 155
+  \item REFL=, 116
+  \item relation-var, 161
+  \item remove-double-negations-merge, Function, 156
+  \item REMOVE-LEIBNIZ, Flag, 136
+  \item remove-leibniz, Function, 141, 143, 144
+  \item remove-leibniz-nodes, Function, 141
+  \item remove-spurious-connections, Function, 141, 149
+  \item remove-unnecessary-ab-rews, Function, 160
+  \item rename-all-vars-in-etree, Function, 159, 161
+  \item rename-all-vars-in-wff, Function, 161
+  \item replace-non-leaf-leaves, Function, 136, 141
+  \item REPORT, 239
+  \item RESPONSE, 246
+  \item RESTORE-ETREE, Command, 120
+  \item reverse, 115
+  \item rewrite, 115
+  \item REWRITE-DEFNS, 121
+  \item REWRITE-DEFNS, Flag, 118, 156
+  \item REWRITE-EQUALITIES, Flag, 118, 121
+  \item REWRITE-EQUIVS, Flag, 120
+  \item REWRITES, Flag, 126
+  \item RIGHTMARGIN, Flag, 48--50, 93, 246
+  \item Rightmargin, Parameter, 48
+  \item Rows, Data, 56
+  \item RULEP, Command, 97
+  \item RULEP, Function, 215
+  \item RULEQ, 116
+  \item ruleq-shallow, 115
+  \item runcount, Function, 14
+
+  \indexspace
+
+  \item SAIL, Style, 49
+  \item SailCharacters, Parameter, 63
+  \item SAM, 8
+  \item SAVE-ETREE, Command, 120
+  \item SAVE-FLAG-RELEVANCY-INFO, Command, 93
+  \item SAVE-WORK, Command, 14
+  \item SAVEPROOF, Command, 100
+  \item scope-problem-p, Function, 161
+  \item SCRIBE, Style, 49
+  \item SCRIBE-PREAMBLE, Flag, 64
+  \item SCRIBEPROOF, Command, 64
+  \item SCRIPT, Command, 14
+  \item sel-var-bound, 160
+  \item selection, 115
+  \item setup-big-xterm-window, Function, 6
+  \item SETUP-SLIDE-STYLE, Command, 48
+  \item setup-xterm-window, Function, 6
+  \item shallow, 115, 116
+  \item SHOW-RELEVANCE-PATHS, Command, 93
+  \item shownotypes, Command, 63
+  \item skolem, 115, 116
+  \item skolem-constants, 117
+  \item SKOLEM-DEFAULT, Flag, 115, 117, 121, 136
+  \item skolem-method, 117
+  \item skolem-node-list, 117
+  \item skolem-term, Data, 115
+  \item skolemization, 121
+  \item SLIDEPROOF, Command, 49
+  \item SPANNING-CLIST-PATH, Function, 137
+  \item SPANS, Function, 137, 138
+  \item special.exp, File, 5
+  \item SPrintPPlist, Function, 55
+  \item stack space, 7
+  \item stacksize, 8
+  \item stats, 117
+  \item status, 112
+  \item status-userid, Function, 6
+  \item statuses, 117
+  \item stringdt, Function, 14
+  \item stringdtl, Function, 14
+  \item strip-exp-vars, Function, 137
+  \item strip-exp-vars-for-etree, Function, 137
+  \item STYLE, Flag, 48, 50, 61, 67, 246
+  \item Style, Parameter, 48
+  \item SUBST, 117
+  \item subst-skol-terms, Function, 136, 141
+  \item subst-skol-terms-main, Function, 141
+  \item subst-vars-for-params, Function, 136
+  \item substitute-in-etree, Function, 137
+  \item substitution-list, 117
+  \item SUBSUMPTION-CHECK, Flag, 163
+  \item SUBSUMPTION-DEPTH, Flag, 163, 165
+  \item SUBSUMPTION-NODES, Flag, 163
+  \item support, 101
+  \item swap space, 7, 8
+  \item symmetry, 117
+  \item symmetry-holder, 117
+
+  \indexspace
+
+  \item tacl-defn, Syntax, 196
+  \item tacmode, 194
+  \item tacmode, Flag, 199
+  \item tactic-defn, Syntax, 195
+  \item tactic-exp, Syntax, 195
+  \item tactic-mode, Syntax, 195
+  \item tactic-use, Syntax, 195
+  \item TACTIC-VERBOSE, Flag, 16
+  \item tactic-verbose, Flag, 194, 199
+  \item tacuse, Flag, 194, 199
+  \item TAGS, File, 12
+  \item terms, 115
+  \item TEX, Style, 49
+  \item TEXNAME, Property, 49
+  \item TEXPROOF, Command, 64
+  \item THROWFAIL, Function, 67
+  \item TLIST, MExpr, 21
+  \item token, Syntax, 195
+  \item tops20.lisp, File, 6, 14
+  \item tps.mss, File, 49
+  \item tps3-save, Function, 5, 6
+  \item tps3-save.lisp, File, 243
+  \item tps3.patch, File, 7
+  \item tps3.sys, File, 7
+  \item TpsBigFonts.java, File, 248
+  \item tpsjobs, File, 16
+  \item tpsjobs-done, File, 1, 16, 17
+  \item TpsSmallFonts.java, File, 248
+  \item TpsWin.java, File, 247, 248
+  \item TREAT-HLINES-AS-DLINES, Flag, 108
+  \item treemerge, Function, 137
+  \item true, 116
+  \item TRUEFN, Function, 68
+  \item TRUTHP, 116
+  \item TRUTHVALUES-HACK, Flag, 116, 136
+  \item TYPE-IOTA-MODE, Flag, 45
+  \item TypeAssoc, Data, 83
+  \item TYPESUBST, Command, 97
+  \item TYPESYM, Argument Type, 67
+
+  \indexspace
+
+  \item uni-term, Data, 120
+  \item unif-match.lisp, File, 165
+  \item unification tree, Data, 120
+  \item UNIFY-VERBOSE, Flag, 16, 164
+  \item UNNEEDED-NODE-P, Function, 137
+  \item unneeded-node-p, Function, 137, 141
+  \item UPDATE-PLAN, Function, 104
+  \item UPDATE-RELEVANT, Command, 92, 93
+  \item UPWARD-UPDATE-NATREE, Function, 215
+  \item USE-EXT-LEMMAS, Flag, 132
+  \item use-tactic, MExpr, 199
+  \item utilities, 13
+
+  \indexspace
+
+  \item VAR, 117
+  \item Vertical Paths, 61
+  \item VPD-FILENAME, Flag, 82
+  \item VPDiag, Function, 48
+  \item VPFORM JFORM \{FILE\} \{STYLE\} \{PRINTTYPES\} \{BRIEF\} \{VPFPAGE\}, 
+		61
+  \item VPForm, Function, 48
+  \item VPFORM-TEX-PREAMBLE, Flag, 64
+  \item vpforms.lisp, File, 14, 55
+  \item VPFPage, Parameter, 57
+  \item VpfPage, Parameter, 62
+
+  \indexspace
+
+  \item wffrec\%, 70
+  \item Width, Data, 56
+
+  \indexspace
+
+  \item XTERM, 246
+  \item XTERM, Style, 49
+  \item XTERM-ANSI-BOLD, Flag, 19
+  \item xterm-bold-font, Function, 18
+  \item xterm-normal-font, Function, 18
+  \item xterm.lisp, File, 18, 19
+
+  \indexspace
+
+  \item y-or-n-p, Function, 13
+
+\end{theindex}

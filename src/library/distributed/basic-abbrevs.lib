@@ -1,0 +1,28 @@
+(:name PAIRSET
+:type ABBR
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X(A) LAMBDA Y(A) LAMBDA Z(A).Z(A) =(OAA) X(A) OR Z(A) =(OAA) Y(A)"
+:needed-objects   NIL
+:mhelp "Pairset x y is the set {x,y}"
+:other-attributes ((TYPELIST ("A")) (TYPE "OAAA") (PRINTNOTYPE T) (FO-SINGLE-SYMBOL T))
+:other-remarks "
+")
+
+
+(:name CROSSPROD
+:type ABBR
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X(OA) LAMBDA Y(OA) LAMBDA Z(A(AAA)) EXISTS x(A) EXISTS y(A).X(OA) x(A) AND Y(OA) y(A) AND Z(A(AAA)) =(O(A(AAA))(A(AAA))) x(A) PAIR(A(AAA)AA) y(A)"
+:needed-objects   (PAIR)
+:mhelp "Cross product of two sets"
+:other-attributes ((TYPELIST ("A")) (TYPE "O(A(AAA))(OA)(OA)") (PRINTNOTYPE T) (FO-SINGLE-SYMBOL T))
+:other-remarks "
+")
+
+

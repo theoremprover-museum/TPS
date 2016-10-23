@@ -1,0 +1,2 @@
+#!/bin/csh
+xterm -fn gallant.r.19 -fb galsymbold -n TPSwindow -T TPSwindow -e csh /afs/cs/project/tps/tps/utilities/vpshow.win $1 &

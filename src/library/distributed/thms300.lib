@@ -1,0 +1,14 @@
+(:name THM304
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) EQ(OII) x(I) x(I) AND [FORALL x(I) FORALL y(I) [EQ(OII) x(I) y(I) AND P(OI) x(I) IMPLIES P(OI) y(I)] AND P(OI) a(I)] AND FORALL y(I) FORALL z(I) [EQ(OII) [f(II) y(I)] [f(II) z(I)] IMPLIES EQ(OII) y(I) z(I)] IMPLIES EXISTS A(OI).FORALL x(I) [A(OI) [f(II) x(I)] IMPLIES P(OI) x(I)] AND EXISTS z(I) A(OI) z(I)"
+:needed-objects   NIL
+:mhelp "modified version of thm115"
+:other-attributes NIL
+:other-remarks "
+")
+
+

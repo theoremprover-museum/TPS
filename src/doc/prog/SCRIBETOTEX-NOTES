@@ -1,0 +1,68 @@
+The following are some notes about how I converted the
+Scribe Programmer's Guide to LaTeX.
+
+Scribe commands are of the form @command
+while TeX commands are of the form \command.
+In many cases we could just do a query replace
+of @command with \command.  If the corresponding
+command in LaTeX is not defined, we define it.
+
+Examples (these are in manual.tex):
+
+\def\lisp{{\sc lisp}}
+\newcommand{\indexother}[1]{#1\index{#1}}
+
+Many environments used in Scribe, such as
+"programexample", "lispcode", etc., were
+simply changed to the verbatim environment
+in LaTeX.  A consequence is that any
+special fonts or styles in the environment (e.g., italics)
+had to be omitted.  With some work, corresponding
+LaTeX environments could be defined.
+
+HOW TO DO QUERY REPLACE IN LOTS OF FILES
+
+Since many files make up the manual, we do not
+want to be forced to switch buffers for every file
+and do a query replace over and over.  To fix
+this I concatenated the files into a single file
+by 
+
+more *.tex > all
+
+Each file has a prefix of the form:
+
+::::::::::::::
+epr-npr-translate.tex
+::::::::::::::
+
+Then the files can be split into several files again
+(replacing the old versions) using the following lisp function:
+
+(defun split-tex-files (&optional (name "all"))
+  (let ((f (open name :direction :input))
+	(out-file nil))
+    (do ((l (read-line f nil 'eof) (read-line f nil 'eof)))
+	((or (eq l 'eof) (string= l "::::::::::::::"))
+	 (unless (eq l 'eof)
+	   (setq out-file (open (read-line f) :direction :output :if-exists :overwrite))
+	   (read-line f))))
+    (do ((l (read-line f nil 'eof) (read-line f nil 'eof)))
+	((eq l 'eof) (close f))
+	(if (string= l "::::::::::::::")
+	    (progn
+	      (close out-file)
+	      (setq out-file (open (read-line f) :direction :output :if-exists :supersede))
+	      (read-line f))
+	  (format out-file "~d~%" l)))))
+
+HINT:  Define a shorter lisp function (defun s () (split-tex-files))
+so you can call (s) instead of (split-tex-files), as the function
+is used often.
+
+The idea is to edit the "all" file.  Run (split-tex-files) in lisp (in
+the appropriate directory, of course).  Run latex on the result.
+Repeat.
+
+          2-16-00
+

@@ -1,0 +1,343 @@
+(:name EDEC
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Saturday, May  1, 2004 at 22:02:12."
+:description "FORALL X(AA) FORALL Y(A) [f(AA(AA)) X(AA) Y(A) LEIBEQ(OAA) g(AA(AA)) X(AA) Y(A)] AND FORALL Z(A) [h(AA) Z(A) LEIBEQ(OAA) j(AA) Z(A)] IMPLIES f(AA(AA)) h(AA) LEIBEQ(O(AA)(AA)) g(AA(AA)) j(AA)"
+:needed-objects   (LEIBEQ)
+:mhelp "Example from Chris Benzmueller's thesis about decomposition (using Leibniz equality)."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name E1=
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, September 16, 2003 at 16:38:46."
+:description "LAMBDA X(A) LAMBDA Y(A) [X(A) LEIBEQ(OAA) Y(A)] =(O(OAA)(OAA)) LAMBDA X(A) LAMBDA Y(A).X(A) =(OAA) Y(A)"
+:needed-objects   (LEIBEQ)
+:mhelp "Leibniz equality equals primitive equality.
+Example from Chris Benzmueller's thesis (p. 120)."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name E1EXT
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, September 16, 2003 at 16:21:46."
+:description "[a(O) EQUIV b(O)] IMPLIES FORALL P(OO).P(OO) a(O) IMPLIES P(OO) b(O)"
+:needed-objects   NIL
+:mhelp "Extensional Example E1ext from Chris Benzmueller's thesis (p 111)."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name E1FUNC
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, September 16, 2003 at 16:29:08."
+:description "FORALL X(I) [f(II) X(I) =(OII) g(II) X(I)] IMPLIES.p(O(II)) f(II) IMPLIES p(O(II)) g(II)"
+:needed-objects   NIL
+:mhelp "Example from Chris Benzmueller's thesis (p. 125)"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name E1LEIBEQ1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, September 16, 2003 at 16:34:31."
+:description "u(A) LEIBEQ(OAA) v(A) IMPLIES u(A) REFLEQ(OAA) v(A)"
+:needed-objects   (LEIBEQ REFLEQ)
+:mhelp "Example from Chris Benzmueller's thesis (p 115) about alternative defns of equality."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name E1LEIBEQ2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "u(A) REFLEQ(OAA) v(A) IMPLIES u(A) LEIBEQ(OAA) v(A)"
+:needed-objects   (LEIBEQ REFLEQ)
+:mhelp "Example from Chris Benzmueller's thesis (p 115) about alternative defns of equality."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name E1SET
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, September 16, 2003 at 16:28:10."
+:description "LAMBDA X(I) [odd(OI) X(I) AND num(OI) X(I)] =(O(OI)(OI)) LAMBDA X(I) [~even(OI) X(I) AND num(OI) X(I)] IMPLIES POWERSET(O(OI)(OI)) [LAMBDA X(I).odd(OI) X(I) AND num(OI) X(I) AND X(I) GT(OII) 100(I)] =(OSS) POWERSET(O(OI)(OI)).LAMBDA X(I).~even(OI) X(I) AND num(OI) X(I) AND X(I) GT(OII) 100(I)"
+:needed-objects   (GT)
+:mhelp "Example from Chris Benzmueller's thesis (p. 121)"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name E2=
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X(A) LAMBDA Y(A) [X(A) LEIBEQ(OAA) Y(A)] LEIBEQ(O(OAA)(OAA)) LAMBDA X(A) LAMBDA Y(A).X(A) =(OAA) Y(A)"
+:needed-objects   (LEIBEQ)
+:mhelp "Leibniz equality is Leibneq equal to primitive equality.
+Example from Chris Benzmueller's thesis (p. 120)."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name E2EXT
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, September 16, 2003 at 16:22:14."
+:description "p(OO) [a(O) AND b(O)] IMPLIES p(OO).b(O) AND a(O)"
+:needed-objects   NIL
+:mhelp "Extensional Example E2ext from Chris Benzmueller's thesis."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name E2LEIBEQ1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, September 16, 2003 at 16:36:37."
+:description "u(A) LEIBEQ(OAA) v(A) IMPLIES u(A) MODLEIBEQ(OAA) v(A)"
+:needed-objects   (LEIBEQ MODLEIBEQ)
+:mhelp "Example from Chris Benzmueller's thesis (p 116) about alternative defns of equality."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name E2LEIBEQ2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, September 16, 2003 at 17:00:11."
+:description "u(A) MODLEIBEQ(OAA) v(A) IMPLIES u(A) LEIBEQ(OAA) v(A)"
+:needed-objects   (LEIBEQ MODLEIBEQ)
+:mhelp "Example from Chris Benzmueller's thesis (p 116) about alternative defns of equality."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name E2SET
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, September 16, 2003 at 16:28:43."
+:description "LAMBDA X(I) [odd(OI) X(I) AND num(OI) X(I)] =(O(OI)(OI)) LAMBDA X(I) [~even(OI) X(I) AND num(OI) X(I)] IMPLIES POWERSET(O(OI)(OI)) [LAMBDA X(I).odd(OI) X(I) AND X(I) GT(OII) 100(I) AND num(OI) X(I)] =(OSS) POWERSET(O(OI)(OI)).LAMBDA X(I).~even(OI) X(I) AND X(I) GT(OII) 100(I) AND num(OI) X(I)"
+:needed-objects   (GT)
+:mhelp "Example from Chris Benzmueller's thesis (p. 123)"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name E3EXT
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, September 16, 2003 at 16:22:34."
+:description "p(OO) a(O) AND p(OO) b(O) IMPLIES p(OO).b(O) AND a(O)"
+:needed-objects   NIL
+:mhelp "Extensional Example E3ext from Chris Benzmueller's thesis."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name E4EXT
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, September 16, 2003 at 17:01:13."
+:description "FORALL X(I) FORALL P(OI) [P(OI) [m(II) X(I)] IMPLIES P(OI).n(II) X(I)] IMPLIES FORALL Q(O(II)).Q(O(II)) [LAMBDA X(I) m(II) X(I)] IMPLIES Q(O(II)).LAMBDA X(I) n(II) X(I)"
+:needed-objects   NIL
+:mhelp "Extensional Example E4ext from Chris Benzmueller's thesis (the Xi rule)."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name E5EXT
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, September 16, 2003 at 17:03:02."
+:description "FORALL X(I) FORALL P(OI) [P(OI) [m(II) X(I)] IMPLIES P(OI).n(II) X(I)] IMPLIES FORALL Q(O(II)).Q(O(II)) m(II) IMPLIES Q(O(II)) n(II)"
+:needed-objects   NIL
+:mhelp "Extensional Example E5ext from Chris Benzmueller's thesis.
+Nontrivial direction of functional extensionality using Leibniz equality.
+This is the same as E4EXT up to eta-conversion."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name E6EXT
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Saturday, May  1, 2004 at  1:21:13."
+:description "POWERSET(O(OA)(OA)) NULLSET(OA) =(O(O(OA))(O(OA))) UNITSET(O(OA)(OA)) NULLSET(OA)"
+:needed-objects   (NULLSET)
+:mhelp "Extensional Example E6ext from Chris Benzmueller's thesis."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name EC=
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, September 16, 2003 at 16:26:47."
+:description "FORALL F(BA) FORALL A(A) FORALL B(A).A(A) =(OAA) B(A) IMPLIES F(BA) A(A) =(OBB) F(BA) B(A)"
+:needed-objects   NIL
+:mhelp "Equality is a congruence over any function F(BA).  Example from Chris Benzmueller's thesis (p. 119)"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name EE=
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, September 16, 2003 at 16:27:02."
+:description "FORALL F(BA) FORALL G(BA).FORALL A(A) [F(BA) A(A) =(OBB) G(BA) A(A)] IMPLIES F(BA) =(O(BA)(BA)) G(BA)"
+:needed-objects   NIL
+:mhelp "Functional extensionality with primitive equality.
+Example from Chris Benzmueller's thesis (p. 119)."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name ER=
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, September 16, 2003 at 16:25:56."
+:description "FORALL A(A).A(A) =(OAA) A(A)"
+:needed-objects   NIL
+:mhelp "Reflexivity - example from Chris Benzmueller's thesis"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name ES=
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, September 16, 2003 at 16:26:13."
+:description "FORALL A(A) FORALL B(A).A(A) =(OAA) B(A) IMPLIES B(A) =(OAA) A(A)"
+:needed-objects   NIL
+:mhelp "Symmetry of equality - example from Chris Benzmueller's thesis (p. 118)."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name ET=
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, September 16, 2003 at 16:26:34."
+:description "FORALL A(A) FORALL B(A) FORALL C(A).A(A) =(OAA) B(A) AND B(A) =(OAA) C(A) IMPLIES A(A) =(OAA) C(A)"
+:needed-objects   NIL
+:mhelp "Transitivity of =.  Example from Chris Benzmueller's thesis (p. 119)"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name MODLEIBEQ
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X(A) LAMBDA Y(A) FORALL P(OA).[a(O) OR ~a(O)] AND P(OA) X(A) IMPLIES [b(O) OR ~b(O)] AND P(OA) Y(A)"
+:needed-objects   NIL
+:mhelp "A modified form of Leibniz equality that has no use except to express some
+examples in Chris Benzmueller's thesis."
+:other-attributes ((FACE = = = =) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (INFIX 7) (TYPELIST ("A")) (TYPE "OAA"))
+:other-remarks "
+")
+
+
+(:name REFLEQ
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X(A) LAMBDA Y(A) FORALL Q(OAA).FORALL Z(A) Q(OAA) Z(A) Z(A) IMPLIES Q(OAA) X(A) Y(A)"
+:needed-objects   NIL
+:mhelp "Reflexivity Definition of equality from Andrews' textbook, and used in some of
+Chris Benzmueller's examples in his thesis."
+:other-attributes ((FACE = = =) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (INFIX 7) (TYPELIST ("A")) (TYPE "OAA"))
+:other-remarks "
+")
+
+
+(:name CT1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:27:56."
+:description "EXISTS x(O) x(O)"
+:needed-objects   NIL
+:mhelp "chris.lib"
+:other-attributes NIL
+:other-remarks "
+")
+
+

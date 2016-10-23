@@ -1,0 +1,62 @@
+;;; ******************************************************************* ;;;
+;;;         (c) Copyrighted 1988 by Carnegie Mellon University.         ;;;
+;;;                        All rights reserved.                         ;;;
+;;;         This code was written as part of the TPS project.           ;;;
+;;;   If you want to use this code or any part of TPS, please contact   ;;;
+;;;               Peter B. Andrews (Andrews@CS.CMU.EDU)                 ;;;
+;;; ******************************************************************* ;;;
+;;; updated contexts 7/20/87 DAN
+(context rules-7-defn)
+
+(defirule idef
+  (lines (p1 (h) () "`(INST-DEF A)")
+	 (p2 (h) () "A" ("Defn" () (p1))))
+  (restrictions (contains-defn "A(O)"))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (itemshelp (p2 "Line with Definition")
+	     (p1 "Line with Instantiated Definition")
+	     ("A(O)" "Wff with Definition")
+	     (INST-DEF "Wff After Instantiating Definition"))
+  (mhelp "Rule to introduce a definition."))
+
+;*;(defirule edef-1st
+;*;  (lines (d1 (h) () "A")
+;*;	 (d2 (h) () "`(INST-DEF A)" ("Defn" () (d1))))
+;*;  (restrictions (contains-defn "A(O)"))
+;*;  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+;*;  (itemshelp (d1 "Line with Definition")
+;*;	     (d2 "Line with Instantiated Definition")
+;*;	     ("A(O)" "Wff with Definition")
+;*;	     (INST-DEF "Wff After Instantiating Definition"))
+;*;  (mhelp "Rule to eliminate the first definition."))
+
+;*;(defirule idef-1st
+;*;  (lines (p1 (h) () "`(INST-DEF A)")
+;*;	 (p2 (h) () "A" ("Defn" () (p1))))
+;*;  (restrictions (contains-defn "A(O)"))
+;*;  (support-transformation ((p2 'ss)) ((p1 'ss)))
+;*;  (itemshelp (p2 "Line with Definition")
+;*;	     (p1 "Line with Instantiated Definition")
+;*;	     ("A(O)" "Wff with Definition")
+;*;	     (INST-DEF "Wff After Instantiating Definition"))
+;*;  (mhelp "Rule to introduce a definition occuring before all others."))
+
+(context rules-5-subst)
+
+;;Renamed (subst=> substitute) because of name conflict with edop
+;;the next rule is now split into: subst=l and subst=r
+
+(defirule substitute
+  (lines (d1 (h) () "A")
+	 (d2 (h) () "`(S t(A) x(A) A)" ("Subst" ("t(A)" "x(A)") (d1))))
+  (restrictions  (not-free-in-hyps "x(A)")
+		 (is-variable "x(A)")
+		 (free-for "t(A)" "x(A)" "A(O)"))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss d1)))
+  (itemshelp (d1 "Line Before Substitution")
+	     (d2 "Line After Substitution")
+	     ("A(O)" "Wff to Substitute into")
+	     ("x(A)" "Variable to Substitute for")
+	     ("t(A)" "Term to Substitute")
+	     (S "Wff after Substitution"))
+  (mhelp "Rule to substitute a term for a variable."))

@@ -1,0 +1,33 @@
+\chapter{Proof Translations}
+\section{Data Structures}
+\section{EProofs to Nproofs}
+\input{epr-npr-translate}
+\section{NProofs to Eproofs}
+\input{nat-etr}
+\section{Cut Elimination}
+\input{cut1}
+\section{Cut-free Extensional Sequent Derivations to Extensional Expansion Proofs}
+
+There is an implementation of the extensional sequent calculus
+in Chad E. Brown's thesis (cf.~\cite{Brown2004a}) in \TPS.
+The structure {\indexother{ext-seq}} defined in \indexfile{ext-exp-dag-macros.lisp}
+represents sequent derivations in this extensional sequent calculus.
+Sequent derivations can be created, manipulated, saved and restored in 
+the \indexother{EXT-SEQ} top level.  If a sequent derivation is cut-free,
+then the command \indexcommand{CUTFREE-TO-EDAG} (implemented in \indexfile{ext-seq-top.lisp})
+will translate the sequent derivation to an extensional expansion proof.
+The proof that this translation works is in Chapter 7 Section 10 of Chad E. Brown's thesis (cf.~\cite{Brown2004a}).
+
+\section{Extensional Expansion Proofs to NProofs}
+
+\TPS can translate an extensional expansion proof to a natural deduction proof
+using the code in the file \indexfile{ext-exp-dags-nd.lisp}.
+This code is automatically called when either of the extensional search procedures
+\indexother{MS04-2} or \indexother{MS03-7} successful find a proof.  The translation code can also be explicitly
+called from the \indexother{EXT-MATE} top level using the command \indexcommand{ETREE-NAT}.
+
+There is an algorithm described in Chapter 7 Section 9 of Chad E. Brown's thesis (cf.~\cite{Brown2004a})
+which translates extensional expansion proofs to extensional sequent derivations.
+This algorithm is not implemented as part of \TPS, but the same ideas are used for
+the algorithm translating from extensional expansion proofs to natural deduction proofs.
+

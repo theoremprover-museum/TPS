@@ -1,0 +1,550 @@
+\chapter{Proving theorems}
+\label{proving}
+
+\section{Introduction}
+
+
+{\TPS} can be used to prove theorems automatically, interactively, or by
+using various combinations of automatic and interactive facilities.
+Even if one is primarily interested in using it in automatic mode, one
+should consult the {\bf ETPS User's Manual} \cite{AndrewsTPS88b} to
+learn the basics of interacting with both {\ETPS} and {\TPS}.  Even if one
+is proving theorems purely interactively, one should probably use {\TPS}
+rather than {\ETPS} so that one can use the library facilities.
+
+To start a proof in {\TPS}, use the \indexcommand{PROVE} command. One can
+then develop the proof in natural deduction style
+interactively, semi-automatically, or
+automatically.
+
+To develop a proof in semi-automatic mode, 
+one can alternate between applying rules of inference interactively,
+using a command called \indexcommand{GO} to apply rules suggested by
+{\TPS}, using a command called \indexcommand{GO2} to call a number of
+tactics which quickly apply mundane rules of inference, and using the
+automatic facilities of {\TPS} to prove lemmas and to derive certain
+lines of the proof from other specified lines.  One can develop parts
+of the proof in whatever chronological order is most convenient. For
+example, one could start by inserting into the proof the lines which
+represent the basic outline of a plan for the proof, and then work on
+filling in various parts of this outline.
+
+One can invoke the facilities for finding or completing the proof
+automatically with the \indexcommand{DIY} (``do it yourself'')
+or \indexcommand{DIY-L} command. (The latter is used to fill in part of
+a proof, such as a proof of a lemma.)
+Before doing this one should set various flags which control the
+search procedures. These flags play very important roles.  See chapter
+\ref{flags} for some information on how to set flags.
+The command \indexcommand{PIY} (``prove it yourself'') combines
+the commands \indexcommand{PROVE} and \indexcommand{DIY}.
+
+A set of flags and values for these flags is called a {\it
+mode}. 
+If one does not know an appropriate
+mode when one wishes to invoke {\TPS}'s automatic procedures, one can
+use commands which systematically try a variety of modes.  A {\it
+bestmode} for a theorem is a mode which can be used to prove that
+theorem automatically (and which will, in general, produce a proof
+more quickly than other modes).  The {\TPS} library contains certain sets of
+modes called {\it goodmodes} such that each of the theorems which
+{\TPS} can currently prove automatically can be proven using at least
+one of the goodmodes in the set.  For example, GOODMODES1 is a list of
+68 modes, and each of the 639 theorems for which
+bestmodes are currently saved can be proven automatically by at least
+one of the modes in GOODMODES1.  Using the command \indexcommand{PIY2}
+(``Prove It Yourself, version 2''), \indexcommand{DIY2}, or 
+\indexcommand{DIY2-L}, one can direct {\TPS} to 
+apply its proof procedures with each of these 68 modes in turn for a specified
+time, then increment the time limit and repeat the process, and
+continue in this way until a proof is found or space or patience is
+exhausted.  Since {\TPS} can prove many theorems of moderate
+difficulty within a few seconds (see 
+\cite{Bishop98,Bishop99,Bishop99a,Andrews00a,Brown2002,Brown2004a} for some
+examples), this makes {\TPS} extremely
+convenient to use for filling in gaps of moderate difficulty while one
+is constructing a major proof semi-interactively.
+
+
+\section{Automatic mode}
+\input{auto-mode}
+
+\input{tps-auto}
+
+\subsection{Automatically Produced Proofs with Lemmas}
+
+Some search procedures (e.g., using \indexcommand{DIY} when \indexflag{DEFAULT-MS} is \indexother{MS98-1} and \indexflag{DELAY-SETVARS} is T)
+will generate proofs which include lemmas which are asserted in the proofs.  The proofs of these lemmas are also generated
+and can be examined by using \indexcommand{RECONSIDER}.  The name of the lemma is included with the
+Assert justification.  In general, \indexcommand{PROOFLIST} lists the names of all the natural deduction proofs
+in memory.  An example is the proof of THM2 produced using the mode EASY-SV-MODE.
+
+
+\subsection{Interrupts: \^C, <CR>, \^G<CR>, M<CR> and T<CR>}\label{interrupt}
+
+During mating search, if the value of the flag \indexflag{INTERRUPT-ENABLE} is
+T, you can interrupt the search by typing {\tt <Return>}.  You will get
+a new mating-search (or matingstree, as appropriate) top-level, where you can inspect
+and/or alter the current expansion tree and mating.  Type \indexcommand{LEAVE} to return to mating-search.
+
+Similarly, you can type {\tt \^G<Return>} (i.e. Control-G, then Return) to abandon the
+search for good and return to the current top level. It is not possible to restart a
+search after doing this.
+
+Lastly, you can type {\tt M<Return>} to see the current mating, or {\tt T<Return>} to see a
+printout of the time taken so far by the search. The search will not be interrupted at all if you do this.
+
+Of course, there is one, more drastic, way to interrupt a search: press {\tt \^C}.
+This will work regardless of the setting of \indexflag{INTERRUPT-ENABLE}, and will throw you into
+the Lisp debugger. Leaving the debugger with a restart should return you to either the {\TPS} top level or the
+current sub-toplevel; leaving it with a continue should carry on the search.
+
+For Allegro Common Lisp (debuggers are not standardized, so this will be different in other lisps),
+this works as follows:
+\begin{alltt}
+\^C                             (control C)
+Error: Received signal number 2 (Keyboard interrupt)
+Restart actions (select using :continue):
+ 0: continue computation
+[1c] <cl>		
+	{\it Here one can use debugger commands,
+        or get into TPS on another level as follows:}
+[1c] <cl> (secondary-top-main)
+	{\it Now do what you want in TPS to examine things.
+        To get back to the original TPS level:}
+<73>\^C
+Error: Received signal number 2 (Keyboard interrupt)
+Restart actions (select using :continue):
+ 0: continue computation
+ 1: continue computation
+[2c] <cl> :cont 1
+{\it Now the original TPS process continues}
+{\it Typing :res would have returned us to the TPS top level}
+\end{alltt}
+
+
+\section{Interactive Mode}
+
+\subsection{Natural Deduction}
+
+There are several examples showing how to construct natural deduction
+proofs completely interactively in Chapter 4 of the {\bf ETPS User's
+Manual} \cite{AndrewsTPS88b}.  Everything that can be done in {\ETPS}
+can also be done in {\TPS}.
+
+To prepare a demonstration of how to construct a proof
+interactively, use \indexcommand{SAVE-WORK}.  To give the demonstration, use
+\indexcommand{BEGIN-PRFW} with the flags \indexflag{PROOFW-ACTIVE},
+\indexflag{PROOFW-ACTIVE+NOS} or
+\indexflag{PROOFW-ALL} set to T, then
+use \indexcommand{EXECUTE-FILE} to give the demonstration;
+respond `yes' to the `STEPPING?' prompt.
+The audience will see the proof being constructed step-by-step in the
+proofwindows. (Note: Stepping will only stop between each command, so it will not stop
+(for example) between each step of GO2. Also, if you change top level in a work file,
+stepping will be turned off until you return to the original top level. It is possible to force
+a stop in these situations by inserting a PAUSE command into the workfile; see the help message
+for \indexcommand{PAUSE} for more details.)
+
+Alternatively, you may wish to go into \indexcommand{MATE} to prove the theorem
+automatically, then call \indexcommand{ETREE-NAT} in interactive mode to
+demonstrate (with the aid of the proofwindows) how the natural deduction proof
+can be constructed step-by-step. Make sure that the setting of \indexflag{ETREE-NAT-VERBOSE}
+is appropriate before doing this!
+(The user should note that if there is a command in the
+work file that changes the top level - for example, \indexcommand{BEGIN-PRFW}
+or \indexcommand{MATE} - then this command will also turn off stepping.
+One can get around this limitation by splitting the work file into two at
+the point where the change of top level occurs.)
+
+While translating expansion proofs to natural deduction proofs, you
+may wish to set the flag \indexflag{TACMODE} to {\tt INTERACTIVE}.  See Section
+\ref{tactics} for information on the effect of this flag. If you are using
+\indexcommand{ETREE-NAT} it is best to call \indexcommand{MERGE-TREE} first;
+in fact, the mate top level will automatically prompt you for this if you
+attempt to leave with a completed mating.
+
+Equalities in expansion proofs can be translated into equational
+proofs as laid out in \cite{Pfenning86}.  This does not include the
+work on extensionality.  In order to have the proper expansion
+proof transformation done during merging, one should have the flag
+\indexflag{REMOVE-LEIBNIZ} set to {\tt T}, which is the default.  It is also best to
+have the flags \indexflag{REWRITE-EQUAL-EXT}, \indexflag{REWRITE-EQUAL-EAGER}, and
+\indexflag{REWRITE-ONLY-EXT} set to {\tt NIL}, and \indexflag{REWRITE-EQUALITIES} set
+to {\tt T}.
+
+From a {\TPS} prompt (this could be either a top level prompt or the prompt produced by a
+command which requires you to input some arguments) you can type \indexother{PUSH} to suspend
+what you're doing and start a new top level. The command \indexother{POP} will return from this
+top level to the point where you typed \indexother{PUSH}. For example, you could suspend
+an interactive session with {\tt ETREE-NAT} in order to print out the proof at various stages of
+development.
+
+It is also possible to interrupt an automatic search, change some flags and then continue with the
+search; see section \ref{interrupt} for details.
+
+\subsection{Extensional Sequent Calculus}
+
+There is a top level \indexcommand{EXT-SEQ} which provides
+an environment for constructing derivations of (one-sided) sequents
+in the extensional sequent calculus described in \cite{Brown2004a}.
+The command \indexcommand{?} will list all the available rules.
+Some rules are basic while others are derived rules which can be
+expanded later.  The cut rule is included, but certain commands
+(namely, \indexcommand{CUTFREE-TO-EDAG}) will only work when given
+cut-free derivations.
+
+The command \indexcommand{GO2} in the top level EXT-SEQ will
+automatically suggest rules which are applicable.  This can
+make interactive construction of a sequent calculus derivation
+much easier.
+
+Sequent derivations can be saved and restored using \indexcommand{SAVEPROOF}
+and \indexcommand{RESTOREPROOF}.
+
+\subsection{Manipulating Proofs}\label{manip-pfs}
+
+{\TPS} has many facilities for manipulating proofs.  There can be many
+proofs in memory at the same time, and the command \indexcommand{PROOFLIST} lists the
+names of all the natural deduction proofs or extensional sequent
+derivations currently in memory, along with the theorems they
+prove. One proof is designated as the current proof, and one can
+change this with the \indexcommand{RECONSIDER} command.  Proofs can be saved as files
+by \indexcommand{SAVEPROOF}, and restored to memory by \indexcommand{RESTOREPROOF}.
+
+\indexcommand{CREATE-SUBPROOF} creates a new proof consisting of specified lines of
+the current proof, plus all the lines on which they depend.
+\indexcommand{MERGE-PROOFS} merges all of the lines of a subproof into the current
+proof.  \indexcommand{TRANSFER-LINES} copies specified lines of a subproof, and all
+lines on which they depend, into the current proof.
+
+Various commands (\indexcommand{MOVE}, \indexcommand{DELETE}, 
+\indexcommand{INTRODUCE-GAP}, \indexcommand{MODIFY-GAPS},
+\indexcommand{RENUMBERALL}, \indexcommand{SQUEEZE}) are 
+available for deleting or moving portions of
+a proof, changing the gaps in the numbers between lines, and
+renumbering the lines.  The \indexcommand{CLEANUP} command will delete all lines of a
+completed proof which are not actually needed to prove the final line.
+
+Sometimes one wishes to look at the main steps in a natural deduction
+proof without looking at all the intermediate steps.  The command
+\indexcommand{BUILD-PROOF-HIERARCHY} builds dependency information into a proof so
+that the proof can be viewed as a hierarchy of subproofs.  The command
+\indexcommand{PBRIEF} displays the proof lines included in the top levels of this
+hierarchy to a depth specified by the user.  When one asks {\TPS} to
+\indexcommand{EXPLAIN} a specified line in a proof, it displays in the same way the
+lines of the proof which are used to prove the specified line.
+\indexcommand{PRINT-PROOF-STRUCTURE} displays the hierarchy itself in terms of the
+numbers of the proof lines.
+
+
+\section{Combining Interactive and Automatic Searches}
+
+The command \indexcommand{GO} will apply inference rules based
+upon the structure of the formulas in the current proof structure --
+breaking up conjunctions, applying the deduction rule, instantiating
+definitions, etc.  This facility is rather shallow, and requires the user to
+provide any terms for universal instantiation or existential generalization.
+Thus while it may be useful in getting a proof started, it will
+eventually fail.  The {\tt GO} facility is fairly static as well; to change
+the priority of the rules and/or keep some rules from being applied requires
+some programming (see the file {\tt ml2-prior.lisp}).
+
+Tactics can also be used to do the same job.  In this case, the user can
+build a tactic (see section \ref{tactics}) which will apply inference rules
+in whatever order is desired.  Tactics allow the user to experiment with
+different proof strategies and express his or her own creative spirit.
+Tactics for applying most of the current inference rules are already defined.
+See section \ref{usetac} for more information on commands which invoke
+the most commonly used tactics
+such as \indexmexpr{MONSTRO} and \indexmexpr{GO2}.
+
+If a proof is being constructed interactively by natural deduction
+commands, it is possible to use the command \indexcommand{DIY-L} to automatically
+complete some of the subproofs. This calls DIY to prove a
+lemma, adding lines to the proof within a specified range. This is useful
+for quickly filling in the trivial parts of more difficult theorems which
+you are proving interactively. See the help message for \indexcommand{DIY-L}
+for details. To keep the proof short and readable, automatically-produced subproofs
+need not be translated completely; see the help message of the flag \indexflag{USE-DIY}
+for more information about this.
+
+The tactic {\tt DIY-TAC} basically just
+calls the  \indexcommand{DIY} command, and thus can be used in tactics which first do
+some manipulation of the proof based upon the structure of the
+formulas, then call mating-search when instantiations of quantifiers
+must be found. (Note: if the flag \indexflag{USE-DIY} is set,
+the translation may simply consist of justifying the goal line as `Automatic'
+from the support lines. This is useful for keeping the proof short.)
+
+We now give several examples of how to start a proof interactively
+and continue automatically. Note that if you modify the expansion tree
+interactively, you should use the command \indexcommand{CJFORM} before
+attempting to construct a mating interactively.
+
+\subsection{An Example Using Go to Start the Proof }
+
+\begin{tpsexample}
+<3>exercise x5203
+(100)        !  \% f [x INTERSECT y] SUBSET \% f x INTERSECT \% f y           PLAN1
+{\it We use the GO command to start the proof.}
+<4>go
+Considering planned line 100.
+  IDEF 100
+Command [(IDEF 100)]>
+{\it Instantiate the definition of SUBSET.}
+(99)         !  FORALL x .        \% f [x INTERSECT y] x
+                           IMPLIES [\% f x INTERSECT \% f y] x               PLAN2
+Considering planned line 99.
+{\it The first two occurrences of x have different types, but they are not shown.}
+  UGEN 99
+Command [(UGEN 99)]>
+(98)         !  \% f [x INTERSECT y] x IMPLIES [\% f x INTERSECT \% f y] x    PLAN3
+Considering planned line 98.
+  DEDUCT 98
+Command [(DEDUCT 98)]>
+(1)   1      !  \% f [x INTERSECT y] x                                        Hyp
+(97)  1      !  [\% f x INTERSECT \% f y] x                                  PLAN4
+Considering planned line 97.
+  EDEF 1
+  IDEF 97
+Command [(EDEF 1)]>
+(2)   1      !  EXISTS t .[x INTERSECT y] t AND x = f t                  Defn: 1
+Considering planned line 97.
+  RULEC 97 2
+Command [(RULEC 97 2)]>
+Some defaults could not be determined.
+y (GWFF): Chosen Variable Name [No Default]>''t''
+(3)   1,3    !  [x INTERSECT y] t AND x = f t                          Choose: t
+(96)  1,3    !  [\% f x INTERSECT \% f y] x                                  PLAN7
+Considering planned line 96.
+  ECONJ 3
+Command [(ECONJ 3)]>
+(4)   1,3    !  [x INTERSECT y] t                                        Conj: 3
+(5)   1,3    !  x = f t                                                  Conj: 3
+Considering planned line 96.
+  SUBST=L 5
+  SUBST=R 5
+  EDEF 4
+  IDEF 96
+Command [(SUBST=L 5)]>\^G
+`[Command aborted.]'
+{\it We abort the command because the advice doesn't seem very helpful.
+Here are the current active lines of the proof.}
+<5>\^p
+(4)   1,3    !  [x INTERSECT y] t                                        Conj: 3
+(5)   1,3    !  x = f t                                                  Conj: 3
+               ...
+(96)  1,3    !  [\% f x INTERSECT \% f y] x                                  PLAN7
+T
+{\it Call mating-search on the partial proof.}
+<6>diy
+GOAL (PLINE): Planned Line [96]>
+SUPPORT (EXISTING-LINELIST): Support Lines [(4 5)]>
+...
+Displaying VP diagram ...
+
+|                   LEAF88                   |
+|                    x t                     |
+|                                            |
+|                   LEAF89                   |
+|                    y t                     |
+|                                            |
+|                  LEAF90                    |
+|                  x = f t                   |
+|                                            |
+|LEAF96      LEAF97      LEAF99     LEAF100  |
+|\(\sim\)x t16 OR \(\sim\)x = f t16 OR \(\sim\)y t17 OR \(\sim\)x = f t17|
+..*.+1.*.+2.*.+3.*.+4..
+Trying to unify mating:(4 3 2 1)
+Substitution Stack:
+
+t16   ->   t
+t17   ->   t.
+Eureka!  Proof complete..
+|                 LEAF88                 |
+|                  x t                   |
+|                                        |
+|                 LEAF89                 |
+|                  y t                   |
+|                                        |
+|                LEAF90                  |
+|                x = f t                 |
+|                                        |
+|LEAF96     LEAF97     LEAF99    LEAF100 |
+| \(\sim\)x t  OR \(\sim\)x = f t OR  \(\sim\)y t  OR \(\sim\)x = f t|
+****
+{\it A proof was found and now will be translated back to natural deduction.}
+What tactic should be used for translation? [COMPLETE-TRANSFORM-TAC]>
+Tactic mode? [AUTO]>
+
+{\it For brevity we have elided the output from the translation process.}
+
+\end{tpsexample}
+
+{\it Here's the complete proof. Note that it is slightly different from
+that shown in section \ref{MATE-then-ETREE-NAT}, where all the
+definitions were instantiated at one time.}
+
+\begin{tpsexample}
+
+<7>pall
+(1)   1      !  \% f [x INTERSECT y] x                                        Hyp
+(2)   1      !  EXISTS t .[x INTERSECT y] t AND x = f t                  Defn: 1
+(3)   1,3    !  [x INTERSECT y] t AND x = f t                          Choose: t
+(4)   1,3    !  [x INTERSECT y] t                                        Conj: 3
+(5)   1,3    !  x = f t                                                  Conj: 3
+(6)   1,3    !  x t AND y t                                         EquivWffs: 4
+(7)   1,3    !  x t                                                     RuleP: 6
+(8)   1,3    !  y t                                                     RuleP: 6
+(88)  1,3    !  x t AND x = f t                                       RuleP: 5 7
+(89)  1,3    !  EXISTS t14 .x t14 AND x = f t14                       EGen: t 88
+(93)  1,3    !  y t AND x = f t                                       RuleP: 5 8
+(94)  1,3    !  EXISTS t15 .y t15 AND x = f t15                       EGen: t 93
+(95)  1,3    !      EXISTS t14 [x t14 AND x = f t14]
+                 AND EXISTS t15 .y t15 AND x = f t15                RuleP: 89 94
+(96)  1,3    !  [\% f x INTERSECT \% f y] x                          EquivWffs: 95
+(97)  1      !  [\% f x INTERSECT \% f y] x                            RuleC: 2 96
+(98)         !  \% f [x INTERSECT y] x IMPLIES [\% f x INTERSECT \% f y] x
+                                                                      Deduct: 97
+(99)         !  FORALL x .        \% f [x INTERSECT y] x
+                           IMPLIES [\% f x INTERSECT \% f y] x          UGen: x 98
+(100)        !  \% f [x INTERSECT y] SUBSET \% f x INTERSECT \% f y        Defn: 99
+
+\end{tpsexample}
+
+
+\subsection{Duplicating Interactively and then Running Matingsearch}
+
+\begin{tpsexample}
+<11>mate
+GWFF (GWFF0-OR-EPROOF): Gwff or Eproof [No Default]>thm-name
+DEEPEN (YESNO): Deepen? [Yes]>
+WINDOW (YESNO): Open Vpform Window? [No]>
+
+<Mate12>vp
+<Mate13>goto leaf58
+{\it This should be the name of the literal you wish to duplicate.}
+<Mate14>up
+{\it Go to the appropriate expansion node.}
+EXP8
+<Mate18>vp
+<Mate19>dup-var
+<Mate21>dp*
+<Mate23>\(\wedge\)
+<Mate24>vp
+{\it To check we got it right...}
+<Mate27>go
+{\it To start matingsearch.}
+\end{tpsexample}
+
+Users who are planning to both duplicate and Skolemize interactively should
+note that duplication and Skolemization are not interchangeable. If
+you duplicate first and then Skolemize you will get different Skolem
+functions, whereas if you Skolemize and then duplicate you will get
+the same Skolem function twice.
+
+\subsection{Applying Primsubs Interactively and then Running Matingsearch}
+
+\begin{tpsexample}
+<23>mate
+GWFF (GWFF0-OR-EPROOF): Gwff or Eproof [No Default]>thm-name
+DEEPEN (YESNO): Deepen? [Yes]>
+WINDOW (YESNO): Open Vpform Window? [No]>
+
+<Mate24>name-prim
+{\it We see that PRIM1 is the term we want to use.}
+<Mate25>vp
+{\it This will show the variable name we want. Note that pdeep and psh may
+not show the right variable; things get renamed!}
+<Mate26>prim-single
+TERM (GWFF):  [No Default]>prim1
+VAR (GWFF):  [No Default]>`R^3(OII)'
+<Mate27>vp	
+{\it Just to check...}
+<Mate28>go
+\end{tpsexample}
+
+\subsection{Mating Interactively and then Unifying}
+
+\begin{tpsexample}
+<Mate24>cjform
+<Mate25>vp
+{\it We do this because the leaf names may have changed.}
+<Mate26>add-conn*
+{\it Now we type in a whole list of connections; we could also have used add-conn.}
+{\it Suppose we now think we have a complete mating...}
+<Mate27>complete-p
+Mating is complete.
+<Mate28>unify
+{\it We enter the unification top level; this only works for higher-order problems.}
+<Unif29>go
+
+In case TPS halts with the message
+MORE
+you can proceed as follows:
+<Unif30>MAX-UTREE-DEPTH
+MAX-UTREE-DEPTH [20]>30
+<Unif31>go
+\end{tpsexample}
+
+\subsection{Duplicating and Mating Interactively and then Converting to ND}
+
+\begin{tpsexample}
+<66>mate
+<Mate67>vp
+<Mate68>goto leaf58
+<Mate69>up
+<Mate73>vp
+<Mate74>dup-var
+<Mate76>dp*
+<Mate78>^
+<Mate79>vp
+<Mate80>add-conn leaf29 leaf58
+{\it ...as often as needed to get the mating...}
+<Mate88>complete-p
+<Mate89>show-mating
+<Mate90>show-substs
+<Mate91>vp
+<Mate92>leave
+Merge the expansion tree? [Yes]>
+<93>etree-nat
+\end{tpsexample}
+
+\subsection{Using Prim-Single and Dup-Var Interactively}
+
+\begin{tpsexample}
+<8>mate
+{\it We should check some flags before proceeding:}
+<Mate10> PRIM-BDTYPES
+<Mate11>MIN-PRIM-DEPTH
+<Mate12>MAX-PRIM-DEPTH
+<Mate13> PRIM-QUANTIFIER
+<Mate16>vp
+<Mate17>NAME-PRIM
+<Mate24>PRIM-SINGLE
+SUBST (GWFF):  [No Default]>prim14
+VAR (GWFF):  [No Default]>`M^0(O(II))'
+<Mate25>vp
+<Mate30>etd
+<Mate31>goto
+NODE (SYMBOL):  [No Default]>exp2
+<Mate33>dup-var
+<Mate35>dp*
+<Mate37>^
+<Mate38>vp
+<Mate39>add-conn*
+<Mate40>complete-p
+{\it We should check some flags before proceeding:}
+<Mate42>MAX-SEARCH-DEPTH
+<Mate43>MAX-UTREE-DEPTH
+<Mate44>unify
+<Unif45>go
+<Unif47>leave
+<Mate48>leave
+Merge the expansion tree? [Yes]>
+<50>etree-nat
+<51>pall
+{\it ...to see the final proof.}
+\end{tpsexample}
+

@@ -1,0 +1,174 @@
+(:name THM190
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL r(OAAAA).FORALL p(A(AAA)) FORALL q(A(AAA)) [ISPAIR1(O(A(AAA))) p(A(AAA)) AND ISPAIR1(O(A(AAA))) q(A(AAA)) AND r(OAAAA) APR1(OAA(A(AAA))(OAAAA)) p(A(AAA)) APR1(O(A(AAA))(OAA)) q(A(AAA)) IMPLIES p(A(AAA)) =(O(A(AAA))(A(AAA))) q(A(AAA))] EQUIV FORALL x1(A) FORALL y1(A) FORALL x2(A) FORALL y2(A).r(OAAAA) x1(A) y1(A) x2(A) y2(A) IMPLIES x1(A) =(OAA) x2(A) AND y1(A) =(OAA) y2(A)"
+:needed-objects   (APR1 ISPAIR1)
+:mhelp "Extension of THM189"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM192
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Friday, December 24, 1999 at 16:32:26."
+:description "FORALL h(I(OI)).IDIAG h(I(OI)) [h(I(OI)).IDIAG h(I(OI))] IMPLIES IDIAG h(I(OI)).h(I(OI)).IDIAG h(I(OI))"
+:needed-objects   (IDIAG)
+:mhelp "Part of THM193"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM193
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "THM192 IMPLIES X5309A"
+:needed-objects   (THM192 X5309A)
+:mhelp "Injective Cantor Theorem X5309A with a logically trivial
+extra condition which actually helps in finding the proof."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM193A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER INTERACTIVE-PROOF)
+:provability "Semi-automatic natural deduction proof"
+:proof-date "Tuesday, December 28, 1999 at 17:22:32."
+:description "FORALL h(I(OI)) [EXISTS t(OI) [~t(OI) [h(I(OI)) t(OI)] AND h(I(OI)) [LAMBDA z(I) EXISTS t(OI).~t(OI) [h(I(OI)) t(OI)] AND z(I) =(OII) h(I(OI)) t(OI)] =(OII) h(I(OI)) t(OI)] IMPLIES EXISTS t(OI).~t(OI) [h(I(OI)) t(OI)] AND h(I(OI)) [LAMBDA z(I) EXISTS t(OI).~t(OI) [h(I(OI)) t(OI)] AND z(I) =(OII) h(I(OI)) t(OI)] =(OII) h(I(OI)) t(OI)] IMPLIES ~EXISTS h(I(OI)) FORALL x(OI) FORALL y(OI).h(I(OI)) x(OI) =(OII) h(I(OI)) y(OI) IMPLIES x(OI) =(O(OI)(OI)) y(OI)"
+:needed-objects   NIL
+:mhelp "Injective Cantor Theorem X5309A with a logically trivial
+extra condition which actually helps in finding the proof."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM193B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER INTERACTIVE-PROOF)
+:provability NIL
+:proof-date NIL
+:description "FORALL h(I(OI)) [IDIAG h(I(OI)) [h(I(OI)).IDIAG h(I(OI))] IMPLIES IDIAG h(I(OI)).h(I(OI)).IDIAG h(I(OI))] IMPLIES ~EXISTS h(I(OI)) FORALL x(OI) FORALL y(OI).h(I(OI)) x(OI) =(OII) h(I(OI)) y(OI) IMPLIES x(OI) =(O(OI)(OI)) y(OI)"
+:needed-objects   (IDIAG)
+:mhelp "Injective Cantor Theorem X5309A with a logically trivial
+extra condition which actually helps in finding the proof."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM196
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Monday, January  3, 2000 at  9:46:56."
+:description "h(II) a(I) =(OII) a(I) AND ~[h(II) b(I) =(OII) a(I)] AND FORALL f(II) FORALL g(II) [FORALL x(I) [f(II) x(I) =(OII) g(II) x(I)] IMPLIES f(II) =(O(II)(II)) g(II)] IMPLIES ~FORALL j(II) FORALL k(II).ITERATE+(O(II)(II)) j(II) [k(II) COMPOSE(II(II)(II)) j(II)] IMPLIES ITERATE+(O(II)(II)) j(II) k(II)"
+:needed-objects   (COMPOSE ITERATE+)
+:mhelp "It is not true that if [k COMPOSE j] is an iterate of j, 
+then k must be an iterate of j, 
+provided we assume extensionality and
+the existence of the described function h
+(which can be proved if we have distinct elements a and b
+and descriptions)."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM196A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "h(II) a(I) =(OII) a(I) AND ~[h(II) b(I) =(OII) a(I)] AND FORALL f(II) FORALL g(II) [FORALL x(I) [f(II) x(I) =(OII) g(II) x(I)] IMPLIES f(II) =(O(II)(II)) g(II)] IMPLIES ~FORALL j(II) FORALL k(II).ITERATE(O(II)(II)) j(II) [k(II) COMPOSE(II(II)(II)) j(II)] IMPLIES ITERATE(O(II)(II)) j(II) k(II)"
+:needed-objects   (COMPOSE ITERATE)
+:mhelp "Like THM196, but with ITERATE in place of ITERATE+."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM196B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Monday, January  3, 2000 at 22:11:16."
+:description "~[a(I) =(OII) b(I)] IMPLIES ~FORALL j(II) FORALL k(II).ITERATE+(O(II)(II)) j(II) [k(II) COMPOSE(II(II)(II)) j(II)] IMPLIES ITERATE+(O(II)(II)) j(II) k(II)"
+:needed-objects   (COMPOSE ITERATE+)
+:mhelp " Improved version of THM196 with 
+unnecessary conditions deleted.
+It is not true that if [k COMPOSE j] is an iterate of j, 
+then k must be an iterate of j,
+provided  we have distinct elements a and b."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM196C
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL a(I) FORALL b(I) [a(I) =(OII) b(I)] AND FORALL f(II) FORALL g(II) [FORALL x(I) [f(II) x(I) =(OII) g(II) x(I)] IMPLIES f(II) =(O(II)(II)) g(II)] IMPLIES FORALL j(II) FORALL k(II).ITERATE+(O(II)(II)) j(II) [k(II) COMPOSE(II(II)(II)) j(II)] IMPLIES ITERATE+(O(II)(II)) j(II) k(II)"
+:needed-objects   (COMPOSE ITERATE+)
+:mhelp "If [k COMPOSE j] is an iterate of j, 
+then k must be an iterate of j,
+provided all individuals are the same."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM197
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Monday, January  3, 2000 at 13:21:42."
+:description "~[a(I) =(OII) b(I)] IMPLIES ~FORALL f(II) FORALL g(II).f(II) COMPOSE(II(II)(II)) g(II) =(O(II)(II)) g(II) COMPOSE(II(II)(II)) f(II)"
+:needed-objects   (COMPOSE)
+:mhelp "If there are at least two individuals,
+
+not all functions commute with each other."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM198
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Semi-automatic natural deduction proof"
+:proof-date "Sunday, January  9, 2000 at  0:46:46."
+:description "FORALL p(OA) [SIGMA1A(O(OA)) p(OA) IMPLIES p(OA).IOTA(A(OA)) p(OA)] IMPLIES.EXISTS j(OA(O(OA))) FORALL p(O(OA)) [EXISTS x(OA) p(O(OA)) x(OA) IMPLIES p(O(OA)).j(OA(O(OA))) p(O(OA))] IMPLIES EXISTS j(A(OA)) FORALL p(OA).EXISTS x(A) p(OA) x(A) IMPLIES p(OA).j(A(OA)) p(OA)"
+:needed-objects   (SIGMA1A)
+:mhelp "Axiom of Choice AC(OA) for sets implies Axiom of Choice AC(A)
+for individuals, provided one has a description operator.
+Interesting example of a theorem whose proof requires
+methods of instantiating set variables other than lamda-expressions followed by 
+a logical expression."
+:other-attributes NIL
+:other-remarks "
+")
+
+

@@ -1,0 +1,5 @@
+#!/bin/csh -f
+set temp = `date` 
+set logname = log-$temp[2]-$temp[3]-$temp[6]-$temp[4]
+lisp -I /home/theorem/tps/tps3.dxl -- -server /home/theorem/tps/tps3.dxl /home/theorem/tps/etps.dxl >> /home/theorem/tpsonline/$logname &
+

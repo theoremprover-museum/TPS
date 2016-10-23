@@ -1,0 +1,21 @@
+(
+(NAME  	       	     ID)
+(TYPE  	       	     **)
+(--MAX--       	     **)
+(-MEAN-	       	      *)
+(-MEDIAN-      	      *)
+(-SDEV-	       	      *)
+(-WEIGHT-      	      *)
+(ARNOLD-MATTHEW	   MA24)
+(CARLYLE-THOMAS	   TC32)
+(DICKENS-CHARLES   CD51)
+(DISRAELI-BENJAMIN BD79)
+(GASKELL-ELIZABETH EG21)
+(RUSKIN-JOHN   	   JR03)
+)
+(;;;Record of late assignments: 
+()
+;;;Record of penalty functions and due-dates: 
+()
+;;;List of actual names
+NIL)

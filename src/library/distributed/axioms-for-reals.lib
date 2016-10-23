@@ -1,0 +1,42 @@
+(:name IRREFLEXIVE-LAW
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(R).~less(ORR) x(R) x(R)"
+:needed-objects   NIL
+:mhelp "Irreflexive Law for real numbers"
+:other-attributes ((PRINTNOTYPE T) (TYPE "O"))
+:other-remarks "
+")
+
+
+(:name TRANSITIVE-LAW
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "TRANSITIVE(O(ORR)) less(ORR)"
+:needed-objects   (TRANSITIVE)
+:mhelp "Transitive Law for real numbers"
+:other-attributes ((PRINTNOTYPE T) (TYPE "O"))
+:other-remarks "
+")
+
+
+(:name TRICHOTOMY
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(R) FORALL y(R).less(ORR) x(R) y(R) OR x(R) =(ORR) y(R) OR less(ORR) y(R) x(R)"
+:needed-objects   NIL
+:mhelp "Trichotomy Law for real numbers"
+:other-attributes ((PRINTNOTYPE T) (TYPE "O"))
+:other-remarks "
+")
+
+

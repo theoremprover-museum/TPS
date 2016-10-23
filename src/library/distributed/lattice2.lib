@@ -1,0 +1,212 @@
+(:name 3-DIAMOND
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA G(AAA) LAMBDA H(AAA) EXISTS x(A) EXISTS y(A) EXISTS a(A) EXISTS b(A) EXISTS c(A).DISTINCT-5(OAAAAA) x(A) y(A) a(A) b(A) c(A) AND G(AAA) x(A) y(A) =(OAA) y(A) AND H(AAA) x(A) y(A) =(OAA) x(A) AND G(AAA) x(A) a(A) =(OAA) a(A) AND H(AAA) x(A) a(A) =(OAA) x(A) AND G(AAA) x(A) b(A) =(OAA) b(A) AND H(AAA) x(A) b(A) =(OAA) x(A) AND G(AAA) x(A) c(A) =(OAA) c(A) AND H(AAA) x(A) c(A) =(OAA) x(A) AND G(AAA) a(A) b(A) =(OAA) y(A) AND H(AAA) a(A) b(A) =(OAA) x(A) AND G(AAA) a(A) c(A) =(OAA) y(A) AND H(AAA) a(A) c(A) =(OAA) x(A) AND G(AAA) a(A) y(A) =(OAA) y(A) AND H(AAA) a(A) y(A) =(OAA) a(A) AND G(AAA) b(A) c(A) =(OAA) y(A) AND H(AAA) b(A) c(A) =(OAA) x(A) AND G(AAA) b(A) y(A) =(OAA) y(A) AND H(AAA) b(A) y(A) =(OAA) b(A) AND G(AAA) c(A) y(A) =(OAA) y(A) AND H(AAA) c(A) y(A) =(OAA) c(A)"
+:needed-objects   (DISTINCT-5)
+:mhelp "a,b,c,x,y form a poset where a,b,c are all below x and above y but otherwise incomparable
+(G = MEET / INTERSECTION, H = JOIN / UNION, y = lowest, x = highest)"
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(AAA)(AAA)"))
+:other-remarks "
+")
+
+
+(:name 3-DIAMOND-THM
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:25."
+:description "FORALL JOIN(AAA) FORALL MEET(AAA).LATTICE(O(AAA)(AAA)) JOIN(AAA) MEET(AAA) IMPLIES.3-DIAMOND(O(AAA)(AAA)) MEET(AAA) JOIN(AAA) IMPLIES ~DISTRIBUTIVE(O(AAA)(AAA)) MEET(AAA) JOIN(AAA)"
+:needed-objects   (LATTICE 3-DIAMOND DISTRIBUTIVE)
+:mhelp "Analogous to PENTAGON-THM2B"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name DISTINCT-5
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(A) LAMBDA y(A) LAMBDA a(A) LAMBDA b(A) LAMBDA c(A).~[a(A) =(OAA) b(A)] AND ~[a(A) =(OAA) c(A)] AND ~[a(A) =(OAA) x(A)] AND ~[a(A) =(OAA) y(A)] AND ~[b(A) =(OAA) c(A)] AND ~[b(A) =(OAA) x(A)] AND ~[b(A) =(OAA) y(A)] AND ~[c(A) =(OAA) x(A)] AND ~[c(A) =(OAA) y(A)] AND ~.x(A) =(OAA) y(A)"
+:needed-objects   NIL
+:mhelp "5 distinct objects of type a"
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "OAAAAA"))
+:other-remarks "
+")
+
+
+(:name DISTRIB-THM2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL JOIN(AAA) FORALL MEET(AAA).LATTICE(O(AAA)(AAA)) JOIN(AAA) MEET(AAA) IMPLIES.DISTRIBUTIVE(O(AAA)(AAA)) MEET(AAA) JOIN(AAA) AND DISTRIBUTIVE(O(AAA)(AAA)) JOIN(AAA) MEET(AAA) EQUIV ~PENTAGON(O(AAA)(AAA)) MEET(AAA) JOIN(AAA) AND ~3-DIAMOND(O(AAA)(AAA)) MEET(AAA) JOIN(AAA)"
+:needed-objects   (LATTICE DISTRIBUTIVE PENTAGON 3-DIAMOND)
+:mhelp "A lattice is distributive iff it contains no pentagon and no 3-diamond (Birkhoff)."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name MODULAR
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA G(AAA) LAMBDA H(AAA) FORALL x(A) FORALL y(A) FORALL z(A).H(AAA) x(A) z(A) =(OAA) z(A) IMPLIES H(AAA) x(A) [G(AAA) y(A) z(A)] =(OAA) G(AAA) [H(AAA) x(A) y(A)] z(A)"
+:needed-objects   NIL
+:mhelp "Modularity (G = MEET / INTERSECTION, H = JOIN / UNION)"
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(AAA)(AAA)"))
+:other-remarks "
+")
+
+
+(:name MODULAR-DEF2
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA G(AAA) LAMBDA H(AAA) FORALL x(A) FORALL y(A) FORALL z(A).H(AAA) x(A) [G(AAA) y(A).H(AAA) x(A) z(A)] =(OAA) G(AAA) [H(AAA) x(A) y(A)].H(AAA) x(A) z(A)"
+:needed-objects   NIL
+:mhelp "Another defn of modularity (G = MEET / INTERSECTION, H = JOIN / UNION)"
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(AAA)(AAA)"))
+:other-remarks "
+")
+
+
+(:name MODULAR-EQUIV-THM
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, November 10, 1998 at 14:10:45."
+:description "FORALL JOIN(AAA) FORALL MEET(AAA).LATTICE(O(AAA)(AAA)) JOIN(AAA) MEET(AAA) IMPLIES.MODULAR(O(AAA)(AAA)) MEET(AAA) JOIN(AAA) EQUIV MODULAR-DEF2(O(AAA)(AAA)) MEET(AAA) JOIN(AAA)"
+:needed-objects   (LATTICE MODULAR MODULAR-DEF2)
+:mhelp "The equivalence of two definitions of modularity.
+Due to Jordan."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name MODULAR-THM
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:14:52."
+:description "FORALL JOIN(AAA) FORALL MEET(AAA).LATTICE(O(AAA)(AAA)) JOIN(AAA) MEET(AAA) AND [DISTRIBUTIVE(O(AAA)(AAA)) JOIN(AAA) MEET(AAA) AND DISTRIBUTIVE(O(AAA)(AAA)) MEET(AAA) JOIN(AAA)] IMPLIES MODULAR(O(AAA)(AAA)) MEET(AAA) JOIN(AAA)"
+:needed-objects   (LATTICE DISTRIBUTIVE MODULAR)
+:mhelp "Every distributive lattice is modular."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name MODULAR-THM-DEF2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL JOIN(AAA) FORALL MEET(AAA).LATTICE(O(AAA)(AAA)) JOIN(AAA) MEET(AAA) AND [DISTRIBUTIVE(O(AAA)(AAA)) JOIN(AAA) MEET(AAA) AND DISTRIBUTIVE(O(AAA)(AAA)) MEET(AAA) JOIN(AAA)] IMPLIES MODULAR-DEF2(O(AAA)(AAA)) MEET(AAA) JOIN(AAA)"
+:needed-objects   (LATTICE DISTRIBUTIVE MODULAR-DEF2)
+:mhelp "Every distributive lattice is modular."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name MODULAR-THM2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL JOIN(AAA) FORALL MEET(AAA).LATTICE(O(AAA)(AAA)) JOIN(AAA) MEET(AAA) IMPLIES.MODULAR(O(AAA)(AAA)) MEET(AAA) JOIN(AAA) EQUIV ~PENTAGON(O(AAA)(AAA)) MEET(AAA) JOIN(AAA)"
+:needed-objects   (LATTICE MODULAR PENTAGON)
+:mhelp "A lattice is modular iff it contains no pentagon (Dedekind)."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name MODULAR-THM2-DEF2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL JOIN(AAA) FORALL MEET(AAA).LATTICE(O(AAA)(AAA)) JOIN(AAA) MEET(AAA) IMPLIES.MODULAR-DEF2(O(AAA)(AAA)) MEET(AAA) JOIN(AAA) EQUIV ~PENTAGON(O(AAA)(AAA)) MEET(AAA) JOIN(AAA)"
+:needed-objects   (LATTICE MODULAR-DEF2 PENTAGON)
+:mhelp "A lattice is modular iff it contains no pentagon (Dedekind)."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PENTAGON
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA G(AAA) LAMBDA H(AAA) EXISTS x(A) EXISTS y(A) EXISTS a(A) EXISTS b(A) EXISTS c(A).DISTINCT-5(OAAAAA) x(A) y(A) a(A) b(A) c(A) AND G(AAA) x(A) y(A) =(OAA) y(A) AND H(AAA) x(A) y(A) =(OAA) x(A) AND G(AAA) x(A) a(A) =(OAA) a(A) AND H(AAA) x(A) a(A) =(OAA) x(A) AND G(AAA) x(A) b(A) =(OAA) b(A) AND H(AAA) x(A) b(A) =(OAA) x(A) AND G(AAA) x(A) c(A) =(OAA) c(A) AND H(AAA) x(A) c(A) =(OAA) x(A) AND G(AAA) a(A) b(A) =(OAA) y(A) AND H(AAA) a(A) b(A) =(OAA) x(A) AND G(AAA) a(A) c(A) =(OAA) a(A) AND H(AAA) a(A) c(A) =(OAA) c(A) AND G(AAA) a(A) y(A) =(OAA) y(A) AND H(AAA) a(A) y(A) =(OAA) a(A) AND G(AAA) b(A) c(A) =(OAA) y(A) AND H(AAA) b(A) c(A) =(OAA) x(A) AND G(AAA) b(A) y(A) =(OAA) y(A) AND H(AAA) b(A) y(A) =(OAA) b(A) AND G(AAA) c(A) y(A) =(OAA) y(A) AND H(AAA) c(A) y(A) =(OAA) c(A)"
+:needed-objects   (DISTINCT-5)
+:mhelp "a,b,c,x,y form a pentagon (G = MEET / INTERSECTION, H = JOIN / UNION, y = lowest, x = highest)"
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(AAA)(AAA)"))
+:other-remarks "
+")
+
+
+(:name PENTAGON-THM2B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Monday, July 27, 1998 at 18:12:31."
+:description "FORALL JOIN(AAA) FORALL MEET(AAA).LATTICE(O(AAA)(AAA)) JOIN(AAA) MEET(AAA) IMPLIES.PENTAGON(O(AAA)(AAA)) MEET(AAA) JOIN(AAA) IMPLIES ~MODULAR-DEF2(O(AAA)(AAA)) MEET(AAA) JOIN(AAA)"
+:needed-objects   (LATTICE PENTAGON MODULAR-DEF2)
+:mhelp "The easy direction of MODULAR-THM2-DEF2"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PENTAGON-THM2C
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL JOIN(AAA) FORALL MEET(AAA).LATTICE(O(AAA)(AAA)) JOIN(AAA) MEET(AAA) IMPLIES.~MODULAR-DEF2(O(AAA)(AAA)) MEET(AAA) JOIN(AAA) IMPLIES PENTAGON(O(AAA)(AAA)) MEET(AAA) JOIN(AAA)"
+:needed-objects   (LATTICE MODULAR-DEF2 PENTAGON)
+:mhelp "The hard direction of MODULAR-THM2-DEF2"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PENTAGON-THM2D
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL JOIN(AAA) FORALL MEET(AAA).LATTICE(O(AAA)(AAA)) JOIN(AAA) MEET(AAA) AND EXISTS x(A) EXISTS y(A) EXISTS a(A) EXISTS b(A) EXISTS c(A) DISTINCT-5(OAAAAA) x(A) y(A) a(A) b(A) c(A) AND ~MODULAR-DEF2(O(AAA)(AAA)) MEET(AAA) JOIN(AAA) IMPLIES [LAMBDA G(AAA) LAMBDA H(AAA) EXISTS x(A) EXISTS y(A) EXISTS a(A) EXISTS b(A) EXISTS c(A).G(AAA) x(A) y(A) =(OAA) y(A) AND H(AAA) x(A) y(A) =(OAA) x(A) AND G(AAA) x(A) a(A) =(OAA) a(A) AND H(AAA) x(A) a(A) =(OAA) x(A) AND G(AAA) x(A) b(A) =(OAA) b(A) AND H(AAA) x(A) b(A) =(OAA) x(A) AND G(AAA) x(A) c(A) =(OAA) c(A) AND H(AAA) x(A) c(A) =(OAA) x(A) AND G(AAA) a(A) b(A) =(OAA) y(A) AND H(AAA) a(A) b(A) =(OAA) x(A) AND G(AAA) a(A) c(A) =(OAA) a(A) AND H(AAA) a(A) c(A) =(OAA) c(A) AND G(AAA) a(A) y(A) =(OAA) y(A) AND H(AAA) a(A) y(A) =(OAA) a(A) AND G(AAA) b(A) c(A) =(OAA) y(A) AND H(AAA) b(A) c(A) =(OAA) x(A) AND G(AAA) b(A) y(A) =(OAA) y(A) AND H(AAA) b(A) y(A) =(OAA) b(A) AND G(AAA) c(A) y(A) =(OAA) y(A) AND H(AAA) c(A) y(A) =(OAA) c(A)] MEET(AAA) JOIN(AAA)"
+:needed-objects   (LATTICE MODULAR-DEF2 DISTINCT-5)
+:mhelp "PENTAGON-THM2C, assuming at least five objects in the lattice"
+:other-attributes NIL
+:other-remarks "
+")
+
+

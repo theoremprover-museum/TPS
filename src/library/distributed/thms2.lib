@@ -1,0 +1,218 @@
+(:name THM25
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, June  5, 1997 at 13:05:08."
+:description "~EXISTS Y(I) FORALL X(I).R(OII) X(I) Y(I) EQUIV ~EXISTS Z(I).R(OII) X(I) Z(I) AND R(OII) Z(I) X(I)"
+:needed-objects   NIL
+:mhelp "THIS IS QUINE'S MODIFICATION OF RUSSELL'S PARADOX.
+    LET (R X Y) MEAN X IS IN Y."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM29
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:29:41."
+:description "%(OA(OB)(AB)) F(AB) [%(OB(OC)(BC)) G(BC) S(OC)] EQUIVS(O(OA)(OA)) %(OA(OC)(AC)) [F(AB) COMPOSE(AC(BC)(AB)) G(BC)] S(OC)"
+:needed-objects   (COMPOSE)
+:mhelp "14 CLAUSES 30 VPATHS  
+14 PATHS 30 CLAUSES  
+REQUIRES NO QUANTIFIER DUPLICATION  
+NEXTBADPATH1 SHOULD WORK BETTER THAN NEXTBADPATH3 ON THIS PROBLEM  
+EASILY PROVED WIHT THE = HEURISTIC"
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM24
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:29:35."
+:description "~[U(I) =(OII) V(I)] IMPLIES EXISTS G(II(II)(II)).~COMMUTATIVE(O(II(II)(II))) G(II(II)(II))"
+:needed-objects   (COMMUTATIVE)
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM2B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL u(OBA) FORALL v(OBA) [FORALL x(A) FORALL y(B) [u(OBA) x(A) y(B) IMPLIES v(OBA) x(A) y(B)] IMPLIES FORALL x(A) FORALL y(B).K(OBA(OBA)) u(OBA) x(A) y(B) IMPLIES K(OBA(OBA)) v(OBA) x(A) y(B)] IMPLIES EXISTS u(OBA).K(OBA(OBA)) u(OBA) =(O(OBA)(OBA)) u(OBA)"
+:needed-objects   NIL
+:mhelp "Relational version of THM2"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name HYP1
+:type GWFF
+:context NIL
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL X(I) FORALL Y(I) FORALL Z(I) FORALL U(I) FORALL V(I) FORALL VV(I).Q(OIII) X(I) Y(I) U(I) AND Q(OIII) Y(I) Z(I) V(I) IMPLIES.Q(OIII) X(I) V(I) VV(I) EQUIV Q(OIII) U(I) Z(I) VV(I)"
+:needed-objects   NIL
+:mhelp "WHEN Q X Y Z MEANS X*Y = Z  
+THIS SAYS * IS ASSOCIATIVE  
+Q MUST BE DECLARED A CONSTANT WHEN THIS IS USED"
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name HYP2
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL X(I) FORALL Y(I).EXISTS G(I) Q(OIII) G(I) X(I) Y(I) AND EXISTS J(I) Q(OIII) X(I) J(I) Y(I) AND EXISTS F(I) Q(OIII) X(I) Y(I) F(I)"
+:needed-objects   NIL
+:mhelp "WHEN Q X Y Z MEANS X*Y = Z  
+THIS SAYS LEFT AND RIGHT SOLUTIONS EXIST  
+AND X*Y ALWAYS EXISTS  
+Q MUST BE DECLARED A CONSTANT"
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM20
+:type GWFF
+:context NIL
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GROUP-1(O(AA)A(AAA)) P(AAA) E(A) J(AA) IMPLIES FORALL X(A) FORALL Y(A) EXISTS Z(A).P(AAA) X(A) Z(A) =(OAA) Y(A)"
+:needed-objects   (GROUP-1)
+:mhelp "THE PROOF IS DIRECT  
+SHOULD FIND Z = P J X  
+Y "
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM21
+:type GWFF
+:context NIL
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GROUP-1(O(AA)A(AAA)) P(AAA) E(A) J(AA) IMPLIES FORALL X(A) FORALL Y(A) EXISTS W(A).P(AAA) W(A) X(A) =(OAA) Y(A)"
+:needed-objects   (GROUP-1)
+:mhelp "THE PROOF OF THM21 USES THM17  
+SHOULD FIND W = P Y J X "
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM22
+:type GWFF
+:context NIL
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GROUP-1(O(AA)A(AAA)) P(AAA) E(A) J(AA) IMPLIES GROUP-2(O(AAA)) P(AAA)"
+:needed-objects   (GROUP-1 GROUP-2)
+:mhelp "THIS IS ESSENTIALLY THE CONJUNCTION OF THM20 AND THM21"
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM23
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:29:35."
+:description "ASSOCIATIVE(O(AAA)) *(AAA) IMPLIES FORALL W(A) FORALL X(A) FORALL Y(A) FORALL Z(A).*(AAA) [*(AAA) [*(AAA) W(A) X(A)] Y(A)] Z(A) =(OAA) *(AAA) W(A).*(AAA) X(A).*(AAA) Y(A) Z(A)"
+:needed-objects   (ASSOCIATIVE)
+:mhelp "CONCLUSION IS THAT W * X  
+* Y  
+* Z = W * X * Y * Z  "
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM26
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:29:39."
+:description "EXISTS X(I) EXISTS Y(I) [~.X(I) =(OII) Y(I)] IMPLIES FORALL U(I) EXISTS Z(I).~.Z(I) =(OII) U(I)"
+:needed-objects   NIL
+:mhelp "IN THE NATURAL INTUITIVE PROOF  
+ONE CONSIDERS TWO CASES CONCERNING U  
+WHEN FINDING Z "
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM27
+:type GWFF
+:context NIL
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS E(I) FORALL K(I) Q(OIII) K(I) E(I) K(I)"
+:needed-objects   NIL
+:mhelp "THIS IS A THEOREM OF GROUP THEORY  
+FROM J A ROBINSON'S  
+1965 PAPER  
+Q X Y Z MEANS X*Y = Z  
+HYPOTHESES HYP1 AND HYP2 MUST BE ASSUMED  
+CONCLUSION IS EXISTENCE OF A RIGHT IDENTITY"
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM28
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:29:41."
+:description "FORALL F(AB) FORALL G(BC) FORALL S(OC).%(OA(OC)(AC)) [F(AB) COMPOSE(AC(BC)(AB)) G(BC)] S(OC) SUBSET(O(OA)(OA)) %(OA(OB)(AB)) F(AB).%(OB(OC)(BC)) G(BC) S(OC)"
+:needed-objects   (COMPOSE)
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM29A
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:29:42."
+:description "%(OA(OB)(AB)) F(AB) [%(OB(OC)(BC)) G(BC) S(OC)] SUBSET(O(OA)(OA)) %(OA(OC)(AC)) [F(AB) COMPOSE(AC(BC)(AB)) G(BC)] S(OC)"
+:needed-objects   (COMPOSE)
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+

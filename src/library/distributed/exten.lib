@@ -1,0 +1,42 @@
+(:name EXT-SET
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(B) [f(OB) x(B) EQUIV g(OB) x(B)] IMPLIES FORALL q(O(OB)).q(O(OB)) f(OB) IMPLIES q(O(OB)) g(OB)"
+:needed-objects   NIL
+:mhelp "A form of extensionality for sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name EXT-SET2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(B) [f(OB) x(B) EQUIV g(OB) x(B)] IMPLIES h(G(OB)) f(OB) =(OGG) h(G(OB)) g(OB)"
+:needed-objects   NIL
+:mhelp "An easy consequence of extensionality"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name EXT1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, May 21, 1998 at 17:35:32."
+:description "FORALL x(B) [f(OB) x(B) EQUIV g(OB) x(B)] IMPLIES FORALL q(O(OB)) [q(O(OB)) f(OB) IMPLIES q(O(OB)) g(OB)] IMPLIES.FORALL x(B) [f(OB) x(B) EQUIV g(OB) x(B)] IMPLIES h(G(OB)) f(OB) =(OGG) h(G(OB)) g(OB)"
+:needed-objects   NIL
+:mhelp "Theorem about extensionality"
+:other-attributes NIL
+:other-remarks "
+")
+
+

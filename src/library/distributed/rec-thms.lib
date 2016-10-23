@@ -1,0 +1,29 @@
+(:name T6400A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS F(AS).F(AS) O(S) =(OAA) g(A) AND FORALL n(O(OI)).NAT2(OS) n(O(OI)) IMPLIES F(AS) [S(SS) n(O(OI))] =(OAA) h(AAS) n(O(OI)).F(AS) n(O(OI))"
+:needed-objects   (NAT2)
+:mhelp "RELATED TO THEOREM 6400 IN TTTP."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TTTP-R-6400
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "REC2(AHA(AAH)) h(AAH) g(A) O(H) =(OAA) g(A) AND FORALL n(H).NAT2(OH) n(H) IMPLIES REC2(AHA(AAH)) h(AAH) g(A) [S(HH) n(H)] =(OAA) h(AAH) n(H).REC2(AHA(AAH)) h(AAH) g(A) n(H)"
+:needed-objects   (NAT2 REC2)
+:mhelp "Like theorem 6400 in TTTP, but
+uses O, and S as variables, with NAT2 in place of NAT."
+:other-attributes NIL
+:other-remarks "
+")
+
+

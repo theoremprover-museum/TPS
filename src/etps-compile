@@ -1,0 +1,4 @@
+#!/bin/csh -f
+
+make etps_compile $*
+

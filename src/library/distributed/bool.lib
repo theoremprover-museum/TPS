@@ -1,0 +1,1106 @@
+(:name BOOL-PROP-56
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, April 22, 1999 at 14:09:58."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) =(O(OA)(OA)) Y(OA) UNION(OA(OA)(OA)) Z(OA) EQUIV Y(OA) SUBSET(O(OA)(OA)) X(OA) AND Z(OA) SUBSET(O(OA)(OA)) X(OA) AND FORALL V(OA).Y(OA) SUBSET(O(OA)(OA)) V(OA) AND Z(OA) SUBSET(O(OA)(OA)) V(OA) IMPLIES X(OA) SUBSET(O(OA)(OA)) V(OA)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-57
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Friday, June 11, 1999 at 17:11:11."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) =(O(OA)(OA)) Y(OA) INTERSECT(OA(OA)(OA)) Z(OA) EQUIV X(OA) SUBSET(O(OA)(OA)) Y(OA) AND X(OA) SUBSET(O(OA)(OA)) Z(OA) AND FORALL V(OA).V(OA) SUBSET(O(OA)(OA)) Y(OA) AND V(OA) SUBSET(O(OA)(OA)) Z(OA) IMPLIES V(OA) SUBSET(O(OA)(OA)) X(OA)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-23
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:42."
+:description "FORALL x(A) FORALL X(OA) FORALL Y(OA).SYMDIFF(OA(OA)(OA)) X(OA) Y(OA) x(A) EQUIV X(OA) x(A) EQUIV ~Y(OA) x(A)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-25
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:43."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).FORALL x(A) [~X(OA) x(A) EQUIV Y(OA) x(A) EQUIV Z(OA) x(A)] IMPLIES X(OA) =(O(OA)(OA)) SYMDIFF(OA(OA)(OA)) Y(OA) Z(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-27
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:44."
+:description "FORALL X(OA).NULLSET(OA) SUBSET(O(OA)(OA)) X(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-29
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:45."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) SUBSET(O(OA)(OA)) Y(OA) AND Y(OA) SUBSET(O(OA)(OA)) Z(OA) IMPLIES X(OA) SUBSET(O(OA)(OA)) Z(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-30
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:46."
+:description "FORALL X(OA).X(OA) SUBSET(O(OA)(OA)) NULLSET(OA) IMPLIES X(OA) =(O(OA)(OA)) NULLSET(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-31
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:47."
+:description "FORALL X(OA) FORALL Y(OA).X(OA) SUBSET(O(OA)(OA)) X(OA) UNION(OA(OA)(OA)) Y(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-32
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:48."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) SUBSET(O(OA)(OA)) Z(OA) AND Y(OA) SUBSET(O(OA)(OA)) Z(OA) IMPLIES X(OA) UNION(OA(OA)(OA)) Y(OA) SUBSET(O(OA)(OA)) Z(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-33
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:49."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) SUBSET(O(OA)(OA)) Y(OA) IMPLIES X(OA) UNION(OA(OA)(OA)) Z(OA) SUBSET(O(OA)(OA)) Y(OA) UNION(OA(OA)(OA)) Z(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-34
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:50."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA) FORALL V(OA).X(OA) SUBSET(O(OA)(OA)) Y(OA) AND Z(OA) SUBSET(O(OA)(OA)) V(OA) IMPLIES X(OA) UNION(OA(OA)(OA)) Z(OA) SUBSET(O(OA)(OA)) Y(OA) UNION(OA(OA)(OA)) V(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-35
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:52."
+:description "FORALL X(OA) FORALL Y(OA).X(OA) SUBSET(O(OA)(OA)) Y(OA) IMPLIES X(OA) UNION(OA(OA)(OA)) Y(OA) SUBSET(O(OA)(OA)) Y(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-37
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:53."
+:description "FORALL X(OA) FORALL Y(OA).X(OA) INTERSECT(OA(OA)(OA)) Y(OA) SUBSET(O(OA)(OA)) X(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-38
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:54."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) INTERSECT(OA(OA)(OA)) Y(OA) SUBSET(O(OA)(OA)) X(OA) UNION(OA(OA)(OA)) Z(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-39
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:55."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).Z(OA) SUBSET(O(OA)(OA)) X(OA) AND Z(OA) SUBSET(O(OA)(OA)) Y(OA) IMPLIES Z(OA) SUBSET(O(OA)(OA)) X(OA) UNION(OA(OA)(OA)) Y(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-40
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:56."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) SUBSET(O(OA)(OA)) Y(OA) IMPLIES X(OA) INTERSECT(OA(OA)(OA)) Z(OA) SUBSET(O(OA)(OA)) Y(OA) INTERSECT(OA(OA)(OA)) Z(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-41
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:58."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) SUBSET(O(OA)(OA)) Y(OA) AND Z(OA) SUBSET(O(OA)(OA)) V(OA) IMPLIES X(OA) INTERSECT(OA(OA)(OA)) Z(OA) SUBSET(O(OA)(OA)) Y(OA) INTERSECT(OA(OA)(OA)) V(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-42
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:11:00."
+:description "FORALL X(OA) FORALL Y(OA).X(OA) SUBSET(O(OA)(OA)) Y(OA) IMPLIES X(OA) INTERSECT(OA(OA)(OA)) Y(OA) =(O(OA)(OA)) X(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-44
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:11:01."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) SUBSET(O(OA)(OA)) Z(OA) IMPLIES X(OA) UNION(OA(OA)(OA)) Y(OA) INTERSECT(OA(OA)(OA)) Z(OA) =(O(OA)(OA)) [X(OA) UNION(OA(OA)(OA)) Y(OA)] INTERSECT(OA(OA)(OA)) Z(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-45
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:11:03."
+:description "FORALL X(OA) FORALL Y(OA).X(OA) SETDIFF(OA(OA)(OA)) Y(OA) =(O(OA)(OA)) NULLSET(OA) EQUIV X(OA) SUBSET(O(OA)(OA)) Y(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-46
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:11:05."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) SUBSET(O(OA)(OA)) Y(OA) IMPLIES X(OA) SETDIFF(OA(OA)(OA)) Z(OA) SUBSET(O(OA)(OA)).Y(OA) SETDIFF(OA(OA)(OA)) Z(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-47
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:11:06."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) SUBSET(O(OA)(OA)) Y(OA) IMPLIES Z(OA) SETDIFF(OA(OA)(OA)) Y(OA) SUBSET(O(OA)(OA)).Z(OA) SETDIFF(OA(OA)(OA)) X(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-48
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:11:08."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA) FORALL V(OA).X(OA) SUBSET(O(OA)(OA)) Y(OA) AND Z(OA) SUBSET(O(OA)(OA)) V(OA) IMPLIES X(OA) SETDIFF(OA(OA)(OA)) V(OA) SUBSET(O(OA)(OA)).Y(OA) SETDIFF(OA(OA)(OA)) Z(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-49
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:11:09."
+:description "FORALL X(OA) FORALL Y(OA).X(OA) SETDIFF(OA(OA)(OA)) Y(OA) SUBSET(O(OA)(OA)) X(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-50
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:11:11."
+:description "FORALL X(OA) FORALL Y(OA).X(OA) SUBSET(O(OA)(OA)) [Y(OA) SETDIFF(OA(OA)(OA)) X(OA)] IMPLIES X(OA) =(O(OA)(OA)) NULLSET(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-51
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:11:12."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) SUBSET(O(OA)(OA)) Y(OA) AND X(OA) SUBSET(O(OA)(OA)) Z(OA) AND Y(OA) INTERSECT(OA(OA)(OA)) Z(OA) =(O(OA)(OA)) NULLSET(OA) IMPLIES X(OA) =(O(OA)(OA)) NULLSET(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-52
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:11:14."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) SUBSET(O(OA)(OA)) Y(OA) UNION(OA(OA)(OA)) Z(OA) IMPLIES X(OA) SETDIFF(OA(OA)(OA)) Y(OA) SUBSET(O(OA)(OA)) Z(OA) AND X(OA) SETDIFF(OA(OA)(OA)) Z(OA) SUBSET(O(OA)(OA)) Y(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-53
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:11:16."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) INTERSECT(OA(OA)(OA)) Y(OA) UNION(OA(OA)(OA)) X(OA) INTERSECT(OA(OA)(OA)) Z(OA) =(O(OA)(OA)) X(OA) IMPLIES X(OA) SUBSET(O(OA)(OA)) Y(OA) UNION(OA(OA)(OA)) Z(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-54
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:11:19."
+:description "FORALL X(OA) FORALL Y(OA).X(OA) SUBSET(O(OA)(OA)) Y(OA) IMPLIES Y(OA) =(O(OA)(OA)) X(OA) UNION(OA(OA)(OA)).Y(OA) SETDIFF(OA(OA)(OA)) X(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-55
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:11:20."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) SUBSET(O(OA)(OA)) Y(OA) AND Y(OA) INTERSECT(OA(OA)(OA)) Z(OA) =(O(OA)(OA)) NULLSET(OA) IMPLIES X(OA) INTERSECT(OA(OA)(OA)) Z(OA) =(O(OA)(OA)) NULLSET(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-58
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:11:32."
+:description "FORALL X(OA) FORALL Y(OA).X(OA) SETDIFF(OA(OA)(OA)) Y(OA) SUBSET(O(OA)(OA)) SYMDIFF(OA(OA)(OA)) X(OA) Y(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-59
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:11:34."
+:description "FORALL X(OA) FORALL Y(OA).X(OA) UNION(OA(OA)(OA)) Y(OA) =(O(OA)(OA)) NULLSET(OA) EQUIV X(OA) =(O(OA)(OA)) NULLSET(OA) AND Y(OA) =(O(OA)(OA)) NULLSET(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-60
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:11:38."
+:description "FORALL X(OA).X(OA) UNION(OA(OA)(OA)) NULLSET(OA) =(O(OA)(OA)) X(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-61
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:11:39."
+:description "FORALL X(OA).X(OA) INTERSECT(OA(OA)(OA)) NULLSET(OA) =(O(OA)(OA)) NULLSET(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-64
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:11:41."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) UNION(OA(OA)(OA)) Y(OA) UNION(OA(OA)(OA)) Z(OA) =(O(OA)(OA)) X(OA) UNION(OA(OA)(OA)).Y(OA) UNION(OA(OA)(OA)) Z(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-67
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:11:43."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) INTERSECT(OA(OA)(OA)) Y(OA) INTERSECT(OA(OA)(OA)) Z(OA) =(O(OA)(OA)) X(OA) INTERSECT(OA(OA)(OA)).Y(OA) INTERSECT(OA(OA)(OA)) Z(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-68
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:11:46."
+:description "FORALL X(OA) FORALL Y(OA).X(OA) INTERSECT(OA(OA)(OA)) [X(OA) UNION(OA(OA)(OA)) Y(OA)] =(O(OA)(OA)) X(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-69
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:11:48."
+:description "FORALL X(OA) FORALL Y(OA).X(OA) UNION(OA(OA)(OA)) X(OA) INTERSECT(OA(OA)(OA)) Y(OA) =(O(OA)(OA)) X(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-70
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:11:50."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) INTERSECT(OA(OA)(OA)) [Y(OA) UNION(OA(OA)(OA)) Z(OA)] =(O(OA)(OA)) X(OA) INTERSECT(OA(OA)(OA)) Y(OA) UNION(OA(OA)(OA)) X(OA) INTERSECT(OA(OA)(OA)) Z(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-71
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:11:54."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) UNION(OA(OA)(OA)) Y(OA) INTERSECT(OA(OA)(OA)) Z(OA) =(O(OA)(OA)) [X(OA) UNION(OA(OA)(OA)) Y(OA)] INTERSECT(OA(OA)(OA)).X(OA) UNION(OA(OA)(OA)) Z(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-72
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:11:58."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) INTERSECT(OA(OA)(OA)) Y(OA) UNION(OA(OA)(OA)) [Y(OA) INTERSECT(OA(OA)(OA)) Z(OA) UNION(OA(OA)(OA)) Z(OA) INTERSECT(OA(OA)(OA)) X(OA)] =(O(OA)(OA)) [X(OA) UNION(OA(OA)(OA)) Y(OA)] INTERSECT(OA(OA)(OA)).[Y(OA) UNION(OA(OA)(OA)) Z(OA)] INTERSECT(OA(OA)(OA)).Z(OA) UNION(OA(OA)(OA)) X(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-74
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:12:05."
+:description "FORALL X(OA).X(OA) SETDIFF(OA(OA)(OA)) NULLSET(OA) =(O(OA)(OA)) X(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-75
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:12:06."
+:description "FORALL X(OA).NULLSET(OA) SETDIFF(OA(OA)(OA)) X(OA) =(O(OA)(OA)) NULLSET(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-76
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:12:08."
+:description "FORALL X(OA) FORALL Y(OA).X(OA) SETDIFF(OA(OA)(OA)) X(OA) UNION(OA(OA)(OA)) Y(OA) =(O(OA)(OA)) NULLSET(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-77
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:12:10."
+:description "FORALL X(OA) FORALL Y(OA).X(OA) SETDIFF(OA(OA)(OA)) X(OA) INTERSECT(OA(OA)(OA)) Y(OA) =(O(OA)(OA)) X(OA) SETDIFF(OA(OA)(OA)) Y(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-78
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:12:13."
+:description "FORALL X(OA) FORALL Y(OA).[X(OA) SETDIFF(OA(OA)(OA)) Y(OA)] INTERSECT(OA(OA)(OA)) Y(OA) =(O(OA)(OA)) NULLSET(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-79
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:12:15."
+:description "FORALL X(OA) FORALL Y(OA).X(OA) UNION(OA(OA)(OA)) [Y(OA) SETDIFF(OA(OA)(OA)) X(OA)] =(O(OA)(OA)) X(OA) UNION(OA(OA)(OA)) Y(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-80
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:12:17."
+:description "FORALL X(OA) FORALL Y(OA).X(OA) INTERSECT(OA(OA)(OA)) Y(OA) UNION(OA(OA)(OA)) [X(OA) SETDIFF(OA(OA)(OA)) Y(OA)] =(O(OA)(OA)) X(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-81
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:12:20."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) SETDIFF(OA(OA)(OA)) [Y(OA) SETDIFF(OA(OA)(OA)) Z(OA)] =(O(OA)(OA)) [X(OA) SETDIFF(OA(OA)(OA)) Y(OA)] UNION(OA(OA)(OA)) X(OA) INTERSECT(OA(OA)(OA)) Z(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-82
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:12:24."
+:description "FORALL X(OA) FORALL Y(OA).X(OA) SETDIFF(OA(OA)(OA)) [X(OA) SETDIFF(OA(OA)(OA)) Y(OA)] =(O(OA)(OA)) X(OA) INTERSECT(OA(OA)(OA)) Y(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-83
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:12:27."
+:description "FORALL X(OA) FORALL Y(OA).X(OA) UNION(OA(OA)(OA)) Y(OA) SETDIFF(OA(OA)(OA)) Y(OA) =(O(OA)(OA)) X(OA) SETDIFF(OA(OA)(OA)) Y(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-84
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:12:31."
+:description "FORALL X(OA) FORALL Y(OA).X(OA) INTERSECT(OA(OA)(OA)) Y(OA) =(O(OA)(OA)) NULLSET(OA) EQUIV X(OA) SETDIFF(OA(OA)(OA)) Y(OA) =(O(OA)(OA)) X(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-85
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:12:38."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) SETDIFF(OA(OA)(OA)) Y(OA) UNION(OA(OA)(OA)) Z(OA) =(O(OA)(OA)) [X(OA) SETDIFF(OA(OA)(OA)) Y(OA)] INTERSECT(OA(OA)(OA)).X(OA) SETDIFF(OA(OA)(OA)) Z(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-86
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:12:44."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) SETDIFF(OA(OA)(OA)) Y(OA) INTERSECT(OA(OA)(OA)) Z(OA) =(O(OA)(OA)) [X(OA) SETDIFF(OA(OA)(OA)) Y(OA)] UNION(OA(OA)(OA)).X(OA) SETDIFF(OA(OA)(OA)) Z(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-87
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:12:50."
+:description "FORALL X(OA) FORALL Y(OA).X(OA) UNION(OA(OA)(OA)) Y(OA) SETDIFF(OA(OA)(OA)) X(OA) INTERSECT(OA(OA)(OA)) Y(OA) =(O(OA)(OA)) [X(OA) SETDIFF(OA(OA)(OA)) Y(OA)] UNION(OA(OA)(OA)).Y(OA) SETDIFF(OA(OA)(OA)) X(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-88
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:12:58."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) SETDIFF(OA(OA)(OA)) Y(OA) SETDIFF(OA(OA)(OA)) Z(OA) =(O(OA)(OA)) X(OA) SETDIFF(OA(OA)(OA)) Y(OA) UNION(OA(OA)(OA)) Z(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-89
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:13:03."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) UNION(OA(OA)(OA)) Y(OA) SETDIFF(OA(OA)(OA)) Z(OA) =(O(OA)(OA)) [X(OA) SETDIFF(OA(OA)(OA)) Z(OA)] UNION(OA(OA)(OA)).Y(OA) SETDIFF(OA(OA)(OA)) Z(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-90
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:13:10."
+:description "FORALL X(OA) FORALL Y(OA).X(OA) SETDIFF(OA(OA)(OA)) Y(OA) =(O(OA)(OA)) Y(OA) SETDIFF(OA(OA)(OA)) X(OA) IMPLIES X(OA) =(O(OA)(OA)) Y(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-92
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:13:14."
+:description "FORALL X(OA).SYMDIFF(OA(OA)(OA)) X(OA) NULLSET(OA) =(O(OA)(OA)) X(OA) AND SYMDIFF(OA(OA)(OA)) NULLSET(OA) X(OA) =(O(OA)(OA)) X(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-93
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:13:23."
+:description "FORALL X(OA).SYMDIFF(OA(OA)(OA)) X(OA) X(OA) =(O(OA)(OA)) NULLSET(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-95
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:13:28."
+:description "FORALL X(OA) FORALL Y(OA).X(OA) UNION(OA(OA)(OA)) Y(OA) =(O(OA)(OA)) SYMDIFF(OA(OA)(OA)) X(OA) Y(OA) UNION(OA(OA)(OA)) X(OA) INTERSECT(OA(OA)(OA)) Y(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-96
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:13:36."
+:description "FORALL X(OA) FORALL Y(OA).SYMDIFF(OA(OA)(OA)) X(OA) Y(OA) =(O(OA)(OA)) X(OA) UNION(OA(OA)(OA)) Y(OA) SETDIFF(OA(OA)(OA)) X(OA) INTERSECT(OA(OA)(OA)) Y(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-97
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:13:45."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).SYMDIFF(OA(OA)(OA)) X(OA) Y(OA) SETDIFF(OA(OA)(OA)) Z(OA) =(O(OA)(OA)) [X(OA) SETDIFF(OA(OA)(OA)) Y(OA) UNION(OA(OA)(OA)) Z(OA)] UNION(OA(OA)(OA)).Y(OA) SETDIFF(OA(OA)(OA)) X(OA) UNION(OA(OA)(OA)) Z(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-98
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:13:58."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) SETDIFF(OA(OA)(OA)) SYMDIFF(OA(OA)(OA)) Y(OA) Z(OA) =(O(OA)(OA)) [X(OA) SETDIFF(OA(OA)(OA)) Y(OA) UNION(OA(OA)(OA)) Z(OA)] UNION(OA(OA)(OA)) X(OA) INTERSECT(OA(OA)(OA)).Y(OA) INTERSECT(OA(OA)(OA)) Z(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-99
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:14:08."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).SYMDIFF(OA(OA)(OA)) X(OA) [SYMDIFF(OA(OA)(OA)) Y(OA) Z(OA)] =(O(OA)(OA)) SYMDIFF(OA(OA)(OA)) [SYMDIFF(OA(OA)(OA)) X(OA) Y(OA)] Z(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-100
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:28."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) MEETS(O(OA)(OA)) [Y(OA) UNION(OA(OA)(OA)) Z(OA)] EQUIV X(OA) MEETS(O(OA)(OA)) Y(OA) OR X(OA) MEETS(O(OA)(OA)) Z(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-101
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:28."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) MEETS(O(OA)(OA)) Y(OA) AND Y(OA) SUBSET(O(OA)(OA)) Z(OA) IMPLIES X(OA) MEETS(O(OA)(OA)) Z(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-102
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:29."
+:description "FORALL X(OA) FORALL Y(OA).X(OA) MEETS(O(OA)(OA)) [Y(OA) INTERSECT(OA(OA)(OA)) Z(OA)] IMPLIES X(OA) MEETS(O(OA)(OA)) Y(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-104
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:30."
+:description "FORALL X(OA).X(OA) MISSES(O(OA)(OA)) NULLSET(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-110
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:31."
+:description "FORALL X(OA).X(OA) MEETS(O(OA)(OA)) X(OA) EQUIV ~.X(OA) =(O(OA)(OA)) NULLSET(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-111
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:31."
+:description "FORALL X(OA) FORALL Y(OA).X(OA) INTERSECT(OA(OA)(OA)) Y(OA) MISSES(O(OA)(OA)).X(OA) SETDIFF(OA(OA)(OA)) Y(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-112
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:32."
+:description "FORALL X(OA) FORALL Y(OA).X(OA) INTERSECT(OA(OA)(OA)) Y(OA) MISSES(O(OA)(OA)) SYMDIFF(OA(OA)(OA)) X(OA) Y(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-113
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:33."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) MEETS(O(OA)(OA)) [Y(OA) SETDIFF(OA(OA)(OA)) Z(OA)] IMPLIES X(OA) MEETS(O(OA)(OA)) Y(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-114
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:34."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) SUBSET(O(OA)(OA)) Y(OA) AND X(OA) SUBSET(O(OA)(OA)) Z(OA) AND Y(OA) MISSES(O(OA)(OA)) Z(OA) IMPLIES X(OA) =(O(OA)(OA)) NULLSET(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-115
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:35."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) SETDIFF(OA(OA)(OA)) Y(OA) SUBSET(O(OA)(OA)) Z(OA) AND Y(OA) SETDIFF(OA(OA)(OA)) X(OA) SUBSET(O(OA)(OA)) Z(OA) IMPLIES SYMDIFF(OA(OA)(OA)) X(OA) Y(OA) SUBSET(O(OA)(OA)) Z(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-116
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:36."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) INTERSECT(OA(OA)(OA)) [Y(OA) SETDIFF(OA(OA)(OA)) Z(OA)] =(O(OA)(OA)) X(OA) INTERSECT(OA(OA)(OA)) Y(OA) SETDIFF(OA(OA)(OA)) Z(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-117
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:38."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) INTERSECT(OA(OA)(OA)) [Y(OA) SETDIFF(OA(OA)(OA)) Z(OA)] =(O(OA)(OA)) X(OA) INTERSECT(OA(OA)(OA)) Y(OA) SETDIFF(OA(OA)(OA)) X(OA) INTERSECT(OA(OA)(OA)) Z(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-118
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:39."
+:description "FORALL X(OA) FORALL Y(OA).X(OA) MISSES(O(OA)(OA)) Y(OA) EQUIV X(OA) INTERSECT(OA(OA)(OA)) Y(OA) =(O(OA)(OA)) NULLSET(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name BOOL-PROP-120
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:10:41."
+:description "FORALL X(OA) FORALL Y(OA) FORALL Z(OA).X(OA) SUBSET(O(OA)(OA)) Y(OA) UNION(OA(OA)(OA)) Z(OA) AND X(OA) INTERSECT(OA(OA)(OA)) Z(OA) =(O(OA)(OA)) NULLSET(OA) IMPLIES X(OA) SUBSET(O(OA)(OA)) Y(OA)"
+:needed-objects   (SYMDIFF SETDIFF MEETS MISSES NULLSET)
+:mhelp "From Boolean Properties of Sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+

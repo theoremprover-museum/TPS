@@ -1,0 +1,35 @@
+;;; ******************************************************************* ;;;
+;;;         (c) Copyrighted 1988 by Carnegie Mellon University.         ;;;
+;;;                        All rights reserved.                         ;;;
+;;;         This code was written as part of the TPS project.           ;;;
+;;;   If you want to use this code or any part of TPS, please contact   ;;;
+;;;               Peter B. Andrews (Andrews@CS.CMU.EDU)                 ;;;
+;;; ******************************************************************* ;;;
+;;; Updated context 7/20/87 DAN
+(context rules-4-quant)
+
+(defirule ugen
+  (lines (p1 (h) () "A")
+	 (p2 (h) () "forall x(A). A" ("UGen" ("x(A)") (p1))))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (restrictions (is-variable "x(A)") (not-free-in-hyps "x(A)"))
+  (itemshelp (p1 "Line with Scope of Universal Quantifier")
+	     (p2 "Universally Quantified Line")
+	     ("A(O)" "Scope of Universal Quantifier")
+	     ("x(A)" "Universally Quantified Variable"))
+  (mhelp "Rule of Universal Generalization."))
+
+(defirule ui
+  (lines (d1 (h) () "forall x(A). A")
+	 (d2 (h) () "`(LCONTR [[lambda x(A). A] t(A)])" ("UI" ("t(A)") (d1))))
+  (support-transformation (('pp d1 'ss)) (('pp d2 d1 'ss)))
+  (restrictions (is-variable "x(A)"))
+  (itemshelp (d1 "Universally Quantified Line")
+	     (d2 "Instantiated Line")
+	     ("x(A)" "Universally Quantified Variable")
+	     ("A(O)" "Scope of Universal Quantifier")
+	     ("t(A)" "Substitution Term")
+	     (LCONTR "Assertion of Instantiated Line"))
+  (mhelp "Rule of Universal Instantiation."))
+
+

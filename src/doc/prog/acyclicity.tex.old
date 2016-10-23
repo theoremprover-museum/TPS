@@ -1,0 +1,181 @@
+% This is the old version of this section from mating.tex
+% which works under the assumption that exp vars are introduced
+% in a unique expansion term.  This is no longer true, so
+% I have strengthened the results, dropping this assumption. - cebrown 10/16/00
+
+\section{Checking Acyclicity of the Dependency Relation}\label{acyclicity}
+
+\subsection{The Dependency Relation}
+
+An expansion proof is given by an expansion tree and a mating.
+One of the conditions on the expansion tree is that the
+so-called ``dependency relation'' is acyclic (irreflexive).
+For an expansion tree $Q$, let $S_Q$ be the set of selected
+variables in $Q$ and let $\Theta_Q$ be the set of occurrences of expansion terms.
+The following definition can be found in Miller's thesis.
+
+{\bf Definition.}  Let $Q$ be an expansion tree.  Let $<^0_Q$ be the binary
+relation on $\Theta_Q$ such that $t<^0_Q s$ if there exists $y\in S_Q$
+so that $y$ is selected in a node dominated by $t$ and $y$ is free in $s$.
+The transitive closure
+$<_Q$ of $<^0_Q$ is called the {\it dependency relation}.
+
+While the relation above is defined in terms of expansion terms,
+the way TPS actually searches for a proof is as follows.
+Expansion variables are used in place of expansion terms,
+and TPS finds instantiations for these variables.  These
+instantiations arise from two sources: set variable instantiations
+and unification.  The set variable instantiations may contain expansion
+variables which will later be instantiated by unification.
+
+% In procedures designed before 2000 . . .
+The set variable instantiations are made before mating search begins,
+in a pre-processing stage.  
+During the mating search, unification constructs substitutions for
+expansion variables, and checks the acyclicity condition for those 
+% ******* clarify this, the acyclicity condition is on etree's 
+substitutions.  To be sound, TPS should include the substitutions
+made in pre-processing as well.  Until now, TPS did not include these
+substitutions in the check.  This did not cause a problem with soundness
+because the omitted substitutions (all PRIMSUBS/GENSUBS) did not
+contain any selected variables.
+
+The most obvious way to ensure soundness is to include all the
+substitutions in the acyclicity check, not only those arising from
+unification.  However, since the instantiations made before search
+begins will not change during search, we should be able to find a more efficient
+method.  The idea is to start with an expansion tree obtained after pre-processing, i.e.,
+after set-variable instantiations have been made and the resulting tree has been deepened.
+
+{\bf Assumption.}  We will assume that an expansion variable occurs in only
+one expansion term. % *********** explain what I consider exp var's
+% and where they are ``introduced'' -- need to distinguish between
+% init exp tree and after substs.
+
+{\bf Definitions.}  Let $Q$ be a given expansion tree.  
+\begin{itemize}
+\item Let $\Sigma_Q\subseteq \Theta_Q$ be the set of occurrences of expansion terms in $Q$
+which are {\it not} expansion variables.
+\item Let $V_Q$ be the set of expansion variables
+that occur in $Q$.  Note that $V_Q$ and $\Sigma_Q$ are disjoint sets.
+\item By assumption, each expansion variable $v$ is associated with a unique
+arc from an expansion node, which corresponds to the expansion term $s_v\in \Theta_Q$ in which
+it was introduced.  
+To avoid considering multiple cases, % ******** change s_blah to \sigma_blah
+we can extend the notation by letting $s_s = s$ for each $s\in\Sigma_Q$.
+\item For each $s\in\Theta_Q$, let $B(s)$ be the set of selected variables
+$y$ whose selection node is dominated by the arc corresponding to $s$.  
+\item For each $v\in V_Q$,
+let $B(v) = B(s_v)$.  
+\item For each $s\in\Sigma_Q$, let $S(s)$ be the set of selected variables which
+occur free in $s$.
+\end{itemize}
+
+The set $B(q)$ is the set of ``banned'' selection variables for $q\in\Sigma_Q\cup V_Q$.
+
+The following definitions depend upon a substitution $\theta$.  This corresponds
+to the substitutions found by unification during mating search.
+
+{\bf Definitions.} Let $\theta$ be a given substitution for some expansion variables in $V_Q$.
+\begin{itemize}
+\item For each $v\in V_Q$, let $S(v)$ be the set of selected variables which occur
+free in $\theta(v)$.
+\item Define a relation $<^0_{Q,\theta}$ on $\Sigma_Q\cup V_Q$ by
+$q <^0_{Q,\theta} r$ iff there exists a $y\in B(q)\cap S(r)$.
+\item The substitution $\theta$ is acyclic with respect to $Q$ if
+the transitive closure of the relation $<^0_{Q,\theta}$ is acyclic
+(irreflexive).
+\end{itemize}
+
+{\bf Remark.}  It is important to note that $\theta$ is a substitution which does not create
+any new nodes in $Q$.  (This is in contrast to substituting and then deepening the tree.)
+In particular, $S_Q = S_{\theta(Q)}$.  Also, for the same reason, 
+for each $s\in\Theta_Q$, $B(s)$ is the set of selected variables $y$
+whose selection node is dominated by the expansion term occurrence $\theta(s)$.  
+Finally, since $B(v) = B(s_v)$, we have $B(v)$ is the set of selected
+variables $y$ whose selection node is dominated by the expansion term occurrence $\theta(s_v)$.
+
+{\bf Lemma 1.}  Given an expansion tree $Q$ and a substitution $\theta$ for $V_Q$.
+Let $$q_1 <^0_{Q,\theta} \cdots <^0_{Q,\theta} q_n$$
+be a chain with $q_i\in \Sigma_Q\cup V_Q$.  Let $t_i = \theta(s_{q_i})$.
+Then there is a chain $$t_1 <^0_{\theta(Q)} \cdots <^0_{\theta(Q)} t_n$$.
+
+{\bf Proof.}  By induction on $n$.  When $n=1$ there is nothing to check.
+Suppose the result holds for $n$ and we are given a chain
+$$q_1 <^0_{Q,\theta} \cdots <^0_{Q,\theta} q_n <^0_{Q,\theta} q_{n+1}.$$
+By induction, we know 
+$$t_1 <^0_Q \cdots <^0_Q t_n.$$
+It remains to show $t_n <^0_Q t_{n+1}$.
+
+Since $q_n <^0_{Q,\theta} q_{n+1}$, we know there is some $y\in B(q_n)\cap S(q_{n+1})$.
+By the remark, the selection node for $y$ is dominated by $t_n$.
+Consider two cases.  If $q_{n+1}\in \Sigma_Q$, then $y$ is free in 
+$t_{n+1} = \theta(q_{n+1})$, so that $t_n <^0_Q t_{n+1}$.
+If $q_{n+1}\in V_Q$, then $q_{n+1}$ is free in $s_{q_{n+1}}$
+and $y$ is free in $\theta(q_{n+1})$.  Hence, $y$ is free in
+$t_{n+1} = \theta(s_{q_{n+1}})$.
+$\Box$
+
+{\bf Lemma 2.}  Given an expansion tree $Q$ and a substitution $\theta$ for $V_Q$.
+Let $$t_1 <^0_Q \cdots <^0_Q t_n$$ be a chain with $t_i\in\Theta_{\theta(Q)}$.
+For each $2\leq j \leq n$, there exists $q_j\in \Sigma_Q\cup V_Q$ such that 
+\begin{itemize}
+\item $\theta(s_{q_j})$ is (the occurrence)
+$t_j$, and 
+\item for every $q_1\in \Sigma_Q \cup V_Q$ such that $\theta(s_{q_1})$ is (the occurrence)
+$t_1$
+$$q_1 <^0_{Q,\theta} \cdots <^0_{Q,\theta} q_n$$
+is a chain.
+\end{itemize}
+
+{\bf Proof.}  By induction on $n$.  When $n=1$ there is nothing to check.
+Suppose the result holds for $n$ and we are given a chain
+$$t_1 <^0_Q \cdots <^0_Q t_n <^0_Q t_{n+1}$$ be a chain with $t_i\in\Theta_{\theta(Q)}$.
+By induction, there are $q_j$ with $2\leq j\leq n$
+with $\theta(s_{q_j}) = t_j$ and such that
+$$q_1 <^0_{Q,\theta} \cdots <^0_{Q,\theta} q_n$$
+is a chain for any $q_1$ with $\theta(s_{q_1}) = t_1$.  
+It remains to find a $q_{n+1}$ with $t_{n+1} = \theta(s_{q_{n+1}})$
+and $q_n <^0_{Q,\theta} q_{n+1}$.
+
+Since $t_n <^0_Q t_{n+1}$, there is a $y$ whose selection node is dominated by
+$t_n$ where $y$ is free in $t_{n+1}$.  By the remark, $y\in B(q_n)$.
+Let $s\in\Theta_Q$ be the unique expansion term such that $t = \theta(s)$ (as occurrences).
+Consider two cases.  If $y$ is free in $s$, then we must have $s\in\Sigma_Q$ (since
+if $s$ were just an expansion variable, the selected variable $y$ could not be
+free in $s$), and we can let $q_{n+1} = s$ (since $y\in S(s)$).  If $y$ is not free in $s$, there
+must be some $v\in V_Q$ with $s_v = s$ 
+and $y$ free in $\theta(v)$ (so, $y\in S(v)$).  In this case, let $q_{n+1} = v$.
+$\Box$
+
+{\bf Proposition.}  Given an expansion tree $Q$ and a substitution $\theta$ for $V_Q$,
+the dependency relation for $\theta(Q)$ is acyclic iff $\theta$ is acyclic with respect to $Q$.
+
+{\bf Proof.}  Suppose there is a cycle in the relation $<^0_{Q,\theta}$:
+$$q_1 <^0_{Q,\theta} \cdots <^0_{Q,\theta} q_n = q_1.$$
+Let $t_i$ be the occurrence corresponding to $\theta(s_{q_i})$.
+By Lemma 1, we have the cycle
+$$t_1 <^0_{\theta(Q)} \cdots <^0_{\theta{Q}} t_n = t_1.$$
+
+Suppose there is a cycle in the dependency relation $<^0_{\theta(Q)}$:
+$$t_1 <^0_{\theta(Q)} \cdots <^0_{\theta(Q)} t_n = t_1.$$
+By Lemma 2, there are $q_2,\ldots, q_n\in\Sigma_Q\cup V_Q$ such that
+\begin{itemize}
+\item $t_j = \theta(s_{q_j})$, and
+\item for any $q_1\in\Sigma_Q\cup V_Q$ with $t_1 = \theta(s_{q_1})$
+$$q_1 <^0_{Q,\theta}\cdots <^0_{Q,\theta} q_n$$
+is a chain.
+\end{itemize}
+Of course, we take $q_1 = q_n$ in order to have a cycle.
+$\Box$
+
+After pre-processing, we can compute the set $\Sigma(Q)$ and $V_Q$, as well as
+the sets $B(s)$, $B(v)$, and $S(s)$ for each $s\in\Sigma(Q)$ and $v\in V_Q$.
+So, to check that the
+acyclicity condition is satisfied when unification generates
+a substitution $\theta$, it suffices to compute $S(v)$ for each $v\in V_Q$
+with respect to $\theta$, and check for a $<^0_{Q,\theta}$-cycle. 
+
+{\bf Efficiency Refinement.}  Clearly, if for some $s\in \Sigma(Q)$, either $B(s)$ or
+$S(s)$ is empty, then $s$ cannot be part of a cycle with respect to any substitution
+$\theta$, so we may disregard any such term.

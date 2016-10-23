@@ -1,0 +1,144 @@
+(:name EXT-IMP-EMB2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(O) FORALL y(O) [[x(O) EQUIV y(O)] IMPLIES FORALL q(OO).q(OO) x(O) IMPLIES q(OO) y(O)] IMPLIES FORALL p(OO).p(OO) a(O) AND p(OO) b(O) IMPLIES p(OO).a(O) AND b(O)"
+:needed-objects   NIL
+:mhelp "EMB2 is an extensional theorem, this is a version explicitly
+including extensionality in the hypothesis."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM631
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Sunday, March 28, 2004 at 17:16:46."
+:description "FORALL X(OI) FORALL Y(OI) [K(OI(OI)) [X(OI) UNION(OI(OI)(OI)) Y(OI)] =(O(OI)(OI)) K(OI(OI)) X(OI) UNION(OI(OI)(OI)) K(OI(OI)) Y(OI)] IMPLIES FORALL X(OI) FORALL Y(OI).X(OI) SUBSET(O(OI)(OI)) Y(OI) IMPLIES K(OI(OI)) X(OI) SUBSET(O(OI)(OI)) K(OI(OI)) Y(OI)"
+:needed-objects   NIL
+:mhelp "If a set function preserves unions, then it is monotone.
+The proof requires extensionality, but no set substitutions."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM631A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Saturday, March 27, 2004 at 18:42:23."
+:description "FORALL X(OI) FORALL Y(OI) [K(OI(OI)) [LAMBDA z(I).X(OI) z(I) OR Y(OI) z(I)] =(O(OI)(OI)) LAMBDA w(I).K(OI(OI)) X(OI) w(I) OR K(OI(OI)) Y(OI) w(I)] IMPLIES FORALL X(OI) FORALL Y(OI).X(OI) SUBSET(O(OI)(OI)) Y(OI) IMPLIES K(OI(OI)) X(OI) SUBSET(O(OI)(OI)) K(OI(OI)) Y(OI)"
+:needed-objects   NIL
+:mhelp "Same as THM631, but doesn't use the UNION abbreviation.
+This is just to get around a bug in translation."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM615
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "H(IO) [H(IO) TRUTH =(OII) H(IO) FALSEHOOD] =(OII) H(IO) FALSEHOOD"
+:needed-objects   NIL
+:mhelp "Interesting little extensional theorem - we need to decompose the equation
+and use equational reasoning on it."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM617
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, September 16, 2003 at 16:19:57."
+:description "~A(O) OR ~B(O) OR ~P(OO) A(O) OR P(OO) B(O)"
+:needed-objects   NIL
+:mhelp "Simple extensionality example"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM619
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, September 16, 2003 at 16:20:41."
+:description "~[F(II) =(O(II)(II)) G(II)] OR ~Q(O(II)) F(II) OR Q(O(II)) G(II)"
+:needed-objects   NIL
+:mhelp "Simple extensionality example"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM620
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, September 16, 2003 at 16:20:58."
+:description "~[C(OI) =(O(OI)(OI)) D(OI)] OR ~R(O(OI)) C(OI) OR R(O(OI)) D(OI)"
+:needed-objects   NIL
+:mhelp "Simple extensionality example"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM621
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, September 16, 2003 at 16:21:15."
+:description "~[A(O) =(OOO) B(O)] OR ~P(OO) A(O) OR P(OO) B(O)"
+:needed-objects   NIL
+:mhelp "Simple extensionality example"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name EDEC2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Saturday, May  1, 2004 at  3:25:48."
+:description "FORALL X(AA) FORALL Y(A) [f(AA(AA)) X(AA) Y(A) =(OAA) g(AA(AA)) X(AA) Y(A)] AND FORALL Z(A) [h(AA) Z(A) =(OAA) j(AA) Z(A)] IMPLIES f(AA(AA)) h(AA) LEIBEQ(O(AA)(AA)) g(AA(AA)) j(AA)"
+:needed-objects   (LEIBEQ)
+:mhelp "EDEC from Chris Benzmuller's thesis, but using Primeq in the antecedent instead of Leibeq."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name EDEC1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Saturday, May  1, 2004 at  4:56:40."
+:description "FORALL X(AA) FORALL Y(A) [f(AA(AA)) X(AA) Y(A) =(OAA) g(AA(AA)) X(AA) Y(A)] AND FORALL Z(A) [h(AA) Z(A) =(OAA) j(AA) Z(A)] IMPLIES f(AA(AA)) h(AA) =(O(AA)(AA)) g(AA(AA)) j(AA)"
+:needed-objects   NIL
+:mhelp "A version of EDEC from Benzmuller's thesis using = instead of LeibEq"
+:other-attributes NIL
+:other-remarks "
+")
+
+

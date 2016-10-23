@@ -1,0 +1,25 @@
+The vpshow command is for viewing files created by OPEN-MATEVPW.
+To run, it requires all the TPS fonts, plus xterm, csh and gawk.
+The vpshow-big command is exactly the same, but in a bigger font.
+
+There are five files:
+
+vpshow         : opens an xterm and runs vpshow.win in it.
+vpshow-big     : opens an xterm with different fonts and does the same.
+vpshow.win     : runs gawk on the matevp file and then on vpshow.charfix,
+                 and then starts an interactive c shell.
+vpshow.gawk    : is the gawk script used by vpshow.win 
+                 (NB it *won't* work with awk -- as written, it needs gawk)
+vpshow.charfix : makes sure that even if the matevp file is truncated, vpshow
+                 will terminate with the correct character set on screen.
+
+
+All you need do is type either 
+
+vpshow filename    or    vpshow-big filename
+
+To get rid of the window, do ^C with the cursor in it.
+
+
+
+(MB 5/13/93)

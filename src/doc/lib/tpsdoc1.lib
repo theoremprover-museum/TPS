@@ -1,0 +1,117 @@
+@Marker(Library,TPSDocuments,Dover)
+@Style(Date "1952 March 8", Font TimesRoman10,
+	LeftMargin 1.25inches, RightMargin 1.25inches,
+	BottomMargin 1.0inches, FileDate "March 8, 1952")
+
+@Libraryfile(mathematics10)
+@Define(T, FaceCode F)
+@Define(CB, Font SmallBodyFont, FaceCode B)
+@CommandString(LISP="Lisp")
+@CommandString(TPS="@b[T]@cb[PS]", Vidi="@b[V]@cb[IDI]")
+@CommandString(TPS1="@b[T]@cb[PS1]")
+@CommandString(TPS2="@b[T]@cb[PS2]")
+@CommandString(TPS3="@b[T]@cb[PS3]")
+@CommandString(ETPS="@b[E]@cb[TPS]",HETPS="ETPS")
+@CommandString(HTPS="T@c[PS]", HVidi="V@c[IDI]")
+@CommandString{StopHeaders="@PageHeading(Right < >)"}
+@TextForm{PrelimChapter="@PageHeading(
+	Right <@b{File: }@t{@Value(Manuscript)}>,
+	Center <@b{@Value(FileDate)}>,
+	Left <@b(@Value(DocName))>)
+	@Unnumbered(@Parm(text))"}
+
+@TextForm{
+	ChapterPH="@PageHeading(Right <@B[Chapter @Ref{Chapter}: @parm{text}]>,
+                        Left <@b(@Value(DocName))>, Even)
+		@Chapter(@parm(text))
+		@PageHeading(Right < >, immediate)
+		@PageHeading(Right <@b(Chapter @Ref(Chapter): @parm{text})>, 
+			     Left <@b(@Value(DocName))>, Odd)
+	@Case<DoubleSided,
+	     No [@PageHeading(Right <@B{Chapter @Ref{Chapter}: @parm{text}}>,
+				  Left <@b(@Value(DocName))>, Even)],
+	    Else [@PageHeading(Left <@b(Chapter @Ref{Chapter}: @parm{text})>, 
+			           Right <@b(@Value(DocName))>, Even)]>",
+	ImportantNotice="@i{Important:} @parm(text)
+
+
+				@index(Important)",
+	NotAvailable="@b([N/A])@index(Not Available)"}
+@PageFooting(Center="@Value(Page)")
+@CommandString(it = "@ref(TPSLineCounter)")
+@Counter(TpsLineCounter, Numbered [<@1>  ], Referenced [<@1>  ], IncrementedBy
+	 Reference)
+@Define(Tasks, Use Description, Counter TpsLineCounter, Spread 0.3)
+@TextForm(uxt = [@t{@ux@parmquote{text}}])
+@TextForm(wt = "@w{@t@ParmQuote[Text]}")
+@TextForm(IndText="@parm(text)@index@parmquote(text)")
+@Define(LispCode, Use verbatim, font bodyfont, facecode f,
+	LeftMargin +0.75inches)
+@Define(TPSExample, Use Verbatim, Font SmallBodyFont, FaceCode F,
+	LeftMargin +4, LineWidth 80)
+@Define(BigExample, Use Verbatim, LineWidth 80, Leftmargin -4)
+@CommandString( 0inf="@!@+{n}@/@-{0} ",
+		1inf="@!@+{n}@/@-{1} ")
+
+@CommandString( cc=";;")
+
+@LibraryFile(KSets)
+@LibraryFile(Symb10)
+
+@Define(VLine, Use Verbatim,Spacing=1.5,Above=0,Below=0,Break=Off)
+@Define(TLine, Use Text,Continue,Spacing=1.5,Above=0,Below=0,Break=Off)
+
+
+@libraryfile(Index)
+
+@begin(comment)
+This portion created trouble while scribing CADE-8 abstract. SI
+
+@StdIndexCategory(Parameter)
+@StdIndexCategory(Property)
+@StdIndexCategory(Flag)
+@StdIndexCategory(Variable)
+@StdIndexCategory(Constant)
+@StdIndexCategory(Style)
+@StdIndexCategory(File)
+@StdIndexCategory(Window)
+
+@IndexCategory(RefName="IndexFunction",IndexName="Function",FaceCode="T",
+	Secondary="No")
+@IndexCategory(RefName="IndexType",IndexName="Argument Type",FaceCode="I")
+@IndexCategory(RefName="IndexSubject",IndexName="@T(REVIEW) Subject",
+	FaceCode="T",SecondaryName="Subjects for @T(REVIEW)")
+@IndexCategory(RefName="IndexData",IndexName="Data Structure",FaceCode="I")
+@IndexCategory(RefName="IndexMexpr", IndexName="MExpr",FaceCode="T",
+	Secondary="No",Prefix="@T(<n>)")
+@IndexCategory(RefName="IndexReview",IndexName="@T(Review) command",
+	Facecode="T")
+@IndexCategory(RefName=ITT,IndexName="",FaceCode="T",Secondary="No")
+@IndexCategory(RefName=ITED,IndexName="Ed command",FaceCode="T",Secondary="No")
+@IndexCategory(RefName="IndexBinder",IndexName="Binder",FaceCode="I")
+@IndexCategory(RefName="IndexSyntax",IndexName="Syntactic Object",
+FaceCode="I")
+@IndexCategory(RefName="IndexTypes1",IndexName="Type",FaceCode="I")
+@IndexCategory(RefName="IndexWffs",IndexName="Representation of  Wff",
+FaceCode="I")
+@IndexCategory(RefName="IndexFlavor",IndexName="Flavor",FaceCode="I")
+@IndexCategory(RefName="IndexCommand",IndexName="System  Command",
+FaceCode="T", Secondary="NO")
+@IndexCategory(RefName="IndexRule",IndexName="Inference Rule",FaceCode="P",
+Secondary= "NO")
+@IndexCategory(RefName="IndexTypes2",IndexName="Argument Type",FaceCode="T")
+
+@end(comment)
+
+@TextForm{
+  AppETPS="@PageHeading(Right <@B[Appendix @Ref{Appendix}: @parm{text}]>,
+                        Left <@b(@Value(DocName))>, Even)
+    @Appendix(@parm{text})
+    @PageHeading(Right < >, immediate)
+    @PageHeading(Right <@b(Appendix @Ref(Appendix): @parm{text})>, 
+                 Left <@b(@Value(DocName))>, Odd)
+    @Case<DoubleSided,
+       No [@PageHeading(Right <@b(Appendix @Ref{Appendix}: @parm{text})>,
+                        Left <@b(@Value(DocName))>, Even)],
+       Else [@PageHeading(Left <@b(Appendix @Ref{Appendix}: @parm{text})>, 
+  	                  Right <@b(@Value(DocName))>, Even)]>"}

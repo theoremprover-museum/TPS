@@ -1,0 +1,112 @@
+(:name ADD-A
+:type RRULE
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description ("x(S) PLUS(SSS) ZERO(S)" . "x(S)")
+:needed-objects   (PLUS)
+:mhelp ""
+:other-attributes ((FUNCTION NIL) (APPFN NIL) (BIDIRECTIONAL T) (TYPELIST NIL))
+:other-remarks "
+")
+
+
+(:name ADD-B
+:type RRULE
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description ("x(S) PLUS(SSS) SUCC(SS) y(S)" . "SUCC(SS).x(S) PLUS(SSS) y(S)")
+:needed-objects   (PLUS)
+:mhelp ""
+:other-attributes ((FUNCTION NIL) (BIDIRECTIONAL T) (TYPELIST NIL))
+:other-remarks "
+")
+
+
+(:name ADDAGAIN
+:type RRULE
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description ("x(S) PLUS(SSS) ZERO(S)" . "x(S)")
+:needed-objects   (PLUS)
+:mhelp "foo!"
+:other-attributes ((FUNCTION NIL))
+:other-remarks "
+")
+
+
+(:name ADDONCEMORE
+:type RRULE
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description ("x(S) PLUS(SSS) ZERO(S)" . "x(S)")
+:needed-objects   (PLUS)
+:mhelp ""
+:other-attributes ((FUNCTION NIL))
+:other-remarks "
+")
+
+
+(:name COMMUTE
+:type RRULE
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description ("A(O) AND B(O)" . "B(O) AND A(O)")
+:needed-objects   NIL
+:mhelp "commute and associate right"
+:other-attributes ((FUNCTION WFF-ASSOCIATIVE-R*))
+:other-remarks "
+")
+
+
+(:name EQUIVS
+:type RRULE
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description ("EQUIVS(O(OA)(OA))" . "LAMBDA P(OA) LAMBDA R(OA) FORALL x(A).P(OA) x(A) EQUIV R(OA) x(A)")
+:needed-objects   NIL
+:mhelp NIL
+:other-attributes ((FUNCTION NIL) (TYPELIST (A)))
+:other-remarks "
+")
+
+
+(:name ONE
+:type RRULE
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description ("ONE" . "SUCC(SS) ZERO(S)")
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((FUNCTION NIL) (APPFN NIL) (BIDIRECTIONAL T) (TYPELIST NIL))
+:other-remarks "
+")
+
+
+(:name STRANGE
+:type RRULE
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description ("FORALL y(O).y(O) IMPLIES A(O)" . "~A(O)")
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((FUNCTION NIL))
+:other-remarks "
+")
+
+

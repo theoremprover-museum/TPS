@@ -1,0 +1,70 @@
+# Some of these aliases should be copied into your aliases file.
+# They are commands for starting tps in different ways.
+# You will need to adjust the directory /whatever/tps appropriately
+# here and in the run-* files.
+
+setenv TEXINPUTS .:/whatever/tps/doc/lib/:
+
+# To use the fonts (when running TPS in an xterm), execute
+# a command like the one below before starting the xterm
+# to put the tps fonts into your font path.
+# xset +fp /whatever/tps/fonts/
+
+#The following tps uses Allegro Common Lisp
+#alias xtps "xterm -geometry 80x48-2-2 '#+963+651' -fn vtsingle -fb vtsymbold  -n Tps@GTPS -T Tps@GTPS -sb -e /whatever/tps/run-tps3allegro &"
+
+#The following tps also uses Allegro Common Lisp
+alias xtps "xterm -geometry 80x48+4+16 '#+963+651' -fn vtsingle -fb vtsymbold  -n Tps@GTPS -T Tps@GTPS -sb -e /whatever/tps/run-tps3allegro &"
+
+#The following tps uses Cmu Common Lisp
+alias xcmutps "xterm -geometry 80x48+4+16 '#+963+651' -fn vtsingle -fb vtsymbold  -n Tps@GTPS -T Tps@GTPS -sb -e /whatever/tps/run-cmutps &"
+
+#The following tps is like xtps but is sized for laptop demo
+alias lxtps "xterm -geometry 96x42+1+1 '#+963+651' -fn vtsingle -fb vtsymbold  -n Tps@GTPS -T Tps@GTPS -sb -e /whatever/tps/run-tps3allegro &"
+
+alias xtps-big "xterm -geometry 82x33+0+0 '#+963+651' -fn gallant.r.19 -fb galsymbold  -n Tps@GTPS -T Tps@GTPS -sb -e /whatever/tps/run-tps3allegro &"
+
+#The following tps is like xtps but is sized for laptop demo
+alias lxtps-big "xterm -geometry 64x27+0+0 '#+963+651' -fn gallant.r.19 -fb galsymbold  -n Tps@GTPS -T Tps@GTPS -sb -e /whatever/tps/run-tps3allegro &"
+
+#The following menu item has a dark arrow mouse cursor
+alias tps-big "xterm -geometry 80x32+2+2 '#+965+511' -fn gallant.r.19 -fb galsymbold -n Tps-BIG@GTPS  -T Tps-BIG@GTPS -sb  -xrm 'XTerm*pointerShape:left_ptr' -e /whatever/tps/run-tps3allegro  &"
+
+#The following menu item has a dark arrow mouse cursor
+alias xcmutps-big "xterm -geometry 80x32+2+2 '#+965+511' -fn gallant.r.19 -fb galsymbold -n CmuTps-BIG@GTPS  -T CmuTps-BIG@GTPS -sb  -xrm 'XTerm*pointerShape:left_ptr' -e /whatever/tps/run-cmutps  &"
+
+
+#The following command is mainly used on terminals
+alias tps /whatever/tps/run-tps3allegro
+
+alias cmutps /whatever/cmutps/run-cmutps
+
+# alias for etps
+alias etps "/whatever/tps/run-etps-allegro"
+
+alias xetps "xterm -geometry 80x48+4+16 '#+963+651' -fn vtsingle -fb vtsymbold  -n Etps@GTPS -T Etps@GTPS -sb -e /whatever/tps/run-etps-allegro &"
+
+alias grader /whatever/tps/run-grader
+
+#There must be a <return> after the last command in order for it 
+#to be executed.
+
+# aliases for running tps with java interface
+alias tps-java "lisp -I /whatever/tps/tps3.dxl -- -javainterface cd /whatever/tps/java/ \; /usr/bin/java TpsStart -other -nopopups > /dev/null"
+alias tps-java-big "lisp -I /whatever/tps/tps3.dxl -- -javainterface cd /whatever/tps/java/ \; /usr/bin/java TpsStart -other -big -nopopups > /dev/null"
+alias tps-java-x2 "lisp -I /whatever/tps/tps3.dxl -- -javainterface cd /whatever/tps/java/ \; /usr/bin/java TpsStart -other -x2 -nopopups> /dev/null"
+alias tps-java-big-x2 "lisp -I /whatever/tps/tps3.dxl -- -javainterface cd /whatever/tps/java/ \; /usr/bin/java TpsStart -other -big -x2 -nopopups > /dev/null"
+alias tps-java-popups "lisp -I /whatever/tps/tps3.dxl -- -javainterface cd /whatever/tps/java/ \; /usr/bin/java TpsStart > /dev/null"
+alias tps-java-big-popups "lisp -I /whatever/tps/tps3.dxl -- -javainterface cd /whatever/tps/java/ \; /usr/bin/java TpsStart -other -big > /dev/null"
+alias tps-java-x2-popups "lisp -I /whatever/tps/tps3.dxl -- -javainterface cd /whatever/tps/java/ \; /usr/bin/java TpsStart -other -x2 > /dev/null"
+alias tps-java-big-x2-popups "lisp -I /whatever/tps/tps3.dxl -- -javainterface cd /whatever/tps/java/ \; /usr/bin/java TpsStart -other -big -x2 > /dev/null"
+
+# aliases for running etps with java interface
+alias etps-java "lisp -I /whatever/tps/etps.dxl -- -javainterface cd /whatever/tps/java/ \; /usr/bin/java TpsStart -other -nopopups > /dev/null"
+alias etps-java-big "lisp -I /whatever/tps/etps.dxl -- -javainterface cd /whatever/tps/java/ \; /usr/bin/java TpsStart -other -big -nopopups > /dev/null"
+alias etps-java-x2 "lisp -I /whatever/tps/etps.dxl -- -javainterface cd /whatever/tps/java/ \; /usr/bin/java TpsStart -other -x2 -nopopups> /dev/null"
+alias etps-java-big-x2 "lisp -I /whatever/tps/etps.dxl -- -javainterface cd /whatever/tps/java/ \; /usr/bin/java TpsStart -other -big -x2 -nopopups > /dev/null"
+alias etps-java-popups "lisp -I /whatever/tps/etps.dxl -- -javainterface cd /whatever/tps/java/ \; /usr/bin/java TpsStart > /dev/null"
+alias etps-java-big-popups "lisp -I /whatever/tps/etps.dxl -- -javainterface cd /whatever/tps/java/ \; /usr/bin/java TpsStart -other -big > /dev/null"
+alias etps-java-x2-popups "lisp -I /whatever/tps/etps.dxl -- -javainterface cd /whatever/tps/java/ \; /usr/bin/java TpsStart -other -x2 > /dev/null"
+alias etps-java-big-x2-popups "lisp -I /whatever/tps/etps.dxl -- -javainterface cd /whatever/tps/java/ \; /usr/bin/java TpsStart -other -big -x2 > /dev/null"

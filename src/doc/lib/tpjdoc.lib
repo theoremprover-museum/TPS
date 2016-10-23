@@ -1,0 +1,88 @@
+@Marker(Library,TPJDocuments,Postscript)
+@Style(Date "1952 March 8", Font TimesRoman, Fontscale 10,
+	LeftMargin 0.5inches, RightMargin 0.5inches,
+	BottomMargin 0.5inches, TopMargin 0.75inches, FileDate "March 8, 1952")
+@Libraryfile(mathematics10)
+@PageFooting(Immediate)
+@Define(T, FaceCode F)
+@Define(CB, size  9, FaceCode B)
+@CommandString(LISP="Lisp")
+@CommandString(TPS="@b[T]@cb[PS]")
+@commandstring(Vidi="@b[V]@cb[IDI]")
+@CommandString(TPS1="@b[T]@cb[PS1]")
+@CommandString(TPS2="@b[T]@cb[PS2]")
+@CommandString(TPS3="@b[T]@cb[PS3]")
+@CommandString(ETPS="@b[E]@cb[TPS]",HETPS="ETPS")
+@CommandString(HTPS="T@c[PS]", HVidi="V@c[IDI]")
+@CommandString{StopHeaders="@PageHeading(Right < >)"}
+@string(copyright-and-Research-Credit=
+"@copyrightnotice(Carnegie Mellon University.  All rights reserved.)
+@begin(researchcredit)
+This manual is based upon work supported by
+NSF grants MCS81-02870, DCR-8402532, CCR-8702699, 
+CCR-9002546, CCR-9201893,
+and a grant from the Center for Design of Educational Computing,
+Carnegie Mellon University. Any opinions, findings, and conclusions or
+recommendations are those of the author(s) and do not necessarily reflect
+the views of the National Science Foundation.
+@end(researchcredit)")
+@String(NSF="NSF grants MCS81-02870, DCR-8402532, 
+CCR-8702699, and CCR-9002546")
+@TextForm{PrelimChapter="@Unnumbered(@Parm(text))"}
+@TextForm{ChapterPH="
+              @Chapter(@parm(text))",
+	ImportantNotice="@i{Important:} @parm(text)
+
+
+				@index(Important)",
+	NotAvailable="@b([N/A])@index(Not Available)"}
+@CommandString(it = "@ref(TPSLineCounter)")
+@Counter(TpsLineCounter, Numbered [<@1>  ], Referenced [<@1>  ], IncrementedBy
+	 Reference)
+@Define(Tasks, Use Description, Counter TpsLineCounter, Spread 0.3)
+@TextForm(uxt = [@t{@ux@parmquote{text}}])
+@TextForm(wt = "@w{@t@ParmQuote[Text]}")
+@TextForm(IndText="@parm(text)@index@parmquote(text)")
+@Define(LispCode, Use Verbatim, size 9, FaceCode F,
+	LeftMargin +4, Rightmargin -12)
+@Define(TPSExample, Use Verbatim, size 9, FaceCode F,
+	LeftMargin +4, Rightmargin -12)
+@Define(BigExample, Use Verbatim, LineWidth 80, Leftmargin -4)
+@CommandString( 0inf="@!@+{n}@/@-{0} ",
+		1inf="@!@+{n}@/@-{1} ")
+@CommandString( cc=";;")
+@LibraryFile(KSets)
+@LibraryFile(Symb10)
+@Define(VLine, Use Verbatim,Spacing=1.5,Above=0,Below=0,Break=Off)
+@Define(TLine, Use Text,Continue,Spacing=1.5,Above=0,Below=0,Break=Off)
+@libraryfile(Index)
+@StdIndexCategory(Parameter)
+@StdIndexCategory(Property)
+@StdIndexCategory(Flag)
+@StdIndexCategory(Variable)
+@StdIndexCategory(Constant)
+@StdIndexCategory(Style)
+@StdIndexCategory2(File)
+@StdIndexCategory(Window)
+@IndexCategory(RefName="IndexFunction",IndexName="Function",FaceCode="T",Secondary="No")
+@IndexCategory(RefName="IndexType",IndexName="Argument Type",FaceCode="I")
+@IndexCategory(RefName="IndexSubject",IndexName="@T(REVIEW) Subject",FaceCode="T",SecondaryName="Subjects for @T(REVIEW)")
+@IndexCategory(RefName="IndexData",IndexName="Data Structure",FaceCode="I")
+@IndexCategory(RefName="IndexMexpr", IndexName="MExpr",FaceCode="T",Secondary="No",Prefix="@T(<n>)")
+@IndexCategory(RefName="IndexReview",IndexName="@T(Review) command",Facecode="T")
+@IndexCategory(RefName=ITT,IndexName="",FaceCode="T",Secondary="No")
+@IndexCategory(RefName=ITED,IndexName="Ed command",FaceCode="T",Secondary="No")
+@IndexCategory(RefName="IndexBinder",IndexName="Binder",FaceCode="I")
+@IndexCategory(RefName="IndexSyntax",IndexName="Syntactic Object",FaceCode="I")
+@IndexCategory(RefName="IndexTypes1",IndexName="Type",FaceCode="I")
+@IndexCategory(RefName="IndexWffs",IndexName="Representation of Wff",FaceCode="I")
+@IndexCategory(RefName="IndexFlavor",IndexName="Flavor",FaceCode="I")
+@IndexCategory(RefName="IndexCommand",IndexName="System Command",FaceCode="T", Secondary="NO")
+@IndexCategory(RefName="IndexRule",IndexName="Inference Rule",FaceCode="P",Secondary= "NO")
+@IndexCategory(RefName="IndexTypes2",IndexName="Argument Type",FaceCode="T")
+@IndexCategory(RefName="IndexReviewCmd",IndexName="@T(Review) command",	Facecode="T",Secondary="No")
+@IndexCategory(RefName="IndexEdop",IndexName="Editor command",FaceCode="T",Secondary="No")
+@TextForm{@Appendix(@parm{text})}
+@StdIndexCategoryA2(Flag)
+@StdIndexCategory3(Other)
+

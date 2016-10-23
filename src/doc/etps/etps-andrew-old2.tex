@@ -1,0 +1,413 @@
+\documentclass{article}
+%Instructions for Using ETPS on Andrew
+
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{makeidx}
+
+%the following package permits us to use the comment environment
+\usepackage{verbatim}
+
+%the following package permits us to use the alltt environment
+%which is like verbatim but has certain technical advantages
+\usepackage{alltt}
+
+\input /home/theorem/tps/doc/lib/tps.tex
+\input /home/theorem/tps/doc/lib/tpsdoc.tex
+
+\setlength{\textwidth}{6.7in}
+\setlength{\oddsidemargin}{0.1in}
+\setlength{\evensidemargin}{0.1in}
+\setlength{\topmargin}{-0.5in}
+%\setlength{\footskip}{-0.5in}
+%\setlength{\textheight}{9.4in}
+\setlength{\textheight}{9.8in}
+\setcounter{secnumdepth}{5}
+
+\makeindex % generate index data
+
+\begin{document}
+
+\title{Using {\ETPS} on Andrew}
+%\author{Peter B. Andrews}
+\date{}				%%if you don't want the date to appear
+\maketitle
+
+
+\section{Accessing {\ETPS}}
+
+While {\ETPS} can be installed on many computers, you must use the
+{\ETPS} which is installed on Andrew in order to get credit for your work
+when you issue the DONE command. However, you can access it remotely,
+as is discussed below.
+
+The Unix X11-window system makes it possible for you to run {\ETPS} in a
+window with fonts that have special symbols for the logical
+connectives and quantifiers. Formulas will appear just as they do in
+the textbook. In addition, special windows called proofwindows
+will display the proof, or relevant parts of it, as you construct it.
+It is highly recommended that you run {\ETPS} using these facilities.
+To do this, use XETPS (or XETPS-BIG) as described below.
+
+\subsection{Accessing {\ETPS} on Unix-based Andrew Workstations}
+
+{\ETPS} can be run on Unix-based Andrew workstations.
+You may  find that you can also run it on other Unix-based
+workstations which are connected to the campus network.
+If you are not logged in on an Andrew workstation, you should do\newline{}
+klog {\tt\char`\<}andrew userid{\tt\char`\>} -c andrew.cmu.edu\newline{}
+so that {\ETPS} will be able to write in the score file when you
+execute the DONE command.
+
+To make things easy, add the line\newline{}
+{\tt source /afs/andrew.cmu.edu/mcs/math/etps/etps-no-xset.cshrc}\newline{}
+to your $\sim$/.cshrc file on Andrew. Then log out and log in again, so
+that the system will read the new .cshrc file.
+(The x-server reads the .cshrc file when it starts up an xterm.)
+The system will now set up aliases for you, so that the command\newline{}
+{\tt etps}\newline{}
+will start up {\ETPS} without you having to remember the exact path name.
+
+There are also two aliases for using {\ETPS}
+under X11.  The first is {\tt xetps}.  Just issue this at the shell prompt,
+and a window will be started with {\ETPS} running inside. 
+Unless you have problems using xetps, you should use it instead of {\ETPS}.
+
+The second alias for running {\ETPS} under X11 is {\tt xetps-big}.  This uses
+very large X fonts, and the window will take up most of your screen.
+
+\begin{comment}
+
+%This subsubsection is obsolete, since the fonts are now part of 
+% the Andrew computing environment
+\subsubsection{Setting the Fontpath}
+
+If you sourced the file /afs/andrew.cmu.edu/mcs/math/etps/etps.cshrc in your
+$\sim$/.cshrc file, it will tell your X server where the fonts are.  
+If you did not source it, but you wish to use XETPS or XETPS-BIG,
+you should place the line\newline
+\verb=/afs/andrew.cmu.edu/mcs/math/etps/etps.Xclients=\newline
+in your $\sim$/.Xclients
+file 
+% \comment{Next phrase has not been tested}
+ or your $\sim$/.xinitrc file
+(if you are using one), or issue that command at the shell prompt once
+the window system has started up.
+Alternatively, just issue the command:\newline{}
+{\tt xset +fp /afs/andrew.cmu.edu/mcs/math/etps/fonts/decfonts/}\newline{}
+or\newline{}
+{\tt /usr/misc/bin/xset fp+ /afs/andrew.cmu.edu/mcs/math/etps/fonts/decfonts/}
+
+\pagebreak
+
+\end{comment}
+
+\subsubsection{Commands to Start {\ETPS} Directly}
+
+If you have not set up the aliases, you can start 
+{\ETPS} on Andrew with the following command:
+
+{\tt /afs/andrew.cmu.edu/mcs/math/etps/bin/etps}
+
+Similarly, you can start up XETPS with the command:\newline
+{\tt xterm -geometry 80x54 -rw -fn vtsingle -fb vtsymbold -sb -n ETPS -T ETPS -e \newline
+/afs/andrew.cmu.edu/mcs/math/etps/bin/etps \&}\newline
+(which is all one line).
+
+
+
+\subsection{Accessing {\ETPS} Remotely}
+
+If you wish to run {\ETPS} remotely, you can connect 
+from your local machine to one of the Andrew `unix servers' 
+with the command \newline
+{\tt ssh unix.andrew.cmu.edu}\newline
+and run {\ETPS} there. The Unix servers are set up to allow multiple
+users and are named unix1, unix2, unix3, ... .
+
+\subsubsection{Using Muptime}
+
+You may want to use the unix server which is least loaded.  To find
+out which one to use, use the {\tt muptime} command after logging in
+on one of the Unix servers.  Each of the machines will be listed,
+along with their current loads.  Choose the machine with the lowest
+load.  You will then have to open a new connection to the machine you
+select.
+
+\begin{comment}
+\subsubsection{An Alternative to etps.cshrc}
+
+If you will be connecting to an Andrew workstation from another
+machine, you may find
+that the xset command in etps.cshrc causes confusion for the local
+machine, resulting in error messages. In this case, you can source\newline
+/afs/andrew.cmu.edu/mcs/math/etps/etps-no-xset.cshrc\newline
+instead of\newline
+/afs/andrew.cmu.edu/mcs/math/etps/etps.cshrc\newline
+in your $\sim$/.cshrc file on Andrew.
+In this case, your font path will not automatically contain the {\ETPS}
+fonts when you do log on to an Andrew workstation, but
+an alias {\tt get-etps-fonts} is defined in etps-no-xset.cshrc,
+so you can simply issue the command {\tt get-etps-fonts} when you log
+onto an Andrew workstation to run {\ETPS}.
+
+\end{comment}
+
+\subsubsection{Fonts}
+
+If you run {\ETPS} remotely, you can always use the
+GENERIC style to display wffs. However, if X-windows are available on
+your local machine, it will probably be worth your while to set things up so
+that you can use the style XTERM to display wffs, particularly as the
+wffs you deal with become more complex. You will need to install the
+fonts on the local machine, and probably adjust the font path, in
+order to use XETPS successfully. Details are discussed below.
+
+
+\subsubsection{Accessing {\ETPS} Remotely Using Unix}
+
+You will need to copy the ETPS fonts from
+/afs/andrew.cmu.edu/mcs/math/etps/fonts to your machine and use an
+xset command analogous to that below (with the path adjusted
+appropriately) to tell your X server where the fonts are: \newline{}
+{\tt xset +fp /afs/andrew.cmu.edu/mcs/math/etps/fonts/decfonts/}\newline{}
+or\newline{}
+{\tt /usr/misc/bin/xset fp+ /afs/andrew.cmu.edu/mcs/math/etps/fonts/decfonts/}
+
+
+
+%\paragraph{Xhost}
+
+If you select unix17 (for example) to run XETPS,
+you may need to issue the command\newline{}
+{\tt xhost unix17.andrew.cmu.edu}\newline{}
+on your local machine  so that  it will permit unix17 to open a window on your screen
+when you run XETPS as described above. If you are using ssh instead of
+telnet, this will probably not be necessary.
+
+%\pagebreak
+
+\subsubsection{Accessing {\ETPS} Remotely Using Windows}
+
+
+If your local machine is a PC running some version of Windows, you may
+be able to use XWin32 to bring up simulated X-windows on your local machine.
+The details involved may vary somewhat for different versions of
+Windows, but here is some potentially helpful information from
+students who have done this previously:
+
+\paragraph{One Student's Experience Acessing XETPS with a Windows Machine}
+
+I got the fonts for {\ETPS} to work on my Windows machine! It was actually
+really simple. All I did was download all the fonts from
+/afs/andrew.cmu.edu/mcs/math/etps/fonts to the font directory for XWin32,
+which is by default C:{\tt\char`\\}Program Files{\tt\char`\\}StarNet{\tt\char`\\}X-Win32 5.1{\tt\char`\\}Fonts{\tt\char`\\}.
+Then, from the Configuration screen for X-Win32 (X-Config), under the Font
+tab, I selected each of the font paths it listed and hit the `Make
+FONTS.DIR' button.
+
+After that, XETPS worked fine with the fonts and all.
+
+I think I actually did more than was necessary to get it to work,
+since I don't think you need ALL the fonts in the {\ETPS} font directory,
+just whichever vtsymbol font {\ETPS} uses, but I'm not sure which since
+there are around 5 different vtsymbol fonts in there and I didn't take
+time to see exactly what was needed.
+
+\paragraph{Another Student's Experience Acessing XETPS with a Windows Machine}
+
+Ftp all the fonts and the font.dir (although I think font.dir's not
+necessary)  from the decfonts directory to the \linebreak
+XWin32{\tt\char`\\}lib{\tt\char`\\}fonts{\tt\char`\\}etps-fonts
+directory, where you have created the etps-fonts directory.
+
+Go through the described method of adding fonts to the directory
+described in the README file for XWin32, which
+is:  run X-config, add this newly-created font dir etps-fonts to the path
+(the `Font' tab in the newest version 5.03), rebuild font.dir (click on
+apply button), close and restart XWin32, and proceed as usual (setenv
+DISPLAY {\tt\char`\<}hostname{\tt\char`\>}:0.0, xetps, etc.).
+
+This at least worked on my home machine.  I am not sure if we have
+enough of the permissions necessary to do this in the cluster.
+
+Now, when you setflag style to xterm again, it should work.
+
+\subsubsection{Accessing {\ETPS} Remotely Using a Macintosh}
+
+You may also be able to access {\ETPS} remotely using a Macintosh.
+
+\paragraph{One Student's Experience Acessing XETPS with a Macintosh}
+
+I got ETPS working with the nice xterm fonts on my Macintosh last
+night. It was actually quite easy. I put the fonts that were
+distributed for the other operating systems in /Library/Fonts/, opened
+up the OS X X11 application, and then proceeded as if I was in a UNIX
+environment. Which is to say: I used ssh with X forwarding to connect
+to unix.andrew.cmu.edu, and then ran xetps.
+
+
+\pagebreak
+
+\section{Using {\ETPS}}
+
+Remember that your work on {\ETPS} exercises, like other exercises,
+is to be done independently unless collaboration is specifically
+authorized. You are obligated to work on these exercises
+without help from other people, documents which contain
+solutions, or programs which could be used to generate
+solutions to the exercises. You need to think about these exercises
+for yourself in order to learn from them.
+
+\subsection{Documentation}
+
+To use {\ETPS} efficiently, you should be familiar with the
+{\ETPS} manual. The postscript file for this manual can be found at:\newline{}
+http://gtps.math.cmu.edu/tps-mans.html
+
+{\ETPS} online documentation is at:\newline{}
+http://gtps.math.cmu.edu/htmldoc-etps
+
+\subsection{Starting {\ETPS} or XETPS}
+
+You should run this program from a private directory, where the files
+you will be creating cannot be read by others. Start the program as
+discussed above. When you start up XETPS, you can click with the mouse
+to place the left corner of the window.
+
+\subsection{Using XETPS}
+
+\subsubsection{Style of Output for Wffs}
+
+Once the X-window has appeared and {\ETPS} has started, you need to tell
+{\ETPS} that you want to use the special fonts for output.  At the {\ETPS}
+prompt, issue the command \newline{}
+{\tt {\tt\char`\<}0> setflag style} \newline{}
+then, at the subsequent prompt \newline{}
+{\tt xterm}\newline{}
+If you have followed all the steps
+above, the special symbols should appear when any wffs are printed by
+{\ETPS}.
+
+\subsubsection{Proofwindows}
+
+Once you have started XETPS, you will probably wish to use the
+BEGIN-PRFW command to start up windows containing the current subproof
+and the complete proof.  You will need to iconify the lower window or
+move it up on your screen by the usual methods for manipulating
+X-windows so that you will have room to issue commands in the main
+{\ETPS} window.
+
+\subsubsection{Adjusting RIGHTMARGIN}
+
+If you resize your {\ETPS} X-window and make it wider or narrower, you will
+want to change the setting of the flag {\tt rightmargin}.  This is normally
+set at 79 for 80 column output.  For example, if you change the window to be
+only 50 columns wide, issue the command \newline{}
+{\tt {\tt\char`\<}1> setflag rightmargin}\newline{}
+then at the prompt enter\newline{}
+ {\tt 49}
+
+\subsection{Aborting a Command}
+
+Respond to a prompt for an argument with {\tt ABORT} to abort the current
+command and return to the top level.  You can also use the control character
+{\tt CTRL-C} or {\tt CTRL-G} (depending on what machine and version of LISP is
+being used) to interrupt {\ETPS} and return to the top level.
+
+\subsection{Stopping {\ETPS}}
+
+To temporarily suspend {\ETPS}, use the control character {\tt CTRL-Z}.  Then
+you can restart {\ETPS} with the  Unix command {\tt fg}.  Of course, if you
+are running {\ETPS} in an X-window, you should not need to suspend it. You
+can just make it into an icon.
+
+To kill {\ETPS}, use the {\tt EXIT} command from within {\ETPS}, or use
+the Unix {\tt kill} command from outside {\ETPS}.
+Warning:  it is possible to start
+multiple versions of {\ETPS} and leave them hanging around.
+This is a bad idea, since those that
+you are not using will be a drag on the system, slowing things down
+considerably.
+
+
+
+\subsection{Filenames}
+
+In the Unix system, filenames are case sensitive.  When
+you enter a filename in {\ETPS}, it will be translated to lower case
+{\it unless you enclose the filename in double quotes}.  For example, if
+you answer {\tt X2106.WoRK} when prompted for a filename, {\ETPS} will interpret
+this as {\tt x2106.work}, but the entry {\tt ``X2106.WoRK''} will be interpreted
+as {\tt X2106.WoRK}, just as you entered it.
+
+% \comment{
+% In the Microvax version of {\ETPS}, you cannot use the `$\sim$user'
+% convention of referring to a user's home directory.
+% }
+
+%\pagebreak
+
+\subsection{Tex, Scribe and Printing}
+
+The command {\tt TEXPROOF} works just as described in the {\ETPS} manual.
+Once you have created your `.tex' file on Andrew, however, you should just
+start TeX by, for example,
+\begin{verbatim}
+% tex x2106
+This is TeX, Version 3.1415 (C version 6.1)
+(x2106.tex (/afs/andrew.cmu.edu/mcs/math/etps/sun4_55/doc/lib/tps.tex))
+[1]
+Output written on x2106.dvi (1 page, 1212 bytes).
+Transcript written on x2106.log.
+\end{verbatim}
+This will produce the file x2106.dvi, and you can use the system command
+dvips to create x2106.ps from this:
+\begin{verbatim}
+dvips x2106
+\end{verbatim}
+% \comment{dvips x2106 -o x2106.ps}
+To print such a file, do the following, replacing {\it printer} with
+the name of one of the Postscript printers such as birch, pine, etc.\newline
+\verb=% lpr -P={\it printer} \verb=x2106.ps=
+
+You can look at the file after running tex but before printing it with the command
+\begin{verbatim}
+xdvi x2106
+\end{verbatim}
+Exit xdvi with the command `q'.
+
+To create output suitable for LaTeX
+rather than TeX, set the flag {\tt LATEX-EMULATION} to T while you are running {\ETPS}.
+
+Alternatively, to print a proof
+you can use the {\tt SCRIBEPROOF} command in {\ETPS} to produce a file
+such as x2106.mss, run it through Scribe with the command `scribe x2106' to produce
+the Postscript file x2106.ps. Scribe is not available on some machine types.
+
+\subsection{Possible Problems}
+
+Various {\ETPS} commands involve writing files.  These commands include
+DONE, SAVEPROOF, and TEXPROOF.  Unfortunately, it quite often
+happens that the fileservers which handle the directory in which you
+wish to write are down.  This is especially common at night, when
+the backing-up of AFS volumes is done.  When this happens, you will get
+an error message saying something like `Clisp error trapped'.  If this occurs,
+try the following:
+
+\begin{enumerate}
+\item Try storing the file on your local workstation disk instead of AFS.
+As an example, instead of \newline
+\verb=texproof ``x2106.tex''= \newline
+try \newline
+\verb=texproof ``/usr/tmp/x2106.tex''=.
+
+\item Later, after the
+fileservers are back up, you can copy the file to your home directory on AFS.
+
+\item If the DONE command has failed, use SAVEPROOF to save your proof.
+Later you can restore the proof and try the DONE command again.
+\end{enumerate}
+
+
+\end{document}

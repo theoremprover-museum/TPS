@@ -1,0 +1,49 @@
+;;; ******************************************************************* ;;;
+;;;         (c) Copyrighted 1988 by Carnegie Mellon University.         ;;;
+;;;                        All rights reserved.                         ;;;
+;;;         This code was written as part of the TPS project.           ;;;
+;;;   If you want to use this code or any part of TPS, please contact   ;;;
+;;;               Peter B. Andrews (Andrews@CS.CMU.EDU)                 ;;;
+;;; ******************************************************************* ;;;
+;;; Updated contexts 7/20/87 DAN
+
+(context rules-3-neg)
+;;; Added 30OCT88 DAN
+
+(defirule ineg
+  (lines (h1 (h) (h1) "A" ("Hyp" () ()))
+	 (p2 (h) (h1) "FALSEHOOD" )
+	 (p3 (h) () "not A" ("NegIntro" () (p2))))
+  (support-transformation ((p3 'ss)) ((p2 h1 'ss)))
+  (itemshelp (h1 "Line with Assumption")
+	     (p2 "Line with Contradiction")
+	     (p3 "Line with Negation")
+	     ("A(O)" "Wff Whose Negation is to be Proved")
+	    )
+  (mhelp "Rule of Negation Introduction"))
+
+
+
+;;; Added 1NOV88 DAN
+
+(defirule eneg
+  (lines (d1 (h) () "not A" )
+	 (p2 (h) () "A" )
+	 (p3 (h) () "FALSEHOOD" ("NegElim" () (d1 p2))))
+  (support-transformation ((p3 d1 'ss)) ((p2 'ss)))
+  (itemshelp (d1 "Line with Negative Wff")
+	     (p2 "Line with Positive Wff")
+	     (p3 "Line with Falsehood")
+	     ("A(O)" "Wff")
+	    )
+  (mhelp "Rule of Negation Elimination."))
+
+(defirule absurd
+  (lines (p1 (h) () "FALSEHOOD" )
+	 (p2 (h) () "A" ("Absurd" () (p1))))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (itemshelp (p1 "Line with Falsehood")
+	     (p2 "Line to be Proved")
+	     ("A(O)" "Wff to be Proved")
+	    )
+  (mhelp "Rule of Intuitionistic Absurdity."))

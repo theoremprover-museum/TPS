@@ -1,0 +1,1142 @@
+\chapter{Printing and Reading Well-formed formulas}
+\section{Parsing}
+
+Frank has implemented a type inference mechanism based on an algorithm by
+Milner as modified by Dan Leivant.
+Type inference is very local: The same variable, say "x" will
+get different type variables assigned, when used in different formulas.
+Since multiple use of names with different types is rare, the default
+could be changed, so that after the first occurrence of an "x" during
+a session {core image}, the type inferred the first time is remembered.
+
+There are only a total of 26 type variables, so you may run out during
+a session.  The function INITTYPES reset the way type variables are
+assigned and treats everything except O and I as type variables.
+Normally, a type variable once mentioned or assigned automatically
+becomes a type constant.
+
+If \indexflag{TYPE-IOTA-MODE} is {\tt NIL}, then 
+TPS will assign type variables starting with Z and going backwards, as 
+more are needed. \indexflag{TYPE-IOTA-MODE} defaults to {\tt T}.
+
+Polymorphic abbreviations like SUBSET now may be given a type, so as to fix
+the type of other variables.  E.g. the following is legal:
+   "FORALL x . P x IMPLIES [Q x] IMPLIES . P SUBSET(O(OC)(OC)) Q"
+Note that "x" will be typed "C" (Gamma).  The same typing could have been
+achieved by
+   "FORALL x(C) . P x IMPLIES [Q x] IMPLIES . P SUBSET Q"
+If all the types were omitted and \indexflag{TYPE-IOTA-MODE} were {\tt NIL}, 
+"x" would have been typed with the next available typevariable.
+
+Using the same name for two variables of distinct type is legal, but not
+recommended.  Consider, for example,
+   "FORALL x . P x(I) AND . Q . x(II) a"
+Here the type of the very first occurrence of "x" will be assumed as "II".
+Leaving out the type of the third occurrence of "x" would have led to an
+error message:  Rather than assume that "x(II)" was really meant, TPS
+assumes instead that the scoping must have been incorrect, which seems much 
+more likely.
+
+All remaining type variables (after a parse) are automatically assumed
+to be of {\it base-type} unless the flag {\tt TYPE-IOTA-MODE} is set in which
+case they are assumed to be of type $\greeki$. In first-order mode identifiers have
+only single characters (Thus "not Pxy" is parsed as "NOT . P x y").
+
+When a wff is read in and parsed, each input token (where the number
+of characters in a token is dependent on whether you are reading in
+first-order-mode or not) is made into a lisp symbol which incorporates
+the token's printed representation and type.  For example, entering
+"x(A)" will result in a symbol being created whose print-name is
+"x<A>".  When you try to print a symbol like this, first the part
+without the type information is printed, then the type (if necessary)
+is printed.  E.g., first we print "x", then print "(A)".  But the
+information necessary to print "x" is really on the property list of
+the symbol whose print-name is "x".  So all wffs of the form "x<...>"
+will be printed the same way (except for the type).
+
+So, if you enter "x1(A)", you get the symbol "x1<A>", but no
+information about a superscript is put on the symbol "x1".  Thus when
+you print it, you get no superscript, just "x1".  Where do
+superscripts come from, then?  Well, when TPS renames a variable in
+order to get a new one (such as alpha-normalizing a wff), it puts the
+superscript information on the new symbol's property list.  I.e., if
+we rename "x1<A>", we may get the symbol "x2<A>", and on the property
+list of "x2", we get the superscript information.  Thus, the next time
+the user types in "x2(A)" or even "x2(I)", the symbols created will
+have the superscript information.
+
+This can be a little confusing, because the "x1(A)" that you
+originally entered still isn't superscripted, but the renamed
+variables "x2", "x3", etc., will be.
+
+\section{Printing of formulas}
+
+\subsection{The Basics}
+
+In this section we will talk about how a formula in internal representation
+is printed on different output devices.  There are two main points
+to take into consideration: how will the parts of the formula appear,
+and where will they appear.  For the latter refer to section 
+~\ref{Pretty-Printing}, the former we will discuss now.
+
+\subsection{Prefix and Infix}
+
+Since we deal with formulas of type theory, we can regard every formula
+as built by application and $\lambda$-abstraction from a few primitives.
+In order to make formulas more legible and closer to the form usually
+used to represent formulas from first order logic, we furthermore have
+quantification and definitions
+internally, and quantification, definitions, and infix operators
+for the purpose of input and output.
+
+The application of a function to an argument is printed by simply
+juxtaposing the function and its argument.  As customary in type
+theory, we do not have an explicit notation for functions of more
+than one argument.  Predicates are represented as functions with truth
+values as their codomain.
+
+Infix operators have to be declared as such.
+Only conjunction, disjunction, and implication are automatically
+declared to be infix operators.  In general,
+infix operators
+will be associated to the left, if  explicit brackets are missing.
+For example
+\begin{Example}
+$A \land B \land C$    will be  $[[A \land B] \land C]$
+\end{Example}
+Internally every infix operator has a property \indexProperty{Infix}
+which is a number. This number is the relative binding strength of
+this infix operator. You will have to specify it, if you define a
+new connective to be infix. The higher the priority, the stronger
+the binding. As usual, `$\land$' binds stronger than `$\lor$' which has precedence
+over `$\limplies$' (implication).
+
+(As an aside, if you don't want conjunctions bound more tightly than disjunctions,
+but want brackets to appear, make the {\tt INFIX} property of {\tt OR} the same
+as {\tt AND}. Thus, do: {\tt (GET 'AND 'INFIX)}, to find it is 5, and then 
+{\tt (PUTPROP 'OR 5 'INFIX)})
+
+Unfortunately prefix operators like negation, do not currently  have
+a binding strength associated with them and will always be associated
+to the left.
+This has to be kept in mind, when formulas are typed in.
+
+Definitions can be infix or prefix and the same rules hold for them.
+There are flags which control whether a definition or its instantiation
+will be printed. Similarly, logical atoms can appear as names or as
+values (or both).  In general the appearance of a formula and in particular
+of a definition very much depends on which output device is used.  See
+section ~\ref{Styles and Fonts} for more detail, but remember that this
+only affects the way the primitive or defined symbols appear, but not
+how the formula is assembled from its parts.
+
+\subsection{Parameters and Flags}\label{Printing Flags}
+The flags listed below are global parameters which can be set by the user
+to control the way formulas are printed. These settings can be overridden
+if specific commands are given.
+
+\begin{description}
+
+\item [\indexflag{PrintTypes}] = {\tt T} causes all types to be printed. 
+	If a typed symbol occurs more than once, only the first occurrence
+	will have a type symbol, unless the same symbol name appears in the
+	same formula with a different type.
+
+ = {\tt NIL} suppresses type symbols.
+
+\item [\indexparameter{PrintDepth}] This is a parameter which determines how deep the recursion
+	which prints the formula will go.  Subformulas located at a lower
+	level will simply be replaced by an \&.  A {\tt PrintDepth} of 0 means
+	that everything will be printed, regardless of its depth.  {\tt PrintDepth}
+	has to be an integer. It is initialized to 0. The most useful
+	application of this parameter is in the formula-editor, where one
+	usually does not like to see the whole formula.
+
+\item [\indexflag{AtomValFlag}] This flag should usually not be touched by the user. If it
+	is true, under each atom its value will appear.
+
+\item [\indexflag{AllScopeFlag}] This flag should be {\tt NIL} most of the time. If it is
+	{\tt T} brackets and dots will always be inserted, i.e. no
+	convention of associativity to the left is followed. The
+	precedence values of infix operators are also ignored.
+	It can be forced to {\tt T} by calling the function
+	{\w \indexmexpr{PWScope GWff}}.
+\end{description}
+
+\subsection{Functions available}\label{Printing Functions}
+
+There are of course a variety of occasions to print wffs, For example in plans,
+as lines, after the {\tt P} or {\tt PP} -command in the editor etc.
+Associated with these are different printing commands given 
+by the user. Some of these commands override globally set parameters or
+flags. Internally, however, there is only one function which prints wffs.
+This function \indexfunction{PrtWff} is called whenever formulas have to be 
+printed.  The various flags controlling the way printed formulas will appear,
+will either be defaulted to the global value, or be passed to this
+function as arguments. The general form of a call of {\tt PrtWff} is as follows
+
+{\tt 
+(PrtWff Wff {(Parameter$_1$ Value$_1$)} ... {(Parameter$_n$ Value$_n$)} )
+}
+
+Before the actual printing is done Parameter$_1$... Parameter$_n$ will be
+set to Value$_1$ ... Value$_n$, resp. If a parameter of the following list
+is not included in the call of the function, its global value will be
+assumed. Possible parameters with their range and the section they are
+explained in are
+
+% @Tabdivide(3)
+\begin{tabular}{lll}
+\indexflag{PrintTypes} & T,NIL & ~\ref{Printing Flags} \\
+\indexparameter{PrintDepth} & 0,1, ... & ~\ref{Printing Flags} \\
+\indexflag{AllScopeFlag} & T,NIL & ~\ref{Printing Flags} \\
+\indexflag{AtomValFlag} & T,NIL & ~\ref{Printing Flags} \\
+\indexflag{PPWfflag} & T,NIL & ~\ref{Pretty-Printing Flags} \\
+\indexflag{LocalLeftFlag} & T,NIL & ~\ref{Pretty-Printing Flags} \\
+\indexflag{FilLineFlag} & T,NIL & ~\ref{Pretty-Printing Flags} \\
+\indexflag{FlushLeftFlag} & T,NIL & ~\ref{Pretty-Printing Flags} \\
+\indexparameter{Leftmargin} & 1 ... Rightmargin & ~\ref{More Printing Functions} \\
+\indexparameter{Rightmargin} & 1, 2 ... & ~\ref{More Printing Functions} \\
+\indexparameter{Style} & XTERM, SCRIBE, CONCEPT, \\
+ & GENERIC, SAIL, TEX ... & ~\ref{Styles and Fonts} \\
+\end{tabular}
+
+\subsection{Styles and Fonts}\label{Styles and Fonts}
+
+\TPS can work with a variety of different output devices, producing special 
+characters like $\forall$ or $\land$ where possible, and spelling them out 
+(as {\tt FORALL} and {\tt AND}) where not. Details of how to produce output 
+files for various purposes are in the \ETPS and User's Manuals.
+
+At no point does the user actually make a commitment whether to work with special
+characters or not, since she can easily switch back and forth. The 
+internal representation is completely independent of these switches
+in the external representation.
+
+A few commands, such as \indexfunction{VPForm} and \indexfunction{VPDiag} 
+have an argument \indexparameter{Style} which specifies
+the style in which a file is produced. Furthermore there is a flag, \indexflag{STYLE},
+which \TPS will use in the absence of any other indication as to the 
+appropriate form of output.
+
+Along with the style the user can usually specify an appropriate linelength
+by using the \indexflag{LEFTMARGIN} and \indexflag{RIGHTMARGIN} flags.
+Some commands (most notably \indexcommand{SETUP-SLIDE-STYLE}) will change 
+both the style and the default line length.
+
+\begin{description}
+\item [\indexstyle{CONCEPT}, \indexstyle{CONCEPT-S} ] this is the style used for a Concept terminal,
+which might also
+	occasionally also be useful to produce a file which can be
+	displayed on the Concept terminal with {\tt CAT} or {\tt MORE}.
+The difference between {\tt CONCEPT} and {\tt CONCEPT-S} is that the latter assumes 
+that your Concept is equipped with special characters and the former does not.
+If special characters are available,
+	you will then get types as greek subscripts,
+	the universal quantifier as $\forall$, etc.  The default linelength
+	is 80.
+
+\item [\indexstyle{GENERIC} ] this style assumes no special features and defaults the 
+	linelength to 80.  For example the existential quantifier shows up as EXISTS
+	and types are enclosed in parentheses.
+
+\item [\indexstyle{GENERIC-STRING} ]  is much like {\tt GENERIC}, but prints in a format that 
+can be re-read by \tps.
+
+\item [\indexstyle{SCRIBE} ] corresponds to the style used by the Scribe text processor.
+	A file produced in this style has to be processed by {\tt SCRIBE}
+	before it can be printed. All special characters,
+	superscripts and subscripts, etc. are available. The main drawback
+	of a {\tt SCRIBE}-file is that precise formatting as necessary
+	for vertical path diagrams is impossible. The font used is 10-point, except 
+        when doing \indexcommand{SLIDEPROOF}, when an 18-point font is used.
+
+\item [\indexstyle{TEX} ] is the output style used by the \TeX text processor.
+A file produced in this style has to be processed by \TeX before it can be printed.
+All special characters, superscripts, etc. are available, and vertical path diagrams
+are correctly formatted (although often too wide to print). 
+
+\item [\indexstyle{XTERM} ] produces the special characters used by X-windows. You should
+set the value of \indexflag{RIGHTMARGIN} to reflect the width of the window containing 
+\tps.
+
+\item [\indexstyle{SAIL} ] {\tt SAIL} is a style (now all but obsolete) used for printing
+on a Dover printer. The font used is 10-point, with 120 characters 
+per line in landscape format (used for vertical path diagrams), and 86 in portrait format
+(used for all other applications).
+When you dover the file , you have to remember size and orientation and
+specify it in the switches of your call of {\tt DOVER}.
+A {\tt SAIL} file does not have subscripts, but has as variety
+of other special characters.
+
+\end{description}
+
+From the information about the style, the low-level printing functions
+determine which sequence of characters, including control characters, to
+send to the selected output device.  If a symbol expands to a list of known 
+symbols with different names (e.g. \indexData{EQUIVS} expands to an {\tt EQUIV} 
+symbol with a superscript {\tt S}), then it has a property \indexProperty{FACE}
+which contains this information. Various other properties give the way that the character 
+is to be printed in different styles.
+The \indexProperty{CFONT} property
+is a pair {\tt (KSet . AsciiValue) . \indexData{Kset}} can be 0,1,2, or 3,
+although currently only the character sets 0, 1, and 3 are used; this gives the 
+appropriate character for a Concept terminal.
+Similarly, the \indexProperty{DFONT} property is a string {\tt "whatever"} which will be printed
+into Scribe files as {\tt @whatever}. The \indexProperty{TEXNAME} property does the
+same for the \TeX output style.
+There are some special fonts that are declared in the file
+\indexfile{tps.mss}.  A list of the available special characters for
+the Concept and for the Dover (in a {\tt SCRIBE}-file) are explicitly stored
+in the files \indexfile{cfont.lisp} and \indexfile{dfont.lisp} and loaded into
+\TPS at the time the system is being built.
+
+Consider the following example:
+\begin{Example}
+SIGMA1 is a binder.
+It has a property FACE of value (CAPSIGMA SUP1).
+
+CAPSIGMA is a tex special character, a scribe special character, 
+and a concept special character.
+It has a property CFONT of value (3 .  83).
+It has a property DFONT of value "g{S}".
+It has a property TEXNAME of value "Sigma".
+
+SUP1 is a tex special character, a scribe special character, 
+and a concept special character.
+It has a property CFONT of value (1 .  49).
+It has a property DFONT of value "+{1}".
+It has a property TEXNAME of value "sup1".
+\end{Example}
+
+In a scribe or tex file, or on a Concept with special characters, {\tt SIGMA1} will
+appear as $\Sigma^1$; elsewhere it will be written as {\tt SIGMA1}. The actual Scribe
+output produced will be \begin{verbatim}@g{S}@\;@^{1}@\;\end{verbatim}; the actual \TeX
+output will be \begin{verbatim} \Sigma^{1} \end{verbatim}.
+
+\subsection{More about Functions}\label{More Printing Functions}
+
+In this section some more details of the functions which are used to
+do the printing are given. 
+
+As mentioned earlier, the main connection with the rest of \TPS is
+the MACRO \indexfunction{PrtWff}.  It expands into a {\tt PROG} in which
+all the parameters given as arguments are {\tt PROG}-variables.  In the body
+of the {\tt PROG}, all parameters are set to the value specified in the call,
+then the function \indexfunction{PWff} is called, just with {\tt Wff} as its
+argument.  All the other parameters and flags are now global, or, in {\tt LISP}
+terminology, special variables.
+
+The function {\tt PWff} performs two main tasks. First a few special variables
+are set to the correct value.   After this is done, {\tt PWff} checks whether
+pretty-printing is desired, i.e. whether {\tt PPWfflag} is {\tt T}.
+For an explanation of what happens during pretty-printing see section 
+~\ref{Pretty-Printing} and in particular ~\ref{Pretty-Printing Functions}.
+Otherwise the recursive function \indexfunction{PrintWffPlain} is called
+with the appropriate arguments.
+
+At this point the current style is available to the functions in the
+flag \indexflag{STYLE}. The calling function has to make sure
+that \indexflag{LEFTMARGIN} and
+\indexflag{RIGHTMARGIN} will be bound.  They are important
+for the printing functions in order to determine where to break lines,
+and where to start formulas on the line.  This holds, whether pretty-
+printing is switched on or off.
+
+Below {\tt PWff} two functions appear.
+{\tt PrintWffPlain} prints a formula without any delimiting symbols
+around it.  For example (with {\tt STYLE SCRIBE})  
+%\begin{Example,Spacing=1.5}
+\begin{Example}
+((x<I> . FORALL) . ((OR . (P<OI> . x<I>)) . q<O>))  appears as \\
+$\forall x_\greeki . [P_{\greeko\greeki} x] \lor q_\greeko$ if BRACKETS = T and as \\
+$\forall x_\greeki [[P_{\greeko\greeki} x] \lor q_\greeko]$ if BRACKETS = NIL .
+\end{Example}
+\indexfunction{PrintWffScope} delimits a composite formula with a preceding
+dot, if the argument \indexparameter{BRACKETS} is {\tt T} , and with brackets
+around it , if {\tt BRACKETS} is {\tt NIL}.  Other than that the functions are
+identical.  In the above example we would get
+%\begin{Example,Spacing=1.5}
+\begin{Example}
+$\forall x_\greeki . [P_{\greeko\greeki} x] \lor q_\greeko$ if Brackets = T and \\
+$[\forall x_\greeki . [P_{\greeko\greeki} x] \lor q_\greeko]$ if Brackets = NIL
+\end{Example}
+Both {\tt PrintWffPlain} and {\tt PrintWffScope} call \indexfunction{PrintWff},
+where the real work of distinguishing the different kinds of formulas
+and symbols is being done.  The distinction between {\tt PrintWffPlain} and 
+{\tt PrintWff} is only made for the sake of pretty-printing (see 
+~\ref{Pretty-Printing Functions}).
+
+At an even lower level is the function (actually a macro) \indexfunction{PCALL},
+which determines the appropriate way to print a particular symbol in the 
+current style, and prints an error if the relevant function is undefined.
+{\tt PCALL} actually applies to printing functions, rather than characters, so
+each function will have a different definition for different styles. For example,
+in style scribe the \indexfunction{print-symbol} function is called \indexfunction{PP-SYMBOL-SCRIBE}, 
+whereas in style xterm it's called \indexfunction{PP-SYMBOL-XTERM}. (Examine
+the plists of {\tt SCRIBE} and {\tt XTERM} to verify this, if you like.)
+
+\section{Pretty-Printing of Formulas}\label{Pretty-Printing}
+
+The most commonly used way of printing formulas, such as lines or plans,
+is to pretty-print them. This is a feature quite similar to the way LISP
+pretty-prints functions. Formulas which are too long to fit on one line
+of the current output device, are broken at the main connective and printed
+in several lines. The main difference to the LISP pretty-printing is that
+we have to consider infix operators.
+
+The general structure of the functions doing the pretty-printing allows 
+future changes to the way printing in general is done without making changes
+to the pretty-printer.  Whenever a formula is to be pretty-printed the
+usual printing functions as described above are called, but instead of
+printing the characters, they will be appended to a list.  Later this list
+is used to actually output the characters after the decision where to break
+the formula has been made.  From this structure it is clear that all the
+parameters and flags controlling the appearance of a formula on the several
+printing devices still work in the way described before.  There are however,
+a few additional flags which determine how subformulas will be arranged
+within a line.
+
+\subsection{Parameters and Flags} \label{Pretty-Printing Flags}
+
+As new flags particularly for pretty-printing we have
+\begin{description}
+
+\item [\indexflag{PPWfflag} ] = {\tt T}  means that formulas will usually be pretty printed. 
+This is the default value.
+
+ = {\tt NIL} 
+means that formulas never will be pretty printed unless the
+command is given explicitly.
+
+\item [\indexflag{LocalLeftFlag} ] ={\tt T} 
+will cause the left hand side of an infix expression
+to be aligned with the operator and not with the right hand side.
+
+ = {\tt NIL} 
+is the default and prints left and right hand side of an
+infix expression with the same indentation.
+
+\item [\indexflag{FilLineFlag} ] ={\tt T} 
+will try to fill a line as much as possible before
+starting a new one. This only makes a difference for associative
+infix operators.
+
+ = {\tt NIL} starts a new line for each of the arguments of an infix operator
+even if only one of several arguments would be too long to fit on the 
+remainder of the line.
+
+\item [\indexflag{FlushleftFlag} ] = {\tt T} switches off indentation completely, i. e. every line will
+be aligned with the left margin.
+
+ = {\tt NIL}  indents the arguments of infix operators.
+\end{description}
+
+\subsection{Creating the PPlist} \index{PPlist} \label{PPlist}
+
+The pretty-printing is achieved in two steps. During the first phase
+printing will be done without any formatting and the characters are
+not actually printed, but appended to a list, called {\tt PPlist}. In the second
+phase, this list will then be printed. The decisions, when to start
+a new line, how to indent etc. are only made in this second stage.
+
+The {\tt PPlist} is of the following syntactical structure.
+
+\begin{description}
+
+\item [\indexData{pplist} ::=]  ((aplicnlist . (pdepth . pgroup)) . plength) 
+           \\ | ((gencharlist . (pdepth . pgroup)) . plength)
+
+\item [\indexData{aplicnlist} ::=]  (aplicn . aplicnlist) | {\tt NIL} | (aplicn . {\tt MARKATOM})
+
+\item [\indexData{aplicn} ::=]  (pplist . pplist)
+
+\item [\indexData{plength} ::=]  {\tt 0} | {\tt 1} | {\tt 2} | ...
+
+\item [\indexData{pgroup} ::=]  {\tt BRACKETS} | {\tt DOT} | {\tt NIL}
+
+\item [\indexData{pdepth} ::=]  {\tt 0} | {\tt 1} | {\tt 2} | ...
+
+\item [\indexData{gencharlist} ::=]  (genchar . gencharlist) | {\tt NIL}
+
+\item [\indexData{genchar} ::=]  char | (ascnumber) | (gencharlist)
+
+\item [\indexData{char} ::=]  <any non-control character>
+
+\item [\indexData{ascnumber} ::=]  {\tt 0} | {\tt 1} | ... | {\tt 127}
+
+\end{description}
+
+The {\tt PPlist} contains a list of all the top-level applications , along with
+the grouping (pgroup),
+its print-depth (pdepth) and its print-length (plength).
+If the grouping is {\tt BRACKETS} brackets will be printed around the formula.
+A grouping {\tt DOT} means that
+a dot will precede the formula, otherwise the formula will just be printed
+without any delimiting symbols. The plength is the total
+length of the formula if printed in one line, including spaces, brackets,
+a.s.o., but not control characters which are used to denote character
+sets, or {\tt SCRIBE} -commands.
+
+The pdepth is recursively defined as the maximum pdepth of the left-hand sides
+plus the maximum pdepth of the right-hand sides of the
+applications, if the {\tt PPlist} contains applications, and the plength
+of the generalized-character list (gencharlist) otherwise.
+The plength of a gencharlist is 
+its length after all members of the form
+`(gencharlist)' have been deleted.  This means that characters that have to
+be sent to the selected output device but do not occupy space (in the final
+document) will simply be enclosed in parentheses.  By this convention
+the function which then formats and actually prints the formula from the 
+{\tt PPlist} can keep track of the vertical position within a line.  The 
+pdepth associated with each subformula is used to decide the amount of
+indentation, as described below.
+
+The list of applications, aplicnlist, typically contains 
+contains only one pair with the left-hand side
+a function, and the right-hand side the argument the function is
+applied to.  In case we have infix operators or multiple conjunctions
+or disjunctions, like $A \equiv B$, 
+$A \land B \land C \land D$, or $E \lor F$, aplicnlist will contain a 
+different pair for each argument.  The left-hand side contains the
+infix operator, if one has to be printed in front of the argument, the
+right-hand side contains the argument itself.  Quantifiers are regarded as
+single applications, where the left-hand side is the quantifier plus the
+quantified variable, while the right-hand side is its scope.
+Consider the following examples.
+\begin{Example}
+$A \equiv B$ \\
+will be translated to\\
+aplicnlist  =  ( (<> . <A>) (<EQUIV> . <B>) )\\
+\\
+$A \land B \land C \land D$\\
+will be translated to \\
+aplicnlist  =  ( (<> . <A>) (<AND> . <B>) (<AND> . <C>)
+                 (<AND> . <D>) )\\
+\\
+$E \lor F$\\
+will be translated to\\
+aplicnlist  =  ( (<> . <E>) (<OR> . <F>) )\\
+\\
+$\forall x_\greeki G$ \\
+will be translated to \\
+aplicnlist  =  ( (<FORALL X<I>> . <G>) ) \\
+\\
+where <x> denotes the PPlist corresponding to the subformula $x$,\\
+and <> stands for the empty PPlist ((NIL . (0 . NIL)) . 0)
+\end{Example}
+
+A generalized character, genchar, is defined to be an arbitrary
+non-control ASCII character, the number of an ASCII character in parentheses,
+or another generalized character list in double parentheses.  When an ASCII
+character is
+printed it is assumed that the cursor advances one position, while
+everything in the sub-gencharlist is assumed not to appear
+on the screen or in the document after being processed by SCRIBE.
+
+An aplicnlist with the structure (aplicn .  \indexData{{\tt MARKATOM}})
+signals that the aplicn is the internal representation of a logical
+atom (For example {\tt ATM15}).  In case AtomValFlag is {\tt T}, the program notes the
+cursor position, whenever it encounters such an aplicnlist during
+printing and prints the name of the atom in the next line at this
+position.
+
+\subsection{Printing the PPlist} \index{PPlist}
+After the {\tt PPlist} is created by the function \indexfunction{PWff}, the actual
+output is done by the function \indexfunction{PrintPPlist}.  This function
+takes a {\tt PPlist} and {\tt INDENT} as arguments and has the following
+basic structure.
+
+\begin{description}
+\item [(1) ] Does the formula fit on the remainder of the line
+(from {\tt INDENT} to {\tt RightMargin}) ?
+If yes, just print it from the {\tt PPlist}.
+If not, go to (2).
+
+\item [(2) ] Is the formula composed of subformulas ?
+If not, go to the next line and print it at the very right.
+If yes, go to (3).
+
+\item [(3) ] Is the formula a single application ?
+If yes, call {\tt PrintPPlist} recursively, first with the function
+then with the argument such that the function will appear at {\tt INDENT} and
+the argument right after the function.
+If not, go to (4).
+
+\item [(4) ] Print each application in the application list in a new line,
+the operators at the vertical position {\tt INDENT} and the
+arguments at the position {\tt INDENT} + maximal length of the operators.
+\end{description}
+
+This algorithm will be slightly different if the flags described above
+do not have their default values. See section ~\ref{Pretty-Printing Flags} for a description.
+
+Some heuristics are employed to avoid the pathological case where the
+formula appears mostly in the rightmost 10\% of each line.  Used in these
+heuristics is the print-depth (pdepth), which is equal to the furthest
+extension of the formula to the right if printed with the above algorithm.
+Whenever the pdepth is greater than the remainder of the line, the indentation
+will be minimized to two spaces. This is most useful if special
+characters are not available, for example if `$\forall$' is printed as `FORALL'.
+
+\subsection{Pretty-Printing Functions}\label{Pretty-Printing Functions}
+
+Most of the functions used for the first phase of pretty-printing, i.e. for
+building the {\tt PPlist} are already described in section ~\ref{More Printing Functions}.
+The internal flag {\tt PPVirtFlag} controls whether functions like {\tt PrintFnTTY}
+will actually produce output or create a {\tt PPlist}.  Here it is now of
+importance, what the different printing functions return, something that was 
+completely irrelevant for direct printing.
+
+The general schema can be described as follows.  \indexfunction{PrintWffPlain} and
+\indexfunction{PrintWffScope} return a {\tt PPlist}.  If called from \indexfunction{PrintWff}, these
+{\tt PPlists} are assembled to an aplicnlist and returned.  In this case {\tt PrintWff}
+returns an aplicnlist.  The lower level functions, \indexfunction{PrintFnDover}
+and \indexfunction{PrintFnTTY} return the gencharlist which contains the
+characters that would be printed in direct mode.  Note that therefore {\tt PrintWff}
+will sometimes return a gencharlist instead of an aplicnlist.  These
+two are interchangeable as far as the definition of the {\tt PPlist} is
+concerned, and can hence be treated identically by {\tt PrintWffPlain}
+which constructs a {\tt PPlist} from them.  
+
+The special parameters \indexparameter{PPWfflist} and \indexparameter{PPWfflength}
+keep track of the characters "virtually printed" and the length of
+the formula "virtually printed", respectively.
+
+On the very lowest level \indexfunction{PPrinc} and \indexfunction{PPTyo} perform a {\tt PRINC}
+or {\tt TYO} virtually by appending the appropriate characters to the
+{\tt PPWfflist}.  Characters that do not appear in the final document
+or on the screen, are virtually printed by \indexfunction{PPrinc0} and \indexfunction{PPTyo0}.
+They prevent the counter {\tt PPWfflength} from being incremented.  Similar
+functions are \indexfunction{PP-Enter-Kset} and \indexfunction{PPTyos} which correspond to
+{\tt Enter-Kset} and {\tt TYOS}.
+
+In the second phase of pretty-printing as described in the previous section
+{\tt PrintPPlist} is the main function.  If the remainder of a {\tt PPlist} fits
+on the rest of the current line, \indexfunction{SPrintPPlist} is called which just 
+prints the {\tt PPlist} without any counting or formatting.
+
+\subsection{JForms and Descr-JForms}\index{JForm}\index{Descr-JForm}
+
+A JForm is an alternative way of representing well-formed formulas and
+is used by the matingsearch package and for printing vertical path
+diagrams. In JForms multiple conjunction are represented as lists and
+not as trees. Consider the following example.
+\begin{Example}
+$A \land B \land C \land [D \lor E \lor F]$
+\end{Example}
+As a wff in internal representation this will be
+\begin{Example}
+( (AND . ((AND .((AND . A) . B)) . C))
+  . ((OR . ((OR . D) . E)) . F))
+\end{Example}
+Obviously this is not a very suitable form for vertical path
+diagrams.  As a JForm, however, the above wff would read as 
+\begin{Example}
+(AND A B C (OR D E F))
+\end{Example}
+which is already close to what we would like to see.
+
+The function \indexfunction{Describe-VPForm} takes a JForm like the one
+above as an argument and returns a Descr-JForm, where we have the
+information about the height and width of the subformulas, which we
+need in order to format the output, explicitly attached to the parts of
+the JForm.
+
+Quantifiers are handled similarly. Multiple identical quantifiers
+are combined in a list whose first element is the quantifier and the
+rest is the list of variables which are quantified.
+\begin{Example}
+$\forall x \forall y \exists z \exists u A$
+\end{Example}
+is in internal representation
+\begin{Example}
+((x . FORALL) . ((y . FORALL)
+       . ((z . EXISTS) . ((u . EXISTS) . A)))),
+\end{Example}
+and as a JForm it looks like
+\begin{Example}
+((FORALL x y) ((EXISTS z u) A)) .
+\end{Example}
+The following is a formal description of what a JForm and a Descr-JForm
+are. Note that a descr-jform is entirely an internal concept, used by the
+file \indexfile{vpforms.lisp} for working out how to format a vpform; a 
+jform is a concept which is accessible to users (e.g. users have commands
+to translate from gwffs to jforms and back)
+
+\begin{description} % Description,Spacing=1.5}
+\item [\indexData{\it JForm} ::=] {\it Literal} | {\it SignAtom} | ({\tt OR} [{\it JForm}]$^n_2$)
+	|({\tt AND}  [JForm]$^n_2$ )
+	\\ | (({\tt FORALL}  [Var]$_1^n$) JForm)
+	| (({\tt EXISTS}  [Var]$_1^n$) JForm)
+
+\item [\indexData{\it Literal} ::=] {\tt LIT1 | LIT2 | ...}
+
+\item [\indexData{\it SignAtom} ::=] ({\tt NOT} {\it Atom}) | ({\it Atom})
+
+\item [\indexData{\it Var} ::=] < any logical variable >
+
+\item [\indexData{\it Atom} ::=] < any logical atom >
+\end{description}
+It should be noted here that some programs might expect the arguments
+of a JForm starting with {\tt OR} not to start itself with an {\tt OR},
+the argument of a JForm starting with {\tt FORALL} not to start with another {\tt FORALL}
+etc., but this is by no means essential for vertical path diagrams.
+
+%\begin{Description,Spacing=1.5}
+\begin{description}
+\item [\indexData{Desc-Jform} ::=] (\{$^{Literal}_{SignAtom}$\} Height Width (Width Width) (GenCharList PPlist)
+	\\ (({\tt OR} [Desc-JForm]$^n_2$ )
+	 Height Width ([Cols]$^n_2$ ))
+	\\ (({\tt AND} [Desc-JForm]$^n_2$ )
+  	 Height Width ([Rows]$^n_2$ ))
+	\\ (((\{$^{\tt FORALL}_{\tt EXISTS}$\} [Var]$^n_1$)
+	 Desc-JForm) Height Width Width GenCharList)
+
+\item [\indexData{Height} ::=] {\tt 0} | {\tt 1} | {\tt 2} | ...
+
+\item [\indexData{Width} ::=] {\tt 0} | {\tt 1} | {\tt 2} | ...
+
+\item [\indexData{Cols} ::=] {\tt 0} | {\tt 1} | {\tt 2} | ...
+
+\item [\indexData{Rows} ::=] {\tt 0} | {\tt 1} | {\tt 2} | ...
+\end{description}
+In a Descr-JForm the second and third element (Height and Width) contain
+the height and width of the JForm that is described by the Descr-JForm.
+In case the JForm was a literal or a signed atom the next two elements
+are lists. The left element of each of these sublists
+gives the width or print-representation
+of the literal or atom, the right element gives the width or print-representation
+of the literal's or atom's value.
+
+If the JForm was a conjunction or disjunction, the last element of the 
+corresponding Descr-JForm is a list of the rows or columns in which the
+conjuncts or disjuncts begin.
+
+If we deal with a top-level quantifier in our JForm, the last two
+elements contain the width and the print-representation of the
+quantifier together with the quantified variables.  For a description of
+a GenCharList or PPlist see section ~\ref{PPlist}.
+
+\subsection{Some Functions}
+
+The function which is called by {\tt VPForm} and {\tt VPDiag} is
+\indexfunction{\%VPForm}.  The handling of the comment and the different
+files that have to be opened is done here.
+The main function which translates a JForm into
+a Descr-JForm is
+\indexfunction{Describe-VPForm}.  SignAtoms and Literals are described by
+\indexfunction{Describe-VPAtom} and \indexfunction{Describe-VPLit} , respectively.  The
+virtual printing functions used for this process are \indexfunction{FlatSym}
+and \indexfunction{FlatWff}.
+
+{\tt FlatSym} takes an arbitrary {\tt LISP} identifier as an argument and
+returns a pair (gencharlist . length) for this identifier.
+{\tt FlatWff} takes a wff as argument and returns a {\tt PPlist} for
+it.
+
+The main function which then prints the Descr-JForm is \indexfunction{Print}-VPForm.
+It takes the line of the Descr-JForm which should be printed as an
+additional argument.  On lower levels \indexfunction{\%SPrintAplicn} and
+\indexfunction{\%SPrintPPlist} print an aplicn or a {\tt PPlist} much in the same fashion
+{\tt SPrintAplicn} and {\tt SPrintPPlist} do, except that \indexfunction{\%\%PRINC} takes
+the role of {\tt PRINC} and {\tt TYO}.  This is necessary from the way
+the actual output is handled.  If the vertical path diagram does
+not fit on one page, several temporary files are opened and each
+file contains the information for one of the pages.  This means 
+that the characters have to be counted and a new file to be selected
+as the current ouput file, whenever the character count exceeds
+the global parameter \indexparameter{VPFPage}.  The counting
+as well as the change of the current output file is done by the 
+function \indexfunction{\%\%PRINC}.  The argument has to be either a {\tt LISP}-atom,
+in which case it will be {\tt PRINC}'ed , or a single element list, 
+in which case this element will be {\tt TYO}'ed.
+
+
+\section{How to speed up pretty-printing (a bit)}
+
+Pretty printing in TPS or ETPS is slow, for various reasons.  One of
+them is the tremendous amount of temporary list space used, which takes
+time and more time through garbage collection.  Another is the forgetfulness
+of the printing routine which recomputes length and other information
+over and over again.  Below we will try to explore ways to improve
+the performance of the pretty printer without sacrificing any of the niceness
+of the output.
+
+Let us recount which factors make pretty-printing wffs more difficult than
+pretty-printing Lisp S-Expressions.  For once, Lisp does not have infix
+operators and can therefore get by with a significantly smaller amount of
+lookahead.  Moreover, the lookahead can be done during the printing, where
+the extra time delay is hardly noticeable, while TPS' lookahead must
+all be done ahead of time, before the first character is printed.  Secondly,
+Lisp does not deal with a variety of output devices, which makes counting
+symbol lengths as well as printing symbols much faster and more transparent.
+
+The result of a first attempt at pretty-printing is described earlier in this
+chapter.  The solution is nicely recursive and a lot of information is made
+available for deciding where to break and how to indent lines.  It is a sad
+fact that the algorithm does not reuse any information whatsoever.  For example,
+the printed representation of identifiers is recomputed over and over again.
+Even worse, the characters comprising the printed representation of an
+identifier are stored in a list, copies of which typically occur
+in many places in the {\it pplist} of a single wff.
+
+Let us now look at some of the problems and possible solutions of the
+pretty-printing problem.
+
+\subsection{Static and Dynamic Parameters}
+Crucial to finding a good solution is to understand which factors affect
+the appearance of wffs when printed.  These can be divided into two
+classes.
+\begin{description}
+\item {\it Static Parameters}.  Static parameters are not changed during the printing
+of a given wff.  In particular their values are identical for a wff
+and their subformulas.  Of course, they may be changed from one printing
+task to another, but not within printing a particular wff.  Examples
+of such static parameters are {\tt AllScopeFlag}, {\tt Style}, {\tt KsetsAvailable},
+{\tt PrintAtomnames}, etc.  One other characteristic of static parameters
+is that one frequently would like to (and sometimes does) expand the
+number of static parameters.
+
+\item {\it Dynamic Parameters}.  Dynamic parameters are the ones which change from
+a wff to a subwff.  They are highly context-dependent and are often
+not explicitly available as flags, but implicitly computed.  Examples
+of such parameters are ``{\it should I print a type for this identifier?}'',
+{\tt PrintDepth}, ``{\it should I print brackets or a dot?}''.  An example
+for the last question would be that we can sometimes write
+$Q_{\greeko\greeki} . f_{\greeki\greeki} \; x_\greeki$ and sometimes
+$Q_{\greeko\greeki} [f_{\greeki\greeki} \; x_\greeki]$ depending on
+the brackets in wff containing this as a subformula.
+\end{description}
+
+One can easily see that static parameters can be handled fairly easily,
+while dynamic parameters can become a headache if we are trying to save
+information about the appearance of wffs and symbols.
+
+\subsection{A grand solution, and why it fails}
+
+A first stab at a solution could be briefly described as follows:
+
+During the printing of a wff we permanently attach relevant printing
+information like length, depth, or printing characters to each label and symbol
+in the wff.  When the label or symbol appears again somewhere else, the
+information does not have to be recomputed.
+
+We would then have to somehow code the information about the current
+static and dynamic parameters into the property of the label or symbol
+which stores this information.
+
+With the aid of a hashing function this is straightforward for the
+static parameters, since we can compute the name of the relevant property
+once and for all for the printing of a wff.  For dynamic parameters
+this is still in theory possible, but in practice unfeasible.  We would
+have to recompute (rehash) the values of the dynamic and static parameters
+for each subformula.  To see that this is very difficult, if not impossible,
+consider the following example.
+
+The simple wff $P_{\greeko\greeka\greeka} \; x_\greeka \; y_\greeka$
+may
+appear as $Pxy$, $P_{\greeko\greeka\greeka}\; x y$,
+$Px_\greeka\;y_\greeka$,
+$Pxy_\greeka$, etc., with almost endless
+possibilities for larger wffs.  All the information about which symbols should
+have types etc. would have to be coded into the property name for, say, the
+printing length of a label.
+
+This clearly demonstrates that a grand solution is infeasible.
+
+\subsection{A modest solution, and why it works}
+Everything would work out fine if we could limit the number of dynamic
+parameters.  This can be achieved very simply by restricting ourselves
+to saving information about symbols only, and not about labels in general.
+
+Of the various dynamic parameters, only one survives this cut. ``{\it Do I
+put a type on this identifier}'' is the only question that can be solved
+from the context only.  This simplification also reduces the number of
+static parameters, For example {\it AllScopeFlag} is irrelevant to the printing
+of symbols (wffs without proper subwffs).
+
+However, care must be taken when the appearance of identifiers is changed. 
+We will return to this problem later in the section about other issues.
+
+\subsection{Implementation}
+All printing requests go through the function {\tt PWFF}.  When {\tt PWFF} is
+entered all static parameters have their final value.  Inside {\tt PWFF}
+we will set two more special (global) variables: {\tt Hash-Notype} and
+{\tt Hash-Type}.
+
+{\tt Hash-Type} and {\tt Hash-Notype} will have as value of the name of the
+property, which contains the symbol's {\it pplist}.  When constructing
+the {\it pplist} for the given wff (the first pass during pretty-printing),
+it is checked whether symbols have the appropriate property.  If yes,
+the symbol itself stands for a {\it pplist}. (We are thus modifying the recursive
+definition of {\it pplist}.)  If not, the {\it pplist} will be computed and
+stored under the appropriate name on the property list of the symbol.
+In this case, too, the symbol itself will appear in the {\it pplist}.
+
+During the actual printing phase of the {\it pplist}, the necessary information
+about symbols is retrieved from the property lists of the identifiers.
+
+This presents one additional problem:  we have to preserve the
+information about the dynamic parameters in the {\it pplist} itself, so
+that the correct property can be accessed.  This could be done  in
+a very general way (but for specific problems maybe wasteful way)
+namely by including the name of the relevant property in the
+{\it pplist}.  Alternatively we may use the special circumstance that
+there are usually more identifiers without type.  We would then only
+mark those identifiers with type, while all others are assumed to be
+printed without types.
+
+The solution above requires some auxiliary data structures.  There
+should be a global variable, say {\tt static-printing-flags}, which
+contains a list of all flags affecting the printing of symbols.
+Then there must be a function {\tt hash-printing-flags} which takes
+one argument (signifying whether types are to be printed) and returns
+an identifier coding the value of the {\tt static-printing-flags} and
+the argument.
+
+\subsection{Other Issues}
+In the solution proposed above it is left open, whether the actual
+ASCII character representation of a symbol should be computed once and
+for all (for each set of static and dynamic parameters) and saved in a
+list which is part of the {\it pplist}, or simply recomputed every time
+the identifier is printed.  The first solution would require significantly
+more permanently occupied list space, the second solution would take
+more time during each printing.
+
+Notice, that the time required for the printing is not that long, since
+the identifier will have to be printed only during the actual printing
+phase, not during the virtual printing phase.  The length is already
+known through the symbols property list.  It therefore seems to be much
+better only to save the printing length of the identifier.
+
+Another issue arises, when we allow that the printing appearance of
+identifiers be changed.  Since all
+the length information attached to the identifier will be wrong, it
+is necessary to remove that information.  In order to be able to do
+this, we need to recognize the properties which stem from the printing
+algorithm sketched above. The simplest way to achieve this is to
+declare a global variable {\tt hash-properties}, which is a list
+of all the properties that have been used for printing so far.  This
+must be updated, whenever {\tt PWFF} is called.  The hope is that due to
+the limited number of static and dynamic parameters this list remains
+manageable in size.  An alternative would be to write the hashing
+function in such a way that all names produced by it start with
+a unique pattern, say {\tt *@*}.  One can then systematically
+look for properties whose name starts with {\tt *@*}.
+
+\subsection{How to save more in special cases}
+There is a straightforward generalization of this to case where we would
+like to save information about the appearance of arbitrary labels.  The most
+general solution fails, as demonstrated above, but if we restrict ourselves
+to cases where the number of dynamic parameters is limited, we can get
+somewhere.
+
+We could make a case distinction of the kind:  save and use printing
+info for labels only if {\tt PrintDepth} is {\tt 0}, {\tt PrintTypes} is {\tt NIL},
+{\tt AllScopeFlag} is {\tt NIL}.  The only remaining dynamic parameter that
+comes to mind is the bracketing information (which can take two different
+values).  This is what makes this fragment of the grand solution
+feasible.
+
+Notice that this is not just of academic interest.  ETPS in first-order
+mode satisfies all the criteria above.
+
+\section{Entering and printing formulas}
+
+\subsection{Parsing of Wffs}
+Wffs can be specified in \TPS in a variety of ways, e.g. as strings
+and with or without special characters.  Regardless how
+a wff is specified there are general rules of syntax which always apply.
+Sometimes one has to distinguish between first-order mode and higher-order
+mode with slightly different syntactic rules.  If the global variable
+\indexflag{First-Order-Mode} is {\tt T}, all parsing will be done
+in first-order mode.  Similarly, the global variable
+\indexflag{First-Order-Print-Mode} determines whether wffs are
+printed as first-order or higher-order formulas.  It is important
+to note that wffs printed in higher-order mode can only be parsed in 
+higher-order mode, and formulas  printed in first-order mode can only be
+parsed in first-order mode.
+
+\begin{itemize} %, Spacing=1.5}
+\item {\bf Operator precedence} - The parser for wffs is a standard operator
+precedence parser.  The binding priority of an infix or prefix operator
+is a simple integer and conforms with the usual conventions on how
+to restore brackets in formulas.  ``{\tt [}'' and ``{\tt ]}'' serve as 
+brackets and a period ``{\tt .}'' is to be  replaced by a left bracket
+and a matching right bracket as far right as consistent with the
+brackets already present, when brackets are restored from left to right.
+For operations of equal binding priority, association to the left is assumed.
+In order of ascending priority we have \\
+%\begin{format}
+$\equiv$ or {\tt EQUIV} (2) \\
+$\limplies$ or {\tt IMPLIES} (3) \\
+$\lor$ or {\tt OR} (4) \\
+$\land$ or {\tt AND} (5) \\
+$\lnot$ or {\tt NOT} or \verb+~+ (100) \\
+applications (like $Pxy$ or {\tt $[\lambda \; x \; x]t$}) \\
+binders ($\lambda$,$\forall$,$\exists$)
+%\end{format}
+
+\item {\bf Types} - Function types are built from single letter primitive types.  Grouping
+is indicated by parentheses ``{\tt (}'' and ``{\tt )}''.  The basic types
+are @subomicron or {\tt O} for truth values and @subiota or {\tt I} for
+individuals.  Any letter (except {\tt T}, i.e.  $_\tau$) may serve as a
+typevariable.  A pair $_{(\greeka\greekb)}$ or {\tt (AB)} is the type of
+a function from elements of type {\tt B} to type {\tt A}.
+E.g.  {\tt (O(OI))} or $_{\greeko(\greeko\greeki)}$ is the type of
+a collection of sets of individuals.  Association to the left is
+assumed, so {\tt (OAAA)} or $_{\greeko\greeka\greeka\greeka}$
+is the type of a
+three place predicate on variables of type {\tt (A)}.
+
+\item {\bf Identifiers in higher-order mode} - In higher-order mode identifiers
+may consists of any string of ASCII and special characters.  Greek
+subscripts are reserved for type symbols and superscripts may only
+appear at the end of the identifier.  The following symbols terminate
+identifiers:  ``{\tt <Space> [ ] ( ) .  ~ <Return> <Tab>}''.  They may not
+appear inside an identifier.  Reserved for special purposes package are
+``{\tt :  ; ` < >}'' and should therefore not be used.  Also with special characters
+ $\forall$, $\exists$, and $\lambda$ are also single character identifiers.
+In strings, superscripted numbers are preceded by ``{\tt \verb+~+ }''.
+
+\item {\bf Identifiers in first-order mode} - In first-order mode all identifiers
+consist of a single letter.  Upper and lower case letters denote 
+distinct identifiers.  In addition there is a set of keywords,
+currently {\tt AND, OR, IMPLIES, NOT, FORALL, EXISTS, LAMBDA, EQUIV},
+which are multi-letter identifiers and are always converted to all
+uppercase.  They have to be delimited by one of the terminating
+characters listed above, while all other identifiers may be typed without
+spaces in between.
+
+\item {\bf Type inference} - \TPS implements a version of Milner's algorithm
+to infer the most general type of a wff with no or incomplete
+type information.  Internally every identifier in a wff is typed.
+Only the first occurrence
+of an identifier will be typed in printing, unless the same identifier occurs
+with different types in the same wff.
+\end{itemize}
+
+\section{Printing Vertical Paths}\index{Vertical Paths} % @tag(vpf)
+
+There are a number of operations available in the editor and mate top levels
+for printing vertical path diagrams. Also,
+the following wff operation is available for printing vertical diagrams
+of jforms:
+
+\begin{itemize}
+\item \indexother{VPFORM JFORM \{FILE\} \{STYLE\} \{PRINTTYPES\} \{BRIEF\} \{VPFPAGE\}}
+\end{itemize}
+
+The default values are:
+\begin{itemize}
+\item {\tt File} defaults to {\tt TTY:}, the terminal.
+
+\item {\tt Style} defaults to the value of the flag \indexflag{STYLE}.
+
+\item {\tt PrintTypes} defaults to the value of the flag \indexflag{PRINTTYPES}.
+
+\item {\tt Brief} has three possible settings: {\tt T} means that only the names of logical atoms will be printed, 
+	and not their values, {\tt NIL} means that under each atom its value will appear, and
+\item {\tt L} means that just the atomnames will be printed in the diagram
+	but a legend which contains every atom with its value will be 
+	appended to the first page of output.
+
+\item \indexparameter{VpfPage} is the number of characters which fit on one line.
+
+\item \indexparameter{AndHeight} is an optional global variable
+	which is equal to the number of
+	blank lines to be left for a conjunction. It defaults
+	to 1. 
+
+\item \indexparameter{ForallIndent} is another optional global variable, containing the number
+	of columns the quantifier is set off its scope. The default is 1.
+
+\end{itemize}
+
+{\tt BRIEF} can assume the values	{\tt T} for printing the diagram in brief 
+format,	{\tt L} for a  brief diagram, but with a legend (atomnames with their
+associated values) at the end of the first page, {\tt LT} for a legend with
+type symbols forced to print and {\tt NIL} which gives the the full diagram.
+
+Both of these functions will prompt you for a comment after a few statistics
+about the diagram are given. The comment will
+be spread across the top lines of the diagram with carriage returns placed
+where you type them. 
+
+\section{Global Parameters and Flags} \label{printflag}% @tag(printflag)
+
+The following Lisp identifiers are either flags or values used by the
+functions which read or write formulas.
+
+\begin{description}
+\item [\indexparameter{CFontTable}] 
+This is a two dimensional array which is used to translate between
+special characters on the Concept screen and their internal name.  For
+example, {\tt (CFontTable 1 91)} is {\tt AND}.
+
+\item [\indexflag{FIRST-ORDER-PRINT-MODE}] 
+If {\tt T} wffs will be printed in first-order mode, otherwise in higher-order
+mode.
+
+\item [\indexflag{FIRST-ORDER-MODE-PARSE}] 
+If {\tt T}, wffs will be parsed in first-order mode, otherwise higher-order
+parsing mode is in effect.  See the section on parsing for a more
+detailed explanation.
+
+\item [\indexflag{LOWERCASERAISE}] 
+If this identifier is set to {\tt T} then lower case letters will be converted
+to their upper case equivalents.  This conversion is done when the formula
+is first parsed.  The default value is {\tt NIL}.
+
+\item [\indexparameter{PC}] 
+A variable used by the formula printing functions.  It stores the previous
+character printed.  It is used to help determine spacing within the
+formula.  Set to {\tt NIL} in \indexfile{prt.lisp}.  Not important to the user.
+
+\item [\indexflag{PRINTDEPTH}] 
+When a formula is printed, subformulas at a depth of more that
+{\tt PrintDepth} are not printed, but replaced by a "{\tt \&}".
+In the formula editor, it is
+set to \indexflag{EDPRINTDEPTH}.  A {\tt PRINTDEPTH} of {\tt 0} means that the formula
+will be printed up to arbitrary depth.
+
+\item [\indexflag{PRINTTYPES}] 
+If this is set to {\tt T}, type symbols will be printed at least once
+on all primitive symbols.  Otherwise, no types are printed.  This
+defaults to {\tt T}, and can be toggled with the command \indexcommand{shownotypes}.
+
+\item [\indexparameter{SailCharacters}] 
+This is a list of pairs, {\tt (SYMBOL . NUM)}.  Here {\tt NUM} is the position
+in the {\tt SAIL} character set for {\tt SYMBOL}.
+\end{description}
+
+The following flags are used to control the way formulas are printed.  Usually
+the default setting of all these flags will be adequate.  For more information
+see the section on pretty-printing in the \TPS user manual.
+
+\begin{description}
+\item [\indexflag{PPWFFLAG}] if {\tt T}, formulas will be pretty-printed.  This is
+the default setting, except in the editor, where you can achieve pretty-printing
+with the @Ited(PP) command.
+
+\item [\indexflag{FLUSHLEFTFLAG}] 
+If {\tt T}, no line of a pretty-printed formula will be indented.  The default
+is {\tt NIL}
+
+\item [\indexflag{FILLINEFLAG}] 
+If {\tt NIL}, every argument of an associative infix operator will have a
+separate line.  The default in {\tt NIL}.
+
+\item [\indexflag{LOCALLEFTFLAG}] 
+If {\tt T}, arguments of infix operators start in the same column as
+the operator.  The default is {\tt NIL}.
+
+\item [\indexflag{ATOMVALFLAG}] 
+If {\tt T}, the name of every atom will be printed below its value.
+
+\item [\indexflag{ALLSCOPEFLAG}] 
+If {\tt T}, all punctuations (``{\tt []}'', ``{\tt .}'') will appear in the formulas
+to be printed.  No association to the left or precedence of logical
+connectives will be assumed.
+\end{description}

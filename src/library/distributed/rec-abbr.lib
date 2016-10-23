@@ -1,0 +1,45 @@
+(:name NAT2
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA n(H) FORALL p(OH).p(OH) O(H) AND FORALL x(H) [p(OH) x(H) IMPLIES p(OH).S(HH) x(H)] IMPLIES p(OH) n(H)"
+:needed-objects   NIL
+:mhelp "Set of natural numbers if the 
+free variables O and S represent zero and successor"
+:other-attributes ((FACE N) (TYPELIST ("H")) (TYPE "OH"))
+:other-remarks "
+")
+
+
+(:name REC1
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA S(HH) LAMBDA O(H) LAMBDA h(AAH) LAMBDA g(A) LAMBDA n(H) THAT m(A) FORALL w(OAH).w(OAH) O(H) g(A) AND FORALL x(H) FORALL y(A) [w(OAH) x(H) y(A) IMPLIES w(OAH) [S(HH) x(H)].h(AAH) x(H) y(A)] IMPLIES w(OAH) n(H) m(A)"
+:needed-objects   NIL
+:mhelp "General recursion operator; successor 
+and zero are made explicit arguments."
+:other-attributes ((TYPELIST ("A" "H")) (TYPE "AHA(AAH)H(HH)"))
+:other-remarks "
+")
+
+
+(:name REC2
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA h(AAH) LAMBDA g(A) LAMBDA n(H) THAT m(A) FORALL w(OAH).w(OAH) O(H) g(A) AND FORALL x(H) FORALL y(A) [w(OAH) x(H) y(A) IMPLIES w(OAH) [S(HH) x(H)].h(AAH) x(H) y(A)] IMPLIES w(OAH) n(H) m(A)"
+:needed-objects   NIL
+:mhelp "Recursion operator; contains
+S and O as free variables; see REC1."
+:other-attributes ((FACE R) (PRINTNOTYPE T) (TYPELIST ("A" "H")) (TYPE "AHA(AAH)"))
+:other-remarks "
+")
+
+

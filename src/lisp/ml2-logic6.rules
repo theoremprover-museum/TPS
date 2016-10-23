@@ -1,0 +1,37 @@
+;;; ******************************************************************* ;;;
+;;;         (c) Copyrighted 1988 by Carnegie Mellon University.         ;;;
+;;;                        All rights reserved.                         ;;;
+;;;         This code was written as part of the TPS project.           ;;;
+;;;   If you want to use this code or any part of TPS, please contact   ;;;
+;;;               Peter B. Andrews (Andrews@CS.CMU.EDU)                 ;;;
+;;; ******************************************************************* ;;;
+
+;; not used in the current incarnation of math-logic-2 ; MB 2/94
+
+(defirule edef-partic
+  (lines (d1 (h) () "A")
+	 (d2 (h) () "`(INST-PARTIC-DEFN b(A) A(O))" ("Defn" () (d1))))
+  (restrictions (contains-partic-defn "b(A)" "A(O)"))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Line with Definition")
+	     (d2 "Line with Instantiated Definition")
+	     ("b(A)" "Defined Symbol")
+	     ("A(O)" "Wff with Definition")
+	     (INST-PARTIC-DEFN "Wff After Instantiating Definition"))
+  (mhelp "Rule to eliminate first definition, left to right."))
+
+(defirule idef-partic
+  (lines (p1 (h) () "`(INST-PARTIC-DEFN b(A) A(O))")
+	 (p2 (h) () "A" ("Defn" () (p1))))
+  (restrictions (contains-partic-defn "b(A)" "A(O)"))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (itemshelp (p2 "Line with Definition")
+	     (p1 "Line with Instantiated Definition")
+	     ("b(A)" "Defined Symbol")
+	     ("A(O)" "Wff with Definition")
+	     (INST-PARTIC-DEFN "Wff After Instantiating Definition"))
+  (mhelp "Rule to introduce a definition."))
+
+
+
+

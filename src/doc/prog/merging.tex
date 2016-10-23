@@ -1,0 +1,1390 @@
+\chapter{Merging}
+
+Once a complete mating is found, we enter a merging process.  
+The merging process performs the following steps, some of which are described
+in more detail in separate sections.
+
+Note: merging still contains bugs, although not very many. If a correct mating
+is merged and produces a translation error, or a message of the form "The formula is not provable
+as there's no connection on the following path: <path>", then it's likely that a bug in merging is
+the culprit. Within merging, the routines for REMOVE-LEIBNIZ, CLEANUP-ETREE, and PRETTIFY are the most likely 
+causes of problems. The first only applies for formulae with equality, and can be checked by
+trying again with the flag REMOVE-LEIBNIZ set to NIL. For the other two, you need to use \indexother{merge-debug}; 
+type {\tt setq auto::merge-debug t} before calling merging, and you can step 
+through the process, inspecting the etree at each step and omitting the optional steps. 
+This can be a great help in discovering which part of the merging process is causing the bug.
+
+{\bf Note:} In November, 2000, merging was changed to handle the case when a mating
+contains nonleaf nodes.  The changes were to REMOVE-LEIBNIZ and RAISE-LAMBDA-NODES.
+Also, the final phase was separated into a cleanup phase and a prettify phase.
+The prettify code was for the most part rewritten.
+In the process of making these changes, this section of the Programmer's Guide
+was extended to reflect the current state of merging.  
+
+\begin{itemize}
+%\item The function \indexfunction{set-all-parents} ensures that the parent
+%slot of each etree node is really the parent node.
+\item The expansion tree is processed by the function
+\indexfunction{etr-merge} (see section~\ref{etr-merge}) which applies the substitutions for
+expansion variables in the expansion tree and merges duplicate expansion nodes.
+It returns both the new etree and an alist of nodes corresponding to the
+mating.  This is the part that actually corresponds to
+the ``merging'' algorithm (Algorithm 84) in Frank Pfenning's thesis\cite{Pfenning86}.
+
+\item Duplicate connections and
+connections between nodes that do not occur in the tree
+are deleted from the mating
+(actually, connection list, in the
+local variable \verb+new-conn-list+).
+
+\item If dual instantiation\cite{Bishop98} is used, \indexfunction{modify-dual-rewrites}
+is called (see section~\ref{modify-dual-rewrites}).
+Then, connections between nodes no longer in the tree are
+removed from the mating.
+
+\item \indexfunction{prune-unmated-branches} is called.
+If \indexflag{MERGE-MINIMIZE-MATING} is set to T,
+this function removes children of expansion nodes
+which are not needed to have a complete mating.
+The function also calls \indexfunction{replace-non-leaf-leaves} on the etree,
+which replaces empty expansion nodes with leaves.  (Note: \indexfunction{leaf-p*}
+returns T on any node that has no kids, except true and false nodes.)
+See section~\ref{prune-unmated-branches}.
+
+\item If the skolem method (determined by \indexflag{SKOLEM-DEFAULT}) used
+is not NIL, then
+\indexfunction{subst-skol-terms} is called. 
+This replaces terms such as $X M N$ with skolem-terms $SK$
+whenever there is a skolem-term $SK$ with \verb+TERM+
+slot $X M N$.
+See section~\ref{subst-skol-terms}.
+
+\item If the top of the tree is a conjunction whose
+first child is an $ADD-TRUTH$-rewrite, then delete the conjunction
+leaving only the second child as the expansion tree.
+(See \indexflag{TRUTHVALUES-HACK} and \indexflag{ADD-TRUTH}.)
+
+\item If \indexflag{REMOVE-LEIBNIZ} is set to T,
+then $Leibniz=$-rewrite nodes are removed.  This is a somewhat
+complicated process based on an algorithm described in Frank Pfenning's
+thesis\cite{Pfenning86}.  See section~\ref{remove-leibniz}.
+
+\item \indexfunction{subst-vars-for-params} is called.
+This replaces skolem-terms with the variable bound
+by the corresponding quantifier, if this is possible.
+If this is not possible, then we replace the skolem-term
+with the value of its \verb+PARAMETER+ slot.
+
+\item $\lambda$-rewrite nodes are raised over any propositional connectives
+and skolem/selection nodes.  This lifting stops at expansion nodes
+and rewrite nodes other than equiv-implics, equiv-disjs and lambda.
+This also moves connections to lambda nodes, with the result that
+no connection in the mating involves a $\lambda$-rewrite node after
+this step is performed.  See section~\ref{raise-lambda-nodes}.
+
+\item The etree is converted to a propositional jform (including any
+nonleaf nodes in the mating) and the current set of connections
+is used to set \indexother{active-mating}.
+
+\item The etree is cleaned up by calling \indexfunction{cleanup-etree}.  This $\lambda$-normalizes
+expansion terms, may remove some $\lambda$-rewrite nodes, and may modify $Subst=$-rewrite nodes.
+See section~\ref{cleanup-etree}
+
+\item The etree is prettified by calling \indexfunction{prettify-etree}.  See section~\ref{prettify}.
+This renames bound variables and free variables in the etree that do not occur in the original wff.
+We must be careful to avoid variable capture when doing this renaming.  (There were bugs with the old code
+because of variable capturing.)
+
+\end{itemize}
+
+\section{Applying Substitutions and Merging Duplicate Expansions}\label{etr-merge}
+
+The functions \indexfunction{etr-merge} and \indexfunction{merge-all}
+are in the file {\it\indexfile{mating-merge.lisp}}.  These functions are used
+to preprocess the expansion tree in order to make the rest of merging
+more efficient.  For a discussion of why this preprocessing is done
+first, see section~\ref{unneeded-node-p}.
+
+The function \indexfunction{etr-merge}
+calls \indexfunction{make-mating-lists} to create the alist of
+mated nodes and the substitution for expansion variables corresponding to the mating.
+Then the function \indexfunction{prune-status-0} deletes children of expansion nodes
+which have status zero.  The function \indexfunction{substitute-in-etree}
+is used to apply the substitution to the etree (this puts the appropriate terms
+into the SUBST slot of the expansion variables).
+Then the functions \indexfunction{strip-exp-vars-for-etree}
+and \indexfunction{strip-exp-vars} are used to replace all expansion variables by
+their SUBST slot.
+Finally, \indexfunction{merge-all} is called.
+
+The function \indexfunction{merge-all} takes an expansion tree and a mating, and descends into the tree.
+At each expansion node, if two expansion terms are identical, their
+corresponding trees are merged.  The resulting tree replaces the two
+original ones, and the substitution returned is applied to the terms
+and trees. The resulting tree and mating are returned.
+
+The actual merging of two children of expansion nodes
+is carried out by \indexfunction{treemerge}.
+The algorithm is described as Algorithm 84 in Frank Pfenning's thesis\cite{Pfenning86}.
+The algorithm also must build a substitution replacing some selected variables
+with other selected variables and apply this to the tree.
+The function returns three values: the new etree,
+the substitution \verb+merge-theta+ for selected variables,
+and the new mating.
+
+\section{Detecting Unneeded Nodes}\label{unneeded-node-p}
+
+The function \indexfunction{unneeded-node-p} is used
+both by \indexfunction{modify-dual-rewrites}
+and \indexfunction{prune-unmated-branches}.  It is defined
+in the file {\it\indexfile{mating-merge.lisp}}.
+The purpose of \indexfunction{unneeded-node-p} is to
+determine if a node is needed to have a complete mating.
+If the node has zero status, then
+it is not needed.  If the flag \indexflag{MERGE-MINIMIZE-MATING}
+is set to NIL, then we insist that it is needed.
+Otherwise, we temporarily set the status to zero (essentially
+removing the node from the tree),
+and use \indexfunction{SPANS} to check if the mating still spans all paths.
+
+% The rest of this section is essentially taken from the old Merging documentation
+% in the Programmer's Guide
+The function \indexfunction{SPANS} calls
+\indexfunction{SPANNING-CLIST-PATH}, which calls \indexfunction{FIND-CHEAPEST-CLIST-SPANNING-PATH}, which
+\indexfunction{FIND-ALT-CHEAPEST-CLIST-SPANNING-PATH}.   Note that even in x5207, which is
+relatively small, 12 calls to \indexfunction{UNNEEDED-NODE-P} result in 295 calls to
+\indexfunction{FIND-CHEAPEST-CLIST-SPANNING-PATH}; these functions are the main reason why 
+merging can be so slow, especially in proofs created 
+by MS90-3 or MS90-9.
+
+You could possibly (as was done at one time) not test this spanning 
+condition, and just check to see if every expansion actually has a connection 
+below it.  The problem here is that in ms90-3, by the time we get to the merging
+process, we have mated every possible pair in the tree, whether the connection
+is necessary or not.  That is why unneeded-node-p was modified to be more 
+rigorous, because otherwise it was almost useless.  Additionally, there may be
+embedded falsehood nodes below it, which are required to close some paths,
+even if there are no mated nodes below it. 
+
+A better spanning function should be used, though actually the one used
+is already propositional, but of an earlier generation than Sunil's
+propositional search function.  One should
+realize, however, that the procedure should use the mating provided (and not 
+the eager "mate-everything", because our mating might {\it not} be that big).  
+In fact, Dan wrote such a \indexfunction{SPANS} that uses a variant of \indexfunction{PROP-MSEARCH},
+and the time used in X5207 by \indexfunction{SPANS} went from 1 second to about .3 sec. 
+Unfortunately, \indexfunction{PROP-MSEARCH} (or rather, \indexfunction{PROP-FIND-CHEAPEST-PATH}) appears to 
+have the "empty disjunction causes confusion" bug.  (Try MS90-3 on
+the formula "falsehood implies A"). 
+
+More drastic changes were tougher to implement. There were a few suggestions:
+\begin{itemize}
+\item What this is doing is a lot of duplicated effort, so perhaps it would be possible to cache some results.
+This would be pretty space-intensive; e.g. THM131 has an astronomical number of vpaths
+when it begins merging. It turned out that attempts to make SPANS better by caching the results were pretty silly, 
+because the way it is invoked, you can't tell the difference between
+sets of arguments.  The differences are made by changing the status of
+various lower-level expansion nodes.  So that attempt was abandoned.
+
+\item Perhaps it would be possible to check the paths which the suspect node was on.
+It's not clear how to do this.
+
+\item Of course, it might be possible to avoid some of the calls to spans
+in the first place (though possibly not with MS90-3), but even eliminating 
+half would only save 3 days in the wolf-goat-cabbage problem, without changing what it does. 
+\end{itemize}
+
+In the end, the solution used was as follows: when path-focused duplication has been
+used, the expansion proof will often have a great deal of redundancy
+in the sense that the same expansion term will be used for a given variable
+many times. More precisely, if one defines an expansion branch by
+looking at sequences of nested expansion nodes, attaching one expansion
+term to each expansion node in the sequence, there will be many identical
+expansion branches. So one can start by merging the tree in the
+sense of eliminating this redundancy (see section~\ref{etr-merge}), and then apply to this much simpler
+tree the procedure for deleting unnecessary expansion terms which
+we think is using so much time. It turned out to be easiest to do this
+by throwing away the mating, and reconstructing it by propositional search
+after the tree has been cut down to size. Of course, one could also
+preserve the original mating by "merging" it appropriately as one collapsed
+the tree.
+
+The precise way in which this was done, in the file {\it\indexfile{mating-merge.lisp}}, was:
+\begin{enumerate}
+\item Don't do pruning of unnecessary nodes at the beginning of the merge,
+when the tree is its greatest size. 
+
+\item Instead, {\it do} prune all branches that couldn't possibly have been used 
+They are those that have a zero status. This is probably not necessary,
+but certainly makes debugging easier and doesn't cost much.  (See section~\ref{etr-merge}.)
+
+\item After merging of identical expansions has been done, call the original
+pruning function, \indexfunction{prune-unmated-branches} (see Section~\ref{prune-unmated-branches}).
+\end{enumerate}
+
+Note that the merge process does (or should, anyway) merge the mating 
+appropriately as the tree collapses.
+On THM131 this takes the time spent on merging from 7 days down to 12 minutes.
+This is not so surprising, because it begins with 113 million paths, and after
+the merging of duplicate expansions, it's down to around 442 thousand. 
+
+The matingstree top level has its own approach to merging, which is essentially
+step (2) above, in which all unused 
+expansions are simply thrown away, followed by a regular merge as detailed above. 
+Putting step (2) first here 
+is necessary because the master expansion tree has many nodes which are irrelevant to any particular proof.
+
+\section{Modify-Dual-Rewrites}\label{modify-dual-rewrites}
+
+The functions for MODIFY-DUAL-REWRITES are in
+the file {\it\indexfile{mating-merge.lisp}}.  This is
+only called when dual instantiation is used.
+The main function, \indexfunction{modify-dual-rewrites},
+is described in this section.
+First, this function uses the global variable
+\indexother{*hacked-rewrites-list*}.  The value
+of the global is a list of elements of the form
+\begin{verbatim}
+(<rewrite node> . 
+    (<instantiated wff-or-symbol> . 
+                  <leaf with uninstantiated form>))
+\end{verbatim}
+This list is sorted so that the names of the rewrites are increasing.
+The main body is a dolist considering each element of \verb+*hacked-rewrites-list*+.
+For each subtree of the form
+$$\erew{1}{Equivwffs}{A^-}{\erewstar{}{A\,\lor\, A_1^-}{\edisj{1}{C \, \land \, D^-}{\erewstar{}{C^-}{\eleaf{1}{C_1^-}}}{node^-}}}$$
+or 
+$$\erew{1}{Equivwffs}{A^+}{\erewstar{}{A\,\land\, A_1^+}{\econj{1}{C \, \land \, D^+}{\erewstar{}{C^+}{\eleaf{1}{C_1^+}}}{node^+}}}$$
+is converted to either only use one branch or a slightly modified
+tree with an explicit dual rewrite (separate from expanding the definition).
+
+The local variables in the loop are
+\begin{itemize}
+\item \verb+junct+  $DISJ1$ or $CONJ1$
+\item \verb+gsym+  A symbol standing in for the uninstantiated formula $A$.
+\end{itemize}
+
+First, we check to make sure the rewrite node $REW1$ is a rewrite
+still in the etree.
+Assuming it is in the tree, we consider several cases
+\begin{enumerate}
+\item  If the left child of \verb+junct+ is not needed in
+the mating, then the uninstantiated definition is not needed.
+We replace the \verb+junct+ node with its second child and
+call \indexfunction{fix-shallow-chain} to change the shallow formulas
+of the rewrites between $REW1$ and \verb+junct+ to be the second conjunct.
+\item  If the right child of \verb+junct+ (\verb+realrew+) is not needed in
+the mating, then the instantiated definition is not needed.
+We replace the \verb+junct+ node with its first child and
+call \indexfunction{fix-shallow-chain} to change the shallow formulas
+of the rewrites between $REW1$ and \verb+junct+ to be the first conjunct,
+replacing \verb+gsym+ by $A$ when necessary.
+\item  Otherwise, both are needed.  In this case, we change the tree to have
+a form like
+$$\erew{0}{Dual}{A^-}{\erew{1}{Equivwffs}{A\,\lor\, A^-}{\erewstar{}{A\,\lor\, A_1^-}{\edisj{1}{C \, \land \, D^-}{\erewstar{}{C^-}{\eleaf{1}{C_1^-}}}{node^-}}}}$$
+This makes the dual rewrites easier to recognize and handle in the cleanup code.
+\end{enumerate}
+
+% This is the way Matt handled dual rewrites in merging.
+% I've replaced it with modify-dual-rewrites described above. - cebrown 9/8/01
+% \section{Prune-Unmated-Rewrites}\label{prune-unmated-rewrites}
+% 
+% The functions for PRUNE-UNMATED-REWRITES are in
+% the file {\it\indexfile{mating-merge.lisp}}.  This is
+% only called when dual instantiation is used.
+% The main function, \indexfunction{prune-unmated-rewrites},
+% is described in this section.
+% First, this function uses the global variable
+% \indexother{*hacked-rewrites-list*}.  The value
+% of the global is a list of elements of the form
+% \begin{verbatim}
+% (<rewrite node> . 
+%     (<instantiated wff-or-symbol> . 
+%                   <leaf with uninstantiated form>))
+% \end{verbatim}
+% This list is sorted so that the names of the rewrites are increasing.
+% The main body is a do loop considering each element of \verb+*hacked-rewrites-list*+.
+% The algorithm appears to be designed for a general case where dual instantiation subtrees have the form
+% $$\erew{1}{Equivwffs}{A^-}{\erewstar{}{A\,\lor\, A_1^-}{\edisj{1}{C \, \land \, D^-}{\erewstar{}{C^-}{\eleaf{1}{C_1^-}}}{node^-}}}$$
+% or 
+% $$\erew{1}{Equivwffs}{A^+}{\erewstar{}{A\,\land\, A_1^+}{\econj{1}{C \, \land \, D^+}{\erewstar{}{C^+}{\eleaf{1}{C_1^+}}}{node^+}}}$$
+% However, in most cases (every case?) we will have a tree of the form
+% $$\erew{1}{Equivwffs}{A^-}{\edisj{1}{A\,\lor\, A_1^-}{\eleaf{1}{A^-}}{node^-}}$$
+% or
+% $$\erew{1}{Equivwffs}{A^+}{\econj{1}{A\,\land\, A_1^+}{\eleaf{1}{A^+}}{node^+}}$$
+% (in particular, the local variable \verb+chain+ will have value NIL).
+% In some cases we can replace such a node with a tree of the form
+% $$\erew{1}{Equivwffs}{A}{\erewstar{}{A_1}{node}}$$
+% or simply the leaf
+% $$\eleaf{1}{A}$$
+% (There are notes below about possible bugs if we encounter the general case.)
+% 
+% The do loop includes local variables described below.
+% \begin{itemize}
+% \item \verb+junct+  $DISJ1$ or $CONJ1$
+% \item \verb+mated-nodes+  A list of names of nodes that occur in the mating.
+% \item \verb+chain+  A boolean flag which is set to T
+% when there is a nonempty chain of rewrites between \verb+junct+
+% and $REW1$ (usually there is no chain).
+% \end{itemize}
+% First, we check to make sure the rewrite node $REW1$ is still in the etree
+% (as it may have been deleted by an earlier pass of the loop -- sorting
+% should guarantee that we process ancestors of rewrite nodes before descendants).
+% Assuming it is in the tree, we consider several cases
+% \begin{enumerate}
+% \item  If the right child of \verb+junct+ (\verb+realrew+) contains no
+% mated nodes, then the instantiated definition (``real rewrite'') is not used.  So,
+% we remove this entry from \verb+*hacked-rewrites-list*+ and
+% we replace $REW1$ with $LEAF1$.  {\bf Possible Bug:} This assumes
+% $LEAF1$ and $REW1$ have the same shallow formula, which may always
+% be true.  However, the code is designed to handle chains of rewrites,
+% so Matt must have conceived of a case when there are such rewrites.
+% With such rewrites, it is not clear $LEAF1$ and $REW1$ have the same
+% shallow formula.
+% \item  If there are connections involving nodes below the right child
+% of \verb+junct+, consider the mating with such connections deleted
+% (\verb+newclist+).  If this is a complete mating, then the instantiated
+% definition (``real rewrite'') is not needed.  So,
+% we remove this entry from \verb+*hacked-rewrites-list*+ and
+% we replace $REW1$ with $LEAF1$.  {\bf Possible Bug Again:} This case also assumes
+% $REW1$ and $LEAF1$ have the same shallow formula.
+% \item  Assuming the instantiated definition is needed,
+% check if $LEAF1$ occurs in the mating or if it is not needed
+% (as judged by the function \indexfunction{unneeded-node-p}, see section~\ref{unneeded-node-p}).
+% \begin{enumerate}
+% \item If there are no abbreviations in the shallow formula of $REW1$,
+% then this must be an equality rewrite.  We remove this entry from
+% \verb+*hacked-rewrites-list*+ and replace $REW1$
+% with the right child of \verb+junct+.  ({\bf Probable Bug:}  There doesn't seem 
+% to be any reason why $REW1$ would have the same shallow formula as the right child
+% of \verb+junct+.  Probably the intention was to replace \verb+junct+
+% with its right child as in the next case.)
+% \item Otherwise, we assume it is a definition instantiation (other than equality).
+% ({\bf Possible Bug:}  One could imagine a case in which equality is expanded, but
+% there are still abbreviations.)  We remove this entry from 
+% \verb+*hacked-rewrites-list*+ and replace \verb+junct+ with its right child.
+% (If \verb+chain+ is T, then \indexfunction{fix-shallow-chain} replaces the
+% shallow formula of each such rewrite with the right side of the conjunction or disjunction, i.e.,
+% the half of the shallow formulas corresponding only to the instantiated part.)
+% \end{enumerate}
+% \item  Otherwise, both sides are needed, so we do nothing.
+% \end{enumerate}
+% 
+% Just before returning, \indexfunction{prune-unmated-rewrites} calls
+% \indexfunction{replace-non-leaf-leaves} to replace TRUE nodes and
+% FALSE nodes with leaves.
+
+\section{Prune-Unmated-Branches}\label{prune-unmated-branches}
+
+The purpose of the function \indexfunction{prune-unmated-branches}
+in the file {\it\indexfile{mating-merge.lisp}} is to delete some children of expansion
+nodes by checking
+if it is really needed in the proof.  Each node is checked using \indexfunction{unneeded-node-p}
+(see section~\ref{unneeded-node-p}).
+
+Before returning, this function calls \indexfunction{replace-non-leaf-leaves} on the etree,
+which replaces all empty expansion nodes with leaves.  (Note: \indexfunction{leaf-p*}
+returns T on any node that has no children, except true and false nodes.)
+
+\section{Subst-Skol-Terms}\label{subst-skol-terms}
+
+The function \indexfunction{subst-skol-terms}
+in the file {\it\indexfile{mating-merge.lisp}}
+is used to replace terms in the etree which
+correspond to skolem terms by the skolem-term itself.
+For example, the etree might contain a skolem-term $SK$
+with slots
+\begin{itemize}
+\item \verb+PARAMETER+ : for example, $X_{\greeko\greekb}$
+\item \verb+TERM+ : for example, $X^2_{\greeko\greekb\greeka\greeka} M N$
+\end{itemize}
+The shallow formulas and expansion terms in the etree
+might contain subterms of the form
+$X^2_{\greeko\greekb\greeka\greeka} M N$
+(up to $\lambda$-conversion).  These are replaced
+by the skolem-term $SK$.
+
+The function \indexfunction{subst-skol-terms-main}
+actually does the work.
+It takes an argument \verb+skol-terms+, which is
+an list of pairs \verb+(<term> . <skolem-term>)+
+where each \verb+<skolem-term>+ is the skolem term for
+a skolem node, and the \verb+<term>+ is the gwff
+in the \verb+TERM+ slot of the \verb+<skolem-term>+.
+The function traverses each term doing the (destructive)
+replacement
+in the shallow formula and/or expansion terms.
+
+\section{Remove-Leibniz}\label{remove-leibniz}
+
+The functions for REMOVE-LEIBNIZ are in the {\it
+\indexfile{mating-merge-eq.lisp}}.  The functions
+described here are
+\begin{itemize}
+\item \indexfunction{remove-leibniz-nodes}
+\item \indexfunction{pre-process-nonleaf-leibniz-connections}
+\item \indexfunction{remove-leibniz}
+\item \indexfunction{cleanup-leibniz-expansions}
+\item \indexfunction{remove-spurious-connections}
+\item \indexfunction{check-shallow-formulas}
+\item \indexfunction{apply-thm-146}
+\end{itemize}
+
+\begin{enumerate}
+\item {\bf\indexfunction{remove-leibniz-nodes}}  This is the main function.
+It collects negative and positive $Leibniz=$-rewrite nodes.
+The connection list is pre-processed (by \indexfunction{pre-process-nonleaf-leibniz-connections})
+so that any mates to nonleaf nodes
+strictly below a negative $Leibniz=$-rewrite is replaced by mating the leaves
+below the node.  Next, the function \indexfunction{remove-leibniz} is called
+on each negative $Leibniz=$-rewrite node, possibly changing the connection list.
+This has the result of changing negative subtrees of the form
+$$\erew{1}{Leibniz=}{A = B^-}{\sel{1}{\forall q \, .\, q\, A\, \limplies\, q\, B^-}
+{q_0}{\eimp{1}{q_0\, A\, \limplies \, q_0\, B^-}
+{\erewstar{\lambda/Equivwffs}{q_0\, A^+}{\eleaf{1}{q_0\, A_0^+}}}
+{\erewstar{\lambda/Equivwffs}{q_0\, B^-}{\eleaf{2}{q_0\, B_0^-}}}}}$$
+by trees of the form
+$$\erewstar{\lambda}{A = B^-}{\erewstar{Equivwffs}{A_1 = B_1^-}{\erew{1}{Refl=}{C = C^-}{\truenode{1^-}}}}$$
+or simply a leaf
+$$\eleaf{2}{A = B^-}$$
+
+{\bf Remark:}  The notation $\erewstar{}{C}{\cdots}$ indicates a chain of
+rewrites starting with shallow formula $C$.  This chain may be empty,
+a single node, or several nodes.
+
+In such cases, connections to $LEAF1^+$ are deleted from the connection list.
+The function \indexfunction{deepen-negated-leaves} is called, but this
+(apparently) has no effect unless \indexfunction{make-left-side-refl}
+returns NIL (and it currently always returns T).
+
+Finally, \indexfunction{cleanup-leibniz-expansions} is called in order to
+change positive $Leibniz=$-rewrites to $Subst=$-rewrites, destructively changing
+a positive subtree of the form
+$$\erew{1}{Leibniz=}{A = B^+}{\erewstar{}{\forall q\, . \, q\, A \, \limplies\, q\, B^+}
+{\gexpnode{1}{\forall q\, . \, q\, A_1 \, \limplies\, q\, B_1^+}
+{Q_1}{\erewstar{\lambda}{Q_1\, A_1 \, \limplies\, Q_1\, B_1^+}
+{\eimp{1}{C_1\, \limplies \, D_1^+}{\cdots}{\cdots}}}
+{Q_n}{\cdots}}}$$
+to a subtree of the form
+$$\erewstar{}{A = B^+}{\erew{1}{Subst=}{A_1 = B_1^+}
+{\gexpnode{1}{\forall q\, . \, q\, A_1 \, \limplies\, q\, B_1^+}
+{Q_{i_1}}{\eimp{1}{Q_{i_1}\, A_1 \, \limplies\, Q_{i_1}\, B_1^+}{\erewstarnf{\lambda}{\cdots}}{\erewstarnf{\lambda}{\cdots}}}
+{Q_{i_m}}{\cdots}}}$$
+where $1 \leq i_1 \leq \cdots \leq i_m \leq n$.
+
+\item {\bf\indexfunction{pre-process-nonleaf-leibniz-connections}}   Since the
+\indexfunction{remove-leibniz} function may replace negative subtrees of the form
+$$\erew{1}{Leibniz=}{A = B^-}{\sel{1}{\forall q \, .\, q\, A\, \limplies\, q\, B^-}
+{q_0}{\eimp{1}{q_0\, A\, \limplies \, q_0\, B^-}
+{\erewstar{\lambda/Equivwffs}{q_0\, A^+}{\eleaf{1}{q_0\, A_0^+}}}
+{\erewstar{\lambda/Equivwffs}{q_0\, B^-}{\eleaf{2}{q_0\, B_0^-}}}}}$$
+with a leaf of the form
+$$\eleaf{2}{A = B^-}$$
+we must have some way of dealing with connections to nonleaf nodes such as $SEL1$
+and $IMP1$.
+This pre-processing function replaces a connection such as $(IMP1\, .\, IMP3)$
+with connections to the leaves $(LEAF1\, .\, LEAF3)\, (LEAF2\, .\, LEAF4)$
+where $IMP3$ is a positive subtree of the form
+$${\eimp{3}{q\, A\, \limplies \, q\, B^+}
+{\erewstar{\lambda/Equivwffs}{q_0\, A^-}{\eleaf{3}{q_0\, A_0^-}}}
+{\erewstar{\lambda/Equivwffs}{q_0\, B^+}{\eleaf{4}{q_0\, B_0^+}}}}$$
+
+Such connections between leaves are dealt with in the function \indexfunction{remove-leibniz}.
+
+Note that we do allow connections to the node $REW1$ to remain in the mating.
+This connection may also be modified in the function \indexfunction{remove-leibniz}.
+
+\item {\bf\indexfunction{remove-leibniz}}  This function
+basically corresponds to the proof of Theorem 138
+in Frank Pfenning's thesis\cite{Pfenning86}.  
+Also, Remark 140 in Frank Pfenning's discusses the choice
+between using the formula 
+(\verb+subwff+)
+$[\lambda x\, . \, A_0 = x]$ or $[\lambda x\, . \, \lnot x = B_0]$
+in the algorithm below.  One may lead to a more elegant proof.
+In \TPS the choice is made by a call to the function
+\indexfunction{make-left-side-refl}, which currently
+always returns T.
+
+Suppose we are given a negative subtree of the form
+$$\erew{1}{Leibniz=}{A = B^-}{\sel{1}{\forall q \, .\, q\, A\, \limplies\, q\, B^-}
+{q_0}{\eimp{1}{q_0\, A\, \limplies \, q_0\, B^-}
+{\erewstar{\lambda/Equivwffs}{q_0\, A^+}{\eleaf{1}{q_0\, A_0^+}}}
+{\erewstar{\lambda/Equivwffs}{q_0\, B^-}{\eleaf{2}{q_0\, B_0^-}}}}}$$
+(Actually, the selection node $SEL1$ might be a Skolem node, but
+this is treated the same way.)
+The local variables in the function are given the following values:
+\begin{itemize}
+\item  \verb+param-node+ $SEL1$
+\item  \verb+param+ $q_0$
+\item  \verb+imp-node+ $IMP1$
+\item  \verb+new-refl-node+ $LEAF1$ (or, $LEAF2$ if \indexfunction{make-left-side-refl} were to return NIL)
+\item  \verb+subwff+ $[\lambda x\, . \, A_0 = x]$ (or, $[\lambda x\, . \, \lnot x = B_0]$ if \indexfunction{make-left-side-refl} were to return NIL)
+\item \verb+new-non-refl-node+ $LEAF2$ (or, $LEAF1$ if \indexfunction{make-left-side-refl} were to return NIL)
+\item \verb+non-refl-branch+ the second son of $IMP1$, which is a rewrite node or $LEAF2$
+(or, the first son of $IMP1$ if \indexfunction{make-left-side-refl} were to return NIL)
+\item \verb+mated-to-refl-node+  list of nodes mated to $LEAF1$
+\end{itemize}
+We consider two cases
+\begin{enumerate}
+\item  If $LEAF1$ is connected to $LEAF2$, then $A_0$ and $B_0$
+must be identical.  Let \verb+lhs+ be $A$ and \verb+rhs+ be $B$.
+If these are identical wffs, then simply change the etree to
+be 
+$$\erew{1}{Refl=}{A = B^-}{\truenode{1^-}}$$
+Otherwise, let $A_1$ (\verb+lhs*+) be the $\lambda$-normal form of $A$
+and $B_1$ (\verb+rhs*+) be the $\lambda$-normal form of $B$.
+If these are contain no abbreviations, they should be identical, so
+we change the etree to be
+$$\erew{2}{\lambda}{A = B^-}{\erew{3}{Refl=}{A_1 = B_1}{\truenode{1^-}}}$$
+Otherwise, let $A_2$ and $B_2$ be the result of instantiating all definitions (except equiv)
+in $A_1$ and $B_1$, resp.  These should be identical, so we can change the subtree
+to be
+$$\erew{2}{\lambda}{A = B^-}{\erew{3}{Equivwffs}{A_1 = B_1^-}
+{\erew{4}{Refl=}{A_2 = B_2^-}{\truenode{1^-}}}}$$
+
+Finally, we remove all connections involving $LEAF1$, $LEAF2$, or
+$REW1$.  
+We still have a complete mating without these connections.
+First note that any path which would have passed through any of these nodes
+would have passed through all of them.  Now, the corresponding path
+in the jform for the new tree must pass through $TRUE1^-$.
+
+{\bf Possible Bug:}  The point of Theorem 138
+in Frank Pfenning's thesis\cite{Pfenning86} is to remove all Leibniz selected variables $q_0$.
+However, in this case we are not substituting for the $q_0$, so there may
+still be references to it in the tree.  It's unclear, however, if this
+causes a problem in this special case.  If it does turn out to be a bug,
+probably the fix is to substitute 
+the value of \verb+subwff+ for $q_0$.
+
+
+\item  If $LEAF1$ and $LEAF2$ are not mated, substitute the value of \verb+subwff+
+for $q_0$ in the etree.  Assume \verb+subwff+ has value $[\lambda x\, . \, A_0 = x]$ (or, $[\lambda x\, . \, \lnot x = B_0]$.
+(Note that this substitution automatically $\lambda$-normalizes and puts $\lambda$-rewrites above the leaves
+if they are needed.)  So, the subtree starting at $IMP1$ now has the form
+$$\eimp{1}{q_0\, A\, \limplies \, q_0\, B^-}
+{\erewstar{\lambda/Equivwffs}{q_0\, A^+}{\eleaf{1}{A_0 = A_0^+}}}
+{\erewstar{\lambda/Equivwffs}{q_0\, B^-}{\eleaf{2}{A_0 = B_0^-}}}$$
+If $A = B$ is the same as $A_0 = B_0$ up to $\alpha$-conversion,
+we replace $REW1$ with $LEAF2$.
+Otherwise, replace $REW1$ with a subtree of the form
+$$\erew{1}{\lambda}{A = B^-}{\eleaf{2}{A_0 = B_0^-}}$$
+or
+$$\erew{1}{Equivwffs}{A = B^-}{\eleaf{2}{A_0 = B_0^-}}$$
+Since $LEAF1$ is no longer in the tree, we must
+delete any connection $(LEAF1 \, . \, LEAF3)$.
+We replace each such $LEAF3$ with
+$$\erew{3}{Refl=}{A_0 = A_0^-}{\truenode{1^-}}$$
+and delete any connection with $LEAF3$.
+\end{enumerate}
+
+Consider the following examples, which arise in a proof
+of THM15B using mode MODE-THM15B-C.
+
+$$\erew{5}{Leibniz=}{F\, X = X^-}{\skol{5}
+{\forall q \, . \, q\, [F\, X] \, \limplies \, q\, X^-}
+{Q}
+{\eimp{7}{Q\, [F\, X]\,\limplies\, Q\, X^-}
+{\eleaf{37}{Q \, [F \, X]^+}}
+{\eleaf{38}{Q \, X^-}}}}$$
+with connections
+$$(LEAF28\, .\, LEAF109)\, (LEAF38\, .\, LEAF33)\, (LEAF37\, .\, LEAF32)$$
+$$(LEAF29\, .\, LEAF22)\, (LEAF21\, .\, LEAF108)\, (LEAF105\, .\, LEAF101)$$
+$$(LEAF104\, .\, LEAF100)\, (LEAF94\, .\, LEAF93)$$
+becomes
+$${\eleaf{38}{F\, X = X^-}}$$
+removing the connection
+$$(LEAF37\, . \, LEAF32)$$
+
+$$\erew{15}{Leibniz=}{[\lambda w \, . \, F \, . \, w \, X] \, F = [\lambda u \, . \, u\, . \, F \, X] \, F^-}
+{\skol{5}
+{\forall q \, . \, q\, [[\lambda w \, . \, F \, . \, w \, X] \, F] \limplies q\,  [[\lambda u \, . \, u\, . \, F \, X] \, F]^-}
+{Q^{18}}{\eimp{13}{Q^{18}\, [[\lambda w \, . \, F \, . \, w \, X] \, F] \limplies Q^{18}\,  [[\lambda u \, . \, u\, . \, F \, X] \, F]^-}
+{\erew{19}{\lambda}{Q^{18}\, [[\lambda w \, . \, F \, . \, w \, X] \, F]^+}{\eleaf{93}{Q^{18} \, . \, F\, . \, F\, X^+}}}
+{\erew{20}{\lambda}{Q^{18}\,  [[\lambda u \, . \, u\, . \, F \, X] \, F]^-}{\eleaf{94}{Q^{18} \, . \, F\, . \, F\, X^-}}}}}$$
+with connections
+$$(LEAF94\, .\, LEAF93)\, (LEAF38\, .\, LEAF33)\, (LEAF29\, .\, LEAF22)$$
+$$(LEAF21\, .\, LEAF108)\, (LEAF105\, .\, LEAF101)$$
+becomes
+$$\erew{38}{\lambda}{[\lambda w \, . \, F \, . \, w \, X] \, F = [\lambda u \, . \, u\, . \, F \, X] \, F^-}
+{\erew{39}{Refl=}{F\, .\, F\, X = F\, . \, F\, X^-}
+{\truenode{3^-}}}$$
+removing the connection
+$$(LEAF94\, .\, LEAF93)$$
+
+\item {\bf\indexfunction{cleanup-leibniz-expansions}}
+Start with a positive subtree (\verb+eq-rew-node+) of the form
+$$\erew{1}{Leibniz=}{A = B^+}{\erewstar{}{\forall q\, . \, q\, A \, \limplies\, q\, B^+}
+{\gexpnode{1}{\forall q\, . \, q\, A_1 \, \limplies\, q\, B_1^+}
+{Q_1}{\erewstar{\lambda}{Q_1\, A_1 \, \limplies\, Q_1\, B_1^+}
+{\eimp{1}{C_1\, \limplies \, D_1^+}{\cdots}{\cdots}}}
+{Q_n}{\cdots}}}$$
+A do loop early in the function pushes the justifications for the initial
+rewrites up one step, and changes the shallow formulas from
+$$\forall q \, . \, q \, A^\ast \, \limplies\, q\, B^\ast$$
+to be the uninstantiated equation
+$$A^\ast = B^\ast.$$
+Also, the last rewrite in the chain is changed to have justification $Subst=$.
+So, the intermediate tree has the form
+$$\erewstar{}{A = B^+}
+{\erew{n}{Subst=}{A_1 = B_1^+}
+{\gexpnode{1}{\forall q\, . \, q\, A_1 \, \limplies\, q\, B_1^+}
+{Q_1}{\erewstar{\lambda}{Q_1\, A_1 \, \limplies\, Q_1\, B_1^+}
+{\eimp{1}{C_1\, \limplies \, D_1^+}{\cdots}{\cdots}}}
+{Q_n}{\cdots}}}$$
+After the do loop, the local variable
+\verb+exp-node+ has value $EXP1$.
+
+Next, for each child of the expansion node of the form
+$$\erewstar{\lambda}{Q_i\, A_1 \, \limplies\, Q_i\, B_1^+}
+{\eimp{i}{C_i\, \limplies \, D_i^+}{\cdots}{\cdots}}$$
+we remove the initial $\lambda$-rewrites, possibly
+adding a $\lambda$-rewrite beneath $IMPi$.
+(The function \indexfunction{check-shallow-formulas}
+does part of this work.)
+This replaces the corresponding son of $EXP1$ with
+a subtree of the form
+$$\eimp{i}{Q_i\, A_1 \, \limplies\, Q_i\, B_1^+}
+{\erewstar{\lambda}{Q_i\, A_1^-}{\cdots}}
+{\erewstar{\lambda}{Q_i\, B_1^+}{\cdots}}$$
+
+Next, we call the function \indexfunction{apply-thm-146}.
+This may replace some $Subst=$-rewrite nodes with leaves.
+There is a description of this function later in this
+section.  The function corresponds to Theorem 146
+in Frank Pfenning's thesis\cite{Pfenning86}.
+
+As a final step (which occurs in the code in the return
+portion of the outermost dolist loop), the
+function \indexfunction{remove-spurious-connections}
+is called.  This function cleans the mating and expansion
+tree, and returns the new mating.
+
+\item {\bf\indexfunction{remove-spurious-connections}}
+This function finds connections between nodes with shallow
+formula $A=A$ (\verb+bad-conn+).  One of these nodes must be negative
+so we can deepen it (if necessary)
+to replace it with a new tree of the form
+$$\erew{1}{Refl=}{A=A^-}{\truenode{1^-}}$$
+Then, we remove this connection from the mating.
+After simplifying the mating in this way,
+we delete any children of expansion nodes immediately beneath
+$Subst=$-rewrite nodes which are
+not used in the mating.
+Then we call \indexfunction{apply-thm-146}
+because we may have simplified some $Subst=$-rewrite
+node to be of the appropriate form.
+Finally, we return the connection list.
+
+\item {\bf\indexfunction{check-shallow-formulas}}
+This function takes a positive equational rewrite node
+$REW1$ with shallow formula
+$A = B$, an expansion node 
+$EXP1$ which is a child of $REW1$, and an implication node $IMPi$ which is a child
+of $EXP1$.  Suppose $IMPi$ has shallow formula
+$C\, \limplies\, D$.  
+This function checks if the $D$ can be obtained from $C$
+by replacing occurrences of $A$ by $B$.
+If not, the relevant expansion term $Q_i$ must
+have the form $[\lambda z\, . \, P]$.
+So, we add
+$\lambda$-rewrites are added beneath the implication
+to make the implication node have the form
+$$\eimp{i}{[A/z]P\, \limplies \, [B/z]P}
+{\erew{2}{\lambda}{[A/z]P}{node_1}}
+{\erew{3}{\lambda}{[B/z]P}{node_2}}$$
+Note that we can clearly obtain $[B/z]P$
+formula from $[A/z]P$ by replacing some occurrences
+of $A$ by $B$.  So, the tree has the appropriate form.
+
+\item {\bf\indexfunction{apply-thm-146}}
+This function corresponds to Theorem 146 in Frank Pfenning's
+thesis\cite{Pfenning86}.  
+If the subtree passed to the function has
+the form
+$$\erew{n}{Subst=}{A = B^+}
+{\uexpnode{1}{\forall q\, . \, q\, A \, \limplies\, q\, B^+}
+{Q}{\eimp{1}{C\, \limplies \, D^+}
+{\etrgap{\eleaf{1}{A=B^+}}}
+{\cdots}}}$$
+we can replace this subtree with $LEAF1$.
+If the subtree passed to the function has
+the form
+$$\erew{n}{Subst=}{A = B^+}
+{\uexpnode{1}{\forall q\, . \, q\, A \, \limplies\, q\, B^+}
+{Q}{\eimp{1}{C\, \limplies \, D^+}
+{\cdots}
+{\etrgap{\eleaf{2}{A=B^+}}}}}$$
+we can replace this subtree with $LEAF2$.
+\end{enumerate}
+
+\section{Raise-Lambda-Nodes}\label{raise-lambda-nodes}
+
+The functions of RAISE-LAMBDA-NODES are in the
+file {\it\indexfile{mating-merge2.lisp}}.  The
+main function is \indexfunction{raise-lambda-nodes}
+which calls the following auxiliary functions:
+\begin{itemize}
+\item \indexfunction{raise-lambda-nodes-skol} (commutes a $\lambda$-rewrite with
+a selection or skolem node)
+\item \indexfunction{raise-lambda-nodes-aux1} (commutes one or two $\lambda$-rewrites with a conjunction,
+disjunction, or implication node)
+\item \indexfunction{raise-lambda-nodes-neg} (commutes a $\lambda$-rewrite with a negation node)
+\item \indexfunction{raise-lambda-nodes-ab}  (commutes a $\lambda$-rewrite with an $AB$-rewrite
+by destructively changing the justifications of the two rewrites and the shallow formula
+of the lower rewrite)
+\item \indexfunction{raise-lambda-nodes-equiv}  (commutes a $\lambda$-rewrite with an \\
+$EQUIV-IMPLICS$-rewrite
+or $EQUIV-DISJS$-rewrite by destructively changing the two rewrites)
+\end{itemize}
+
+Since $\lambda$-rewrite nodes may be destroyed during this process,
+we may need to change the mating.  In fact, we maintain the
+following invariant.
+
+{\bf Invariant:}  Once a tree has been processed, there are no
+connections to any $\lambda$-rewrite nodes in that tree.
+(Note that it is legal to mate two nodes even if the shallow formulas
+are only the same up to $\lambda$-normal form.)
+
+The function \indexfunction{raise-lambda-nodes} processes each
+child of a subtree (unless the node is a $Subst=$-rewrite, which is handled differently),
+then simply returns the resulting tree and
+connection list, except in certain cases.
+These cases correspond
+to the trees on the left of the following diagrams.  We return
+the tree on the right.  (Here, $A_\lambda$ is the $\lambda$-normal form of $A$.)
+
+$$\sel{1}{\forall x \, . \, A}{a}{\erew{1}{\lambda}{[a/x]A}{node}} \Rightarrow 
+\erew{2}{\lambda}{\forall x \, . \, A}{\sel{1}{\forall x \, . \, A_\lambda}{a}{node}}$$
+
+$$\skol{1}{\forall x \, . \, A}{a}{\erew{1}{\lambda}{[a/x]A}{node}} \Rightarrow 
+\erew{2}{\lambda}{\forall x \, . \, A}{\skol{1}{\forall x \, . \, A_\lambda}{a}{node}}$$
+
+$$\econj{1}{A\, \land\, B}{\erew{1}{\lambda}{A}{node_1}}{\erew{2}{\lambda}{B}{node_2}}
+\Rightarrow 
+\erew{3}{\lambda}{A\, \land\, B}{\econj{1}{A_\lambda \, \land\, B_\lambda}{node_1}{node_2}}$$
+
+$$\econj{1}{A\,\land\, B}{\erew{1}{\lambda}{A}{node_1}}{node_2}
+\Rightarrow \erew{2}{\lambda}{A\,\land\, B}{\econj{1}{A_\lambda \,\land\, B}{node_1}{node_2}}$$
+
+$$\econj{1}{A\,\land\, B}{node_1}{\erew{1}{\lambda}{B}{node_2}}
+\Rightarrow \erew{2}{\lambda}{A\,\land\, B}{\econj{1}{A \,\land\, B_\lambda}{node_1}{node_2}}$$
+
+$$\edisj{1}{A\, \lor\, B}{\erew{1}{\lambda}{A}{node_1}}{\erew{2}{\lambda}{B}{node_2}}
+\Rightarrow 
+\erew{3}{\lambda}{A\, \lor\, B}{\edisj{1}{A_\lambda \, \lor\, B_\lambda}{node_1}{node_2}}$$
+
+$$\edisj{1}{A\,\lor\, B}{\erew{1}{\lambda}{A}{node_1}}{node_2}
+\Rightarrow \erew{2}{\lambda}{A\,\lor\, B}{\edisj{1}{A_\lambda \,\lor\, B}{node_1}{node_2}}$$
+
+$$\edisj{1}{A\,\lor\, B}{node_1}{\erew{1}{\lambda}{B}{node_2}}
+\Rightarrow \erew{2}{\lambda}{A\,\lor\, B}{\edisj{1}{A \,\lor\, B_\lambda}{node_1}{node_2}}$$
+
+$$\eimp{1}{A\, \limplies\, B}{\erew{1}{\lambda}{A}{node_1}}{\erew{2}{\lambda}{B}{node_2}}
+\Rightarrow 
+\erew{3}{\lambda}{A\, \limplies\, B}{\eimp{1}{A_\lambda \, \limplies\, B_\lambda}{node_1}{node_2}}$$
+
+$$\eimp{1}{A\,\limplies\, B}{\erew{1}{\lambda}{A}{node_1}}{node_2}
+\Rightarrow \erew{2}{\lambda}{A\,\limplies\, B}{\eimp{1}{A_\lambda \,\limplies\, B}{node_1}{node_2}}$$
+
+$$\eimp{1}{A\,\limplies\, B}{node_1}{\erew{1}{\lambda}{B}{node_2}}
+\Rightarrow \erew{2}{\lambda}{A\,\limplies\, B}{\eimp{1}{A \,\limplies\, B_\lambda}{node_1}{node_2}}$$
+
+$$\eneg{1}{\lnot A}{\erew{1}{\lambda}{A}{node}}
+\Rightarrow \erew{2}{\lambda}{\lnot A}{\eneg{1}{\lnot A_\lambda}{node}}$$
+
+The rest of the transformation rules are for two rewrite nodes.
+Note that these are destructive operations.
+
+$$\erew{1}{\lambda}{A}{\erew{2}{\lambda}{A_\lambda}{node}} \Rightarrow
+\erew{1}{\lambda}{A}{node}$$
+
+$$\erew{1}{AB}{A}{\erew{2}{\lambda}{B}{node}} \Rightarrow
+\erew{1}{\lambda}{A}{\erew{2}{AB}{A_\lambda}{node}}$$
+
+$$\erew{1}{Equiv-Implics}{A}{\erew{2}{\lambda}{B}{node}} \Rightarrow
+\erew{1}{\lambda}{A}{\erew{2}{Equiv-Implics}{A_\lambda}{node}}$$
+
+$$\erew{1}{Equiv-Disjs}{A}{\erew{2}{\lambda}{B}{node}} \Rightarrow
+\erew{1}{\lambda}{A}{\erew{2}{Equiv-Implics}{A_\lambda}{node}}$$
+
+After applying the transformation, if the result is a $\lambda$-rewrite
+node $REW$, then we move any connection from $REW$ to its child.
+(Actually, in the code we only do this if the original tree is a rewrite,
+since in all other cases the top node of the resulting etree could
+only be a {\it new} $\lambda$-rewrite.  This is true because only the rewrite
+transformation rules are destructive.)
+
+We need to make sure the invariant holds.
+If we are given a $Subst=$-rewrite node $REW1$ to process, we start by
+pushing connections to $\lambda$-rewrite nodes below $REW1$ to the child of
+the $\lambda$-rewrite.  This forces the invariant to hold (no translation applies
+to a $Subst=$-rewrite).
+
+In all other cases, the invariant holds for the children because
+of the recursive call.
+
+So we have a situation in which there are no connections to $\lambda$-rewrite nodes
+which are subtrees of the node $N$ of interest.  Consider the following cases:
+\begin{enumerate}
+\item Suppose $N$ is not a rewrite.  In this case, there are no connections to $\lambda$-rewrite nodes
+in $N$.  Since all the transformations for non-rewrites can only create a new $\lambda$-rewrite node,
+there will be no connections to $\lambda$-rewrites in the result (connections can only involve
+nodes in the tree before the transformation).
+\item Suppose $N$ is a rewrite node.  Again, there are no connections to $\lambda$-rewrite nodes
+in $N$.  However, there may be connections to $N$ itself.
+Since the $AB$, $Equiv-Implics$, and $Equiv-Disjs$ transformations are destructive,
+the node $N$ may become a $\lambda$-rewrite (if it was not already).  In these cases, we have pushed the connections from $N$
+to the child of $N$.  We can see the child of $N$ is not $\lambda$-rewrite nodes by examining the
+transformation rules.
+\end{enumerate}
+
+{\bf Remark about Subst=:}  $Subst=$-rewrites are processed further during the
+CLEANUP-ETREE stage (in the function \indexfunction{cleanup-rewrite-node}) described in section~\ref{cleanup-etree}.
+
+\section{Cleanup-Etree}\label{cleanup-etree}
+
+The code for CLEANUP-ETREE is in the file {\it\indexfile{mating-merge-eq.lisp}}.
+This (terribly complicated) procedure comes after merging, because we assume that all
+exp-vars and skolem-terms have been removed, leaving just ordinary wffs.
+
+First, a general description of the procedure:
+\begin{enumerate}
+\item  At each expansion term, normalize it and reduce superscripts on
+      the bound variables, and make a new expansion 
+      which is a "copy", 
+\begin{enumerate}
+\item  remove unnecessary lambda-norm steps.
+\item  make the leaves the same name, so mating still holds
+\end{enumerate}
+\item  Remove original expansion.
+\end{enumerate}
+In reality, we just create a whole new expansion tree, not sharing
+with original tree at all.
+
+The main functions described below are
+\begin{enumerate}
+\item \indexfunction{cleanup-etree}
+\item \indexfunction{cleanup-all-expansions}  
+\item \indexfunction{cleanup-expansion}  
+\item \indexfunction{cleanup-rewrite-node}
+\end{enumerate}
+
+\begin{enumerate}
+\item {\bf\indexfunction{cleanup-etree}}  This is the function called by \indexfunction{merge-tree-real}.
+It calls \indexfunction{cleanup-all-expansions} to rebuild the expansion tree cleaning up along the way.
+
+\item {\bf\indexfunction{cleanup-all-expansions}}  Despite the name, this actually
+builds a completely new copy of the etree, with special attention paid to
+expansion and rewrite nodes.
+The arguments are
+\begin{itemize}
+\item \verb+etree+ the old etree node
+\item \verb+shallow+ the shallow formula for the new node, which may be only $\lambda$-equal to the old shallow
+\item \verb+parent+ the parent for the new node being created
+\item \verb+lambda-normal-p+ a boolean indicating if \verb+shallow+ is $\lambda$-normal
+\end{itemize}
+For each expansion term and corresponding kid,
+call \indexfunction{cleanup-expansion} to obtain the new
+($\lambda$-normal) term and new kid.
+For rewrite nodes, call \indexfunction{cleanup-rewrite-node}.
+
+\item {\bf \indexfunction{cleanup-expansion}}  We $\lambda$-normalize
+the expansion term $t$ to obtain $t'$.  If the new shallow formula
+is $\forall u\, . \, A$ or $\exists u\, . \, A$, then the new shallow (\verb+newshallow+)
+for the kid is $[t'/u] A$.  If \verb+newshallow+ is
+not $\lambda$-normal, then rewrite nodes may need to be included between
+the expansion node and this kid.  Then we recursively call \indexfunction{cleanup-all-expansions}
+on the kid with the new shallow formula $B$.
+
+\item {\bf \indexfunction{cleanup-rewrite-node}}
+There are cases for the different
+kinds of rewrite nodes.
+\begin{itemize}
+\item $\lambda$, $\beta$, $\eta$:  We can skip this rewrite if the new shallow
+formula is already $\lambda$-normal.  
+Otherwise, we copy the node, normalize the new shallow formula, and
+recursively call \indexfunction{cleanup-all-expansions} on the kid.
+\item $Subst=$, $Leibniz=$, $Ext=$ (and $Both=$, which is not currently fully supported):
+We copy the node, expand the equality in the new shallow formula
+and recursively call \indexfunction{cleanup-all-expansions} on the kid.
+
+If the node is a positive $Subst=$-rewrite, we process the new tree further.
+We start with a tree of the form
+$$\erew{1}{Subst=}{A = B^+}
+{\gexpnode{1}{\forall q\, . \, q\, A \, \limplies\, q\, B^+}
+{Q_1}{\eimp{1}{Q_1\, A\, \limplies \, Q_1\, B^+}{node_1}{node_2}}
+{Q_n}{\cdots}}$$
+
+If $node_1$ or $node_2$ is of the form
+$$\erew{2}{\lambda/\beta/\eta}{Q_1 C}{node: D}$$
+where $D$ is the $\lambda$-normal form (or, $\beta$- or $\eta$-normal form)
+of $Q_1 C$, then
+\indexfunction{reduce-rewrites}
+modifies the node to be of the form
+$$\erew{2}{\lambda/\beta/\eta}{E}{node: D}$$
+(and they both, in fact, should be)
+where $E$ is $[C/z]F$ and $F$ is the $\lambda$-normal form (or, $\beta$- or
+$\eta$-normal form) of $Q_1 z$.
+If in fact, $E$ and $D$ are $\alpha$-equal,
+we simply replace the node with $node: D$, removing the rewrite altogether.
+That is, we change the children of the implications so that
+the shallow formulas are normalized, until all redexes are
+in $A$ or $B$, or are of the form $[A\, M]$ or $[B\, M]$.
+
+Next, if the implication node is of the form
+$$\eimp{1}{\lnot\lnot C\, \limplies \, \lnot\lnot D}{\eneg{1}{\lnot\lnot C}{\eneg{2}{\lnot C}{node_1}}}
+{\eneg{3}{\lnot\lnot D}{\eneg{4}{\lnot D}{node_2}}}$$
+then \indexfunction{remove-double-negations-merge}
+deletes the four negation nodes iteratively until
+the tree does not have this form.
+
+There is also code to make sure $IMP1$ is the son of $EXP1$,
+but this should already be true because of the function
+\indexfunction{cleanup-leibniz-expansions}, described in section~\ref{remove-leibniz}.
+
+Finally \indexfunction{check-shallow-formula} (described in section~\ref{remove-leibniz})
+is called in case we need to adjust the children of $IMP1$ to have the
+appropriate form.
+
+\item $Equiv-Implics$, $Equiv-Disjs$:  In these cases, we simply copy the node,
+rewrite the equivalence in the new shallow formula in the same way as the old,
+and recursively call \indexfunction{cleanup-all-expansions} on the kid.
+\item $Refl=$:  If the new shallow formula is of the form $A = A$,
+we simply copy the node, and recursively
+call \indexfunction{cleanup-all-expansions} with new shallow $TRUTH$ on the kid.
+If the new shallow formula does not have this form, we build a chain of $\lambda$,
+$AB$, $EQUIVWFFS$ rewrites until it does have the form $A = A$, and end the
+chain with a true node.  (An example where the new shallow formula does
+not have the form $A = A$ is THM144A with mode MODE-THM144A.)
+\item $Dual$: The shallow changes from $A$ to $A\lor A$ or
+$A\land A$ depending on the polarity of the node, and make
+the recursive call.
+\item $Equivwffs$:  In this case, essentially just copy the
+node, replace the shallow formula with \verb+shallow+ as usual, and recursively call
+\indexfunction{cleanup-all-expansions} on the kid.  The tricky part
+is computing the new shallow formula for the kid.  We used to mimic
+deepening, in particular, using the value of the flag \indexflag{REWRITE-DEFNS}.
+Now, we find a chain of explicit steps (expanding defns, lambda normalization, etc)
+from the new shallow to the old shallow of the child of the rewrite.
+
+\item $Ruleq$, $Ruleq-Univ$:  We again copy the
+node, replace the shallow formula with \verb+shallow+ as usual, and recursively call
+\indexfunction{cleanup-all-expansions} on the kid.  And again, the tricky part
+is calculating what the new shallow formula of the kid should be.
+What it does is let $A$ (\verb+newshallow+) be the 
+gwff in the \verb+RULEQ-SHALLOW+ slot of the node.
+If this slot is empty, it lets $A$ be the \indexfunction{min-quant-scope}
+of \verb+shallow+ if the justification is $Ruleq$, or just the
+same \verb+shallow+ if the justification is $Ruleq-Univ$.
+The new shallow of the kid is $Qx_1\cdots Qx_n \, . \, A$
+where $Q$ is $\forall$ if the node is positive and $\exists$ if the node is
+negative, and the $x_i$'s are the variables introduced in this node.
+{\bf Possible Bug:}  It is not clear why this case is handled
+the way it is.
+
+\item $Truthp$:  We copy the node replacing the shallow formula as usual.
+Then recursively call \indexfunction{cleanup-all-expansions} on the kid
+and a shallow
+formula $A^* \, \lor\, \lnot TRUTH$
+obtained from the old shallow formula $A$ by replacing occurrences
+of $FALSEHOOD$ with $\lnot TRUTH$ to obtain $A^*$.
+{\bf Possible Bug:}  One would expect the new shallow formula of the kid
+to be something like $B^* \, \lor \, \lnot TRUTH$ where $B$ is the
+new shallow formula of the rewrite.  It's not clear that this causes a problem
+though.
+\end{itemize}
+\end{enumerate}
+
+\section{Prettify}\label{prettify}
+
+The code for PRETTIFY is in the file {\it\indexfile{mating-merge-eq.lisp}}.
+Merging used to prettify the variables in the etree during the CLEANUP-ETREE
+phase, but there were some examples where prettify would lead to illegal
+variable captures.  To fix this, the two phases have been separated,
+and all PRETTIFY does is rename all the free and bound variables in the etree.
+We go to great lengths to ensure that the renaming does not lead to variable capture.
+
+First, we should work out the theory of such renamings.
+We would like to find two substitutions $\theta$ and $\alpha$
+taking variables to variables.  The intention is to use $\theta$
+for free variables and $\alpha$ for bound variables.  Let $R^\theta_\alpha$
+be the renaming function on etrees and wffs.  
+On an etree $Q$, $R^\theta_\alpha(Q)$ is simply the result of applying
+$R^\theta_\alpha$ to all shallow formulas, expansion terms, and selected variables.
+Next we define $R^\theta_\alpha$ inductively on wffs:
+\begin{itemize}
+\item $R^\theta_\alpha(x) = \alpha(x)$ if $x$ is bound.
+\item $R^\theta_\alpha(y) = \theta(y)$ if $y$ is free.
+\item $R^\theta_\alpha(c) = c$ if $c$ is a constant.
+\item $R^\theta_\alpha(B \, x \, . \, M) = B \, \alpha(x) \, R^\theta_\alpha(M)$
+where $B$ is a binder.
+\item $R^\theta_\alpha([M\, N]) = [R^\theta_\alpha(M) \, R^\theta_\alpha(N)]$.
+\end{itemize}
+We would like the renamed wff to be the same as the result of doing some $\alpha$-conversions and
+substituting for the free variables.  So, with respect to all the wffs $M$ in the etree $Q$,
+we need to know there is an $M'$ with $M =_\alpha M'$ such that $\theta$ is a legal substitution for $M'$
+(avoiding any variable capture), and so that $R^\theta_\alpha(M) \equiv \theta(M')$ (identical wffs).
+
+We can guarantee this if we have $\theta$ and $\alpha$ satisfy two conditions with respect to the etree $Q$.
+\begin{itemize}
+\item [(*)]  For distinct variables $x$ and $z$, and
+any subwff $[B_1 \, x \, . \cdots [B_2\, z \, . \, M] \cdots]$ of any wff in $Q$
+where $x$ is free in $M$, we must have $\alpha(x)\neq\alpha(z)$.
+\item [(**)] For any subwff $[B_2\, z \, . \, M]$ of any wff $N$ in $Q$
+where a free occurrence of $y$ in $N$ is in $M$, we must have $\alpha(z)\neq\theta(y)$.
+\end{itemize}
+In order to prove the result we want, for any collection of variables $\Gamma$,
+define an ordinary substitution $\phi^\Gamma$ by
+\begin{itemize}
+\item $\phi^\Gamma(x) = \alpha(x)$ if $x\in \Gamma$
+\item $\phi^\Gamma(y) = \theta(y)$ if $y\not\in \Gamma$
+\end{itemize}
+Clearly, $\phi$ depends on $\Gamma$, $\theta$, and $\alpha$.
+We will omit the $\Gamma$ superscript when possible.
+The idea, of course, is that $\Gamma$ is the context of bound variables.
+Note that if $\Gamma$ is empty, then $\phi^{\{.\}} \equiv \theta$.
+
+{\bf Proposition.}  Suppose $Q$ is an etree and $\theta$ and $\alpha$ are variable renamings
+satisfying conditions (*) and (**) with respect to $Q$.
+Let $M$ be any occurrences of a subwff of a wff in $Q$.  Let $\Gamma$ be the collection of variables 
+bound in the context $M$ occurs.  Let $\phi^\Gamma$ be defined as above.
+Then, there is an $M'$ satifying
+\begin{itemize}
+\item $M =_\alpha M'$,
+\item for each $x\in\Gamma$, $\alpha(x)$ is free for $x$ in $M'$,
+\item for each $y\not\in\Gamma$, $\theta(y)$ is free for $y$ in $M'$
+(these conditions together give that $\phi$ is a legal substitution for $M'$),
+\item $R^\theta_\alpha(M) \equiv \phi(M')$.
+\end{itemize}
+In particular, if $M$ is a shallow formula, expansion term, or selected variable
+(so that $\Gamma$ is empty), we have $R^\theta_\alpha(M) \equiv \theta(M')$ as desired.
+
+{\bf Proof.}
+We can prove this by induction on $M$.
+\begin{itemize}
+\item Suppose $M$ is a variable or constant.  Let $M'$ be $M$.
+\item Suppose $M$ is $[N\, P]$.  By induction we have $N'$ and $P'$
+with $N =_\alpha N'$, $P =_\alpha P'$, and satisfying the other conditions.
+It is easy to see that letting $M'$ be $[N'\, P']$ works.
+\item Suppose $M$ is $[B\, z \, .\, N]$ for some binder $B$.
+By induction on $N$ and $\Gamma\cup \{z\}$, we have an $N'$
+satisfying
+\begin{itemize}
+\item $N =_\alpha N'$
+\item for each $x\in\Gamma$, $\alpha(x)$ is free for $x$ in $N'$
+\item $\alpha(z)$ is free for $z$ in $N'$
+\item for each $y\not\in\Gamma\cup\{z\}$, $\theta(y)$ is free for $y$ in $N'$
+\item $R^\theta_\alpha(N) \equiv \phi^{\Gamma\cup\{z\}}(N')$
+\end{itemize}
+Let $M'$ be $[B\, \alpha(z) \, . \, [\alpha(z)/z]N']$.
+Note that $M =_\alpha M'$ since $\alpha(z)$ is free for $z$ in $N'$.
+
+Suppose we have $x\in\Gamma$.  To check if $\alpha(x)$ is free for $x$ in $M'$,
+we need to know if $x$ occurs free in $N'$ in the scope of a binder for $\alpha(x)$.
+By the induction hypothesis, we know such a binder cannot be in $N'$ itself,
+so the binder would have to be the outermost binder of $M'$, the one for $\alpha(z)$.
+That is, we must have $\alpha(x) = \alpha(z)$.  In such a case, we need
+to ensure that $x$ does not occur free at all in $M'$.
+Now, condition (*) ensures us that $M$ is not of the form $[B\, z\, . N]$
+where $x$ (bound in context) occurs free in $N$.  So, $x$ cannot occur free in
+the $\alpha$-equivalent $M'$.
+So, $\alpha(x)$ is free for $x$ in $M'$.
+
+Suppose $z\not\in\Gamma$.  We need to show $\theta(z)$ is free for $z$ in $M'$.
+But this is immediate since $z$ does not occur free in
+$[B\, \alpha(z) \, . \, [\alpha(z)/z]N']$. 
+
+Suppose we have $y\not\in\Gamma$, where $y$ is not $z$.
+We need to show $\theta(y)$ is free for $y$ in $M'$.
+So, we need to show no free occurence of $y$ in $M'$ occurs
+withen the scope of a binder for $\theta(y)$.  By the induction
+hypothesis, we know no such binder occurs in $N'$.
+So, the binder would have to be the outermost binder of $M'$, 
+the one for $\alpha(z)$.  That is, we must have $\alpha(z)=\theta(y)$.
+In this case, we need to ensure $y$ does not occur free at all in $M'$.
+Equivalently, $y$ should not be free in $M$.  But this is precisely what
+condition (**) ensures.
+
+Finally, we have
+$$R^\theta_\alpha(M) \equiv [B \, \alpha(z) \, . \, R^\theta_\alpha(N)]
+\equiv [B \, \alpha(z) \, . \, \phi^{\Gamma\cup\{z\}}(N')]
+\equiv \phi(M').$$
+\end{itemize}
+$\Box$
+
+Now, the algorithm should build $\theta$ and $\alpha$ for $Q$
+so that they satisfy (*) and (**).  We also want $\theta$ to
+be an injective renaming, so that no two selected variables will
+be identified.  Given partial renamings $\theta$ and $\alpha$
+satisfying (*) and (**), we need to know if an extension will
+continue to satisfy the conditions.  These tests
+are implemented by \verb+prettify-free-legal-p+ and \verb+prettify-bound-legal-p+
+and are described below.
+
+The actual PRETTIFY functions are
+\begin{itemize}
+\item {\bf \indexfunction{prettify-etree}}  This is the main function called by {\bf \indexfunction{merge-tree-real}}.
+This calls {\bf \indexfunction{prettify-process-vars-in-etree}} to collect the names of free variables and bound variables
+in the etree.  We distinguish the ones which occur in the topmost shallow formula since these were supplied by the
+user and should not be renamed.  (We also do not rename frees
+which are introduced by a rewrite.  This is a bit unusual, but can happen.  An example is
+a rewrite instantiating the abbreviation \verb+PLUS+ which introduces the free \verb+S+.
+Here we are really thinking of \verb+S+ as being part of the signature, but there's nothing to explicitly
+indicate that \verb+S+ is not a variable.)
+We start off by sending each such free to itself and each such bound to itself.
+(It is easy to see that conditions (*) and (**) are satisfied by any partial identities for $\theta$ and $\alpha$.)
+Then we extend $\theta$ and $\alpha$ in stages.  First, whenever $y$ is a selected variable corresponding to a bound
+variable $x$ in the original wff, we let $\theta(y) = x$ if this is legal.  Next, whenever $y$ is a selected variable
+associated with a bound variable $x$, we try to send both of these to the same ``pretty'' (no superscript) variable,
+if this is possible.  (The function {\bf \indexfunction{prettify-identify-free-bound}} is used to try to
+send a free and a bound to the same pretty variable.)  Third, we check for bound variables $z_i$
+which occur in a subwff of the form
+$$[[\lambda z_1 \cdots \lambda z_n \, . \, M] \, A_1 \, \cdots\, A_n]$$
+where $A_i$ is a free or bound variable
+(such $A_i$ are stored in the properties \verb+bound-try-to-equate-free+
+and \verb+bound-try-to-equate-bound+)
+.  In this case, we try to send $A_i$ and $z_i$ to the same pretty variable,
+if possible (see the functions {\bf \indexfunction{prettify-identify-free-bound}} and
+{\bf \indexfunction{prettify-identify-bound-bound}}).  Finally, we choose the rest of $\theta$
+and the rest of $\alpha$ using the functions {\bf \indexfunction{get-best-alt-free-name}}
+and {\bf \indexfunction{get-best-alt-bound-name}}.  This completes the computation of $\theta$ and
+$\alpha$, so we call {\bf \indexfunction{rename-all-vars-in-etree}} to actually do the renaming.  Finally, {\bf \indexfunction{remove-unnecessary-ab-rews}} eliminates $\alpha$-rewrite nodes where the shallow does not change (this may happen since we renamed variables).
+\item {\bf \indexfunction{prettify-process-vars-in-etree}}  This collects the frees and bounds in the etree
+into the variables \verb+fixed-frees+, \verb+fixed-bounds+,  \\
+\verb+frees-to-rename+, and \verb+bounds-to-rename+.
+Each free has the property {\tt \indexother{free-must-avoid}} which is eventually set to all bound vars $z$
+such that $y$ occurs free in the scope of a binder for $z$.  Each bound variable has
+a similar property {\tt \indexother{bound-must-avoid}}.  (Note that we need to use two different names for the properties
+since a variable may occur both free and bound in the etree.)
+If a free variable $y$ is a selected variable in the etree,
+it has the property {\tt \indexother{sel-var-bound}} which is set to the bound variable corresponding to the outermost
+binder at the selection node for $y$.
+Bound variables $z$ also have properties {\tt \indexother{bound-try-to-equate-bound}}
+and {\tt \indexother{bound-try-to-equate-to-free}}.  A variable $x$ will be on one of these lists if
+there is a subwff of the form
+$$[[\lambda z_1 \cdots \lambda z_n \, . \, M] \, A_1 \, \cdots\, A_n]$$
+where $z$ is $z_i$ and $x$ is $A_i$ for some $i$.  In such cases, we will try to
+send these variables to the same (pretty) renamed variable.
+\item {\bf \indexfunction{prettify-free-rename}}  This extends $\theta$ to include $\theta(y) = y'$.
+We also must propagate information about this commitment by including $y'$ in the list \verb+used-frees+,
+representing the codomain of $\theta$ and by including $y'$ in the property \verb+not-alpha-image+
+for any $b$ in the property \verb+free-must-avoid+ for $y$.  We will use this to ensure no such $b$
+will later have $\alpha(b) = y'$.
+\item {\bf \indexfunction{prettify-bound-rename}} This extends $\alpha$ to include $\alpha(z) = z'$.
+Again, we propagate information by including $z'$ in the property \\
+\verb+not-alpha-image+
+for any $b$ in the property \verb+bound-must-avoid+ for $z$.  We will use this to ensure no such $b$
+will later have $\alpha(b) = z'$.
+\item {\bf \indexfunction{prettify-free-legal-p}}  This checks if it is legal to extend $\theta$ to include $\theta(y) = y'$.
+First, we check to make sure $\theta(y)$ is not already defined and that $y'$ is not in the codomain of $\theta$ (\verb+used-frees+),
+since we want $\theta$ to be injective.  Next, to ensure condition (**) will hold, we make sure there is
+no bound $z$ with $\alpha(z) = y'$ and $z$ in the list \verb+free-must-avoid+ for $y$.
+\item {\bf \indexfunction{prettify-bound-legal-p}}  This checks if it is legal to extend $\alpha$ to include $\alpha(z) = z'$.
+First, we check to make sure $\alpha(z)$ is not already defined.  Of course, we do not mind if many bound variables
+are mapped to the same variable, because this is often how we make the proof pretty, so we do not need to check the codomain
+of $\alpha$.  We must make sure that $z'$ is not on the list in the property {\tt \indexother{not-alpha-image}} for $z$.
+If it is, then there is some free or bound $x$ which is sent to $z'$ and occurs free in some subwff where it would be captured
+by a binder $B \, z$ if this binder were renamed to $B \, z'$.  Also, we must make sure there is no bound $b$ on the
+list in the property {\tt \indexother{bound-must-avoid}} for $z$ such that $\alpha(b) = z'$.  In such a case,
+there would be an occurrence of z which would be captured by a binder for $b$ upon renaming.
+These checks ensure condition (*) will hold.
+\item {\bf \indexfunction{prettify-free-bound-legal-p}}  Checks if we can send both $y$ and $z$ to a variable $v$.
+This involves a bit more checking than just checking that both commitments are independently legal.  Comments
+in the code explain the check.
+\item {\bf \indexfunction{prettify-bound-bound-legal-p}}  Checks if we can send both $x$ and $z$ to a variable $v$.
+This involves a bit more checking than just checking that both commitments are independently legal.  Comments
+in the code explain the check.
+\item {\bf \indexfunction{prettify-identify-free-bound}}  Given a free $y$ and bound $z$, if both are already committed,
+do nothing.  If one is committed to a pretty variable and the other is not committed, send the other to the same pretty
+variable, if this is legal.  If neither are committed, compute alternative names for each.  If either have a pretty alternative $v$
+which is legal for the other, send both to this $v$.
+\item {\bf \indexfunction{prettify-identify-bound-bound}}  Similar to {\bf \indexfunction{prettify-identify-free-bound}}
+except with a bound $x$ and another bound $z$.
+\item {\bf \indexfunction{pretty-var-p}}  Returns T if the var does not have a superscript.
+\item {\bf \indexfunction{get-best-alt-name}}  Given a variable and a legality test, finds
+a new legal variable to replace it.
+If the old variable is
+$w$, $w^n$, $h$, or $h^n$, then the new variable will be given a name
+based on whether the type is of a proposition, predicate, relation, function, or individual.
+(This depends on the values of the globals 
+{\tt \indexother{proposition-var}}
+{\tt \indexother{predicate-var}}
+{\tt \indexother{relation-var}}
+{\tt \indexother{function-var}}
+{\tt \indexother{individual-var}}.
+The values of some of these globals were being
+{\it randomly changed} by a call to \indexfunction{randomvars}
+at the beginning of {\bf\indexfunction{merge-tree-real}}.
+This may make prettify bugs difficult to reproduce.
+We have decided to comment out this call to \indexfunction{randomvars}.)
+If the old variable is anything else, say $x$ or $x^n$, then the new
+variable will be of the form $x$ or $x^m$.
+\item {\bf \indexfunction{get-best-alt-free-name}}  Returns the nicest legal alternative for a free $y$,
+using {\bf \indexfunction{get-best-alt-name}} and {\bf \indexfunction{prettify-free-legal-p}}.
+\item {\bf \indexfunction{get-best-alt-bound-name}} Returns the nicest legal alternative for a bound $z$,
+using {\bf \indexfunction{get-best-alt-name}} and {\bf \indexfunction{prettify-bound-legal-p}}.
+\item {\bf \indexfunction{rename-all-vars-in-etree}}  This corresponds to $R^\theta_\alpha$ on etrees.
+\item {\bf \indexfunction{scope-problem-p}}  Checks to make sure the new var and old
+var are either both free in context, or were both bound by the same binder.  If not, return T.
+This will cause \verb+rename-all-vars-in-wff+ to throw a failure, indicating a bug in PRETTIFY.
+\item {\bf \indexfunction{rename-all-vars-in-wff}}  This corresponds to $R^\theta_\alpha$
+on wffs described above.  We do check to make sure we are avoiding variable capture. 
+If a variable capture does occur, there is a bug in PRETTIFY and a failure is thrown.
+\end{itemize}
+
+% The rest is old documentation related to cleanup-etree when it also prettified. much of this was written and then commented out 11/00 - cebrown
+
+% As we go through the tree, we are going to be doing some prettifying of
+% terms, such as when we instantiate a definition, or do a
+% lambda-normalization.  This means that certain bound variables
+% will be changed from what they were in the tree which we were
+% given.  The danger is that perhaps we have (when
+% \indexfunction{subst-vars-for-params} was called earlier
+% in the merging process) used the bound variables as the actual
+% instantiations.  This could occur at skolem or selection nodes,
+% e.g., where a skolem node's shallow formula was $\forall w^3 \, . \, P \, w^3$, and its instantiation parameter was $w^3$;
+% the shallow formula
+% may have been rewritten to $\forall w\, . \,  P \, w$, so we want to make the
+% new instantiation parameter $w$ instead.  Otherwise rules such as
+% substitution of equality will fail during the translation process.
+% Of course, if we change the instantiation, we must change it
+% throughout the tree.  So we keep track of such renamings in
+% \verb+list-of-renamings+, and apply the substitution after we have
+% finished with the whole process. 
+% 
+% Two special variables are
+% \begin{enumerate}
+% \item {\tt \indexother{*renamed-variables*}} is an alist of bound variables (e.g., $x, y, \cdots$)
+% which have been renamed to fresh variables (e.g., $xb, ya,\cdots$) by an internal $\alpha$-renaming.
+% It appears that these are renamings of variables bound in definitions instantiated in the etree.
+% The alist is of the form $(xb\, . \, x)\, (ya\, . \, y)$
+% (sending the new vars to old).  (See the description below of \indexfunction{ren-var-xa-internal}.)
+% \item {\tt \indexother{list-of-renamings}} is an alist of variables taking
+% some selected variables in the etree to renamed selected variables.  This alist
+% is of the form $(x^1\, . \, xa)\, (y^2\, . \, yc)$.
+% (See the description below of \indexfunction{cleanup-all-expansions}.)
+% \end{enumerate}
+% 
+% \item \indexfunction{prettify-term}
+% \item \indexfunction{prettify-term-1}
+% \item \indexfunction{prettify-term-aux}
+% \item \indexfunction{ren-var-xa-internal}
+% \item \indexfunction{sort-out-renamings}
+% \end{enumerate}
+% 
+% and create
+% two alists of variables stored in \verb+list-of-renamings+ and \\
+% \verb+*renamed-variables*+.
+% \verb+list-of-renamings+ has elements of the form $(x^1\, . \, xa)$ where $xa$ is a selected
+% variable in the new etree.\\
+% \verb+*renamed-variables*+ has elements of the form $(xa\, . \, x)$ where $xa$ is a variable
+% used in the new etree.  \verb+*renamed-variables*+ is not an injective substitution as it
+% may have two elements such as $(xa\, . \, x)$ and $(xb\, . \, x)$.
+% The function \indexfunction{sort-out-renamings} changes \\
+% \verb+*renamed-variables*+
+% changes some of these conflicts, using\\
+%  \verb+list-of-renamings+, so that
+% variables that actually occur as selection variables in the new tree will
+% not be identified by the substitution.
+% The \verb+list-of-renamings+ is applied to the new etree, presumably because the old selected variables
+% might still occur in expansion terms and shallow formulas.
+% 
+% Finally, code at the end of this function takes each pair $(xa \, . \, x)$ in
+% \verb+*renamed-variables*+ and uses \indexfunction{carelessly-rename} to
+% change occurrences of $xa$ with the ``pretty'' version of $x$ (which is often just $x$ itself).
+% 
+% \item {\bf \indexfunction{prettify-term}} Just calls \indexfunction{prettify-term-1} which
+% actually does the work.
+% \item {\bf \indexfunction{prettify-term-1}}  Changes the names of some bound variables, using
+% \indexfunction{prettify-term-aux} to determine the new name of a bound variable.
+% \item {\bf \indexfunction{prettify-term-aux}}  Given a variable and a term, this finds
+% a new variable which can legally replace the old one.  Also, the new variable must
+% not already be in the image of \verb+list-of-renamings+.
+% If the old variable is
+% $w$, $w^n$, $h$, or $h^n$, then the new variable will be given a name
+% based on whether the type is of a predicate, function, or individual.
+% (This depends on the values of the globals 
+% \indexother{\verb+predicate-var+}
+% \indexother{\verb+function-var+}
+% \indexother{\verb+individual-var+}.
+% The values of these globals are lists whose order may be
+% {\it randomly changed} by a call to \indexfunction{randomvars}
+% at the beginning of \indexfunction{merge-tree-real}.
+% This may make prettify bugs difficult to reproduce.
+% A quick way around this, when debugging, is to note the
+% values of these globals when the bug occurs, explicitly
+% set the globals to these values before the next run, and temporarily 
+% comment out the call to \indexfunction{randomvars}.)
+% If the old variable is anything else, say $x$ or $x^n$, then the new
+% variable will be of the form $x$ or $x^m$.
+% 
+% \item {\bf \indexfunction{ren-var-xa-internal}}  A casual examination of the code
+% does not reveal how this function is called.  The main function of PRETTIFY,
+% \indexfunction{cleanup-etree}, dynamically sets the flag \indexflag{REN-VAR-FN}
+% to be this function.  So, during the execution of \indexfunction{cleanup-etree},
+% \indexfunction{ren-var-xa-internal} may be called by \indexfunction{ab-normalize-main},
+% called by \indexfunction{ab-normalize}, called by \indexfunction{get-pmdefn},
+% called by \indexfunction{instantiate-definitions}.
+% These are some (all?) of the possible ways \indexfunction{instantiate-definitions} could be called:
+% \begin{enumerate}
+% \item \indexfunction{prettify-term-aux} calls \indexfunction{instantiate-all} which calls \indexfunction{instantiate-definitions}.
+% \item \indexfunction{cleanup-rewrite-node} calls \indexfunction{instantiate-1-from-list} which calls \indexfunction{instantiate-definitions}.
+% \item \indexfunction{cleanup-rewrite-node} calls \indexfunction{instantiate-some} which calls \indexfunction{instantiate-defn}
+% which calls \indexfunction{instantiate-definitions}.
+% \end{enumerate}
+% So, when certain definitions are instantiated, the function may be used to
+% change the names of bound variables.  It may also be called in other ways,
+% but I don't know of any.
+% 
+% Now, what does the renaming function do?  It takes a variable such as $x^1$
+% and changes it to some new variable such as $xa$ (it tries appending letters to the
+% root until it gets a fresh variable name).  Then the pair $(\, xa\, . \, x^1\, )$
+% is pushed on to the global \verb+*renamed-variables*+ alist.
+% \item {\bf \indexfunction{sort-out-renamings}}  This function
+% takes two alists of variables, corresponding to the values
+% of \verb+list-of-renamings+ and \\
+% \verb+*renamed-variables*+.
+% The return value is a modification of the second alist
+% meant to ensure that new selected variables go to distinct variables,
+% by using the (inverse of the) first alist to find an alternative value.
+% 
+% For example, suppose the value of \verb+list-of-renamings+ (\verb+old-to-xa+) is
+% \begin{verbatim}
+% ((|p^128<OAA>| . |pza<OAA>|) (|p^123<OAA>| . |py<OAA>|))
+% \end{verbatim}
+% and the value of \verb+*renamed-variables*+ (\verb+xa-to-new+) is
+% \begin{verbatim}
+% ((|pzb<OAA>| . |p<OAA>|) (|pza<OAA>| . |p<OAA>|)
+%  (|pz<OAA>| . |p<OAA>|) (|py<OAA>| . |p<OAA>|))
+% \end{verbatim}
+% In this case, $|pza<OAA>|$ and $|py<OAA>|$ are selected
+% variables in the new etree, and so should be sent to
+% distinct variables.
+% The function returns 
+% \begin{verbatim}
+% ((|py<OAA>| . |p<OAA>|) (|pza<OAA>| . |p^128<OAA>|)
+%  (|pzb<OAA>| . |p<OAA>|) (|pz<OAA>| . |p<OAA>|))
+% \end{verbatim}
+% having decided to send $|pza<OAA>|$ back to the old
+% selection variable $|p^128<OAA>|$.
+% 
+% The return value is set to \verb+*renamed-variables*+ in \indexfunction{cleanup-etree}.
+% \end{enumerate}
+
+\section{Merging Extensional Expansion Proofs}
+
+The code for
+merging extensional expansion proofs 
+is completely different than the corresponding
+code for merging expansion proofs.  Essentially
+we translate from an open dag (ext-exp-open-dag)
+to a ground dag (ext-exp-dag) via the function \indexfunction{eeod-to-eed-node}
+(see \indexfile{ext-exp-open-dags.lisp}).
+This translation process deletes any unnecessary parts of the extensional expansion proof.
+
+Prettify for extensional expansion proofs is performed by \indexfunction{ext-exp-dag-prettify}
+in \indexfile{ext-exp-dags.lisp}.  The code is similar to the prettify code in \indexfile{mating-merge-eq.lisp}.
+

@@ -1,0 +1,42 @@
+(:name WFFB
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA w(OAH) FORALL x(H) FORALL y(A).w(OAH) x(H) y(A) IMPLIES w(OAH) [S(HH) x(H)].h(AAH) x(H) y(A)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name WFFC
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA n(H) LAMBDA m(A) FORALL w(OAH).w(OAH) O(H) g(A) AND [LAMBDA w(OAH) FORALL x(H) FORALL y(A).w(OAH) x(H) y(A) IMPLIES w(OAH) [S(HH) x(H)].h(AAH) x(H) y(A)] w(OAH) IMPLIES w(OAH) n(H) m(A)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name WFFC1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA n(H) LAMBDA m(A) FORALL w(OAH).w(OAH) O(H) g(A) AND FORALL x(H) FORALL y(A) [w(OAH) x(H) y(A) IMPLIES w(OAH) [S(HH) x(H)].h(AAH) x(H) y(A)] IMPLIES w(OAH) n(H) m(A)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

@@ -1,0 +1,66 @@
+/home/theorem/project/doc/lib/files.dir
+
+logic.bib	bibliography for scribe. Also works for the bibtex program used
+		to produce bibliography files (.bbl) for latex documents, 
+		but generates many complaints from bibtex
+
+logictex.bib	bibliography for latex. Started as a copy of logic.bib, 
+		with adjustments made where latex and scribe differ.
+
+tpsplain.bst 		style file for tex output
+plain-casefix.bst  latex bibliography style file
+     copied from /afs/cs.cmu.edu/misc/tex/common/vendor/omega/lib/texmf/bibtex/bst and
+     modified by Peter Andrews 1998 July so that titles
+    will not be converted to lower-case
+
+tps.tex		Used in all proofs produced by TEXPROOF command in TPS.
+tpsdoc.tex	Contains commands useful in tps documents formatted for latex.
+
+		FILES FOR SCRIBE DOCUMENTS
+
+tpmdoc.lib
+Use this for manuscripts submitted to CADE conferences
+when you want actual proceedings size.
+This was constructed from the postscript part of tpsdoc.lib, but margins
+and font size are different.
+	Linewidth 5.5inches,TopMargin 1.5inches, BottomMargin 1.5inches,
+	Leftmargin 1.5inches, 
+
+tpldoc.lib
+This is just like tpmdoc.lib, but has top and bottom margins 1.2
+instead of 1.5
+	Linewidth 5.5inches,TopMargin 1.2inches, BottomMargin 1.2inches,
+	Leftmargin 1.5inches, Spread 0,indent 5 characters,
+
+tpkdoc.lib
+This is just like tpmdoc.lib, but has wider lines and narrower margins
+@Marker(Library,TPKDocuments,Postscript)
+	Linewidth 6.25inches,TopMargin 1.5inches, BottomMargin 1.5inches,
+	Leftmargin 1.0inches, 
+
+tpqdoc.lib
+This is just like tpmdoc.lib, but has wider lines and narrower margins
+@Marker(Library,TPQDocuments,Postscript)
+	Linewidth 6.25inches,TopMargin 1.0inches, BottomMargin 1.0inches,
+	Leftmargin 1.125inches,
+
+tpndoc.lib Fontscale 12
+Use tpndoc.lib if you want large font which will be reduced.
+It needs to be made like this.
+
+tprdoc.lib
+Simulates the Springer Lecture Notes in CS llncs latex standard. See
+/afs/cs/user/andrews/private/papers/llncs.
+This was constructed from the postscript part of tpsdoc.lib, but margins
+and font size, etc., are different.
+@Style(Date "1952 March 8", Font TimesRoman, Fontscale 10,
+	Linewidth 12.2cm, TopMargin 3.7cm, BottomMargin 4.8cm,
+	Leftmargin 4.8cm, Spacing 1, Spread 0, indent 3 characters,
+	FileDate "March 8, 1952")
+If you don't want page numbers to appear, add the following to the
+heading, as in /afs/cs/project/tps/tps/papers/tphols97/tphols97.mss:
+@comment[The following command prevents page numbers from being
+printed; this is useful if the conference will put in the page numbers.
+The StopHeaders command string is defined in tprdoc.lib]
+@StopHeaders
+

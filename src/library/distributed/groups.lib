@@ -1,0 +1,28 @@
+(:name GROUP-1B
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA *(AAA) LAMBDA e(A) LAMBDA inv(AA).FORALL x(A) [*(AAA) [inv(AA) x(A)] x(A) =(OAA) e(A)] AND FORALL x(A) [*(AAA) e(A) x(A) =(OAA) x(A)] AND ASSOCIATIVE(O(AAA)) *(AAA)"
+:needed-objects   (ASSOCIATIVE)
+:mhelp ""
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(AA)A(AAA)"))
+:other-remarks "
+")
+
+
+(:name ASSOCIATIVE2
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA *(AAA) FORALL x(A) FORALL y(A) FORALL z(A).*(AAA) x(A) [*(AAA) y(A) z(A)] =(OAA) *(AAA) [*(AAA) x(A) y(A)] z(A)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(AAA)"))
+:other-remarks "
+")
+
+

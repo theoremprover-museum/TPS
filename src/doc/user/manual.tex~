@@ -1,0 +1,240 @@
+\documentclass[10pt,twoside]{book}
+%\documentclass[11pt,twoside]{book}
+%\documentclass[11pt,twoside]{report}
+%\documentclass[11pt,dvips,twoside]{report}
+%TPS User's Manual
+
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{makeidx}
+
+%the following package permits us to use the comment environment
+\usepackage{verbatim}
+
+%the following package permits us to use the alltt environment
+%which is like verbatim but has certain technical advantages
+\usepackage{alltt}
+
+\input /home/theorem/tps/doc/lib/tps.tex
+\input /home/theorem/tps/doc/lib/tpsdoc.tex
+
+\def\tpscomfont{}  % Temporary command for a special font for commands
+                   %replace by \indexcommand{}
+
+\setlength{\textwidth}{6.7in}
+\setlength{\oddsidemargin}{0.1in}
+\setlength{\evensidemargin}{0.1in}
+%\setlength{\topmargin}{-0.5in}
+%\setlength{\footskip}{-0.5in}
+\setlength{\textheight}{9.0in}
+
+\makeindex % generate index data
+
+\begin{document}
+
+%th next command starts page numbering using roman numberals
+\frontmatter                           %used only for books
+
+
+\begin{titlepage}
+\begin{center}
+{\bf
+
+\vspace{1.00in}
+{\Large TPS User's Manual}
+
+\vspace{0.50in}
+
+
+Peter B. Andrews\\
+Chad E. Brown\\
+Matthew Bishop\\
+Sunil Issar\\
+Dan Nesmith\\
+Frank Pfenning\\
+Hongwei Xi\\
+Mark Kaminski\\
+
+\vspace{0.50in}
+
+\today 
+}
+\end{center}
+
+\vspace{3.20in}
+
+%If you want to add the copyright, adjust the vspace above and choose the
+%appropriate one of the two commands below.
+%\noindent{\copyright-and-research-credit}
+
+\noindent{\research-credit}
+
+\end{titlepage}
+
+\tableofcontents
+
+\mainmatter\pagestyle{headings}         %used only for books
+
+\chapter{Introduction}
+
+Welcome to {\TPS}, a theorem-proving environment developed at
+Carnegie Mellon University for
+both research and education.  {\TPS} is based on the typed
+$\lambda$-calculus, and supports automatic, semi-automatic, and
+interactive proofs of theorems of first- and higher-order logic.
+
+For details on setting {\TPS} up on your system, see chapter \ref{set-up}.
+
+There are two subsystems of {\TPS} which you may wish to use.  The
+first, {\ETPS}, is an educational version which is used in logic courses
+to prove theorems in purely interactive mode.  It contains none of the
+automatic features of {\TPS}.  The second, Grader, is a set of functions
+which are useful in keeping class grades, allowing, in particular, the
+automatic processing of the record files created by {\ETPS}.  There are
+separate manuals for each of these systems.  Grader is a part of {\TPS};
+you can enter the Grader top level via the command
+\indexcommand{DO-GRADES}.
+
+
+\section{Guide to documentation}
+
+At the present time, the {\TPS} manuals are far from finished.  Some areas
+are covered in detail, while others are very sketchy.  We hope, however,
+that these manuals 
+will allow you to get started with {\TPS}.
+
+To first learn the system, read \cite{AndrewsTPS88b}.  This will introduce
+you to the interaction style of the program, tell you how to get
+help, and show you how to enter wffs and use the inference rules.
+{\ETPS} is used for educational purposes, however, so it contains none
+of the automatic facilities of {\TPS} such as mating-search.
+
+For a full list of all commands, flags, etc., see \cite{AndrewsTPS88d}.  Those
+relating to mating-search are in a separate chapter, and other commands
+and flags can be found under the heading {\tt mating-search} in other
+chapters.
+
+There is also a programmer's manual. 
+
+%Unlike other manuals which are in {\bf Scribe}, this is in {\bf LaTeX}.
+
+\cite{AndrewsTPS88c} covers the commands which are particular to the
+Grader subsystem.
+
+Additional references which you may wish to consult are listed in the
+bibliography. \cite{Andrews95b} and \cite{AndrewsBrown2005} provide
+general information about {\TPS}. Some of the material in 
+the latter paper was taken from this manual.
+
+
+
+\section{The {\TPS} User Interface}\label{user-int}
+
+%Note: when we refer to a top level, "top" is an adjective, so there is
+%no hyphen. If we say "top-level commmand", then "top-level" is an
+%adjective, and should be hyphenated.
+
+{\TPS} has various top levels.  There is a main top level, and
+there are sub-top levels for specific
+purposes. Note that the same command may be defined in more than one top level,
+and have different effects. In each top level, the ? command will list
+all the commands available at that top level.
+
+% proofwindows, special characters, javawin, printed proofs
+% editor
+
+There are three interfaces for {\TPS}: text-based,
+xterm-based, and Java-based.  The first
+is purely text-based and behaves as a lisp interpreter.
+The user types in text commands and {\TPS} outputs
+a text response. % new paragraph?
+To use the xterm-based interface, one starts
+{\TPS} inside a new xterm with special character fonts.
+The user also enters commands as text, but the output
+can include special symbols (e.g., for logical operators
+and quantifiers). % new paragraph?
+The newest interface is a
+menu-based Java interface.
+With the Java interface
+the user can either type in a command or choose
+the command from a menu.  The output in the Java interface
+can also display special symbols such as logical operators. 
+
+In any of these interfaces {\TPS} can open new windows
+for special purposes.  A common example is the use
+of proofwindows for displaying different portions of the current
+proof.  Using the command {\indexcommand BEGIN-PRFW}, the user opens
+three new (xterm or Java) windows: the ``Complete Proof'' window,
+the ``Current Subproof'' window and the ``Current Subproof and Line Numbers''
+window.
+
+The ``Complete Proof'' window displays the entire proof, and is useful
+when the proof is either short or one wants a global view of the
+current state of a proof.  At each stage in the construction of a
+natural deduction proof, one unproved (or {\it planned}) proof line is
+the current goal, and certain lines, which must be processed to derive
+it, are designated as support lines for that goal. The current goal
+and its supporting lines are displayed in the ``Current Subproof''
+window.  The choice of these lines can be adjusted with the 
+SUBPROOF, SPONSOR, and UNSPONSOR commands.
+When the user applies a rule or tactic, the proofwindows
+are automatically updated (under certain flag settings).
+
+Another common use of auxiliary windows is in the
+\indexother{EDITOR} top level.
+This top level is used to manipulate formulas.
+When the user enters this top level, a particular
+formula is given (either explicitly or implicitly,
+e.g., by giving the corresponding line number in
+the current natural deduction proof).
+{\TPS} opens two new windows: the ``Top Edwff''
+window and the ``Current Edwff'' window.
+The user can issue commands to point to different
+subformulas (which changes the contents of the ``Current Edwff''
+window).  If the user issues a command to change the
+formula (e.g., {\indexcommand INSTALL} to instantiate abbreviations)
+the effect is to change the formula in the ``Top Edwff'' window
+and the corresponding subformula in the ``Current Edwff'' window.
+In the \indexother{EDITOR} top level, one can also give names (``weak labels'')
+to certain formulas which can later be used (in the same {\TPS} session) to refer to
+the formula.  To save a formula permanently, one uses
+the library facilities (see Chapter~\ref{library}).
+
+{\TPS} is also capable of creating {\TeX} output.
+For example, the command {\indexcommand TEXPROOF} creates
+a {\TeX} file containing the current natural deduction
+proof (which may be partial or complete).
+
+The user interface for {\TPS} is the same as that for {\ETPS}. More 
+information about it can be found in \cite{Andrews2004b}.
+
+
+
+\include{refs}
+\include{proving}
+\include{flags}
+\include{wffs}
+\include{library}
+\include{ms-guide}
+\include{unification}
+\include{rewrite}
+\include{translations}
+\include{models}
+\include{output}
+\include{events}
+\include{rules}
+\include{set-up}
+
+%\begin{comment}
+%\end{comment}
+
+\addtocontents{toc}{\contentsline {chapter}{\numberline {}Bibliography}{\arabic{page}}}
+
+\bibliography{logictex}
+\bibliographystyle{plain-casefix}
+
+\newpage
+\addtocontents{toc}{\contentsline {chapter}{\numberline {}Index}{\arabic{page}}}
+\printindex  
+
+\end{document}

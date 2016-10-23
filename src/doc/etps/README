@@ -1,0 +1,5 @@
+scribe manual
+scribe manual
+cp manual.ps man.ps
+gzip man.ps
+ps2pdf manual.ps

@@ -1,0 +1,1074 @@
+\indexentry{DO-GRADES, Command}{1}
+\indexentry{B, Command}{1}
+\indexentry{EDITOR}{2}
+\indexentry{I, Command}{2}
+\indexentry{EDITOR}{2}
+\indexentry{T, Command}{2}
+\indexentry{PROVE, Command}{3}
+\indexentry{GO, Command}{3}
+\indexentry{GO2, Command}{3}
+\indexentry{DIY, Command}{3}
+\indexentry{DIY-L, Command}{3}
+\indexentry{PIY, Command}{3}
+\indexentry{PROVE, Command}{3}
+\indexentry{DIY, Command}{3}
+\indexentry{PIY2, Command}{3}
+\indexentry{DIY2, Command}{3}
+\indexentry{DIY2-L, Command}{3}
+\indexentry{DIY, Command}{4}
+\indexentry{DIY, Command}{4}
+\indexentry{DIY, Command}{4}
+\indexentry{GO, Command}{4}
+\indexentry{DEFAULT-MS, Flag}{4}
+\indexentry{MATE, Command}{4}
+\indexentry{MERGE-TREE, Command}{4}
+\indexentry{LEAVE, Command}{4}
+\indexentry{ETREE-NAT, Command}{4}
+\indexentry{CURRENT-EPROOF}{4}
+\indexentry{MATE, Command}{4}
+\indexentry{ETREE-NAT, Command}{4}
+\indexentry{DIY, Command}{4}
+\indexentry{DIY, Command}{7}
+\indexentry{DEFAULT-MS, Flag}{7}
+\indexentry{MS98-1}{7}
+\indexentry{DELAY-SETVARS, Flag}{7}
+\indexentry{RECONSIDER, Command}{7}
+\indexentry{PROOFLIST, Command}{7}
+\indexentry{INTERRUPT-ENABLE, Flag}{7}
+\indexentry{LEAVE, Command}{7}
+\indexentry{INTERRUPT-ENABLE, Flag}{7}
+\indexentry{SAVE-WORK, Command}{7}
+\indexentry{BEGIN-PRFW, Command}{7}
+\indexentry{PROOFW-ACTIVE, Flag}{7}
+\indexentry{PROOFW-ACTIVE+NOS, Flag}{7}
+\indexentry{PROOFW-ALL, Flag}{7}
+\indexentry{EXECUTE-FILE, Command}{7}
+\indexentry{PAUSE, Command}{8}
+\indexentry{MATE, Command}{8}
+\indexentry{ETREE-NAT, Command}{8}
+\indexentry{ETREE-NAT-VERBOSE, Flag}{8}
+\indexentry{BEGIN-PRFW, Command}{8}
+\indexentry{MATE, Command}{8}
+\indexentry{TACMODE, Flag}{8}
+\indexentry{ETREE-NAT, Command}{8}
+\indexentry{MERGE-TREE, Command}{8}
+\indexentry{REMOVE-LEIBNIZ, Flag}{8}
+\indexentry{REWRITE-EQUAL-EXT, Flag}{8}
+\indexentry{REWRITE-EQUAL-EAGER, Flag}{8}
+\indexentry{REWRITE-ONLY-EXT, Flag}{8}
+\indexentry{REWRITE-EQUALITIES, Flag}{8}
+\indexentry{PUSH}{8}
+\indexentry{POP}{8}
+\indexentry{PUSH}{8}
+\indexentry{EXT-SEQ, Command}{8}
+\indexentry{?, Command}{8}
+\indexentry{CUTFREE-TO-EDAG, Command}{8}
+\indexentry{GO2, Command}{8}
+\indexentry{SAVEPROOF, Command}{8}
+\indexentry{RESTOREPROOF, Command}{8}
+\indexentry{PROOFLIST, Command}{8}
+\indexentry{RECONSIDER, Command}{8}
+\indexentry{SAVEPROOF, Command}{8}
+\indexentry{RESTOREPROOF, Command}{8}
+\indexentry{CREATE-SUBPROOF, Command}{8}
+\indexentry{MERGE-PROOFS, Command}{8}
+\indexentry{TRANSFER-LINES, Command}{8}
+\indexentry{MOVE, Command}{8}
+\indexentry{DELETE, Command}{8}
+\indexentry{INTRODUCE-GAP, Command}{8}
+\indexentry{MODIFY-GAPS, Command}{8}
+\indexentry{RENUMBERALL, Command}{8}
+\indexentry{SQUEEZE, Command}{8}
+\indexentry{CLEANUP, Command}{8}
+\indexentry{BUILD-PROOF-HIERARCHY, Command}{8}
+\indexentry{PBRIEF, Command}{8}
+\indexentry{EXPLAIN, Command}{8}
+\indexentry{PRINT-PROOF-STRUCTURE, Command}{9}
+\indexentry{GO, Command}{9}
+\indexentry{MONSTRO, MExpr}{9}
+\indexentry{GO2, MExpr}{9}
+\indexentry{DIY-L, Command}{9}
+\indexentry{DIY-L, Command}{9}
+\indexentry{USE-DIY, Flag}{9}
+\indexentry{DIY, Command}{9}
+\indexentry{USE-DIY, Flag}{9}
+\indexentry{CJFORM, Command}{9}
+\indexentry{REWRITE-DEFNS, Flag}{15}
+\indexentry{REWRITE-EQUALITIES, Flag}{15}
+\indexentry{IMPORTANT}{15}
+\indexentry{UNIFORM-SEARCH, Command}{15}
+\indexentry{REVIEW, Command}{15}
+\indexentry{?, Command}{15}
+\indexentry{SETFLAG, Command}{15}
+\indexentry{??, Command}{15}
+\indexentry{LIST, Command}{15}
+\indexentry{KEY, Command}{15}
+\indexentry{SEARCH, Command}{15}
+\indexentry{UPDATE, Command}{15}
+\indexentry{UPDATE-RELEVANT, Command}{15}
+\indexentry{UPDATE, Command}{15}
+\indexentry{UPDATE-RELEVANT, Command}{15}
+\indexentry{UPDATE-RELEVANT, Command}{15}
+\indexentry{INSERT, Command}{15}
+\indexentry{TEST, Command}{16}
+\indexentry{UNIFORM-SEARCH, Command}{16}
+\indexentry{TEST, Command}{16}
+\indexentry{NEW-SEARCHLIST, Command}{16}
+\indexentry{INSERT, Command}{16}
+\indexentry{FETCH, Command}{16}
+\indexentry{MAX-SEARCH-DEPTH, Flag}{16}
+\indexentry{MAX-UTREE-DEPTH, Flag}{16}
+\indexentry{GO, Command}{16}
+\indexentry{CONTINUE, Command}{16}
+\indexentry{test-top, REVIEW subject}{16}
+\indexentry{TEST-INITIAL-TIME-LIMIT, Flag}{16}
+\indexentry{INSERT, Command}{16}
+\indexentry{INSERT, Command}{16}
+\indexentry{INSERT, Command}{16}
+\indexentry{VARY-MODE, Command}{16}
+\indexentry{QUICK-DEFINE, Command}{16}
+\indexentry{TEST-FASTER-*, Flag}{16}
+\indexentry{TEST-EASIER-*, Flag}{16}
+\indexentry{TEST-MAX-SEARCH-VALUES, Flag}{16}
+\indexentry{SCALE-UP, Command}{16}
+\indexentry{SCALE-DOWN, Command}{16}
+\indexentry{PRESS-DOWN, Command}{16}
+\indexentry{PUSH-UP, Command}{16}
+\indexentry{FIND-BEST-MODE, Command}{16}
+\indexentry{TEST, Command}{20}
+\indexentry{UNIFORM-SEARCH, Command}{20}
+\indexentry{UNIFORM-SEARCH-L, Command}{20}
+\indexentry{UNIFORM-SEARCH-L, Command}{20}
+\indexentry{DIY-L, Command}{20}
+\indexentry{UNIFORM-SEARCH, Command}{20}
+\indexentry{UNIFORM-SEARCH, Command}{20}
+\indexentry{UNIFORM-SEARCH, Command}{20}
+\indexentry{AUTO-SUGGEST, Command}{21}
+\indexentry{AUTO-SUGGEST, Command}{21}
+\indexentry{ETR-AUTO-SUGGEST, Command}{21}
+\indexentry{NAT-ETREE, Command}{21}
+\indexentry{MS03-LIFT, Command}{21}
+\indexentry{MS04-LIFT, Command}{21}
+\indexentry{EXT-MATE}{21}
+\indexentry{MATE, Command}{21}
+\indexentry{NAT-ETREE, Command}{21}
+\indexentry{MS98-1}{21}
+\indexentry{NAT-ETREE, Command}{21}
+\indexentry{MS98-1}{22}
+\indexentry{NAT-ETREE, Command}{22}
+\indexentry{MS98-1}{24}
+\indexentry{MS98-1}{24}
+\indexentry{MS98-1}{24}
+\indexentry{MS98-VERBOSE, Flag}{24}
+\indexentry{NAT-ETREE, Command}{24}
+\indexentry{MATE, Command}{24}
+\indexentry{SET-BACKGROUND-EPROOF, Command}{24}
+\indexentry{NAT-ETREE, Command}{24}
+\indexentry{MS98-TRACE, Flag}{24}
+\indexentry{MS98-TRACE, Flag}{24}
+\indexentry{MS98-TRACE, Flag}{24}
+\indexentry{MAX-SUBSTS-VAR, Flag}{25}
+\indexentry{MAX-SUBSTS-VAR, Flag}{25}
+\indexentry{MS98-VERBOSE, Flag}{25}
+\indexentry{MS98-TRACE, Flag}{25}
+\indexentry{MS98-1}{25}
+\indexentry{MS98-1, Command}{25}
+\indexentry{GO, Command}{25}
+\indexentry{DEFAULT-MS, Flag}{25}
+\indexentry{MS98-1}{25}
+\indexentry{ETR-AUTO-SUGGEST, Command}{25}
+\indexentry{REWRITE-EQUIVS, Flag}{25}
+\indexentry{REWRITE-EQUIVS, Flag}{25}
+\indexentry{MS98-TRACE, Flag}{25}
+\indexentry{ETR-AUTO-SUGGEST, Command}{29}
+\indexentry{FO-SINGLE-SYMBOL}{31}
+\indexentry{CW, EdOp}{31}
+\indexentry{SAVE, EdOp}{31}
+\indexentry{PRINTEDTFLAG, Flag}{31}
+\indexentry{PRINTEDTFILE, Flag}{31}
+\indexentry{edt.mss, File}{31}
+\indexentry{PRINTEDTFLAG, Flag}{31}
+\indexentry{O, Command}{31}
+\indexentry{REM, Command}{31}
+\indexentry{PRINTVPDFLAG, Flag}{31}
+\indexentry{VPD-FILENAME, Flag}{31}
+\indexentry{LIB, Command}{33}
+\indexentry{UNIXLIB, Command}{33}
+\indexentry{LIB-MASTERINDEX-FILE, Flag}{33}
+\indexentry{LIB-MASTERINDEX-FILE, Flag}{33}
+\indexentry{DEFAULT-LIB-DIR, Flag}{33}
+\indexentry{BACKUP-LIB-DIR, Flag}{33}
+\indexentry{ADD-SUBDIRECTORIES, Flag}{33}
+\indexentry{DEFAULT-LIB-DIR, Flag}{33}
+\indexentry{BACKUP-LIB-DIR, Flag}{33}
+\indexentry{DEFAULT-LIB-DIR, Flag}{33}
+\indexentry{BACKUP-LIB-DIR, Flag}{33}
+\indexentry{BACKUP-LIB-DIR, Flag}{33}
+\indexentry{CREATE-LIB-DIR, Command}{33}
+\indexentry{CREATE-LIB-SUBDIR, Command}{33}
+\indexentry{CREATE-LIB-DIR, Command}{33}
+\indexentry{RESTORE-MASTERINDEX, Command}{33}
+\indexentry{INSERT, Command}{34}
+\indexentry{LIB-KEYWORD-FILE, Flag}{34}
+\indexentry{KEY, Command}{34}
+\indexentry{SHOW-ALL-WFFS, Command}{34}
+\indexentry{ADD-KEYWORD, Command}{34}
+\indexentry{SHOW-KEYWORDS, Command}{34}
+\indexentry{FIND-MODE, Command}{34}
+\indexentry{SHOW-BESTMODE, Command}{34}
+\indexentry{DATEREC, Command}{34}
+\indexentry{ADD-BESTMODE, Command}{34}
+\indexentry{MODEREC, Command}{34}
+\indexentry{INSERT, Command}{34}
+\indexentry{?, Command}{34}
+\indexentry{FETCH, Command}{34}
+\indexentry{SHOW-ALL-LIBOBJECTS, Flag}{34}
+\indexentry{MODE1}{34}
+\indexentry{FO-SINGLE-SYMBOL}{34}
+\indexentry{FACE}{34}
+\indexentry{CHECK-NEEDED-OBJECTS, Command}{35}
+\indexentry{IMPORT-NEEDED-OBJECTS, Command}{35}
+\indexentry{DATEREC, Command}{35}
+\indexentry{CHANGE-PROVABILITY, Command}{35}
+\indexentry{FIND-PROVABLE, Command}{35}
+\indexentry{RETRIEVE-FILE, Command}{35}
+\indexentry{DATEREC, Command}{35}
+\indexentry{TEST, Command}{35}
+\indexentry{BUG-SAVE, Command}{35}
+\indexentry{BUG-RESTORE, Command}{35}
+\indexentry{DEFAULT-BUG-DIR, Flag}{35}
+\indexentry{SHOW, Command}{35}
+\indexentry{DATEREC, Command}{35}
+\indexentry{SHOW-WFF, Command}{35}
+\indexentry{SHOW-MHELP, Command}{35}
+\indexentry{SHOW-WFF\&HELP, Command}{35}
+\indexentry{LIBOBJECTS-IN-FILE, Command}{35}
+\indexentry{SHOW-WFFS-IN-FILE, Command}{35}
+\indexentry{LIST-OF-LIBOBJECTS, Command}{35}
+\indexentry{SHOW-ALL-WFFS, Command}{35}
+\indexentry{KEY, Command}{35}
+\indexentry{SEARCH, Command}{35}
+\indexentry{SEARCH2, Command}{35}
+\indexentry{CREATE-LIB-DIR, Command}{35}
+\indexentry{CREATE-LIB-SUBDIR, Command}{35}
+\indexentry{DELETE-LIB-DIR, Command}{35}
+\indexentry{COPY-LIBDIR, Command}{35}
+\indexentry{RENAME-LIBDIR, Command}{35}
+\indexentry{CREATE-LIB-DIR, Command}{35}
+\indexentry{DELETE-LIB-DIR, Command}{35}
+\indexentry{COPY-LIBDIR, Command}{35}
+\indexentry{COPY-LIBDIR, Command}{35}
+\indexentry{COPY-LIBDIR, Command}{35}
+\indexentry{DEFAULT-LIB-DIR, Flag}{35}
+\indexentry{BACKUP-LIB-DIR, Flag}{35}
+\indexentry{UPDATE-LIBDIR, Command}{35}
+\indexentry{UPDATE-LIBDIR, Command}{36}
+\indexentry{COPY-LIBDIR, Command}{36}
+\indexentry{DEFAULT-LIB-DIR, Flag}{36}
+\indexentry{BACKUP-LIB-DIR, Flag}{36}
+\indexentry{INSERT, Command}{36}
+\indexentry{DELETE, Command}{36}
+\indexentry{MOVE-LIBOBJECT, Command}{36}
+\indexentry{DELETE-LIBFILE, Command}{36}
+\indexentry{RENAME-LIBFILE, Command}{36}
+\indexentry{MOVE-LIBFILE, Command}{36}
+\indexentry{COPY-LIBFILE, Command}{36}
+\indexentry{INSERT, Command}{36}
+\indexentry{INSERT, Command}{36}
+\indexentry{DELETE, Command}{36}
+\indexentry{RENAME-OBJECT, Command}{36}
+\indexentry{MOVE-LIBOBJECT, Command}{36}
+\indexentry{MOVE-LIBOBJECT, Command}{36}
+\indexentry{MOVE-LIBOBJECT, Command}{36}
+\indexentry{SHOW-ALL-LIBOBJECTS, Flag}{36}
+\indexentry{LIBFILES, Command}{36}
+\indexentry{REFORMAT, Command}{36}
+\indexentry{SORT, Command}{36}
+\indexentry{SPRING-CLEAN, File}{36}
+\indexentry{SCRIBE-LIBFILE, Command}{36}
+\indexentry{TEX-LIBFILE, Command}{36}
+\indexentry{EXPERTFLAG, Flag}{36}
+\indexentry{ASSERT, Command}{36}
+\indexentry{ADD-KEYWORD, Command}{36}
+\indexentry{SHOW-KEYWORDS, Command}{36}
+\indexentry{CHANGE-KEYWORDS, Command}{36}
+\indexentry{UPDATE-KEYWORDS, Command}{36}
+\indexentry{SHOW, Command}{36}
+\indexentry{SHOW-WFF\&HELP, Command}{36}
+\indexentry{TEXLIBFILE, Command}{36}
+\indexentry{SCRIBELIBFILE, Command}{36}
+\indexentry{TEX-ALL-WFFS, Command}{36}
+\indexentry{SCRIBE-ALL-WFFS, Command}{36}
+\indexentry{TEX-ALL-WFFS, Command}{36}
+\indexentry{SCRIBE-ALL-WFFS, Command}{36}
+\indexentry{SEARCH, Command}{36}
+\indexentry{SEARCH2, Command}{36}
+\indexentry{LIB-KEYWORD-FILE, Flag}{36}
+\indexentry{classification scheme}{37}
+\indexentry{CLASS-SCHEME, Flag}{37}
+\indexentry{INSERT, Command}{37}
+\indexentry{FETCH, Command}{37}
+\indexentry{LIST-OF-LIBOBJECTS, Command}{37}
+\indexentry{PSCHEMES, Command}{37}
+\indexentry{CLASS-SCHEME, Flag}{37}
+\indexentry{GOTO-CLASS, Flag}{37}
+\indexentry{ROOT-CLASS, Flag}{37}
+\indexentry{CLASS-SCHEME, Command}{37}
+\indexentry{CLASS-DIRECTION, Flag}{37}
+\indexentry{UNIXLIB, Command}{37}
+\indexentry{CLASS-SCHEME, Flag}{37}
+\indexentry{UNIXLIB-SHOWPATH, Flag}{38}
+\indexentry{cp, Command}{38}
+\indexentry{fetch, Command}{38}
+\indexentry{show, Command}{38}
+\indexentry{FETCH, Command}{38}
+\indexentry{FETCH, Command}{38}
+\indexentry{DESTROY, Command}{38}
+\indexentry{AUTO-LIB-DIR, Flag}{39}
+\indexentry{INSERT-TPTP*, Command}{39}
+\indexentry{INSERT-TPTP, Command}{39}
+\indexentry{GO, Command}{41}
+\indexentry{DEFAULT-MS, Flag}{41}
+\indexentry{MS88}{41}
+\indexentry{MS89}{41}
+\indexentry{MS90-3}{41}
+\indexentry{MS90-9}{41}
+\indexentry{MS91-6}{41}
+\indexentry{MS91-7}{41}
+\indexentry{MS92-9}{41}
+\indexentry{MS93-1}{41}
+\indexentry{MS98-1}{41}
+\indexentry{DIY, Command}{41}
+\indexentry{GO, Command}{41}
+\indexentry{DEFAULT-MS, Flag}{41}
+\indexentry{DEFAULT-MS, Flag}{42}
+\indexentry{NUM-OF-DUPS, Flag}{42}
+\indexentry{QUERY-USER, Flag}{42}
+\indexentry{PRIMSUB-METHOD, Flag}{42}
+\indexentry{NAME-PRIM, Command}{42}
+\indexentry{PRIMSUB-METHOD, Flag}{43}
+\indexentry{PRIMSUB-METHOD, Flag}{43}
+\indexentry{NEG-PRIMSUBS, Flag}{43}
+\indexentry{PRIM-BDTYPES, Flag}{43}
+\indexentry{PR89}{43}
+\indexentry{NEG-PRIMSUB, Flag}{43}
+\indexentry{PRIM-BDTYPES, Flag}{43}
+\indexentry{PRIM-BDTYPES, Flag}{43}
+\indexentry{PRIM-BDTYPES, Flag}{43}
+\indexentry{PRIM-BDTYPES-AUTO, Flag}{43}
+\indexentry{PR93}{43}
+\indexentry{MIN-PRIM-DEPTH, Flag}{43}
+\indexentry{MAX-PRIM-DEPTH, Flag}{43}
+\indexentry{PRIM-BDTYPES, Flag}{43}
+\indexentry{MAX-PRIM-DEPTH, Flag}{43}
+\indexentry{MIN-PRIM-DEPTH, Flag}{43}
+\indexentry{PR95}{43}
+\indexentry{MIN-PRIM-LITS, Flag}{43}
+\indexentry{MAX-PRIM-LITS, Flag}{43}
+\indexentry{PRIM-BDTYPES, Flag}{43}
+\indexentry{MIN-PRIM-LITS, Flag}{43}
+\indexentry{MAX-PRIM-LITS, Flag}{43}
+\indexentry{PR97}{44}
+\indexentry{MIN-PRIM-LITS, Flag}{44}
+\indexentry{MAX-PRIM-LITS, Flag}{44}
+\indexentry{PRIM-BDTYPES, Flag}{44}
+\indexentry{MIN-PRIM-LITS, Flag}{44}
+\indexentry{MAX-PRIM-LITS, Flag}{44}
+\indexentry{MAX-PRIM-DEPTH, Flag}{44}
+\indexentry{NAME-PRIM, Command}{45}
+\indexentry{PRIMSUBS}{45}
+\indexentry{PRIM-ALL, Command}{45}
+\indexentry{PRIM-OUTER, Command}{45}
+\indexentry{PRIM-SINGLE, Command}{45}
+\indexentry{PRIM-SUB, Command}{45}
+\indexentry{PRIM-BDTYPES, Flag}{45}
+\indexentry{PRIM-BDTYPES-AUTO, Flag}{45}
+\indexentry{NEW-OPTION-SET-LIMIT, Flag}{45}
+\indexentry{MS91-WEIGHT-LIMIT-RANGE, Flag}{45}
+\indexentry{weight-a}{45}
+\indexentry{weight-b}{45}
+\indexentry{weight-c}{45}
+\indexentry{WEIGHT-A-FN, Flag}{45}
+\indexentry{WEIGHT-B-FN, Flag}{45}
+\indexentry{WEIGHT-C-FN, Flag}{45}
+\indexentry{WEIGHT-A-COEFFICIENT, Flag}{45}
+\indexentry{WEIGHT-B-COEFFICIENT, Flag}{45}
+\indexentry{WEIGHT-C-COEFFICIENT, Flag}{45}
+\indexentry{WEIGHT-A-FN, Flag}{45}
+\indexentry{EXPANSION-LEVEL-WEIGHT-A}{45}
+\indexentry{WEIGHT-B-FN, Flag}{45}
+\indexentry{SIMPLE-WEIGHT-B-FN}{45}
+\indexentry{PENALTY-FOR-EACH-PRIMSUB, Flag}{45}
+\indexentry{PENALTY-FOR-MULTIPLE-PRIMSUBS, Flag}{45}
+\indexentry{PENALTY-FOR-MULTIPLE-SUBS, Flag}{45}
+\indexentry{SIMPLEST-WEIGHT-B-FN}{45}
+\indexentry{ALL-PENALTIES-FN}{46}
+\indexentry{SIMPLE-WEIGHT-B-FN}{46}
+\indexentry{PENALTY-FOR-ORDINARY-DUP, Flag}{46}
+\indexentry{WEIGHT-C-FN, Flag}{46}
+\indexentry{OPTION-SET-NUM-VPATHS}{46}
+\indexentry{OPTION-SET-NUM-LEAVES}{46}
+\indexentry{SEARCH-TIME-LIMIT, Flag}{46}
+\indexentry{RECONSIDER-FN, Flag}{46}
+\indexentry{SEARCH-TIME-LIMIT, Flag}{46}
+\indexentry{RECONSIDER-FN, Flag}{46}
+\indexentry{NEW-OPTION-SET-LIMIT, Flag}{46}
+\indexentry{MS91-WEIGHT-LIMIT-RANGE, Flag}{46}
+\indexentry{MAX-SEARCH-LIMIT, Flag}{46}
+\indexentry{SEARCH-TIME-LIMIT, Flag}{46}
+\indexentry{OPTIONS-GENERATE-FN, Flag}{46}
+\indexentry{OPTIONS-GENERATE-FN, Flag}{46}
+\indexentry{NUM-OF-DUPS, Flag}{46}
+\indexentry{MAX-MATES, Flag}{46}
+\indexentry{MAX-MATES, Flag}{46}
+\indexentry{MAX-MATES, Flag}{46}
+\indexentry{NUM-OF-DUPS, Flag}{46}
+\indexentry{MAX-MATES, Flag}{46}
+\indexentry{NUM-OF-DUP, Flag}{46}
+\indexentry{ORDER-COMPONENTS, Flag}{46}
+\indexentry{NUM-OF-DUPS, Flag}{46}
+\indexentry{ORDER-COMPONENTS, Flag}{46}
+\indexentry{NUM-OF-DUPS, Flag}{46}
+\indexentry{MS91-WEIGHT-LIMIT-RANGE, Flag}{47}
+\indexentry{NEW-OPTION-SET-LIMIT, Flag}{47}
+\indexentry{RECONSIDER-FN, Flag}{47}
+\indexentry{PENALTY-FOR-ORDINARY-DUPS, Flag}{47}
+\indexentry{PENALTY-FOR-MULTIPLE-SUBS, Flag}{47}
+\indexentry{MAX-PRIM-DEPTH, Flag}{47}
+\indexentry{MAX-PRIM-DEPTH, Flag}{47}
+\indexentry{MAX-PRIM-DEPTH, Flag}{47}
+\indexentry{SEARCH-ORDER, Command}{47}
+\indexentry{MS91-SIMPLEST}{47}
+\indexentry{MS91-ORIGINAL}{47}
+\indexentry{MS91-NODUPS}{47}
+\indexentry{MS91-DEEP}{47}
+\indexentry{MTREE, MExpr}{50}
+\indexentry{LEAVE, Command}{50}
+\indexentry{PM-NODE, Command}{50}
+\indexentry{POB-NODE, Command}{50}
+\indexentry{DEFAULT-OB, Flag}{50}
+\indexentry{POB, Command}{50}
+\indexentry{PMTR, Command}{50}
+\indexentry{PMTR*, Command}{50}
+\indexentry{PMTR-FLAT, Command}{50}
+\indexentry{POTR, Command}{50}
+\indexentry{POTR-FLAT, Command}{50}
+\indexentry{POTR*-FLAT, Command}{50}
+\indexentry{PPATH, Command}{51}
+\indexentry{PPATH*, Command}{51}
+\indexentry{CONNS-ADDED, Command}{51}
+\indexentry{LIVE-LEAVES, Command}{51}
+\indexentry{SHOW-MATING, Command}{51}
+\indexentry{SHOW-SUBSTS, Command}{51}
+\indexentry{UP, Command}{51}
+\indexentry{DOWN, Command}{51}
+\indexentry{SIB, Command}{51}
+\indexentry{GOTO, Command}{51}
+\indexentry{INIT, Command}{51}
+\indexentry{KILL, Command}{51}
+\indexentry{RESURRECT, Command}{51}
+\indexentry{PRUNE, Command}{51}
+\indexentry{REM-NODE, Command}{51}
+\indexentry{ADD-CONN, Command}{51}
+\indexentry{CHOOSE-BRANCH, Command}{51}
+\indexentry{QRY, Command}{51}
+\indexentry{ADD-ALL-LIT, Command}{51}
+\indexentry{ADD-ALL-OB, Command}{51}
+\indexentry{EXPAND-LEAVES, Command}{51}
+\indexentry{EXPAND-LEAVES, Command}{51}
+\indexentry{MT94-11, Command}{51}
+\indexentry{DEFAULT-MS, Flag}{51}
+\indexentry{GO, Command}{51}
+\indexentry{MT94-12, Command}{51}
+\indexentry{MT94-11, Command}{51}
+\indexentry{MT94-12-TRIGGER, Flag}{51}
+\indexentry{ADD-ALL-LIT, Command}{51}
+\indexentry{ADD-ALL-OB, Command}{51}
+\indexentry{MT95-1, Command}{51}
+\indexentry{MT-SUBSUMPTION-CHECK, Flag}{51}
+\indexentry{TAG-CONN-FN, Flag}{51}
+\indexentry{TAG-LIST-FN, Flag}{51}
+\indexentry{UNIFY, MExpr}{57}
+\indexentry{MAX-SUBSTS, Flag}{57}
+\indexentry{MAX-SEARCH-DEPTH, Flag}{58}
+\indexentry{MAX-UTREE-DEPTH, Flag}{58}
+\indexentry{RIGID-PATH-CK, Flag}{58}
+\indexentry{MIN-QUICK-DEPTH, Flag}{58}
+\indexentry{MAX-SEARCH-DEPTH, Flag}{58}
+\indexentry{MIN-QUICK-DEPTH, Flag}{58}
+\indexentry{MIN-QUICK-DEPTH, Flag}{58}
+\indexentry{MIN-QUICK-DEPTH, Flag}{58}
+\indexentry{MAX-SEARCH-DEPTH, Flag}{58}
+\indexentry{MAX-SEARCH-DEPTH, Flag}{58}
+\indexentry{MAX-SEARCH-DEPTH, Flag}{58}
+\indexentry{MAX-SUBSTS-VAR, Flag}{58}
+\indexentry{MAX-SUBSTS-VAR, Flag}{58}
+\indexentry{MAX-SUBSTS-QUICK, Flag}{58}
+\indexentry{MAX-SUBSTS-QUICK, Flag}{58}
+\indexentry{MAX-SUBSTS-VAR, Flag}{58}
+\indexentry{MAX-SUBSTS-QUICK, Flag}{58}
+\indexentry{MAX-SUBSTS-VAR, Flag}{58}
+\indexentry{MAX-SUBSTS-PROJ, Flag}{58}
+\indexentry{MAX-SUBSTS-PROJ-TOTAL, Flag}{58}
+\indexentry{UNIF-DEPTHS, Command}{59}
+\indexentry{UNIF-NODEPTHS, Command}{59}
+\indexentry{MIN-QUICK-DEPTH, Flag}{59}
+\indexentry{MAX-SUBSTS-QUICK, Flag}{59}
+\indexentry{MAX-SUBSTS-QUICK, Flag}{59}
+\indexentry{MIN-QUICK-DEPTH, Flag}{59}
+\indexentry{MAX-SUBSTS-QUICK, Flag}{59}
+\indexentry{MAX-SUBSTS-QUICK, Flag}{59}
+\indexentry{MAX-SUBSTS-VAR, Flag}{59}
+\indexentry{MIN-QUICK-DEPTH, Flag}{59}
+\indexentry{MAX-SUBSTS-QUICK, Flag}{59}
+\indexentry{MAX-SUBSTS-QUICK, Flag}{59}
+\indexentry{MAX-SUBSTS-QUICK, Flag}{59}
+\indexentry{EPROOF-UTREE, Command}{59}
+\indexentry{APPLY-RRULE, Command}{63}
+\indexentry{UNAPPLY-RRULE, Command}{63}
+\indexentry{USE-THEORY, Command}{63}
+\indexentry{ASSERT-RRULES, Flag}{63}
+\indexentry{FETCH, Command}{63}
+\indexentry{DELETE-RRULE, Command}{63}
+\indexentry{LIST-RRULES, Command}{63}
+\indexentry{MAKE-ABBREV-RRULE, Command}{63}
+\indexentry{MAKE-INVERSE-RRULE, Command}{63}
+\indexentry{MAKE-THEORY, Command}{63}
+\indexentry{PERMUTE-RRULES, Command}{63}
+\indexentry{REWRITE-SUPP1, Command}{63}
+\indexentry{REWRITE-SUPP*, Command}{63}
+\indexentry{UNREWRITE-PLAN*, Command}{63}
+\indexentry{UNREWRITE-PLAN1, Command}{63}
+\indexentry{SIMPLIFY-PLAN, Command}{64}
+\indexentry{SIMPLIFY-PLAN*, Command}{64}
+\indexentry{SIMPLIFY-SUPP, Command}{64}
+\indexentry{SIMPLIFY-SUPP*, Command}{64}
+\indexentry{ACTIVATE-RULES, Command}{64}
+\indexentry{DEACTIVATE-RULES, Command}{64}
+\indexentry{USE-THEORY, Command}{64}
+\indexentry{USE-RRULES, Command}{64}
+\indexentry{INSTANCE-OF-REWRITING}{64}
+\indexentry{ARR, Command}{64}
+\indexentry{ARR*, Command}{64}
+\indexentry{ARR1, Command}{64}
+\indexentry{ARR1*, Command}{64}
+\indexentry{MAKE-RRULE, Command}{64}
+\indexentry{UNARR, Command}{64}
+\indexentry{UNARR*, Command}{64}
+\indexentry{UNARR1, Command}{64}
+\indexentry{UNARR1*, Command}{64}
+\indexentry{MS98-1}{66}
+\indexentry{MS98-1}{66}
+\indexentry{MS98-REWRITES, Flag}{66}
+\indexentry{MAX-SUBSTS-VAR, Flag}{66}
+\indexentry{ASSERT-RRULES, Flag}{67}
+\indexentry{PROVE, Command}{67}
+\indexentry{ASSERT-RRULES, Flag}{67}
+\indexentry{MS98-1}{67}
+\indexentry{MS98-EXTERNAL-REWRITES, Flag}{67}
+\indexentry{ASSERT-RRULES, Flag}{67}
+\indexentry{MS98-1}{67}
+\indexentry{MS98-EXTERNAL-REWRITES, Flag}{67}
+\indexentry{REWRITING, Command}{67}
+\indexentry{USE-RRULES, Command}{67}
+\indexentry{REWRITE, Command}{67}
+\indexentry{REWRITE-IN, Command}{67}
+\indexentry{OK, Command}{67}
+\indexentry{ASSERT-TOP, Command}{67}
+\indexentry{TOP, Command}{67}
+\indexentry{REW, Command}{67}
+\indexentry{REW, Command}{67}
+\indexentry{ED, Command}{67}
+\indexentry{SAME, Command}{68}
+\indexentry{DERIVE-RRULE, Command}{68}
+\indexentry{ACTIVE-THEORY, Command}{68}
+\indexentry{USE-THEORY, Command}{68}
+\indexentry{DEACTIVATE-THEORY, Command}{68}
+\indexentry{PROVE, Command}{68}
+\indexentry{DERIVE, Command}{68}
+\indexentry{REWRITE, Command}{68}
+\indexentry{APP, Command}{68}
+\indexentry{CURRENT-THEORY, Command}{68}
+\indexentry{PROVE-IN, Command}{68}
+\indexentry{DERIVE-IN, Command}{68}
+\indexentry{REWRITE-IN, Command}{68}
+\indexentry{ACTIVE-THEORY, Command}{68}
+\indexentry{PROVE-IN, Command}{68}
+\indexentry{REWRITE-IN, Command}{68}
+\indexentry{AUTO, Command}{68}
+\indexentry{REWRITING-AUTO-SEARCH-TYPE, Flag}{68}
+\indexentry{REWRITING, Command}{69}
+\indexentry{REWRITE, Command}{69}
+\indexentry{REWRITE-IN, Command}{69}
+\indexentry{REWRITE, Command}{69}
+\indexentry{ASSERT-TOP, Command}{69}
+\indexentry{ASSERT, Command}{69}
+\indexentry{ASSERT2, Command}{69}
+\indexentry{BEGIN-PRFW, Command}{69}
+\indexentry{END-PRFW, Command}{69}
+\indexentry{LEAVE, Command}{69}
+\indexentry{OK, Command}{69}
+\indexentry{REWRITE, Command}{69}
+\indexentry{REWRITE-IN, Command}{69}
+\indexentry{DERIVE, Command}{69}
+\indexentry{DERIVE-IN, Command}{69}
+\indexentry{DERIVE, Command}{69}
+\indexentry{DONE, Command}{69}
+\indexentry{PALL, Command}{69}
+\indexentry{PROOFLIST, Command}{69}
+\indexentry{PROVE, Command}{69}
+\indexentry{PROVE-IN, Command}{69}
+\indexentry{PROVE, Command}{69}
+\indexentry{RECONSIDER, Command}{69}
+\indexentry{RESTOREPROOF, Command}{69}
+\indexentry{SAVEPROOF, Command}{69}
+\indexentry{TEXPROOF, Command}{69}
+\indexentry{ANY, Command}{70}
+\indexentry{ANY*, Command}{70}
+\indexentry{UNANY*, Command}{70}
+\indexentry{APP*-REWRITE-DEPTH, Flag}{70}
+\indexentry{ANY*-IN, Command}{70}
+\indexentry{UNANY*-IN, Command}{70}
+\indexentry{ANY*, Command}{70}
+\indexentry{UNANY*, Command}{70}
+\indexentry{APP, Command}{70}
+\indexentry{APP*, Command}{70}
+\indexentry{UNAPP*, Command}{70}
+\indexentry{ANY*, Command}{70}
+\indexentry{UNANY*, Command}{70}
+\indexentry{AUTO, Command}{70}
+\indexentry{REWRITING-AUTO-DEPTH, Flag}{70}
+\indexentry{REWRITING-AUTO-MIN-DEPTH, Flag}{70}
+\indexentry{REWRITING-AUTO-TABLE-SIZE, Flag}{70}
+\indexentry{REWRITING-AUTO-MAX-WFF-SIZE, Flag}{70}
+\indexentry{REWRITING-AUTO-SUBSTS, Flag}{70}
+\indexentry{SAME, Command}{70}
+\indexentry{CLEANUP, Command}{70}
+\indexentry{DELETE, Command}{70}
+\indexentry{INTRODUCE-GAP, Command}{70}
+\indexentry{MOVE, Command}{70}
+\indexentry{SQUEEZE, Command}{70}
+\indexentry{DELETE, Command}{70}
+\indexentry{INTRODUCE-GAP, Command}{70}
+\indexentry{MOVE, Command}{70}
+\indexentry{CONNECT, Command}{70}
+\indexentry{CONNECT, Command}{70}
+\indexentry{CONNECT, Command}{70}
+\indexentry{CONNECT, Command}{70}
+\indexentry{CONNECT, Command}{70}
+\indexentry{BETA-EQ, Command}{71}
+\indexentry{ETA-EQ, Command}{71}
+\indexentry{LAMBDA-EQ, Command}{71}
+\indexentry{BETA-NF, Command}{71}
+\indexentry{ETA-NF, Command}{71}
+\indexentry{LAMBDA-NF, Command}{71}
+\indexentry{LONG-ETA-NF, Command}{71}
+\indexentry{CURRENT-THEORY, Command}{71}
+\indexentry{DERIVE-RRULE, Command}{71}
+\indexentry{MAKE-RRULE, Command}{71}
+\indexentry{SAVE-RRULE, Command}{71}
+\indexentry{ACTIVATE-RULES, Command}{71}
+\indexentry{ACTIVE-THEORY, Command}{71}
+\indexentry{DEACTIVATE-RULES, Command}{71}
+\indexentry{DEACTIVATE-THEORY, Command}{71}
+\indexentry{DELETE-RRULE, Command}{71}
+\indexentry{LIST-RRULES, Command}{71}
+\indexentry{MAKE-ABBREV-RRULE, Command}{71}
+\indexentry{MAKE-INVERSE-RRULE, Command}{71}
+\indexentry{MAKE-THEORY, Command}{71}
+\indexentry{PERMUTE-RRULES, Command}{71}
+\indexentry{USE-THEORY, Command}{71}
+\indexentry{REVIEW, Command}{71}
+\indexentry{LIB, Command}{71}
+\indexentry{EXIT, Command}{71}
+\indexentry{APP*-REWRITE-DEPTH, Flag}{71}
+\indexentry{APP*, Command}{71}
+\indexentry{UNAPP*, Command}{71}
+\indexentry{ANY*, Command}{71}
+\indexentry{UNANY*, Command}{71}
+\indexentry{ANY*-IN, Command}{71}
+\indexentry{UNANY*-IN, Command}{71}
+\indexentry{REWRITING-AUTO-DEPTH, Flag}{71}
+\indexentry{AUTO, Command}{71}
+\indexentry{REWRITING-AUTO-GLOBAL-SORT, Flag}{71}
+\indexentry{REWRITING-AUTO-SEARCH-TYPE, Flag}{71}
+\indexentry{REWRITING-AUTO-MAX-WFF-SIZE, Flag}{71}
+\indexentry{AUTO, Command}{71}
+\indexentry{REWRITING-AUTO-MIN-DEPTH, Flag}{71}
+\indexentry{REWRITING-AUTO-SEARCH-TYPE, Flag}{71}
+\indexentry{AUTO, Flag}{71}
+\indexentry{REWRITING-AUTO-GLOBAL-SORT, Flag}{71}
+\indexentry{REWRITING-AUTO-SUBSTS, Flag}{71}
+\indexentry{AUTO, Command}{71}
+\indexentry{REWRITING-AUTO-TABLE-SIZE, Flag}{71}
+\indexentry{AUTO, Command}{71}
+\indexentry{REWRITING-RELATION-SYMBOL, Flag}{72}
+\indexentry{PROVE, Command}{72}
+\indexentry{VERBOSE-REWRITE-JUSTIFICATION, Flag}{72}
+\indexentry{NAT-ETREE, Command}{77}
+\indexentry{NAT-ETREE, Command}{77}
+\indexentry{TACUSE, Flag}{78}
+\indexentry{TACMODE, Flag}{78}
+\indexentry{TACTIC-VERBOSE, Flag}{78}
+\indexentry{tactic-output, Function}{78}
+\indexentry{tactic-use!Syntactic Object}{78}
+\indexentry{tactic-mode!Syntactic Object}{78}
+\indexentry{tactic-defn!Syntactic Object}{78}
+\indexentry{primitive-tactic!Syntactic Object}{78}
+\indexentry{compound-tactic!Syntactic Object}{78}
+\indexentry{tactic-exp!Syntactic Object}{78}
+\indexentry{goal!Syntactic Object}{78}
+\indexentry{goal-list!Syntactic Object}{78}
+\indexentry{msg!Syntactic Object}{78}
+\indexentry{token!Syntactic Object}{78}
+\indexentry{tacl-defn!Syntactic Object}{79}
+\indexentry{primitive-tacl-defn!Syntactic Object}{79}
+\indexentry{compound-tacl-defn!Syntactic Object}{79}
+\indexentry{tactic-output, Function}{79}
+\indexentry{tactic-verbose, Flag}{79}
+\indexentry{IDTAC}{80}
+\indexentry{FAILTAC}{80}
+\indexentry{CALL}{80}
+\indexentry{ORELSE}{80}
+\indexentry{THEN}{80}
+\indexentry{REPEAT}{80}
+\indexentry{THEN*}{80}
+\indexentry{THEN**}{80}
+\indexentry{IFTHEN}{80}
+\indexentry{SEQUENCE}{81}
+\indexentry{COMPOSE}{81}
+\indexentry{TRY}{81}
+\indexentry{NO-GOAL}{81}
+\indexentry{use-tactic, MExpr}{81}
+\indexentry{TACUSE, Flag}{81}
+\indexentry{TACMODE, Flag}{81}
+\indexentry{TACTIC-VERBOSE, Flag}{81}
+\indexentry{USE-RULEP, Flag}{81}
+\indexentry{LAMBDA-CONV, Flag}{81}
+\indexentry{USE-RULEP-TAC}{81}
+\indexentry{COMPLETE-TRANSFORM*-TAC}{81}
+\indexentry{LEXPD*-VARY-TAC}{81}
+\indexentry{GO2-TAC}{81}
+\indexentry{GO2, MExpr}{81}
+\indexentry{MONSTRO, MExpr}{81}
+\indexentry{print-routines, Function}{81}
+\indexentry{ETREE-NAT-VERBOSE, Flag}{81}
+\indexentry{NAT-ETREE-VERSION, Flag}{81}
+\indexentry{NAT-ETREE, Command}{81}
+\indexentry{CEB}{81}
+\indexentry{CEB}{81}
+\indexentry{NAT-ETREE, Command}{81}
+\indexentry{natree}{81}
+\indexentry{PFNAT, Command}{81}
+\indexentry{PNTR, Command}{81}
+\indexentry{sequent calculus}{82}
+\indexentry{SEQLIST, Command}{82}
+\indexentry{PSEQ, Command}{82}
+\indexentry{PSEQL, Command}{82}
+\indexentry{PSEQ-USE-LABELS, Flag}{82}
+\indexentry{Cut elimination}{82}
+\indexentry{MATE, Command}{82}
+\indexentry{NAT-ETREE, Command}{82}
+\indexentry{MODELS, Command}{83}
+\indexentry{SOLVE, Command}{83}
+\indexentry{INTERPRET, Command}{83}
+\indexentry{ASSIGN-VAR, Command}{83}
+\indexentry{INTERPRET, Command}{83}
+\indexentry{SOLVE, Command}{83}
+\indexentry{SOLVE, Command}{83}
+\indexentry{SOLVE, Command}{83}
+\indexentry{BEGIN-PRFW, Command}{85}
+\indexentry{PSTATUS, Command}{85}
+\indexentry{PROOFW-ALL, Flag}{85}
+\indexentry{PROOFW-ACTIVE+NOS, Flag}{85}
+\indexentry{PROOFW-ACTIVE, Flag}{85}
+\indexentry{MATING-VERBOSE, Flag}{85}
+\indexentry{MATING-VERBOSE, Flag}{85}
+\indexentry{UNIFY-VERBOSE, Flag}{85}
+\indexentry{UNIFY-VERBOSE, Flag}{85}
+\indexentry{UNIFY-VERBOSE, Flag}{85}
+\indexentry{MAX-MATES, Flag}{86}
+\indexentry{MAX-SEARCH-DEPTH, Flag}{86}
+\indexentry{MAX-UTREE-DEPTH, Flag}{86}
+\indexentry{MAX-SUBSTS-VAR, Flag}{86}
+\indexentry{PRINT-MATING-COUNTER, Flag}{86}
+\indexentry{DISPLAY-TIME, Command}{86}
+\indexentry{QUERY-USER, Flag}{87}
+\indexentry{MONITOR, MExpr}{87}
+\indexentry{NOMONITOR, MExpr}{87}
+\indexentry{MONITORLIST, MExpr}{87}
+\indexentry{MONITORFLAG, Flag}{87}
+\indexentry{TEXPROOF, Command}{88}
+\indexentry{SCRIBEPROOF, Command}{88}
+\indexentry{PRINTPROOF, Command}{88}
+\indexentry{SCRIBE-OTL}{88}
+\indexentry{TEX-OTL}{88}
+\indexentry{TEX-1-OTL}{88}
+\indexentry{USE-INTERNAL-PRINT-MODE, Flag}{88}
+\indexentry{TURNSTILE-INDENT-AUTO, Flag}{88}
+\indexentry{TURNSTILE-INDENT, Flag}{88}
+\indexentry{TURNSTILE-INDENT-AUTO, Flag}{88}
+\indexentry{USE-INTERNAL-PRINT-MODE, Flag}{88}
+\indexentry{FILLINEFLAG, Flag}{88}
+\indexentry{FLUSHLEFTFLAG, Flag}{88}
+\indexentry{PPWFFLAG, Flag}{88}
+\indexentry{VPF, EdOp}{88}
+\indexentry{VPT, EdOp}{88}
+\indexentry{STYLE, Flag}{89}
+\indexentry{GENERIC, Style}{89}
+\indexentry{CONCEPT-S, Style}{89}
+\indexentry{XTERM, Style}{89}
+\indexentry{SCRIBE, Style}{89}
+\indexentry{TEX, Style}{89}
+\indexentry{QUICK-REF, Command}{89}
+\indexentry{SCRIPT, MExpr}{89}
+\indexentry{SCRIPT, Command}{89}
+\indexentry{STYLE, Flag}{89}
+\indexentry{UNSCRIPT, MExpr}{89}
+\indexentry{SCRIPT, MExpr}{89}
+\indexentry{REC-MS-FILE, Flag}{89}
+\indexentry{REC-MS-FILENAME, Flag}{89}
+\indexentry{INTERRUPT-ENABLE, Flag}{89}
+\indexentry{DIY, Command}{89}
+\indexentry{MATE, Command}{89}
+\indexentry{OPEN-MATEVPW, Command}{89}
+\indexentry{CLOSE-MATEVPW, Command}{89}
+\indexentry{STYLE, Flag}{89}
+\indexentry{DISPLAYFILE, Command}{89}
+\indexentry{vpshow}{89}
+\indexentry{vpshow, File}{89}
+\indexentry{vpshow-big, File}{89}
+\indexentry{PUSH, Command}{89}
+\indexentry{POP, Command}{89}
+\indexentry{QUERY-USER, Flag}{89}
+\indexentry{PUSH-MATING, Command}{89}
+\indexentry{ETREE-NAT, Command}{90}
+\indexentry{ETREE-NAT-VERBOSE, Flag}{90}
+\indexentry{SLIDEPROOF, Command}{90}
+\indexentry{SCRIBEPROOF, Command}{90}
+\indexentry{SCRIBE-SLIDES, Style}{90}
+\indexentry{SLIDES-TURNSTYLE-INDENT, Flag}{90}
+\indexentry{PRINTEDTFLAG-SLIDES, Flag}{90}
+\indexentry{FILLINEFLAG, Flag}{90}
+\indexentry{PPWFFLAG, Flag}{90}
+\indexentry{script, Command}{90}
+\indexentry{SCRIPT, MExpr}{90}
+\indexentry{UNSCRIPT, MExpr}{91}
+\indexentry{SCRIPT, MExpr}{91}
+\indexentry{SETUP-SLIDE-STYLE, MExpr}{91}
+\indexentry{STYLE, Flag}{91}
+\indexentry{WINDOW-STYLE, Flag}{91}
+\indexentry{STYLE, Flag}{91}
+\indexentry{DISPLAYFILE, MExpr}{91}
+\indexentry{signal-event, Function}{94}
+\indexentry{signal-event, Function}{94}
+\indexentry{signal-event, Function}{94}
+\indexentry{EVENT-CYCLE, Flag}{94}
+\indexentry{RULES}{102}
+\indexentry{DEFTHEOREM, Function}{104}
+\indexentry{BOOK-THEOREM}{104}
+\indexentry{PRACTICE}{104}
+\indexentry{EXERCISE}{104}
+\indexentry{TEST-PROBLEM}{104}
+\indexentry{THM-TYPE}{104}
+\indexentry{THM-TYPE}{104}
+\indexentry{LIBRARY}{104}
+\indexentry{ALLOWED-CMD-P}{104}
+\indexentry{ALLOWED-LEMMA-P}{104}
+\indexentry{ASSERTION}{104}
+\indexentry{SCORE}{104}
+\indexentry{REMARKS}{104}
+\indexentry{FOL}{104}
+\indexentry{MHELP}{104}
+\indexentry{allowed-cmd-p}{104}
+\indexentry{ALLOW-ALL, Function}{105}
+\indexentry{ALLOW-RULEP, Function}{105}
+\indexentry{ADVICE, Command}{105}
+\indexentry{DISALLOW-RULEP, Function}{105}
+\indexentry{ADVICE, Command}{105}
+\indexentry{RULEP, Command}{105}
+\indexentry{allowed-lemma-p}{105}
+\indexentry{ALLOW-NO-LEMMAS, Function}{105}
+\indexentry{ONLY-REQUIRED-LEMMAS, Function}{105}
+\indexentry{REQUIRED-LEMMAS}{105}
+\indexentry{THEOREM-NO, Function}{105}
+\indexentry{ALLOW-LOWER-NOS, Function}{105}
+\indexentry{Makefile, File}{107}
+\indexentry{defpck.lisp, File}{108}
+\indexentry{tps3.patch, File}{108}
+\indexentry{tps3.patch, File}{108}
+\indexentry{tps3.ini, File}{108}
+\indexentry{tps3.ini, File}{108}
+\indexentry{make-tps-windows.lisp, File}{108}
+\indexentry{make-tps-windows.lisp, File}{108}
+\indexentry{make-tps-windows.lisp, File}{109}
+\indexentry{make-tps-windows.lisp, File}{109}
+\indexentry{make-tps-windows.lisp, File}{109}
+\indexentry{tps3.sys, File}{109}
+\indexentry{etps.sys, File}{109}
+\indexentry{tps-compile-windows.lisp, File}{109}
+\indexentry{tps-build-windows.lisp, File}{109}
+\indexentry{etps-compile-windows.lisp, File}{109}
+\indexentry{etps-build-windows.lisp, File}{109}
+\indexentry{make-tps-windows.lisp, File}{109}
+\indexentry{make-tps-windows.lisp, File}{110}
+\indexentry{tps-java.bat, File}{110}
+\indexentry{make-tps-windows.lisp, File}{110}
+\indexentry{tps-java.bat, File}{110}
+\indexentry{etps-java-big.bat, File}{110}
+\indexentry{make-tps-windows.lisp, File}{110}
+\indexentry{make-tps-windows.lisp, File}{110}
+\indexentry{tps3.ini, File}{111}
+\indexentry{expert}{111}
+\indexentry{tps3.ini, File}{111}
+\indexentry{tps3.ini, File}{111}
+\indexentry{tps.sty, File}{111}
+\indexentry{tps.sty, File}{111}
+\indexentry{tps3.ini, File}{111}
+\indexentry{tps3.ini, File}{111}
+\indexentry{tps3.ini, File}{111}
+\indexentry{tps3.ini, File}{111}
+\indexentry{tps3.ini, File}{111}
+\indexentry{TEST-THEOREMS, Flag}{111}
+\indexentry{TPS-TEST, Command}{111}
+\indexentry{tps3.ini, File}{111}
+\indexentry{LAST-MODE-NAME, Flag}{111}
+\indexentry{RECORDFLAGS, Flag}{111}
+\indexentry{LAST-MODE-NAME, Flag}{111}
+\indexentry{DATEREC, Command}{111}
+\indexentry{INIT-DIALOGUE, Flag}{111}
+\indexentry{INIT-DIALOGUE-FN, Flag}{111}
+\indexentry{tps3.ini, File}{111}
+\indexentry{etps.ini, File}{111}
+\indexentry{etps.ini, File}{111}
+\indexentry{EXPERTFLAG, Flag}{111}
+\indexentry{EXPERTFLAG, Flag}{111}
+\indexentry{etps.ini, File}{111}
+\indexentry{expert}{112}
+\indexentry{Makefile, File}{112}
+\indexentry{etps.ini, File}{112}
+\indexentry{tps3-error.lisp, File}{112}
+\indexentry{aliases-dist, File}{112}
+\indexentry{COMMAND-LINE-SWITCHES}{112}
+\indexentry{XTERM-ANSI-BOLD, Flag}{113}
+\indexentry{UTF-8}{113}
+\indexentry{POSIX}{113}
+\indexentry{LC\_ALL}{113}
+\indexentry{Java Interface}{113}
+\indexentry{JAVAWIN, Command}{114}
+\indexentry{JAVAWIN, Command}{114}
+\indexentry{JAVAWIN, Command}{114}
+\indexentry{JAVA-COMM, Flag}{114}
+\indexentry{RIGHTMARGIN, Flag}{114}
+\indexentry{LEDIT, MExpr}{115}
+\indexentry{Omega}{115}
+\indexentry{-batch}{115}
+\indexentry{-omega}{115}
+\indexentry{-problem}{116}
+\indexentry{UNIFORM-SEARCH, Command}{116}
+\indexentry{-mode}{116}
+\indexentry{-slist}{116}
+\indexentry{-record}{116}
+\indexentry{-service}{116}
+\indexentry{-lservice}{116}
+\indexentry{-service}{116}
+\indexentry{-lservice}{116}
+\indexentry{MathWeb}{116}
+\indexentry{-service}{116}
+\indexentry{-lservice}{116}
+\indexentry{-service}{116}
+\indexentry{-lservice}{117}
+\indexentry{-lservice}{117}
+\indexentry{-lservice}{117}
+\indexentry{-service}{117}
+\indexentry{saveproof, Command}{117}
+\indexentry{DEFAULT-MS, Flag}{118}
+\indexentry{DEFAULT-MS, Flag}{118}
+\indexentry{PALL, Command}{118}
+\indexentry{server}{121}
+\indexentry{web server}{121}
+\indexentry{USER-PASSWD-FILE, Flag}{121}
+\indexentry{user-passwd}{121}
+\indexentry{SETUP-ONLINE-ACCESS, Command}{121}
+\indexentry{SETUP-ONLINE-ACCESS, Command}{121}
+\indexentry{user-passwd, File}{121}
+\indexentry{USER-PASSWD-FILE, Flag}{121}
+\indexentry{run-tpsserver, File}{122}
+\indexentry{ADVICE, Command}{122}
+\indexentry{allowed-cmd-p}{122}
+\indexentry{ml2-theorems.lisp, File}{122}
+\indexentry{allowed-cmd-p}{122}
+\indexentry{ALLOW-ALL}{122}
+\indexentry{ml1-theorems.lisp, File}{122}
+\indexentry{ALLOW-RULEP}{122}
+\indexentry{SETUP-ONLINE-ACCESS, Command}{122}
+\indexentry{DONE, Command}{123}
+\indexentry{score-file, Flag}{123}
+\indexentry{score-file, Flag}{123}
+\indexentry{etps.ini, File}{123}
+\indexentry{etps.ini, File}{123}
+\indexentry{etps.ini, File}{123}
+\indexentry{score-file, Flag}{123}
+\indexentry{score-file, Flag}{123}
+\indexentry{etps.ini, File}{123}
+\indexentry{score-file, Flag}{123}
+\indexentry{etps-file, Flag}{123}
+\indexentry{score-file, Flag}{123}
+\indexentry{grader.ini, File}{123}
+\indexentry{etps-file, Flag}{123}
+\indexentry{DONE, Command}{123}
+\indexentry{EXPERTFLAG, Flag}{123}
+\indexentry{EXPERTFLAG, Flag}{123}
+\indexentry{EXPERTFLAG, Flag}{123}
+\indexentry{EXPERTFLAG, Flag}{123}
+\indexentry{*trap-errors*}{123}
+\indexentry{TPS3-SAVE, Command}{124}
+\indexentry{tps3.ini, File}{124}
+\indexentry{BUG-SAVE, Command}{124}
+\indexentry{BUG-RESTORE, Command}{124}
+\indexentry{DEFAULT-BUG-DIR, Flag}{124}
+\indexentry{DEFAULT-LIB-DIR, Flag}{124}
+\indexentry{USE-DEFAULT-BUG-DIR, Flag}{124}
+\indexentry{BUG-LIST, Command}{124}
+\indexentry{BUG-DELETE, Command}{124}
+\indexentry{BUG-HELP, Command}{124}
+\indexentry{LIST-OF-LIBOBJECTS, Command}{124}
+\indexentry{DELETE, Command}{124}
+\indexentry{SHOW-HELP, Command}{124}
+\indexentry{SCRIBE-DOC, Command}{124}
+\indexentry{scribe-facilities.lisp, File}{124}
+\indexentry{scribe-facilities-short.lisp, File}{124}
+\indexentry{scribe-facilities-cmd.lisp, File}{124}
+\indexentry{scribe-facilities.lisp, File}{125}
+\indexentry{scribe-facilities.mss, File}{125}
+\indexentry{scribe-manual.mss, File}{125}
+\indexentry{scribe-facilities-short.lisp, File}{125}
+\indexentry{scribe-facilities-short.mss, File}{125}
+\indexentry{scribe-manual-short.mss, File}{125}
+\indexentry{scribe-facilities-cmd.lisp, File}{125}
+\indexentry{scribe-facilities-cmd.mss, File}{125}
+\indexentry{scribe-manual-cmd.mss, File}{125}
+\indexentry{doc/facilities/README, File}{125}
+\indexentry{tps.tex, File}{125}
+\indexentry{tpsdoc.tex, File}{125}
+\indexentry{LATEX-DOC, Command}{125}
+\indexentry{latex-manual.tex, File}{125}
+\indexentry{latex-facilities.lisp, File}{125}
+\indexentry{latex-facilities-short.lisp, File}{125}
+\indexentry{llatex-facilities-cmd.lisp, File}{125}
+\indexentry{latex-facilities.lisp, File}{126}
+\indexentry{latex-facilities.tex, File}{126}
+\indexentry{latex-manual.tex, File}{126}
+\indexentry{latex-facilities-short.lisp, File}{126}
+\indexentry{latex-facilities-short.tex, File}{126}
+\indexentry{latex-manual-short.tex, File}{126}
+\indexentry{latex-facilities-cmd.lisp, File}{126}
+\indexentry{latex-facilities-cmd.tex, File}{126}
+\indexentry{latex-manual-cmd.tex, File}{126}
+\indexentry{doc/facilities/README, File}{126}
+\indexentry{HTML-DOC, Command}{126}
+\indexentry{index.html, File}{126}
+\indexentry{HTML-DOC, Command}{126}
+\indexentry{tps3.ini, File}{126}
+\indexentry{etps.ini, File}{126}
+\indexentry{etps-events.lisp, File}{126}

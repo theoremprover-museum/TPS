@@ -1,0 +1,224 @@
+(:name BLEDSOE3
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Friday, May 19, 2000 at 22:55:35."
+:description "P(OI) a(I) IMPLIES EXISTS A(OI).FORALL x(I) [A(OI) x(I) IMPLIES P(OI) x(I)] AND EXISTS y(I) A(OI) y(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name NBHD-THM2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER NEEDS-SETSUB)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, November 30, 2000 at  0:31:29."
+:description "FORALL T(O(OA)).FORALL K(O(OA)) FORALL R(OA) [K(O(OA)) SUBSET(O(O(OA))(O(OA))) T(O(OA)) AND R(OA) =(O(OA)(OA)) SETUNION(OA(O(OA))) K(O(OA)) IMPLIES T(O(OA)) R(OA)] IMPLIES FORALL S(OA).T(O(OA)) S(OA) EQUIV FORALL x(A).S(OA) x(A) IMPLIES EXISTS R(OA).NBHD(OA(OA)(O(OA))) T(O(OA)) R(OA) x(A) AND R(OA) SUBSET(O(OA)(OA)) S(OA)"
+:needed-objects   (NBHD)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Friday, January 18, 2002 at 17:37:49."
+:description "SET-EXTEN(O) IMPLIES FORALL K(OI(OI)).EXISTS X(OI) EXISTS Y(OI) [X(OI) SUBSET(O(OI)(OI)) Y(OI) AND ~.K(OI(OI)) X(OI) SUBSET(O(OI)(OI)) K(OI(OI)) Y(OI)] OR EXISTS U(OI).K(OI(OI)) U(OI) =(O(OI)(OI)) U(OI)"
+:needed-objects   (SET-EXTEN)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM100
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, November 29, 2000 at 23:52:25."
+:description "P(OBAAAA) S(A) S(A) S(A) S(A) O(B) AND FORALL T(B) [P(OBAAAA) S(A) N(A) S(A) N(A) T(B) IMPLIES P(OBAAAA) N(A) N(A) S(A) N(A).A(BB) T(B)] AND FORALL T^1(B) [P(OBAAAA) N(A) N(A) S(A) N(A) T^1(B) IMPLIES P(OBAAAA) S(A) N(A) S(A) N(A).A(BB) T^1(B)] AND FORALL T^2(B) [P(OBAAAA) S(A) S(A) N(A) S(A) T^2(B) IMPLIES P(OBAAAA) N(A) S(A) N(A) S(A).A(BB) T^2(B)] AND FORALL T^3(B) [P(OBAAAA) N(A) S(A) N(A) S(A) T^3(B) IMPLIES P(OBAAAA) S(A) S(A) N(A) S(A).A(BB) T^3(B)] AND FORALL T^4(B) [P(OBAAAA) S(A) S(A) S(A) N(A) T^4(B) IMPLIES P(OBAAAA) N(A) N(A) S(A) N(A).W(BB) T^4(B)] AND FORALL T^5(B) [P(OBAAAA) N(A) N(A) S(A) N(A) T^5(B) IMPLIES P(OBAAAA) S(A) S(A) S(A) N(A).W(BB) T^5(B)] AND FORALL T^6(B) [P(OBAAAA) S(A) S(A) N(A) S(A) T^6(B) IMPLIES P(OBAAAA) N(A) N(A) N(A) S(A).W(BB) T^6(B)] AND FORALL T^7(B) [P(OBAAAA) N(A) N(A) N(A) S(A) T^7(B) IMPLIES P(OBAAAA) S(A) S(A) N(A) S(A).W(BB) T^7(B)] AND FORALL X(A) FORALL Y(A) FORALL U(B) [P(OBAAAA) S(A) X(A) S(A) Y(A) U(B) IMPLIES P(OBAAAA) N(A) X(A) N(A) Y(A).G(BB) U(B)] AND FORALL X^1(A) FORALL Y^1(A) FORALL V(B) [P(OBAAAA) N(A) X^1(A) N(A) Y^1(A) V(B) IMPLIES P(OBAAAA) S(A) X^1(A) S(A) Y^1(A).G(BB) V(B)] AND FORALL T^8(B) [P(OBAAAA) S(A) N(A) S(A) S(A) T^8(B) IMPLIES P(OBAAAA) N(A) N(A) S(A) N(A).C(BB) T^8(B)] AND FORALL T^9(B) [P(OBAAAA) N(A) N(A) S(A) N(A) T^9(B) IMPLIES P(OBAAAA) S(A) N(A) S(A) S(A).C(BB) T^9(B)] AND FORALL U^1(B) [P(OBAAAA) S(A) S(A) N(A) S(A) U^1(B) IMPLIES P(OBAAAA) N(A) S(A) N(A) N(A).C(BB) U^1(B)] AND FORALL V^1(B) [P(OBAAAA) N(A) S(A) N(A) N(A) V^1(B) IMPLIES P(OBAAAA) S(A) S(A) N(A) S(A).C(BB) V^1(B)] IMPLIES EXISTS Z(B) P(OBAAAA) N(A) N(A) N(A) N(A) Z(B)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM112A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER NEEDS-SETSUB)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, November 15, 2000 at 12:14:28."
+:description "FORALL P(OI) EXISTS M(O(II)).M(O(II)) [LAMBDA x(I) x(I)] AND FORALL G(II) FORALL H(II).M(O(II)) G(II) AND M(O(II)) H(II) IMPLIES M(O(II)) [G(II) COMPOSE(II(II)(II)) H(II)] AND FORALL Y(I).P(OI) Y(I) IMPLIES P(OI).G(II) Y(I)"
+:needed-objects   (COMPOSE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM131
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, November 29, 2000 at 22:22:01."
+:description "FORALL h1(BG) FORALL h2(AB) FORALL s1(OG) FORALL f1(GG) FORALL s2(OB) FORALL f2(BB) FORALL s3(OA) FORALL f3(AA).HOM(O(BB)(OB)(GG)(OG)(BG)) h1(BG) s1(OG) f1(GG) s2(OB) f2(BB) AND HOM(O(AA)(OA)(BB)(OB)(AB)) h2(AB) s2(OB) f2(BB) s3(OA) f3(AA) IMPLIES HOM(O(AA)(OA)(GG)(OG)(AG)) [h2(AB) COMPOSE(AG(BG)(AB)) h1(BG)] s1(OG) f1(GG) s3(OA) f3(AA)"
+:needed-objects   (HOM COMPOSE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM170
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER NEEDS-SETSUB)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Friday, April 20, 2001 at  8:49:11."
+:description "ITERATE+(O(II)(II)) f(II) g(II) IMPLIES f(II) COMPOSE(II(II)(II)) g(II) =(O(II)(II)) g(II) COMPOSE(II(II)(II)) f(II)"
+:needed-objects   (ITERATE+ COMPOSE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM303
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, November 29, 2000 at 23:52:55."
+:description "EVEN(OI) 0(I) AND FORALL n(I) [EVEN(OI) n(I) IMPLIES EVEN(OI).S(II).S(II) n(I)] AND [ODD(OI) [S(II) 0(I)] AND FORALL n(I).ODD(OI) n(I) IMPLIES ODD(OI).S(II).S(II) n(I)] AND IND AND FORALL n(I) [NUMBER(OI) n(I) EQUIV EVEN(OI) n(I) OR ODD(OI) n(I)] IMPLIES FORALL n(I) NUMBER(OI) n(I)"
+:needed-objects   (IND)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM47C
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Monday, November 27, 2000 at 21:03:21."
+:description "LAMBDA u(I) LAMBDA v(I) [u(I) =(OII) v(I)] =(O(OII)(OII)) SETPAIRSINTERSECT(OII(O(OII))).LAMBDA r(OII) REFLEXIVE(O(OII)) r(OII)"
+:needed-objects   (SETPAIRSINTERSECT REFLEXIVE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TTTP6102
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Monday, February  7, 2000 at  5:29:19."
+:description "FORALL p(OS).p(OS) ZERO(S) AND FORALL x(S) [NAT x(S) IMPLIES.p(OS) x(S) IMPLIES p(OS).SUCC(SS) x(S)] IMPLIES FORALL m(S).NAT m(S) IMPLIES p(OS) m(S)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name X5310
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER NEEDS-SETSUB)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Monday, July 31, 2000 at 17:58:27."
+:description "FORALL r(OB(OB)) [FORALL x(OB) EXISTS y(B) r(OB(OB)) x(OB) y(B) IMPLIES EXISTS f(B(OB)) FORALL x(OB) r(OB(OB)) x(OB).f(B(OB)) x(OB)] IMPLIES EXISTS j(B(OB)) FORALL p(OB).EXISTS z(B) p(OB) z(B) IMPLIES p(OB).j(B(OB)) p(OB)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name LING1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Monday, May  5, 1997 at 13:58:14."
+:description "FORALL X(I) [UNIQUE(OI) X(I) IMPLIES FORALL Z(I).WRH(OI) Z(I) AND W(OI) Z(I) IMPLIES X(I) =(OII) Z(I)] AND UNIQUE(OI) S(I) AND W(OI) S(I) AND WRH(OI) S(I) IMPLIES EXISTS an(OI).an(OI) P(I) =(OOO) LIKE(OII) P(I) S(I) AND an(OI) J(I) =(OOO) EXISTS X(I).UNIQUE(OI) X(I) AND W(OI) X(I) AND WRH(OI) X(I) AND LIKE(OII) J(I) X(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name LING2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Monday, May  5, 1997 at 13:59:55."
+:description "FORALL X(I) [UNIQUE(OI) X(I) IMPLIES FORALL Z(I).X(I) =(OII) Z(I)] AND UNIQUE(OI) S(I) IMPLIES EXISTS an(OI).an(OI) P(I) =(OOO) LIKE(OII) P(I) S(I) AND an(OI) J(I) =(OOO) EXISTS X(I).UNIQUE(OI) X(I) AND LIKE(OII) J(I) X(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM130-B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 15:18:58."
+:description "r(OSS) ZERO(S) ZERO(S) AND FORALL x(S) FORALL y(S) [r(OSS) x(S) y(S) IMPLIES r(OSS) [SUCC(SS) x(S)].SUCC(SS) y(S)] IMPLIES FORALL x(S).NAT x(S) IMPLIES EXISTS y(S) r(OSS) x(S) y(S)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name SD
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) EXISTS y(I) [P(OI) x(I) IMPLIES R(OII) x(I) [g(II).h(II) y(I)] AND P(OI) y(I)] AND FORALL w(I) [P(OI) w(I) IMPLIES P(OI) [g(II) w(I)] AND P(OI).h(II) w(I)] IMPLIES FORALL x(I).P(OI) x(I) IMPLIES EXISTS y(I).R(OII) x(I) y(I) AND P(OI) y(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM7-92
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "INJECTIVE(O(OII)).LAMBDA x(I) LAMBDA y(I).x(I) =(OII) y(I)"
+:needed-objects   (INJECTIVE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

@@ -1,0 +1,1003 @@
+\chapter{Introduction}
+
+\TPS has been developed over several decades by a number of people,
+some of whom never actually met each other. Attempts have been made
+to maintain documentation for the program, but research progress was 
+generally a higher priority, and obsolete documentation was not always
+corrected or deleted. Therefore, this manual should be used with discretion.
+The guidance it provides may be very helpful at times, but there is no
+claim that it is generally adequate, and some of it may
+be misleading or incorrect.
+
+\begin{quotation}
+"The {\it Guide}... is an indispensable
+companion to all those who are keen to make sense of life in
+an infinitely complex and confusing Universe, for though it
+cannot hope to be useful or informative in all matters, it
+does at least make the reassuring claim, that where it is
+inaccurate it is at least {\it definitively} inaccurate. In cases
+of major discrepancy it's always reality that's got it wrong."
+
+Douglas Adams, {\it The Restaurant at the End of the Universe}
+\end{quotation}
+
+\section{Guidelines}
+
+In addition to the information in this guide, fragmentary documentation
+of the \TPS code can be found in the {\it \indexfile{tpsjobs-done}} file.
+This is included in the \TPS distribution.
+
+This guide assumes that the reader is familiar with Common Lisp, and
+does not attempt to explain or summarize information that is available
+elsewhere about the workings of that language, in particular, in
+Steele's {\it Common Lisp the Language, (2nd ed.)}.
+
+There are three major rules which should be followed whether maintaining
+\TPS code, or just fooling around with it:
+
+\begin{enumerate}
+\item Always keep a backup copy of the files you are changing, so that when
+you realize how badly you goofed, you can put things back the way they were.
+
+\item Don't get too tricky.  Clever hacks may be amusing, and may indeed
+give some increase (usually modest) in efficiency, but within weeks
+you will have no idea how they work, and others will be even more
+mystified.  Those who follow you in your task will curse and despise
+you; consequently, your cute programs will probably be completely rewritten
+anyway. 
+
+\item Don't panic.
+\end{enumerate}
+
+See section ~\ref{writing} for more minor guidelines.
+
+\section{\TPS Conventions}
+
+\subsection{Filenames}
+
+The extension of a filename should indicate what it contains:
+{\it .lisp} for Lisp source code; {\it .exp} for export statements
+({\it vide infra}); {\it .rules} for deduction rule definitions
+({\tt defirule} statements); {\it .mss} for Scribe formatted
+documentation; {\it .tex} for \TeX formatted documentation;
+{\it .vpw} for vpwindow output; {\it .work} for work files; {\it .prf} for proofs.
+
+Filenames should be descriptive of their contents, without being too long.  For example,
+{\it functions.lisp} would be a stupid name, because from the name no
+one would know what its purpose was.  If you have several related
+files, it is a good idea to give them a common prefix, so that it is
+clear just from their names that they are related. 
+
+\subsection{Lisp packages and export files}
+
+\TPS creates and uses several different Lisp packages.  (If you don't
+know what I mean by Lisp package, read the chapter on packages in {\it 
+Common Lisp the Language, (2nd ed)}.)  These packages are
+created when \TPS is compiled or built, by {\tt make-package} forms in
+the files {\tt tps-build.lisp} and {\tt tps-compile.lisp}.  The package
+structure is set up so that common functions are placed in the package
+{\tt CORE}, which is used by each of the other packages.  
+The package {\tt MAINT} contains functions useful to the maintainer. 
+The package {\tt AUTO} contains the automatic portions of \TPS, and the
+package {\tt ML} contains the inference rules used in the mathematical
+logic system.  The {\tt TEACHER} package contains files relevant to GRADER.
+
+Within each Lisp package are several \TPS modules, 
+groups of related source files which are clumped together.
+These are defined in the file {\it \indexfile{defpck.lisp}}.
+
+The {\tt CORE}
+package contains functions such as those dealing with wff parsing and
+printing, proof manipulation, and operating system interfaces (such as
+basic file operations). It also contains functions for dealing with 
+Scribe, vertical paths, editing, windows, review, etc... 
+The other packages include: {\tt TEACHER}, for functions relating to the Grader
+subsystem; {\tt AUTO} for functions relating to automatic proof
+procedures such as mating search; {\tt ML} for things specific to the
+Math Logic courses, such as exercises and proof rules.
+
+\ETPS contains part of the {\tt CORE} package, part of the {\tt OUTLINE}
+package and part of the {\tt RULES} package.
+
+The idea is that only those symbols that are needed by other packages are
+exported from their home package. In order to specify which symbols
+should be exported, the files {\it core.exp}, {\it auto.exp}, etc.  These
+files, one for each Lisp package, are loaded at the beginning of the
+compilation process, before any code is loaded.  This way, any package
+conflicts are detected immediately.
+
+There is a special export file, called {\it special.exp}.  This file
+contains export statements for symbols which may already exist in
+certain Lisp implementations.  For example, some implementations already
+contain a symbol {\tt EXIT}, while others do not.  Why is this a
+problem?  Because if the {\tt CORE} packages uses a package from an
+implementation (e.g., Allegro's {\tt EXCL} package), and that package
+already exports the symbol {\tt EXIT} (so that {\tt EXIT} is imported by
+{\tt CORE}),  then an error will result if we
+try to export {\tt EXIT} from the {\tt CORE} package, i.e., you can't
+export a symbol from a package other than its {\it home} package.
+{\it special.exp} uses the
+standard {\tt \#+} and {\tt \#-} macros to specify in which implementations
+such symbols should be exported from the {\tt CORE} package.  Generally,
+these nuisance symbols are found by trial and error when first porting
+\TPS to a Lisp implementation, and some symbols may have to be moved
+from {\it core.exp} to {\it special.exp}. (Another symbol in \$t(CORE) that can
+cause problems with some Lisps is {\tt date}.)
+
+Note that when \TPS starts up, the {\tt USER} (soon to be
+{\tt COMMON-LISP-USER}, as the changes in Common Lisp suggested by the
+X3J13 committee are implemented) is the value of the variable
+{\tt *package*}.  What this means is that any symbols typed in by the
+\TPS user will be interned in the {\tt USER} package.  Thus, any symbols
+that could be inputted by the user as, say, a flag value, should be
+exported from the package in which they were defined, otherwise \TPS
+will  not realize they are supposed to be the same.  As an example,
+the flag {\tt RULEP-MAINFN} can be given the value {\tt RULEP-SIMPLE}.
+Since {\tt RULEP-SIMPLE} is defined in the {\tt CORE} package, it must be
+exported in {\it core.exp}, so that when it is inputted, the symbol
+{\tt CORE::RULEP-SIMPLE} is interned, not {\tt USER::RULEP-SIMPLE}.  Of
+course, this presumes that the {\tt USER} package uses the {\tt CORE}
+package (which it always does in \TPS).
+
+\subsection{Implementation-specific differences}\label{sect:impl-spec-diffs}
+Not all Lisp implementations are alike.  This is
+particularly true in the areas of Common Lisp which are intentionally
+unspecified, including things like how the Lisp top level works, how
+file pathnames are represented, how the user exits the Lisp or saves
+a core image. 
+
+For this reason, certain \TPS source files contain 
+{\tt \#+} and {\tt \#-} directives.  We try to keep the number of these
+files to a minimum, so that when porting to new implementations, work
+is minimized.  When using {\tt \#+} and {\tt \#-}, you should try to use as
+specific a feature of the implementation as possible (but avoid using
+the machine type unless that is the reason you have to make a change).
+For example, the feature {\tt :allegro-v3.1} is probably better than
+{\tt :allegro}, as I have found out to my dismay when Allegro 4.0 came
+out.  Look at the lisp variable \indexother{*features*} to find what features that
+version of lisp recognizes.  A few examples of features are listed below:
+\begin{itemize}
+  \item {\tt :allegro}  (Allegro Common Lisp)
+  \item {\tt :clisp}  (Gnu Common Lisp)
+  \item {\tt :cmu}  (CMU Common Lisp)
+  \item {\tt :mswindows} (Microsoft Windows)
+\end{itemize}
+
+There is one feature ({\tt :andrew}) that is added when we compile \TPS/\ETPS for use
+on the Andrew workstations (machines in the domain andrew.cmu.edu).
+This is because on those machines, lisp implementations have problems
+interfacing with the operating system and getting the proper home
+directory of a user.  Thus special measures are taken in this case.
+This feature is added in the {\tt .sys} files for the Andrew editions.
+
+There are another two features which are added in the relevant {\tt .sys}
+files for \ETPS and \TPS; these are \indexother{:TPS} and \indexother{:ETPS}.
+This allows programmers to specify slightly different behaviour for the 
+two systems (for example, when using the editor, you may have a window that
+shows the vpform in \tps, but not in \ETPS).
+
+The files which use {\tt \#+} and {\tt \#-} are principally {\it special.exp},
+{\it boot0.lisp}, {\it boot1.lisp}, {\it tops20.lisp}, {\it tps3-save.lisp},
+and {\it tps3-error.lisp}.
+
+\subsection{\TPS modules}
+
+\TPS source files are organized into \TPS modules. 
+Basically, a \TPS module is just a list of source files, in the
+sequence in which they are to be compiled/loaded.  All
+\TPS modules are defined in the file {\it \indexfile{defpck.lisp}}.  Each source
+file should be in some \TPS module, and that module should be indicated
+in the file.  
+(Conceivably, one might define two
+different \TPS modules which had files in common, but we have never
+done that.)  
+
+Some files are designated as macro-files in the definition of the module
+in {\it \indexfile{defpck.lisp}}.  
+When a module is
+compiled [loaded], the macro-files are compiled [loaded] first.
+Also, there is code for loading the macro-files for a module without loading the
+other files.  
+When adding a file {\it foo.lisp} to a module,
+designate it as a macro-file
+if many of the other
+files in that module use structures, macros, or variables defined in {\it foo.lisp}.
+
+In addition to the files it contains, the definition of a \TPS module
+also specifies the other modules which must also be present when it
+is used.  
+
+The \TPS module structure breaks up the source files into chunks,
+each which has some particular purpose or purposes.  Then to build a
+version of \TPS which has certain capabilities, one need
+only load the modules required.  This is how the files
+{\it tps-build.lisp} and {\it tps-compile.lisp} specify \TPS is to be
+built. Note that {\it etps-build.lisp} and {\it etps-compile.lisp} just
+load fewer modules than the build/compile files for \tps.  Likewise,
+there are {\it grader-compile.lisp} and {\it grader-build.lisp} files for
+building a Grader core image.
+
+By using the module mechanism, a module may be modified by
+adding, deleting, or modifying its constituent files, and other users don't
+have to know; all they need to know is what the module provides.
+
+Functions such as {\tt LOAD-MODULE}
+are provided to load modules, making sure that any modules they
+require are also loaded.
+
+\subsection{File format}
+
+In general, programmers should use only lower-case.  Why? For two
+reasons.  It is easier to read, and in case-sensitive operating
+systems like Unix, it is easier to use utilities such as fgrep and
+gnu-emacs tags ({\it vide infra}) to search for occurrences of symbols.
+
+Each \TPS source file should contain certain common elements. First is
+a copyright notice, whose purpose is self-explanatory (just copy it
+from another source file).  Make the copyright date current for any
+new code.
+
+The first line of the file, however, should be something like:
+\begin{verbatim}
+;;; -*- Mode:LISP; Package:CORE -*-
+\end{verbatim}
+The gnu-emacs editor will use this line to put the buffer in Lisp
+mode, and if you are using one of the gnu-emacs interfaces to the
+lisp, it will use the package information appropriately.  See the
+documentation for such gnu-emacs/lisp interfaces.
+
+The first non-comment form of each source file should be an
+{\tt in-package} statement, to tell the compiler what package the file
+should be loaded in. Recent implementations of lisp will object if
+there is an {\tt \indexother{in-package}} command anywhere else in the file.
+
+Next, the \TPS module of the file should be indicated, by a
+{\tt part-of} statement, like {\tt (part-of {\it module-name})}.
+This should match the entry given in {\it defpck.lisp}.
+
+Don't forget {\tt context} statements.  Basically they just
+reset the variable {\tt current-context}, which is used by other
+functions to organize the documentation and help messages.
+
+\section{Maintenance}
+
+\subsection{Porting \TPS to a new Lisp}
+As discussed above, the lisp-implementation-dependent parts of \TPS are confined to
+a few files.  See the discussion above (Section~\ref{sect:impl-spec-diffs})
+and the portion of the user's manual on setting things up for more details.
+The following is a list of steps for compiling \TPS under a new lisp.
+
+\begin{enumerate}
+\item Modify the line in the \indexfile{Makefile} of the form
+\begin{verbatim}
+lisp = <lisp-executable>
+\end{verbatim}
+so that {\tt <lisp-executable>} is the executable for the new lisp.
+\item
+  Try to perform {\tt make tps}.  If you are very lucky, this will work.
+  However, probably the first problem you will encounter involves conflicts
+  with respect to exporting symbols.  
+  We explain how to resolve these conflicts in step (\ref{newlisp:export}).
+  Once these conflicts are resolved, go on to step (\ref{newlisp:funs})
+\item\label{newlisp:export}
+  Suppose the implementation of lisp complains about a conflict with an exported symbol {\tt tps-symbol}.
+  We try to keep such conflicts localized to the file
+  {\indexfile{special.exp}}.
+  If {\tt tps-symbol} is exported in the file {\indexfile{special.exp}},
+  then add a compiler directive {\tt \#+} (or {\tt \#-}) 
+  to the export for {\tt tps-symbol}.
+  If {\tt tps-symbol} is exported in some other export file,
+  then move this export to {\indexfile{special.exp}}
+  and add an appropriate compiler directive.
+  (See Section~\ref{sect:impl-spec-diffs} for more information about compiler directives
+  and the \indexother{*features*} lisp variable.)
+\item\label{newlisp:funs}
+  The next thing you will likely need to do is add definitions for certain functions and macros.
+  For example, the functions \indexfunction{tps3-save}, 
+  \indexfunction{linelength}, 
+  \indexfunction{exit-from-lisp}, \indexfunction{status-userid},
+  \indexfunction{call-system}, \indexfunction{setup-xterm-window}, \indexfunction{setup-big-xterm-window},
+  \indexfunction{make-passive-socket}, \indexfunction{make-passive-socket-port},
+  \indexfunction{connect-socket},
+  \indexfunction{accept-socket-conn} and
+  \indexfunction{pass-socket-local-pass}
+  are defined for each implementation in the file \indexfile{tops20.lisp}. 
+  The definitions of these functions for other versions of lisp should
+  indicate what the definition should be for the new implementation of lisp.
+  If you really do not know how to define the function,
+  you can always define the function as the following example indicates:
+\begin{verbatim}
+#+:newlisp
+(defun call-system ()
+  (throwfail ``call-system undefined in lisp <newlisp>''))
+\end{verbatim}
+  Such definitions will limit some of the capabilities of TPS.
+
+  Among these functions, \indexfunction{tps3-save} is the most vital for getting
+  started.  The function \indexfunction{tps3-save} should create a core image file
+  which will be used when starting \TPS. 
+\item
+  Call {\tt make tps}.  If all goes well, a core image file will be created
+  and you are ready to run \TPS.
+  Check the documentation for the implementation for lisp to find out
+  how to start lisp with a given image file.
+
+  If you are using Allegro Common Lisp version 4.1 or later, {\verb+--+} is
+  used to separate user options from lisp options, and hence the standard 
+  way of starting up the Grader program in X-windows becomes:
+
+{\tt xterm -geometry 80x54--14-2 '\#723+0'  -fn vtsingle -fb vtsymbold-sb -n 
+CTPS-Grader -T CTPS-Grader -e /usr/theorem/bin/run-tps \verb+--+ -grader \&+}
+\end{enumerate}
+
+{\bf Use of \indexother{defconstant}:}
+Since files may be loaded more than once  during compilation and building of \TPS,
+two identical uses of {\verb defconstant }  may occur.
+As the behaviour of the second occurrence of  {\verb defconstant } is not specified
+in the ANSI standard, and as some Lisps, such as Steel Bank Common Lisp, 
+do not consider this use as correct, it is better to use the 
+macro {\verb defconstnt }, which has been implemented to fit {\verb defconstant } and still be used with SBCL.
+(Note that '\indexother{defconstnt}' has no 'a' at the end.) 
+
+%  % The following discussion about int-char and string-char is obsolete - TPS does not use these. - ceb 6/8/2004
+% There are (at least) two places in which the code is currently
+% not ANSI standard, in that the function {\tt int-char} and the type {\tt string-char}
+% (which do not exist in ANSI standard lisp) are used. When porting to a new lisp,
+% one should be aware that it may be necessary to provide substitute definitions 
+% for these. See {\tt defun int-char} and {\tt deftype tps-string-char} in {\it boot0.lisp}
+% for an example of how this might be done.
+
+{\bf Obsolete In 2004:}
+Also, if you are using Kyoto Common Lisp, you will find that the way it
+represents directories is a little unusual: all paths are relative unless
+specified not to be. So, for example, {\it tps3.sys} should be changed to read:
+
+\begin{verbatim}
+(setq news-dir '(:root "usr" "tps"))
+(setq source-path '((:root "usr" "tps" "bin") 
+                    (:root "usr" "tps" "lisp")))
+
+(setq compiled-dir '(:root "usr" "tps" "bin"))
+(setq patch-file-dir '(:root "usr" "tps"))
+\end{verbatim}
+
+(assuming the main \TPS directory is {\it /usr/tps/}).
+
+\subsection{Building \TPS}
+See the user's manual for a description of how to set up and build a
+new version of \tps/\ETPS.
+
+The global variable \indexother{core-name} currently contains "TPS3";
+it is defined in {\it \indexfile{tps3.sys}}, which is generated by the Makefile.
+All files (news, note, ini, sys, patch, exe) use core-name as their
+`name'.
+
+File names and extensions should be strings rather than
+quoted symbols, to avoid any ambiguity with the package qualifiers.
+
+Changes to the code are put in the patch file {\it \indexfile{tps3.patch}} until 
+\TPS is rebuilt. \ETPS and Grader have separate patch files.
+When you change the file {\it nat-etr.lisp} (for
+example), put the line {\tt (qload "nat-etr")} into {\it tps3.patch}.
+In general, don't put {\tt (qload "nat-etr.lisp")} into the patch file, or the
+uncompiled version of the file will be loaded. However, the export files
+{\it *.exp} do need their extension.
+
+Entries such as {\tt (qload "auto.exp")} which load exp files should
+come before those loading lisp files. 
+{\tt (qload "core.exp")} should come before loading other export files.
+Macro files should come before other files in the same module.
+
+Putting the line
+{\tt (setq core::*always-compile-source-if-newer* T)}
+near the beginning of the {\it tps3.patch} file, and \\
+{\tt (setq core::*always-compile-source-if-newer* NIL)}
+at the end of the same file
+will cause files to be compiled automatically
+whenever appropriate as one is starting up \tps, but then
+restores the default value of {\tt *always-compile-source-if-newer*}
+so that you will be able to decide whether or not to compile other
+files as you load them.
+
+Example: when ms91-6 and ms91-7 were introduced, {\it tps3.patch}
+contained:
+\begin{verbatim}
+(qload "core.exp")
+(qload "auto.exp")
+(qload "defpck")
+(qload "contexts-auto")
+(load-module 'ms91)
+(qload "diy")
+\end{verbatim}
+
+\subsection{Memory Management}
+
+\TPS uses a huge amount of \indexother{memory} in the course of a long search, and it may be necessary 
+to rearrange either the internal memory available in your computer or the maximum space
+occupied by your version of Lisp. Both of these things vary; the former by system (type {\tt sys} to
+find out what system you are using) the latter by the variety of Lisp. You can tell roughly how much memory
+is being used in most versions of Lisp by turning on garbage collection messages and watching the numbers
+they report.
+
+After a long search, \TPS may fail with an error message that mentions not having enough 
+\indexother{heap space}, or \indexother{stack space}, or \indexother{swap space}. Allegro 
+Lisp is very good about indicating the real 
+cause of the problem. CMU lisp turns off errors while it garbage collects, and unfortunately that's
+when most of these errors occur, so if your CMU-based \TPS seizes up in mid-garbage collect and refuses to
+stop even for $\hat{}$C, then you've probably run out of memory somewhere. Lucid Lisp turns off garbage 
+collection when it approaches the internal memory limits (there is a good reason for this; see 
+the Lucid manual), so if you get a message about garbage collection being off then the real
+problem is probably a lack of memory. 
+(\TPS never switches \indexother{garbage collection} off itself.)
+
+\subsubsection{Heap Size and Stack Size}
+On a Unix system, type {\tt limit} into a C-shell (or whatever shell you're using) to see a list 
+of the upper limits on various things stored in memory. The ones you're most interested in will
+be \indexother{datasize} and \indexother{stacksize}. If you are superuser, you can remove these restrictions
+temporarily by typing {\tt unlimit datasize stacksize}, or possibly {\tt unlimit -h datasize stacksize}. 
+
+To increase these limits permanently, you need superuser privileges. You will need to reconfigure the
+kernel and reboot your system. On anything except an HP, write to {\tt gripe@cs} and ask them to do it,
+unless you're confident about being able to do such things. On an HP, you can use their \indexother{SAM}
+program (when nobody else is logged in, since you're going to do a reboot), as follows:
+\begin{enumerate}
+\item Log in as superuser, and type {\tt sam}.
+
+\item Double-click on "Kernel Configuration"
+
+\item  Double click on "Configurable Parameters"
+
+\item Highlight the parameter "maxdsiz" and select "Modify" from the "Actions" menu.
+Increase the value as high as you want. On our machines, it was initially 
+0x04000000 and we increased it to 0x7B000000. If you choose too high a number,
+it will be rejected and you can try again.
+
+\item Check that the "value pending" column shows your new value for maxdsiz. If not,
+pick "Refresh Screen" from the "Options" menu and do the last step again.
+
+\item Now do the same for "maxssiz"; we increased it from 0x00800000 to
+0x04FB0000.
+
+\item Choose "Exit" from the "File" menu. You will get a barrage of questions, say
+yes to all of them. (They will be something like: create the kernel now? 
+replace the old kernel? reboot the system?)
+\end{enumerate}
+
+When the reboot is done, type {\tt limit} to check that the values have increased.
+
+\subsubsection{Swap Space}
+Swap space is that part of the memory (usually on disk) where the operating system
+stores parts of the programs that are supposed to be in memory. This is how you 
+can get away with running more programs than your RAM has space for.
+Clearly, the amount of \indexother{swap space} you need will depend not only on how big
+your \TPS grows, but also on what else is running at the same time.
+
+Again, on anything but an HP it's time to go whining to {\tt gripe@cs} and get them to do it.
+On an HP, start SAM as in the last section, and double-click on "Disks and File Systems".
+Now double-click on "Swap". There are two sorts of swap space, device ({\tt dev}) and file system
+({\tt fs}). The former is faster and should be given priority over the latter.
+
+Here is where I don't quite understand what's going on, so if this information ever becomes
+crucial it would be a good idea to check it. I believe that device swap space is simply a 
+partition of the internal disk drive, and that it might be possible to create more space simply by
+rearranging the partition. I have no idea how to do this.
+
+For the time being, then, we'll restrict ourselves to filesystem swap space. You can mount 
+one filesystem swap space on each disk you've got, so take a look at the list that SAM has given you.
+If there are no {\tt fs} swap space listed, or there is a disk that doesn't have one, then you can 
+create one by selecting "Add Filesystem Swap" from the "Actions" menu. Give it a reasonable 
+number (you can use {\tt du} and {\tt df} to find out how much space there is on the disk at the moment,
+and then choose some large fraction of that), and allocate a priority that is lower (which is to say,
+a larger number; 0 is highest-priority) than the priorities of the {\tt dev} swapspace (so that you 
+will use the fast swap space before the slow one). New swap space takes effect right away.
+
+If you already have {\tt fs} swapspace on all disks, you can highlight the one you want to change 
+and then choose "Modify Swap Space" from the "Actions" menu. Increase the size as you want.
+Modifications only take place after the next reboot, but it is not necessary to reboot right away
+as it is for the heap and stack space.
+
+\subsubsection{Internal Limits in Lisp}
+As if all that wasn't enough, your version of Lisp may also have some constraints on how large it can grow.
+\begin{enumerate}
+\item CMU Lisp has no such limits, as far as I know.
+
+\item Lucid Lisp has them, and they are user-modifiable; type {\tt (room t)} into a Lucid \TPS to see 
+what the current settings are. Look for "Memory Growth Limit"; if it seems too small, type
+(for example)
+{\tt (change-memory-management :growth-limit 2048)} into the \TPS to allocate 128Mb (2048 64kb segments).
+You can also make this permanent by adding {\tt \#lucid(change-memory-management :growth-limit 2048+)}
+to your {\it tps3.ini} file. Other parameters besides the overall size limit can also be changed; see the
+Lucid manual for details.
+
+\item Allegro Lisp also has a limit, but in this case it is set at the initial building of Lisp. Here you'll
+have to retrieve the build directory for allegro (which is {\it /afs/cs/misc/allegro/build/} followed by 
+the name of your system). We have a copy of this on {\it tps-1}, called {\it allegro4.2hp\_huge}, but it
+requires some hacking to make it build properly. Follow the instructions in the README to build yourself
+a new Lisp core image with more than the standard 60Mb data limit. If you aren't up to the 
+hacking, once again the solution is to whine at {\tt gripe@cs}, who will forward your mail to the 
+Allegro maintainer.
+\end{enumerate}
+
+\subsection{\TPS distribution}
+\input{tar}
+
+
+\section{How to \indexother{locate} something?}\label{finding}
+Sometimes you will be looking at code, and will come across a function
+or variable whose purpose is not familiar to you.  If it is not a standard Common
+Lisp function, for which the Lisp functions {\tt documentation} and
+{\tt apropos} may be useful, as well as reference books and user manuals,
+there are three ways to \indexother{find} where it is defined.
+
+The first method uses the gnu-emacs tags mechanism. Periodically, we run the 
+{\tt etags} program on the
+{\it .lisp} files in the source directory. One does this by entering the \TPS
+lisp directory and then running the \indexother{etags} program; usually, 
+this is done by typing {\tt M-x shell-command etags *.lisp}.  
+This generates a file called
+{\it \indexfile{TAGS}}, with entries for each line of code which begins with
+{\tt (def...}. Then you can use the gnu-emacs {\tt find-tag} function (ESC-. , 
+unless you've rearranged the emacs keys) to look
+for the first occurrence of the symbol, and the {\tt tags-loop-continue} function
+(ESC-,) to find the each subsequent occurrence.  
+This can be slow if there are many symbols which begin with the
+prefix for which you are searching, or if the symbol is overloaded by 
+defining it for different purposes (e.g., {\tt LEAVE} is a
+matingsearch command, a review command, a unification toplevel command).  
+See the gnu-emacs documentation.
+
+Certain functions, such as eproof-statuses, are defined implicitly,
+and you won't find their definitions using the tags mechanism. If you
+look at the definition of the structure \indexother{eproof} in the file
+etrees-flags.lisp, however you will find:
+\begin{verbatim}
+(defstruct (eproof (:print-function print-eproof))
+...
+  (statuses (make-hash-table :test #'eq))
+\end{verbatim}
+This defines the function eproof-statuses.
+
+The second method is to use the \TPS export files. Try
+examining the files with a {\it .exp} extension.  Generally, comments 
+tell which file each symbol comes from.  This method will fail,
+however, if the symbol is not exported, or if the symbol has been
+moved from the file in which it was originally defined without the
+{\it .exp} having been updated.
+
+\TPS has many global lists; the master list is called 
+\indexother{global-definelist}, and in general each sort of \TPS object 
+will have an associated global list. 
+
+The last method is to use operating system utilities like grep and
+fgrep to find all occurrences of the symbol.
+
+
+\section{Utilities}
+Utilities are commonly-used Lisp functions/macros. The functions (or macros) themselves 
+are defined in the normal way, and then a \indexcommand{defutil} command is added into 
+the code beside the function definition. The point of adding the {\tt defutil} command is
+that utilities have their own \TPS category, you can get online help on them, and their 
+help messages are printed into the Facilities Guide; this will help other \TPS 
+programmers to find them in the future.
+ 
+Examples are such functions as \indexother{msg} and \indexother{prompt-read}; see the
+facilities guide for a complete list.
+
+There aren't really very many \indexother{utilities}
+at the minute, although it would be useful if more were defined, since then we could
+avoid duplicating code in different places. So, if you write a useful macro or 
+function {\it foo}, or discover one already written, please add a utility 
+definition next to it in the code. This should look like:
+
+%\begin{tpsexample}
+\begin{verbatim}
+(defutil foo
+   (Form-Type function)
+   (Keywords jforms printing)
+   (Mhelp "Some useful words of wisdom about the function foo."))
+\end{verbatim}
+%\end{tpsexample}
+
+{\tt Form-Type} should be either {\tt function} or {\tt macro}. {\tt Keywords} can be anything
+you want, since it is currently ignored by \tps. {\tt Mhelp} is, of course, a help message.
+Note: if your useful function is actually an operation on wffs, it should be defined as
+a wffop or wffrec (recursive wffop) rather than as a utility; utilities are really 
+intended to be functions that are useful to \TPS programmers but which do not fall into 
+any other \TPS category.
+
+\section{Overloading Commands}
+
+There are certain symbols in \TPS that been {\it overloaded}, that is
+they have been defined to have more than one meaning: they may be
+simultaneously a matingsearch command, review command, and unification
+command. This is done so that same symbol can have similar effect in different
+top-levels. For example, {\it LEAVE} should leave the current top-level, 
+as opposed to having a different exiting command for each top-level,
+which would make things more difficult for the user to remember.
+
+This can cause problems in \TPS unless programmers are careful.  You
+see, we currently use the symbol's property list extensively to store
+things.  When a matingsearch command (such as {\tt LEAVE}) is defined,
+the actions that are to be taken when the user inputs the command are
+stored on {\tt LEAVE}'s property list.  It is important, therefore, that
+each category use different property names, so that there is never a
+clash.  For example, if we used the property {\tt ACTION} for both
+review commands and matingsearch commands, then {\tt LEAVE}'s property
+list could not hold both simultaneously, but merely one or the other.
+Better property names would be {\tt REVIEW-ACTION} and {\tt MATE-ACTION}.
+
+\section{Output}
+
+Some general tips for keeping the output as neat as possible:
+
+\begin{itemize}
+\item Avoid using the lisp function \indexfunction{y-or-n-p}, and stick to the \TPS
+function \indexfunction{prompt-read}, so that the responses will go into work files
+correctly.
+
+\item \indexfunction{msg} and \indexfunction{msgf} (which is like {\tt msg} but adds a linefeed if necessary)
+are \TPS functions for producing output. These functions take a sequence
+of arguments, and evaluate and print out each argument in an appropriate format;
+an argument t means go to a new line. See {\tt defutil msg}.
+
+\item {\tt (msg (gwff1 . gwff))} will print out the correct representation
+of the gwff, whereas {\tt (princ gwff1)} will just print its internal
+representation.
+
+\item To insert a call to runcount in the code:
+{\tt msgf (\indexfunction{runcount})}
+
+\item \indexfunction{stringdt} gives the time and date. \indexfunction{stringdtl} also inserts linefeeds
+
+\item {\tt princ} often puts messages into a buffer.
+To get them to print out, add the command {\tt {finish-output}}.
+You may also have to do this when you use other
+output commands, including msg. 
+
+\item Windows (proofwindows, edwindows, vpwindows) all work by issuing a Unix shell
+command which runs an xterm which, in turn, runs the Unix "tail" command 
+recursively on an output file that \TPS creates by temporarily redirecting 
+{\tt *standard-output*}. (Compare such commands as \indexcommand{SCRIPT} and
+\indexcommand{SAVE-WORK}, which {\it permanently} redirect {\tt \indexother{*standard-output*}}.)
+See the files 
+\indexfile{tops20.lisp}, \indexfile{prfw.lisp}, \indexfile{edtop.lisp} and
+\indexfile{vpforms.lisp} for more information.
+\end{itemize}
+
+\section{Compiling as much as possible}
+In defining new \TPS objects, we often define as a side-effect new functions.
+For example, when defining a new argument type, we define a testfn and a
+getfn for that type, based on the values for those properties that are
+given in the {\tt deftype\%} form. 
+
+Currently, all such functions are compiled, by cleverly defining the definition
+macros so that {\tt defun} forms are created during the compilation of a file.
+If you define new categories that will create such functions, you will want
+to do something similar, so that you aren't always running interpreted code.
+See the files {\it argtyp.lisp} and {\it flavoring.lisp} for examples of how
+this can be done.
+
+\section{Writing New Code Without Making A Nuisance of Yourself}
+\label{writing}
+
+\begin{itemize}
+\item Programmers should avoid referencing internal symbols of different
+LISP packages.  If you are doing this, think about why it is
+necessary.  Perhaps it is better to export the symbols, or rethink the
+package structure.
+
+\item Symbols should be exported before files containing them are compiled.
+Otherwise you stand the risk of having those symbol-occurrences
+interned in the wrong package.
+
+\item Lisp macros can be very useful, but it is easy to overuse them.  It
+can be very difficult to debug code that uses many macros, and because
+there is no guarantee that macros will not be expanded when code is
+loaded (and they are always expanded when compiled), modifying a macro
+means recompiling every file in which it appears, which is quite a nuisance.
+
+\item There are a multitude of functions in \tps, so one must be careful not
+to inadvertently redefine a function or macro.  With the Lisp function
+{\tt APROPOS}, you can check to see
+whether a function name is already being used.
+Use the TAGS table. See section ~\ref{finding}, above.
+
+\item Try not to re-invent the wheel; look in all the likely places to see if some
+of the code you need has already been written. If your new construct is
+similar to an existing one, use {\tt grep -i} in the directory 
+{\it /afs/andrew/mcs/math/TPS/lisp/} to find and examine all uses of the existing 
+construct.
+
+\item Remember that rules of inference should be written as {\it .rules} files and compiled 
+with the \indexcommand{ASSEMBLE-RULE} command; if you modify the {\it .lisp} files 
+directly, you run the risk of having your modifications accidentally overwritten
+by future users.
+
+\item When modifying copies of existing files, prior to installing them, 
+rename the file temporarily (for example, preface the filename with your 
+initials) so that if you compile your new code it won't overwrite the 
+existing compiled file.
+
+\item Don't install code until you've tested it! After installation, keep backup 
+copies of the old files
+in the {\it /home/theorem/project/old-source/} directory on gtps, and change their
+extensions from {\it .lisp} to {\it .lisp-to-1997-jan-3} (or whatever). Delete
+all Emacs backup files from the main lisp directory. Compile new code using
+the CMU Common Lisp version of \TPS since that compiler is fussier than most.
+
+\item Try to make sure that online documentation is included in all user
+functions, argument types, etc. that you define. Also, you should at the very least 
+put comments in your code; better yet, write some documentation for the manuals.
+Note that online help can be associated with any symbol using the
+\indexother{definfo} command.
+
+\item If a new subject has been created, and this subject contains
+flags important for automatic search, the function \indexfunction{mode} 
+\indexfile{flagging.lisp} should be updated.  The code starts as
+
+\begin{verbatim}
+(defun mode (mode)
+  (let ((already-set nil))
+    (unless (eq mode (gettype 'tps-mode 'maint::quiet))
+      (dolist (subject '(IMPORTANT MATING-SEARCH MS88 . . .
+			 UNIFICATION PRIMSUBS MTREE-TOP))
+\end{verbatim}
+The list in the dolist contains all the subjects important for automatic search.
+The new subject should be added to this list.  The purpose of the list is
+to make sure important flags have their default value if they are not explicitly set by the mode.
+
+\item When a new part of \TPS is developed, an appropriate module should be defined in
+{\it /afs/andrew/mcs/math/TPS/lisp/defpck.lisp}. If a new file is being added to 
+an existing module, just add it to the list in defpck.lisp, make sure the correct
+heading is on the file, and export the filename from 
+{\it /afs/andrew/mcs/math/TPS/lisp/<package>.exp}. (Actually, the exporting should 
+be done automatically by \tps, but it won't hurt to do it manually as well.)
+
+\item If a new package or module has been added, it must go into all the build and
+compile files for \ETPS and \tps. (See, for example,
+{\it /afs/andrew/mcs/math/TPS/common/tps-compile.lisp}.)  In general, it should
+go into the ends of the list of modules, so that definitions it
+depends upon will be loaded first. If a new module is added, be sure to add it 
+to the {\it \indexfile{facilities.lisp}} and {\it \indexfile{facilities-short.lisp}}
+files, otherwise it won't show up in the facilities guide.
+
+\item After installing new code, remember to change the patch files, the {\it \indexfile{tpsjobs}}
+file and the {\it \indexfile{tpsjobs-done}} file, and to send a mail message to the other 
+people working on the program.
+\end{itemize}
+
+\section{\indexother{Debugging} Hints}
+
+\begin{itemize}
+\item Insert print commands in a temporary version of a file to see either 
+which parts of the code are being used or what the current values of some
+variables are.
+
+\item Compile the file in several common lisps, especially in
+cmulisp (or tps3cmu), and see if the error messages are helpful.
+
+\item Try to reproduce the bug in a simpler form.
+
+\item See in how many different contexts (such as different
+matingsearch procedures) it arises, so you can isolate its essential
+features.
+
+\item Use the debugging features of your version of lisp (e.g. step and trace).
+
+\item Change the values of the flags \indexflag{QUERY-USER}, \indexflag{MATING-VERBOSE},
+\indexflag{UNIFY-VERBOSE}, \indexflag{TACTIC-VERBOSE}, 
+\indexflag{OPTIONS-VERBOSE}, etc... to get more output.
+
+\item Use the monitor. (See chapter ~\ref{monitor}.)
+
+\item Use the lisp function {\tt plist} to inspect the property list of an object.
+Use {\tt inspect} to see the values of the slots in a structure.
+
+\item Errors in translation, or errors during verification of a merged jform ("The formula is not provable 
+as there is no connection on the following path") are usually caused by merging. See the chapter on
+merging, and in particular the note about using merge-debug.
+
+\item The code in the file \indexfile{etrees-debug} can be useful for tracking
+down bugs involving etrees.  (See subsection ~\ref{etrees}.)
+
+\item Errors of the form "Wff operation <wffop> cannot be applied to labels of flavor <label>" are almost always
+caused by attempting to use a wffop on a flavor for which the corresponding property is undefined. See the section
+on flavors for more details.
+
+\item Errors in structure-slot-accessor are often of the form "Structure for accessor <foo-slot> is not a <foo>".
+For every structure <foo>, there is a test <foo-p>; use it! Of course, you should also work out how 
+something that wasn't a <foo> managed to turn up at that point in the program anyway; often, it's an exceptional
+case that you forgot to handle.
+
+\item In Allegro, the function \indexfunction{dumplisp} can be used to save a Lisp image.
+For example,
+\verb+(excl:dumplisp :name ``saved-image.dxl'')+
+will create a (large) file named ``saved-image.dxl''.  Then one can
+use \verb+lisp -I saved-image.dxl+
+to start lisp specifying this as the image file.
+This will start lisp in the same
+state (e.g., the global variables will have the same values)
+as when dumplisp was called.  This is especially useful if the
+bug shows up after running for a long time.
+
+\item If the bug is new (for example, if you know it wasn't there last month), don't forget 
+that the {\it \indexfile{tpsjobs-done}} file lists all of the files which have been changed, along 
+with the reasons for each change and the date of each change. The {\it tps/tps/old-source/} directory
+should contain backup copies of the changed files. Failing that, snapshots of the entire 
+lisp directory (in the form of gzipped tar files made after each rebuild) are stored 
+in the {\it tps/tps/tarfiles/} directory. Use cload to restore the old copies of the most likely
+culprit files into a core image, until the bug disappears; then use ediff to
+compare the old and new files.
+\end{itemize}
+
+\section{Miscellaneous}
+
+\subsection{Counting Flags}
+
+One can count the number of flags in \TPS as follows:
+
+%\begin{tpsexample}
+\begin{verbatim}
+[btps]/afs/andrew/mcs/math/TPS/lisp% grep -i defflag *.lisp > flagcount
+[btps]/afs/andrew/mcs/math/TPS/lisp% ls -l flagcount
+{\it Edit the file flagcount to eliminate lines which do not define flags}
+[btps]/afs/andrew/mcs/math/TPS/lisp% wc flagcount
+     210     421    8327 flagcount
+{\it The number of lines (210} is the number of flags.)
+[btps]/afs/andrew/mcs/math/TPS/lisp% rm flagcount
+\end{verbatim}
+%\end{tpsexample}
+
+The above counts the number of flags defined in the source code. The
+number currently present in a particular version of \TPS can be found as follows:
+
+%\begin{tpsexample}
+\begin{verbatim}
+(defun discard (list)
+	(if (null list) nil
+	  (if (or (listp (car list)) (memq (car list) (cdr list)))
+;; if it's a list, it's a subject name, and we don't want to count them.
+;; if it appears later on, we don't want to count it twice.
+;; (may need to use franz:memq rather than memq)
+	    (discard (cdr list))
+	      (cons (car list) (discard (cdr list))))))
+
+(msg "TPS has " (length (discard global-flaglist)) " flags.")
+\end{verbatim}
+%\end{tpsexample}
+
+\subsection{Dealing with X Fonts}
+
+\begin{itemize}
+\item To enable your computer to find the fonts, put into an appropriate 
+(such as {\it .Xclients}) file: {\tt xset }fp /tps/fonts/+,
+using the appropriate pathname in place of {\it /tps/fonts/}. The {\tt }fp+
+adds the new directory at the start of the path, because we've had trouble 
+in the past with old fonts with the same name being earlier on in the path.
+
+\item {\tt xset q} shows the fonts.
+
+\item {\tt xset fp-} takes them out of the fontpath.
+
+\item {\tt xlsfonts} lists the fonts available
+Because the font list is usually very long,
+you may prefer to use
+{\tt xlsfonts | grep <fontname>} to check whether the font <fontname> 
+is available.
+
+\item {\tt xfd -fn <fontname> \&} shows all the characters in <fontname>
+\end{itemize}
+
+Dan Nesmith built the symbol fonts by starting with
+the vtsingle font, because xterm requires a font that is
+exactly the same size as vtsingle.  However, every
+character is now different from the original; they were created by hand-colouring 
+the pixels. It is, however, easier to
+edit an existing font than to create one from scratch.
+
+The exact duplicates of the Concept ROM fonts are found in symfont1.bdf and
+symfont2.bdf, for a total of 256 characters (including a normal-sized epsilon).
+Unfortunately, because of the limits below on xterm and lisp, it was necessary to
+leave out some of these characters when making a single font, now called
+vtsymbold.   The galsymbold font was created by splitting the font vtsymbold
+into 128 bitmaps, then using an X10 program that would automatically blow
+each bitmap to the proper size, then manually adjusting a few of
+the characters.
+
+There is a real limitation of the xterm program in that you get only two
+fonts, one for normal text and one for bold text.  
+We use the bold text
+font for symbols, and switch back and forth between the fonts by sending
+the appropriate escape symbols.  
+
+% Inserted by ceb Jan 18 2005
+The code for the ``appropriate escape symbols'' are in \indexfile{xterm.lisp}.
+In this file functions
+\indexfunction{xterm-bold-font}, \indexfunction{xterm-normal-font} 
+and \indexfunction{pptyox} 
+use codes to switch between bold and normal font.
+There is currently some confusion about
+how one switches to bold font.  The code in \indexfile{xterm.lisp}
+switches to bold by sending (in ASCII) \verb+<ESC> [ 5 m+.
+However, it appears the official ANSI code for switching
+to bold is \verb+<ESC> [ 1 m+ 
+while \verb+<ESC> [ 5 m+ is for blinking text:
+
+\begin{verbatim}
+  (see http://members.tripod.com/~oldboard/assembly/ansi_codes.html)
+
+  ESC[n;n;...nm
+
+  Set Graphics Rendition is used to set attributes as
+  well as foreground and background colors.  If multiple
+  parameters are used, they are executed in sequence, and
+  the effects are cumulative. 'n' is one of the following
+  attributes or colors:
+
+  0  All attributes off
+  1  Bold
+  2  Dim
+  4  Underline
+  5  Blink
+  7  Reverse Video
+  8  Invisible
+\end{verbatim}
+
+The working hypothesis (of Chad) at the moment is
+that the implemenations of xterm we have used for
+\TPS render ``blinking text'' as bold, so that switching
+to blink is the same as switching to bold.  In 2005,
+while using xterm version \verb+X.Org 6.7.0(192)+
+for \TPS, the symbols were not displaying as symbols.
+Instead, what should have been symbols were blinking
+normal text.  This can be fixed by changing the
+codes in \indexfile{xterm.lisp} to send \verb+<ESC> [ 1 m+ 
+instead of \verb+<ESC> [ 5 m+.
+
+It is possible there was good reason why the original programmer (Dan Nesmith?)
+used blink instead of bold.  Instead of explicitly making the change,
+there is a system flag \indexflag{XTERM-ANSI-BOLD} with default value
+53 (the ASCII code for 5).  The value of this flag can be changed to
+49 (the ASCII code for 1) when needed.  Perhaps in the future
+the flag could be deleted and the change hard-coded once someone
+is confident of what the number should always be.\footnote{In 2005 (and previously), 
+a value of 53 worked for XTERM-ANSI-BOLD at
+CMU while using xterm version XFree86 4.2.0(165), and a value of 49
+worked at Saarbrucken while using xterm version X.Org 6.7.0(192).}
+
+It would be nice if xterm could render more special symbols.
+% End ceb Jan 18 2005 Insert
+Though xterm would probably allow using
+more than the "printable" characters, this appears very hard to get
+lisp to do in general, that is, it's hard to figure out how to get lisp to
+send these characters to the terminal.  This will probably never be
+completely implementation-independent, because character sets are a very
+unstable part of the lisp specification.
+
+In \TPS you will only be able to get the symbols between 32 and 127, basically
+because the lisp allows only those (without some kind of great hackery).
+
+A few lines of attack for getting more characters suggest themselves:
+
+\begin{enumerate}
+\item Hack xterm to allow more than 2 fonts. (In fact, Dan has
+done it to allow one more font, and thinks it would be possible to add up
+to two more, for a total of one normal font and three symbol fonts.)
+The disadvantage here would be having to distribute the new version of xterm,
+and worrying about portability problems (which actually should be minimal,
+but with lots of different machines and versions of X out there, not
+predictable).  But this approach is fairly easy to get to from the current
+state.
+
+\item Give up on xterm.  There is a new version of gnu-emacs, version 19,
+which allows the use of more than one font in a buffer.  You can then run
+\TPS in a gnu-emacs buffer, and at the same time build in support for
+command-completion, hypertext documentation, etc.  You can also get several
+windows from a single emacs now, so you can still have the editor stuff
+pop up a separate window.  It might also be easier to bind in support
+for automatically running tex or scribe and displaying it.
+This requires someone who can hack gnu-emacs lisp, but a lot of this
+stuff has already been done by somebody, and it's just a matter of putting
+it together.   In this case you could probably roll the fonts together into
+a single large one.
+\end{enumerate}

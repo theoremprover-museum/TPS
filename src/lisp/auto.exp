@@ -1,0 +1,463 @@
+;;; -*- Mode:LISP; Package:AUTO -*-
+;;; Last Modified: Thu Jun 16 05:41:47 1988
+;;; ******************************************************************* ;;;
+;;;         (c) Copyrighted 1988 by Carnegie Mellon University.         ;;;
+;;;                        All rights reserved.                         ;;;
+;;;         This code was written as part of the TPS project.           ;;;
+;;;   If you want to use this code or any part of TPS, please contact   ;;;
+;;;               Peter B. Andrews (Andrews@CS.CMU.EDU)                 ;;;
+;;; ******************************************************************* ;;;
+(in-package :AUTO)
+(export '(contexts-auto)) ;; new file 9/10/87 dan
+(export '(monitorfn monitor-check monitor nomonitor
+monitorlist monitorflag *current-monitor-fn* matingpair matingpairlist
+global-monitorlist defmonitor argnames arghelp argtypes defaultfns mainfns
+focus-mating focus-mating* focus-otree focus-otree* focus-oset focus-oset*
+push-mating))
+(export '( lambda-tactics defn-tactics equality-tactics
+          quant-tactics prop-tactics compound-tactics aux-tactics
+	  unification  unification-dpairs mating-search))
+(export '(prim-prefix prim prt-prim primsubsts name-prim name-primsubsts
+		      primsubs prim-logconst prim-binder prim-bdtypes
+		      neg-prim-sub prim-bdtypes-auto))
+(export '(min-prim-depth max-prim-depth prim-posneg default truthvalues primsubs))
+(export
+ '(negate satif satif-or satif-and satif-var sat-pathlist sat-p-main
+	valid-p-main classify-prop init-prop-rec init-prop
+	local-gwff-to-jform valid-p))
+(export '(rulep-tsts))
+(export '(sat-p))
+(export '(sat ;;valid already exported from core 9/17/87 dan
+))
+(export '(sat-p valid-p))
+(export '(rulep-ops))
+(export '(rulep-wffeq rulep-test-version))
+(export '(rulep-test))
+(export '(rulep-mac))
+(export '(vpforms-tex			; file
+	  texformat vpform-tex-nest	; flags
+	  vpform-tex-preamble vpform-tex-magnification
+	  vp-tex			; wffop
+	  vpt				; edop
+	  vpp vpd hpd			; special argtype keywords 
+	  ))
+(export '(andheight forallindent))
+(export
+ '(vpformdefaults vpform subparts %sprintpplist %sprintaplicn %spaces
+    printrightbar printlegend printleftbar %vpform width %printgencharlist
+    printbarsp print-vplit print-vpform print-vp-or-sign %%princ height 
+    digitnamp describe-vplit describe-vpform display-vp-diag display-vp-diag-ed display-vpd open-matevpw 
+    close-matevpw vpw-width vpw-height))
+(export '(vpd vp vpf))
+(export '(display-vpd display-vp-diag vpform))
+(export '(vp-forms))
+(export '(print-jlist number-of-horizontal-paths number-of-vertical-paths))
+(export '(prop-cjform pj num-hpaths num-vpaths cjform djform))
+(export '(jforms-edops))
+(export
+ '(vpd-style vpd-vpfpage vpd-brief vpd-ptypes vpd-filename printvpdflag
+  vpd-lit-name vpform-labels))
+(export '(vpforms-macros))
+(export
+ '(gwff-to-prop-jform get-jform equiv-to-disj equiv-to-conj create-new-node
+		      search-exists search-univ search-and search-or
+		      jform-main-fn1 jform-main jform1 gwff-to-jform
+		      jform-to-gwff))
+(export '(common pathnum t-reversed pathnum-reversed prefer-rigid1 prefer-rigid2 ordercomponents))
+(export '(gwff-to-prop-jform gwff-to-jform jform-to-gwff))
+(export '(jforms-main))
+(export '(print-jform-main print-jform))
+(export '(existential universal literal conjunction disjunction))
+(export '(jforms-labels))
+(export '(jform-p))
+(export '(jforms-labels)) 
+(export
+ '(print-lit-name lit-name))
+(export '(jforms1))
+(export '(jforms-def))
+(export '(weak-mac-auto)) ;; added 9/10/87 dan
+(export '(name-skolem-x1 name-skolem-cap ))
+(export '(sk3 sk1))
+(export '(skolems3 skolems1 simul-substitute-l-term-var))
+(export '(subst-alist subst-pair))
+(export
+ '(skolems3-main skolems3 skolems1-main skolems1 simul-substitute-l-term-var
+		 simul-substitute-term-var make-skolem-fn))
+(export '(wff-skolem))
+(export '(name-skolem-fn))
+(export '(skolems))
+(export '(wff-skolem-mac))
+(export
+ '(skolems1-expansion ;;deepify-list now in core 
+listify-deep duplicate-expansion-var
+    duplicate-var duplicate-expansion duplicate expansion-init))
+(export '(dup-var dup exp-init))
+(export '(duplicate-var duplicate expansion-init))
+(export '(etree-skolem))
+(export '(expansion selection))
+(export '(sel terms shallow deep pnode psh ppdeep pdeep))
+(export
+ '(sel-exp-terms replace-shallow shallow-wff replace-deep deep-wff pwnode
+    pwshallow ppwdeep pwdeep expand select))
+(export
+ '(next-exp-label-name add-expansion create-expansion-label expand
+    next-sel-label-name create-selection-label select% sel-exp-terms
+    replace-shallow shallow-wff replace-deep deep-wff pwnode pwshallow ppwdeep
+    pwdeep get-shallow get-deep))
+(export '(get-deep-or-shallow))
+(export '(etree))
+(export '(print-deep print-nodenames))
+(export '(etree))
+(export '(expansion-trees))
+(export '(etrmac))
+(export '(
+tactics-macros
+ *tactic-use-list* *tactic-mode-list*
+  interactive ;;; can't export auto here, since already in core package
+ nat-ded etree-nat nat-etree 
+ tactic tactical
+  tactic-verbose tacmode tacuse
+default-tactic mate-srch
+  tactic-mode  tactic-use tactic-exp
+  tactic-p tactical-p  apply-tactic  apply-tactical tactic-output
+  deftactic deftactical
+ use-tactic  echo
+))
+(export '(
+tacticals-macros
+succeed
+))
+(export '(
+ tactics-aux
+ finished-p make-nice make-room
+show-plans show-current-plan use-rulep-tac use-symsimp-tac
+make-room-before make-room-after
+use-rulep use-symsimp))
+(export '(
+ tacticals
+ call  orelse idtac failtac repeat then then* then** ifthen  try
+  no-goal ;;; can't export compose here, since already in core package
+))
+(export 
+ '(edisjunction positive-p get-shallow get-deep get-justification
+		rewrite deepen econjunction leaf negation implication true
+		false junctive terms skolem gwff-to-etree gwff-to-etree-main
+		deepen-leaf-node create-leaf-node leaf-p
+		create-edisjunction-node
+		create-econjunction-node
+		create-implication-node
+		create-negation-node
+		create-expansion-node
+		create-selection-node
+		create-true-node
+		create-false-node
+		create-rewrite-node
+		positive dis con neutral get-selection-var deepen-etree
+		etrees-labels-getfn
+		etrees-labels print-etree-name print-label-names etree-p
+		etree-q
+		etrees-labels etrees-def etree etrees leaf-name edisj-name 
+		econj-name imp-name neg-name true-name false-name rewrite-name
+		expansion-name selection-name skolem-selection-name
+		initialize-etree-counters
+		print-etree print-etree-main cetree detree
+		deepen-to-literals dptree deepen-etree1
+		display-etree etd etp eproof skolem-default eproof-etree
+	        eproof-skolem-constants eproof-skolem-method eproof-lemmas
+                eproof-free-vars-in-etree current-eproof sub-etree
+	        substitute-in-etree eproof-positive-mode positive-mode
+	        positive-proof-mode abnorm-etree get-ab-norm-vars
+		etree-positive etree-components etree-junctive 
+		print-etree dup-all ; skolem-eager 
+		etree-name min-quantifier-scope truthvalues-hack
+	        skolemize-normal-wff rectify-and-skolemize-theorem
+   dup-inner dup-outer dup-all
+	        deepen-one deepen-all deepen-after-duplication
+	        eproof-leaf-list etree-parent find-etree-node
+	        find-etree-node-name find-etree-nodes
+                rewrite-defns ;;rewrite-defns-eager rewrite-defns-method 
+		mate mateprintdepth  dp dp* ppf current-topnode
+		last-eproof up goto mate-result-> mate-alias mate-move-fn
+	        mateop
+		eager lazy rewrite-all naive
+		new-mating-after-dup active-mating quasi-tps1
+                ms88-sub
+                ms-top duplication-strategy duplication-strategy-pfd
+                ms-dir mst-operations ;matingstree 
+		))
+(export '( skolem-term print-skolem-term skolem-term-term
+	  skolem-term-parameter show-skolem prim-all prim-outer prim-sub prim-single name-prim
+	  initial-bktrack-limit mate-ffpair ; flag from data-structures
+	  interrupt-enable  mating-verbose rec-ms-file rec-ms-filename
+          query-user ; added 22may90 dan
+          prim-quantifier
+	  search-complete-paths ;;occurs-check
+	  querytype verbose ;; new types
+	  med silent; possible value of mating-verbose
+	  query-jforms show-jforms; possible values of query-user
+	  prop-strategy allow-duplicates hash-table pushnew))
+(export '(expand-top= deepen= dp=))
+(export '(default-ms ms90-3-search expand-etree min-quant-etree))
+(export '(vpetree mod-status modify-status))
+(export '(exp-var exp-var-var exp-var-subst))
+(export '(occurs-check dup-allowed ms-split first-order-mode-ms use-fast-prop-search ms-init-path))
+(export '(init-mating add-conn rem-conn add-conn* rem-conn* 
+		      rem-last-conn init next-conn
+		      show-mating show-substs apply-substs complete-p
+		      display-time del-dup-conns excluding-gc-time))
+(export '(daterec))
+(export '(breadth-first depth-first best-first uni-search-heuristic apply-match unify
+                        apply-match-all-frdpairs apply-match-most-consts
+			dneg-imitation always flex const-flex const never))
+(export '(countsubs-first))
+(export '(stop-at-tsn max-search-depth least-search-depth eta-rule reduce-double-neg
+		      max-utree-depth first-order-unification
+		      order-components subsumption-check subsumption-nodes subsumption-depth
+		      all-nodes leaf-nodes path-nodes lp-nodes min-quick-depth
+		      unipairp imitation-first unify-verbose))
+(export '(rigid-path-ck))
+(export '(etree-nat))
+(export '(
+diy diy-l
+diy-tac min-prop auto-tac
+))
+(export '(unifop unifcmd-mhelp))
+(export '(dpairlist))
+(export '(utree utree* goto nth-son simplify match apply-subst match-pair name-dpair
+		unification unify p pp pp* subst-stack unif-problem add-dpair
+		rm-dpair add-dpairs-to-node show-dpairset add-dpairs-to-utree
+		pall ^^))
+(export '(nat-etree nat-etree-old line-node-list update-line-node-list mate-list 
+	  nat-xlate deepen-leaf-node-rulep same-ify justified-by-node
+          xlate-rulep))
+(export '(current-natree pfnat pntr natree-debug))
+(export '(etree-positive get-shallow positive-p implication-p 
+   make-implication etree-components make-leaf etree-junctive
+   expansion-p substitute-in-etree-main expansion-terms duplicate-var
+   selection-p substitute-in-etree deepen-leaf-node selection-terms
+   etree-parent make-rewrite leaf-p copy-etree-rec apply-sub-to-etree
+   selection-shallow negation-p apply-sub-to-etree))
+(export '(merge-tree))
+(export '(remove-leibniz))
+(export '(update-option-tree-first-order
+          update-option-tree option-tree
+          update-option-tree-higher-order print-option-tree-long))
+(export '(option-tree-aux num-vpaths-ranking))
+(export '(ms89 rank-eproof-fn expunge expunge-old
+          option-tree-mateops show-option-tree
+          max-search-limit search-time-limit))
+(export '(unode show-time num-of-dups num-frpairs ms90-3-dup-strategy
+		prop-msearch print-mating-counter max-mates max-dup-paths))
+(export '(num-of-dups msearch))
+(export '(ms91-simplest ms91-original ms91-nodups ms91-deep))
+(export '(weight-a-coefficient weight-b-coefficient weight-c-coefficient
+          weight-a-fn expansion-level-weight-a weight-b-fn simple-weight-b-fn
+	  simplest-weight-b-fn all-penalties-fn
+          weight-c-fn option-set-num-vpaths 
+	  penalty-for-multiple-primsubs penalty-for-ordinary-dup
+          penalty-for-each-primsub penalty-for-multiple-subs
+	  options-verbose option-set-num-leaves reconsider-fn
+	  ident-arg double-arg square-arg inf-arg options-generate-fn
+	  options-generate-arg options-generate-update add-options-original
+	  add-options-count add-options-weight add-options-subs
+	  increment-weight double-weight square-weight inf-weight))
+(export '(ms91-prefer-smaller ms91-time-by-vpaths ms91-weight-limit-range))
+(export '(new-option-set-limit search-order))
+(export '(go2 go3 monstro))
+(export '(add-flag test new-searchlist add-function searchlists test-top search-item  
+		   rem-flag test-verbose fetch delete
+		   show-searchlist searchlist *global-searchlist* auto-press-down-slist
+		   searchlist current-sl leave breadth-first-search press-down press-down-2 push-up-2
+		   push-up find-best-mode auto-push-up-slist test-increase-time
+		   exhaustive-search test-next-search-fn search-order 
+		   add-flag* rem-flag* add-subjects anything-list insert
+ 		   slist-to-list list-to-slist test-initial-time-limit 
+		   *test-top* continue test-reduce-time testwin-height testwin-width
+		   close-testwin open-testwin global-testlist testcmd))
+(export '(test-lib test-searchlists vary-mode scale-down scale-up revise-defaults
+test-easier-if-nil test-easier-if-t test-easier-if-high test-easier-if-low
+test-faster-if-nil test-faster-if-t test-faster-if-high test-faster-if-low test-fail
+test-fix-unif-depths quick-define test-max-search-values))
+(export '(etree-nat-verbose print-routines))
+(export '(printmatefile printmateflag printmateflag-slides printmateops vpform-tex-preamble))
+(export '(gwff0-or-eproof gwff0-or-label-or-eproof mate-command mate-top unif-top
+			  current-eproof-type last-eproof-type scribe-matewff
+			  added-conn considered-conn dupe dupe-var incomp-mating mate-subsumed-test 
+			  mate-subsumed-true mating-changed primsub removed-conn start-time stop-time 
+			  unif-subsumed-test unif-subsumed-true display-etree-all etree-to-list pproof
+			  remark-printmatefile apply-prim-subs apply-prim-subs-all apply-prim-subs-outer
+			  duplicate-all-outer-vars duplicate-all-vars gwff-to-etree-sub name-primsubsts2 
+			  call-unify apply-substs-ms cr-eproof-jform display-vp-etree find-infix-etree goto-node
+			  delete-duplicate-conns show-mating-stats))
+(export '(connections data-structures etr-nat-macros etree-def etrees-exp-vars etrees-flags etrees-jforms
+		      etrees-print etrees-skolem etrees-wffops etrees-wffops2 mating-aux mating-dir mating-events
+		      mating-macros mating-mateops mating-merge mating-merge-eq mating-merge2 mating-move
+		      mating-paths mating-prop mating-sub mating-top mating-trans
+		      monitor-macros ms90-3-data ms90-3-exp-jform ms90-3-expand-etree ms90-3-jform-to-etree
+		      ms90-3-node ms90-3-path-bkup ms90-3-path-enum ms90-3-prop ms90-3-top ms90-3-unif-fo 
+		      ms90-3-unif-match ms90-3-unif-simpl ms90-3-unif-tree ms92-9-top nat-etr newrulep-tsts
+		      node option-tree-search symsimp symsimp2 test-top-search test-top-slists test-top-top 
+		      timing unif-aux unif-fo unif-lambda unif-macros unif-mat unif-match unif-simpl unif-subs
+		      unif-top unif-tree unif-user prim-edops))
+(export '(mtree leave renumber-leaves leaftype *renamed-leaves-list*))
+(export '(matingstree-name obligation-name current-matingstree current-obligation
+          current-jform default-ob deepest highest h-smallest d-smallest obdefault))
+(export '(pmtr pmtr-flat pm-node pmtr* init rem-node prune conns-added choose-branch))
+(export '(mt-subsumption-check mt-subsumption same-conns subset-conns same-tag
+			       multiply-tag-list tag-conn-quick tag-conn-leafno
+			       tag-conn-fn tag-mating-fn mt-dups-per-quant))
+(export '(mt-default-ob-mate lowest highest hi-lo))
+(export '(mtree-ops mtree-auto mtree-print sib kill resurrect mt94-11 mt94-12 mt95-1
+		    mt94-12-trigger mtree-filter-dups mtree-stop-immediately mtree-top))
+(export '(pick pob-lits pob-node ppath* pob ppath potr potr-flat potr*-flat))
+(export '(add-all-lit add-all-ob qry all-conns-added live-leaves expand-leaves))
+(export '(default-expand default-mate oset otree pfd npfd npfd-1 mtree mtree-1 mtree-2 mtreeop))
+(export '(mtree-datastructure mtree-duplication mtree-obligation mtree-query mtree-unification))
+(export '(do-primsub do-primsub-rec replace replace-sub append ignore append-sub tidy-proof))
+(export '(primsub-method pr89 pr93 pr95 min-prim-lits max-prim-lits boolean-or-abbrevlist utree-begin utree-end1
+			 pruning best-first prune unif-trigger utree-end props-change unif-counter unif-counter-output)) 
+(export '(eproof-name mating-name master-eproof clause-form))
+(export '(max-substs-var max-substs-proj max-substs-proj-total msv-on eproof-utree
+			 primsub-var-select pr97a pr97b pr97c PR97C-PRENEX ms91-interleave auto-suggest search-suggestions ms90-3-quick
+			 pr97 query-slists basic-search-then-uniform-search uniform-search uniform-search-l
+			 uniform-search-function leibniz-sub-check total-num-of-dups prefer-rigid3 if-needed
+			 msv-off find-nesting apply-match-max-substs apply-match-all-frdpairs-msv  add-truth
+			 apply-match-min-substs max-substs-quick unif-depths unif-nodepths important transmit
+			 *ignore-statuses* use-diy vpform-latex-preamble PR97C-MAX-ABBREVS searchtype 
+                         nat-etree-version nat-etree-version-type old hx ceb
+			 ptree ptree* ptree-file timing-named cws cwd prenex-wffeq prenex-iterate))
+
+(export '(ms98-verbose hpath-threshold ms98-measure ms98-num-of-dups ff-delay ms98-valid-pair ms98-rew-primsubs
+		      ms98-rewrites ms98-rewrite-depth ms98-rewrite-unif ms98-prune-rewrites ms98-rewrite-prune 
+; mkaminski 10/1/2005
+ms98-external-rewrites ms98-pollute-global-rewrites
+		      merge-minimize-mating ms98-init ms98-rewrite-size ms98-rewrite-model ms98-primsub-count
+		      break-at-quantifiers maximize-first ms98-fragment-order ms98-low-memory ms98-unif-hack2
+		      ms98-minor ms98-variable-order ms98-merge-dags ms98-max-components ms98-force-h-o
+		      ms98-base-prim ms98-max-prims ms98-dup-primsubs ms98-dup ms98-prim ms98-unif-hack
+		      minimal-p ms98-dup-below-primsubs ms98-first-fragment ms98-minimality-check))
+
+(export '(etr-auto-suggest mating mating-filter ms98-trace ms98-trace-type map-eproof
+			   *ms98-trace-file* search-analysis set-background-eproof))
+
+(export '(MEASUREMENTS NUM-LITERALS ACCEPTABLE-CONNECTIONS SYMBOL-INT-PAIR SYMBOL-INT-LIST
+	  SET-SEARCH-TREE pr00 pr00-max-substs-var pr00-which-kinds pr00-require-arg-deps
+	  pr00-num-iterations pr00-num-partial-solns pr00-approximate-solns
+	  UNIF MAX MIN CLOS COCLOS save-etree restore-etree imp rew))
+(export '(ALLOW-NONLEAF-CONNS DISSOLVE REWRITES))
+(export '(ELIMINATE-CONJ*-RULEP-APPS ELIMINATE-ALL-RULEP-APPS ELIMINATE-RULEP-LINE))
+(export '(MATE-UP-TO-NNF eprooflist etr-info SET-EPROOF set-background-eproof))
+(export '(check-etree-structure check-etree-structure-2))
+(export '(PROVIDE-EXTERNAL-SERVICES delay-setvars max-constraint-size
+				    max-num-constraints USE-EXT-LEMMAS add-ext-lemmas
+	  ASSERT-LEMMAS INCLUDE-INDUCTION-PRINCIPLE
+	  INCLUDE-COINDUCTION-PRINCIPLE
+          BAD-VAR-CONNECTED-PRUNE WHICH-CONSTRAINTS))
+(export '(DEASSERT-LEMMAS NORMALIZE-PROOF))
+(export '(seq-to-nat seqlist pseq pseql pseq-use-labels))
+(export '(ext-seq-top ext-seq-printing ext-seq-rules ext-seq-entering
+		      ext-seq-derived-rules ext-seq-files
+		      ext-exp-dags ext-seq-tactics))
+(export '(defextseq extseq-argtypes extseq-argnames extseq-arghelp extseq-defaultfns
+	   extseq-mainfns *current-seqder* ext-seq-p))
+(export '(ext-seq-wffs ext-seq-princ-wffs ext-seq-pos-rule ext-seq-kind
+		       ext-seq-rew-just ext-seq-exp-term ext-seq-sel-var
+		       ext-seq-prems))
+(export '(weaken dneg lam internalize+ internalize- all+ all- true+ init refl equivwffs+ equivwffs-
+		 false- and- and+ implies- implies+ equiv- equiv+ exists- exists+))
+(export '(or- or+ eunif1 eunif2 initeq dec contr eqo exto eqfunc extfunc cut eunif1 eunif2))
+(export '(extseq-true extseq-false extseq-or+ extseq-or- extseq-all+ extseq-all-
+		      extseq-dneg extseq-pall extseq-pstatus extseq-pplan
+		      es-introduce-gap extseq-lam extseq-equivwffs-
+		      extseq-equivwffs+ extseq-internalize+ extseq-internalize-
+		      extseq-extfunc extseq-eqfunc extseq-contr extseq-init extseq-refl
+		      extseq-eqo extseq-exto extseq-cut 
+		      extseq-eunif1 extseq-eunif2 extseq-initeq
+		      extseq-dec extseq-and- extseq-and+ extseq-implies- extseq-implies+
+		      extseq-equiv- extseq-equiv+ extseq-exists- extseq-exists+))
+(export '(expand-all-inits-and-refls expand-all-derived-rules))
+(export '(defsavedextseq esnumalias))
+
+; ext seq tactics - cebrown 6/2/03
+(export '(go2-tac ext-seq true+tac false-tac or+tac or-tac all+tac
+		  all-tac not-tac lambda-tac equivwffs+tac equivwffs-tac internalize+tac
+		  internalize-tac refl+tac init-tac initeq-tac dec+tac eunif1-tac
+		  eunif2-tac extfunc+tac eqfunc-tac exto+tac eqo-tac and+tac and-tac
+		  implies+tac implies-tac equiv+tac equiv-tac exists+tac exists-tac
+		  contract-tac))
+(export '(ext-exp-dag-verbose ext-exp-dag-debug ext-search *edag-lift-info* *current-edag*))
+(export '(piy diy2 piy2 diy2-l diy-with-timeout diy-l-with-timeout
+	      diy2-init-time-limit diy2-num-iterations diy2-time-increase-factor))
+(export '(ext-search-limit ms03-verbose MS03-7 MS04-2))
+(export '(MS03-WEIGHT-FLEXFLEXSAME-O MS03-WEIGHT-FLEXFLEXDIFF-O MS03-WEIGHT-FLEXFLEXSAME MS03-WEIGHT-FLEXFLEXDIFF MS03-WEIGHT-FLEXRIGID-BRANCH MS03-WEIGHT-FLEXRIGID-O MS03-WEIGHT-FLEXRIGID-O MS03-WEIGHT-RIGIDRIGIDSAME-O MS03-WEIGHT-RIGIDRIGIDDIFF-O MS03-WEIGHT-RIGIDRIGID-EQN MS03-WEIGHT-RIGIDRIGID-FLEXEQN MS03-WEIGHT-RIGIDRIGID-NOEQN MS03-WEIGHT-FLEXRIGID-EQN MS03-WEIGHT-FLEXRIGID-FLEXEQN MS03-WEIGHT-FLEXRIGID-NOEQN))
+(export '(MS03-WEIGHT-PRIMSUB-FIRST-PROJ MS03-WEIGHT-PRIMSUB-NEXT-PROJ
+          MS03-WEIGHT-PRIMSUB-FIRST-NOT-PROJ MS03-WEIGHT-PRIMSUB-NEXT-NOT-PROJ
+	  MS03-WEIGHT-PRIMSUB-FIRST-FORALL MS03-WEIGHT-PRIMSUB-FIRST-EXISTS
+	  MS03-WEIGHT-PRIMSUB-NEXT-FORALL MS03-WEIGHT-PRIMSUB-NEXT-EXISTS
+	  MS03-WEIGHT-PRIMSUB-FIRST-EQUALS MS03-WEIGHT-PRIMSUB-NEXT-EQUALS
+	  MS03-WEIGHT-PRIMSUB-FIRST-NOT-EQUALS MS03-WEIGHT-PRIMSUB-NEXT-NOT-EQUALS
+	  MS03-WEIGHT-PRIMSUB-FIRST-AND MS03-WEIGHT-PRIMSUB-FIRST-OR
+	  MS03-WEIGHT-PRIMSUB-NEXT-AND MS03-WEIGHT-PRIMSUB-NEXT-OR
+	  MS03-WEIGHT-OCCURS-CHECK MS03-WEIGHT-BANNED-SELS
+	  MS03-WEIGHT-PRIMSUB-FALSEHOOD MS03-WEIGHT-PRIMSUB-TRUTH
+	  MS03-WEIGHT-DISJ-MATE MS03-WEIGHT-DISJ-EUNIF MS03-WEIGHT-DISJ-UNIF
+	  MS03-USE-JFORMS MS03-WEIGHT-CHANGE-DUPS
+	  MS03-WEIGHT-RIGID-MATE MS03-WEIGHT-FLEXRIGID-MATE
+	  MS03-WEIGHT-EUNIF1 MS03-WEIGHT-EUNIF2 MS03-WEIGHT-IMITATE MS03-WEIGHT-PROJECT
+	  MS03-USE-SET-CONSTRAINTS MS03-QUICK-EUNIFICATION-LIMIT
+	  MS03-SOLVE-RIGID-PARTS MS03-DUP-METHOD MS03-SOLVE-RIGID-PARTS-ALLOW-RECONNECTS
+	  ))
+(export '(EXT-MATE ext-mate-top ext-mate-printing ext-mate-rules ext-mate-entering
+		   defextmate extmate-argtypes extmate-argnames extmate-arghelp extmate-defaultfns
+		   extmate-mainfns ext-exp-open-dag *eeod-list*
+		   gwff0-or-label-or-edag ms03-lift ms04-lift))
+(export '(cutfree-to-edag show-exp-terms show-exp-vars show-sel-vars subst
+			  dup-var dup-node dup-and-imitate dup-and-project
+			  imitate project subst-forall subst-exists
+			  dup-and-subst-forall dup-and-subst-exists
+			  expand-imitate expand-project
+			  expand-forall expand-exists expand-subst
+			  ))
+(export '(eqngoal eqn conj disj))
+(export '(PR00-ALLOW-SUBNODE-CONNS MS98-USE-COLORS EMPTY-DUP-INFO-NAME))
+(export '(models-top *models-base-nbits* *models-var-interps* models log-relns semantics modelscmd))
+(export '(change-base-type pelt pelt-rec psize MAX-DOMAIN-SIZE MAX-BINDER-COMPUTATION
+			   interpret assign-var pelts pelts-rec unassign-var
+			   show-assignments remove-all-assignments
+			   semantic-bounds solve uninterpreted-syms
+			   probability cond-probability
+			   MS03-WEIGHT-DUP-VAR
+			   ms04-search MS04-TRACE EXT-MATE-RECOMPUTE-JFORMS
+			   MS04-INITIAL-DEPTH MS04-INCR-DEPTH MS04-MAX-DEPTH
+			   MS04-DUP-WEIGHT MS04-PRENEX-PRIMSUBS MS04-WEIGHT-PRIMSUB-NEXTTP
+			   MS04-WEIGHT-PRIMSUB-FIRST-NOT MS04-WEIGHT-PRIMSUB-NEXT-NOT
+			   MS04-WEIGHT-MULTIPLE-MATES
+			   MS04-WEIGHT-MULTIPLE-EUNIF1S
+			   MS04-WEIGHT-MULTIPLE-EUNIF2S
+			   MS04-VERBOSE MS04-WEIGHT-EUNIF-DECS MS04-WEIGHT-EUNIF-DIFF-HEADS
+			   MS04-DELAY-UNIF-CONSTRAINTS MS04-WEIGHT-DELAY-UNIF
+			   MS04-ALLOW-FLEX-EUNIFS MS04-WEIGHT-FLEX-EUNIF
+			   MS04-ALLOW-FLEXRIGID-PROJ-MATE MS04-WEIGHT-FLEXRIGID-PROJ-MATE
+			   MS04-SOLVE-UNIF-DEPTH MS04-DELAY-FLEXRIGID-MATES
+			   MS04-USE-SET-CONSTRAINTS MS04-WEIGHT-ADD-SET-CONSTRAINT
+			   MS04-WEIGHT-SOLVE-SET-CONSTRAINTS
+			   MS04-USE-SEMANTICS MS04-SEMANTIC-PRUNING
+			   EXTSEQCMD EXTMATECMD
+			   MS04-MAX-PRIMSUB-EXISTS MS04-MAX-PRIMSUB-FORALL MS04-MAX-PRIMSUB-NOT
+			   MS04-MAX-PRIMSUB-OR MS04-MAX-PRIMSUB-AND
+			   MS04-MAX-PRIMSUB-NOT-EQUALS MS04-MAX-PRIMSUB-EQUALS
+			   MS04-MAX-PRIMSUB-NOT-PROJ MS04-MAX-PRIMSUB-PROJ
+			   MS04-MAX-DUPS MS04-MAX-PROJS MS04-MAX-IMITS MS04-MAX-FLEXRIGID-PROJ-MATES
+			   MS04-MAX-FLEXRIGID-MATES MS04-MAX-EUNIF2S MS04-MAX-EUNIF1S MS04-MAX-RIGID-MATES
+			   MS04-MAX-FLEX-EUNIFS MS04-MAX-FLEXRIGID-NEG-PROJ-MATES MS04-MAX-FLEXRIGID-NEG-MATES
+			   MS04-EAGER-UNIF-SUBST MS04-MAX-DELAYED-CONNS MS04-CHECK-UNIF-DEPTH
+			   MS04-WEIGHT-PRIMSUB-OCCURS-CONST MS04-DUP-EARLY
+			   ))
+(export '(MS04-MP-OPTIONS DUP MATE EUNIF1 EUNIF2 SUBST STOP-DUP MATE-FLEXRIGID MATE-FLEXRIGID-NEG
+			  GEN-CONN MATE-FLEXRIGID-PROJ MATE-FLEXRIGID-NEG-PROJ FLEX-EUNIF
+			  STOP-PRIMSUB PRIMSUB-QUANT-GENTP PRIMSUB DELAY-UNIF DELAY-CONN
+			  ADD-SET-CONSTRAINT SOLVE-SET-CONSTRAINTS
+			  MS04-BACKTRACK-METHOD))
+
+(export '(seqncmd s-eqn s-eqn-top s-eqn-entering s-eqn-printing s-eqn-axioms s-eqn-rules s-eqn-rearrange s-eqn-theories *current-eqnder* rel-or-label s-eqn-prove s-eqn-pall s-eqn-app app rewriting verbose-rewrite-justification current-theory prove-in s-eqn-prove-in rewrite-in s-eqn-rewrite-in s-eqn-beta-nf beta-nf s-eqn-lambda app* s-eqn-app* app*-rewrite-depth unapp* s-eqn-same same s-eqn-delete connect s-eqn-connect eta-nf s-eqn-beta-nf long-eta-nf s-eqn-long-eta-nf s-eqn-done beta-eq s-eqn-beta-eq eta-eq s-eqn-eta-eq lambda-eq s-eqn-lambda-eq lambda-nf s-eqn-lambda-nf assert-top s-eqn-assert-top derive-rrule s-eqn-derive-rrule derive derive-in rewriting-relation-symbol defsavedrew any any* unany* any*-in unany*-in rewriting-auto-table-size rewriting-auto-depth rewriting-auto-max-wff-size rewriting-auto-substs s-eqn-axiom-appfn s-eqn-axiom-rewfn rewriting-auto-search-type rewriting-auto-global-sort simple bidir bidir-sorted auto-searchtype rewriting-auto-min-depth make-rrule))
+(export '(s-eqn-app-help-msg-a s-eqn-app-help-msg-b gwff-or-selection-p get-wff-or-selection gwff-or-nil eta-appfn eta-rewfn beta-appfn beta-rewfn gwff-or-label inference-scheme-appfn inference-beta-rewfn inference-eta-rewfn inference-match-binders-rewfn))

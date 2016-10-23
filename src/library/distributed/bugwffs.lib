@@ -1,0 +1,42 @@
+(:name L51
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(OB) EXISTS y(B).EXISTS x(B) x(OB) x(B) IMPLIES x(OB) y(B)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM50-13
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, April 29, 1999 at 14:06:41."
+:description "EXISTS x(I).~P(O) AND [Q(O) AND ~R(O) OR ~Q(O) AND R(O)] IMPLIES.P(O) AND Q(O) OR ~P(O) AND ~Q(O) IMPLIES R(O)"
+:needed-objects   NIL
+:mhelp "Simple formula for debugging"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TRANS-BUG-EX2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "~p(O(AA)) [LAMBDA w(A) g1(AA).g2(AA) w(A)] OR p(O(AA)).LAMBDA x(A) g1(AA).g2(AA) x(A)"
+:needed-objects   NIL
+:mhelp "Illustrates bug"
+:other-attributes NIL
+:other-remarks "
+")
+
+

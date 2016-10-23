@@ -1,0 +1,244 @@
+\chapter{Running TPS With An Interface}
+
+There is an interface for \TPS written in Java.
+Running \TPS through such an interface is similar to running
+\TPS within an xterm window, except the Java interface
+supports menus and popup prompts.  The \TPS lisp code
+now includes general facilities for communicating with
+such an interface (when running under Allegro).
+
+To start \TPS with the java interface, one can use the command line
+argument 
+\indexother{-javainterface} along with other relevant information
+as shown below:
+\begin{verbatim}
+lisp -I tps3.dxl -- -javainterface cd javafiles \;
+     /usr/bin/java TpsStart
+\end{verbatim}
+The command line arguments following -javainterface
+should form a shell command which run the interface.
+In this case, the shell command would be ``cd javafiles; /usr/bin/java TpsStart''.
+Other command line arguments which have meaning for the ``java TpsStart'' command
+are listed below.
+\begin{description}
+\item[\indexother{-big}]  Use the bigger sized fonts.
+\item[\indexother{-x2}]  Multiply the font size by 2.
+\item[\indexother{-x4}]  Multiply the font size by 4.
+\item[\indexother{-nopopups}]  Do not use ``popup'' style prompts.
+  Instead, the Java window should behave more like the x-window interface.
+\end{description}
+The remaining command line arguments should be followed by a non-negative integer.
+\begin{description}
+\item[\indexother{-screenx}]  The initial horizontal size of the Java window.
+\item[\indexother{-screeny}]  The initial vertical size of the Java window.
+\item[\indexother{-rightOffset}]  The amount of extra room given to the right margin.
+\item[\indexother{-bottomOffset}]  The amount of extra room given to the bottom margin.
+\item[\indexother{-maxChars}]  The maximum number of characters to hold in the buffer.
+  This should be large enough that you can scroll back and see previous \TPS output.
+  The default value of 20000 should usually be enough.
+\end{description}
+
+These other arguments should be preceeded by a command line ``-other''.
+This tells TPS that the remaining command line information should be passed
+to the call to ``java TpsStart''.  For example,
+\begin{verbatim}
+lisp -I tps3.dxl -- -javainterface cd javafiles \;
+   /usr/bin/java TpsStart -other -big -rightOffset 10 -nopopups
+\end{verbatim}
+which tells
+To send these command line arguments to ``java TpsStart'', they should
+For example, ``java TpsStart -big'' instructs Java to use the big fonts,
+and ``-x2'' and ``-x4'' instruct Java to multiply the size of the fonts
+by 2 or 4, respectively.  The extra argument ``-nopopups'' will
+provide an alternative to popup prompts.
+
+Another way to use the java interface is to start \TPS as usual,
+then use the command \indexcommand{JAVAWIN}.  This requires the
+flag \indexflag{JAVA-COMM} to be set appropriately.
+
+When \TPS is started in -javaservice mode, it uses the rest of the
+command line arguments to start the Java interface and creates
+sockets connecting \TPS to the Java interface.  Two processes
+are spawned, one to receive input from the Java interface
+(either from a prompt or from a menu item selection), and
+another to actually run \TPS commands.
+
+The rest of the description does not particularly depend on
+the Java interface, so I will simply refer to ``the interface''
+and attempt to emphasize that such an interface could be
+implemented in a variety of ways.
+
+The code to receive input from the interface is written
+in \indexcommand{external-interface.lisp}.  It listens to the
+socket stream and collects characters into strings
+separated by null characters (ASCII 0).  
+There are a few possibilities.
+\begin{enumerate}
+\item If the string ''COMMAND'' is received,
+the next string is a command \TPS should run
+(or the response to a prompt if popups are disabled).
+All the input does with this command string is 
+attach it to the \indexother{COMMAND} symbol
+as the property \indexother{RESPONSE}.
+The main process will accept this string as input
+from linereadp since, when running through the interface,
+a function \indexfunction{read-line-sym} will wait
+for this \indexother{RESPONSE} property to be set.
+An exceptional case is when the string after
+``COMMAND'' is ``INTERRUPT''.  In this case,
+the main process is killed and a new process
+with a top level prompt is created.
+\item If the string ``RIGHTMARGIN'' is received,
+the next string received should be an integer giving
+the new value for the flag \indexflag{RIGHTMARGIN}.
+This allows the interface to change this flag
+without having to interrupt another command that
+may be running.
+\item When popups are enabled, some other string starting with ``PROMPT''
+is received.  In this case, the next string is
+put on the \indexother{RESPONSE} property
+of this ``PROMPT'' symbol.  This should be
+a response to a particular (popup) prompt.
+\end{enumerate}
+
+So, the code in \indexfile{external-interface.lisp} handles
+receiving input from the interface.  The other
+problem is that of sending output to the interface.
+This is handled by setting \indexother{*standard-output*}
+to the socket stream and changing the \indexflag{STYLE}
+to \indexother{ISTYLE} (``interface style'' defined in
+\indexfile{interface-style.lisp}).  This style
+is similar to the \indexother{XTERM} style, except with
+more control information.  Control information is sent
+by first sending a null character (ASCII 0) followed
+by a byte giving information.  The current possible byte
+values following a null character and their meanings
+are listed below.  There are lisp functions in
+\indexfile{interface-style.lisp} which send these bytes,
+but anyone coding a new interface will need to know these values. 
+\begin{enumerate}
+\item [0] Switch to normal font mode.  In normal font mode,
+  each character is communicated by a single byte.
+\item [1] Switch to symbol font mode.  In symbol font mode,
+  each symbol character is communicated by two bytes (allowing
+  for many more symbol characters than normal font characters).
+\item [2] Start a prompt message string.
+\item [3] Start a prompt name string.
+\item [4] Start a prompt argtyp string.  (This allows the interface to
+recognize some special finite argtyp's such as boolean.)
+\item [5] Start a list of prompt-options
+\item [6] Start a list giving the prompt's default value.
+\item [7] Start a prompt help string.
+\item [8] End a prompt.
+\item [9] A note that a command has finished executing.
+\item [10] Start and end a string specifying the current top level.
+\item [11] Open a window (eg, for proof windows or vpforms)
+and start sending a string giving the
+port value for a socket to connect to.
+\item [12] End a string giving a prompt for a window and start sending
+a string given a title for the window.
+\item [13] End the title of a window and start sending a string
+giving the width of the window.
+\item [14] End sending the width of the window and start sending
+the height of the window.
+\item [15] End sending window information for a window with small fonts.
+\item [16] End sending window information for a window with big fonts.
+\item [17] Clear the contents of a window.
+\item [18] Close a window.
+\item [19] Change the color.  This should be followed by another
+byte to indicate the color.  For now, this third byte can be
+0 (black), 1 (red), 2 (blue), or 3 (green).
+\end{enumerate}
+
+\section{Generating the Java Menus}
+
+There are two categories in the \TPS lisp code for menus:
+\indexother{menu} and \indexother{menuitem}.  Everytime
+a programmer adds a command (mexpr), flag, or top level
+command, a corresponding menuitem should be defined.
+This menuitem should have a parent menu to indicate where
+the item lives.
+
+The Java menu code is in the file \indexfile{TpsWin.java}
+between the comment lines:
+\begin{verbatim}
+    // Menu Code BEGIN
+\end{verbatim}
+and
+\begin{verbatim}
+    // Menu Code END
+\end{verbatim}
+When you have added or changed menus or menuitems in
+the lisp code and want the Java interface to reflect these
+changes, perform the following steps:
+\begin{enumerate}
+\item Within \TPS, call the command \indexcommand{generate-java-menus}.
+This will prompt for an output file, e.g., ``menus.java''.
+This command will create an output file with Java code which should
+be inserted into \indexfile{TpsWin.java}.
+\item Delete the code between
+\begin{verbatim}
+    // Menu Code BEGIN
+\end{verbatim}
+and
+\begin{verbatim}
+    // Menu Code END
+\end{verbatim}
+in \indexfile{TpsWin.java}.
+\item Insert the contents of the output file of \indexcommand{generate-java-menus}
+(e.g., ``menus.java'') into \indexfile{TpsWin.java} between the comment lines
+\begin{verbatim}
+    // Menu Code BEGIN
+\end{verbatim}
+and
+\begin{verbatim}
+    // Menu Code END
+\end{verbatim}
+and save \indexfile{TpsWin.java}.
+\item On each machine, find the Java directories which contains links
+to the main java files (e.g., /home/theorem/tps/java/ and /home/theorem/tps/java/tps/).
+cd to this
+directory and call ``javac TpsWin.java'' to compile the new version.
+\end{enumerate}
+
+\section{Adding a New Symbol}
+
+The Java information for the fonts is contained in the files \indexfile{TpsSmallFonts.java}
+and \indexfile{TpsBigFonts.java}.  The lisp information containing the ``code'' for
+the symbol is in \indexfile{interface-style.lisp}.
+To add a new symbol for the Java interface,
+one should add a new ``code'' for the symbol to the variable \indexother{istyle-characters}
+in \indexfile{interface-style.lisp}.
+For example, the epsilon character was added by including
+\begin{verbatim}
+    (epsilon 2 1)
+\end{verbatim}
+to \indexother{istyle-characters}.  This means that epsilon will be communicated
+to the interface by sending the bytes 2 and 1 in symbol font mode.
+
+Then one needs to add information about how to draw the new symbol to
+the variables \verb+blank+, \verb+xstartData+, \verb+ystartData+, \verb+widthData+, 
+and \verb+heightData+
+in \indexfile{TpsSmallFonts.java} and \indexfile{TpsBigFonts.java}.
+Each of these variables is set to a multi-dimensional array.
+The 0'th element of each array corresponds to the normal fonts.
+The rest are for symbol fonts.
+For example, the information for epsilon should be put 
+in the (2,1) position of each array.  This information (for epsilon
+in \indexfile{TpsSmallFonts.java})
+is as follows:
+\begin{description}
+  \item[blank] false (the epsilon character is not blank).
+  \item[xstartData] {3,2,1,1,1,2,3} (This character is drawn using 7 rectangles starting
+    from ``x'' coordinates 3, 2, 1, 1, 1, 2, 3, resp.)
+  \item[ystartData] {10,9,8,7,6,5,4} (These are the ``y'' coordinates of the 7 rectangles.)
+  \item[widthData] {4,1,1,4,1,1,4} (These are the widths of the 7 rectangles.)
+  \item[heightData] {1,1,1,1,1,1,1} (These are the heights of the 7 rectangles.
+    Since all heights are 1, the epsilon character is drawn by drawing 7 horizontal lines.)
+\end{description}
+
+
+
+
+
+

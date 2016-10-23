@@ -1,0 +1,288 @@
+;;; -*- Mode:LISP; Package:MAINT -*-
+;;; ******************************************************************* ;;;
+;;;         (c) Copyrighted 1988 by Carnegie Mellon University.         ;;;
+;;;                        All rights reserved.                         ;;;
+;;;         This code was written as part of the TPS project.           ;;;
+;;;   If you want to use this code or any part of TPS, please contact   ;;;
+;;;               Peter B. Andrews (Andrews@CS.CMU.EDU)                 ;;;
+;;; ******************************************************************* ;;;
+(in-package :maint)
+
+;;; Moved REPORT to TEACHER. cpk
+
+;;; package: (rules
+
+;;; file: (rule-build-tac
+;;; category: function
+(export '(build-rule-short build-rule-match1))
+;;; category: tps-file
+(export '(rule-build-tac))
+;;;) (end of file rule-build-tac)
+
+;;; file: (rule-build-match
+;;; category: function
+(export '(build-rule-match))
+;;; category: tps-file
+(export '(rule-build-match))
+;;;) (end of file rule-build-match)
+
+;;; file: (rule-cmds-3
+;;; category: function
+(export '(write-rule assemble-file))
+;;; category: mexpr
+(export '(write-rule assemble-file))
+;;;) (end of file rule-cmds-3)
+
+;;; file: (rule-cmds
+;;; category: macro
+(export '(write-rule-fn))
+;;; category: function
+(export
+ '(write-rule-fns write-rule-wffs write-rule-match write-rule-cmd write-rule-file
+  build 
+   ;; can remove following after packages replaced by modules
+   ;assemble-pack
+   assemble-mod
+))
+;;; category: mexpr
+(export '(build))
+;;; category: argtype
+(export '(rule))
+;;; category: context
+(export '(rule-run rules-object))
+;;; category: tps-file
+(export '(rule-cmds))
+;;;) (end of file rule-cmds)
+
+;;; file: (rule-build-check
+;;; category: function
+(export '(build-rule-wff-checks build-rule-hyp-checks build-rule-check))
+;;; category: tps-file
+(export '(rule-build-check))
+;;;) (end of file rule-build-check)
+
+;;; file: (rule-build-default
+;;; category: function
+(export '(build-rule-hyp-defaults build-rule-defaults))
+;;; category: tps-file
+(export '(rule-build-default))
+;;;) (end of file rule-build-default)
+
+;;; file: (rule-bb
+;;; category: function
+(export '(build-rule-enter build-rule-build))
+;;; category: tps-file
+(export '(rule-bb))
+;;;) (end of file rule-bb)
+
+;;; file: (rule-build-3
+;;; category: macro
+(export '(append-strings))
+;;;) (end of file rule-build-3)
+
+;;; file: (rule-build
+;;; category: function
+(export
+ '(nil-const find-hyphelps find-wff-helps find-line-helps generate-arg-name
+  meta-ize-just gen-hypargname meta-ize-justifications meta-ize build-arglist))
+;;; category: tps-file
+(export '(rule-build))
+;;;) (end of file rule-build)
+
+;;; file: (rule-idef
+;;; category: propname
+(export '(mhelp itemshelp support-transformation hyp-restrict priority restrictions lines))
+;;; category: variable
+(export '(global-irulelist h1-subset-h2))
+;;; category: macro
+(export '(defirule))
+;;; category: category
+(export '(iruledef))
+;;; category: tps-file
+(export '(rule-idef))
+;;;) (end of file rule-idef)
+
+;;; file: (rule-wffop
+;;; category: flag
+(export '(build-match))
+;;; category: review-subject
+(export '(rules-mod))
+;;; category: tps-file
+(export '(rule-wffop))
+;;;) (end of file rule-wffop)
+;;;) (end of package rules)
+
+;;; package: (auto-doc
+
+;;; file: (collect-help-3
+;;; category: function
+(export '(write-help-file read-help-from-file collect-help))
+;;; category: mexpr
+(export '(collect-help))
+;;; category: context
+(export '(coll-help))
+;;; category: tps-file
+(export '(collect-help-3))
+;;;) (end of file collect-help-3)
+
+;;; file: (plurals-3
+;;; category: function
+(export '(an-a vowel cat-plural))
+;;; category: tps-file
+(export '(plurals))
+;;;) (end of file plurals-3)
+
+;;; file: (scrdoc
+;;; category: function
+(export
+ '(chardoc-styles chardoc mhelp-list scribe-doc-theorem scribe-doc-rule
+  scribe-doc-other scribe-feat-list scribe-doc-feature scribe-doc-file
+  scribe-doc-char scribe-doc-log scribe-doc-mode scribe-doc-flag scribe-doc-edop
+  scribe-doc-wffop scribe-doc-command scribe-doc-toplevel scribe-doc-item
+  scribe-cat-long next-context scribe-cat-short scribe-context scribe-cat
+  scribe-cats))
+;;;category: style
+(export '(tex scribe))
+;;; category: macro
+(export '(msgi msgt))
+;;; category: mexpr
+(export '(chardoc help-list quick-ref scribe-doc))
+;;; category: tps-file
+(export '(scrdoc))
+(export '(texchar-doc))
+;;;) (end of file scrdoc)
+
+;;; file: (latexdoc
+;;; category: function
+(export
+ '(latex-cats-mexpr latex-quick-ref-mexpr latex-quick-ref latex-cats
+   latex-cat latex-context latex-cat-short latex-next-context latex-cat-long
+   latex-doc-item latex-doc-index latex-doc-mexpr latex-doc-tactic
+   latex-doc-subject latex-doc-toplevel latex-doc-command latex-doc-flag
+   latex-doc-mode latex-doc-log latex-doc-repsym latex-doc-char latex-doc-file
+   latex-doc-feature latex-feat-list latex-doc-other latex-doc-rule
+   latex-doc-theorem latex-replace-all latex-doc-sanitize-help princ-mhelp-latex))
+;;; category: macro
+(export '(latex-msgt latex-msgi))
+;;; category: mexpr
+(export '(latex-doc latex-quick-ref))
+;;; category: tps-file
+(export '(latexdoc))
+;;;) (end of file latexdoc)
+
+;;; file: (docdef
+;;; category: macro
+(export '(in-auto-doc-mode))
+;;; category: flag-mode
+(export '(scribe-doc-first-order scribe-doc))
+;;; category: argtype
+(export '(dev-stylelist contextlist context tpscatlist tpscat))
+;;; category: context
+(export '(doc))
+;;; category: tps-file
+(export '(docdef))
+;;;) (end of file docdef)
+;;;) (end of package auto-doc)
+
+
+;;; package: (maintain
+
+;;; file: (compl
+;;; category: function
+(export '(compl compile-list))
+;;; category: mexpr
+(export '(compl cload compile-list
+
+))
+
+;;; file: (maint-3
+;;; category: function
+(export '(load-slow tlist))
+;;; category: mexpr
+(export '(load-slow tps3-save))
+;;;) (end of file maint-3)
+
+;;; file: (maint
+;;; category: mexpr
+(export '(filetype ledit tlist organize qload tload sys-load))
+;;; category: function
+(export '(tps-filetype ledit inv-exp))
+;;; category: flag
+(export
+ '(expertflag init-dialogue-fn init-dialogue save-file source-path java-comm
+  source-extension compiled-extension news-dir load-warn-p read-lload-sources-p))
+;;; category: review-subject
+(export '(maintain))
+;;; category: context
+(export '(tps-maintenance))
+;;; category: tps-file
+(export '(maint))
+;;;) (end of file maint)
+;;;) (end of package maintain)
+
+
+
+;;; package: (file-ops
+
+;;; file: (filsys-3
+;;; category: function
+(export '(closerecord openrecord filetype-main))
+;;; category: mexpr
+(export '(closerecord openrecord filetype))
+;;; category: context
+(export '(file-operations))
+;;; category: tps-file
+(export '(filsys))
+;;;) (end of file filsys-3)
+;;;) (end of package file-ops)
+
+
+;;; package: (tps-packages
+
+;;; file: (pck-3
+;;; category: function
+;; remove following when packages completely removed in favor of modules 
+;;(export '(loaded-packages unloaded-packages))
+(export '(loaded-modules unloaded-modules))
+;;;) (end of file pck-3)
+
+;;; file: (pck
+;;; category: function
+(export '(clean-global-list))
+;;; category: mexpr
+;; remove following when packages completely removed in favor of modules
+;(export '(loaded-packs unloaded-packs packages))
+
+(export '(loaded-mods unloaded-mods modules))
+;;; category: argtype
+;;(export '(packagelist tps-package))
+
+(export '(modulelist tps-module))
+;;; category: context
+;; remove following when packages completely removed in favor of modules
+;;(export '(packages-in-tps))
+(export '(modules-in-tps))
+;;; category: tps-file
+(export '(pck))
+;;;) (end of file pck)
+;;;) (end of package tps-packages)
+
+;;; package: (bare
+
+;;; file:  (lsppck
+;;; category: mexpr
+(export '(use pack-stat))
+;;;) (end of file lsppck)
+;;;) (end of package bare)
+
+
+(export '(test-theorems tps-test tps-test2 symbolpair symbolpairlist quiet my-default-mode
+			test-init init-define-my-default-mode init-dialogue-default-fn))
+
+(export '(contexts-maint lsppck-maint test-modify html-doc print-html *dont-ask*))
+
+(export '(omdoc-assertion omdoc-proof omdoc-lib omdoc-libclass omdoc-class-scheme omdoc-rights omdoc-source
+			  omdoc-aut-creator omdoc-trc-creator omdoc-type omdoc-catalogue))
+(export '(test-goodmodes generate-java-menus setup-online-access extract-test-info))
+
+

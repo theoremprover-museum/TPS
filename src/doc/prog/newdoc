@@ -1,0 +1,157 @@
+		NEWDOC
+
+Documentation not quite ready to go into manuals
+goes into newdoc in the appropriate directory.
+If it's not quite clear which manual it goes into,
+or if it needs to be divided up, put it into
+/home/theorem/project/doc/user/newdoc on gtps.
+
+
+
+================================================================
+/home/theorem/project/doc/prog/newdoc
+
+                      HELP FOR TPS3 MAINTAINERS
+		Information not yet in TPS Programmer's Manual
+
+=====================================================================
+Messages from oldmail.hg which may or may not contain information
+which should  be added to the documentation
+
+  47?   2 Aug 93 HongWei_Xi@ATPS.T... introduce duplicate names for ... (1400)
+  51?  17 Aug 93 HongWei_Xi@CTPS.T... MST93-2 (777)
+  63?  28 Aug 93 Dan Nesmith <nesm... Re: make-higher-order-expansions (2926)
+
+---- Message 47 (1400 chars) is ----
+Return-Path: <HongWei_Xi@ATPS.TPS.CS.CMU.EDU>
+Received: from ATPS.TPS.CS.CMU.EDU by K.GP.CS.CMU.EDU id aa03994;
+          2 Aug 93 18:23:54 EDT
+Received: from ATPS.TPS.CS.CMU.EDU by ATPS.TPS.CS.CMU.EDU id aa03051;
+          2 Aug 93 18:23:39 EDT
+To: andrews@ATPS.TPS.CS.CMU.EDU
+cc: mbishop@ATPS.TPS.CS.CMU.EDU, hwxi@ATPS.TPS.CS.CMU.EDU
+Subject: introduce duplicate names for flags
+Date: Mon, 02 Aug 93 18:23:23 -0400
+Message-ID: <3049.744330203@ATPS.TPS.CS.CMU.EDU>
+From: HongWei_Xi@ATPS.TPS.CS.CMU.EDU
+
+Now I have built up a macro "defsynonym", which
+can be used to define synonyms for flags. 
+
+The following is the comment I put around my code
+.
+;;;defsynonym is used to define synonym name for a flag. The usage is
+;;;very simple. For example,
+;;;(defsynonym SUBNAME 
+;;;            (synonym TRUENAME)
+;;;            (replace-old T)
+;;;            (mhelp "SUBNAME is a synonym for the flag TRUENAME".))
+;;;defines SUBNAME as a synonym for the flag TRUENAME.Since replace-old
+;;;is true, SUBNAME will be recorded instead of TRUENAME; Otherwise, 
+;;;SUBNAME won't be recorded(in this case SUBNANE behaves almost like 
+;;;an alias.
+
+When you change the value of either SUBNAME or TRUENAME, the other
+will be changed to the same vaule. (the 'change' may be caused by using
+MODE command.) 
+
+I temprarily put my code in 
+/afs/cs/user/hwxi/hxlisp/flagnames/names.lisp 
+until the performance is over.
+
+
+
+
+
+---- Message 51 (777 chars) is ----
+Return-Path: <HongWei_Xi@CTPS.TPS.CS.CMU.EDU>
+Received: from CTPS.TPS.CS.CMU.EDU by K.GP.CS.CMU.EDU id aa29168;
+          17 Aug 93 19:19:08 EDT
+Received: from CTPS.TPS.CS.CMU.EDU by CTPS.TPS.CS.CMU.EDU id aa08965;
+          17 Aug 93 19:18:14 EDT
+To: andrews@CTPS.TPS.CS.CMU.EDU
+cc: mbishop@CTPS.TPS.CS.CMU.EDU, hwxi@K.GP.CS.CMU.EDU
+Subject: MST93-2
+Date: Tue, 17 Aug 93 19:18:05 -0400
+Message-ID: <8963.745629485@CTPS.TPS.CS.CMU.EDU>
+From: HongWei_Xi@CTPS.TPS.CS.CMU.EDU
+
+I changed the command MST93-2 so that it can be 
+used in the same way as MATE command. You don't
+need to call INIT when you enter MST93-2 toplevel;
+But you have to do it after using SUB command in
+MST93-2 toplevel. 
+
+In order to share more tps3 code, I modified 
+mating-tiop.lisp.
+
+
+
+
+  -- Hongwei --
+
+
+
+---- Message 63 (2926 chars) is ----
+Return-Path: <@CTPS.TPS.CS.CMU.EDU,@iraun1.ira.uka.de:nesmith@cs.uni-sb.de>
+Received: from CTPS.TPS.CS.CMU.EDU by K.GP.CS.CMU.EDU id aa01290;
+          29 Aug 93 8:56:51 EDT
+Received: from iraun1.ira.uka.de by CTPS.TPS.CS.CMU.EDU id aa03126;
+          29 Aug 93 7:59:46 EDT
+Received: from uni-sb.de by iraun1.ira.uka.de with SMTP (PP) 
+          id <09799-0@iraun1.ira.uka.de>; Sat, 28 Aug 1993 11:10:28 +0200
+Organization: Universitaet des Saarlandes D-66041 Saarbruecken, Germany
+Received: from cs.uni-sb.de with SMTP by uni-sb.de (5.65++/UniSB-2.2/930818) 
+          id AA19270; Sat, 28 Aug 93 11:10:53 +0200
+Received: from js-sfbgate.cs.uni-sb.de with SMTP 
+          by cs.uni-sb.de (5.64/UniSB-2.3/930811) id AA01621;
+          Sat, 28 Aug 93 11:10:51 +0200
+Received: from js-sfbslc10.cs.uni-sb.de with SMTP 
+          by js-sfbsun.cs.uni-sb.de (5.65b/UniSB-2.2/DFKI-1.0/061991) 
+          id AA21560; Sat, 28 Aug 93 11:10:48 +0200
+Received: from js-sfbslc10.cs.uni-sb.de with SMTP 
+          by js-sfbslc10.cs.uni-sb.de (5.65b/UniSB-1.0/DFKI-1.0/061991) 
+          id AA04439; Sat, 28 Aug 93 11:10:45 +0200
+To: HongWei_Xi@CTPS.TPS.CS.CMU.EDU
+Cc: andrews@CTPS.TPS.CS.CMU.EDU, mbishop@CTPS.TPS.CS.CMU.EDU
+Subject: Re: make-higher-order-expansions
+In-Reply-To: Your message of "Fri, 27 Aug 93 13:26:02 EDT." <1300.746472362@CTPS.TPS.CS.CMU.EDU>
+Date: Sat, 28 Aug 93 11:10:43 +0200
+Message-Id: <4437.746529043@js-sfbslc10.cs.uni-sb.de>
+From: Dan Nesmith <nesmith@cs.uni-sb.de>
+
+Your message dated: Fri, 27 Aug 93 13:26:02 EDT
+>After calling deepen-to-literals*, we know
+>the slot "SKOLEM-CONSTANTS" attached to 
+>CURRENT-EPROOF gets updated. So calling
+>make-higher-order-expansions will update
+>CURRENT-EPROOF. But when we call the function
+>add-ho-exps-to-option-tree, we don't update
+>the slot "SKOLEM-CONSTANTS" in the EPROOF
+>attached to a OPTION-TREE. This means, calling
+>SK-CONST-P may give you a false result while
+>ms90-9 (or ms89) mating search is used.
+>
+>This results in some trouble when I try to prove
+>x5310. My fix is to update the slot "SKOLEM-CONSTANTS"
+>of the EPROOF attached to a option-tree whenever the tree
+>is created (by using make-new-option-tree-node). 
+>
+>I haven't fully understood the code for option-trees, so
+>please tell me your opinion about the fix. Is it safe?
+>
+
+Yes, I think that would be correct.  I can't see why one wouldn't
+want to update the list.  I think this may be the result of a confusion
+between Sunil and me.  In the expansion tree, you can always tell
+that something is a skolem-constant, because it is skolem-p.  So in
+that sense the skolem-constants slot is not really necessary.
+
+But Sunil didn't want to extend to unification to handle skolem-constants
+directly, therefore requiring that they are stripped out into 
+normal-looking symbols.  That means that in unification, sk-const-p
+is necessary, and that depends on the skolem-constants slot of
+the eproof.
+
+Dan
+

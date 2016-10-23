@@ -1,0 +1,683 @@
+\section{The Rewriting Top Level} \label{RewritingTopLevel}
+
+In many branches of mathematics and computer science relational theories are an
+important matter of study. The formal proof technique which often appears most
+natural when dealing with equations or other transitive relations (e.g. order
+relations) is known as rewriting. As an example of a proof by rewriting,
+consider how one would typically prove the uniqueness of inverses in a group
+$\langle G,\cdot\rangle$:
+
+Let $a,a',a''\in G$, $a'$ and $a''$ both inverses of $a$. Then
+\[\begin{array}{rcl@{\qquad}r}
+a' & = & a'\cdot e & (e\textup{ identity of }\langle G,\cdot\rangle)\\
+   & = & a'\cdot(a\cdot a'') & (a''\textup{ inverse of }a)\\
+   & = & (a'\cdot a)\cdot a'' & (associative law)\\
+   & = & e\cdot a'' & (a'\textup{ inverse of }a)\\
+   & = & a'' & (e\textup{ identity of }\langle G,\cdot\rangle)
+\end{array}\]
+
+The rewriting top level can be used to create and manipulate
+complex rewriting derivations in a convenient way.
+
+\subsection{Interacting with the Main Top Level}
+
+There are two ways of entering the rewriting top level from the main
+top level. One is by calling \indexcommand{REWRITING}. In case you had been
+working on a rewrite derivation before you left the rewriting top level for
+the last time, it will return to this derivation. Otherwise no derivation
+will be active, so you may want to start a new one or to restore a saved one
+from a file. If you want to use the rewriting top level to justify a line
+of a natural deduction proof from a preceding line in a way similar to the
+application of \indexcommand{USE-RRULES}, you can enter the top level by
+calling \indexcommand{REWRITE} or \indexcommand{REWRITE-IN} (See example in
+Subsection \ref{RewritingTopLevelExample}). After you
+have found a justification, exit the rewriting top level using
+\indexcommand{OK} to modify the natural deduction proof accordingly.
+
+Relations derived in the rewriting top level may also be inserted as lemmas
+into the main top level using \indexcommand{ASSERT-TOP}.
+
+It is sometimes useful to be able to access lines of the current natural
+deduction proof from the rewriting top level and vice versa. This is possible
+by using the commands \indexcommand{TOP} and \indexcommand{REW}. Whenever a
+wff needs to be supplied to a command within the rewriting top level, you can
+type \texttt{(TOP \textit{linenum})} to access the line
+\texttt{\textit{linenum}} of the
+current natural deduction proof. In exactly the same way \indexcommand{REW}
+allows one to access lines of the current rewriting derivation from the main
+top level. Of course, both commands can be combined with \indexcommand{ED}.
+
+\subsection{Rewrite Rules, Theories and Derivations}
+
+For technical reasons, the left-hand side and the right-hand side of a rewrite
+rule are not allowed to be identical. Since all rewriting commands work modulo
+alphabetic change of bound variables, rules with alpha-equivalent sides are
+also prohibited. If you use any rules of the prohibited form, some commands
+will not work as expected. To assert reflexivity use the command
+\indexcommand{SAME} instead.
+
+Once a relation between two wffs has been established, it is possible to
+define a derived rewrite rule from the two wffs using the
+\indexcommand{DERIVE-RRULE} command. A rule can be derived in more than one
+theory at the same time. Unless one decides to change a theory to include the
+derived rule, the rule is not part of any theory in which it was derived.
+However, when a derived rule is loaded from the library, it is added to the
+run-time representation of those theories in memory in which it was derived.
+So, after a derived rule has been loaded, it can be used from any theory which
+has been loaded before the rule and in which it is derivable in the same way as
+if it was part of the core theory.
+
+Commands of the rewriting top level make certain assumptions about the
+structure of rewrite theories.
+\begin{enumerate}
+\item Rewrite theories describe transitive relations.
+\item All subtheories of a theory which share their relation sign with the main
+  theory are reflexive iff the main theory is reflexive.
+\item All subtheories of a theory are ``compatible'' with the main theory, in
+  the following sense: If $R$ is the relation described by the main theory
+  and $r$ the one described by a subtheory, then
+  \begin{enumerate}
+  \item $A~R~B$ and $B~r~C$ imply $A~R~C$,
+  \item $A~r~B$ and $B~R~C$ imply $A~R~C$.
+  \end{enumerate}
+\end{enumerate}
+
+The rewriting top level allows having multiple derivations in memory at the
+same time, some of which may use different rewrite theories. To avoid
+confusion, every rewrite derivation can be associated with a rewrite theory.
+The theory associated with the current rewrite derivation is called the
+``current theory''. This notion is to be distinguished from the ``active
+theory'', i.e. the theory to be associated with new derivations.
+
+At any point in time there may be at most one active theory. To display
+the currently active theory use \indexcommand{ACTIVE-THEORY}. The commands
+\indexcommand{USE-THEORY} and \indexcommand{DEACTIVATE-THEORY} can be used
+to change the active theory.
+When a derivation in the rewriting top level is started by calling
+\indexcommand{PROVE} or \indexcommand{DERIVE} from the rewriting top level, or
+using the \indexcommand{REWRITE} command from the main top level, and an
+active theory is defined, it
+becomes associated with the new derivation. Applying any rules which are
+not part of the current theory, i.e. the theory associated with the current
+derivation, will raise an error. On the other hand, it is possible to use
+\indexcommand{APP} and similar commands with rules not in the active theory as
+long as they are in the current theory.
+To display the current theory use \indexcommand{CURRENT-THEORY}.
+Changing the active theory, which can be done at any time both from the main
+top level and from the rewriting top level, %by calling
+%\indexcommand{USE-THEORY} or \indexcommand{DEACTIVATE-THEORY}
+%once a derivation is in progress
+will never affect the theory associated with an existing derivation.
+
+If one wants to start a derivation in a theory different from the currently
+active theory, one can use \indexcommand{PROVE-IN} or \indexcommand{DERIVE-IN}
+from the rewriting top level or \indexcommand{REWRITE-IN} from the main top
+level. These commands expect the theory to associate with the newly created
+derivation as an additional parameter. If there is a currently active theory,
+i.e. if \indexcommand{ACTIVE-THEORY} does not return NIL, it will not be
+affected by these commands. If there is no currently active theory, the theory
+passed to \indexcommand{PROVE-IN} or \indexcommand{REWRITE-IN} will become
+active.
+
+%If a theory makes use of library constants, abbreviations or other objects
+%which are not loaded by default when \TPS starts up, \indexcommand{PROVE-IN}
+%and \indexcommand{DERIVE-IN} may not work as expected.
+
+\subsection{Automatic Search} \label{RewritingTopLevelAuto}
+The command \indexcommand{AUTO} can be used to search for a rewrite sequence
+between two specified lines automatically. Dependent on the setting of the
+flag \indexflag{REWRITING-AUTO-SEARCH-TYPE}, one of the following search
+algorithms is used:
+\begin{description}
+\item [\texttt{SIMPLE}:] Iterative deepening starting from the source wff (i.e.
+  the wff in the lower-numbered line). The procedure uses a hash table, called
+  `search table', for cycle and dead-end detection.
+\item [\texttt{BIDIR}:] Bidirectional search using iterative deepening,
+  starting from the source and the target wff. Two search tables of equal
+  maximum size are used.
+\item [\texttt{BIDIR-SORTED}:] As \texttt{BIDIR}, but rewriting shorter wffs
+  first. This procedure is used by default because it is most likely to find a
+  result within reasonable time.
+\end{description}
+Automatic search uses active rewrite rules from the current theory, or all
+active rewrite rules if the current derivation is not associated with any
+theory.
+
+See the description of flags starting with \texttt{REWRITING-AUTO} in
+Subsection \ref{RewritingTopLevelFlags} to learn how to tune different
+parameters of the search.
+
+%\subsection{Rewriting Top Level Commands and Flags}
+
+%The rewriting top level commands are as follows:
+%\begin{description}
+%\item[]
+\subsection{Commands for Entering and Leaving the Rewriting Top Level}
+  \begin{description}
+  \item[] \indexcommand{REWRITING} Enter the rewriting top level without
+    starting a new rewriting derivation.
+  \item[] \indexcommand{REWRITE} Enter the rewriting top level to search for a
+    rewrite sequence justifying a step in the current natural deduction proof.
+    The new derivation will use the currently active theory.
+  \item[] \indexcommand{REWRITE-IN} Same as \indexcommand{REWRITE}, but
+    prompting for the rewrite theory to use with the new derivation.
+  \item[] \indexcommand{ASSERT-TOP} Leave the rewriting top level, inserting
+    the derived relation as a lemma into the current natural deduction proof.
+    See also \indexcommand{ASSERT} and \indexcommand{ASSERT2}.
+  \item[] \indexcommand{BEGIN-PRFW} Enter the \texttt{REW-PRFW} top level to
+    open proofwindows.
+    Alternatively, one can enter the \texttt{PRFW} top level from the main
+    top-level and switch to the rewriting top level afterwards.
+  \item[] \indexcommand{END-PRFW} Leave the \texttt{REW-PRFW} top level.
+  \item[] \indexcommand{LEAVE} Leave the rewriting top level.
+  \item[] \indexcommand{OK} Leave the rewriting top level, passing the proven
+    relation as a justification of a rewrite step in the current natural
+    deduction proof. This command is only applicable if the current derivation
+    was started from the main top level using \indexcommand{REWRITE} or
+    \indexcommand{REWRITE-IN}.
+  \end{description}
+
+%\item[]
+\subsection{Commands for Starting, Finishing and Printing Rewrite Derivations}
+  \begin{description}
+  \item[] \indexcommand{DERIVE} Begin a new rewrite derivation without a fixed
+    target wff, associating with it the currently active theory.
+  \item[] \indexcommand{DERIVE-IN} Same as \indexcommand{DERIVE}, but prompting
+    for the rewrite theory to use with the new derivation.
+  \item[] \indexcommand{DONE} Check whether the current derivation is complete.
+  \item[] \indexcommand{PALL} Works the same as in the main top level.
+  \item[] \indexcommand{PROOFLIST} Print a list of all rewrite derivations
+    currently in memory. For proofs, the corresponding proof assertions are
+    printed. For general derivations, the corresponding initial lines are
+    printed.
+  \item[] \indexcommand{PROVE} Start a new rewriting proof of a given
+    relational assertion, using the currently active rewrite theory.
+  \item[] \indexcommand{PROVE-IN} Same as \indexcommand{PROVE}, but prompting
+    for the rewrite theory to use.
+  \item[] \indexcommand{RECONSIDER} Switch the current rewrite derivation.
+    Works the same as in the main top level.
+  \item[] \indexcommand{RESTOREPROOF} Load a rewriting derivation from a file
+    and make it the current derivation. If the derivation was obtained in a
+    theory which is not yet in the memory, the command will offer to load the
+    theory from the library.
+  \item[] \indexcommand{SAVEPROOF} Save the current derivation to a file.
+    Works the same as in the main top level.
+  \item[] \indexcommand{TEXPROOF} Works the same as in the main top level.
+  \end{description}
+%\item[] Printing commands:
+%\indexcommand{PALL}, \indexcommand{TEXPROOF}. Work
+%  the same as in the main top level.
+
+%\item[]
+\subsection{Commands for Applying Rewrite Rules}
+  \begin{description}
+  \item[] \indexcommand{ANY} Try to apply any active rewrite rule from the
+    current theory and all its subtheories. If there is no current theory, all
+    active rules will be tried.
+  \item[] \indexcommand{ANY*}/\indexcommand{UNANY*} Justify a line by a
+    sequence of applications of any active rewrite rules from the current
+    theory in the forward/backward direction, starting from a preceding line.
+    In most cases, this command will apply rewrite rules in the corresponding
+    direction as often as possible or until a specified target wff is obtained.
+    If the wff after rewriting is specified but the one before rewriting is set
+    to NIL, rewrite rules will be applied in the corresponding reverse
+    direction, starting from the target formula. The command will add no
+    intermediate lines to the derivation outline.\\
+    The commands may not terminate if \indexflag{APP*-REWRITE-DEPTH} is set to
+    NIL.
+  \item[] \indexcommand{ANY*-IN}/\indexcommand{UNANY*-IN} Same as
+    \indexcommand{ANY*}/\indexcommand{UNANY*}, but will only try rules from
+    the specified subtheory of the current theory.
+  \item[] \indexcommand{APP} Apply the specified rewrite rule from the current
+    theory or any of its subtheories. The rule need not be active.\\
+    Note: Entering the name of a rewrite rule \texttt{\textit{rrule}} at the
+    top-level command prompt is considered to be an abbreviation for
+    \texttt{APP \textit{rrule}}.
+  \item[] \indexcommand{APP*}/\indexcommand{UNAPP*} Same as
+    \indexcommand{ANY*}/\indexcommand{UNANY*}, but using the specified single
+    rule, which need not be active.
+  \item[] \indexcommand{AUTO} Search for a rewrite sequence between two lines
+    using any active rewrite rules from the current theory. The exact behaviour
+    is affected by following flags: \indexflag{REWRITING-AUTO-DEPTH},
+    \indexflag{REWRITING-AUTO-MIN-DEPTH},
+    \indexflag{REWRITING-AUTO-TABLE-SIZE},
+    \indexflag{REWRITING-AUTO-MAX-WFF-SIZE}, \indexflag{REWRITING-AUTO-SUBSTS}.
+    See Subsection \ref{RewritingTopLevelAuto}.
+  \item[] \indexcommand{SAME} Use reflexivity of equality. Works almost the
+    same as in the main top level, but allows alphabetic change of bound
+    variables.
+  \end{description}
+
+%\item[]
+\subsection{Commands for Rearranging the Derivation}
+  \begin{description}
+  \item[] \indexcommand{CLEANUP}, \indexcommand{DELETE},
+    \indexcommand{INTRODUCE-GAP}, \indexcommand{MOVE}, \indexcommand{SQUEEZE}.
+    Work almost the same as in the main top level. \indexcommand{DELETE}
+    cannot be used to delete the initial or the target line of a derivation.
+    Neither \indexcommand{INTRODUCE-GAP} nor \indexcommand{MOVE} will move the
+    initial line of a derivation.
+  \item[] \indexcommand{CONNECT} Given two identical lines, delete the lower
+    one, rearranging the derivation appropriately. With symmetric relations,
+    the command will also rearrange the lines from which the higher-numbered
+    line was obtained to follow from the lower-numbered line.
+
+    The main motivation behind \indexcommand{CONNECT} is a situation which is
+    quite common when doing equational reasoning. Starting from the source and
+    from the target wff, you obtain two derivations which have a line in
+    common. By symmetry and transitivity of equality, you can combine the
+    two subderivations into a single formal proof. \indexcommand{CONNECT}
+    provides an efficient way of doing this transformation.
+
+    More precisely, the behaviour of \indexcommand{CONNECT} can be described
+    as follows:\\
+    Assume \indexcommand{CONNECT} is applied to the lower-numbered line $p_1$
+    and the higher-numbered $p_2$.
+    \begin{itemize}
+    \item If $p_2$ is the fixed target line of a derivation, or if the first
+      line of the rewrite sequence justifying $p_2$ occurs before $p_1$,
+      nothing will be done.
+    \item If $p_2$ is justified by a rewrite sequence involving $p_1$, or if
+      the derivation of $p_2$ involves directed rewrite rules, $p_2$ will be
+      deleted. Lines which are justified by $p_2$ will be changed to refer to
+      $p_1$ instead.
+    \item If $p_1$ is not part of the derivation of $p_2$ and the derivation of
+      $p_2$ was obtained using bidirectional rules only, the same as in the
+      previous case will happen, but additionally the derivation of $p_2$ will
+      be reversed, i.e. the sequence of lines $p_1\ldots d_1\ldots d_n\ldots
+      p_2$ will be changed to $p_1\ldots d_n\ldots d_1$. Since in the former
+      sequence $d_1$ has to be a planned line, this transformation will result
+      in a derivation outline which has one planned line less than the initial
+      outline.
+    \end{itemize}
+  \end{description}
+
+%\item[]
+\subsection{Lambda Conversion Commands}
+  \begin{description}
+  \item[] \indexcommand{BETA-EQ}, \indexcommand{ETA-EQ},
+    \indexcommand{LAMBDA-EQ}. Assert the corresponding equivalence between two
+    lines.
+  \item[] \indexcommand{BETA-NF}, \indexcommand{ETA-NF},
+    \indexcommand{LAMBDA-NF}, \indexcommand{LONG-ETA-NF}. Compute the
+    corresponding normal form of a line.
+  \end{description}
+
+%\item[]
+\subsection{Commands Concerned with Rewrite Rules and Theories}
+  \begin{description}
+  \item[] \indexcommand{CURRENT-THEORY} Show the theory associated with current
+    rewrite derivation.
+  \item[] \indexcommand{DERIVE-RRULE} Create a derived rewrite rule from two
+    provably related lines. If the relation was proven using bidirectional
+    rules only, the derived rule may be made bidirectional.
+  \item[] \indexcommand{MAKE-RRULE} Create a new rewrite rule in memory.
+  \item[] \indexcommand{SAVE-RRULE} Save an existing rewrite rule into the
+    library. This is the only way of saving a derived rule such that the rule
+    preserves its derived status in the library.
+  \end{description}
+%\end{description}
+
+\subsection{Applicable Commands from the Main Top Level}
+%In addition to the above commands, the following commands from the main
+%top level are available:\\
+\indexcommand{ACTIVATE-RULES}, \indexcommand{ACTIVE-THEORY},
+\indexcommand{DEACTIVATE-RULES}, \indexcommand{DEACTIVATE-THEORY},\\
+\indexcommand{DELETE-RRULE}, \indexcommand{LIST-RRULES},
+\indexcommand{MAKE-ABBREV-RRULE}, \indexcommand{MAKE-INVERSE-RRULE},
+\indexcommand{MAKE-THEORY}, \indexcommand{PERMUTE-RRULES},
+\indexcommand{USE-THEORY}, \indexcommand{REVIEW}, \indexcommand{LIB},
+\indexcommand{EXIT}.\smallskip
+
+\subsection{Flags} \label{RewritingTopLevelFlags}
+%The following flags affect the behaviour of rewriting top level commands:
+\begin{description}
+\item[] \indexflag{APP*-REWRITE-DEPTH} Determines the maximal rewrite depth of
+  an \indexcommand{APP*} application. Used in the same way by
+  \indexcommand{UNAPP*}, \indexcommand{ANY*}, \indexcommand{UNANY*},
+  \indexcommand{ANY*-IN} and \indexcommand{UNANY*-IN}.
+\item[] \indexflag{REWRITING-AUTO-DEPTH} The maximal depth of a search tree
+  when applying \indexcommand{AUTO}. For the \texttt{SIMPLE} search procedure,
+  the number corresponds to the maximal rewrite depth, whereas for
+  \texttt{BIDIR} and \linebreak \texttt{BIDIR-SORTED} the maximal search depth is
+  twice the specified number.
+\item[] \indexflag{REWRITING-AUTO-GLOBAL-SORT} When NIL, \texttt{BIDIR-SORTED}
+  will choose the next wff to be rewritten from the successors of the current
+  wff. When T, it will choose the next wff from all unexplored wffs obtained
+  so far from the initial or the target wff, respectively. See the flag
+  \indexflag{REWRITING-AUTO-SEARCH-TYPE}.
+\item[] \indexflag{REWRITING-AUTO-MAX-WFF-SIZE} The maximal size of a wff to be
+  rewritten when applying \indexcommand{AUTO}.
+\item[] \indexflag{REWRITING-AUTO-MIN-DEPTH} The minimal depth of a search tree
+  to be used by AUTO to find a derivation. The value should be less or equal to
+  that of REWRITING-AUTO-DEPTH, otherwise no search will be performed.
+\item[] \indexflag{REWRITING-AUTO-SEARCH-TYPE} Determines the search algorithm
+  used by \indexflag{AUTO}. Currently defined are \texttt{SIMPLE},
+  \texttt{BIDIR} and \texttt{BIDIR-SORTED}. \texttt{BIDIR-SORTED} will try to
+  rewrite shorter wffs first. When this is not needed, use \texttt{BIDIR}. The
+  precise behaviour of \texttt{BIDIR-SORTED} depends on the flag
+  \indexflag{REWRITING-AUTO-GLOBAL-SORT}.
+\item[] \indexflag{REWRITING-AUTO-SUBSTS} The list of terms to substitute for
+  any free variables which may be introduced during rewriting by
+  \indexcommand{AUTO}. If NIL, the list will be generated automatically from
+  atomic subwffs of the source and the target wff.
+\item[] \indexflag{REWRITING-AUTO-TABLE-SIZE} Specifies the maximal size of a
+  search table used by \indexcommand{AUTO}. Note that while the \texttt{SIMPLE}
+  search procedure uses only one table of the specified size, \texttt{BIDIR}
+  and \texttt{BIDIR-SORTED} use two.
+\item[] \indexflag{REWRITING-RELATION-SYMBOL} Contains the symbol that is
+  printed between lines obtained by rewriting from immediately preceding lines.
+  Normally this symbol is the relation sign of the current theory.
+  If set explicitly, the symbol will only be used if there is no current
+  theory or if the theory has no relation sign associated with it. Also, when
+  switching between different rewrite derivations, the value of this flag will
+  be changed. The value of the flag is also used by \indexcommand{PROVE} to
+  determine the left and the right part of a relational assertion.
+\item[] \indexflag{VERBOSE-REWRITE-JUSTIFICATION} When set to T, justification
+  of ND proof lines by rewriting in the rewriting top level will indicate the
+  rewrite theory used to obtain the justification.
+\end{description}
+
+%The rules \indexcommand{USE-THEORY}, \indexcommand{ACTIVE-THEORY} and
+%\indexcommand{DEACTIVATE-THEORY} have special
+
+\subsection{Example} \label{RewritingTopLevelExample}
+
+%"FA [LAMBDA x(O).x] = FALSEHOOD"
+\begin{tpsexample}
+<0>prove "f FALSEHOOD AND f TRUTH IMPLIES f FALSEHOOD AND f TRUTH AND f x"
+PREFIX (SYMBOL): Name of the Proof [No Default]>example
+NUM (LINE): Line Number for Theorem [100]>
+(100) \(\assert\)  f\(\sb{\greeko\greeko}\) \(\bot\) \(\land\) f \(\top\) \(\implies\) f \(\bot\) \(\land\) f \(\top\) \(\land\) f x\(\sb{\greeko}\)                                   PLAN1
+
+<1>deduct !
+(1)   1 \(\assert\)  f\(\sb{\greeko\greeko}\) \(\bot\) \(\land\) f \(\top\)                                                      Hyp
+(99)  1 \(\assert\)  f\(\sb{\greeko\greeko}\) \(\bot\) \(\land\) f \(\top\) \(\land\) f x\(\sb{\greeko}\)                                             PLAN2
+
+{\it Lines 1 and 99 can be proven equal in the rewrite theory HOL.}
+
+<2>rewrite-in hol
+P2 (LINE): Line after rewriting (higher-numbered) [99]>
+P1 (LINE): Line before rewriting (lower-numbered) [98]>1
+<REWRITING3>pall
+
+(1)      f\(\sb{\greeko\greeko}\) \(\bot\) \(\land\) f \(\top\)
+               ...
+(100)    f\(\sb{\greeko\greeko}\) \(\bot\) \(\land\) f \(\top\) \(\land\) f x\(\sb{\greeko}\)                                               PLAN1
+
+{\it Let us apply the rule Bin from HOL. It is sufficient to type in the name of the rule.}
+
+<REWRITING4>bin
+P1 (LINE): Line before rewriting  (lower-numbered) [1]>
+P2 (LINE): Line after rewriting  (higher-numbered) [2]>
+B (GWFF-OR-SELECTION): Wff after rewriting
+ 1)  \(\forall\) f\(\sb{\greeko\greeko}\)
+
+ [1]>
+(2)   =  \(\forall\) f\(\sb{\greeko\greeko}\)                                                           Bin: 1
+
+{\it What to do next? We can use ANY to look at some alternatives.}
+
+<REWRITING5>any
+P1 (LINE): Line before rewriting  (lower-numbered) [2]>
+P2 (LINE): Line after rewriting  (higher-numbered) [3]>
+B (GWFF-OR-SELECTION): Wff after rewriting
+ 1)  [\(\lambda\)\(\sb{\greeko\greeko}\) \(\forall\) u] f\(\sb{\greeko\greeko}\)  (ETA)
+ 2)  \(\forall\).\(\lambda\)u\(\sb{\greeko}\) f\(\sb{\greeko\greeko}\) u  (ETA)
+ 3)  \(\forall\) f\(\sb{\greeko\greeko}\) \(\land\) \(\top\)  (AND-ID)
+ 4)  \(\forall\) f\(\sb{\greeko\greeko}\) \(\lor\) \(\bot\)  (OR-ID)
+ 5)  f\(\sb{\greeko\greeko}\) = \(\lambda\)u\(\sb{\greeko}\) \(\top\)  (FA-D)
+ 6)  f\(\sb{\greeko\greeko}\) \(\bot\) \(\land\) f \(\top\)  (BIN)
+
+ [1]>5
+(3)   =  f\(\sb{\greeko\greeko}\) = \(\lambda\)u\(\sb{\greeko}\) \(\top\)                                                    Fa-D: 2
+
+<REWRITING6>pall
+
+(1)      f\(\sb{\greeko\greeko}\) \(\bot\) \(\land\) f \(\top\)
+(2)   =  \(\forall\) f\(\sb{\greeko\greeko}\)                                                           Bin: 1
+(3)   =  f\(\sb{\greeko\greeko}\) = \(\lambda\)u\(\sb{\greeko}\) \(\top\)                                                    Fa-D: 2
+               ...
+(100)    f\(\sb{\greeko\greeko}\) \(\bot\) \(\land\) f \(\top\) \(\land\) f x\(\sb{\greeko}\)                                               PLAN1
+
+<REWRITING7>and-id
+P1 (LINE): Line before rewriting  (lower-numbered) [3]>
+P2 (LINE): Line after rewriting  (higher-numbered) [4]>
+B (GWFF-OR-SELECTION): Wff after rewriting
+ 1)  f\(\sb{\greeko\greeko}\) = \(\lambda\)u\(\sb{\greeko}\) \(\top\) \(\land\) \(\top\)
+ 2)  f\(\sb{\greeko\greeko}\) = \(\lambda\)u\(\sb{\greeko}\).\(\top\) \(\land\) \(\top\)
+
+ [1]>
+(4)   =  f\(\sb{\greeko\greeko}\) = \(\lambda\)u\(\sb{\greeko}\) \(\top\) \(\land\) \(\top\)                                              And-Id: 3
+
+{\it Now we want to \(\beta\)-expand the last occurence of \(\top\) into \([\lambda f\sb{\greeko\greeko}.f x].\lambda x\sb{\greeko}.\top\). To save some time, we just specify the desired wff, using AUTO to fill in the gap in the two-step expansion.}
+
+<REWRITING8>auto
+P1 (LINE): Line before rewriting  (lower-numbered) [4]>
+P2 (LINE): Line after rewriting  (higher-numbered) [100]>6
+B (GWFF): Wff after rewriting [No Default]>ed 4
+<Ed9>d
+
+\(\top\)
+<Ed10>sub "[LAMBDA f.f x]. LAMBDA x(O).TRUTH"
+
+[\(\lambda\)f\(\sb{\greeko\greeko}\) f x\(\sb{\greeko}\)] .\(\lambda\)x \(\top\)
+<Ed11>^
+
+f\(\sb{\greeko\greeko}\) = \(\lambda\)u\(\sb{\greeko}\) \(\top\) \(\land\) [\(\lambda\)f f x\(\sb{\greeko}\)] .\(\lambda\)x \(\top\)
+<Ed12>ok
+Search in progress. Please wait...
+Success.
+Real time: 0.864435 sec.
+Run time: 0.818894 sec.
+Space: 6488652 Bytes
+GC: 3, GC time: 0.200997 sec.
+
+<REWRITING13>pall
+
+(1)      f\(\sb{\greeko\greeko}\) \(\bot\) \(\land\) f \(\top\)
+(2)   =  \(\forall\) f\(\sb{\greeko\greeko}\)                                                           Bin: 1
+(3)   =  f\(\sb{\greeko\greeko}\) = \(\lambda\)u\(\sb{\greeko}\) \(\top\)                                                    Fa-D: 2
+(4)   =  f\(\sb{\greeko\greeko}\) = \(\lambda\)u\(\sb{\greeko}\) \(\top\) \(\land\) \(\top\)                                              And-Id: 3
+(5)   =  f\(\sb{\greeko\greeko}\) = \(\lambda\)u\(\sb{\greeko}\) \(\top\) \(\land\) [\(\lambda\)x\(\sb{\greeko}\) \(\top\)] x                                        Beta: 4
+(6)   =  f\(\sb{\greeko\greeko}\) = \(\lambda\)u\(\sb{\greeko}\) \(\top\) \(\land\) [\(\lambda\)f f x\(\sb{\greeko}\)].\(\lambda\)x \(\top\)                                   Beta: 5
+               ...
+(100)    f\(\sb{\greeko\greeko}\) \(\bot\) \(\land\) f \(\top\) \(\land\) f x\(\sb{\greeko}\)                                               PLAN1
+
+{\it Specifying an appropriate \(\beta\)-expansion was the trickiest part of the derivation. The rest can be done automatically.}
+
+<REWRITING14>auto
+P1 (LINE): Line before rewriting  (lower-numbered) [6]>
+P2 (LINE): Line after rewriting  (higher-numbered) [100]>
+Search in progress. Please wait...
+Success.
+Real time: 1.682173 sec.
+Run time: 1.606185 sec.
+Space: 12504376 Bytes
+GC: 6, GC time: 0.377588 sec.
+
+<REWRITING15>pall
+
+(1)      f\(\sb{\greeko\greeko}\) \(\bot\) \(\land\) f \(\top\)
+(2)   =  \(\forall\) f\(\sb{\greeko\greeko}\)                                                           Bin: 1
+(3)   =  f\(\sb{\greeko\greeko}\) = \(\lambda\)u\(\sb{\greeko}\) \(\top\)                                                    Fa-D: 2
+(4)   =  f\(\sb{\greeko\greeko}\) = \(\lambda\)u\(\sb{\greeko}\) \(\top\) \(\land\) \(\top\)                                              And-Id: 3
+(5)   =  f\(\sb{\greeko\greeko}\) = \(\lambda\)u\(\sb{\greeko}\) \(\top\) \(\land\) [\(\lambda\)x\(\sb{\greeko}\) \(\top\)] x                                        Beta: 4
+(6)   =  f\(\sb{\greeko\greeko}\) = \(\lambda\)u\(\sb{\greeko}\) \(\top\) \(\land\) [\(\lambda\)f f x\(\sb{\greeko}\)].\(\lambda\)x \(\top\)                                   Beta: 5
+(7)   =  f\(\sb{\greeko\greeko}\) = \(\lambda\)u\(\sb{\greeko}\) \(\top\) \(\land\) [\(\lambda\)f f x\(\sb{\greeko}\)] f                                       Rep: 6
+(8)   =  f\(\sb{\greeko\greeko}\) = \(\lambda\)u\(\sb{\greeko}\) \(\top\) \(\land\) f x\(\sb{\greeko}\)                                             Beta: 7
+(9)   =  \(\forall\) f\(\sb{\greeko\greeko}\) \(\land\) f x\(\sb{\greeko}\)                                                   Fa-D: 8
+(100) =  f\(\sb{\greeko\greeko}\) \(\bot\) \(\land\) f \(\top\) \(\land\) f x\(\sb{\greeko}\)                                              Bin: 9
+
+{\it DONE can be used to check whether a derivation is complete, or to display the reason why the assertion in question has not yet been proved.}
+
+<REWRITING16>done
+Derivation complete.
+
+{\it We are done. To exit the rewriting top level, updating the main proof, we use OK.}
+
+<REWRITING17>ok
+
+
+<18>pall
+
+(1)   1 \(\assert\)  f\(\sb{\greeko\greeko}\) \(\bot\) \(\land\) f \(\top\)                                                      Hyp
+(99)  1 \(\assert\)  f\(\sb{\greeko\greeko}\) \(\bot\) \(\land\) f \(\top\) \(\land\) f x\(\sb{\greeko}\)                                   Rewrite(HOL): 1
+(100) \(\assert\)  f\(\sb{\greeko\greeko}\) \(\bot\) \(\land\) f \(\top\) \(\implies\) f \(\bot\) \(\land\) f \(\top\) \(\land\) f x\(\sb{\greeko}\)                              Deduct: 99
+\end{tpsexample}
+
+\subsection{Semantics of Rewrite Rules}
+
+In order to create own rewrite rules, and to use existing ones efficiently, it
+is useful to know how rewrite rules are interpreted by top-level procedures.
+Therefore, let us give a short formal account of what it means for a pair of
+wffs to be an instance of a rewrite rule.
+
+For the simplicity of presentation, in the following we
+consider monomorphic rewrite rules only. Rewrite rules with polymorphic types
+can be thought of as being appropriately instantiated before the matching takes
+place.
+
+Let the structure of wffs and wff schemata be defined by the following grammar:
+
+\[\begin{array}{rcl}
+c & ::= & \top\ |\ \bot\ |\ \land\ |\ \lor\ |\ \ldots\\
+Q & ::= & \lambda\ |\ \forall\ |\ \exists \\
+A,B,C,D & ::= & x,y\ |\ c\ |\ A\,B\ |\ Qx.A
+\end{array}\]
+
+We define the notion of a context to stand for a partial function. The notation
+$\Gamma,a{:=}b$ stands for the function
+$\lambda x.\textup{if }x=a\textup{ then }b\textup{ else }\Gamma\,x$.
+
+We define the matching relation $\Sigma;\Gamma\vdash B\rhd A;\Sigma'$ between
+the initial global context $\Sigma$, the lexical context $\Gamma$, the wff $B$,
+the wff schema $A$ and the final global context $\Sigma'$ by induction on the
+structure of $A$:
+\[
+\frac{\Gamma\,x_{\greeka}=y_{\greeka}}
+     {\Sigma;\Gamma\vdash y_{\greeka}\rhd x_{\greeka};\Sigma}
+\qquad
+\frac{x_{\greeka}\notin\textup{dom}\,\Gamma\qquad\Sigma\,x_{\greeka}=A_{\greeka}}
+     {\Sigma;\Gamma\vdash A_{\greeka}\rhd x_{\greeka};\Sigma}
+\qquad
+\frac{x_{\greeka}\notin\textup{dom}\,\Gamma\qquad x_{\greeka}\notin\textup{dom}\,\Sigma}
+     {\Sigma;\Gamma\vdash A_{\greeka}\rhd x_{\greeka};\Sigma,x_{\greeka}{:=}A_{\greeka}}
+\qquad
+\frac{~}{\Sigma;\Gamma\vdash c_{\greeka}\rhd c_{\greeka};\Sigma}
+\]\[
+\frac{\Sigma;\Gamma\vdash C\rhd A;\Sigma''\qquad
+      \Sigma'';\Gamma\vdash D\rhd B;\Sigma'}
+     {\Sigma;\Gamma\vdash C\,D\rhd A\,B;\Sigma'}
+\qquad
+\frac{\Sigma;\Gamma,x_{\greeka}{:=}y_{\greeka}\vdash B\rhd A;\Sigma'}
+     {\Sigma;\Gamma\vdash Qy_{\greeka}.B\rhd Qx_{\greeka}.A;\Sigma'}
+\]
+
+Two wffs $C,D$ form an instance of a rewrite rule $A\longrightarrow B$
+iff there exist global contexts $\Sigma,\Sigma'$ such that
+$\varnothing;\varnothing\vdash C\rhd A;\Sigma'$ and
+$\Sigma';\varnothing\vdash D\rhd B;\Sigma$.
+
+The applicability test procedure \texttt{S-EQN-AXIOM-APPFN}, always to be used
+with the rewriting procedure \texttt{S-EQN-AXIOM-REWFN}, enforces that both
+sides of a rewrite rule are interpreted as wffs, not as wff schemata. So,
+the only instances accepted by a rewrite rule using
+\texttt{S-EQN-AXIOM-APPFN}/\texttt{S-EQN-AXIOM-REWFN} are, modulo alphabetic
+change of bound variables, substitution instances of the two wffs forming the
+rule. Formally this can be reflected by modifying the second and the third
+matching rule as follows:
+\[
+\frac{x_{\greeka}\notin\textup{dom}\,\Gamma\qquad\Sigma\,x_{\greeka}=A_{\greeka}\qquad
+      \textup{FV}\,A_{\greeka}\cup\textup{ran}\,\Gamma=\varnothing}
+     {\Sigma;\Gamma\vdash A_{\greeka}\rhd x_{\greeka};\Sigma}
+\qquad
+\frac{x_{\greeka}\notin\textup{dom}\,\Gamma\qquad x_{\greeka}\notin\textup{dom}\,\Sigma\qquad
+      \textup{FV}\,A_{\greeka}\cup\textup{ran}\,\Gamma=\varnothing}
+     {\Sigma;\Gamma\vdash A_{\greeka}\rhd x_{\greeka};\Sigma,x_{\greeka}{:=}A_{\greeka}}
+\]
+$\textup{FV}\,A$ denotes the set of variables which occur free in $A$.
+
+The applicability test \texttt{INFERENCE-SCHEME-APPFN}, to be used with
+\texttt{INFERENCE-MATCH-BINDERS-REWFN}, enforces that whenever two binders in
+the definition of a rewrite rule bind the same variable, this has to be
+reflected in the rule instance. As a counterexample, consider a rule of the
+form $\forall x_{\greeka}\forall x_{\greeka}.A\longleftrightarrow
+\forall x_{\greeka}.A$. One can easily check that, if no
+applicability tests are performed,
+$\forall y_{\greeka}\forall x_{\greeka}.f\,x\,y\longleftrightarrow
+\forall x_{\greeka}.f\,x\,y$ is an instance of the above rule.
+
+To describe the semantics of
+\texttt{INFERENCE-SCHEME-APPFN}/\texttt{INFERENCE-MATCH-BINDERS-REWFN}, we
+define a relation $\Delta\vdash B\star A;\Delta'$ between the initial binder
+matching context $\Delta$, the wff $B$, the wff schema $A$ and the final
+binder matching context $\Delta'$ by induction on the structure of $A$:
+\[
+\frac{~}{\Delta\vdash A\star x_{\greeka};\Delta}
+\qquad
+\frac{~}{\Delta\vdash A\star c_{\greeka};\Delta}
+\qquad
+\frac{\Delta\vdash C\star A;\Delta''\qquad\Delta''\vdash D\star B;\Delta'}
+     {\Delta\vdash C\,D\star A\,B;\Delta'}
+\]\[
+\frac{\Delta\,x_{\greeka}=y_{\greekb}}
+     {\Delta\vdash Q'y_{\greekb}.B\star Qx_{\greeka}.A;\Delta}
+\qquad
+\frac{x_{\greeka}\notin\textup{dom}\,\Delta}
+     {\Delta\vdash Q'y_{\greekb}.B\star Qx_{\greeka}.A;
+      \Delta,x_{\greeka}{:=}y_{\greekb}}
+\]
+
+Two wffs $C,D$ form an instance of a rewrite rule $A\longrightarrow B$, using
+the applicability test procedure \linebreak \texttt{INFERENCE-SCHEME-APPFN}
+and the rewriting procedure \texttt{INFERENCE-MATCH-BINDERS-REWFN}, iff they
+are an instance of $A\longrightarrow B$ and there exist binder matching
+contexts $\Delta,\Delta'$ such that $\varnothing\vdash C\star A;\Delta'$ and
+$\Delta'\vdash D\star B;\Delta$.
+
+\section{How Rewrite Rules and Theories Are Stored in the Library}
+Rewrite rules are stored as library objects of type
+rrule, whose description is a dotted pair of gwffs with extra attributes
+`typelist' (the list of all polymorphic type symbols in the rule),
+`bidirectional' (T if the rule can be applied in both directions),
+`appfn' (the name of a function to test applicability of the rule, or NIL),
+`function' (an optional extra function which is applied, after the
+rewriting, to the subformula that was rewritten),
+`variables' (the list of universally quantified free variables; from the
+technical point of view, only variables which do not appear in both sides
+of the rewrite rule need to appear in this list) and
+`derived-in' (the list of theories in which the rule is derivable).
+
+%`appfn', if not NIL, should be a function from gwffs to booleans;
+%`function', if not NIL, should be a function from gwffs to gwffs.
+
+% mkaminski -- The above is no longer true.
+
+`appfn', if not NIL, should be a function which expects four arguments.
+The first argument will always be the gwff which is to be rewritten. The
+following two arguments will contain both sides of the rewrite rule, passed
+in the order in which the rule is to be applied. So, for instance, if the rule
+is to be applied from right to left, the right-hand side of the rule will be
+passed as the second argument, followed by the left-hand side. The fourth
+argument is the list of polymorphic types of the rewrite rule.
+`appfn' should return a boolean, indicating whether the gwff can be rewritten
+by applying the rewrite rule in the specified direction.
+`function', if not NIL, should expect the subformula after rewriting as its
+first argument, and, just like `appfn', both sides of the rewrite rule as
+additional arguments. Unlike `appfn' it is not passed the list of polymorphic
+types. `function' should return the modified subformula.
+
+Theories are
+stored as the name of the theory with all rewrite rules, subtheories and other
+needed objects attached as needed-objects. In addition to this, theories may
+have the extra attributes `relation-sign' (a symbol representing the relation
+which is assumed to hold between the two sides of a rewrite rule),
+`reflexive' (T if the relation represented by the attached rewrite rules is
+reflexive, NIL otherwise), `congruent' (T if the relation represented by
+the rewrite rules is a congruence on lambda-terms, NIL if the rewrite rules
+should only be applicable to a wff as a whole but not to its subwffs),
+`derived-appfn' (the value which will be assigned to the `appfn' attribute of
+rewrite rules derived from this theory in the rewriting top-level) and
+`derived-rewfn' (the same as `derived-appfn' but for the `rewfn' attribute).
+

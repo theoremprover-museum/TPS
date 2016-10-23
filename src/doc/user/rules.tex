@@ -1,0 +1,691 @@
+\chapter{The Rules Module}
+\label{rules}
+
+
+% \begin{comment}
+% \chapter{Inference Rules}\label{Rules}
+% 
+% {\bf Make revisions to \$progdoc/rules.mss}
+% {\bf Someone  familiar with the rules module needs to look at this chapter,
+% and update it appropriately.}
+% 
+% \section{Etc}
+% 
+% In TPS3, the Rules Module is part of the TPS3 core image, rather than
+% a separate core-image.
+% 
+% Individual Rule files are assembled using ASSEMBLE-FILE. Modules of
+% rules are assembled using ASSEMBLE-MOD.
+% 
+% \section{Implementing Tactics and Tacticals}
+% 
+% \subsection{Questions and Difficulties}
+% 
+% The method of tactics and tacticals allows one to expand a collection of
+% rules so that many rules may be used or tested in a single step. Specifically,
+% this method formalizes certain ways of using existing rules, singly or
+% in combination, to create new rules or advisors. The primitive ways are called
+% tacticals, and the rules/advisors formed from them are called tactics.
+% 
+% This brings us quickly to a major problem in implementing tactics and
+% tacticals. Since the ways in which the original rules are used are not uniform,
+% the notion of combining them becomes vague. If we repeat universal
+% instantiation, do we mean to ask for the substituted term, as in the full
+% interactive use of the rule, or to take the standard defaults, or to consult
+% the expansion tree or some exogenous heuristic (one which is not a tactic
+% or otherwise based on the `endogenous' formalism of {\TPS} : inference rules,
+% proof outlines, etc.) for the appropriate term?
+% When does the iteration end: when all universal quantifiers have been
+% instantiated at least once, or when a particular wff is generated, or when
+% the user says stop?
+% 
+% It would seem that we would want to make the operation of
+% tacticals dependent on the mode of proof, but even more on the strategy
+% adopted. For whatever formalism we choose to direct our proof, we would
+% like to interrupt that direction occasionally, maybe seeing only which
+% path it plans to take and then giving our own choice.
+% Thus, the {\tt GO} and {\tt SUGGEST} facilities, as well as the interactive
+% mode should be found in each strategy.
+% 
+% Besides aesthetic questions as to the printing and keeping of lines and
+% the style of the justifications, this dependence affects the efficiency
+% of tactics. It may be possible, for a given heuristic, to generate
+% sequences of substitution terms more quickly than to determine each term
+% when it is called for. In any event, we would like each tactic to be optimally
+% efficient for the proof-mode and strategy in which it is called.
+% 
+% Finally, we want our treatment of tacticals to adequately handle those
+% rules which are not merely forwards or backwards. This we would expect
+% from the dependence on strategies. The problem of applying, testing
+% or trying rules with many potential directions seems to be one of fitting
+% those rules into a strategy of proof. Of course, some strategies will
+% be too open-ended (say the default strategy for {\ETPS}) to determine
+% the appropriate application of some rule. In such cases, {\tt GO} or
+% {\tt SUGGEST} may be little help. If we allow strategies to be more open-ended
+% for {\tt GO} than for {\tt SUGGEST}, we then have the desired behavior for {\ETPS}.
+% 
+% \section{Random}
+% \end{comment}
+Inference rules in {\TPS} are created by typing rule definitions into a .rules
+file and then building (or assembling) the rules in that file.
+One result of building a rule is the creation of a command which
+calls it. The same command may be
+used to apply a rule in both its forward or backward directions, that is,
+from the top (hypotheses and their consequents, called `support lines') or
+the bottom (the conjectures, called `plan lines') of the proof. In our own
+rules, we have adopted the convention of naming them as if they were to be
+applied only in the forward direction. Thus `ICONJ' (Introduce CONJunction)
+takes two
+support lines and derives their conjunction (forward) or a plan line asserting
+a conjunction and creates two new plan lines, one for each conjunct (backward).
+
+\section{Defining Inference Rules}
+
+The following definition of the inference rule {\tt ABU} provides
+a good example of how such rules are defined.
+
+\begin{lispcode}
+
+(defirule abu
+  (lines (p1 (h) () `forall y(A). `(S y x(A) A)')
+	 (p2 (h) () `forall x(A). A' (`AB' (`x(A)') (p1))))
+  (restrictions (free-for `y(A)' `x(A)' `A(O)')
+		(not-free-in `y(A)' `A(O)'))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (itemshelp (p1 `Lower Universally Quantified Line')
+	     (p2 `Higher Universally Quantified Line')
+	     (`x(A)' `Universally Quantified Variable in Higher Line')
+	     (`A(O)' `Scope of Quantifier in Higher Line')
+	     (`y(A)' `Universally Quantified Variable in Lower Line')
+	     (S `Scope of Quantifer in Lower Line'))
+  (mhelp `Rule to change a top level occurrence of a universally quantified
+ variable.'))
+
+\end{lispcode}
+
+The defining macro is DEFIRULE. Next follows the name of the rule
+being defined, in this case ABU for alphabetic change of a universally
+bound variable. Then comes a list of lists setting the values of
+several properties; the property being set is the first item of its list.
+
+The first property we set is the {\tt LINES} property. This establishes the kind
+of lines the rule will act on. In our example, {\tt P1} is a line with an
+arbitrary hypothesis set {\tt h}, no new hypotheses (the empty list following
+the list containing {\tt h}) and a wff matching a quoted expression of some
+complexity. The first part of the expression seems clear enough: {\tt P1}
+will be a universally quantified wff. But what is {\tt `(S y x(A) A)} ?
+Just our way of denoting wff-transformations within an expression
+similar to a wff. The backquote means `evaluate this Lisp form', in our case
+a call to the substitution function {\tt S}, replacing free occurrences
+of {\tt y} with {\tt x} in a wff which we call {\tt A}. See the Facilities Guide for
+a list of the functions which can be used like {\tt S} (these are called
+{\tt WFFOP}s). {\tt x} is of a type
+called {\tt A} which just happens to have the same name as the wff we are
+substituting into, but this causes TPS no confusion; when a primitive symbol is
+followed by an expression in parentheses, that expression is a type expression
+and not a wff.
+
+The second line, {\tt P2}, looks similar. It has the same set of hypotheses,
+{\tt h}, and it also introduces no new hypotheses. The quoted expression,
+though, is much simpler; it indicates that the wff asserted by {\tt P2}
+is universally quantified by the variable we substituted into {\tt A}
+in {\tt P1} and quantifies over that same {\tt A}. An actual use of the rule
+may have {\tt P2} bound by {\tt y} and {\tt P1} by {\tt x}, and this is fine as
+long as they correspond in the way that {\tt x} and {\tt y} do in the DEFIRULE.
+That is, the variables in a DEFIRULE are not actual variables in the logical
+system, but part of a pattern-matching device for the rule. The quoted
+expression is followed by a list indicating the justification for the line.
+The first item is the name of the justification, in our case `AB' for
+alphabetic change of bound variable. The second item is a list of parameters
+(excluding lines) which figure in the justification; here we indicate
+that the bound variable has been changed to the variable matched by {\tt x}.
+The quotes around {\tt x} are necessary.
+The last item is a list of lines from which the line {\tt P2} is derived,
+in this case {\tt P1}.
+
+The next property, {\tt RESTRICTIONS}, is optional, depending on whether
+or not the rule can only be applied if certain conditions are met.
+In this example, the variable matching {\tt y} must be free for the variable
+matching {\tt x} in the wff matching {\tt A} and similarly for the `not free in'
+restriction. Note that each argument to the restrictions is typed.
+In restrictions, you must give each wff variable a type (or make sure it can be
+inferred). Otherwise, the default type will be used, giving an undefined
+symbol as an argument to the restriction function.
+
+The next property, {\tt SUPPORT-TRANSFORMATION}, tells TPS how this rule
+will change the proof structure. In our example, the support lines for
+{\tt P2}, indicated by {\tt 'ss}, will be assigned to {\tt P1}, if the rule
+is applied backwards.  In other rules, the abbreviation {\tt pp} may be
+seen as the first member of a support-transformation list.  {\tt pp} will
+match any planned line with the specified lines as supports; e.g., if
+{\tt pp P1} appeared as the left hand side of a support transformation,
+the transformation would be applied to every planned line which had
+{\tt P1} as a support.
+
+The {\tt ITEMSHELP} property specifies the help the command for the rule
+will give on each argument. Arguments include all lines defined in the
+{\tt LINES} property, all matching variables (except types) and the
+name of functions ({\tt WFFOP}s) called from within the quoted expressions
+(in case not all of its arguments are specified in time).
+
+The {\tt MHELP} property, as always, provides a short description of the rule
+for the {\tt HELP} command and for documentation.
+
+
+\section{Assembling the Rules}
+
+Once you have typed your {\tt DEFIRULE}s into a .rules file, the next step
+is to assemble the rules. Assembling creates Lisp-code files which can
+be loaded and/or compiled. You may assemble individual rules files
+with {\tt ASSEMBLE-FILE} or whole modules (collections of files) with
+{\tt ASSEMBLE-MOD}. The latter is preferable, not only because
+it combines many steps in one, but because the initialization for the package
+will be called less frequently. {\tt ASSEMBLE-FILE}
+finds the proper initialization, not very cleverly, by asking for the package
+to which the file belongs.
+
+
+Before assembling your rules, the correct mode should be loaded: Call {\tt REVIEW}, entering its toplevel.
+Call {\tt MODE} with % \comment{either {\tt \indexother{MATH-LOGIC1-MODE}} or
+% {\tt \indexother{MATH-LOGIC-2-MODE}}}
+ {\tt \indexother{RULES}}
+as an argument.
+
+% \comment{Directories or pathnames should not be specified when you are asked
+% for the .RULES file.}
+After assembling, you need only compile (if desired) and load to make
+your rules available in that session, e.g., via the command {\tt CLOAD}.
+Before compiling and loading your rules, you should go into {\tt REVIEW} and
+set the mode to {\tt RULES}, so that the wffops which appear in your
+rules will be properly interpreted.
+To make your rules more permanently
+available, create a package (in the {\tt DEFPCK} file) containing
+the name of your assembled rules file (the same as the .rules file
+but with a lisp extension) and load that package when building {\TPS} or
+{\ETPS}.
+
+\subsection{An example}
+
+We added a new rule definition to the file {\it ml2-logic7a.rules}, making it
+necessary to reassemble and recompile {\it ml2-logic7a.lisp}. This was done
+as follows:
+
+\begin{alltt}
+<123>mode rules
+<124>assemble-file
+RULE-FILE (FILESPEC): Rule source file to be assembled [No Default]>ml2-logic7a
+PART-OF (SYMBOL): Module the file is part of [OTLSUGGEST]>math-logic-2-rules
+<125>mode rules
+<125>cload ml2-logic7a
+\end{alltt}
+
+\input{rule-example}
+
+\begin{comment}
+
+% % \comment{Old documentation}
+\section{Specifications of Inference Rules}
+This section describes how the {\TPS} user can define his own
+inference rules.  Sets of these inference rules can then be made available
+as packages
+which can be added to the basic {\TPS} core image.  The functions discussed
+below are part of the package {\tt RULES}\index{Rules}, which is necessary
+for defining inference rules.
+
+It may be helpful to think of the {\tt RULES} package as a compiler.  It can read
+source files or rule descriptions in various forms and compiles them into
+{\tt LISP} code.  This {\tt LISP} code is stored in files
+which can be retrieved from within {\TPS}.
+
+Inside the {\tt RULES} package it is always assumed that the user is working
+on a particular set of inference rules which he is trying to expand,
+modify, or define. Every such set of rules has a name. {\tt S4}, {\tt CLASSIC},
+or {\tt INTUITION} are examples of such names.
+Source file name(s) and the rule file name are derived from the name of the
+set of rules as described below.  The `rule file' is the file containing
+the {\tt LISP} code produced from the rule descriptions, which typically come
+from the `source file'.  Both can be read and written directly by {\tt LISP}
+which also keeps track of different versions of the same
+file as well as changes made to a file during a editing session etc.
+The {\tt LISP} functions {\tt DSKIN}, {\tt DSKOUT}, and {\tt CHANGES} are sufficient for
+handling all the necessary file operations.  If you are using \VIDI,
+a `\VIDI file' containing rule descriptions, possibly with special characters,
+may also be present.
+
+The {\tt RULES} package produces two functions for every inference rule
+specification.  One is prefixed by {\tt D-} and allows the application
+of the rule in the forward direction, i.e. it can be used to infer new
+lines in the partial proof from lines that have been proven already.
+The other function is prefixed by {\tt P-} and allows the application
+of the inference rule in the backward direction.  This function inserts
+new lines into the incomplete proof which would justify previously unproven
+lines ({\it planned lines}).  These new lines are now planned lines.
+Inference rules are allowed to contain primitive operators, like
+\LAMBDA-contraction, \LAMBDA-expansion, etc.  Their definition and
+their use is laid down in a file {\tt PRIMOP}, which can be extended
+by the user.  Primitive operators typically take wffs as arguments
+and return wffs.  Primitive operators which have no simple inverse
+(like \LAMBDA-normalization) often make it impossible to construct
+both {\tt D-} and {\tt P-} versions for a given inference rule. In this case
+a warning will be given.
+
+
+\subsection{Available commands}
+The following is a complete list of commands which are available to the
+user of the {\tt RULES} package.
+{\bf This section should be deleted as this can be generated automatically.
+However, the MHELP strings should first be updated to reflect the information
+here.}
+\begin{description}
+\item[] \indexmexpr{RuleFile {\it FileName}}
+defines {\it FileName} to be the current rule file.  The associated
+current source file will have a {\tt Z} appended to {\it FileName}. ({\tt Z} replaces
+the sixth character if {\it FileName} consists of six or more characters.)
+If these files exist in the user's or any library directory, they will
+be read for modification.  Otherwise, the appropriate data
+structures will be set up, and the files will be ready for {\tt DSKOUT}.
+{\it FileName} follows the {\tt LISP} conventions and may include an extension,
+as well as a PPN and a device specification.  The global variables
+\indexparameter{RuleFileFNS} and \indexparameter{SourceFileFNS} are set
+to identifiers which have the table of contents for the rule file or
+the source file, respectively, as their value.  \indexparameter{Rule-File}
+is another global variable which will be bound to {\it FileName}.
+
+\item[] \indexmexpr{Define-Rule \{{\it RuleName}\} \{{\it RuleDef}\}}
+This parses {\it RuleDef} and creates two {\tt LISP} function definitions, namely
+{\tt D-{\it RuleName}} and {\tt P-{\it Rulename}}.  The rule definition will be printed
+into every selected {\TPS} channel after it is parsed.  {\it RuleDef} defaults
+to the definition specified in the source file.  The current rule and source
+files are updated appropriately, so that any changes can be detected with
+{\tt CHANGES} and saved with {\tt DSKOUT}.  Notice that {\it RuleName} will be appended
+to the current source file, if it is not already present.  In case {\it RuleDef}
+cannot be parsed correctly, an error message will be printed and neither
+the rule file nor the source file will be updated.  For a description of
+the argument type {\it RuleDef}, see page \pageref{ruledef}.  If {\it RuleName}
+is left unspecified, {\it RuleDef} must start with `{\tt RULE: }{\it RuleName}'.
+
+\item[] \indexmexpr{Compile-File \{{\it RuleFile}\}}
+compiles every inference rule specification in the source file associated
+with {\it RuleFile}.  During compilation every rule will be stated.
+{\it RuleFile} defaults to the current rule file as specified in the last
+{\tt RuleFile} command.
+
+\item[] \indexmexpr{State-Rule {\it RuleName}}
+prints {\it RuleName} into every open channel.  If {\it RuleName} had not been
+parsed before, either with {\tt Compile-File} or {\tt Define-Rule}, but is
+defined in the source file, {\TPS} will try to parse it first and the print it
+from its internal representation.  This is necessary in order to make
+the way the rule is stated independent of the way it was specified to the
+system, which could be a string, a {\tt RdClist}, etc.
+
+\item[] \indexmexpr{List-Rules \{{\it RuleFile}\} \{{\it ListFile}\} \{{\it Style}\} \{{\it Channel}\}}
+prints every rule in {\it RuleFile} into {\it ListFile} and all currently selected
+{\TPS} channels.  {\it RuleFile} defaults to the current rule file.  If no
+{\it ListFile} is specified, the rules will just be printed into every selected
+{\TPS} channel.  {\it Style} and {\it Channel} are as in the {\tt OPEN} command and
+apply to the {\it ListFile}.
+\end{description}
+
+Any form of a rule description is first converted into a \itt{LexList}, a
+data structure used in an intermediate step in parsing formulas.  This
+{\tt LexList} is what the preprocessing functions will actually give to
+{\tt Define-Rule} as an argument.
+The argument type {\it RuleDef} can be any of the following.
+\begin{description}
+\item[] \label{Ruledef}\index{{\it RuleDef}}
+\itt{\$} [defaulted]
+see {\tt Define-Rule}.
+
+\item[] a string
+the string representation of a rule definition as used in the source file.
+The string may not contain any special characters. {\tt !} stands for \ASSERT.
+
+\item[] \itt{RD}
+The user will be prompted in the next line for a rule definition
+without special characters.  The input must be terminated with
+{\tt <esc>}\index{{\tt <esc>}} and can be aborted with \itt{\^G}.
+{\bf obsolete -SI}
+
+\item[] \itt{RDC}
+The user will be prompted for a rule definition which may include
+special characters.  The input must be terminated with
+{\tt <esc><esc>}\index{{\tt <esc><esc>}} and can be aborted with \itt{\^G}.
+See page \pageref{rdc} for a description of the input format for wffs.
+{\bf obsolete -SI}
+
+\item[] \itt{PAD}
+enters the {\tt PAD} and puts the terminal (Concept) into local mode.
+The restrictions on the rule definition are the same as for {\tt RD}.  You can
+transmit the contents of the {\tt PAD} using the SEND key.  {\bf obsolete -SI}
+
+\item[] \itt{VIDI}
+refers to the rule definition as created with the most recent \itt{\$r} inside
+\VIDI. {\bf obsolete -SI}
+
+\item[] an identifier
+can mean a string, if the identifier is bound to a string, a \itt{RdCList}, if
+the identifier is bound to a {\tt RdCList}, or a \itt{LexList}, if the identifier has
+a \itt{RDEF} property which is a
+{\tt LexList}.  A {\tt RdCList} is created during a {\tt RdC}, a {\tt LexList} is
+the result of an {\tt \$r} command in \VIDI.
+\end{description}
+
+\subsection{Some sample specifications of inference rules}
+This section contains some sample inference rules which demonstrate some
+features of the syntax and the rule compiler.  A more precise and complete
+grammar is given in section \ref{rulegrammar}.
+\begin{alltt}
+\tabdivide{2}
+{\tt 
+D 1 }{\it H}{\tt  }\assert {\tt  A}\(\sb{\greeko}${\tt  \and  B}$\sb{\greeko}${\tt ;} &  {\rm The declaration of \ScriptH as a {\tt WFFSET} has}
+{\tt P 2 }{\it H}{\tt  }\assert {\tt  A; AndE:1;} &  {\rm been omitted, since \ScriptH and \ScriptG are}
+{\tt P 3 }{\it H}{\tt  }\assert {\tt  B; AndE:1;} &  {\rm predeclared to be {\tt WFFSET}s.}
+
+{\tt D 1 }{\it H}{\tt  }\assert {\tt  A}\(\sb{\greeko}${\tt ;} &  {\rm Notice that here \ScriptH appears twice.}
+{\tt D 2 }{\it H}{\tt  }\assert {\tt  B}\(\sb{\greeko}${\tt ;} &  {\rm It will be the union of the hypotheses of lines 1 }
+{\tt P 3 }{\it H}{\tt  }\assert {\tt  A \and  B; AndI:1,2;} &  {\rm and 2.}
+
+{\tt D 1 }{\it H}{\tt ,A}\(\sb{\greeko}${\tt  }\assert {\tt  B}$\sb{\greeko}${\tt ;} &  {\rm Here one of the arguments of the {\tt D}-rule will}
+{\tt P 2 }{\it H}{\tt  }\assert {\tt  A }\implies{\tt  B; ImpI:1;} &  {\rm be {\tt HYP-A<O>}, the number of a line asserting}
+ &  {\rm {\tt A\Subomicron}.  One of the optional arguments}
+ &  {\rm of the {\tt P}-rule will be {\tt HYP-A<O>}, the number}
+ &  {\rm of the line which will be {\tt A\subomicron \Assert A\subomicron}.}
+
+{\tt D 1 }{\it H}{\tt  }\assert {\tt  A}\(\sb{\greeko}${\tt  }\implies{\tt  B}$\sb{\greeko}${\tt ;
+P 2 }{\it H}{\tt ,A }\assert {\tt  B; ImpE:1;
+
+D 1 }{\it H}{\tt  }\assert {\tt  A}\(\sb{\greeko}${\tt ;
+D 2 }{\it H}{\tt  }\assert {\tt  A }\implies{\tt  B}$\sb{\greeko}${\tt ;
+P 3 }{\it H}{\tt  }\assert {\tt  B; MP:1,2;
+
+D 1 }{\it H}{\tt  }\assert {\tt  \(\forall$ x}$\sb{\greeka}${\tt  . A}$\sb{\greeko}${\tt ;} &  {\rm In this rule, {\tt D} and {\tt P} lines have the same number.}
+{\tt P 1 }{\it H}{\tt  }\assert {\tt  `LCONTR` [}$\lambda${\tt x . A] B}$\sb{\greeka}${\tt ; UnivE: 1;}
+{\tt B free for x in A;} &  {\rm This is legal since no conflict can arise.}
+ &  {\rm The keywords {\tt free}, {\tt for} and {\tt in} must be}
+ &  {\rm  lower case.}
+{\tt 
+D 1 }{\it H}{\tt  }\assert {\tt  `LCONTR` [}$\lambda${\tt x}$\sb{\greeka}${\tt  . A}$\sb{\greeko}${\tt ]B}$\sb{\greeka}${\tt ;} &  {\rm In the {\tt D}-rule compiled from this definition, }
+{\tt P 1 }{\it H}{\tt  }\assert {\tt  $\forall$ x . A; UnivI: 1;} &  {\rm the user will have to supply {\tt x\subalpha}, {\tt B\subalpha}, and}
+{\tt B is variable;} &  {\rm a list of occurrences of {\tt B\subalpha} in the assertion}
+{\tt B not free in }{\it H}{\tt ;} &  {\rm of line {\tt D1}, so that {\TPS} can reconstruct {\tt A\subomicron}.}
+
+{\tt D 1 }{\it H}{\tt  }\assert {\tt  `LCONTR` [}$\lambda${\tt x}$\sb{\greeka}${\tt  . A}$\sb{\greeko}${\tt ]B}$\sb{\greeka}${\tt ;
+P 1 }{\it H}{\tt  }\assert {\tt  $\exists$ x . A; ExistI: 1;
+
+D 1 }{\it H}{\tt  }\assert {\tt  $\exists$ x}$\sb{\greeka}${\tt  . A}$\sb{\greeko}${\tt ;
+P 1 }{\it H}{\tt  }\assert {\tt  `LCONTR` [}$\lambda${\tt x.A]B}$\sb{\greeka}${\tt ; ExistE: 1;
+B is variable;
+B free for x in A;
+B not free in }{\it H}{\tt ;
+
+D 1 }{\it H}{\tt  }\assert {\tt  $\exists$ x}$\sb{\greeka}${\tt .A}$\sb{\greeko}${\tt ;} &  {\rm Here in {\tt RuleC} we see the use of abbreviations.}
+{\tt D 2 *D2* }\assert {\tt  `LCONTR` [}$\lambda${\tt x.A]B}$\sb{\greeka}${\tt ;} &  {\rm {\tt *D2*} stands for the assertion of line {\tt D2}, which}
+{\tt D 3 }{\it G}{\tt ,*D2* }\assert {\tt  C}$\sb{\greeko}${\tt ;} &  {\rm otherwise could not appear as a hypothesis.}
+{\tt P 1 }{\it G}{\tt  }\assert {\tt  C}$\sb{\greeko}${\tt ; RuleC: 1,2,3;
+B is variable;
+B free for x in A;
+B not free in }{\it H}{\tt ;
+B not free in C;
+B not free in $\exists${}x.A;
+
+A 1 `LCONTR` [$\lambda${\tt x.A]B}$\sb{\greeka}${\tt ;} &  {\rm This is an equivalent way of stating the first part}
+{\tt D 1 }{\it H}{\tt  }\assert {\tt  $\exists$ x}$\sb{\greeka}${\tt .A}$\sb{\greeko}${\tt ;} &  {\rm of the previous rule, now using an {\it abbwff}}
+{\tt D 2 *A1* }\assert {\tt *A1*;} &  {\rm construct. {\tt *A1*} stands for the wff}
+{\tt D 3 }{\it G}{\tt ,*A1* }\assert {\tt  C}$\sb{\greeko}${\tt ;} &  {\rm following {\tt A 1}.}
+{\tt P 1 }{\it G}{\tt  }\assert {\tt  C}$\sb{\greeko}${\tt ; RuleC: 1,2,3;}
+\end{alltt}
+
+\subsection{The order of arguments}\label{argorder}
+The following convention has been adopted to decide the order of
+arguments in the {\tt D}-rules created by the rule compiler.  In
+general the name of the argument will be connected to
+its meaning.  This is particularly helpful if the new way of
+supplying arguments to {\tt MExpr}'s interactively is utilized.
+
+\begin{enumerate}
+\item {\it dlines} in the order they appear in the rule definition.  The
+argument type is {\tt LineNumber}.  The name of the argument for
+the line started with `{\tt D }{\it n}' will be {\tt D}{\it n}.
+
+\item {\it wffs} in the order new wffs appear in the rule definition.
+The argument type will be {\tt RWff}, the name of the argument
+for the wff `{\tt A\subomicron}' will be {\tt A<O>}.
+The {\it wffs} include special arguments that stem from inverting
+primitive operators.
+
+\item {\it hypotheses} in the order unknown hypotheses appear in the rule
+definition.  The argument type is {\tt LineNumber}.  The name of the argument
+for the hypothesis `{\tt B\subalpha}' will be {\tt HYP-B<A>}.
+
+\item {\it prargs}, i.e. arguments of primitive operators as they appear in
+the rule definition.  The argument type depends on the types of the
+arguments of the primitive operator as specified in the file {\tt PRIMOP}.
+
+\item {\it new hypotheses}, i.e. line numbers at which to insert new lines
+of the form {\obeyspaces `{\tt A\Subomicron \Assert A\Subomicron}'}.  These can
+be defaulted.  The argument type is {\tt NUM}, their naming
+convention is identical to those for hypotheses.
+
+\item {\it plines} in the order they appear in the rule definition.  Their
+argument type is {\tt NUM} and they can be defaulted.  The name of the
+argument for the line starting with `{\tt P }{\it n}' is {\tt P}{\it n}.
+\end{enumerate}
+The order of arguments for the {\tt P}-rules is strictly symmetric to
+the argument order of {\tt D}-rules.
+\begin{enumerate}
+\item {\it plines} in the order they appear in the rule definition.  The
+argument type is {\tt LineNumber}.  The name of the argument for
+the line started with `{\tt P }{\it n}' will be {\tt P}{\it n}.
+
+\item {\it wffs} in the order new wffs appear in the rule definition.
+The argument type will be {\tt RWff}, the name of the argument
+for the wff `{\tt A\subomicron}' will be {\tt A<O>}.
+The {\it wffs} include special arguments that stem from inverting
+primitive operators.
+
+\item {\it hypotheses} in the order unknown hypotheses appear in the rule
+definition.  The argument type is {\tt LineNumber}.  The name of the argument
+for the hypothesis `{\tt B\subalpha}' will be {\tt HYP-B<A>}.
+
+\item {\it prargs}, i.e. arguments of primitive operators as they appear in
+the rule definition.  The argument type depends on the types of the
+arguments of the primitive operator as specified in the file {\tt PRIMOP}.
+
+\item {\it new hypotheses}, i.e. line numbers at which to insert new lines
+of the form {\obeyspaces `{\tt A\Subomicron \Assert A\Subomicron}'}.  These can
+be defaulted.  The argument type is {\tt NUM}, their naming
+convention is identical to those for hypotheses.
+
+\item {\it dlines} in the order they appear in the rule definition.  Their
+argument type is {\tt NUM} and they can be defaulted.  The name of the
+argument for the line starting with `{\tt D }{\it n}' is {\tt D}{\it n}.
+\end{enumerate}
+
+\section{A grammar for specifying inference rules}\label{rulegrammar}
+In the following grammar in BNF style terminal symbols are underlined.
+[{\it token}]\0inf means that {\it token} can be repeated 0 or more times.
+<{\it name}> means that {\it name} can be any {\tt LISP} object which is a {\it name}.
+\{{\it field}\} indicates that {\it field} is optional.  Note that the case of
+characters matters, i.e. capital letters have to be capital, and lower
+case letters have to be lower case.  Spaces are critical only where they
+are needed to separate identifiers, just as in formulas.  The symbols
+`{\tt [ ] ( ) . ; , : <return> <tab>}' separate identifiers and thus need
+not to be surrounded by spaces.
+\begin{description}
+\item[rule ::=]	 \{\uxt{RULE:} <identifier>
+\uxt{;}\}\{\uxt{COMMENT:} comment\uxt{;}\}[declaration]\0inf{adiline}\0inf{pline}\1inf{restriction}\0inf
+
+\item[adiline ::=]	 abbwff | dline | iline
+
+\item[abbwff ::=]	  \uxt{A} <number> wff\uxt{;}
+
+\item[iline ::=]	  \uxt{I} <number> \{hypotheses\} \uxt{\assert} assertion\uxt{;}
+
+\item[dline ::=]	  \uxt{D} <number> \{hypotheses\} \uxt{\assert} assertion\uxt{;}
+
+\item[pline ::=]	  \uxt{P} <number> \{hypotheses\} \uxt{\assert} assertion\uxt{;} justification\uxt{;}
+
+\item[declaration::=]	 \uxt{CONSTANT:} wff [\uxt{,}wff]\0inf\uxt{;}
+| \uxt{WFFSET:} wffset [\uxt{,}wffset]\0inf\uxt{;}
+
+\item[hypotheses ::=]	 hyp [\uxt{,}hyp]\0inf
+
+\item[hyp ::=]	 wff\subomicron | wffset
+
+\item[assertion ::=]	 wff\subomicron | \uxt{`}primop\uxt{`} prarg [\uxt{,}prarg]\0inf
+
+\item[primop ::=]	 \uxt{LCONTR} | \uxt{LEXPD} | {\it others as defined by the user}
+
+\item[prarg ::=]	 wff | occlist | {\it others as defined by the user}
+
+\item[occlist ::=]	 \uxt{OCC}<number> | \uxt{[}<number>[\uxt{,}<number>]\0inf\uxt{]}
+
+\item[wffset ::=]	 <identifier>
+
+\item[justification ::=]	 <identifier> \{\uxt{:} wff [\uxt{,}wff]\0inf\}
+\{\uxt{:} lineno [\uxt{,}lineno]\0inf\}
+
+\item[restriction ::=]	   wff \{\uxt{not}\} \uxt{free} \uxt{in} wff\uxt{;}
+| wff \{\uxt{not}\} \uxt{free} \uxt{in} wffset\uxt{;}
+% \comment{\{@!$^{\hbox{wff}}$@/$_{\hbox{wffset}}$\}\uxt{;}}
+| wff \{\uxt{not}\} \uxt{free} \uxt{for} wff \uxt{in} wff\uxt{;}
+| wff \{\uxt{not}\} \uxt{free} \uxt{for} wff \uxt{in} wffset\uxt{;}
+% \comment{\{@!$^{\hbox{wff}}$@/$_{\hbox{wffset}}$\}\uxt{;}}
+| wff \uxt{is} \uxt{variable}\uxt{;}
+| {\it others as defined by the user}
+
+\item[comment ::=]	 {\it any sequence of characters not containing ` ( ) or ;}
+
+\item[wff ::=]	  {\it any wff legal in {\TPS}}
+\end{description}
+Note that wffs may contain the following identifiers which stand for
+assertions of lines or abbreviations which have been previously defined:
+\begin{description}
+\item[{\tt *A}{\it n}{\tt *}]	 stands for the wff of the {\tt abbwff} with number {\it n}.
+
+\item[{\tt *D}{\it n}{\tt *}]	 stands for the assertion of the {\tt dline} with number {\it n}.
+
+\item[{\tt *I}{\it n}{\tt *}]	 stands for the assertion of the {\tt iline} with number {\it n}.
+
+\item[{\tt *P}{\it n}{\tt *}]	 stands for the assertion of the {\tt pline} with number {\it n}.
+\end{description}
+While the first can have any type, the last three have to be of type {\tt O}.
+These special identifiers do not have to, but may be typed.
+
+% \comment{\string{KsetSize=10}
+% %\input{lib:ksets.mss}
+% %\input{lib:symb10.mss}}
+\commandstring{IN=`\member1{)
+
+\section{Multiple Rules of Inference}
+
+The plain {\tt RULES} package lacks facilities to specify relatively simple
+inference rules, such as a rule which would infer every conjunct in
+a large conjunction.  Instead of trying to improve the syntax of rule
+descriptions to include constructions such as {\tt A$_{\hbox{1}}$ \AND ... \AND A$_{\hbox{n}}$},
+the solution proposed here considers simple inference rules as
+indivisible steps in a ``programming language''.  The ``programming language''
+is what we are concerned with here.  We would like to have simple
+and easy to use facilities to build {\it multiple inference rules}
+from other ones.
+
+One can certainly think of many such {\it rule construction languages}.
+Lisp itself is certainly one choice that comes to mind.  We could write
+commands which would invoke other inference rules as subroutines
+appropriately and so achieve the desired outline transformation.
+We do not want to exclude that possibility, since there will certainly
+be rules to complicated to build up any other way.  Two drawbacks of
+this method have to be noted, however:  Firstly, we have to decide
+in advance which inference rules we would like to have available
+as multiple rules, and, secondly, one will certainly want to write many
+different multiple inference rules for different logical systems, which
+requires a lot of special purpose programming.
+
+Here we propose an alternative, which will allow us to treat many cases
+of multiple inference rules at the non-programmer level.
+
+\subsection{Regular Expressions}
+
+Regular expressions R are frequently used in computer science and have
+many nice properties.  Let us define regular expressions abstractly
+first.  The definition is by induction.
+
+\begin{enumerate}
+\item u\in\CapSigma is a regular expression.  \CapSigma is the {\it underlying set},
+often also called the underlying {\it alphabet}.
+
+\item If u,v\in R then u+v\in R.  This can be interpreted as union, alternation,
+or disjunction.
+
+\item If u,v\in R then uv\in R.  This can be interpreted as concatenation.
+
+\item If u\in R then u$^{\hbox{*}}$\in R.  This is the {\it Kleene star} and represents
+potentially infinite repetition.
+\end{enumerate}
+
+\subsection{Regular Expressions as Rule Constructions}
+We can now exploit the simple constructive nature of regular expressions
+to build our rule construction language.  Let \CapSigma be the set of
+primitive rules, presumable defined by the {\tt RULES} package.  We then define
+the extended set of rules R by the same kind of induction.
+
+\begin{enumerate}
+If r\in\CapSigma then r\in R
+
+If r,s\in R then r+s\in R.  r+s stands for the alternation of the two rules:
+apply either r or s, whichever is possible (i.e. matches the given input line).
+There must be a restriction on the uniformity of the rules, e.g. they must
+take the same number of {\it dlines} into the same number of {\it plines}.  We may
+loosen the analogy with regular expressions by postulating that the
+elements in a sum are tested for a match from left to right.  The rules
+do not have to be exclusive.
+
+If r,s\in R then r\&s\in R.  r\&s stands for the successive application of the
+two rules.  First apply r, than apply s to the results of r.  Again, some
+restriction on the number of arguments of type {\it line} will have to be imposed.
+
+If r\in R then r$^{\hbox{*}}$\in R.  r$^{\hbox{*}}$ stands for the repeated application of r.
+First r is applied to the arguments, then to the results of the first operation etc
+etc until we have no possible match left.
+\end{enumerate}
+
+\subsection{Some Examples}
+Here are some examples.  Overlook some problems with the actual syntax
+of definitions of multiple rules; this will have to be decided later.
+
+\begin{alltt}\tabdivide{2}
+CONJ* := <CONJ>*
+
+Rule: CONJ &  {\it then {\tt CONJ}* looks like}
+D 1 H \Assert A \AND B; &  D 1 H \Assert A \AND ... \AND Z;
+P 2 H \Assert A; RuleP:1; &  P 2 H \Assert A; RuleP:1;
+P 3 H \Assert B; Rulep:1; &  ...
+ &  P n H \Assert Z; RuleP:1;
+
+PUSH := <PUSHU>+<PUSHE>
+PUSH* := <PUSH>*
+
+Rule: PUSHU
+D 1 H \Assert $\forall$x.A \AND B;
+P 1 H \Assert $\forall$x A \AND $\forall$x B; RuleQ:1;
+
+Rule: PUSHE
+D 1 H \Assert $\exists$x.A \lor B;
+P 1 H \Assert $\exists$x A \lor $\exists$x B; RuleQ:1;
+
+{\it Then {\tt PUSH} can be applied to a line of either variety and {\tt PUSH*}
+will distribute a quantifier over a multiple disjunction or conjunction}
+
+DISTU := <PUSH*>\&<CONJ*>
+
+{\it {\tt DISTU} will push in universal quantifiers over conjunctions, then
+assert the conjunctions in separate lines.}
+
+UI* := <UI>*
+
+{\it {\tt UI*} allows to instantiate a whole series of quantifiers}
+\end{alltt}
+
+\comment{End old documentation}
+
+\end{comment}

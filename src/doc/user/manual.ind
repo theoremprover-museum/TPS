@@ -1,0 +1,704 @@
+\begin{theindex}
+
+  \item *trap-errors*, 123
+  \item -batch, 115
+  \item -lservice, 116, 117
+  \item -mode, 116
+  \item -omega, 115
+  \item -problem, 116
+  \item -record, 116
+  \item -service, 116, 117
+  \item -slist, 116
+  \item ?, Command, 8, 15, 34
+  \item ??, Command, 15
+
+  \indexspace
+
+  \item ACTIVATE-RULES, Command, 64, 71
+  \item ACTIVE-THEORY, Command, 68, 71
+  \item ADD-ALL-LIT, Command, 51
+  \item ADD-ALL-OB, Command, 51
+  \item ADD-BESTMODE, Command, 34
+  \item ADD-CONN, Command, 51
+  \item ADD-KEYWORD, Command, 34, 36
+  \item ADD-SUBDIRECTORIES, Flag, 33
+  \item ADVICE, Command, 105, 122
+  \item aliases-dist, File, 112
+  \item ALL-PENALTIES-FN, 46
+  \item ALLOW-ALL, 122
+  \item ALLOW-ALL, Function, 105
+  \item ALLOW-LOWER-NOS, Function, 105
+  \item ALLOW-NO-LEMMAS, Function, 105
+  \item ALLOW-RULEP, 122
+  \item ALLOW-RULEP, Function, 105
+  \item ALLOWED-CMD-P, 104
+  \item allowed-cmd-p, 104, 122
+  \item ALLOWED-LEMMA-P, 104
+  \item allowed-lemma-p, 105
+  \item ANY*, Command, 70, 71
+  \item ANY*-IN, Command, 70, 71
+  \item ANY, Command, 70
+  \item APP*, Command, 70, 71
+  \item APP*-REWRITE-DEPTH, Flag, 70, 71
+  \item APP, Command, 68, 70
+  \item APPLY-RRULE, Command, 63
+  \item ARR*, Command, 64
+  \item ARR, Command, 64
+  \item ARR1*, Command, 64
+  \item ARR1, Command, 64
+  \item ASSERT, Command, 36, 69
+  \item ASSERT-RRULES, Flag, 63, 67
+  \item ASSERT-TOP, Command, 67, 69
+  \item ASSERT2, Command, 69
+  \item ASSERTION, 104
+  \item ASSIGN-VAR, Command, 83
+  \item AUTO, Command, 68, 70, 71
+  \item AUTO, Flag, 71
+  \item AUTO-LIB-DIR, Flag, 39
+  \item AUTO-SUGGEST, Command, 21
+
+  \indexspace
+
+  \item B, Command, 1
+  \item BACKUP-LIB-DIR, Flag, 33, 35, 36
+  \item BEGIN-PRFW, Command, 7, 8, 69, 85
+  \item BETA-EQ, Command, 71
+  \item BETA-NF, Command, 71
+  \item BOOK-THEOREM, 104
+  \item BUG-DELETE, Command, 124
+  \item BUG-HELP, Command, 124
+  \item BUG-LIST, Command, 124
+  \item BUG-RESTORE, Command, 35, 124
+  \item BUG-SAVE, Command, 35, 124
+  \item BUILD-PROOF-HIERARCHY, Command, 8
+
+  \indexspace
+
+  \item CALL, 80
+  \item CEB, 81
+  \item CHANGE-KEYWORDS, Command, 36
+  \item CHANGE-PROVABILITY, Command, 35
+  \item CHECK-NEEDED-OBJECTS, Command, 35
+  \item CHOOSE-BRANCH, Command, 51
+  \item CJFORM, Command, 9
+  \item CLASS-DIRECTION, Flag, 37
+  \item CLASS-SCHEME, Command, 37
+  \item CLASS-SCHEME, Flag, 37
+  \item classification scheme, 37
+  \item CLEANUP, Command, 8, 70
+  \item CLOSE-MATEVPW, Command, 89
+  \item COMMAND-LINE-SWITCHES, 112
+  \item COMPLETE-TRANSFORM*-TAC, 81
+  \item COMPOSE, 81
+  \item compound-tacl-defn
+    \subitem Syntactic Object, 79
+  \item compound-tactic
+    \subitem Syntactic Object, 78
+  \item CONCEPT-S, Style, 89
+  \item CONNECT, Command, 70
+  \item CONNS-ADDED, Command, 51
+  \item CONTINUE, Command, 16
+  \item COPY-LIBDIR, Command, 35, 36
+  \item COPY-LIBFILE, Command, 36
+  \item cp, Command, 38
+  \item CREATE-LIB-DIR, Command, 33, 35
+  \item CREATE-LIB-SUBDIR, Command, 33, 35
+  \item CREATE-SUBPROOF, Command, 8
+  \item CURRENT-EPROOF, 4
+  \item CURRENT-THEORY, Command, 68, 71
+  \item Cut elimination, 82
+  \item CUTFREE-TO-EDAG, Command, 8
+  \item CW, EdOp, 31
+
+  \indexspace
+
+  \item DATEREC, Command, 34, 35, 111
+  \item DEACTIVATE-RULES, Command, 64, 71
+  \item DEACTIVATE-THEORY, Command, 68, 71
+  \item DEFAULT-BUG-DIR, Flag, 35, 124
+  \item DEFAULT-LIB-DIR, Flag, 33, 35, 36, 124
+  \item DEFAULT-MS, Flag, 4, 7, 25, 41, 42, 51, 118
+  \item DEFAULT-OB, Flag, 50
+  \item defpck.lisp, File, 108
+  \item DEFTHEOREM, Function, 104
+  \item DELAY-SETVARS, Flag, 7
+  \item DELETE, Command, 8, 36, 70, 124
+  \item DELETE-LIB-DIR, Command, 35
+  \item DELETE-LIBFILE, Command, 36
+  \item DELETE-RRULE, Command, 63, 71
+  \item DERIVE, Command, 68, 69
+  \item DERIVE-IN, Command, 68, 69
+  \item DERIVE-RRULE, Command, 68, 71
+  \item DESTROY, Command, 38
+  \item DISALLOW-RULEP, Function, 105
+  \item DISPLAY-TIME, Command, 86
+  \item DISPLAYFILE, Command, 89
+  \item DISPLAYFILE, MExpr, 91
+  \item DIY, Command, 3, 4, 7, 9, 41, 89
+  \item DIY-L, Command, 3, 9, 20
+  \item DIY2, Command, 3
+  \item DIY2-L, Command, 3
+  \item DO-GRADES, Command, 1
+  \item doc/facilities/README, File, 125, 126
+  \item DONE, Command, 69, 123
+  \item DOWN, Command, 51
+
+  \indexspace
+
+  \item ED, Command, 67
+  \item EDITOR, 2
+  \item edt.mss, File, 31
+  \item END-PRFW, Command, 69
+  \item EPROOF-UTREE, Command, 59
+  \item ETA-EQ, Command, 71
+  \item ETA-NF, Command, 71
+  \item etps-build-windows.lisp, File, 109
+  \item etps-compile-windows.lisp, File, 109
+  \item etps-events.lisp, File, 126
+  \item etps-file, Flag, 123
+  \item etps-java-big.bat, File, 110
+  \item etps.ini, File, 111, 112, 123, 126
+  \item etps.sys, File, 109
+  \item ETR-AUTO-SUGGEST, Command, 21, 25, 29
+  \item ETREE-NAT, Command, 4, 8, 90
+  \item ETREE-NAT-VERBOSE, Flag, 8, 81, 90
+  \item EVENT-CYCLE, Flag, 94
+  \item EXECUTE-FILE, Command, 7
+  \item EXERCISE, 104
+  \item EXIT, Command, 71
+  \item EXPAND-LEAVES, Command, 51
+  \item EXPANSION-LEVEL-WEIGHT-A, 45
+  \item expert, 111, 112
+  \item EXPERTFLAG, Flag, 36, 111, 123
+  \item EXPLAIN, Command, 8
+  \item EXT-MATE, 21
+  \item EXT-SEQ, Command, 8
+
+  \indexspace
+
+  \item FACE, 34
+  \item FAILTAC, 80
+  \item FETCH, Command, 16, 34, 37, 38, 63
+  \item fetch, Command, 38
+  \item FILLINEFLAG, Flag, 88, 90
+  \item FIND-BEST-MODE, Command, 16
+  \item FIND-MODE, Command, 34
+  \item FIND-PROVABLE, Command, 35
+  \item FLUSHLEFTFLAG, Flag, 88
+  \item FO-SINGLE-SYMBOL, 31, 34
+  \item FOL, 104
+
+  \indexspace
+
+  \item GENERIC, Style, 89
+  \item GO, Command, 3, 4, 9, 16, 25, 41, 51
+  \item GO2, Command, 3, 8
+  \item GO2, MExpr, 9, 81
+  \item GO2-TAC, 81
+  \item goal
+    \subitem Syntactic Object, 78
+  \item goal-list
+    \subitem Syntactic Object, 78
+  \item GOTO, Command, 51
+  \item GOTO-CLASS, Flag, 37
+  \item grader.ini, File, 123
+
+  \indexspace
+
+  \item HTML-DOC, Command, 126
+
+  \indexspace
+
+  \item I, Command, 2
+  \item IDTAC, 80
+  \item IFTHEN, 80
+  \item IMPORT-NEEDED-OBJECTS, Command, 35
+  \item IMPORTANT, 15
+  \item index.html, File, 126
+  \item INIT, Command, 51
+  \item INIT-DIALOGUE, Flag, 111
+  \item INIT-DIALOGUE-FN, Flag, 111
+  \item INSERT, Command, 15, 16, 34, 36, 37
+  \item INSERT-TPTP*, Command, 39
+  \item INSERT-TPTP, Command, 39
+  \item INSTANCE-OF-REWRITING, 64
+  \item INTERPRET, Command, 83
+  \item INTERRUPT-ENABLE, Flag, 7, 89
+  \item INTRODUCE-GAP, Command, 8, 70
+
+  \indexspace
+
+  \item Java Interface, 113
+  \item JAVA-COMM, Flag, 114
+  \item JAVAWIN, Command, 114
+
+  \indexspace
+
+  \item KEY, Command, 15, 34, 35
+  \item KILL, Command, 51
+
+  \indexspace
+
+  \item LAMBDA-CONV, Flag, 81
+  \item LAMBDA-EQ, Command, 71
+  \item LAMBDA-NF, Command, 71
+  \item LAST-MODE-NAME, Flag, 111
+  \item LATEX-DOC, Command, 125
+  \item latex-facilities-cmd.lisp, File, 126
+  \item latex-facilities-cmd.tex, File, 126
+  \item latex-facilities-short.lisp, File, 125, 126
+  \item latex-facilities-short.tex, File, 126
+  \item latex-facilities.lisp, File, 125, 126
+  \item latex-facilities.tex, File, 126
+  \item latex-manual-cmd.tex, File, 126
+  \item latex-manual-short.tex, File, 126
+  \item latex-manual.tex, File, 125, 126
+  \item LC\_ALL, 113
+  \item LEAVE, Command, 4, 7, 50, 69
+  \item LEDIT, MExpr, 115
+  \item LEXPD*-VARY-TAC, 81
+  \item LIB, Command, 33, 71
+  \item LIB-KEYWORD-FILE, Flag, 34, 36
+  \item LIB-MASTERINDEX-FILE, Flag, 33
+  \item LIBFILES, Command, 36
+  \item LIBOBJECTS-IN-FILE, Command, 35
+  \item LIBRARY, 104
+  \item LIST, Command, 15
+  \item LIST-OF-LIBOBJECTS, Command, 35, 37, 124
+  \item LIST-RRULES, Command, 63, 71
+  \item LIVE-LEAVES, Command, 51
+  \item llatex-facilities-cmd.lisp, File, 125
+  \item LONG-ETA-NF, Command, 71
+
+  \indexspace
+
+  \item MAKE-ABBREV-RRULE, Command, 63, 71
+  \item MAKE-INVERSE-RRULE, Command, 63, 71
+  \item MAKE-RRULE, Command, 64, 71
+  \item MAKE-THEORY, Command, 63, 71
+  \item make-tps-windows.lisp, File, 108--110
+  \item Makefile, File, 107, 112
+  \item MATE, Command, 4, 8, 21, 24, 82, 89
+  \item MathWeb, 116
+  \item MATING-VERBOSE, Flag, 85
+  \item MAX-MATES, Flag, 46, 86
+  \item MAX-PRIM-DEPTH, Flag, 43, 44, 47
+  \item MAX-PRIM-LITS, Flag, 43, 44
+  \item MAX-SEARCH-DEPTH, Flag, 16, 58, 86
+  \item MAX-SEARCH-LIMIT, Flag, 46
+  \item MAX-SUBSTS, Flag, 57
+  \item MAX-SUBSTS-PROJ, Flag, 58
+  \item MAX-SUBSTS-PROJ-TOTAL, Flag, 58
+  \item MAX-SUBSTS-QUICK, Flag, 58, 59
+  \item MAX-SUBSTS-VAR, Flag, 25, 58, 59, 66, 86
+  \item MAX-UTREE-DEPTH, Flag, 16, 58, 86
+  \item MERGE-PROOFS, Command, 8
+  \item MERGE-TREE, Command, 4, 8
+  \item MHELP, 104
+  \item MIN-PRIM-DEPTH, Flag, 43
+  \item MIN-PRIM-LITS, Flag, 43, 44
+  \item MIN-QUICK-DEPTH, Flag, 58, 59
+  \item ml1-theorems.lisp, File, 122
+  \item ml2-theorems.lisp, File, 122
+  \item MODE1, 34
+  \item MODELS, Command, 83
+  \item MODEREC, Command, 34
+  \item MODIFY-GAPS, Command, 8
+  \item MONITOR, MExpr, 87
+  \item MONITORFLAG, Flag, 87
+  \item MONITORLIST, MExpr, 87
+  \item MONSTRO, MExpr, 9, 81
+  \item MOVE, Command, 8, 70
+  \item MOVE-LIBFILE, Command, 36
+  \item MOVE-LIBOBJECT, Command, 36
+  \item MS03-LIFT, Command, 21
+  \item MS04-LIFT, Command, 21
+  \item MS88, 41
+  \item MS89, 41
+  \item MS90-3, 41
+  \item MS90-9, 41
+  \item MS91-6, 41
+  \item MS91-7, 41
+  \item MS91-DEEP, 47
+  \item MS91-NODUPS, 47
+  \item MS91-ORIGINAL, 47
+  \item MS91-SIMPLEST, 47
+  \item MS91-WEIGHT-LIMIT-RANGE, Flag, 45--47
+  \item MS92-9, 41
+  \item MS93-1, 41
+  \item MS98-1, 7, 21, 22, 24, 25, 41, 66, 67
+  \item MS98-1, Command, 25
+  \item MS98-EXTERNAL-REWRITES, Flag, 67
+  \item MS98-REWRITES, Flag, 66
+  \item MS98-TRACE, Flag, 24, 25
+  \item MS98-VERBOSE, Flag, 24, 25
+  \item msg
+    \subitem Syntactic Object, 78
+  \item MT-SUBSUMPTION-CHECK, Flag, 51
+  \item MT94-11, Command, 51
+  \item MT94-12, Command, 51
+  \item MT94-12-TRIGGER, Flag, 51
+  \item MT95-1, Command, 51
+  \item MTREE, MExpr, 50
+
+  \indexspace
+
+  \item NAME-PRIM, Command, 42, 45
+  \item NAT-ETREE, Command, 21, 22, 24, 77, 81, 82
+  \item NAT-ETREE-VERSION, Flag, 81
+  \item natree, 81
+  \item NEG-PRIMSUB, Flag, 43
+  \item NEG-PRIMSUBS, Flag, 43
+  \item NEW-OPTION-SET-LIMIT, Flag, 45--47
+  \item NEW-SEARCHLIST, Command, 16
+  \item NO-GOAL, 81
+  \item NOMONITOR, MExpr, 87
+  \item NUM-OF-DUP, Flag, 46
+  \item NUM-OF-DUPS, Flag, 42, 46
+
+  \indexspace
+
+  \item O, Command, 31
+  \item OK, Command, 67, 69
+  \item Omega, 115
+  \item ONLY-REQUIRED-LEMMAS, Function, 105
+  \item OPEN-MATEVPW, Command, 89
+  \item OPTION-SET-NUM-LEAVES, 46
+  \item OPTION-SET-NUM-VPATHS, 46
+  \item OPTIONS-GENERATE-FN, Flag, 46
+  \item ORDER-COMPONENTS, Flag, 46
+  \item ORELSE, 80
+
+  \indexspace
+
+  \item PALL, Command, 69, 118
+  \item PAUSE, Command, 8
+  \item PBRIEF, Command, 8
+  \item PENALTY-FOR-EACH-PRIMSUB, Flag, 45
+  \item PENALTY-FOR-MULTIPLE-PRIMSUBS, Flag, 45
+  \item PENALTY-FOR-MULTIPLE-SUBS, Flag, 45, 47
+  \item PENALTY-FOR-ORDINARY-DUP, Flag, 46
+  \item PENALTY-FOR-ORDINARY-DUPS, Flag, 47
+  \item PERMUTE-RRULES, Command, 63, 71
+  \item PFNAT, Command, 81
+  \item PIY, Command, 3
+  \item PIY2, Command, 3
+  \item PM-NODE, Command, 50
+  \item PMTR*, Command, 50
+  \item PMTR, Command, 50
+  \item PMTR-FLAT, Command, 50
+  \item PNTR, Command, 81
+  \item POB, Command, 50
+  \item POB-NODE, Command, 50
+  \item POP, 8
+  \item POP, Command, 89
+  \item POSIX, 113
+  \item POTR*-FLAT, Command, 50
+  \item POTR, Command, 50
+  \item POTR-FLAT, Command, 50
+  \item PPATH*, Command, 51
+  \item PPATH, Command, 51
+  \item PPWFFLAG, Flag, 88, 90
+  \item PR89, 43
+  \item PR93, 43
+  \item PR95, 43
+  \item PR97, 44
+  \item PRACTICE, 104
+  \item PRESS-DOWN, Command, 16
+  \item PRIM-ALL, Command, 45
+  \item PRIM-BDTYPES, Flag, 43--45
+  \item PRIM-BDTYPES-AUTO, Flag, 43, 45
+  \item PRIM-OUTER, Command, 45
+  \item PRIM-SINGLE, Command, 45
+  \item PRIM-SUB, Command, 45
+  \item primitive-tacl-defn
+    \subitem Syntactic Object, 79
+  \item primitive-tactic
+    \subitem Syntactic Object, 78
+  \item PRIMSUB-METHOD, Flag, 42, 43
+  \item PRIMSUBS, 45
+  \item PRINT-MATING-COUNTER, Flag, 86
+  \item PRINT-PROOF-STRUCTURE, Command, 9
+  \item print-routines, Function, 81
+  \item PRINTEDTFILE, Flag, 31
+  \item PRINTEDTFLAG, Flag, 31
+  \item PRINTEDTFLAG-SLIDES, Flag, 90
+  \item PRINTPROOF, Command, 88
+  \item PRINTVPDFLAG, Flag, 31
+  \item PROOFLIST, Command, 7, 8, 69
+  \item PROOFW-ACTIVE+NOS, Flag, 7, 85
+  \item PROOFW-ACTIVE, Flag, 7, 85
+  \item PROOFW-ALL, Flag, 7, 85
+  \item PROVE, Command, 3, 67--69, 72
+  \item PROVE-IN, Command, 68, 69
+  \item PRUNE, Command, 51
+  \item PSCHEMES, Command, 37
+  \item PSEQ, Command, 82
+  \item PSEQ-USE-LABELS, Flag, 82
+  \item PSEQL, Command, 82
+  \item PSTATUS, Command, 85
+  \item PUSH, 8
+  \item PUSH, Command, 89
+  \item PUSH-MATING, Command, 89
+  \item PUSH-UP, Command, 16
+
+  \indexspace
+
+  \item QRY, Command, 51
+  \item QUERY-USER, Flag, 42, 87, 89
+  \item QUICK-DEFINE, Command, 16
+  \item QUICK-REF, Command, 89
+
+  \indexspace
+
+  \item REC-MS-FILE, Flag, 89
+  \item REC-MS-FILENAME, Flag, 89
+  \item RECONSIDER, Command, 7, 8, 69
+  \item RECONSIDER-FN, Flag, 46, 47
+  \item RECORDFLAGS, Flag, 111
+  \item REFORMAT, Command, 36
+  \item REM, Command, 31
+  \item REM-NODE, Command, 51
+  \item REMARKS, 104
+  \item REMOVE-LEIBNIZ, Flag, 8
+  \item RENAME-LIBDIR, Command, 35
+  \item RENAME-LIBFILE, Command, 36
+  \item RENAME-OBJECT, Command, 36
+  \item RENUMBERALL, Command, 8
+  \item REPEAT, 80
+  \item REQUIRED-LEMMAS, 105
+  \item RESTORE-MASTERINDEX, Command, 33
+  \item RESTOREPROOF, Command, 8, 69
+  \item RESURRECT, Command, 51
+  \item RETRIEVE-FILE, Command, 35
+  \item REVIEW, Command, 15, 71
+  \item REW, Command, 67
+  \item REWRITE, Command, 67--69
+  \item REWRITE-DEFNS, Flag, 15
+  \item REWRITE-EQUAL-EAGER, Flag, 8
+  \item REWRITE-EQUAL-EXT, Flag, 8
+  \item REWRITE-EQUALITIES, Flag, 8, 15
+  \item REWRITE-EQUIVS, Flag, 25
+  \item REWRITE-IN, Command, 67--69
+  \item REWRITE-ONLY-EXT, Flag, 8
+  \item REWRITE-SUPP*, Command, 63
+  \item REWRITE-SUPP1, Command, 63
+  \item REWRITING, Command, 67, 69
+  \item REWRITING-AUTO-DEPTH, Flag, 70, 71
+  \item REWRITING-AUTO-GLOBAL-SORT, Flag, 71
+  \item REWRITING-AUTO-MAX-WFF-SIZE, Flag, 70, 71
+  \item REWRITING-AUTO-MIN-DEPTH, Flag, 70, 71
+  \item REWRITING-AUTO-SEARCH-TYPE, Flag, 68, 71
+  \item REWRITING-AUTO-SUBSTS, Flag, 70, 71
+  \item REWRITING-AUTO-TABLE-SIZE, Flag, 70, 71
+  \item REWRITING-RELATION-SYMBOL, Flag, 72
+  \item RIGHTMARGIN, Flag, 114
+  \item RIGID-PATH-CK, Flag, 58
+  \item ROOT-CLASS, Flag, 37
+  \item RULEP, Command, 105
+  \item RULES, 102
+  \item run-tpsserver, File, 122
+
+  \indexspace
+
+  \item SAME, Command, 68, 70
+  \item SAVE, EdOp, 31
+  \item SAVE-RRULE, Command, 71
+  \item SAVE-WORK, Command, 7
+  \item SAVEPROOF, Command, 8, 69
+  \item saveproof, Command, 117
+  \item SCALE-DOWN, Command, 16
+  \item SCALE-UP, Command, 16
+  \item SCORE, 104
+  \item score-file, Flag, 123
+  \item SCRIBE, Style, 89
+  \item SCRIBE-ALL-WFFS, Command, 36
+  \item SCRIBE-DOC, Command, 124
+  \item scribe-facilities-cmd.lisp, File, 124, 125
+  \item scribe-facilities-cmd.mss, File, 125
+  \item scribe-facilities-short.lisp, File, 124, 125
+  \item scribe-facilities-short.mss, File, 125
+  \item scribe-facilities.lisp, File, 124, 125
+  \item scribe-facilities.mss, File, 125
+  \item SCRIBE-LIBFILE, Command, 36
+  \item scribe-manual-cmd.mss, File, 125
+  \item scribe-manual-short.mss, File, 125
+  \item scribe-manual.mss, File, 125
+  \item SCRIBE-OTL, 88
+  \item SCRIBE-SLIDES, Style, 90
+  \item SCRIBELIBFILE, Command, 36
+  \item SCRIBEPROOF, Command, 88, 90
+  \item SCRIPT, Command, 89
+  \item script, Command, 90
+  \item SCRIPT, MExpr, 89--91
+  \item SEARCH, Command, 15, 35, 36
+  \item SEARCH-ORDER, Command, 47
+  \item SEARCH-TIME-LIMIT, Flag, 46
+  \item SEARCH2, Command, 35, 36
+  \item SEQLIST, Command, 82
+  \item SEQUENCE, 81
+  \item sequent calculus, 82
+  \item server, 121
+  \item SET-BACKGROUND-EPROOF, Command, 24
+  \item SETFLAG, Command, 15
+  \item SETUP-ONLINE-ACCESS, Command, 121, 122
+  \item SETUP-SLIDE-STYLE, MExpr, 91
+  \item SHOW, Command, 35, 36
+  \item show, Command, 38
+  \item SHOW-ALL-LIBOBJECTS, Flag, 34, 36
+  \item SHOW-ALL-WFFS, Command, 34, 35
+  \item SHOW-BESTMODE, Command, 34
+  \item SHOW-HELP, Command, 124
+  \item SHOW-KEYWORDS, Command, 34, 36
+  \item SHOW-MATING, Command, 51
+  \item SHOW-MHELP, Command, 35
+  \item SHOW-SUBSTS, Command, 51
+  \item SHOW-WFF, Command, 35
+  \item SHOW-WFF\&HELP, Command, 35, 36
+  \item SHOW-WFFS-IN-FILE, Command, 35
+  \item SIB, Command, 51
+  \item signal-event, Function, 94
+  \item SIMPLE-WEIGHT-B-FN, 45, 46
+  \item SIMPLEST-WEIGHT-B-FN, 45
+  \item SIMPLIFY-PLAN*, Command, 64
+  \item SIMPLIFY-PLAN, Command, 64
+  \item SIMPLIFY-SUPP*, Command, 64
+  \item SIMPLIFY-SUPP, Command, 64
+  \item SLIDEPROOF, Command, 90
+  \item SLIDES-TURNSTYLE-INDENT, Flag, 90
+  \item SOLVE, Command, 83
+  \item SORT, Command, 36
+  \item SPRING-CLEAN, File, 36
+  \item SQUEEZE, Command, 8, 70
+  \item STYLE, Flag, 89, 91
+
+  \indexspace
+
+  \item T, Command, 2
+  \item tacl-defn
+    \subitem Syntactic Object, 79
+  \item TACMODE, Flag, 8, 78, 81
+  \item tactic-defn
+    \subitem Syntactic Object, 78
+  \item tactic-exp
+    \subitem Syntactic Object, 78
+  \item tactic-mode
+    \subitem Syntactic Object, 78
+  \item tactic-output, Function, 78, 79
+  \item tactic-use
+    \subitem Syntactic Object, 78
+  \item TACTIC-VERBOSE, Flag, 78, 81
+  \item tactic-verbose, Flag, 79
+  \item TACUSE, Flag, 78, 81
+  \item TAG-CONN-FN, Flag, 51
+  \item TAG-LIST-FN, Flag, 51
+  \item TEST, Command, 16, 20, 35
+  \item TEST-EASIER-*, Flag, 16
+  \item TEST-FASTER-*, Flag, 16
+  \item TEST-INITIAL-TIME-LIMIT, Flag, 16
+  \item TEST-MAX-SEARCH-VALUES, Flag, 16
+  \item TEST-PROBLEM, 104
+  \item TEST-THEOREMS, Flag, 111
+  \item test-top, REVIEW subject, 16
+  \item TEX, Style, 89
+  \item TEX-1-OTL, 88
+  \item TEX-ALL-WFFS, Command, 36
+  \item TEX-LIBFILE, Command, 36
+  \item TEX-OTL, 88
+  \item TEXLIBFILE, Command, 36
+  \item TEXPROOF, Command, 69, 88
+  \item THEN, 80
+  \item THEN*, 80
+  \item THEN**, 80
+  \item THEOREM-NO, Function, 105
+  \item THM-TYPE, 104
+  \item token
+    \subitem Syntactic Object, 78
+  \item TOP, Command, 67
+  \item tps-build-windows.lisp, File, 109
+  \item tps-compile-windows.lisp, File, 109
+  \item tps-java.bat, File, 110
+  \item TPS-TEST, Command, 111
+  \item tps.sty, File, 111
+  \item tps.tex, File, 125
+  \item tps3-error.lisp, File, 112
+  \item TPS3-SAVE, Command, 124
+  \item tps3.ini, File, 108, 111, 124, 126
+  \item tps3.patch, File, 108
+  \item tps3.sys, File, 109
+  \item tpsdoc.tex, File, 125
+  \item TRANSFER-LINES, Command, 8
+  \item TRY, 81
+  \item TURNSTILE-INDENT, Flag, 88
+  \item TURNSTILE-INDENT-AUTO, Flag, 88
+
+  \indexspace
+
+  \item UNANY*, Command, 70, 71
+  \item UNANY*-IN, Command, 70, 71
+  \item UNAPP*, Command, 70, 71
+  \item UNAPPLY-RRULE, Command, 63
+  \item UNARR*, Command, 64
+  \item UNARR, Command, 64
+  \item UNARR1*, Command, 64
+  \item UNARR1, Command, 64
+  \item UNIF-DEPTHS, Command, 59
+  \item UNIF-NODEPTHS, Command, 59
+  \item UNIFORM-SEARCH, Command, 15, 16, 20, 116
+  \item UNIFORM-SEARCH-L, Command, 20
+  \item UNIFY, MExpr, 57
+  \item UNIFY-VERBOSE, Flag, 85
+  \item UNIXLIB, Command, 33, 37
+  \item UNIXLIB-SHOWPATH, Flag, 38
+  \item UNREWRITE-PLAN*, Command, 63
+  \item UNREWRITE-PLAN1, Command, 63
+  \item UNSCRIPT, MExpr, 89, 91
+  \item UP, Command, 51
+  \item UPDATE, Command, 15
+  \item UPDATE-KEYWORDS, Command, 36
+  \item UPDATE-LIBDIR, Command, 35, 36
+  \item UPDATE-RELEVANT, Command, 15
+  \item USE-DEFAULT-BUG-DIR, Flag, 124
+  \item USE-DIY, Flag, 9
+  \item USE-INTERNAL-PRINT-MODE, Flag, 88
+  \item USE-RRULES, Command, 64, 67
+  \item USE-RULEP, Flag, 81
+  \item USE-RULEP-TAC, 81
+  \item use-tactic, MExpr, 81
+  \item USE-THEORY, Command, 63, 64, 68, 71
+  \item user-passwd, 121
+  \item user-passwd, File, 121
+  \item USER-PASSWD-FILE, Flag, 121
+  \item UTF-8, 113
+
+  \indexspace
+
+  \item VARY-MODE, Command, 16
+  \item VERBOSE-REWRITE-JUSTIFICATION, Flag, 72
+  \item VPD-FILENAME, Flag, 31
+  \item VPF, EdOp, 88
+  \item vpshow, 89
+  \item vpshow, File, 89
+  \item vpshow-big, File, 89
+  \item VPT, EdOp, 88
+
+  \indexspace
+
+  \item web server, 121
+  \item weight-a, 45
+  \item WEIGHT-A-COEFFICIENT, Flag, 45
+  \item WEIGHT-A-FN, Flag, 45
+  \item weight-b, 45
+  \item WEIGHT-B-COEFFICIENT, Flag, 45
+  \item WEIGHT-B-FN, Flag, 45
+  \item weight-c, 45
+  \item WEIGHT-C-COEFFICIENT, Flag, 45
+  \item WEIGHT-C-FN, Flag, 45, 46
+  \item WINDOW-STYLE, Flag, 91
+
+  \indexspace
+
+  \item XTERM, Style, 89
+  \item XTERM-ANSI-BOLD, Flag, 113
+
+\end{theindex}

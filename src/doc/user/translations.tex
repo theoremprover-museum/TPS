@@ -1,0 +1,18 @@
+\chapter{Proof Translations and Tactics}
+
+\section{Translation between proof formats; tactics}\label{tactics}
+After a complete mating has been found, and the expansion tree correctly
+instantiated with terms for variables, the expansion proof can be
+translated into a natural deduction proof using the system's inference
+rules.  This translation process is carried out by tactics.  The
+following sections describe what tactics are and how to define them.  The
+current tactics and tacticals of the system are listed in the facilities guide;
+you can also get a complete listing of each by typing {\tt HELP TACTIC} or {\tt HELP TACTICAL}.
+
+The \indexcommand{NAT-ETREE} can be used to
+translate natural deduction proofs into expansion proofs.
+See the section \ref{natetr} for more information about
+\indexcommand{NAT-ETREE}.
+
+\input{tactics}
+\input{natetr}

@@ -1,0 +1,36 @@
+CMU Common Lisp is available on the web:
+
+ftp://ftp2.cons.org/pub/languages/lisp/cmucl/release/
+
+Download, for example, the files:
+
+cmucl-18b.linux.glibc2.extra
+cmucl-18b.linux.glibc2
+
+(or whichever files are appropriate for your operating system).
+
+Then gunzip the files and do a 'tar xvf' into a cmucl directory,
+for example, /home/theorem/cmucl.
+
+To build TPS for CMUCL, edit the Makefile so lisp calls cmucl.
+For example, the line "lisp =" in the Makefile should be edited
+to something like:
+
+lisp = /home/theorem/cmucl/bin/lisp
+
+If you would like to distinguish the CMUCL version of TPS
+from a version compiled for another Lisp, change "tps-core-name"
+in the Makefile.  For example,
+
+tps-core-name = cmutps
+
+Then, calling
+
+make tps > maketps.log
+
+will compile and build TPS.
+
+Then TPS can be run under CMUCL by calling, for example:
+
+/home/theorem/cmucl/bin/lisp -core ~/cmutps
+

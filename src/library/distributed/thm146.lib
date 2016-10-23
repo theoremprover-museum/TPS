@@ -1,0 +1,30 @@
+(:name TCLOSED
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA p(OII) LAMBDA s(OII) FORALL u(I) FORALL v(I) FORALL w(I).p(OII) u(I) v(I) AND s(OII) v(I) w(I) IMPLIES p(OII) u(I) w(I)"
+:needed-objects   NIL
+:mhelp "You can't get out of p by taking one step of s"
+:other-attributes ((PRINTNOTYPE T) (TYPE "O(OII)(OII)"))
+:other-remarks "
+")
+
+
+(:name THM146B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL r(OII) FORALL x(I) FORALL y(I).FORALL p(OII) [r(OII) SUBRELATION(O(OII)(OII)) p(OII) AND TCLOSED p(OII) r(OII) IMPLIES p(OII) x(I) y(I)] EQUIV FORALL p(OII).r(OII) SUBRELATION(O(OII)(OII)) p(OII) AND TCLOSED p(OII) p(OII) IMPLIES p(OII) x(I) y(I)"
+:needed-objects   (SUBRELATION TCLOSED)
+:mhelp "Equivalence of two definitions of transitive closure.
+Note that TCLOSED p p is exactly TRANSITIVE p
+Theorem suggested by Dana Scott."
+:other-attributes NIL
+:other-remarks "
+")
+
+

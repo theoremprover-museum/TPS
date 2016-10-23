@@ -1,0 +1,1767 @@
+
+		THMJOBS
+List of theorems to try proving in various modes, modify, or
+experiment with. 
+Also see /afs/cs/project/tps/admin/provejobs
+Also see /afs/cs/project/tps/tps/tpslib/andrews/thmideas
+Keep working files on tps proofs (not yet completed) in
+/afs/cs/user/andrews/private/work
+
+See records in tps library, and in my folders of hardcopy output.
+See folder "Theorems to prove" on shelf in office
+
+Remove all h's and w's from library theorems before proceeding!
+
+-----------------------------------------------------------
+Next theorem number for Andrews to use in library: thm418
+-----------------------------------------------------------
+TPTP library
+http://www.cs.miami.edu/~tptp/TPTP/QuickGuide/
+
+These are hard test problems. If you solve any of these then either
+your system is very good, or your system is unsound.
+
+* THF Timeout: LCL634^1 
+
+TPTP Problem File: LCL634^1.p
+View Solutions - Solve Problem
+
+
+% File     : LCL634^1 : TPTP v3.7.0. Released v3.6.0.
+% Domain   : Logical Calculi
+% Problem  : Goedel's ontological argument on the existence of God
+% Version  : [Ben08] axioms : Especial.
+% English  :
+
+% Refs     : [Fit00] Fitting (2000), Higher-Order Modal Logic - A Sketch
+%          : [Ben08] Benzmueller (2008), Email to G. Sutcliffe
+% Source   : [Ben08]
+% Names    : Fitting-HOLML-Ex-God-alternative-b [Ben08]
+
+@InCollection{Fit00,
+    Author       = "Fitting, M.",
+    Year         = "2000",
+    Title        = "{Higher-Order Modal Logic - A Sketch}",
+    Editor       = "Caferra, R. and Salzer, G.",
+    BookTitle    = "{Automated Deduction in Classical and Non-Classical 
+                    Logics}",
+    Series       = "Lecture Notes in Artificial Intelligence",
+    Number       = "1761",
+    Pages        = "23-38",
+    Publisher    = "Springer-Verlag",
+    Comment      = "TPTPRef"
+}
+
+
+-----------------------------------------------------------
+Axiom6 AND AC IMPLY INF-I
+(or use INF-II).
+Do we need AC?
+-----------------------------------------------------------
+thm414:
+If r and s are equivalence relations, so is the transitive closure
+of [r UNION t].
+Mentioned by Jorg Siekmann in lecture at CMU 2008 Sept 6.
+Number of vpaths: 4536
+Too hard. Try parts of it.
+
+thm415 PROVED
+"FORALL r(OAA). SYMMETRIC r IMPLIES SYMMETRIC .TRANSITIVE-CLOSURE r"
+
+-----------------------------------------------------------
+Continue checking piy2 on all theorems
+/afs/andrew/mcs/math/TPS/tpslib/andrews% grep -i "DIY2 THM" thm*
+
+
+
+Objects in andrews/thms4.lib are:
+
+
+THM47     GWFF
+THM47A     GWFF
+THM47B     GWFF
+THM47C     GWFF
+THM48     GWFF
+THM47D     GWFF
+
+Objects in mbishop/tps2/thms4.lib are:
+
+
+
+
+
+
+THM47     GWFF
+THM47A     GWFF
+THM48     GWFF
+THM48A     GWFF
+THM49     GWFF
+-----------------------------------------------------------------
+Translate the 	Klenk problems in
+/afs/andrew.cmu.edu/mcs/math/TPS/tpslib/andrews/thmideas
+into TPS format and test them. These have been proven 
+by Sieg's theorem prover (I think).
+------------------------------------------------------------------
+Schroder-Bernstein see below
+
+Wilfried Sieg and Clinton Field, Automated search for Gödel’s proofs;
+Annals of Pure and Applied Logic, 133; 2005, 319-338.
+
+------------------------------------------------------------------
+test examples mentioned in recent Bennzmuller papers
+such as Benzmuller2005c16,
+presented at ESHOL, or in references to those papers.
+Check these against the list in test-bool.
+==================================
+experiment with rewrite top level using xclisptps on ktps
+try x1405 rules on x1406def
+Have rewrite rules to do the translations into the notation?
+
+=================================================================
+Tried TOUGHNUT2 with piy2 for about a week in April 2009 and failed
+to prove it. This seems to be beyong the current capabilities of TPS
+Each mode was tried for several hours.
+-----------------------------------------------------------
+Try THM409-6, just using MATE, not DIY.
+-----------------------------------------------------------
+Derive the principle of strong induction from the regular induction
+principle.
+
+ IND (abbr used in  THM 587)
+FORALL p(OI).p 0(I) AND FORALL x(I) [p x IMPLIES p.S(II) x] IMPLIES FORALL x p x
+
+Complete induction (from THM178):
+
+FORALL P(OI) 
+[ FORALL n(I) [ FORALL m(I) [ m INFIX-LESS n IMPLIES P m] IMPLIES P n]
+                     IMPLIES FORALL n P n]
+-------------
+Thus, the theorem is
+"IND IMPLIES 
+.FORALL P(OI) 
+[ FORALL n(I) [ FORALL m(I) [ m INFIX-LESS n IMPLIES P m] IMPLIES P n]
+                     IMPLIES FORALL n P n]"
+
+Howeve, we probably need to add some lemmas, and a definition of INFIX-LESS.
+(which is now a LIB-CONST).
+
+
+Define LESS as suggested in x7200 if a definition is needed at all.
+
+LAMBDA x(S) LAMBDA y(S) FORALL p(OS).[p .SUCC(SS) x] AND FORALL z(S) [p z IMPLIES p.SUCC(SS) z] IMPLIES p y
+-------------
+
+To: Peter Andrews <pa01@gtps.math.cmu.edu>
+Subject: Re: exercise 
+From: Sean McLaughlin <seanmcl@cs.nyu.edu>
+Date: Thu, 15 Apr 2004 13:25:02 -0400
+
+This is the formulation, with proof:
+
+
+let INDUCT_STRONG = prove_by_refinement(
+   `!P. P 0 /\ (!n. (!m. m <= n ==> P m) ==> P (SUC n)) ==> !n. P n`,
+(* {{{ Proof *)
+   [
+     REPEAT_N 2 STRIP_TAC;
+     INDUCT_TAC;
+     ASM_REWRITE_TAC[];
+     CLAIM `!n. (!m. m <=| n ==> P m)`;
+     PROOF[
+       INDUCT_TAC;
+       ASM_MESON_TAC[ARITH_RULE `x <= 0 ==> (x = 0)`];
+       REPEAT STRIP_TAC;
+       TCASES_ON `m = SUC n'`;
+       ASM_REWRITE_TAC[];
+       USE_IASSUM 0 MATCH_MP_TAC;
+       ASM_REWRITE_TAC[];
+       FIRST_ASSUM MATCH_MP_TAC;
+       MP_LIST_TAC[4;5] THEN ARITH_TAC;];
+     FIRST_ASSUM MATCH_MP_TAC;
+     TEXISTS_TAC `SUC n`;
+     ARITH_TAC;
+   ]);;
+(* }}} *)
+
+
+To translate:  ! -> forall ?-> exists
+INDUCT_TAC does a case split on the universally quantified variable of the 
+goal
+eg: if   INDUCT_TAC (!m. 0 <= m)  would give the two subgoals, 0 <= 0 and 
+0 <= m ==> 0 <= SUC m
+The trick (which caused me some head scratching) is the line beginning 
+'CLAIM'.  Once that
+is shown, it is easy, but finding that lemma would be an accomplishment 
+for an automatic theorm
+prover.
+
+As for other facts about numbers,
+ARITH_TAC solved the goal
+~(m = SUC n') ==> m <=| SUC n' ==> m <=| n'
+and ARITH_RULE solved the goal
+`x <= 0 ==> (x = 0)`
+These were the only theorems besides basic rewrites.
+
+Best,
+
+Sean
+
+
+
+
+
+
+On Thu, 15 Apr 2004 12:51:56 -0400, Peter Andrews <pa01@gtps.math.cmu.edu> 
+wrote:
+
+>
+> Sean,
+> 	Indeed, deriving the principle of strong induction from the
+> regular induction principle would make a nice exercise.  Do you have a
+> particular formulation of this, and have you checked whether any other
+> theorems about numbers are needed? We could try to prove it
+> automatically with TPS.
+>         Someday when we both have time I should show you various
+> facilities in TPS for proving theorems semi-automatically as well as
+> automatically. I'm planning to update the TPS manual, but right now
+> it is far from adequate.
+> 						Best wishes,
+> 						PBA
+>
+
+
+
+-- 
+Sean McLaughlin
+333 Morewood Ave. #4
+Pittsburgh, PA, 15213
+
+
+-------------------------------------------------------------------
+Prove Sieg's theorems from his paper on
+finding proofs for Gödel's incompleteness theorems
+-------------------------------------------------------------------
+Find a mode for THM406, 405, 404
+
+THM406 seems to require a primsub involving a 
+negated equality. Use MODE-THM406-TRIAL-A
+to get this primsub.
+
+THM404 tried with piy2 2004 Sept 5, no success.
+
+THM405 tried with piy2 2004 Sept 30, no success.
+------------------------------------------------------------
+Formalize and prove the Lemma on page 26 of Ed Clarke's
+course notes 
+Model Checking with the Partial Order Reduction
+-----------------------------------------------------------
+
+When running old modes involving ms88, may need to change
+RIGID-PATH-CK to T because changes involving this flag and
+OCCURS-CHECK were made in late 1993
+
+==============================================
+Try using 	GOODMODES and TEST-INIT.
+see tps3.ini
+
+try runing TPS on the web
+
+
+try using the library classification system
+Check help messages
+Ask Mike Shamos what people have developed relevant ideas
+
+test uniform-search
+==============================================
+		THMS TO TRY. Check records first
+
+
+
+
+---------------------------------------
+thm136
+FORALL r(OAA) TRANSITIVE .TRANSITIVE-CLOSURE r
+The time used in each process:
+-----------------------------------------------------------------------------
+Process Name         | Realtime | Internal-runtime |  GC-time   | I-GC-time  
+-----------------------------------------------------------------------------
+DIY THM136           |       12 |             6.81 |       0.73 |       6.08
+======================================
+
+
+thm136a
+FORALL RRRR(OAA) TRANSITIVE .TRANSITIVE-CLOSURE RRRR
+The time used in each process:
+-----------------------------------------------------------------------------
+Process Name         | Realtime | Internal-runtime |  GC-time   | I-GC-time  
+-----------------------------------------------------------------------------
+DIY THM136A          |       12 |             6.62 |       0.67 |       5.95
+----------------------------------------------------------------------------
+======================================
+THM136B
+FORALL LESSOG(OAA) TRANSITIVE.TRANSITIVE-CLOSURE LESSOG
+The time used in each process:
+-----------------------------------------------------------------------------
+Process Name         | Realtime | Internal-runtime |  GC-time   | I-GC-time  
+-----------------------------------------------------------------------------
+DIY THM136B          |        8 |             3.95 |       0.35 |       3.60
+==========================================
+THM136C
+FORALL L(OAA) TRANSITIVE .TRANSITIVE-CLOSURE L
+The time used in each process:
+-----------------------------------------------------------------------------
+Process Name         | Realtime | Internal-runtime |  GC-time   | I-GC-time  
+-----------------------------------------------------------------------------
+DIY THM136C          |        8 |             4.03 |       0.38 |       3.65
+---------------------------------------
+
+=========================================
+x5208
+
+      EXISTS S(OI) FORALL x(I) [[S x OR P(OI) x] AND .~S x OR Q(OI) x]
+ EQUIV FORALL y(I) .P y OR Q y
+The time used in each process:
+-----------------------------------------------------------------------------
+Process Name         | Realtime | Internal-runtime |  GC-time   | I-GC-time  
+-----------------------------------------------------------------------------
+DIY X5208            |        6 |             3.71 |       0.38 |       3.33
+ MODE-THM145-BIG
+=========================================
+ x5208a
+     EXISTS RPRPST(OI) FORALL x(I) [    [RPRPST x OR P(OI) x]
+                                                 AND .~RPRPST x OR Q(OI) x]
+            EQUIV FORALL y(I) .P y OR Q y
+The time used in each process:
+-----------------------------------------------------------------------------
+Process Name         | Realtime | Internal-runtime |  GC-time   | I-GC-time  
+-----------------------------------------------------------------------------
+DIY X5208A           |        5 |             2.49 |       0.27 |       2.22
+
+=========================================
+ x5208b
+ EXISTS AABCDEFGHIJKLMNOPQRSTUVWXYZ(OI) FORALL x(I)
+                [    [AABCDEFGHIJKLMNOPQRSTUVWXYZ x OR P(OI) x]
+                  AND .~AABCDEFGHIJKLMNOPQRSTUVWXYZ x OR Q(OI) x]
+            EQUIV
+              FORALL y(I) .P y OR Q y
+The time used in each process:
+-----------------------------------------------------------------------------
+Process Name         | Realtime | Internal-runtime |  GC-time   | I-GC-time  
+-----------------------------------------------------------------------------
+DIY X5208B           |        5 |             2.39 |       0.25 |       2.14
+=========================================
+
+=========================================
+
+
+================================================================
+---------------------------------------
+LaGrange's Theorem about cosets. (Algebraic Structures)
+
+(a,b) = (c,d) iff a = c & b = d
+Already have this?
+
+
+THM592	example from Dana Scott. Chad is working on it. Oct 2001.
+Tried TPS-TEST 2003 April 21
+Tried PIY2 2005 Feb 28. No success
+-------------------------------------------
+==================================================================
+Tried with TPS-TEST 2003 April 19 and failed
+end of run:
+Proving EXT-IMP-EMB2 in mode MODE-THM303-DTPS + QUIET
+The time used in each process:
+-----------------------------------------------------------------------------
+Process Name         | Realtime | Internal-runtime |  GC-time   | I-GC-time  
+-----------------------------------------------------------------------------
+                                (Interrupted)
+DIY                  |     2048 |
+------------------------------------------------------------------
+==================================================================
+
+Cuurent candidates April 2000
+ THM570 (which requires a
+primsub).
+
+THM572	no success with piy2 2004 October. 
+DIY2-INIT-TIME-LIMIT:  10
+  DIY2-NUM-ITERATIONS:   10
+  DIY2-TIME-INCREASE-FACTOR: 2
+
+thm120J
+
+thm275a "TPS must define the transitive closure of r"
+
+thm160
+"A subset of a finite set is finite"
+Note thm531e, which has been proved and is easier
+
+Try  THM531B THM531C THM531D
+
+ thm161
+There is no surjection of a proper subset of a finite set
+onto itself
+-------------------------------------------
+
+The only remaining built-in exercises which haven't been proven
+automatically are X5309, X6105, X6106 and X6201.
+
+
+
+THM15
+
+
+
+THM1
+
+
+
+See thmideas file
+Pfenning's examples in thmideas
+Bledsoe's intermediate value thm, even-odd
+
+====================================================
+Stronger form of Church-Rosser theorem. See discussion in
+Matt's paper or thesis
+====================================================
+Nx imples N.S.S.Sx
+
+THM112A  MODE-THM112A-TRY4 leads to a bug found 1998 July 20
+
+THM400
+Attributed to Wos at CADE13. Needs lots of duplications.
+
+THM2. May require instanatiation with K[primsub wff]
+
+THM4: topspace
+nbhd-thm2
+
+THM40 can we prove it if we don't cheat on REWRITE-EQUALITIES,
+and use dual (Lazy2) ?
+
+
+
+===================================================================
+Try push-down on bool-prop-56
+to improve BOOL-PROP-MODE2
+
+===================================================================
+a well ordering is a total ordering
+
+===================================================================
+
+
+Transitive closure theorems
+
+SET005-1	LS108
+
+% File     : MSC004=HasParts2-1 : TPTP v1.1.1. Bugfixed v1.0.0.
+% Names    : HASPARTS-T2 [Wilson & Minker, 1976]
+
+Binary homomorphisms. Try using PUSH-UP
+
+======================================================
+improve some modes
+that now work by using TEST
+
+try
+UNIFORM-SEARCH-L
+
+test various theorems with SKOLEM-DEFAULT NIL
+The delete mode-test-skolem-nil-1 from library
+
+try some theorems in BUGS file where there were translation bugs
+
+======================================================================
+delete ^H and preceding symbols from library files
+what's the best way to find them?
+do scribe-all-wffs and look for problems
+==========================================
+
+Subject: MS91 deepening
+Date: Fri, 23 May 1997 17:43:12 -0400
+From: Matt Bishop <Matt_Bishop@FTPS.TPS.CS.CMU.EDU>
+I've tested out MS91-INTERLEAVE, and added it to the modes for the following
+theorems. As you can see, it seems to improve the performance rather more 
+than the changes I made last week...
+
+
+THM122: 12 seconds in MODE-THM122-PR97 (same as before)
+THM120I-1: 14 seconds in MODE-THM120I-PR97 (was 24 secs)
+===================================================
+
+( PELL66  PELL67  PELL68 
+
+( THM400		Matt checked interactively
+2004 October 17 failed to prove THM400 with piy2 on ITPS.
+DIY2-INIT-TIME-LIMIT:  4
+  DIY2-NUM-ITERATIONS:   8
+  DIY2-TIME-INCREASE-FACTOR: 2
+ended with 8.5 minutes realtime
+
+( THM138
+
+
+THM117A
+
+"One form of transfinite induction due to Bailin & Barker-Plummer; E means
+membership; R is a well-founded relation."  Got message: No proof at current
+depth (2). Try with a higher bound on NUM-OF-DUPS. Check that this really is a
+theorem.
+Thursday, April  3, 2003 at 15:07:14.
+Failed to prove this using TPS-TEST trying all modes 
+in GOODMODES1 with time limit 1800 seconds.
+
+
+ THM400
+:mhelp "Pure first-order theorem.
+Attributed to Wos at CADE13.
+
+
+====================================================
+Subject: THM165
+Date: Fri, 15 Aug 1997 18:10:12 -0400
+From: Matt Bishop <Matt_Bishop@FTPS.TPS.CS.CMU.EDU>
+
+
+
+I've put thm165.work onto norfolk, together with the new mode (THM165-MODE)
+and substitution (THM165-NEWSUB), and checked that they still work there.
+It takes 32 seconds to finish the proof after the EGEN step.
+
+Generating the correct substitution looks impossible; I limited the
+primsubs to those from PR95 containing exactly six literals and five 
+quantifiers, all over variables of type A, but it's still taken almost half
+an hour and used up a huge amount of space just to call NAME-PRIM, without
+even starting the search.
+========================================================
+
+Subject: Interactive proof of THM266
+Date: Fri, 15 Aug 1997 16:43:12 -0400
+From: Matt Bishop <Matt_Bishop@FTPS.TPS.CS.CMU.EDU>
+
+
+THM266 says that there is a bijection from partitions to equivalence
+relations; there is a workfile thm266.work that proves this by breaking 
+it into parts and providing some instantiations, then running DIY-L on 
+the remaining parts. 
+
+For the proof of injectivity, it also has to ASSERT THM266-LEMMA, which 
+states that if T and U are two different partitions then there exist x and
+y such that either x and y are in the same set in T but not in U, or vice
+versa. The (wholly interactive) proof of this is not on norfolk, although
+I have it stored on FTPS.
+=====================================================
+THM588, THM588AC
+Challenge Problem from John Harrison
+
+Date: Thu, 18 Jan 2001 15:33:22 -0500 (EST)
+From: Chad Edward Brown <cebrown+@andrew.cmu.edu>
+To: Peter.Andrews@cmu.edu
+Subject: Challenge Problem from John Harrison
+
+
+Prof. Andrews,
+
+I got an email from John Harrison yesterday with a challenge problem.
+As a result, I've created three new gwff's THM588, THM588AC, & THM589.
+We can do THM589 automatically, but not the other two.  These are
+the emails, if you are interested:
+
+----------------------------------------------------------------------
+Hi Chad,
+
+I came across the following higher-order fact recently which is a bit
+tiresome to prove in HOL. 
+
+  If (for all x and y, g(x) = g(y) implies f(x) = f(y))
+  then there exists an h such that h o g = f
+
+(where o = function composition). I wondered if this or something similar
+can be proved automatically in TPS.
+
+Cheers,
+
+John.
+----------------------------------------------------------------------
+Hi John,           
+
+Thanks for the challenge problem.
+
+> If (for all x and y, g(x) = g(y) implies f(x) = f(y))
+> then there exists an h such that h o g = f
+
+This is tough for TPS, because the definition of h (in general)
+must use descriptions or choice.  I tried assuming AC as a hypothesis
+and plugging in the definition of h, but even verifying this h works
+is too hard to do automatically.  
+
+TPS can do a special case where we assume the functions f & g
+have sets as values (so they're really binary relations i -> i -> o).
+In this case, the "h" is a relation (type (i -> o) -> i -> o)
+and, as a relation, has a simpler definition that does not
+require description or choice.  TPS solves this problem in 21 minutes.
+The first 20 minutes or so is spent generating and testing incorrect
+definitions of h, before it stumbles across the correct one.
+
+We do need a more intelligent way to automatically suggest and rule out
+instantiations for set & relation variables like this, and that's
+something I'm working on now.  We also need a better way to handle
+descriptions or choice -- that's something for the future!
+
+Chad
+
+PS - Why was this so hard in HOL? 
+
+PPS - If you're interested, this is the definition of h in the special case
+where h is a relation:
+
+[LAMBDA P LAMBDA X EXISTS u.g u = P AND f u X]
+-----------------------------------------------------------------------
+=====================================================
+Note :allegro tps fails to prove
+ THM15B in mode MODE-THM15B-PR97-A.
+
+value for TEST-THEOREMS
+(
+           (thm15b MODE-THM15B-PR97-A)
+           (thm30 mode-thm30-msv)
+           (thm104 mode-thm104-msv)
+           (thm112 mode-thm112-msq)
+           (thm112c mode-thm112c-msq)           
+           (thm117c mode-thm117c-msq)
+           (thm129 mode-thm129-msv)
+           (thm131 mode-thm131-msv-a)
+           (thm134 mode-thm134-msq)
+           (thm135 mode-thm135-msv-a)
+           (thm143a mode-thm143a-1)
+           (thm301 mode-thm301-msq)
+           (thm301a mode-thm301a-msq)
+           (x5200  mode-x5200-msq) 
+           (x5205  mode-x5205-msq)
+           (x5304  mode-x5304-msq) 
+           (x5305  mode-x5305-msq) 
+           (x5308  mode-x5308-msq) 
+           (x5310  mode-x5310-a)
+)
+
+
+
+
+
+values to be corrected:
+
+
+           (thm112a mode-thm112a-msv)
+           (thm133 mode-thm133-msq)		doesn't work
+           (thm303 mode-thm303-msv)	seems to make the computer hang in about 6 minutes
+
+Date: Sun, 23 Mar 1997 12:57:21 -0500 (EST)
+From: Huilong Wu <huilong+@andrew.cmu.edu>
+To: peter.andrews@k.gp.cs.cmu.edu
+Subject: Fwd: SEMINAR ON AUTOMATED DEDUCTION
+References: <1997.2.26.19.54.11.Peter.Andrews@K.GP.CS.CMU.EDU>
+        <knB5jG_00VpBIIpUVZ@andrew.cmu.edu>
+
+
+Peter,
+
+Following section does work! info.test1 for the first section is put in
+my lib directory  /tpslib/huilong, info.test2 for the second test-un88
+is also there. I will continue to explore the few unworking theorems and
+if stuck, will ask Matt for help.
+
+(set-flag 'test-theorems
+         '(
+           (user::thm112 user::mode-thm112-msq)
+           (user::thm112c user::mode-thm112c-msq)           
+           (user::thm117c user::mode-thm117c-msq)
+           (user::thm133 user::mode-thm133-msq)
+           (user::thm134 user::mode-thm134-msq)
+           (user::thm301 user::mode-thm301-msq)
+           (user::thm301a user::mode-thm301a-msq)
+           (user::thm30 user::mode-thm30-msv)
+           (user::thm104 user::mode-thm104-msv)
+           (user::thm112a user::mode-thm112a-msv)
+           (user::thm129 user::mode-thm129-msv)
+           (user::thm135 user::mode-thm135-msv-a)
+           (user::thm15b user::mode-thm15b-msv-a)
+           (user::thm131 user::mode-thm131-msv-a)
+           (user::thm303 user::mode-thm303-msv)
+           (user::x5200  user::mode-x5200-msq) 
+           (user::x5205  user::mode-x5205-msq)
+           (user::x5304  user::mode-x5304-msq) 
+           (user::x5305  user::mode-x5305-msq) 
+           (user::x5308  user::mode-x5308-msq) 
+           (user::x5310  user::mode-x5310-a)
+))
+
+
+(set-flag 'default-tactic 'complete-transform-tac)
+(set-flag 'default-ms 'ms91-7)
+(set-flag 'search-time-limit 60)
+(set-flag 'max-utree-depth 20)
+(set-flag 'max-search-depth 20)
+(set-flag 'print-mating-counter 300000)
+(set-flag 'recordflags '(last-mode-name default-ms short-site-name
+machine-type   lisp-implementation-type max-search-limit
+                          search-time-limit max-utree-depth last-mode-name
+                          max-search-depth min-quick-depth 
+                          initial-bktrack-limit num-frpairs
+                          first-order-mode-ms num-of-dups max-mates
+                          order-components rewrite-defns 
+                          rewrite-equalities last-mode-name
+                          remove-leibniz prim-quantifier prim-bdtypes
+                          neg-prim-sub occurs-check rank-eproof-fn
+                          skolem-default min-quantifier-scope))
+(alias test-un88 "(set-flag 'test-theorems '(
+
+(user::thm112c user::mode-thm112c-msq) 
+(user::thm130 user::mode-thm130-msq) 
+(user::thm130a user::mode-thm130a-msq) 
+(user::thm301 user::mode-thm301-msq)
+ (user::thm301a user::mode-thm301a-msq)
+ (user::thm30 user::mode-thm30-msq)
+ (user::x5304 user::mode-x5304-msq)
+ (user::x5305 user::mode-x5305-msq)
+ (user::x5308 user::mode-x5308-msq) 
+(user::thm171 user::mode-thm171-msq)
+(user::thm117b user::mode-thm117b-msq)
+ (user::thm117c user::mode-thm117c-msq)
+ (user::thm141 user::mode-thm141-msq)
+(user::thm7 user::mode-thm7-msq)
+(user::thm112 user::mode-thm112-msq)))")
+
+old, can probably delete:
+
+(set-flag 'test-theorems
+	  '((user::thm30  user::mode-thm30) (user::thm47  user::mode-thm47-g)
+	   (user::thm48  user::mode-thm48-e) (user::thm67  user::mode-thm67-a)
+	   (user::thm112  user::mode-thm112-b) (user::thm112a  user::mode-thm112a-try4)
+		(user::thm112c  user::MODE-THM112C-B)
+	   (user::thm117c  user::mode-thm117b) (user::thm129  user::mode-thm129-e)
+	   (user::thm130  user::mode-thm129-b) (user::thm133  user::mode-x5200)
+	   (user::thm134  user::mode-thm134-a) (user::thm135  user::mode-thm135-1)
+	   (user::thm300a  user::mode-thm300a-2) (user::thm301a  user::mode-thm301-a)
+	   (user::thm303  user::mode-thm303-dtps) 
+	   (user::bledsoe-feng-sv-i1  user::mode-thm129-d) 
+	   (user::x2115  user::mode-x2129-a) (user::x2116  user::mode-x2116) 
+	   (user::x2129  user::mode-x2129-c) (user::x5200  user::mode-x5200-a) 
+	   (user::x5205  user::mode-x5205) (user::x5304  user::mode-x5304) 
+	   (user::x5305  user::mode-x5305) (user::x5308  user::mode-x5308-b) 
+	   (user::x5310  user::mode-x5310-a) (user::thm15b  user::MODE-THM15B-NEW1)))
+
+old, can probably delete:
+
+(set-flag 'test-theorems
+         '(
+	   (user::thm112  user::mode-thm112-b) (user::thm112a  user::mode-thm112a-try4)
+		(user::thm112c  user::MODE-THM112C-B)
+	   (user::thm117c  user::mode-thm117b) (user::thm129  user::mode-thm129-e)
+	   (user::thm130  user::mode-thm129-b) 
+           (user::thm131 user::mode-thm131-a)
+           (user::thm133  user::mode-x5200)
+	   (user::thm134  user::mode-thm134-a) (user::thm135  user::mode-thm135-1)
+	   (user::thm300a  user::mode-thm300a-4) (user::thm301  user::mode-thm301-b)
+	   (user::thm301a  user::mode-thm301-b)
+	   (user::thm303  user::mode-thm303-dtps) 
+	   (user::bledsoe-feng-sv-i1  user::mode-thm129-d) 
+           (user::bledsoe-feng-sv-i2 user::mode-bledsoe-feng-sv-i2-b) 
+	   (user::x2115  user::mode-x2129-a) (user::x2116  user::mode-x2116) 
+	   (user::x2129  user::mode-x2129-c) (user::x5200  user::mode-x5200-a) 
+	   (user::x5205  user::mode-x5205) (user::x5304  user::mode-x5304) 
+	   (user::x5305  user::mode-x5305) (user::x5308  user::mode-x5308-b) 
+	   (user::x5310  user::mode-x5310-a)
+	   (user::thm15b  user::MODE-THM15B-NEW1) ))
+
+old, can probably delete:
+
+;;Below we have all the theorems in TPS94 except for 
+;;THM15B, NUM016-1, SYN031-1
+(set-flag 'test-theorems
+         '(
+	   (user::thm30  user::mode-thm30) (user::thm47  user::mode-thm47-g)
+	   (user::thm48  user::mode-thm48-e) (user::thm67  user::mode-thm67-a)
+	   (user::thm104  user::mode-thm104-a)
+	   (user::thm112  user::mode-thm112-b) (user::thm112a  user::mode-thm112a-try4)
+	   (user::thm117c  user::mode-thm117b) (user::thm129  user::mode-thm129-e)
+	   (user::thm130  user::mode-thm129-b) 
+           (user::thm131 user::mode-thm131-a)
+           (user::thm133  user::mode-x5200)
+	   (user::thm134  user::mode-thm134-a) (user::thm135  user::mode-thm135-1)
+	   (user::thm300a  user::mode-thm300a-2) (user::thm301a  user::mode-thm301-a)
+	   (user::thm303  user::mode-thm303-dtps) 
+	   (user::bledsoe-feng-sv-i1  user::mode-thm129-d) 
+           (user::bledsoe-feng-sv-i2 user::mode-bledsoe-feng-sv-i2-c) 
+	   (user::x2115  user::mode-x2129-a) (user::x2116  user::mode-x2116) 
+	   (user::x2129  user::mode-x2129-c) (user::x5200  user::mode-x5200-a) 
+	   (user::x5205  user::mode-x5205) (user::x5304  user::mode-x5304) 
+	   (user::x5305  user::mode-x5305) (user::x5308  user::mode-x5308-b) 
+	   (user::x5310  user::mode-x5310-a)
+	    ))
+
+
+======================================================================
+Theorems Matt Bihop's CCS procedure can prove
+THM270
+Chuch-Rosser
+======================================================================
+	See Benji Shults' message of 12 Feb 1998
+
+ Wos' 8th research problem: "an inference rule
+for set thery?"  In the statement of this problem, he gives
+a challenge problem:
+
+  G/Ker(f) is isomorphic to H where f : G -> H is an onto
+  homomorphism (Wos' 8th research problem in book of 33 research problems)
+
+Note: could just formulate this in terms of an equivalence relation
+and its quotient set.
+
+==========================================
+
+The correct primsubs are now being generated for PR97; there are lots of them,
+so the proof of THM143A now takes about 3 minutes (the proof once it reaches 
+the right option set takes the same time, of course, it just takes longer to
+reach that option set).
+
+
+=================================================================
+So I've changed MS91-* again, introducing a new flag MS91-INTERLEAVE. If set
+to NIL, the behaviour is as before. If set to a positive integer, then MS91-*
+will apply only that many primsubs at a time to each of the eligible variables.
+
+Setting it to 5 seems to produce a reasonable compromise between generating
+everything all at once and subdividing the task into tiny wasteful fragments, 
+so that's the new default setting. The timings for our existing modes don't 
+seem to be affected.
+===========================================================
+
+
+prove ling1 
+ mode mode-ling1
+
+search Matt's directory for MSV for the latest modes and theorems
+
+Subject: Update on PR97
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Date: Thu, 15 May 1997 18:35:41 -0400
+From: Matt Bishop <Matt_Bishop@FTPS.TPS.CS.CMU.EDU>
+
+
+Here are the theorems that I've found which can be proven using PR97:
+
+
+
+THM122 : used to take 5 mins, now takes 30 secs (MODE-THM122-PR97)
+         (the old mode didn't use MSV, though...)
+THM120I : used to take 12 mins, now takes 30 seconds (MODE-THM120I-PR97)
+          (unfortunately, this crashes because of a merging bug, probably
+           because where it used to find the subset relation, it now finds
+           EQUIVS instead. Also it does a huge amount of garbage collection,
+           even after that fix to MS91.)
+THM120I-1 : this is the same as the above, using EQUIVS1 instead of EQUIVS 
+            so that it won't try to substitute EQUIVS. This one can be proven
+            in 49 seconds using PR97.
+            (EQUIVS1 : lambda P lambda R forall x . [P x] = [R x]
+             EQUIVS  : lambda P lambda R forall x . [P x] EQUIV [R x]   )
+
+=====================================================================
+
+
+
+Clean up /afs/cs/project/tps/tps/tpslib
+The theorems are now all in mbishop/tps
+
+
+
+ THM262 (which we can now do interactively, at least)
+2005 March 23 no success with PIY2
+
+=========================================================
+thm142	formerly provavle, but didn't work 1999 Nov 23
+try MODE-THM142-B
+
+==============================================================
+
+
+thm300a in UNIFORM-SEARCH? 
+Results with modifications of MODE-THM300A-4
+
+
+ MAX-DUP-PATHS 	SEARCH-TIME-LIMIT 	search time in MATE
+	2				3			 		 9.41		(as in mode originally)
+	2				6
+ MAX-DUP-PATHS 
+=========================================================
+Try using rewrite rules in TPS
+=========================================================
+
+See the file /afs/cs/project/tps/admin/makemode
+======================================================
+tttp5311a
+tttp311a-again	problem with skolemization?
+
+Date: Fri, 17 Jan 1997 11:25:10 -0500 (EST)
+From: Huilong Wu <huilong+@andrew.cmu.edu>
+To: Peter.Andrews@K.GP.CS.CMU.EDU
+Subject: mode.result
+In-Reply-To: <1997.1.14.16.44.17.Peter.Andrews@K.GP.CS.CMU.EDU>
+References: <1997.1.14.16.44.17.Peter.Andrews@K.GP.CS.CMU.EDU>
+
+Hi, Peter
+
+I appreciate your talk to me very much. Following is the results of
+mode-testing. "xxx" for proof can not be done through by current modes.
+All modes with good time are saved in my library.
+
+-Huilong
+
+thm171      0.24
+thm141      0.18
+thm7        1.24
+thm112      0.65
+thm48            xxx
+thm15b           xxx
+thm130      0.47
+thm130a     0.42
+thm301a     4.15
+thm30            xxx
+x5304            xxx
+x5305       0.24
+x5308            xxx
+thm117b     0.07
+thm117c     0.06
+thm142           ___
+thm115           ___
+
+thm129           xxx
+thm133      0.17
+thm134           xxx
+thm135           ___
+x5200            xxx
+x5205                slow-7.01
+bledsoe-i1  0.05
+thm104           xxx
+thm112a          xxx
+x5310            xxx
+thm47                slow-27.2
+thm131           ___
+thm303           ___
+bledsoe-feng-sv-i2   good-cannot-insert-2.25
+
+
+======================================================
+
+See the file /afs/cs/project/tps/tps/tpslib/andrews/progress
+and make sure we have modes for the best of all those results
+
+Make new modes for the  theorems below. Use the modes mentioned
+second (the MSV modes) at the end of
+
+
+/afs/cs/project/tps/tps/tpslib/andrews/progress
+but use the command unif-nodepths, 
+and set MAX-SUBSTS-VAR and MAX-SUBSTS-QUICK as indicated.
+Also be sure RECORDFLAGS starts with LAST-MODE-NAME
+
+Move the old modes for these theorems out of demo-modes into
+oldmodes
+
+Also update TEST-THEOREMS in /afs/cs/user/andrews/dotfiles/tps3.ini
+and /afs/cs/project/tps/common/tps3.ini
+Of course, youi can do this in just the first of these files,
+and copy TEST-THEOREMS all at once to the second file.
+
+Already done for the theorems above the line ***:
+(THM112C  
+(THM301   
+(THM300A  
+
+***************
+(THM171   
+(THM141   
+(THM7     
+(THM112   
+(THM48    
+(THM15B   
+(THM130   
+(THM130A  
+(THM301A  
+(THM30    
+(X5304    
+(X5305    
+(X5308    
+(THM117B  
+(THM117C  
+(THM142   
+(THM115   
+----------
+UN90:     
+          
+(THM129   
+(THM133   
+(THM134   
+(THM135   
+(X5200    
+(X5205    
+(BLEDSOE-FENG-SV-I1
+(THM104   
+(THM112A  
+(X5310    
+(THM47    
+(THM131   
+(THM303   
+(BLEDSOE-FENG-SV-I2
+======================================================
+Prove more theorems in TPS, especially those requiring finding
+the right primsub. Submit system description to CADE?
+
+High priority theorems
+See Barker-Plummer.
+Schroder-Bernstein
+	Also see Paulson, JAR Vol. 15, No. 2, Oct. 1995
+   formalize this in type theory. See 21-127 notes for a nice proof.
+   Also check Kolodner's paper.
+Church-Rosser
+THM302? see below
+thm161 ?
+"There is no surjection of a proper subset of a finite set
+onto that set."
+  semi-interactively
+  Proved basis of induction 35 from 7 automatically using ms88.
+  /afs/cs/project/tps/tps/proofs/incomplete/thm161-interactive.prf
+
+
+Transitive closure of a relation. Two ways to define
+
+Exists injection: A --> B equiv exists surjection: B --> A.
+May need AC and description axiom. A not empty.
+Start with the "simpler" version where A is the set of all
+objects of type alpha, and similarly for B.
+
+All the examples in section 3.1 of the Bledsoe-Feng paper.
+Some may be in /afs/cs/project/tps/tps/tpslib/andrews/bled.lib
+
+Huet's formulation of the checkerboard problem.
+See $pple/huet
+
+======================================================
+Run Matt's  THM250B and THM250D.
+
+=======================================
+Subject: THM250
+Date: Mon, 17 Feb 1997 17:03:51 -0500
+From: Matt Bishop <Matt_Bishop@FTPS.TPS.CS.CMU.EDU>
+
+
+THM250 is 
+FORALL R FORALL S . TRCL[PAIRUNION R S] = TRCL. PAIRUNION [TRCL R] [TRCL S]
+
+We can now prove this. The good news is that we don't need any of the 
+chicanery that I've been considering implementing; no primsub is necessary
+(the proof I had was a much more difficult way of doing it), and 
+TOTAL-NUM-OF-DUPS will make no difference since we want NUM-OF-DUPS 0
+anyway.
+
+The bad news is that we still don't have a theorem that requires more than
+an hour's work; we can prove this one in 1.5 minutes using MODE-THM250
+ Really requires REWRITE-DEFNS LAZY2
+======================================================
+More theorems requiring selective instantiation of defs.
+
+
+
+========================================================
+More examples of theorems we can prove semi-interactively
+Useful for demos to TPHOL
+
+X6102 Induction
+==========================================================
+
+	BUGS FIXED, TRY AGAIN:
+THM109	bug fixed
+x2125 bug fixed
+THM188
+1995 Dec 15
+> See /afs/cs/project/tps/admin/bugsdir/thm173.lib
+> (prove thm173 in mode-x5200-c)
+---------------
+> (HX) Run diy on x5201, then you will see a bug(use ms90-3)
+> The formula is not provable as there's no connection on the following path:
+> (LEAF71 LEAF166 LEAF174 LEAF156 LEAF178 LEAF180 LEAF142 LEAF182 LEAF132 LEAF96)
+--------------
+> thm140
+> Matingsearch quickly succeeds using MODE-THM47-E,
+>  but then a translation bug is encountered.
+>
+> The formula is not provable as there's no connection on the following path:
+> Tuesday, July 19, 1994 at 13:21:01.
+------------------
+> Subject: duplication bug in ms90-3
+> Date: Sat, 18 Jun 94 13:14:38 -0400
+> From: HongWei_Xi@ATPS.TPS.CS.CMU.EDU
+>
+>
+> I have had a feeling that something is wrong with
+> x5310 for a lot of time. That is why I introduced
+> PREFER-RIGID2. Now the hunch has been verified.
+> DUP-BUG-1 in my library is a simplified version of
+> x5310(both of them have a simliar jform structure).
+> The first-order tautology cannot be proven in ms90-3
+> no matter what flag settings you are using.
+====================================
+You need MAX-MATES 6 and NUM-OF-DUPS 3 to finish this one...
+
+Date: Tue, 13 Jun 95 14:22:58 -0400
+From: HongWei_Xi@CTPS.TPS.CS.CMU.EDU
+
+
+FYI,
+
+The following first-order formula (called disj-third in my library)
+
+    [forall x Px or forall x Q x]
+and [forall x [P x implies R x]
+and [forall x [Q x implies R x]
+            IMPLIES
+    R a and R b and R c
+cannot be proven under ms90-3, though I set NUM-OF-DUPS
+and MAX-MATES large enough. On the other hand, the following
+simplified one
+
+    [forall x P x or forall x Q x]
+and [forall x [P x implies R x]]
+and [forall x [Q x implies R x]]
+            IMPLIES
+         R b and R c
+
+can be proven quickly.
+====================================================================
+
+
+
+
+
+
+
+Date: Thu, 22 Feb 1996 15:24:32 -0500
+From: Matt Bishop <Matt_Bishop@FTPS.TPS.CS.CMU.EDU>
+
+
+
+tps3.patch now asks if you want to load the unification updates that I've
+been doing. These have not been made part of TPS yet; I'm still testing them.
+
+They include:
+
+1) some additional unification output, governed by the flags
+   UNIF-COUNTER, UNIF-COUNTER-OUTPUT and UNIF-TRIGGER
+2) some additional ways to search the unification tree, including
+   PRUNING (a flag) and BEST-FIRST (a setting for UNI-SEARCH-HEURISTIC).
+3) some additional unification commands: PRUNE and FIND-NESTING; the former
+   prunes out all failure branches, the latter finds values for MAX-SUBSTS-*.
+4) MAX-SUBSTS-VAR and MAX-SUBSTS-TOTAL, two new flags that provide an
+   alternative to setting depth bounds on a unification tree; instead, you
+   set a bound on the number of projections and imitations that may be used
+   either for each variable or overall (or both).
+5) A fixed version of LEAST-SEARCH-DEPTH that allows you to set the flags
+   MAX-SUBSTS-* as well as the unification depths.
+
+
+Of these, (1) and (3) are cosmetic, although their output can be useful at
+times, and (2) is not much use (but harmless, since you can leave it switched
+off).
+(4) and (5) are very useful, and generally give anything from a considerable
+speed-up to a minor slow-down. (THM15B, for example, can be done in 2 minutes
+with the new settings.)
+----------------------------------------------------------------------
+
+See message from Michael Albert in thmjobs
+
+Date: Tue, 24 Oct 95
+-------------------------------------------------------
+Put thm47 into etps as x5303
+-------------------------------------------------------
+x5211
+------------------------------------------------------
+Date: Fri, 19 Mar 1999 15:31:09 -0500
+The only remaining built-in exercises which haven't been proven
+automatically are X5309, X6105, X6106 and X6201.
+
+
+
+ x6004
+Date: Thu, 03 Aug 95 22:55:50 -0400
+From: HongWei_Xi@CTPS.TPS.CS.CMU.EDU
+
+
+Now we have a complete proof of x6004. The previous
+bug has been fixed, though I have found other bugs lingering
+around. For instance, if min-qunat-etree is NIL, you can
+see a merge bug. Also, if ms-default is set to NIL, a similar
+bug occurs. I guess that it would be wise to rewrite (part of)
+merge code in the near future. REWRITE NODES play a key role here,
+and should be dealt with a systematic method, not someone's
+spontaneity.
+
+Date: Wed, 28 Aug 1996 15:27:36 -0400
+From: Matt Bishop <Matt_Bishop@FTPS.TPS.CS.CMU.EDU>
+
+
+From the bugs file:
+
+>x6004
+>Wednesday, August  2, 1995 at  9:37:51.
+>Found mating automatically on dtps using
+> MODE-X6004-DTPS, but ran into bug while merging.
+>To be specific, you need to set MS-DEFAULT to MS88, or
+>set MIN-QUANT-ETREE to NIL.
+
+There was a very odd bug in the way that rewrite-leibniz removed nodes
+that had become applications of REFL= modulo some lambda-rewrites; it 
+generated all the correct rewrites and then attached them to the tree in
+the wrong order. I don't know why we didn't notice that before, but it's 
+fixed now.
+----------------------------------------------------------------
+Date: Tue, 03 Sep 1996 18:15:44 -0400
+From: Matt Bishop <Matt_Bishop@FTPS.TPS.CS.CMU.EDU>
+
+
+we can now prove X6101 in MODE-X6004-DTPS.
+-------------------------------------------------------------
+
+
+ With the help of min-quant-etree, a lot of proofs
+look nicer and neater than before even if there are
+no quantifiers involved. The proof of thm47 is a
+good example.
+----------------------------------------------
+Move modes out of demo-modes into files like demo-modes-thms4
+-------------------------------------------------------
+		Try MTREE
+See /afs/cs/project/tps/tps/tpslib/mtree-progress
+
+DEFAULT-MS now accepts MS94-11, MS94-12 and MS95-1 as arguments.
+DIY now works for these values as well, and produces timing results.
+GO in the MATE top level will reject the three new values of DEFAULT-MS.
+
+LCL...
+
+ Wed, 10 Jul 1996 15:24:50 -0400
+Mtree now works for higher-order problems. (There are still bugs, but
+it's at least possible to use it...)
+
+-------------------------------------
+we can now prove thm100
+from a standing start remarkably quickly (~15 secs search, ~1 sec
+choose-branch & merge, ~5 secs etree-nat) using LB-SEARCH
+THM100 now takes 48 seconds)
+
+---------------------------------------------------
+Subject: PELL26
+Date: Thu, 02 Sep 93 15:37:52 -0400
+From: HongWei_Xi@CTPS.TPS.CS.CMU.EDU
+
+After loading mode-pell26 and setting
+max-mates to 3, tps finished the mating
+search smoothly! After merging and translation,
+I got a very nice proof of pell26.
+
+I call the slightly changed mode mode-pell26-3.
+----------------------------------------------
+Subject: pell67
+Date: Tue, 17 Jan 95 17:04:34 EST
+From: Matt Bishop <Matt_Bishop@K.GP.CS.CMU.EDU>
+
+
+From tpsjobs:
+>I can't fetch PELL67 from my library.
+>"I can't locate MORGAN-AXIOMS." (which are gwffs, not abbreviations)
+>Maybe this wasn't setr up correctly. I may have just copied the
+>file from Sunil.
+
+The problem is that pell67 and morgan-axioms both list each other as
+needed-objects (although neither appears to actually require the other at
+all). The same goes for pell66. I'm not sure what they ought to say, but
+they ought not to be circular.
+-------------------------------------------------------
+
+Subject: Mean value theorem
+Date: Fri, 18 Mar 94 16:12:59 EST
+From: HongWei_Xi@ATPS.TPS.CS.CMU.EDU
+
+
+I have formulated the theorem in a way in which no
+inequality reasoning is required(You even don't have
+to assume that predicate "LESS(oii)" is transitive)
+
+The primitive substitution needed would be the first
+one found in the produced list. All we need is to
+refute a considerably large jform(containing 28 literals).
+Some of the quantifiers in the jform have to be
+duplicated once.
+
+The formula is called imv-sol-12 in my library.
+----------------------------------------------
+
+HX created a mode MODE-THM112A-SILENT in
+his library. After loading it, you can prove thm112a
+in less 5 minutes (real-time for DIY).
+
+Try again theorems we proved using ms88 search to see if Hongwei's
+change of 1993 May 30 affects them.
+
+Test theorems requiring primsubs. Set the flags MIN-PRIM-DEPTH and
+MAX-PRIM-DEPTH.
+RECONSIDER-FN to INF-WEIGHT
+WEIGHT-C-FN to OPTION-SET-NUM-LEAVES
+
+
+----------------------------------------------------------
+
+reducing MIN-QUICK-DEPTH to 1 and adjusting the time limits
+accordingly allows one to prove THM15B in 4 minutes using MODE-THM15B-NEW2
+(in my library).
+---------------------------------------------------
+It looks as though Lucid might even be faster than cmucl (based
+solely on one attempt to prove x5310)...
+------------------------------------------------------------------
+THM118 Cantor's thm with injectivity. Need description axiom?
+THM118 Alt cantor thm. Needs primsubs. Related to x5309 and x5309a.
+First try the lemma THM143a when bug is fixed:
+/afs/cs/project/tps/admin/bugsdir/bug-thm143a-1995-jun-5.lib
+------------------------------------------------------------------
+Subject: two different proofs of x5310
+Date: Sun, 17 Jul 94 21:04:55 -0400
+Message-ID: <10687.774493495@CTPS.TPS.CS.CMU.EDU>
+From: HongWei_Xi@CTPS.TPS.CS.CMU.EDU
+
+
+I don't know if you have noticed that there are
+at least two different proofs of x5310. One uses
+primsub
+
+"lambda P(ob). lambda y(b). exists x P x implies P y",
+
+while the other uses primsub
+
+"lambda P(ob). lambda y(b). P y implies forall x P x".
+
+This may need to be mentioned in the paper.
+--------------------------------------------------------------
+====================================================
+Date: Mon, 18 Apr 94 18:06:28 -0400
+From:  <Matt_Bishop@K.GP.CS.CMU.EDU>
+
+
+I'm not sure what was going wrong before, but I now have fast
+automatic proofs of thm300b (38 secs in ms91-7) and thm300c
+(15 mins, but in ms88). 
+
+See my library for relevant modes.
+=========================================================
+THM302
+To: andrews@ATPS.TPS.CS.CMU.EDU, mbishop@ATPS.TPS.CS.CMU.EDU
+Subject: The true even-odd example
+Date: Sat, 30 Apr 94 13:35:30 -0400
+From: HongWei_Xi@ATPS.TPS.CS.CMU.EDU
+
+Now I call it thm302 in my library. After given
+the following primsub
+
+"lambda x. [p x or q x] and [r x or s x]", it
+
+takes around 20 hours to prove the theorem by using
+mode MODE-THM302-DTPS.
+
+The next step is obviously to find a way generating
+the primsub above automatically. I am not familiar
+with the code dealing with primsubs. Any suggestions?
+If you can find a mode to do so, then you can prove
+thm303 by combining your mode with MODE-THM302-DTPS.
+
+---------------------------
+Subject: THM302 and primsubs
+Date: Sat, 30 Apr 94 16:49:38 -0400
+Message-ID: <19817.767738978@K.GP.CS.CMU.EDU>
+From: Aptenodytes forsteri <Matt_Bishop@K.GP.CS.CMU.EDU>
+
+The fastest way to get to this primsub would be to use
+MS91-7 rather than MS90-9, and mode MS91-DEEP with
+PRIM-QUANTIFIER set to NIL. Even so, this takes a long
+time to reach the correct substitution. It starts with
+"lambda x. p x and q x"   and   "lambda x. p x or q x", and
+then substitutes these recursively for each of the p's and q's.
+Obviously, this will take three levels of recursion to reach
+the right substitution (it has to substitute two copies of
+"lambda x. p x or q x" into "lambda x . p x and q x").
+
+This involves a huge amount of effort (even SEARCH-ORDER
+has taken over half an hour on DTPS so far), and is probably
+impractical.
+
+A much quicker way to generate a primsub that can be made
+equivalent by unification is to have MAX-PRIM-DEPTH 3 and
+MODE MS91-DEEP; then equivalent things (with quantified variables
+that have to be projected out) get generated as the tenth
+option set or so.
+
+=========================================================
+
+THM303a
+note thm303a.vpw on dtps has many option sets repeated
+but with different names
+	Simialr to THM303, which we can prove, but rearranging
+the hypothese seems to drastically affect the search
+====================================================
+Check x5310
+Date: Tue, 17 May 94 21:18:35 -0400
+The bug is gone. The problem is that
+I did not put my fix correctly. I misplaced
+"#+comment" in the code.
+
+It's been rectified now.
+========================================================
+
+
+LCL077-1
+:mhelp "lcl077-1 from Sutcliffe's collection;
+Pelletier 67;Morgan C. (1984), Logic Problems, AAR Newsletter 3, 5-5;
+theorem 221 on page 121 of Church's book."
+First-order problem originally in clause form
+
+Friday, December 30, 1994 at 16:18:26.
+Complete semi-interactive proof
+
+Tuesday, Jan 3 1995 halted after 4 or 5 days.
+Now on dtps: lower right corener of screen.
+Try to continue when machine is free.
+===============================================
+
+Probably Delete $afspba/thm300a.log
+
+==================================================
+==============================================================
+Test this and clean up the bugs file:
+
+Subject: Translation bug related to thm140
+Date: Wed, 11 May 94 16:08:47 -0400
+Message-ID: <13442.768686927@ATPS.TPS.CS.CMU.EDU>
+From: HongWei_Xi@ATPS.TPS.CS.CMU.EDU
+
+
+Actually there are two obscure bugs. The causes of
+the two bugs are as follows.
+
+(1) While calling function subst-vars-for-params, some
+skolem-terms get replaced by the corresponding skolem
+parameters. This results in the misbehavior of function
+FREE-IN.
+
+(2) The glitch is that the function deals wrongly with
+a (sort of pathlogical), skolem node "EXISTS x. A",
+where x does not occur free in formula A.
+
+The patch file is adjusted, and the changed files are:
+
+etrees-skolem.lisp etr-nat-macros.lisp.
+=========================================================
+
+
+Try X5310 with successful mode but ORDER-COMPONENTS
+set to PREFER-RIGID1. Tell HXC what happens.
+
+============================================================
+Subject: example EO1 in Bledsoe's paper
+Date: Thu, 28 Apr 94 22:09:40 -0400
+From: HongWei_Xi@ATPS.TPS.CS.CMU.EDU
+
+
+Finally I realized that this example is
+a fudge. It has nothing to do with even
+and odd numbers. I reformulated it in
+my library as EO1, which can be proved
+within dozens of seconds by using mode
+MODE-EO1-DTPS.
+
+Please check it and rename the theorem in
+your library. In my new formulation,
+R u v means u = v, and
+Q u means 2 u.
+
+You may rename the predicates for the mnemonic
+reasons.
+-------------------------------------------------------------------
+THM4 topology.
+
+
+THM39 Huet's thesis p. 46?
+THMS 40-42 Huet
+Work on them interactively and see what's involved.
+
+Examples from Bledsoe's SET-VAR paper
+See how many of Bledsoe's examples we can do.
+
+
+
+Zwinogrodzki 74
+
+
+
+
+
+
+
+-----------------------------
+THM138
+To prove such sentences, my feeling is that
+max-mates has to be very big while num-of-dups
+could be 1 or 2.
+-------------------------------------------
+
+
+
+THM116. Fixed point. Do interactively first. TPS incomplete here?
+THM90A dual to it
+THM90A B C?
+
+
+------------------------------------------------------------------
+
+------------------------------------------------------------------
+	INTERACTIVE AND TACTIC-STYLE PROOFS
+Try using GO2 to prove thm47c. 
+
+Prove Schroder-Berstein theorem semi-interactively. Save work file.
+How significant is this as an interactive task?
+What parts of it can tps do automatically.
+See Paulson paper, Part II
+Use THM90A dual to it
+THM90A
+May not be provable even with primsubs because too much structure
+is an argument to a constant function.
+Look at the jform."
+
+----------------------------------------------
+
+----------------------------------------------
+Test TEST
+THM44. Start with MODE-THM44-A
+
+1993 dec 7 tried meta, starting with mode-thm48-d, modifying max-search-depth
+from 16 down. Proof with 16 succeeded in 3.3 hours, but with depth 8 it
+aborted and halted meta. Try again when this is fixed. However, THM48
+has a better mode now: mode-thm48-e.
+----------------------------------------------
+THM120 (and variants)
+There exists a transitive relation on sets
+
+THM120B and THM120H; are these of interest now that we
+have proved THM120I?
+
+Check first in MATE. Does the primitive substitution mechanism
+suffice in principle to prove this?
+
+The modified version of thm120b is called thm120h in
+my directory, and the mode mode-thm120b will let you
+prove thm120h in around 20 minutes(on atps).
+
+
+-----------------------------------------------------
+
+HX created a mode MODE-THM112A-SILENT in
+his library. After loading it, you can prove thm112a
+in less 5 minutes (real-time for DIY).
+
+Try again theorems we proved using ms88 search to see if Hongwei's
+change of 1993 May 30 affects them.
+
+Test theorems requiring primsubs. Set the flags MIN-PRIM-DEPTH and
+MAX-PRIM-DEPTH.
+RECONSIDER-FN to INF-WEIGHT
+WEIGHT-C-FN to OPTION-SET-NUM-LEAVES
+
+
+----------------------------------------------------------
+THM117A. Prove interactively first
+----------------------------------
+
+
+
+THM138. Elaborated X2129.
+
+
+
+
+
+THM67. Can prove with ms88, not with ms90-3. (Tried with MODE-THM67-c.)
+Be sure we can still prove it with ms88. Need max-mates?
+
+70 tried several times in Feb. did interactively 1992 Aug 17
+Try with mode-thm70-c. Done March 29.
+Unificatioin is rather trivial.
+Needs 3 copies of transitivity condition.
+
+ 74b(adjust superscripts?) (Zwinogrodski; do interactively first.)
+
+Bailin & Barker-Plummer examples in Z-Match paper
+Try 117a interactively; may not be a theorem.
+One form of transfinite induction due to Bailin & Barker-Plummer
+
+TC interpolation p. 9
+
+
+
+
+
+
+-----------------------------------------------------
+
+	CHALLENGES
+Theorems we have not been able to prove, but should be able to
+
+THM70
+
+-----------------------------------------------------
+	UNDERSTAND WHAT OUR SEARCH PROBLEMS ARE
+
+----------------------------------------------------
+
+
+	See how to prove THM116 (fixed point thm) if we use SUBFORMSUBS
+instead of PRIMSUBS.
+-----------------------------------------------------
+EXAMPLES FOR REVISED TPS-92:
+
+THM129 if the translation bug can be fixed.
+Then delete thm129-a.work from [btps]/usr0/andrews
+
+
+
+THM134. The mode we have no longer seems to work. Problem in translation?
+
+Pell26. Try again when Dan fixes translation bug.
+
+
+Reiter's examples in $afspbap/reiter. This is a latex file.
+
+Simulate Ammon's proof of Heine's theorem interactively in TPS.
+(CADE-11 paper 20)
+
+100 tried several times in Feb 1992 with no luck in automatic mode.
+Did interactive mating with no
+trouble.  Requires just one quantifier duplication. Devise some kind
+of set-of-support strategy to make this provable.
+
+Figure out how TPS proved THM134 so quickly. Did it mate an =-node?
+Check that it was just remove-leibniz
+
+Try Shinako's examples x5227-x5229
+Try examples in BLED and FP library files. Frank's induction examples.
+
+Sunil has more library files in /../atps/usr/si/tpslib
+
+Find a nice example where using REMOVE-LEIBNIZ is interesting.
+Thoroughly analyze what is needed to prove THM120C or THM122.
+Do primsubs interactively and watch the mating process, find best limits.
+
+Try THM112A. See if NEG-PRIM-SUB must be T
+Also THM112b, a variant of THM112a with primsubs applied. Try with different
+unification depths. See what is the problem.
+
+THM120b shows a bug in enumeration of primsubs with ms91-6?
+Work hard to get TPS to prove THM120b
+
+Examine details of MS91-6 on an example that works. Try various coefficients,
+verbosities. Trace some functions. Make output file.
+
+THM122. Check the primsubs that get generated
+
+Look at THM70
+ Prove interactively,
+ transform to eproof
+
+From THM116 extract a simpler theorem. Look at the interactive proof
+already done.
+
+
+See why we can't prove THM30 automatically
+
+Date: Wednesday, 12 June 1991 17:12:30 EDT
+To: issar@k.gp.cs.cmu.edu
+Subject: THM67
+	You may not have any time to consider this question, but
+here it is in case you do. MS88 proves THM67 in about 228 seconds
+(the flag settings are in /afs/cs/project/tps/tps/tpslib/andrews/thms.lib),
+but MS90-3 has been working on it for over a day now without success.
+Of course, maybe I have some flags set wrong. In case you want to look
+at a proof, I have one printed out, or you could use
+thm67a.prf or thm67a.mss in /../btps/usr/andrews.
+
+Try Steamroller, 
+Steamroller may be in Pelletier's list
+
+Try Archimedean Principle interactively (see Farmer et al, IMPS).
+
+---------------------------------------------------
+	COUNTSUBS-FIRST
+
+Test Sunil's code for counting substitutions first instead of
+generating all of them more carefully. (Flag: COUNTSUBS-FIRST.)
+Understand why it is not always an improvement.
+Keep record under COUNTSUBS in success-summary.
+Test candidates: THM67
+
+---------------------------------------------------
+	Test MS91-3 
+
+	Preliminary testing suggests that MS93-1 is noticeably faster
+than MS88 and marginally faster (most of the time) than MS90-9 (see
+files THM30, THM76 and THM104 in MB's library directory for the
+daterec output)
+
+---------------------------------------------------
+
+Test SUBFORMSUBS on Bledsoe's examples when they are ready.
+
+
+-----------------------------------------------------
+
+----------------------------------------------------------------------
+
+15381	Artificial Intelligence: Representation and Problem Solving	9.0	A	TR	01:30PM	02:50PM	WEH 7500	Hebert, Moore
+
+
+    *  Recommended (optional) textbook: Russell and Norvig's 
+Stuart Russell and Peter Norvig "Artificial Intelligence: A Modern Approach".
+Prentice Hall,Second Edition,  2002 
+006.3 R96A2
+
+http://aima.cs.berkeley.edu/
+9.5 (theorem proving)
+
+15780	Advanced Artificial Intelligence Concepts	12.0	A	TR	01:30PM	02:50PM	NSH 1305	Lewicki, Sandholm
+
+look for wolf goat cabbage reference and treatments. Use google
+Check 
+Martin Gardner, The Scientific American Book of Mathematical Puzzles
+and Diversions, 1959
+Second, 1961
+H. Dedenay, The Canterbury Puzzles, Dover, 1958.
+
+
+---------------------------------------------------------------------
+New formulation of thm100. see the file 
+/home/pa01/pba/private/papers/demo-aaai-2005/wolf-goat-cabbage.
+
+Consider formalizing
+Missionaries and cannnibals in a similar way.
+The state is a quadruple saying how many missionaries, cannibals,
+and boats are on the south bank of the river.
+ Nilsson book page 51
+
+Water & jugs problem. Capacities 3 and 4, put 2 gallons in one jug.
+Rich & Knight p. 31
+=================================================================================

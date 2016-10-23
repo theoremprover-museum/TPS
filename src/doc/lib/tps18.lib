@@ -1,0 +1,54 @@
+@Marker(Library,TPS18,Dover)
+@Style(Date "1952 March 8", Font TimesRoman18, FileDate "March 8, 1952")
+
+@Libraryfile(mathematics10)
+@Define(T, FaceCode F)
+@Define(CB, Font SmallBodyFont, FaceCode B)
+@CommandString(LISP="Lisp")
+@CommandString(TPS="@b[T]@cb[PS]", Vidi="@b[V]@cb[IDI]")
+@CommandString(ETPS="@b[E]@cb[TPS]",HETPS="ETPS")
+@string(copyright-and-Research-Credit=
+"@copyrightnotice(Carnegie Mellon University.  All rights reserved.)
+@begin(researchcredit)
+This manual is based upon work supported by
+NSF grants MCS81-02870, DCR-8402532, and CCR-8702699,
+and a grant from the Center for Design of Educational Computing,
+Carnegie Mellon University. Any opinions, findings, and conclusions or
+recommendations are those of the author(s) and do not necessarily reflect
+the views of the National Science Foundation.
+@end(researchcredit)")
+@String(NSF="NSF grants MCS81-02870, DCR-8402532, and CCR-8702699")
+
+@LibraryFile(KSets18)
+@LibraryFile(Symb10)
+
+@Define(VLine, Use Verbatim,Spacing=1.5,Above=0,Below=0,Break=Off)
+@Define(TLine, Use Text,Continue,Spacing=1.5,Above=0,Below=0,Break=Off)
+
+@Marker(Library,TPS18,Postscript)
+@Style(Date "1952 March 8", Font TimesRoman, Fontscale 18,
+	 FileDate "March 8, 1952")
+@Libraryfile(mathematics10)
+@Define(T, FaceCode F)
+@Define(CB, size  10, FaceCode B)
+@CommandString(LISP="Lisp")
+@CommandString(TPS="@b[T]@cb[PS]")
+@CommandString(ETPS="@b[E]@cb[TPS]",HETPS="ETPS")
+@CommandString(HTPS="T@c[PS]", HVidi="V@c[IDI]")
+@string(copyright-and-Research-Credit=
+"@copyrightnotice(Carnegie Mellon University.  All rights reserved.)
+@begin(researchcredit)
+This manual is based upon work supported by
+NSF grants MCS81-02870, DCR-8402532, and CCR-8702699,
+and a grant from the Center for Design of Educational Computing,
+Carnegie Mellon University. Any opinions, findings, and conclusions or
+recommendations are those of the author(s) and do not necessarily reflect
+the views of the National Science Foundation.
+@end(researchcredit)")
+@String(NSF="NSF grants MCS81-02870, DCR-8402532, and CCR-8702699")
+
+@LibraryFile(KSets18)
+@LibraryFile(Symb10)
+
+@Define(VLine, Use Verbatim,Spacing=1.5,Above=0,Below=0,Break=Off)
+@Define(TLine, Use Text,Continue,Spacing=1.5,Above=0,Below=0,Break=Off)

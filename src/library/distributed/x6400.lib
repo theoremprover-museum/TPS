@@ -1,0 +1,42 @@
+(:name IOTA-AXIOM
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL p(OS) FORALL y(S).FORALL z(S) [p(OS) z(S) EQUIV y(S) =(OSS) z(S)] IMPLIES IOTA(S(OS)) p(OS) =(OSS) y(S)"
+:needed-objects   NIL
+:mhelp "axiom about IOTA at type S"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PRIM-REC
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA H(SSS) LAMBDA G(O(OI)) LAMBDA N(S) IOTA(S(OS)).LAMBDA M(S) FORALL W(OSS).W(OSS) ZERO(S) G(O(OI)) AND FORALL X(S) FORALL Y(S) [W(OSS) X(S) Y(S) IMPLIES W(OSS) [SUCC(SS) X(S)].H(SSS) X(S) Y(S)] IMPLIES W(OSS) N(S) M(S)"
+:needed-objects   NIL
+:mhelp "Primitive Recursion operator P-REC, with O and S replaced by ZERO and SUCC."
+:other-attributes ((TYPELIST ("S")) (TYPE "SSS(SSS)"))
+:other-remarks "
+")
+
+
+(:name X6400
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "IOTA-AXIOM IMPLIES FORALL H(SSS) FORALL G(O(OI)).PRIM-REC(SSS(SSS)) H(SSS) G(O(OI)) ZERO(S) =(OSS) G(O(OI)) AND FORALL N(S).NAT N(S) IMPLIES PRIM-REC(SSS(SSS)) H(SSS) G(O(OI)) [SUCC(SS) N(S)] =(OSS) H(SSS) N(S).PRIM-REC(SSS(SSS)) H(SSS) G(O(OI)) N(S)"
+:needed-objects   (PRIM-REC IOTA-AXIOM)
+:mhelp "THEOREM 6400 about primitive recusion operator."
+:other-attributes NIL
+:other-remarks "
+")
+
+

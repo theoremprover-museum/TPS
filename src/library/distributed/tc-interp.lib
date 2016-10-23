@@ -1,0 +1,168 @@
+(:name TC-CLOSED
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA r(OAA) LAMBDA x(OA) FORALL y(A) FORALL z(A).r(OAA) y(A) z(A) AND x(OA) y(A) IMPLIES x(OA) z(A)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((TYPELIST ("A")) (TYPE "O(OA)(OAA)"))
+:other-remarks "
+")
+
+
+(:name TC-CLOSED-OLD
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA r(OAA) LAMBDA x(OA) FORALL y(A) FORALL z(A).EXISTS q(A) [r(OAA) y(A) q(A) OR r(OAA) q(A) y(A)] AND EXISTS q(A) [r(OAA) z(A) q(A) OR r(OAA) q(A) z(A)] IMPLIES.r(OAA) y(A) z(A) AND x(OA) y(A) IMPLIES x(OA) z(A)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((TYPELIST ("A")) (TYPE "O(OA)(OAA)"))
+:other-remarks "
+")
+
+
+(:name TC-INTERP
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL r(OAA) FORALL s(A) FORALL t(A).~r(OAA) s(A) t(A) AND TRANSITIVE-CLOSURE(OAA(OAA)) r(OAA) s(A) t(A) IMPLIES EXISTS z(A).r(OAA) s(A) z(A) AND TRANSITIVE-CLOSURE(OAA(OAA)) r(OAA) z(A) t(A)"
+:needed-objects   (TRANSITIVE-CLOSURE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TC-INTERP-BBP
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL r(OAA) FORALL s(A) FORALL t(A).~[s(A) =(OAA) t(A)] AND TRCL-BBP(OAA(OAA)) r(OAA) s(A) t(A) IMPLIES EXISTS c(A).r(OAA) s(A) c(A) AND TRCL-BBP(OAA(OAA)) r(OAA) c(A) t(A)"
+:needed-objects   (TRCL-BBP)
+:mhelp "B & B-P's defn of tc-interp"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TC-INTERP-BBP-OLD
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL r(OAA) FORALL s(A) FORALL t(A).~[s(A) =(OAA) t(A)] AND TRCL-BBP(OAA(OAA)) r(OAA) s(A) t(A) IMPLIES EXISTS c(A).r(OAA) s(A) c(A) AND TRCL-BBP(OAA(OAA)) r(OAA) c(A) t(A)"
+:needed-objects   (TRCL-BBP)
+:mhelp "B & B-P's defn of tc-interp"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TC-INTERP-OLD
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL r(OAA) FORALL s(A) FORALL t(A).~[s(A) =(OAA) t(A)] AND TRANSITIVE-CLOSURE(OAA(OAA)) r(OAA) s(A) t(A) IMPLIES EXISTS z(A).r(OAA) s(A) z(A) AND TRANSITIVE-CLOSURE(OAA(OAA)) r(OAA) z(A) t(A)"
+:needed-objects   (TRANSITIVE-CLOSURE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TC-INTERP-OTHER
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL r(OAA) FORALL T(OAA).REFLEXIVE(O(OAA)) T(OAA) AND TRANSITIVE(O(OAA)) T(OAA) AND FORALL x(A) FORALL y(A) [r(OAA) x(A) y(A) IMPLIES T(OAA) x(A) y(A)] AND FORALL S(OAA) [REFLEXIVE(O(OAA)) S(OAA) AND TRANSITIVE(O(OAA)) S(OAA) AND FORALL x(A) FORALL y(A) [r(OAA) x(A) y(A) IMPLIES S(OAA) x(A) y(A)] IMPLIES FORALL x(A) FORALL y(A).T(OAA) x(A) y(A) IMPLIES S(OAA) x(A) y(A)] IMPLIES.~[a(A) =(OAA) b(A)] AND T(OAA) a(A) b(A) IMPLIES EXISTS c(A).r(OAA) a(A) c(A) AND T(OAA) c(A) b(A)"
+:needed-objects   (TRANSITIVE REFLEXIVE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TC-INTERP-THIRD
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL r(OAA).FORALL x(OA) [TC-CLOSED(O(OA)(OAA)) r(OAA) x(OA) EQUIV FORALL y(A) FORALL z(A).r(OAA) y(A) z(A) AND x(OA) y(A) IMPLIES x(OA) z(A)] AND FORALL a(A) FORALL b(A) [STAR(OAA(OAA)) r(OAA) a(A) b(A) EQUIV FORALL x(OA).TC-CLOSED(O(OA)(OAA)) r(OAA) x(OA) IMPLIES.x(OA) a(A) IMPLIES x(OA) b(A)] AND ~[a(A) =(OAA) b(A)] AND STAR(OAA(OAA)) r(OAA) a(A) b(A) IMPLIES EXISTS c(A).r(OAA) a(A) c(A) AND STAR(OAA(OAA)) r(OAA) c(A) b(A)"
+:needed-objects   (TC-CLOSED)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TCL-IS-TRANS
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL r(OAA) TRANSITIVE(O(OAA)).TRANSITIVE-CLOSURE(OAA(OAA)) r(OAA)"
+:needed-objects   (TRANSITIVE TRANSITIVE-CLOSURE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TRANS-IND
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, November 24, 1998 at 14:03:49."
+:description "FORALL r(OAA) FORALL P(OA).FORALL s(OA) [EXISTS z(A) s(OA) z(A) IMPLIES EXISTS y(A).s(OA) y(A) AND FORALL w(A).r(OAA) w(A) y(A) IMPLIES ~s(OA) w(A)] AND FORALL x(A) [FORALL y(A) [r(OAA) y(A) x(A) IMPLIES P(OA) y(A)] IMPLIES P(OA) x(A)] IMPLIES FORALL x(A) P(OA) x(A)"
+:needed-objects   NIL
+:mhelp "transfinite induction theorem, from Bailin and Barker-Plummer"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name TRCL-BBP
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA r(OAA) LAMBDA a(A) LAMBDA b(A) FORALL x(OA).TC-CLOSED(O(OA)(OAA)) r(OAA) x(OA) IMPLIES.x(OA) a(A) IMPLIES x(OA) b(A)"
+:needed-objects   (TC-CLOSED)
+:mhelp "Bailin & Barker-Plummer's defn of trcl"
+:other-attributes ((TYPELIST ("A")) (TYPE "OAA(OAA)"))
+:other-remarks "
+")
+
+
+(:name TRCL-TRANS-PBA
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL r(OAA) TRANSITIVE(O(OAA)).TRANSITIVE-CLOSURE(OAA(OAA)) r(OAA)"
+:needed-objects   (TRANSITIVE TRANSITIVE-CLOSURE)
+:mhelp "trans closure (our style) is transitive"
+:other-attributes NIL
+:other-remarks "
+")
+
+

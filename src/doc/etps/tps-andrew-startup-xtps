@@ -1,0 +1,1 @@
+xterm -geometry 80x54 -rw -fn vtsingle -fb vtsymbold -sb -n TPS3 -T TPS3 -e $/afs/andrew/mcs/math/etps/tps/bin/tps3  &

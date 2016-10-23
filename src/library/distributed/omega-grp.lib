@@ -1,0 +1,252 @@
+(:name EQUIV-01-02
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:14:43."
+:description "FORALL f(GGG) FORALL e(G).GROUP1(OG(GGG)) f(GGG) e(G) EQUIV GROUP2(OG(GGG)) f(GGG) e(G)"
+:needed-objects   (GROUP1 GROUP2)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name EQUIV-01-03
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:14:44."
+:description "FORALL f(GGG) FORALL e(G).GROUP1(OG(GGG)) f(GGG) e(G) EQUIV GROUP3(OG(GGG)) f(GGG) e(G)"
+:needed-objects   (GROUP1 GROUP3)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name EQUIV-01-04
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL f(GGG).EXISTS e(G) GROUP1(OG(GGG)) f(GGG) e(G) EQUIV GROUP4(O(GGG)) f(GGG)"
+:needed-objects   (GROUP1 GROUP4)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name EQUIV-02-03
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:14:46."
+:description "FORALL f(GGG) FORALL e(G).GROUP2(OG(GGG)) f(GGG) e(G) EQUIV GROUP3(OG(GGG)) f(GGG) e(G)"
+:needed-objects   (GROUP3 GROUP2)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name EQUIV-02-04
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL f(GGG) EXISTS e(G) GROUP2(OG(GGG)) f(GGG) e(G) EQUIV GROUP4(O(GGG)) f(GGG)"
+:needed-objects   (GROUP4 GROUP2)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name EQUIV-03-04
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL f(GGG).EXISTS e(G) GROUP3(OG(GGG)) f(GGG) e(G) EQUIV GROUP4(O(GGG)) f(GGG)"
+:needed-objects   (GROUP3 GROUP4)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GROUP1
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(GGG) LAMBDA e(G).GRP-ASSOC(O(GGG)) f(GGG) AND GRP-UNIT(OG(GGG)) f(GGG) e(G) AND GRP-INVERSE(OG(GGG)) f(GGG) e(G)"
+:needed-objects   (GRP-ASSOC GRP-UNIT GRP-INVERSE)
+:mhelp ""
+:other-attributes ((TYPE "OG(GGG)"))
+:other-remarks "
+")
+
+
+(:name GROUP2
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(GGG) LAMBDA e(G).GRP-ASSOC(O(GGG)) f(GGG) AND GRP-LEFT-UNIT(OG(GGG)) f(GGG) e(G) AND GRP-LEFT-INVERSE(OG(GGG)) f(GGG) e(G)"
+:needed-objects   (GRP-ASSOC GRP-LEFT-UNIT GRP-LEFT-INVERSE)
+:mhelp ""
+:other-attributes ((TYPE "OG(GGG)"))
+:other-remarks "
+")
+
+
+(:name GROUP3
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(GGG) LAMBDA e(G).GRP-ASSOC(O(GGG)) f(GGG) AND GRP-RIGHT-UNIT(OG(GGG)) f(GGG) e(G) AND GRP-RIGHT-INVERSE(OG(GGG)) f(GGG) e(G)"
+:needed-objects   (GRP-ASSOC GRP-RIGHT-UNIT GRP-RIGHT-INVERSE)
+:mhelp ""
+:other-attributes ((TYPE "OG(GGG)"))
+:other-remarks "
+")
+
+
+(:name GROUP4
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(GGG).GRP-ASSOC(O(GGG)) f(GGG) AND GRP-DIVISORS(O(GGG)) f(GGG)"
+:needed-objects   (GRP-ASSOC GRP-DIVISORS)
+:mhelp ""
+:other-attributes ((TYPE "O(GGG)"))
+:other-remarks "
+")
+
+
+(:name GRP-ASSOC
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(GGG) FORALL a(G) FORALL b(G) FORALL c(G).f(GGG) [f(GGG) a(G) b(G)] c(G) =(OGG) f(GGG) a(G).f(GGG) b(G) c(G)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((TYPE "O(GGG)"))
+:other-remarks "
+")
+
+
+(:name GRP-DIVISORS
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(GGG) FORALL a(G) FORALL b(G).EXISTS x(G) [f(GGG) a(G) x(G) =(OGG) b(G)] AND EXISTS y(G).f(GGG) y(G) a(G) =(OGG) b(G)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((TYPE "O(GGG)"))
+:other-remarks "
+")
+
+
+(:name GRP-INVERSE
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(GGG) LAMBDA e(G) FORALL a(G) EXISTS b(G).f(GGG) a(G) b(G) =(OGG) e(G) AND f(GGG) b(G) a(G) =(OGG) e(G)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((TYPE "OG(GGG)"))
+:other-remarks "
+")
+
+
+(:name GRP-LEFT-INVERSE
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(GGG) LAMBDA e(G) FORALL a(G) EXISTS b(G).f(GGG) b(G) a(G) =(OGG) e(G)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((TYPE "OG(GGG)"))
+:other-remarks "
+")
+
+
+(:name GRP-LEFT-UNIT
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(GGG) LAMBDA e(G) FORALL a(G).f(GGG) e(G) a(G) =(OGG) a(G)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((TYPE "OG(GGG)"))
+:other-remarks "
+")
+
+
+(:name GRP-RIGHT-INVERSE
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(GGG) LAMBDA e(G) FORALL a(G) EXISTS b(G).f(GGG) a(G) b(G) =(OGG) e(G)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((TYPE "OG(GGG)"))
+:other-remarks "
+")
+
+
+(:name GRP-RIGHT-UNIT
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(GGG) LAMBDA e(G) FORALL a(G).f(GGG) a(G) e(G) =(OGG) a(G)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((TYPE "OG(GGG)"))
+:other-remarks "
+")
+
+
+(:name GRP-UNIT
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(GGG) LAMBDA e(G) FORALL a(G).f(GGG) e(G) a(G) =(OGG) a(G) AND f(GGG) a(G) e(G) =(OGG) a(G)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((TYPE "OG(GGG)"))
+:other-remarks "
+")
+
+

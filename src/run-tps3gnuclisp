@@ -1,0 +1,2 @@
+#csh -f
+clisp -M /whatever/path/to/tps/tps3.mem -- $*

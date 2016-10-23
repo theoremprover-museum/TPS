@@ -1,0 +1,114 @@
+
+<html>
+<head>
+<title>About TPS and ETPS</title>
+<!-- Changed by: Matt Bishop, 30-Jan-1998 -->
+</head>
+
+<body bgcolor="#FFFFFF">
+<H1>About TPS and ETPS</H1>  <p></p>
+
+TPS and ETPS are, respectively, the Theorem Proving System and the 
+Educational Theorem Proving System. The former is an
+automated theorem-prover for first-order logic and type theory. 
+The latter is a cut-down version of TPS intended for use by 
+students; it contains only commands relevant to proving theorems
+interactively. 
+TPS and ETPS  run in <A HREF="lisp-links.html">Common Lisp</A>, and
+can be used on any system where Common Lisp runs. TPS and ETPS
+have been used extensively under Unix and Linux systems, and to some extent under
+Windows.
+
+<p></p>
+
+Potential applications of automated theorem proving include hardware
+and software verification, partial automation of various mathematical
+activities, promoting development of formal theories in a wide variety
+of disciplines, deductive information systems for these disciplines,
+expert systems which can reason, and certain aspects of artificial intelligence.
+
+<p></p>
+
+TPS can be used to prove theorems of first- and higher-order logic
+interactively, automatically, or in a mixture of these modes, though
+in automatic mode it is quite primitive in certain respects, such as
+in dealing with equality.  It has facilities for searching for
+expansion proofs, translating these into natural deduction proofs,
+constructing natural deduction proofs, translating natural deduction
+proofs which do not contain cuts into expansion proofs, and solving
+unification problems in higher-order logic. It has a formula editor
+which facilitates constructing new formulas from others already known
+to TPS, and a library facility for saving formulas, definitions, and
+modes (groups of flag settings).
+
+<p></p>
+
+The interactive facilities of TPS for constructing natural deduction
+proofs have been used under the name ETPS in <A HREF="courses.html">logic courses</A> 
+at <A HREF="http://www.cmu.edu/">Carnegie
+Mellon</A> for a number of years. Students generally learn to use ETPS
+fairly quickly just by reading the <A HREF="tps-etps.ps">manual</A> (which contains some
+complete examples) and playing with the system.  The student using
+ETPS issues commands to apply rules of inference in specified ways,
+and the computer handles the details of writing the appropriate lines
+of the proof and checking that the rules can be used in this way. The
+program thus allows students to concentrate on the essential logical
+problems underlying the proofs, and it gives them immediate feedback
+for both correct and incorrect actions.  ETPS permits students to work
+forwards, backwards, or in a combination of these modes, and provides
+facilities for rearranging proofs, deleting parts of proofs,
+displaying only those parts of proofs under active consideration,
+saving incomplete proofs, and printing proofs on paper.  The convenient
+formula editor permits the student to extract needed formulas which
+occur anywhere in the proof, and build new formulas from them. The
+rules of inference and predefined problems in ETPS are mostly taken
+from the textbook: <A HREF="andrews.html">Peter B. Andrews</A>, 
+<b><A HREF="tttp.html">An Introduction to Mathematical Logic and Type Theory: To Truth Through Proof</A></b>,
+Second Edition,  <A HREF="http://www.wkap.nl">Kluwer Academic Publishers</A>, 2002.
+Descriptions of the rules of inference are
+available online. When the teacher permits it, the student can obtain
+hints from ETPS concerning what to try in various situations.
+Students can send remarks or questions to the teacher without leaving
+the program. A record of completed exercises is maintained by ETPS,
+and can be processed by the GRADER program which is also part of TPS,
+and which can be used to maintain and process numerical or letter
+grades for any course.
+For more information about ETPS, you can download the report
+<i>ETPS: A System to Help Students Write Formal Proofs</i>
+<A HREF="etps-report.ps">(postscript)</A> 
+<A HREF="etps-report-pdf.pdf"> (pdf)</A>.
+
+<p></p>
+TPS won the first competition between
+higher-order theorem proving systems which has ever been held. The
+competition, in the newly established THF demonstration division, was part of 
+<A HREF="http://www.cs.miami.edu/~tptp/CASC/22/">The CADE-22 ATP System Competition (CASC-22)</A> at
+<A HREF="http://complogic.cs.mcgill.ca/cade22/">The 22nd International Conference on Automated Deduction (CADE-22)</A>
+ in Montreal, Canada, during August, 2009.
+
+
+
+
+
+
+
+
+<p></p>
+<b>Past and Present Members of the TPS Project:</b><p></p>
+[<A HREF="andrews.html">Peter Andrews</A>] 
+[<a href="http://www.dcs.kcl.ac.uk/staff/bishopm/index.html">Matthew Bishop</a>] 
+[<A HREF="http://gtps.math.cmu.edu/cebrown/">Chad E. Brown</A>]
+[<A HREF="http://www.cs.cmu.edu/~si/">Sunil Issar</A>] 
+[Dan Nesmith] 
+[<A HREF="http://www.cs.cmu.edu/~fp/">Frank Pfenning</A>] 
+[<A HREF="http://www.cs.bu.edu/~hwxi/">Hongwei Xi</A>]<p></p>
+(not by any means an exhaustive list).
+
+<p></p>
+<a href="http://moneyaisle.com/worldwide/tps-about-be">Belorussian translation of this page</a>
+<p></p>
+<hr>
+<p></p>
+<A HREF="tps.html"><IMG ALT="Prev" WIDTH=30 HEIGHT=30 SRC="docsleft.gif"></A><A HREF="tps.html"><IMG ALT="Top" WIDTH=30 HEIGHT=30 SRC="docsupar.gif"></A><A HREF="tps-papers.html"><img ALT="Next" WIDTH=30 HEIGHT=30 src="docsrigh.gif"></A><A HREF="whatsnew.html"><IMG ALT="NEW!" WIDTH=30 HEIGHT=30 SRC="newbut.gif"></A><img ALT="  " WIDTH=30 HEIGHT=30 src="empty.gif">
+</body>
+</html>

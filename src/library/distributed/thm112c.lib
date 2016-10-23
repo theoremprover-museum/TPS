@@ -1,0 +1,14 @@
+(:name THM112C
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:15:11."
+:description "FORALL P(OI) EXISTS m^9(OI(II)) EXISTS m^10(OI(II)).FORALL w^1(I) [m^9(OI(II)) [LAMBDA x(I) x(I)] w^1(I) OR m^10(OI(II)) [LAMBDA x(I) x(I)] w^1(I)] AND FORALL G(II) FORALL H(II).FORALL w^1(I) [m^9(OI(II)) G(II) w^1(I) OR m^10(OI(II)) G(II) w^1(I)] AND FORALL w^1(I) [m^9(OI(II)) G(II) w^1(I) OR m^10(OI(II)) G(II) w^1(I)] AND FORALL w^1(I) [m^9(OI(II)) H(II) w^1(I) OR m^10(OI(II)) H(II) w^1(I)] IMPLIES FORALL w^1(I) [m^9(OI(II)) [G(II) COMPOSE(II(II)(II)) H(II)] w^1(I) OR m^10(OI(II)) [G(II) COMPOSE(II(II)(II)) H(II)] w^1(I)] AND FORALL Y(I).P(OI) Y(I) IMPLIES P(OI).G(II) Y(I)"
+:needed-objects   (COMPOSE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

@@ -1,0 +1,14 @@
+(:name EXAMPLE1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "R(OII) [g(II).f(II) a(I)] [f(II).g(II).f(II) a(I)] IMPLIES EXISTS x(I) R(OII) x(I).f(II) x(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

@@ -1,0 +1,28 @@
+(:name PEIRCE
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, August 11, 1999 at 16:01:51."
+:description "p(O) IMPLIES q(O) IMPLIES p(O) IMPLIES p(O)"
+:needed-objects   NIL
+:mhelp "Peirce's Law"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name PROP-2003-3-13
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, March 13, 2003 at 14:19:32."
+:description "q(O) IMPLIES r(O) IMPLIES.~q(O) IMPLIES ~p(O) IMPLIES.p(O) IMPLIES r(O)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

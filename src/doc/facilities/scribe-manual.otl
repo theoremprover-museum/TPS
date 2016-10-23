@@ -1,0 +1,664 @@
+@Comment{OUTLINE of scribe-manual.mss by Scribe 8.2 on 9 August 2011 at 13:12}
+1. Introduction                                           1 scribe-preamble.mss, line 1
+2. Top-Level Commands                                     2 scribe-facilities.mss, line 1
+  2.1. Top Levels                                         2 scribe-facilities.mss, line 7
+  2.2. Help                                               3 scribe-facilities.mss, line 165
+  2.3. Collecting Help                                    4 scribe-facilities.mss, line 237
+  2.4. Concept                                            5 scribe-facilities.mss, line 286
+  2.5. Starting and Finishing                             5 scribe-facilities.mss, line 295
+  2.6. Printing                                           6 scribe-facilities.mss, line 343
+  2.7. Saving Work                                        7 scribe-facilities.mss, line 485
+  2.8. Saving Wffs                                        8 scribe-facilities.mss, line 588
+  2.9. Printing Proofs into Files                         8 scribe-facilities.mss, line 600
+  2.10. Proof Outline                                     9 scribe-facilities.mss, line 630
+  2.11. Expansion Trees                                  10 scribe-facilities.mss, line 700
+  2.12. Search Suggestions                               10 scribe-facilities.mss, line 720
+  2.13. Mating search                                    10 scribe-facilities.mss, line 747
+  2.14. MS91-6 and MS91-7 search procedures              11 scribe-facilities.mss, line 847
+  2.15. Proof Translation                                12 scribe-facilities.mss, line 862
+  2.16. Unification                                      12 scribe-facilities.mss, line 913
+  2.17. Search Analysis                                  12 scribe-facilities.mss, line 921
+  2.18. Tactics                                          13 scribe-facilities.mss, line 963
+  2.19. suggestions                                      13 scribe-facilities.mss, line 973
+  2.20. Vpforms                                          13 scribe-facilities.mss, line 1005
+  2.21. Rearranging the Proof                            14 scribe-facilities.mss, line 1020
+  2.22. Status                                           14 scribe-facilities.mss, line 1083
+  2.23. Miscellaneous Rules                              15 scribe-facilities.mss, line 1108
+  2.24. Propositional Rules                              15 scribe-facilities.mss, line 1134
+  2.25. Negation Rules                                   16 scribe-facilities.mss, line 1212
+  2.26. Quantifier Rules                                 16 scribe-facilities.mss, line 1236
+  2.27. Substitution Rules                               17 scribe-facilities.mss, line 1266
+  2.28. Equality Rules                                   17 scribe-facilities.mss, line 1276
+  2.29. Definition Rules                                 18 scribe-facilities.mss, line 1323
+  2.30. Lambda Conversion Rules                          18 scribe-facilities.mss, line 1335
+  2.31. Rewriting commands                               18 scribe-facilities.mss, line 1370
+  2.32. Events                                           19 scribe-facilities.mss, line 1451
+  2.33. Statistics                                       19 scribe-facilities.mss, line 1458
+  2.34. Maintenance                                      20 scribe-facilities.mss, line 1484
+  2.35. Modules                                          22 scribe-facilities.mss, line 1690
+  2.36. Rules Module                                     22 scribe-facilities.mss, line 1702
+  2.37. Lisp packages                                    22 scribe-facilities.mss, line 1718
+  2.38. Display                                          22 scribe-facilities.mss, line 1732
+  2.39. Best modes                                       23 scribe-facilities.mss, line 1744
+  2.40. Library Classification                           23 scribe-facilities.mss, line 1751
+  2.41. Bugs                                             23 scribe-facilities.mss, line 1761
+  2.42. Interface                                        23 scribe-facilities.mss, line 1795
+3. Inference Rules                                       24 scribe-facilities.mss, line 1801
+  3.1. Miscellaneous Rules                               24 scribe-facilities.mss, line 1807
+                              HYP                        24 scribe-facilities.mss, line 1810
+                              LEMMA                      24 scribe-facilities.mss, line 1818
+                              SAME                       24 scribe-facilities.mss, line 1826
+  3.2. Propositional Rules                               24 scribe-facilities.mss, line 1834
+                              ASSOC-LEFT                 24 scribe-facilities.mss, line 1837
+                              CASES                      24 scribe-facilities.mss, line 1846
+                              CASES3                     24 scribe-facilities.mss, line 1858
+                              CASES4                     24 scribe-facilities.mss, line 1872
+                              DEDUCT                     25 scribe-facilities.mss, line 1888
+                              DISJ-IMP                   25 scribe-facilities.mss, line 1897
+                              DISJ-IMP-L                 25 scribe-facilities.mss, line 1905
+                              DISJ-IMP-R                 25 scribe-facilities.mss, line 1913
+                              ECONJ                      25 scribe-facilities.mss, line 1921
+                              EQUIV-IMPLICS              25 scribe-facilities.mss, line 1930
+                              ICONJ                      25 scribe-facilities.mss, line 1938
+                              IDISJ-LEFT                 26 scribe-facilities.mss, line 1947
+                              IDISJ-RIGHT                26 scribe-facilities.mss, line 1955
+                              IMP-DISJ                   26 scribe-facilities.mss, line 1963
+                              IMP-DISJ-L                 26 scribe-facilities.mss, line 1971
+                              IMP-DISJ-R                 26 scribe-facilities.mss, line 1979
+                              IMPLICS-EQUIV              26 scribe-facilities.mss, line 1987
+                              INDIRECT                   26 scribe-facilities.mss, line 1995
+                              INDIRECT1                  26 scribe-facilities.mss, line 2004
+                              INDIRECT2                  26 scribe-facilities.mss, line 2013
+                              ITRUTH                     27 scribe-facilities.mss, line 2023
+                              MP                         27 scribe-facilities.mss, line 2030
+                              SUBST-EQUIV                27 scribe-facilities.mss, line 2039
+  3.3. Negation Rules                                    27 scribe-facilities.mss, line 2050
+                              ABSURD                     27 scribe-facilities.mss, line 2053
+                              ENEG                       27 scribe-facilities.mss, line 2061
+                              INEG                       27 scribe-facilities.mss, line 2070
+                              NNF                        27 scribe-facilities.mss, line 2079
+                              NNF-EXPAND                 27 scribe-facilities.mss, line 2088
+                              PULLNEG                    28 scribe-facilities.mss, line 2097
+                              PUSHNEG                    28 scribe-facilities.mss, line 2106
+  3.4. Quantifier Rules                                  28 scribe-facilities.mss, line 2115
+                              AB*                        28 scribe-facilities.mss, line 2118
+                              ABE                        28 scribe-facilities.mss, line 2127
+                              ABU                        28 scribe-facilities.mss, line 2137
+                              EGEN                       28 scribe-facilities.mss, line 2147
+                              RULEC                      28 scribe-facilities.mss, line 2156
+                              RULEC1                     29 scribe-facilities.mss, line 2167
+                              UGEN                       29 scribe-facilities.mss, line 2179
+                              UI                         29 scribe-facilities.mss, line 2188
+  3.5. Substitution Rules                                29 scribe-facilities.mss, line 2197
+                              SUBSTITUTE                 29 scribe-facilities.mss, line 2200
+  3.6. Equality Rules                                    29 scribe-facilities.mss, line 2209
+                              EQUIV-EQ                   29 scribe-facilities.mss, line 2212
+                              EQUIV-EQ-CONTR             30 scribe-facilities.mss, line 2224
+                              EQUIV-EQ-CONTR*            30 scribe-facilities.mss, line 2233
+                              EQUIV-EQ-EXPD              30 scribe-facilities.mss, line 2242
+                              EQUIV-EQ-EXPD*             30 scribe-facilities.mss, line 2250
+                              EXT=                       30 scribe-facilities.mss, line 2258
+                              EXT=0                      30 scribe-facilities.mss, line 2267
+                              LET                        30 scribe-facilities.mss, line 2275
+                              SUBST=                     31 scribe-facilities.mss, line 2287
+                              SUBST=L                    31 scribe-facilities.mss, line 2298
+                              SUBST=R                    31 scribe-facilities.mss, line 2309
+                              SYM=                       31 scribe-facilities.mss, line 2320
+  3.7. Definition Rules                                  31 scribe-facilities.mss, line 2328
+                              EDEF                       31 scribe-facilities.mss, line 2331
+                              EQUIV-WFFS                 31 scribe-facilities.mss, line 2340
+                              IDEF                       32 scribe-facilities.mss, line 2349
+  3.8. Lambda Conversion Rules                           32 scribe-facilities.mss, line 2358
+                              BETA*                      32 scribe-facilities.mss, line 2361
+                              ETA*                       32 scribe-facilities.mss, line 2371
+                              LAMBDA*                    32 scribe-facilities.mss, line 2381
+                              LCONTR*                    32 scribe-facilities.mss, line 2391
+                              LCONTR*-BETA               32 scribe-facilities.mss, line 2400
+                              LCONTR*-ETA                32 scribe-facilities.mss, line 2408
+                              LEXPD*                     32 scribe-facilities.mss, line 2416
+                              LEXPD*-BETA                33 scribe-facilities.mss, line 2425
+                              LEXPD*-ETA                 33 scribe-facilities.mss, line 2433
+  3.9. Rewriting commands                                33 scribe-facilities.mss, line 2441
+                              REWRITE-SUPP*              33 scribe-facilities.mss, line 2444
+                              REWRITE-SUPP1              33 scribe-facilities.mss, line 2453
+                              SIMPLIFY-PLAN              33 scribe-facilities.mss, line 2462
+                              SIMPLIFY-PLAN*             33 scribe-facilities.mss, line 2471
+                              SIMPLIFY-SUPP              33 scribe-facilities.mss, line 2480
+                              SIMPLIFY-SUPP*             33 scribe-facilities.mss, line 2489
+                              UNREWRITE-PLAN*            33 scribe-facilities.mss, line 2498
+                              UNREWRITE-PLAN1            34 scribe-facilities.mss, line 2506
+                              USE-RRULES                 34 scribe-facilities.mss, line 2515
+4. Extensional Sequent Commands                          35 scribe-facilities.mss, line 2524
+  4.1. Top Levels                                        35 scribe-facilities.mss, line 2530
+  4.2. Proof Translation                                 35 scribe-facilities.mss, line 2536
+  4.3. Extensional Sequent Entering                      35 scribe-facilities.mss, line 2544
+  4.4. Extensional Sequent Printing                      35 scribe-facilities.mss, line 2581
+  4.5. Extensional Sequent Rules                         35 scribe-facilities.mss, line 2593
+  4.6. Extensional Sequent Derived Rules                 36 scribe-facilities.mss, line 2716
+  4.7. Extensional Sequent Files                         37 scribe-facilities.mss, line 2772
+  4.8. Compound                                          37 scribe-facilities.mss, line 2805
+5. Tactics                                               38 scribe-facilities.mss, line 2810
+  5.1. Compound                                          38 scribe-facilities.mss, line 2816
+  5.2. Propositional                                     42 scribe-facilities.mss, line 3251
+  5.3. Quantifiers                                       48 scribe-facilities.mss, line 3810
+  5.4. Equality                                          50 scribe-facilities.mss, line 4004
+  5.5. Definitions                                       51 scribe-facilities.mss, line 4126
+  5.6. Lambda                                            52 scribe-facilities.mss, line 4171
+  5.7. Auxiliary                                         54 scribe-facilities.mss, line 4345
+6. Tacticals                                             56 scribe-facilities.mss, line 4479
+  6.1. Tactics                                           56 scribe-facilities.mss, line 4485
+7. Mating-Search Commands                                57 scribe-facilities.mss, line 4550
+  7.1. Top Levels                                        57 scribe-facilities.mss, line 4556
+  7.2. Printing                                          57 scribe-facilities.mss, line 4564
+  7.3. Recording                                         57 scribe-facilities.mss, line 4622
+  7.4. Expansion Trees                                   58 scribe-facilities.mss, line 4632
+  7.5. Search Suggestions                                59 scribe-facilities.mss, line 4751
+  7.6. Mating search                                     59 scribe-facilities.mss, line 4757
+  7.7. MS88 search procedure                             59 scribe-facilities.mss, line 4778
+  7.8. MS89 search procedure                             60 scribe-facilities.mss, line 4834
+  7.9. MS90-3 search procedure                           60 scribe-facilities.mss, line 4845
+  7.10. MS90-9 search procedure                          60 scribe-facilities.mss, line 4862
+  7.11. MS91-6 and MS91-7 search procedures              60 scribe-facilities.mss, line 4873
+  7.12. MS92-9 search procedure                          61 scribe-facilities.mss, line 4922
+  7.13. MS93-1 search procedure                          61 scribe-facilities.mss, line 4937
+  7.14. MS98-1 search procedure                          61 scribe-facilities.mss, line 4950
+  7.15. Proof Translation                                61 scribe-facilities.mss, line 4964
+  7.16. Vpforms                                          61 scribe-facilities.mss, line 4972
+  7.17. Moving Commands                                  62 scribe-facilities.mss, line 5016
+  7.18. Statistics                                       62 scribe-facilities.mss, line 5048
+  7.19. Miscellaneous                                    62 scribe-facilities.mss, line 5059
+8. Extensional Expansion Dag Commands                    63 scribe-facilities.mss, line 5076
+  8.1. Top Levels                                        63 scribe-facilities.mss, line 5082
+  8.2. Printing                                          63 scribe-facilities.mss, line 5088
+  8.3. Extensional Search                                63 scribe-facilities.mss, line 5127
+  8.4. Proof Translation                                 63 scribe-facilities.mss, line 5152
+  8.5. Vpforms                                           64 scribe-facilities.mss, line 5161
+  8.6. Extensional Expansion Dags                        64 scribe-facilities.mss, line 5183
+  8.7. Moving Commands                                   65 scribe-facilities.mss, line 5263
+9. Matingstree Commands                                  66 scribe-facilities.mss, line 5295
+  9.1. Top Levels                                        66 scribe-facilities.mss, line 5301
+  9.2. Mtree Operations                                  66 scribe-facilities.mss, line 5307
+  9.3. Mtree Printing                                    67 scribe-facilities.mss, line 5384
+  9.4. Mtree Auto                                        67 scribe-facilities.mss, line 5476
+10. Unification Commands                                 69 scribe-facilities.mss, line 5519
+  10.1. Top Levels                                       69 scribe-facilities.mss, line 5525
+  10.2. Unification                                      69 scribe-facilities.mss, line 5531
+  10.3. Dpairs                                           70 scribe-facilities.mss, line 5655
+11. Test-Top Commands                                    71 scribe-facilities.mss, line 5690
+  11.1. Top Levels                                       71 scribe-facilities.mss, line 5696
+  11.2. Mating search                                    71 scribe-facilities.mss, line 5702
+  11.3. Searchlists                                      72 scribe-facilities.mss, line 5800
+  11.4. Library                                          73 scribe-facilities.mss, line 5895
+12. Models Commands                                      74 scribe-facilities.mss, line 5911
+  12.1. Top Levels                                       74 scribe-facilities.mss, line 5917
+  12.2. Printing                                         74 scribe-facilities.mss, line 5923
+  12.3. Models                                           75 scribe-facilities.mss, line 6005
+13. Editor Commands                                      76 scribe-facilities.mss, line 6065
+  13.1. Top Levels                                       76 scribe-facilities.mss, line 6071
+  13.2. Printing                                         76 scribe-facilities.mss, line 6083
+  13.3. Weak Labels                                      76 scribe-facilities.mss, line 6098
+  13.4. Saving Wffs                                      76 scribe-facilities.mss, line 6122
+  13.5. Recording                                        76 scribe-facilities.mss, line 6135
+  13.6. Vpforms                                          77 scribe-facilities.mss, line 6148
+  13.7. Moving Commands                                  77 scribe-facilities.mss, line 6192
+  13.8. Changing Commands                                77 scribe-facilities.mss, line 6231
+  13.9. Recursively Changing Commands                    78 scribe-facilities.mss, line 6325
+  13.10. Embedding Commands                              79 scribe-facilities.mss, line 6409
+  13.11. Rewriting commands                              79 scribe-facilities.mss, line 6468
+  13.12. Substitution                                    80 scribe-facilities.mss, line 6529
+  13.13. Basic Abbreviations                             80 scribe-facilities.mss, line 6568
+  13.14. Lambda-Calculus                                 80 scribe-facilities.mss, line 6608
+  13.15. Negation movers                                 81 scribe-facilities.mss, line 6654
+  13.16. Primitive Substitutions                         81 scribe-facilities.mss, line 6669
+  13.17. Miscellaneous                                   81 scribe-facilities.mss, line 6679
+  13.18. RuleP                                           81 scribe-facilities.mss, line 6704
+  13.19. Skolemizing                                     81 scribe-facilities.mss, line 6713
+  13.20. Quantifier Commands                             82 scribe-facilities.mss, line 6727
+  13.21. Wellformedness                                  82 scribe-facilities.mss, line 6739
+14. Replaceable Symbols                                  83 scribe-facilities.mss, line 6757
+  14.1. Basic Abbreviations                              83 scribe-facilities.mss, line 6763
+15. Theorems                                             84 scribe-facilities.mss, line 6791
+  15.1. Book Theorems                                    84 scribe-facilities.mss, line 6793
+  15.2. First-Order Logic                                84 scribe-facilities.mss, line 6819
+  15.3. Higher-Order Logic                               85 scribe-facilities.mss, line 6920
+16. Logical Abbreviations                                87 scribe-facilities.mss, line 7003
+  16.1. Basic Abbreviations                              87 scribe-facilities.mss, line 7009
+  16.2. Set Abbreviations                                87 scribe-facilities.mss, line 7044
+17. Binders                                              88 scribe-facilities.mss, line 7066
+  17.1. wff Primitives                                   88 scribe-facilities.mss, line 7072
+  17.2. Basic Abbreviations                              88 scribe-facilities.mss, line 7080
+18. Logical Constants                                    89 scribe-facilities.mss, line 7102
+  18.1. wff Primitives                                   89 scribe-facilities.mss, line 7108
+19. Polymorphic Proper Symbols                           90 scribe-facilities.mss, line 7130
+  19.1. wff Primitives                                   90 scribe-facilities.mss, line 7136
+20. Typeconstants                                        91 scribe-facilities.mss, line 7145
+  20.1. wff Primitives                                   91 scribe-facilities.mss, line 7151
+21. Type Abbreviations                                   92 scribe-facilities.mss, line 7159
+  21.1. wff Primitives                                   92 scribe-facilities.mss, line 7165
+22. Library Commands                                     93 scribe-facilities.mss, line 7170
+  22.1. Top Levels                                       93 scribe-facilities.mss, line 7176
+  22.2. Display                                          93 scribe-facilities.mss, line 7182
+  22.3. Reading                                          95 scribe-facilities.mss, line 7338
+  22.4. Library Structure                                95 scribe-facilities.mss, line 7371
+  22.5. Editing                                          96 scribe-facilities.mss, line 7459
+  22.6. Keywords                                         98 scribe-facilities.mss, line 7603
+  22.7. Best modes                                       98 scribe-facilities.mss, line 7635
+  22.8. Library Classification                           99 scribe-facilities.mss, line 7686
+23. Library Objects                                     102 scribe-facilities.mss, line 7860
+  23.1. Miscellaneous                                   102 scribe-facilities.mss, line 7866
+  23.2. Library                                         102 scribe-facilities.mss, line 7921
+24. Classification Scheme For The Library.s             103 scribe-facilities.mss, line 7926
+  24.1. Modules                                         103 scribe-facilities.mss, line 7932
+25. Library Command Using A Unix Style Interfaces       104 scribe-facilities.mss, line 7942
+  25.1. Top Levels                                      104 scribe-facilities.mss, line 7948
+  25.2. Display                                         104 scribe-facilities.mss, line 7954
+  25.3. Reading                                         104 scribe-facilities.mss, line 8002
+  25.4. Library Classification                          104 scribe-facilities.mss, line 8011
+26. Review Commands                                     106 scribe-facilities.mss, line 8043
+  26.1. Top Levels                                      106 scribe-facilities.mss, line 8049
+  26.2. Flags                                           106 scribe-facilities.mss, line 8055
+  26.3. Modes                                           107 scribe-facilities.mss, line 8126
+  26.4. Unification                                     107 scribe-facilities.mss, line 8149
+  26.5. Best modes                                      107 scribe-facilities.mss, line 8161
+27. Subjects                                            108 scribe-facilities.mss, line 8169
+  27.1. Top Levels                                      108 scribe-facilities.mss, line 8175
+  27.2. OTL Object                                      108 scribe-facilities.mss, line 8201
+  27.3. Printing                                        108 scribe-facilities.mss, line 8225
+  27.4. Flavors of Labels                               109 scribe-facilities.mss, line 8280
+  27.5. Saving Work                                     109 scribe-facilities.mss, line 8289
+  27.6. Expansion Trees                                 109 scribe-facilities.mss, line 8298
+  27.7. Mtree Operations                                110 scribe-facilities.mss, line 8316
+  27.8. Mating search                                   110 scribe-facilities.mss, line 8334
+  27.9. MS88 search procedure                           112 scribe-facilities.mss, line 8478
+  27.10. MS89 search procedure                          113 scribe-facilities.mss, line 8500
+  27.11. MS90-3 search procedure                        113 scribe-facilities.mss, line 8523
+  27.12. MS90-9 search procedure                        113 scribe-facilities.mss, line 8546
+  27.13. MS91-6 and MS91-7 search procedures            114 scribe-facilities.mss, line 8570
+  27.14. MS92-9 search procedure                        115 scribe-facilities.mss, line 8626
+  27.15. MS93-1 search procedure                        115 scribe-facilities.mss, line 8648
+  27.16. MS98-1 search procedure                        115 scribe-facilities.mss, line 8671
+  27.17. Extensional Search                             116 scribe-facilities.mss, line 8700
+  27.18. Proof Translation                              117 scribe-facilities.mss, line 8812
+  27.19. Unification                                    118 scribe-facilities.mss, line 8825
+  27.20. Tactics                                        118 scribe-facilities.mss, line 8851
+  27.21. suggestions                                    118 scribe-facilities.mss, line 8862
+  27.22. Vpforms                                        118 scribe-facilities.mss, line 8871
+  27.23. Semantics                                      118 scribe-facilities.mss, line 8886
+  27.24. wff Primitives                                 119 scribe-facilities.mss, line 8895
+  27.25. Wff Parsing                                    119 scribe-facilities.mss, line 8905
+  27.26. Primitive Substitutions                        119 scribe-facilities.mss, line 8915
+  27.27. Events                                         119 scribe-facilities.mss, line 8940
+  27.28. Grader                                         120 scribe-facilities.mss, line 8960
+  27.29. Maintenance                                    120 scribe-facilities.mss, line 8979
+  27.30. Rules object                                   120 scribe-facilities.mss, line 9004
+  27.31. Library                                        120 scribe-facilities.mss, line 9012
+28. Flag Or Parameters                                  121 scribe-facilities.mss, line 9026
+  28.1. Top Levels                                      121 scribe-facilities.mss, line 9032
+  28.2. Style                                           122 scribe-facilities.mss, line 9106
+  28.3. Review                                          122 scribe-facilities.mss, line 9114
+  28.4. Flags                                           122 scribe-facilities.mss, line 9131
+  28.5. Modes                                           122 scribe-facilities.mss, line 9140
+  28.6. Help                                            122 scribe-facilities.mss, line 9155
+  28.7. Collecting Help                                 123 scribe-facilities.mss, line 9164
+  28.8. Starting and Finishing                          123 scribe-facilities.mss, line 9193
+  28.9. OTL Object                                      123 scribe-facilities.mss, line 9227
+  28.10. Printing                                       124 scribe-facilities.mss, line 9266
+  28.11. Printing                                       124 scribe-facilities.mss, line 9296
+  28.12. Internal for Printing                          126 scribe-facilities.mss, line 9413
+  28.13. TeX                                            126 scribe-facilities.mss, line 9427
+  28.14. X Windows                                      126 scribe-facilities.mss, line 9469
+  28.15. Weak Labels                                    127 scribe-facilities.mss, line 9493
+  28.16. Flavors of Labels                              127 scribe-facilities.mss, line 9502
+  28.17. Saving Work                                    127 scribe-facilities.mss, line 9520
+  28.18. Recording                                      127 scribe-facilities.mss, line 9536
+  28.19. Printing Proofs into Files                     128 scribe-facilities.mss, line 9581
+  28.20. Proof Outline                                  129 scribe-facilities.mss, line 9661
+  28.21. Expansion Trees                                130 scribe-facilities.mss, line 9741
+  28.22. Mtree Operations                               132 scribe-facilities.mss, line 9907
+  28.23. Mtree Auto                                     132 scribe-facilities.mss, line 9932
+  28.24. Mating search                                  133 scribe-facilities.mss, line 10000
+  28.25. MS88 search procedure                          135 scribe-facilities.mss, line 10201
+  28.26. MS89 search procedure                          137 scribe-facilities.mss, line 10338
+  28.27. MS90-3 search procedure                        138 scribe-facilities.mss, line 10368
+  28.28. MS91-6 and MS91-7 search procedures            138 scribe-facilities.mss, line 10413
+  28.29. MS98-1 search procedure                        141 scribe-facilities.mss, line 10613
+  28.30. Extensional Search                             145 scribe-facilities.mss, line 10923
+  28.31. Proof Translation                              155 scribe-facilities.mss, line 11604
+  28.32. Unification                                    155 scribe-facilities.mss, line 11655
+  28.33. Tactics                                        158 scribe-facilities.mss, line 11916
+  28.34. suggestions                                    159 scribe-facilities.mss, line 11940
+  28.35. Searchlists                                    159 scribe-facilities.mss, line 11972
+  28.36. Vpforms                                        161 scribe-facilities.mss, line 12113
+  28.37. Semantics                                      163 scribe-facilities.mss, line 12267
+  28.38. Printing                                       163 scribe-facilities.mss, line 12288
+  28.39. Applying Rules                                 163 scribe-facilities.mss, line 12303
+  28.40. Propositional Rules                            164 scribe-facilities.mss, line 12354
+  28.41. Wff Editor                                     164 scribe-facilities.mss, line 12366
+  28.42. wff Primitives                                 165 scribe-facilities.mss, line 12419
+  28.43. Wff Parsing                                    165 scribe-facilities.mss, line 12449
+  28.44. Basic Abbreviations                            165 scribe-facilities.mss, line 12479
+  28.45. Lambda-Calculus                                166 scribe-facilities.mss, line 12508
+  28.46. Primitive Substitutions                        166 scribe-facilities.mss, line 12518
+  28.47. Miscellaneous                                  169 scribe-facilities.mss, line 12793
+  28.48. RuleP                                          169 scribe-facilities.mss, line 12818
+  28.49. Skolemizing                                    169 scribe-facilities.mss, line 12827
+  28.50. Quantifiers                                    170 scribe-facilities.mss, line 12835
+  28.51. Auxiliary                                      170 scribe-facilities.mss, line 12844
+  28.52. Events                                         170 scribe-facilities.mss, line 12860
+  28.53. Grader                                         171 scribe-facilities.mss, line 12939
+  28.54. Maintenance                                    172 scribe-facilities.mss, line 13026
+  28.55. Rules object                                   173 scribe-facilities.mss, line 13152
+  28.56. Unclassified                                   174 scribe-facilities.mss, line 13170
+  28.57. Library                                        175 scribe-facilities.mss, line 13234
+  28.58. Editing                                        175 scribe-facilities.mss, line 13296
+  28.59. Library Classification                         176 scribe-facilities.mss, line 13312
+  28.60. Bugs                                           176 scribe-facilities.mss, line 13341
+29. Modes                                               177 scribe-facilities.mss, line 13360
+  29.1. Collecting Help                                 177 scribe-facilities.mss, line 13366
+  29.2. OTL Object                                      177 scribe-facilities.mss, line 13432
+  29.3. Printing                                        178 scribe-facilities.mss, line 13526
+  29.4. Recording                                       179 scribe-facilities.mss, line 13561
+  29.5. Expansion Trees                                 179 scribe-facilities.mss, line 13627
+  29.6. MS91-6 and MS91-7 search procedures             179 scribe-facilities.mss, line 13652
+  29.7. wff Primitives                                  181 scribe-facilities.mss, line 13790
+  29.8. Maintenance                                     182 scribe-facilities.mss, line 13818
+  29.9. Unclassified                                    182 scribe-facilities.mss, line 13844
+30. Flag Setting Or Other Piece Of Informations         184 scribe-facilities.mss, line 13917
+  30.1. Top Levels                                      184 scribe-facilities.mss, line 13923
+  30.2. Printing                                        184 scribe-facilities.mss, line 13997
+  30.3. Proof Outline                                   185 scribe-facilities.mss, line 14016
+  30.4. Expansion Trees                                 185 scribe-facilities.mss, line 14047
+  30.5. Mtree Operations                                186 scribe-facilities.mss, line 14136
+  30.6. Mtree Auto                                      186 scribe-facilities.mss, line 14181
+  30.7. Mating search                                   187 scribe-facilities.mss, line 14221
+  30.8. MS88 search procedure                           187 scribe-facilities.mss, line 14277
+  30.9. MS89 search procedure                           187 scribe-facilities.mss, line 14295
+  30.10. MS91-6 and MS91-7 search procedures            187 scribe-facilities.mss, line 14302
+  30.11. Extensional Search                             188 scribe-facilities.mss, line 14396
+  30.12. Unification                                    189 scribe-facilities.mss, line 14430
+  30.13. Tactics                                        190 scribe-facilities.mss, line 14522
+  30.14. suggestions                                    190 scribe-facilities.mss, line 14548
+  30.15. Searchlists                                    190 scribe-facilities.mss, line 14568
+  30.16. wff Primitives                                 190 scribe-facilities.mss, line 14603
+  30.17. Basic Abbreviations                            191 scribe-facilities.mss, line 14623
+  30.18. Lambda-Calculus                                191 scribe-facilities.mss, line 14650
+  30.19. Primitive Substitutions                        191 scribe-facilities.mss, line 14668
+  30.20. Maintenance                                    192 scribe-facilities.mss, line 14764
+  30.21. Modules                                        192 scribe-facilities.mss, line 14777
+31. Grader Commands                                     196 scribe-facilities.mss, line 14905
+  31.1. Getting Out and Help                            196 scribe-facilities.mss, line 14911
+  31.2. Variables                                       196 scribe-facilities.mss, line 14923
+  31.3. The Grade-File                                  196 scribe-facilities.mss, line 14932
+  31.4. Manual Grades                                   196 scribe-facilities.mss, line 14938
+  31.5. Automatic Grades                                196 scribe-facilities.mss, line 14957
+  31.6. The Class List                                  196 scribe-facilities.mss, line 14966
+  31.7. Making the Output Convenient                    196 scribe-facilities.mss, line 14975
+  31.8. Generating Values                               197 scribe-facilities.mss, line 14990
+  31.9. Displaying Information                          197 scribe-facilities.mss, line 14996
+  31.10. Totaling                                       197 scribe-facilities.mss, line 15009
+  31.11. Sorting                                        197 scribe-facilities.mss, line 15021
+  31.12. Letter-Grades                                  197 scribe-facilities.mss, line 15027
+32. Events                                              198 scribe-facilities.mss, line 15032
+  32.1. MS88 search procedure                           198 scribe-facilities.mss, line 15038
+  32.2. Events                                          198 scribe-facilities.mss, line 15091
+33. Lisp Packages                                       199 scribe-facilities.mss, line 15114
+  33.1. Lisp packages                                   199 scribe-facilities.mss, line 15120
+34. Modules                                             200 scribe-facilities.mss, line 15138
+  34.1. Modules                                         200 scribe-facilities.mss, line 15144
+35. Files                                               209 scribe-facilities.mss, line 16145
+  35.1. Lisp Source                                     209 scribe-facilities.mss, line 16152
+36. Top Levels                                          220 scribe-facilities.mss, line 17237
+  36.1. Top Levels                                      220 scribe-facilities.mss, line 17243
+  36.2. Mating search                                   220 scribe-facilities.mss, line 17318
+  36.3. Unification                                     221 scribe-facilities.mss, line 17326
+  36.4. Grader                                          221 scribe-facilities.mss, line 17334
+  36.5. Unclassified                                    221 scribe-facilities.mss, line 17342
+37. Contexts                                            222 scribe-facilities.mss, line 17349
+38. Argument Types                                      228 scribe-facilities.mss, line 17855
+  38.1. Style                                           228 scribe-facilities.mss, line 17861
+  38.2. Review                                          228 scribe-facilities.mss, line 17871
+  38.3. Flags                                           230 scribe-facilities.mss, line 18065
+  38.4. Help                                            234 scribe-facilities.mss, line 18201
+  38.5. Collecting Help                                 234 scribe-facilities.mss, line 18210
+  38.6. Starting and Finishing                          240 scribe-facilities.mss, line 18570
+  38.7. Printing                                        240 scribe-facilities.mss, line 18583
+  38.8. Printing                                        240 scribe-facilities.mss, line 18594
+  38.9. Saving Wffs                                     240 scribe-facilities.mss, line 18604
+  38.10. Proof Outline                                  241 scribe-facilities.mss, line 18613
+  38.11. Expansion Trees                                241 scribe-facilities.mss, line 18659
+  38.12. Mtree Printing                                 241 scribe-facilities.mss, line 18696
+  38.13. Mating search                                  242 scribe-facilities.mss, line 18706
+  38.14. Unification                                    243 scribe-facilities.mss, line 18783
+  38.15. Tactics                                        243 scribe-facilities.mss, line 18789
+  38.16. suggestions                                    244 scribe-facilities.mss, line 18805
+  38.17. Searchlists                                    244 scribe-facilities.mss, line 18816
+  38.18. Vpforms                                        244 scribe-facilities.mss, line 18822
+  38.19. Propositional Rules                            244 scribe-facilities.mss, line 18851
+  38.20. Theorems                                       244 scribe-facilities.mss, line 18858
+  38.21. Wff Editor                                     244 scribe-facilities.mss, line 18882
+  38.22. Wff Types                                      245 scribe-facilities.mss, line 18896
+  38.23. Rewriting commands                             246 scribe-facilities.mss, line 19055
+  38.24. Substitution                                   247 scribe-facilities.mss, line 19076
+  38.25. Basic Abbreviations                            247 scribe-facilities.mss, line 19082
+  38.26. Skolemizing                                    247 scribe-facilities.mss, line 19104
+  38.27. Grader                                         247 scribe-facilities.mss, line 19140
+  38.28. Maintenance                                    247 scribe-facilities.mss, line 19149
+  38.29. Basics                                         248 scribe-facilities.mss, line 19158
+  38.30. Modules                                        248 scribe-facilities.mss, line 19206
+  38.31. Rules Module                                   249 scribe-facilities.mss, line 19226
+  38.32. Lisp packages                                  249 scribe-facilities.mss, line 19237
+  38.33. Library                                        249 scribe-facilities.mss, line 19250
+  38.34. Best modes                                     250 scribe-facilities.mss, line 19336
+39. Utilities                                           251 scribe-facilities.mss, line 19343
+  39.1. Top Levels                                      251 scribe-facilities.mss, line 19349
+  39.2. Review                                          251 scribe-facilities.mss, line 19429
+  39.3. Flags                                           252 scribe-facilities.mss, line 19457
+  39.4. Collecting Help                                 252 scribe-facilities.mss, line 19474
+  39.5. Starting and Finishing                          252 scribe-facilities.mss, line 19501
+  39.6. Predicates on Wffs                              253 scribe-facilities.mss, line 19534
+  39.7. Wff Types                                       253 scribe-facilities.mss, line 19545
+  39.8. Basics                                          253 scribe-facilities.mss, line 19560
+40. Wff Operations                                      255 scribe-facilities.mss, line 19645
+  40.1. OTL Object                                      255 scribe-facilities.mss, line 19651
+  40.2. Printing                                        255 scribe-facilities.mss, line 19657
+  40.3. Printing                                        255 scribe-facilities.mss, line 19665
+  40.4. Internal for Printing                           256 scribe-facilities.mss, line 19732
+  40.5. Weak Labels                                     256 scribe-facilities.mss, line 19752
+  40.6. Saving Wffs                                     256 scribe-facilities.mss, line 19772
+  40.7. Recording                                       256 scribe-facilities.mss, line 19785
+  40.8. Expansion Trees                                 257 scribe-facilities.mss, line 19794
+  40.9. Mtree Operations                                258 scribe-facilities.mss, line 19898
+  40.10. Mtree Printing                                 258 scribe-facilities.mss, line 19930
+  40.11. Mtree Auto                                     259 scribe-facilities.mss, line 20020
+  40.12. Mating search                                  260 scribe-facilities.mss, line 20061
+  40.13. MS88 search procedure                          260 scribe-facilities.mss, line 20070
+  40.14. Vpforms                                        260 scribe-facilities.mss, line 20119
+  40.15. wff Primitives                                 261 scribe-facilities.mss, line 20187
+  40.16. Equality between Wffs                          262 scribe-facilities.mss, line 20235
+  40.17. Predicates on Wffs                             262 scribe-facilities.mss, line 20264
+  40.18. Moving Commands                                263 scribe-facilities.mss, line 20397
+  40.19. Changing Commands                              264 scribe-facilities.mss, line 20442
+  40.20. Recursively Changing Commands                  265 scribe-facilities.mss, line 20566
+  40.21. Rewriting commands                             266 scribe-facilities.mss, line 20629
+  40.22. Substitution                                   267 scribe-facilities.mss, line 20722
+  40.23. Basic Abbreviations                            268 scribe-facilities.mss, line 20768
+  40.24. Lambda-Calculus                                268 scribe-facilities.mss, line 20824
+  40.25. Negation movers                                269 scribe-facilities.mss, line 20898
+  40.26. Primitive Substitutions                        269 scribe-facilities.mss, line 20913
+  40.27. Miscellaneous                                  269 scribe-facilities.mss, line 20923
+  40.28. RuleP                                          270 scribe-facilities.mss, line 20948
+  40.29. Skolemizing                                    270 scribe-facilities.mss, line 20957
+  40.30. Quantifier Commands                            270 scribe-facilities.mss, line 20974
+  40.31. Wellformedness                                 270 scribe-facilities.mss, line 20989
+  40.32. Statistics                                     271 scribe-facilities.mss, line 21002
+41. Recursive Wff Functions                             272 scribe-facilities.mss, line 21012
+  41.1. Top Levels                                      272 scribe-facilities.mss, line 21018
+  41.2. OTL Object                                      272 scribe-facilities.mss, line 21024
+  41.3. Printing                                        272 scribe-facilities.mss, line 21033
+  41.4. wff Primitives                                  272 scribe-facilities.mss, line 21039
+  41.5. Equality between Wffs                           272 scribe-facilities.mss, line 21051
+  41.6. Predicates on Wffs                              272 scribe-facilities.mss, line 21066
+  41.7. Moving Commands                                 272 scribe-facilities.mss, line 21078
+  41.8. Substitution                                    273 scribe-facilities.mss, line 21084
+  41.9. Basic Abbreviations                             273 scribe-facilities.mss, line 21095
+  41.10. Lambda-Calculus                                273 scribe-facilities.mss, line 21104
+  41.11. Quantifier Commands                            273 scribe-facilities.mss, line 21113
+42. Wff Reference Formats                               274 scribe-facilities.mss, line 21121
+  42.1. Top Levels                                      274 scribe-facilities.mss, line 21127
+  42.2. Weak Labels                                     274 scribe-facilities.mss, line 21136
+  42.3. Flavors of Labels                               274 scribe-facilities.mss, line 21142
+  42.4. Proof Outline                                   274 scribe-facilities.mss, line 21148
+  42.5. Expansion Trees                                 274 scribe-facilities.mss, line 21154
+  42.6. Mating search                                   274 scribe-facilities.mss, line 21160
+  42.7. Vpforms                                         274 scribe-facilities.mss, line 21169
+  42.8. Theorems                                        274 scribe-facilities.mss, line 21175
+  42.9. Wff Editor                                      274 scribe-facilities.mss, line 21181
+  42.10. Wff Parsing                                    275 scribe-facilities.mss, line 21193
+  42.11. Wff Types                                      275 scribe-facilities.mss, line 21202
+43. Flavors                                             276 scribe-facilities.mss, line 21207
+  43.1. Weak Labels                                     276 scribe-facilities.mss, line 21213
+  43.2. Flavors of Labels                               276 scribe-facilities.mss, line 21220
+  43.3. Expansion Trees                                 276 scribe-facilities.mss, line 21227
+  43.4. Vpforms                                         276 scribe-facilities.mss, line 21283
+  43.5. wff Primitives                                  277 scribe-facilities.mss, line 21305
+44. Styles                                              278 scribe-facilities.mss, line 21313
+  44.1. Review                                          278 scribe-facilities.mss, line 21319
+  44.2. Concept                                         278 scribe-facilities.mss, line 21325
+  44.3. Printing                                        278 scribe-facilities.mss, line 21334
+  44.4. SAIL characters                                 278 scribe-facilities.mss, line 21347
+  44.5. TeX                                             278 scribe-facilities.mss, line 21353
+  44.6. X Windows                                       278 scribe-facilities.mss, line 21364
+45. Printing Properties                                 279 scribe-facilities.mss, line 21370
+  45.1. Printing                                        279 scribe-facilities.mss, line 21376
+  45.2. wff Primitives                                  279 scribe-facilities.mss, line 21396
+46. Faces                                               280 scribe-facilities.mss, line 21418
+47. Theories                                            281 scribe-facilities.mss, line 21423
+48. Tex Special Characters                              282 scribe-facilities.mss, line 21428
+  48.1. TeX                                             282 scribe-facilities.mss, line 21434
+49. Rewriting Commands                                  288 scribe-facilities.mss, line 22031
+  49.1. Top Levels                                      288 scribe-facilities.mss, line 22037
+  49.2. Starting and Finishing                          288 scribe-facilities.mss, line 22065
+  49.3. Printing                                        289 scribe-facilities.mss, line 22110
+  49.4. Applying Rules                                  289 scribe-facilities.mss, line 22127
+  49.5. Rearranging the Derivation                      290 scribe-facilities.mss, line 22208
+  49.6. Lambda Conversion                               290 scribe-facilities.mss, line 22232
+  49.7. Theories                                        290 scribe-facilities.mss, line 22256
+50. Scribe Special Characters                           291 scribe-facilities.mss, line 22273
+  50.1. Script Letters                                  291 scribe-facilities.mss, line 22279
+  50.2. Subscripts                                      291 scribe-facilities.mss, line 22336
+  50.3. Superscripts                                    292 scribe-facilities.mss, line 22370
+  50.4. Lowercase Greek                                 292 scribe-facilities.mss, line 22455
+  50.5. Uppercase Greek                                 293 scribe-facilities.mss, line 22510
+  50.6. Greek Subscripts                                293 scribe-facilities.mss, line 22563
+  50.7. Bold Letters                                    294 scribe-facilities.mss, line 22616
+  50.8. Other Symbols                                   294 scribe-facilities.mss, line 22673
+51. Saved Wffs                                          297 scribe-facilities.mss, line 22842
+  51.1. First-Order Logic                               297 scribe-facilities.mss, line 22848
+52. Intermediate Rule Definitions                       298 scribe-facilities.mss, line 22895
+  52.1. Modules                                         298 scribe-facilities.mss, line 22901
+53. Rewrite Rules                                       301 scribe-facilities.mss, line 23154
+54. Argument For Order-Componentses                     302 scribe-facilities.mss, line 23159
+  54.1. Vpforms                                         302 scribe-facilities.mss, line 23165
+55. Monitor Functions                                   303 scribe-facilities.mss, line 23222
+  55.1. Mating search                                   303 scribe-facilities.mss, line 23228
+56. Pair Of List Of Modes And List Of Gwffses           304 scribe-facilities.mss, line 23307
+  56.1. Maintenance                                     304 scribe-facilities.mss, line 23313
+  56.2. Modules                                         304 scribe-facilities.mss, line 23319
+57. Menu Item For The User Interfaces                   305 scribe-facilities.mss, line 23326
+  57.1. Top Levels                                      305 scribe-facilities.mss, line 23332
+  57.2. Flags                                           315 scribe-facilities.mss, line 24230
+  57.3. Unification                                     315 scribe-facilities.mss, line 24238
+  57.4. Vpforms                                         316 scribe-facilities.mss, line 24362
+  57.5. Maintenance                                     316 scribe-facilities.mss, line 24370
+  57.6. Display                                         330 scribe-facilities.mss, line 25628
+  57.7. Best modes                                      331 scribe-facilities.mss, line 25642
+  57.8. Library Classification                          331 scribe-facilities.mss, line 25648
+58. Menu For The User Interfaces                        332 scribe-facilities.mss, line 25657
+  58.1. Top Levels                                      332 scribe-facilities.mss, line 25663
+  58.2. Unification                                     333 scribe-facilities.mss, line 25765
+  58.3. Maintenance                                     333 scribe-facilities.mss, line 25775
+  58.4. Display                                         335 scribe-facilities.mss, line 25948
+59. Intermediate Rule Definitions                       336 scribe-facilities.mss, line 25953
+60. Concept Special Characters                          337 scribe-facilities.mss, line 25958
+  60.1. Concept                                         337 scribe-facilities.mss, line 25964
+ Index                                                  342 Scribe3VdkG2, line 3
+ Table of Contents                                      373 ScribeORbEAb, line 2
+       Alphabetic Listing of Cross-Reference Tags and Labels
+
+Tag or Label Name                    Page   Label Value  Source file Location
+-----------------------------------------------------------------------------
+AB*                                    28         3.4  scribe-facilities.mss, line 2118
+ABE                                    28         3.4  scribe-facilities.mss, line 2127
+ABSURD                                 27         3.3  scribe-facilities.mss, line 2053
+ABU                                    28         3.4  scribe-facilities.mss, line 2137
+ASSOC-LEFT                             24         3.2  scribe-facilities.mss, line 1837
+BETA*                                  32         3.8  scribe-facilities.mss, line 2361
+CASES                                  24         3.2  scribe-facilities.mss, line 1846
+CASES3                                 24         3.2  scribe-facilities.mss, line 1858
+CASES4                                 25         3.2  scribe-facilities.mss, line 1872
+DEDUCT                                 25         3.2  scribe-facilities.mss, line 1888
+DISJ-IMP                               25         3.2  scribe-facilities.mss, line 1897
+DISJ-IMP-L                             25         3.2  scribe-facilities.mss, line 1905
+DISJ-IMP-R                             25         3.2  scribe-facilities.mss, line 1913
+ECONJ                                  25         3.2  scribe-facilities.mss, line 1921
+EDEF                                   31         3.7  scribe-facilities.mss, line 2331
+EGEN                                   28         3.4  scribe-facilities.mss, line 2147
+ENEG                                   27         3.3  scribe-facilities.mss, line 2061
+EQUIV-EQ                               29         3.6  scribe-facilities.mss, line 2212
+EQUIV-EQ-CONTR                         30         3.6  scribe-facilities.mss, line 2224
+EQUIV-EQ-CONTR*                        30         3.6  scribe-facilities.mss, line 2233
+EQUIV-EQ-EXPD                          30         3.6  scribe-facilities.mss, line 2242
+EQUIV-EQ-EXPD*                         30         3.6  scribe-facilities.mss, line 2250
+EQUIV-IMPLICS                          25         3.2  scribe-facilities.mss, line 1930
+EQUIV-WFFS                             31         3.7  scribe-facilities.mss, line 2340
+ETA*                                   32         3.8  scribe-facilities.mss, line 2371
+EXT=                                   30         3.6  scribe-facilities.mss, line 2258
+EXT=0                                  30         3.6  scribe-facilities.mss, line 2267
+HYP                                    24         3.1  scribe-facilities.mss, line 1810
+ICONJ                                  25         3.2  scribe-facilities.mss, line 1938
+IDEF                                   32         3.7  scribe-facilities.mss, line 2349
+IDISJ-LEFT                             26         3.2  scribe-facilities.mss, line 1947
+IDISJ-RIGHT                            26         3.2  scribe-facilities.mss, line 1955
+IMP-DISJ                               26         3.2  scribe-facilities.mss, line 1963
+IMP-DISJ-L                             26         3.2  scribe-facilities.mss, line 1971
+IMP-DISJ-R                             26         3.2  scribe-facilities.mss, line 1979
+IMPLICS-EQUIV                          26         3.2  scribe-facilities.mss, line 1987
+INDIRECT                               26         3.2  scribe-facilities.mss, line 1995
+INDIRECT1                              26         3.2  scribe-facilities.mss, line 2004
+INDIRECT2                              26         3.2  scribe-facilities.mss, line 2013
+INEG                                   27         3.3  scribe-facilities.mss, line 2070
+ITRUTH                                 27         3.2  scribe-facilities.mss, line 2023
+LAMBDA*                                32         3.8  scribe-facilities.mss, line 2381
+LCONTR*                                32         3.8  scribe-facilities.mss, line 2391
+LCONTR*-BETA                           32         3.8  scribe-facilities.mss, line 2400
+LCONTR*-ETA                            32         3.8  scribe-facilities.mss, line 2408
+LEMMA                                  24         3.1  scribe-facilities.mss, line 1818
+LET                                    30         3.6  scribe-facilities.mss, line 2275
+LEXPD*                                 33         3.8  scribe-facilities.mss, line 2416
+LEXPD*-BETA                            33         3.8  scribe-facilities.mss, line 2425
+LEXPD*-ETA                             33         3.8  scribe-facilities.mss, line 2433
+MP                                     27         3.2  scribe-facilities.mss, line 2030
+NNF                                    27         3.3  scribe-facilities.mss, line 2079
+NNF-EXPAND                             28         3.3  scribe-facilities.mss, line 2088
+PULLNEG                                28         3.3  scribe-facilities.mss, line 2097
+PUSHNEG                                28         3.3  scribe-facilities.mss, line 2106
+REWRITE-SUPP*                          33         3.9  scribe-facilities.mss, line 2444
+REWRITE-SUPP1                          33         3.9  scribe-facilities.mss, line 2453
+RULEC                                  28         3.4  scribe-facilities.mss, line 2156
+RULEC1                                 29         3.4  scribe-facilities.mss, line 2167
+SAME                                   24         3.1  scribe-facilities.mss, line 1826
+SIMPLIFY-PLAN                          33         3.9  scribe-facilities.mss, line 2462
+SIMPLIFY-PLAN*                         33         3.9  scribe-facilities.mss, line 2471
+SIMPLIFY-SUPP                          33         3.9  scribe-facilities.mss, line 2480
+SIMPLIFY-SUPP*                         33         3.9  scribe-facilities.mss, line 2489
+SUBST-EQUIV                            27         3.2  scribe-facilities.mss, line 2039
+SUBST=                                 31         3.6  scribe-facilities.mss, line 2287
+SUBST=L                                31         3.6  scribe-facilities.mss, line 2298
+SUBST=R                                31         3.6  scribe-facilities.mss, line 2309
+SUBSTITUTE                             29         3.5  scribe-facilities.mss, line 2200
+SYM=                                   31         3.6  scribe-facilities.mss, line 2320
+UGEN                                   29         3.4  scribe-facilities.mss, line 2179
+UI                                     29         3.4  scribe-facilities.mss, line 2188
+UNREWRITE-PLAN*                        34         3.9  scribe-facilities.mss, line 2498
+UNREWRITE-PLAN1                        34         3.9  scribe-facilities.mss, line 2506
+USE-RRULES                             34         3.9  scribe-facilities.mss, line 2515

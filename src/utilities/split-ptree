@@ -1,0 +1,45 @@
+#MB 25-Jun-98
+
+if !($1 == "") then
+		set _file_ = "$1"
+	else	
+		echo "\nFilename to split into columns? "
+		set _file_ = "$<"
+	endif
+
+if !(-f "$_file_") then
+		echo "\nNo such file. Stopping."
+		unset _file_
+	else
+		if !($2 == "") then
+				set _newfile_ = "$2"
+			else
+				echo "\n\nNew files will be created, called file.1, file.2, etc."
+				echo "\nName of new files to be created? "
+				set _newfile_ = "$<"
+			endif
+		if ((-f "$_newfile_.1") || (-f "$_newfile_.2")) then
+				echo "\nThat filename is already in use. Stopping."
+				unset _file_
+				unset _newfile_
+			else
+				if !($3 == "") then
+						set _width_ = $3
+					else
+						echo "\nWidth of file, in characters? "
+						set _width_ = "$<"
+					endif
+				if !($4 == "") then
+						set _colwidth_ = $4
+					else
+						echo "\nWidth of each column, in characters? "
+						set _colwidth_ = "$<"
+					endif
+				awk -v width=$_width_ -v file=$_file_ -v colwidth=$_colwidth_ -v newfile=$_newfile_ -f/afs/cs/project/tps/tps/utilities/split.awk $_file_
+				unset _file_
+				unset _newfile_
+				unset _width_
+				unset _colwidth_
+				echo "\n\nDone."
+			endif
+	endif

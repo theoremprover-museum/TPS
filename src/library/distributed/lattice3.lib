@@ -1,0 +1,163 @@
+(:name CLATTICE
+:type GWFF
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description "FORALL s(OA) EXISTS x(A) SUP(OA(OA)) s(OA) x(A) AND FORALL s(OA) EXISTS x(A) INF(OA(OA)) s(OA) x(A) AND FORALL x(A) FORALL y(A).R(OAA) x(A) y(A) AND R(OAA) y(A) x(A) IMPLIES x(A) =(OAA) y(A)"
+:needed-objects   (SUP INF)
+:mhelp "Complete lattice of all elts at type A.
+Assumes R is given."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CLATTICE2
+:type ABBR
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description "LAMBDA L(OA).FORALL s(OA) [s(OA) SUBSET(O(OA)(OA)) L(OA) IMPLIES EXISTS x(A) SU2(OA(OA)(OA)) L(OA) s(OA) x(A)] AND FORALL s(OA).s(OA) SUBSET(O(OA)(OA)) L(OA) IMPLIES EXISTS x(A) INF2(OA(OA)(OA)) L(OA) s(OA) x(A)"
+:needed-objects   (SU2 INF2)
+:mhelp "Elements of L form a complete lattice.
+Assumes R is given."
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(OA)"))
+:other-remarks "
+")
+
+
+(:name INF
+:type ABBR
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description "LAMBDA s(OA) LAMBDA x(A).FORALL z(A) [s(OA) z(A) IMPLIES R(OAA) x(A) z(A)] AND FORALL j(A).FORALL z(A) [s(OA) z(A) IMPLIES R(OAA) j(A) z(A)] IMPLIES R(OAA) j(A) x(A)"
+:needed-objects   NIL
+:mhelp "Inf with respect to R (assumed transitive and such
+that R x y AND R y x IMPLIES x = y) over all elts of type A"
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "OA(OA)"))
+:other-remarks "
+")
+
+
+(:name INF2
+:type ABBR
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description "LAMBDA L(OA) LAMBDA s(OA) LAMBDA x(A).L(OA) x(A) AND FORALL z(A) [s(OA) z(A) IMPLIES R(OAA) x(A) z(A)] AND FORALL j(A).L(OA) j(A) AND FORALL z(A) [s(OA) z(A) IMPLIES R(OAA) j(A) z(A)] IMPLIES R(OAA) j(A) x(A)"
+:needed-objects   NIL
+:mhelp "INF with respect to R (assumed transitive and such
+that R x y AND R y x IMPLIES x = y) over all elts of type A
+in the set L"
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "OA(OA)(OA)"))
+:other-remarks "
+")
+
+
+(:name ORDER-PRESERVING
+:type ABBR
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(AA) FORALL x(A) FORALL y(A).R(OAA) x(A) y(A) IMPLIES R(OAA) [f(AA) x(A)].f(AA) y(A)"
+:needed-objects   NIL
+:mhelp "Order-preserving map with respect to R (assumed transitive and such
+that R x y AND R y x IMPLIES x = y) over all elts of type A"
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(AA)"))
+:other-remarks "
+")
+
+
+(:name SU2
+:type ABBR
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description "LAMBDA L(OA) LAMBDA s(OA) LAMBDA x(A).L(OA) x(A) AND FORALL z(A) [s(OA) z(A) IMPLIES R(OAA) z(A) x(A)] AND FORALL j(A).L(OA) j(A) AND FORALL z(A) [s(OA) z(A) IMPLIES R(OAA) z(A) j(A)] IMPLIES R(OAA) x(A) j(A)"
+:needed-objects   NIL
+:mhelp "Sup with respect to R (assumed transitive and such
+that R x y AND R y x IMPLIES x = y) over all elts of type A
+in the set L"
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "OA(OA)(OA)"))
+:other-remarks "
+")
+
+
+(:name SUP
+:type ABBR
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description "LAMBDA s(OA) LAMBDA x(A).FORALL z(A) [s(OA) z(A) IMPLIES R(OAA) z(A) x(A)] AND FORALL j(A).FORALL z(A) [s(OA) z(A) IMPLIES R(OAA) z(A) j(A)] IMPLIES R(OAA) x(A) j(A)"
+:needed-objects   NIL
+:mhelp "Sup with respect to R (assumed transitive and such
+that R x y AND R y x IMPLIES x = y) over all elts of type A"
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "OA(OA)"))
+:other-remarks "
+")
+
+
+(:name TARSKI-THM
+:type GWFF
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description "TRANSITIVE(O(OAA)) R(OAA) AND CLATTICE IMPLIES FORALL f(AA).FORALL x(A) FORALL y(A) [R(OAA) x(A) y(A) IMPLIES R(OAA) [f(AA) x(A)].f(AA) y(A)] IMPLIES CLATTICE2(O(OA)).LAMBDA x(A).x(A) =(OAA) f(AA) x(A)"
+:needed-objects   (TRANSITIVE CLATTICE CLATTICE2)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM145-AGAIN
+:type GWFF
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description "TRANSITIVE(O(OAA)) R(OAA) AND CLATTICE IMPLIES FORALL f(AA).FORALL x(A) FORALL y(A) [R(OAA) x(A) y(A) IMPLIES R(OAA) [f(AA) x(A)].f(AA) y(A)] IMPLIES EXISTS w(OA).EXISTS z(A) w(OA) z(A) AND FORALL z(A).w(OA) z(A) IMPLIES z(A) =(OAA) f(AA) z(A)"
+:needed-objects   (TRANSITIVE CLATTICE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name UNIQUE-INF
+:type GWFF
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description "TRANSITIVE(O(OAA)) R(OAA) AND CLATTICE IMPLIES FORALL s(OA) FORALL x(A) FORALL y(A).INF(OA(OA)) s(OA) x(A) AND INF(OA(OA)) s(OA) y(A) IMPLIES x(A) =(OAA) y(A)"
+:needed-objects   (TRANSITIVE CLATTICE SUP INF)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name UNIQUE-SUP
+:type GWFF
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description "TRANSITIVE(O(OAA)) R(OAA) AND CLATTICE IMPLIES FORALL s(OA) FORALL x(A) FORALL y(A).SUP(OA(OA)) s(OA) x(A) AND SUP(OA(OA)) s(OA) y(A) IMPLIES x(A) =(OAA) y(A)"
+:needed-objects   (TRANSITIVE CLATTICE SUP INF)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

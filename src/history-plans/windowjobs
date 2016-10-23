@@ -1,0 +1,58 @@
+		WINDOWJOBS
+	Design a nice window interface for TPS
+
+Use the Garnet system constructed by Brad Myers at CMU (x5150).
+
+Document whatever is done on this project, and improve existing
+documentation as opportunities arise.
+
+	Window manager X11. Windows for different top levels, vpforms,
+one or more proofwindows, a Status Window which would maintain pstatus
+output and information which would give us some idea of what's going
+on when we're running a very lengthy search.  This should include the
+runcount, the name of the current jform, how many jforms have been
+explored (and how many are still active), and (if this is practical)
+some kind of counter which would give us an indication of when the
+process is in a loop. 
+
+
+Have windows for
+top levels
+ review
+ lib
+ show mating on vpform dynamically?
+
+There's much that can be done to create tools which will facilitate
+understanding what's going on.
+
+Be able to move wffs from one place to another without using generic mode
+
+Color?
+
+	VPT chops off whatever will not fit on one page. Fix this, so that
+the entire jform can be displayed by pasting the pages together. Then 
+correct the mhelp message for vp-tex.
+
+	Can one get manuals in Tex? Mention this in the User Manual.
+
+	Create a mechanism for creating and examining very large records of
+searches for theorems. This might require that the record be broken into 
+many files so that each file is of manageable size for an editor. We should
+be able to ask various questions about the run and have the computer help
+us find what we want to look at. A record should be written and periodically
+updated showing what option sets have been considered, what they are, how
+much time has been spent on them, their current weights, etc.
+
+	See if the mechanism to produce a printmatefile still works. It seems
+not to when TPS is interrupted with ^C (i.e., the file gets lost if it was
+being created). Deal with the situation. We also have recordfiles.
+
+	There is a bug in the SCRIPT command.  The problem can be seen
+if you start a script file in a sub-top-level (such as mate), then
+leave that top-level.  When you leave, the script file will be
+stopped.  The problem occurs because SCRIPT is implemented using catch
+and throw.  Leaving the top-level does a throw past the catch set up
+by SCRIPT, so the file gets closed.  To fix this, change the
+implementation to avoid using throw and catch.  It is a shame that
+this is necessary, because it is very simple now.
+	

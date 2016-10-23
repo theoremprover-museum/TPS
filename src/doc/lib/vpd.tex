@@ -1,0 +1,181 @@
+% file: vpd.tex
+% author: frank pfenning
+%
+% this file contains macros to display path diagrams in three different
+% formats.  the formula is to be typed in the same manner for all
+% formats: 
+%   \vpdforall{ <vars> }{ <scope> }
+%   \vpdexists{ <vars> }{ <scope> }
+%   \vpdor{ <d1>\cr \v <d2>\cr \v ... \cr }
+%   \vpdand{ <c1>\cr \& <c2>\cr \& ... \cr }
+%
+% any of the above can be followed by an ``x'' if the corresponding
+% scope is to have no brackets surrounding it.
+%
+%   \n  stands for negation (of an atom)
+%   \p  precedes positive atoms
+%
+% the formats are
+%   \beginvpd ... \endvpd      for a vertical p.d. of the negated wff.
+%   \beginhpd ... \endhpd      for a horizontal p.d. of the positive wff .
+%   \beginvpp ... \endvpp      for a vertical p.d. of the positive wff.
+% use \beginvppcent, \beginvpplab, \beginvvplc for labelled and/or centered vpd's (and the corresponding \end commands)
+% also \beginhpdlc \beginvpdlc are defined for completeness' sake.
+% See the end of this file for details.
+%
+% because of the nested recursion, tex's semantic stack size is often
+% exceeded.  in order to avoid that, build boxes containing subformulas
+% with the following two macros:
+%
+%   \vpbox<i>=<wff>
+%   \ibox<i>
+%
+% e.g. \vpbox5={\vpdor{...}}  creates a box `5' which can be inserted as
+% a subformula through  \ibox5  , as in  \vpdand{\ibox5\cr \& \p pxy}.
+% note that the boxes must be declared and used within the \begin...
+% \end...
+%
+\def\vpdor#1{\hbox{$\lvrule\disju{#1}\rvrule$}}
+\def\vpdorx#1{\hbox{$\disju{#1}$}}
+
+\def\vpdand#1{\hbox{$\lvrule\conju{#1}\rvrule$}}
+\def\vpdandx#1{\hbox{$\conju{#1}$}}
+
+\def\conline#1{\vcenter{\vskip 3pt
+		\hbox{\valign{\vfil\hbox{$\mathstrut ##$}\vfil\cr#1\crcr}}%
+		\vskip 3pt}}
+\def\cincol#1{\vcenter{\halign{\hfil\hbox{$\mathstrut ##$}\hfil\cr#1\crcr}}}
+
+\def\vpdforall#1#2{\def\q{\univq}\vpdquant{#1}{\lvrule{#2}\rvrule}}
+\def\vpdforallx#1#2{\def\q{\univq}\vpdquant{#1}{{#2}}}
+
+\def\vpdexists#1#2{\def\q{\existq}\vpdquant{#1}{\lvrule{#2}\rvrule}}
+\def\vpdexistsx#1#2{\def\q{\existq}\vpdquant{#1}{{#2}}}
+
+\def\vpdquant#1#2{\hbox{$\vcenter{\hbox{$ #1 $}\hbox{\hskip 10pt$#2$}}$}}
+
+\newbox\ssbox  \newcount\sscount
+
+\def\vpbox#1=#2{\sscount=\ssbox \advance\sscount by #1
+	       \setbox\sscount=\hbox{$#2$}}
+\def\ibox#1{\sscount=\ssbox \advance\sscount by #1 \box\sscount}
+
+\def\lvrule{\left[}
+\def\rvrule{\right]}
+% \lnott puts a negation unless next token is an \lnot - double negs avoided
+% DAN 24AUG88
+\def\lnott#1{\ifx#1\lnot {} \else {\lnot #1} \fi}
+
+\def\beginhpd{\begingroup
+\def\p{}	      \def\n{\lnott}
+\def\v{}	      \def\&{\;\land\;}
+\def\univq{\forall}   \def\existq{\exists}
+\def\disju{\cincol}   \def\conju{\conline}
+}
+
+\def\endhpd{\endgroup}
+
+\def\beginvpd{\begingroup
+\def\p{\lnott} 	       \def\n{}
+\def\v{}	      \def\&{\;\lor\;\cr}
+\def\univq{\exists}   \def\existq{\forall}
+\def\disju{\cincol}   \def\conju{\conline}
+}
+
+\def\endvpd{\endgroup}
+
+\def\beginvpp{\begingroup
+\def\p{}	      \def\n{\lnott}
+\def\v{\;\lor\;\cr}   \def\&{}
+\def\univq{\forall}   \def\existq{\exists}
+\def\disju{\conline}  \def\conju{\cincol}
+}
+
+\def\endvpp{\endgroup}
+
+%the rest of this contains modifications by Matt Bishop, Wed Oct 15 1997
+%vppcent is a centered version of vpp
+%vpplab is a labelled version of vpp
+%vpplc is both centered and labelled
+%note: labels are generated starting from 1. 
+%  To override a label and put ``foo'' in its place, write \p[foo]
+
+\def\beginvppcent{\begingroup
+\def\p{}	      \def\n{\lnott}
+\def\v{\;\lor\;\cr}   \def\&{}
+\def\univq{\forall}   \def\existq{\exists}
+\def\disju{\conline}  \def\conju{\cincol}
+\hfil\hskip -0.4in}
+
+\def\endvppcent{\hfil\endgroup}
+
+\def\ifnextchar#1#2#3{\let\tempe=#1%
+ \def\tempa{#2}\def\tempb{#3}\futurelet\tempc\ifnch}
+\def\ifnch{\ifx\tempc\tempe\let\tempd=\tempa
+ \else\let\tempd=\tempb\fi\tempd}
+
+\def\boxit#1#2{\hbox{\vrule
+ \vtop{%
+ \vbox{\hrule\kern#1%
+  \hbox{\kern#1#2\kern#1}}%
+ \kern#1\hrule}%
+ \vrule}}
+
+\def\connbox#1#2#3{\hbox{\vrule
+ \vtop{%
+ \vbox{\hrule\kern#1%
+  \hbox{\kern#1$#2-#3$\kern#1}}%
+ \kern#1\hrule}%
+ \vrule}}
+
+\newcount\litcount
+\def\fb[#1]{\boxit{1pt}{\ifmmode #1\else $#1$\fi}{\ifmmode \hbox{~}\fi}}
+\def\prtbox{\ifnextchar[{\fb}{\fb[\the\litcount] {\global\advance\litcount by 1}}}
+\def\negfb[#1]{{\boxit{1pt}{\ifmmode #1\else$#1$\fi}}{\ifmmode \hbox{~}\sim\else ~$\sim$\fi}}
+\def\negprtbox{\ifnextchar[{\negfb}{\negfb[\the\litcount] {\global\advance\litcount by 1}}}
+\def\conn#1#2{\connbox{1pt}{#1}{#2}}
+
+\def\beginvpplc{\begingroup
+\litcount=1
+\def\p{\prtbox}
+\def\n{\negprtbox} 
+\def\v{\;\lor\;\cr}   \def\&{}
+\def\univq{\forall}   \def\existq{\exists}
+\def\disju{\conline}  \def\conju{\cincol}
+\hfil\hskip -0.4in}
+
+\def\endvpplc{\hfil\endgroup}
+
+\def\beginvpplab{\begingroup
+\litcount=1
+\def\p{\prtbox}
+\def\n{\negprtbox} 
+\def\v{\;\lor\;\cr}   \def\&{}
+\def\univq{\forall}   \def\existq{\exists}
+\def\disju{\conline}  \def\conju{\cincol}}
+
+\def\endvpplab{\endgroup}
+
+
+\def\beginhpdlc{\begingroup
+\litcount=1
+\def\p{\prtbox}
+\def\n{\negprtbox} 
+\def\v{}	      \def\&{\;\land\;}
+\def\univq{\forall}   \def\existq{\exists}
+\def\disju{\cincol}   \def\conju{\conline}
+\hfil\hskip -0.4in}
+
+\def\endhpdlc{\hfil\endgroup}
+
+\def\beginvpdlc{\begingroup
+\litcount=1
+\def\p{\negprtbox}
+\def\n{\prtbox} 
+\def\v{}	      \def\&{\;\lor\;\cr}
+\def\univq{\exists}   \def\existq{\forall}
+\def\disju{\cincol}   \def\conju{\conline}
+\hfil\hskip -0.4in}
+
+\def\endvpdlc{\hfil\endgroup}
+

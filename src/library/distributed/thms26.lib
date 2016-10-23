@@ -1,0 +1,48 @@
+(:name THM260A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL r(OAA) FORALL s(OA).r(OAA) EQUIV-REL-ON(O(OA)(OAA)) s(OA) IMPLIES EQUIV-CLASSES-OF(O(OA)(OAA)) r(OAA) PARTITIONS(O(OA)(O(OA))) s(OA)"
+:needed-objects   (EQUIV-REL-ON EQUIV-CLASSES-OF PARTITIONS)
+:mhelp "If r is an equivalence relation on a set s,
+ then the set of equivalence classes of r is a partition of s."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM260
+:type GWFF
+:context UNCLASSIFIED
+:keywords (PROVEN WITH-EQUALITY WITH-DEFN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, March 12, 1997 at 14:15:34."
+:description "FORALL R(OAA).EQUIVALENCE-REL(O(OAA)) R(OAA) IMPLIES PARTITION(O(O(OA))).EQUIVALENCE-CLASSES(O(OA)(OAA)) R(OAA)"
+:needed-objects   (EQUIVALENCE-REL EQUIVALENCE-CLASSES PARTITION)
+:mhelp "An equivalence relation defines a partition"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM266
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS F(OAA(O(OA))).FORALL P(O(OA)) [PARTITION(O(O(OA))) P(O(OA)) IMPLIES EQUIVALENCE-REL(O(OAA)).F(OAA(O(OA))) P(O(OA))] AND FORALL R(OAA) [EQUIVALENCE-REL(O(OAA)) R(OAA) IMPLIES EXISTS P(O(OA)).PARTITION(O(O(OA))) P(O(OA)) AND R(OAA) =(O(OAA)(OAA)) F(OAA(O(OA))) P(O(OA))] AND FORALL T(O(OA)) FORALL U(O(OA)).~[T(O(OA)) =(O(O(OA))(O(OA))) U(O(OA))] AND PARTITION(O(O(OA))) T(O(OA)) AND PARTITION(O(O(OA))) U(O(OA)) IMPLIES ~.F(OAA(O(OA))) T(O(OA)) =(O(OAA)(OAA)) F(OAA(O(OA))) U(O(OA))"
+:needed-objects   (EQUIVALENCE-REL PARTITION THM266-SUB THM266-SUB1 THM266-LEMMA)
+:mhelp "There is a bijection between eq relns and partitions
+Subst. for F is THM266-SUB
+First conjunct: use MODE-THM261
+Second conjunct: substitute THM266-SUB1 and break into conjuncts. 
+   Supply R x for p wherever necessary and use diy-l
+Third conjunct: ASSERT THM266-LEMMA, break into cases, DIY-L"
+:other-attributes NIL
+:other-remarks "
+")
+
+

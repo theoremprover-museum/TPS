@@ -1,0 +1,1526 @@
+\chapter{Notes on setting things up}\label{set-up}
+\section{Compiling TPS and ETPS}
+
+{\ETPS} is simply a subsystem of {\TPS}.  {\ETPS} lacks some
+of the files used to build {\TPS}.
+The procedure for building {\ETPS} is just like that for
+building {\TPS}, except that one should type {\tt make etps}
+rather than {\tt make tps}.  You can build both {\TPS} and {\ETPS}
+in the same directory, but you must
+make sure the bin directory is empty before building
+each system because the compiled files for
+{\TPS} are not compatible with those for {\ETPS}.
+For simplicity in the discussion below,
+we often refer to {\TPS} when it would be more precise
+to refer to ``{\TPS} or {\ETPS}".
+
+{\TPS} has been compiled in several versions of Common Lisp: Allegro
+Common Lisp (version 3.1 or higher); Lucid Common Lisp; CMU Common
+Lisp; Kyoto Common Lisp; Austin Kyoto Common Lisp; Ibuki Common Lisp,
+a commercial version of Kyoto Common Lisp; and DEC-20 Common Lisp.
+% \comment{Note: We do not recommend the use of DEC-20 Common Lisp, as
+% there are many compiler bugs in it.}
+  Several source files contain
+compiler directives which are used to switch between the various
+definitions required.
+
+For the time being, we assume you are compiling on a Unix
+or MS Windows operating system
+using one of the versions of Lisp given above.
+Otherwise, considerably more work will be required.  Some additional information
+which may be helpful will be found as comments in the text file
+{\it whatever/tps/doc/user/manual.mss} for this section (Compiling TPS) of
+this User Manual.  These comments are not printed out when Scribe
+processes the file.
+
+\subsection{Compiling TPS under Unix}\label{set-up-unix}
+
+To compile and build tps, proceed as follows:
+\begin{enumerate}
+
+\item Create a bin directory, if one does not exist.
+The bin directory should be empty when you start this process.
+If you have previously built tps or etps, start by removing
+all files from the bin directory ({\tt rm -f bin/*}).
+
+\item Read and follow the directions which are presented as comments in the
+{\tt Makefile}. In general, this will just mean
+changing the {\tt Makefile}
+to show the correct pathname for your
+version of Lisp (and possibly java), changing the \indexfile{Makefile} to show where remarks by
+TPS users should be sent and which users are allowed privileges.
+
+\item Issue the command `{\tt make tps}' or `{\tt make etps}'.
+(Of course, this assumes you are using a Unix operating system.)
+The Makefile will also try to compile the files for the Java interface.
+If you do not have java compiler, this will fail, but only after
+all the lisp files have been compiled.
+A Java compiler is not necessary to install TPS.  The installation
+will still create TPS and ETPS, but you will not be able to use the
+Java interface.
+Note that if you do not have a Java compiler, you can download
+Java SDK (with a compiler) from http://java.sun.com/.
+
+\item The script file tps-build-install-linux can be used to
+build and install tps.  Look at it.
+
+\item If you are using KCL or IBCL, you may get an error during compiling
+which says something like `unable to allocate'.  This error indicates
+that your C compiler cannot handle the size of the file that is
+being compiled.  To fix this, split the offending file (e.g. {\it foo.lisp})
+into smaller pieces (e.g., {\it foo1.lisp} and {\it foo2.lisp}) and replace
+the occurrence of `foo' in the file \indexfile{defpck.lisp} with `foo1 foo2'.
+If this doesn't work you may have to split the files again.
+
+\item If you are using Allegro Common Lisp 5.0, the name of the core image should
+end in .dxl; for example, {\tt tps3.dxl}. To achieve this, you can set tps-core-name
+in the Makefile (in which case the new core image may overwrite the old one if
+you rebuild), or just use the Unix {\tt mv} command to rename the core image
+once it is built.
+
+\item When {\TPS} starts up, it loads a file called \indexfile{tps3.patch} if one is
+there; this contains fixes for bugs, new code which has been added
+since {\TPS} was last built, etc. 
+%[[This doesn't really work, so we delete this example]]
+%For example, if you wish to change expert-list after tps has been built, just put the appropriate line
+%into \indexfile{tps3.patch}, using the format of the example in \indexfile{tps3-save.lisp}.
+After you build a new {\TPS}, you may wish to delete (or save in a
+different file) the contents of the old \indexfile{tps3.patch} file. Keeping the
+empty file there assures that it will be in the right place when you
+need it again.
+
+\item After loading the patch file, {\TPS} will look for a file called \indexfile{tps3.ini}
+in the same directory as the patch file and (if the user is an expert)
+for a file also called \indexfile{tps3.ini}
+in the directory from which the user starts {\TPS}.  (These directories may or may not be the same).
+Before using {\TPS}, you may want to change these initialization files.
+\end{enumerate}
+
+% \begin{comment}
+% If you don't use the Makefile, you may have to do these things in addition
+% to those mentioned above:
+% 
+% Reinstate the definition of {\tt expert-list} which is currently commented
+% out of the file \indexfile{tps3-save.lisp} (modifying it as appropriate; it should contain
+% a list of the user names of all those users who are to be allowed expert privileges
+% while using {\TPS}).
+% 
+% Make any changes required to the file {\tt tps3.sys}.  This is a file which
+% is loaded during compilation and each time {\TPS} is run which
+% sets the values of certain system-specific variables like directories,
+% file names, etc.  For {\ETPS}, change the file {\tt etps.sys}.
+% 
+% {\TPS} and {\ETPS} have a command called {\tt REMARK}, which allows the user
+% to enter a string to be sent to the teacher/maintainer.
+% If you have a Unix system and are running CMU Common Lisp, Lucid (or Sun)
+% Common Lisp, KCL or IBCL, you can use email to send the remark.  To do
+% this, set the variable {\tt MAIL-REMARKS} in the file {\tt \{TPS3,ETPS\}.SYS} to
+% a string containing the mail addresses of those who should receive the
+% remark.  If you do not desire this, set {\tt MAIL-REMARKS} to NIL and
+% set {\tt REMARKS-FILE} to the name of the file that should store the
+% remarks instead.
+% 
+% Examine the file {\tt tps-compile}.  This is a Unix script file which will
+% automatically load and compile all the source files.
+% Make any changes required.  For {\ETPS}, change the file {\tt etps-compile}.
+% 
+% At your system top-level, just type {\tt tps-compile}.  Compilation should
+% take anywhere from 1.5 hours (CMU Common Lisp) to 5 hours (Kyoto Common Lisp),
+% if all goes well.
+% 
+% Then type {\tt tps-build} to create a core image.
+% 
+% If you have most of the files already compiled and just want to build
+% a new system, use the files {\tt tps-build} and {\tt tps-build.lisp}, or
+% for {\ETPS}, {\tt etps-build} and {\tt etps-build.lisp}. {\tt tps-build}
+% checks the dates on source files and their compiled versions, and
+% compiles any files which have been changed since their compiled
+% versions were created, or which were not already compiled. However, it
+% may not recompile files containing macros which have been changed, or
+% catch other basic changes, so when major changes have occurred, it is
+% best to use {\tt tps-compile} (which recompiles all files)
+% before using {\tt tps-build}.
+% \end{comment}
+If your lisp is not in the list above, you may need to change some of the
+system-dependent functions. The features used by TPS are `tops-20', `lucid',
+`:cmu', `kcl', `allegro' and `ibcl'.  System-dependent files include
+
+\begin{description}
+\item[{\tt SPECIAL.EXP}]	 Contains symbols which cannot be exported in some lisps. These
+are found by trial and error.
+
+\item[{\tt BOOT0.LISP, BOOT1.LISP}]	 Contain  some  lisp and operating-system dependent
+functions and macros, like file manipulation.
+
+\item[{\tt TOPS20.LISP}]	 Redefining the lisp top-level, saving a core image, exiting, etc.
+
+\item[{\tt TPS3-SAVE.LISP}]	 Some I/O functions which should work for Unix lisps, also the
+original definition of {\tt expert-list}.
+
+\item[{\tt TPS3-ERROR.LISP}]	 Redefinitions of trapped error functions, as used in {\ETPS}.
+\end{description}
+
+\subsection{Compiling TPS under MS Windows}\label{set-up-windows}
+
+When compiling {\TPS} under MS Windows,
+there is a lisp file \indexfile{make-tps-windows.lisp}
+which can be used instead of the Makefile.  The file
+\indexfile{make-tps-windows.lisp} was designed to work
+for Allegro Lisp version 5.0 or later, though some parts of
+it should work for other versions of lisp.
+
+To compile and build {\TPS} under MS Windows, perform the following steps:
+
+\begin{enumerate}
+\item Create a folder for TPS, e.g., open `My Computer',
+%then `C:', then `Program Files', and choose `New > Folder'
+then `C:', then `Program Files', and choose `New $>$ Folder'
+from the file menu.  Then rename the created folder to
+%TPS.  Now you have a folder C:$\setminus$Program Files$\setminus$TPS$\setminus$.
+TPS.  Now you have a folder C:$\setminus$Program Files$\setminus$TPS$\setminus$.
+
+\item Download the gzip'd tps tar file and unzip it (using,
+for example, NetZip or WinZip) into the C:$\setminus$Program Files$\setminus$TPS$\setminus$
+folder.
+
+\item Create a C:$\setminus$Program Files$\setminus$TPS$\setminus$bin folder, if one does not exist.
+Also, create a top level folder C:$\setminus$dev.  This is so TPS can
+send output to $\setminus$dev$\setminus$null.
+
+\item Determine if you have a Java compiler.  You can do this by running
+`Find' or `Search' (on `Files and Folders') (probably available
+through the `Start' menu) and searching for a file named `javac.exe'.
+A Java compiler is not necessary to install TPS.  The installation
+will still create TPS and ETPS, but you will not be able to use the
+Java interface.  Note that if you do not have a Java compiler, you can
+download Java SDK (with a compiler) from http://java.sun.com/.
+
+\item Lisp (preferably Allegro 5.0 or greater) will probably be in
+`Programs' under the `Start' menu.  Start Lisp (by choosing it from
+there) and do the following:
+\begin{alltt}
+(load `C:\(\setminus\setminus\)Program Files\(\setminus\setminus\)TPS\(\setminus\setminus\)make-tps-windows.lisp')
+\end{alltt}
+This should prompt you for information used to compile and build TPS,
+as well as compiling the Java files (if you have a Java compiler).  It
+will also create executable batch files, e.g., C:\(\setminus\)Program Files\(\setminus\)TPS\(\setminus\)tps3.bat
+which you can use to start {\TPS} after it has been built.
+
+\item After Lisp says `FINISHED', enter {\tt (exit}).
+\end{enumerate}
+
+If for some reason \indexfile{make-tps-windows.lisp} fails to compile and build
+{\TPS}{and {\ETPS}}, you can look at \indexfile{make-tps-windows.lisp} to try to figure
+out how to build it by hand.  The remaining steps are an outline
+of what is needed.
+
+\begin{enumerate}
+\item If \indexfile{make-tps-windows.lisp} did not create the files
+\indexfile{tps3.sys} and \indexfile{etps.sys},
+rename tps3.sys.windows.example to tps3.sys,
+and rename etps.sys.windows.example to etps.sys.
+You may want to edit the value of the constant
+expert-list to include your user name.  In Windows, this is often
+`ABSOLUTE', which is already included on the list.
+If the {\TPS} directory is something other than
+`C:\(\setminus\)Program Files\(\setminus\)TPS\(\setminus\)', then you will need to edit tps3.sys
+and etps.sys by replacing each
+`C:\(\setminus\setminus\)Program Files\(\setminus\setminus\)TPS\(\setminus\setminus\)' with `whatever\(\setminus\setminus\)'.
+Also, you will need to edit the
+files \indexfile{tps-compile-windows.lisp}, \indexfile{tps-build-windows.lisp}
+(and \indexfile{etps-compile-windows.lisp} and \indexfile{etps-build-windows.lisp}
+if you intend to use etps) by replacing the line
+\begin{alltt}
+  (setq tps-dir `C:\(\setminus\setminus\)Program Files\(\setminus\setminus\)TPS\(\setminus\setminus\)'))
+\end{alltt}
+by
+\begin{alltt}
+  (setq tps-dir `whatever\(\setminus\setminus\)'))
+\end{alltt}
+
+\item Make sure the bin directory is empty.
+If you have previously built tps or etps, start by
+sending all files from the bin directory to the Recycle Bin.
+
+\item Run Lisp.  Load the tps-compile-windows.lisp
+file from C:\(\setminus\)Program Files\(\setminus\)TPS\(\setminus\) as follows:
+\begin{alltt}
+(load `C:\(\setminus\setminus\)Program Files\(\setminus\setminus\)TPS\(\setminus\setminus\)tps-compile-windows.lisp')
+\end{alltt}
+This will compile the lisp source files in the C:\(\setminus\)Program Files\(\setminus\)TPS\(\setminus\)lisp
+folder into the C:\(\setminus\)Program Files\(\setminus\)TPS\(\setminus\)bin folder.
+
+\item Exit and restart lisp.  Load the tps-build-windows.lisp
+%file from C:\Program Files\TPS\ as follows:
+file from C:\(\setminus\setminus\)Program Files\(\setminus\setminus\)TPS\(\setminus\setminus\) as follows:
+\begin{alltt}
+(load `C:\(\setminus\setminus\)Program Files\(\setminus\setminus\)TPS\(\setminus\setminus\)tps-build-windows.lisp')
+\end{alltt}
+If you try to load tps-build-windows.lisp after loading
+tps-compile-windows.lisp without restarting Lisp, you will probably
+get an error because packages are being redefined.  So, it
+is important to exit and start a new Lisp session before
+loading tps-build-windows.lisp.
+The end of tps-build-windows.lisp calls tps3-save, which
+saves the image file.  Under Allegro, this should be tps3.dxl.
+(The name and location of the image file is determined by
+the values of sys-dir and save-file in tps3.sys.)
+
+\item Repeat the previous steps using etps-compile-windows.lisp and etps-build-windows.lisp
+to compile and build {\ETPS}.
+
+\item If you have a Java compiler, use it to compile the java files in
+C:\(\setminus\)Program Files\(\setminus\)TPS\(\setminus\)java\(\setminus\)tps
+and then
+C:\(\setminus\)Program Files\(\setminus\)TPS\(\setminus\)java\(\setminus\)
+(see section \ref{compiling-java})
+
+\item If \indexfile{make-tps-windows.lisp} did not create the batch files
+tps3.bat and etps.bat,
+create the batch file tps3.bat containing something like
+\begin{alltt}
+jecho off
+call `C:\(\setminus\)<lisppath>\(\setminus\)alisp.exe' -I `C:\(\setminus\)Program Files\(\setminus\)TPS\(\setminus\)tps3.dxl'
+\end{alltt}
+and the batch file etps.bat containing something like
+\begin{alltt}
+jecho off
+call `C:\(\setminus\)<lisppath>\(\setminus\)alisp.exe' -I `C:\(\setminus\)Program Files\(\setminus\)TPS\(\setminus\)etps.dxl'
+\end{alltt}
+You need the quotes because Windows easily gets confused about spaces
+in pathnames.  You should be able to double click on tps3.bat to
+start {\TPS}.
+
+\item If \indexfile{make-tps-windows.lisp} did not create the batch files
+for starting {\TPS} and {\ETPS} with the Java interface, then you
+can create files like \indexfile{tps-java.bat} containing something like
+\begin{alltt}
+jecho off
+call `C:\(\setminus\)<lisppath>\(\setminus\)alisp.exe' -I `C:\(\setminus\)Program Files\(\setminus\)TPS\(\setminus\)tps3.dxl' -- -javainterface java -classpath `C:\(\setminus\)Program Files\(\setminus\)TPS\(\setminus\)java' TpsStart
+\end{alltt}
+(See section \ref{using-java} for more command line options associated with the Java interface.)
+
+\end{enumerate}
+
+Double clicking on the batch files tps3.bat and etps.bat should start
+{\TPS} and {\ETPS}, respectively.  Also, if you had \indexfile{make-tps-windows.lisp}
+compile the code for
+the Java interface and build the batch files for starting
+{\TPS} with the Java interface (or you have done this manually),
+then there should be several batch
+files with names like \indexfile{tps-java.bat} and \indexfile{etps-java-big.bat}.
+Executing these should start {\TPS} or {\ETPS} with the Java interface.
+
+An alternative to using batch files to start {\TPS} using Allegro Lisp is as follows:
+
+\begin{enumerate}
+\item Put a copy of the Lisp executable (such as lisp.exe or alisp8.exe) into the
+C:\(\setminus\)Program Files\(\setminus\)TPS\(\setminus\) folder, and rename it tps3.exe.
+(You may only need to explicitly change `lisp' to `tps3'
+in order to rename lisp.exe to tps3.exe.)
+
+\item Copy acl*.epll or acl*.pll (or similarly named files)
+from the Allegro Lisp directory to the TPS directory.
+You may also need to copy a license file *.lic
+from the Allegro Lisp directory to the TPS directory.
+
+\item Double-click on tps3.exe to start up TPS.  This will automatically
+find tps3.dxl as the image (since it is in the same directory and has the
+same root name).  If Allegro complains that some file isn't found,
+look for that file under the Allegro Lisp directory and copy it to
+the TPS directory.
+
+\end{enumerate}
+
+\subsection{Compiling the Java Interface}\label{compiling-java}
+
+There is a Java interface for {\TPS} supporting menus and pop-up
+windows.
+To use this interface, {\TPS} must be able to use sockets
+and multiprocessing.
+Currently it seems that these features are both
+implemented only in
+Allegro Lisp (version 5.0 or later).
+
+To compile the java code
+under Unix,
+simply cd to the directory `whatever/tps/java/tps' and call
+\begin{alltt}
+javac *.java
+\end{alltt}
+This should create a collection of .class files
+in the java/tps directory.  Then cd to `whatever/tps/java'
+and call
+\begin{alltt}
+javac *.java
+\end{alltt}
+This should create a collection of .class files
+in the java directory.
+
+Compiling the java code under Windows is a bit
+more complicated.  There is a Lisp file
+\indexfile{make-tps-windows.lisp} provided
+with the distribution which should be able
+to compile the Java files if you load
+\indexfile{make-tps-windows.lisp} in
+Allegro Lisp.  (See section \ref{set-up-windows}.)
+
+If you must compile the java code under Windows
+manually, the following hints may help.
+If the version of Windows allows
+the user to bring up a DOS shell, you should be
+able to chdir to `whatever\(\setminus\)TPS\(\setminus\)java\(\setminus\)tps' and call
+\begin{alltt}
+javac *.java
+\end{alltt}
+Then do the same under `whatever\(\setminus\)TPS\(\setminus\)java'.
+Otherwise, you might be able to create a batch file
+temp.bat containing the following code:
+\begin{alltt}
+chdir whatever\(\setminus\)TPS\(\setminus\)java\(\setminus\)tps
+javac *.java
+chdir whatever\(\setminus\)TPS\(\setminus\)java\(\setminus\)
+javac *.java
+\end{alltt}
+Then you can double click on the icon for the batch file
+to get Windows to execute it.
+If Windows cannot find the executable `javac',
+then you can either write the full path (`C:\(\setminus\setminus\)whatever\(\setminus\setminus\)javac')
+or include the appropriate directory in the PATH environment variable.
+In Windows XP, the PATH environment
+variable can be changed by opening the Control Panel, then System,
+then choosing Advanced and Environment Variables.
+
+\section{Initialization}\label{Initialization}
+
+\subsection{Initializing {\TPS}}
+
+There can be one \indexfile{tps3.ini} file in the
+directory where tps is built which will be loaded for all
+users, and each \indexother{expert} user can have an individual \indexfile{tps3.ini} file in
+the directory from which he calls {\TPS}.
+For nonexperts, the common \indexfile{tps3.ini} file will be loaded quietly
+(without any indication this is being done).
+
+For TeX files generated by {\TPS} to work correctly,
+you should set your Unix environment variable TEXINPUTS appropriately, so that TeX
+can find the \indexfile{tps.sty} file.  The \indexfile{tps.sty} file
+can be found in the {\it whatever/doc/lib/} directory.
+
+After loading this common \indexfile{tps3.ini} file, {\TPS} then looks for an individual's
+\indexfile{tps3.ini} file in the directory from which the individual starts {\TPS}.
+This should be used by an individual
+user, for tailoring the system to the needs of a particular person (or a
+particular computer). For example, user1's \indexfile{tps3.ini} file might contain
+appropriate settings for garbage collection flags in several variants of Lisp, as well
+as a preferred default for DEFAULT-MS, and so on.
+Also, user1 might wish to have in his \indexfile{tps3.ini} file the line
+\begin{alltt}
+(set-flag 'default-lib-dir '(`/whatever/tps/library/user1/'))
+\end{alltt}
+to specify his library directory (see section \ref{library} for more details).
+
+Also in the \indexfile{tps3.ini} file, you can define aliases. For example, it may be useful to
+have several different settings for the \indexflag{TEST-THEOREMS} flag used by \indexcommand{TPS-TEST},
+and you can define aliases to switch between them as follows:
+
+\begin{tpsexample}
+(alias test-long `(set-flag 'test-theorems '((user::thm1  user::mode1) ..etc..))')
+
+(alias test-default `(set-flag 'test-theorems '((user::thm2  user::mode2) ..etc..))')
+
+(alias test-short `(set-flag 'test-theorems '((user::thm1  user::mode1) ..etc..))')
+\end{tpsexample}
+
+The last line of your \indexfile{tps3.ini} file should be {\tt (set-flag 'last-mode-name `')}, so that
+the flag \indexflag{LAST-MODE-NAME} will start off empty. Also, you should set the value of
+\indexflag{RECORDFLAGS} to include \indexflag{LAST-MODE-NAME}, so that \indexcommand{DATEREC}
+will properly record what mode you were using at the time.
+
+The flags \indexflag{INIT-DIALOGUE} and \indexflag{INIT-DIALOGUE-FN} should be mentioned
+here; if the former is T, then after loading the two {\it .ini} files, {\TPS} will call the
+function named by INIT-DIALOGUE-FN. My \indexfile{tps3.ini} file sets these flags to T and
+INIT-DEFINE-MY-DEFAULT-MODE respectively, so that on startup I have a new mode
+MY-DEFAULT-MODE which contains my default settings of all the flags. See the help messages
+of these flags for more information.
+
+\subsection{Initializing {\ETPS}}
+
+There is a common \indexfile{etps.ini} file which is loaded when a user starts {\ETPS}.
+This can be especially useful if students will be using {\ETPS} for a class.
+The \indexfile{etps.ini} file can be used to limit what students can
+do while using {\ETPS}.
+
+One thing you may wish to do is to prevent students from being able to
+access Lisp directly.
+First, the flag \indexflag{EXPERTFLAG}, which, if false, does not allow the user to
+enter arbitrary forms for evaluation.
+For this purpose, the flag \indexflag{EXPERTFLAG} should be set to NIL
+in the \indexfile{etps.ini} file.
+
+A list of \indexother{expert}s containing
+the user id's of persons allowed to change the expertflag to true (e.g.,
+maintainers) is given in the \indexfile{Makefile}.  You should change this list
+before building {\ETPS}.
+
+The second way to keep students out of {\TPS} internals is to trap all
+errors, and prevent students from entering the break loop.
+There is a command
+\begin{alltt}
+(setq *trap-errors* t)
+\end{alltt}
+in the distributed \indexfile{etps.ini} file which
+does this for Allegro Lisp.
+The file \indexfile{tps3-error.lisp} has this
+set up properly for DEC-20, Kyoto Common Lisp and Ibuki Common Lisp,
+but you may have to do some work on this if you are using some other lisp.
+Basically, the idea is that if the debugger is called, an immediate
+throw back to the top level is performed.
+
+
+\section{Starting {\TPS}}
+
+Look at the \indexfile{aliases-dist} file and the run-* script files
+for examples of how to start tps.
+
+In some lisps, tps will be an executable file which can be
+executed directly.
+
+If you are using CMULISP, instead of the above use the command
+\begin{alltt}
+cmulisp -core tps \&
+\end{alltt}
+where cmulisp is the name by which you call CMULISP.
+
+If you are using Allegro Common Lisp 5.0 or greater, you can use the command
+\begin{alltt}
+lisp -I tps3.dxl \&
+\end{alltt}
+where tps3.dxl is the file that was created when {\TPS} was built.
+
+If you are using a version of Allegro Common Lisp prior to 5.0,
+then an executable file should have been created by the Makefile.
+You can simply call this executable to start {\TPS}.  For example,
+\begin{alltt}
+tps3 \&
+\end{alltt}
+
+There are several command line switches that control different
+options for starting {\TPS}.  For more information about these
+options, in {\TPS} one can execute HELP \indexother{COMMAND-LINE-SWITCHES}.
+
+\section{Using {\TPS} with the X window system}\label{X}
+
+{\TPS} can be run under the X window system (X10R4, X11R3 or X11R4),
+with nice output including mathematical symbols, by doing the
+following.
+
+\begin{enumerate}
+\item For X10R4: Make sure that
+the font directory {\tt fonts}
+is in your {\tt XFONTPATH}.
+
+\item For X11R3 or X11R4: Add the fonts directory to your font path by a
+\begin{alltt}
+{\tt xset +fp whatever/tps/fonts}
+\end{alltt}
+The {\tt +fp} adds the font to the start
+of your font path, so the {\TPS} fonts will override any other fonts of
+the same name in your font path. You may wish to put this {\tt xset}
+command in the .Xclients or .xinitrc file in your home directory,
+or add this command to the `Startup Programs' on your computer.
+\end{enumerate}
+
+Then start
+{\TPS} by
+\begin{alltt}
+{\tt \%xterm -fn vtsingle -fb vtsymbold -e tps}
+\end{alltt}
+where {\tt tps} is the complete name of the
+executable file, and, of course, you can add fancy
+things like geometry, side-bar, etc.
+If you are using CMULISP, instead of the above use the command
+\begin{alltt}
+{\tt \%xterm -fn vtsingle -fb vtsymbold -e cmulisp -core tps \&}
+\end{alltt}
+where cmulisp is the name by which you call CMULISP.
+
+If you are using Allegro Common Lisp 5.0, you can use the command
+\begin{alltt}
+{\tt \%xterm -geometry 80x48+4+16 '\#+963+651' -fn vtsingle -fb vtsymbold  -n Tps3jCOMPUTERNAME -T Tps3jCOMPUTERNAME -sb -e lisp -I tps3.dxl \&}
+\end{alltt}
+where tps3.dxl is the executable file.
+(Here COMPUTERNAME is the name of the computer on which you are running;
+this feature is optional, of course.)
+
+
+  Demonstrations are easier to see if you use the X10 fonts gallant.r.19.onx
+and galsymbold.onx, which are included with this distribution, in place of
+vtsingle and vtsymbold.  These fonts are very large.
+
+Thus, to start up tps using Allegro Common Lisp 5.0  in an X window
+with large fonts, you can use the command
+\begin{alltt}
+{\tt \%xterm -geometry 82x33+0+0 '\#+963+651' -fn gallant.r.19 -fb galsymbold  -n Tps3jCOMPUTERNAME -T Tps3jCOMPUTERNAME -sb -e lisp -I tps3.dxl \&}
+\end{alltt}
+
+The fonts vtsingle.bdf, vtsymbold.bdf, gallant.r.19.bdf and galsymbold.bdf
+are provided for use with X11.
+
+When {\TPS} starts, switch to style
+{\tt XTERM} as follows:
+
+\begin{alltt}
+{\tt <0>style xterm}
+\end{alltt}
+
+Also, if you see blinking text instead of special symbols,
+then try changing the value of the flag \indexflag{XTERM-ANSI-BOLD}
+to 49 as follows:\footnote{In 2005 (and previously), a value of 53
+worked for XTERM-ANSI-BOLD at
+CMU while using xterm version XFree86 4.2.0(165), and a value of 49
+worked at Saarbrucken while using xterm version X.Org 6.7.0(192).}
+
+\begin{alltt}
+{\tt <0>xterm-ansi-bold 49}
+\end{alltt}
+
+If the TPS fonts are not being displayed properly on your screen, the
+reason might be that many recent Linux systems are using a UTF-8 
+\index{UTF-8} locale,
+while the TPS fonts seem to work only in the traditional POSIX
+\index{POSIX}
+locale. To get the standard POSIX behavior, unset the environment
+variable LC\_ALL.\index{LC\_ALL} This can be accomplished by executing the Linux command
+\begin{alltt}
+{\tt unset LC\_ALL}
+\end{alltt}
+or
+\begin{alltt}
+{\tt setenv LC\_ALL C.}
+\end{alltt}
+If LC\_ALL is unset, all the other LC\_* environment variables are ignored.
+
+If you resize the X window, you should change the setting of the flag
+{\tt RIGHTMARGIN}.
+
+\section{Using {\TPS} with the \indexother{Java Interface}}\label{using-java}
+
+There is a Java interface for {\TPS} supporting menus and pop-up
+windows.
+To use this interface, {\TPS} must be able to use sockets
+and multiprocessing.
+Currently it seems that these features are both
+implemented only in
+Allegro Lisp (version 5.0 or later).
+In order for the Java windows to work, the
+TCP IP driver on your computer must be activated.  Therefore, if the
+Java interface does not work on your computer, you may be able to
+remedy the problem by starting up internet connections.
+
+The Java code for the interface is distributed under
+the `java' and `java/tps' directories.  The code
+in the `java' directory is used only to start the java
+{\TPS} interface.  The actual code for running the interface
+is in a `tps' package under `java/tps'.
+
+To start TPS with the Java interface, you must supply
+appropriate command line arguments.  For example, under Unix,
+\begin{alltt}
+lisp -I whatever/tps/tps3.dxl
+     -- -javainterface cd whatever/tps/java \(\setminus\); java TpsStart
+\end{alltt}
+The command line argument `-javainterface' tells TPS that it should
+run with the Java interface.  The command line arguments that follow
+should form a shell command which cd's to the directory where the Java
+code is, then calls java on the TpsStart class file.  (Note that the
+shell command separator `;' needs to be quoted to `\(\setminus\);'.)
+
+You may also
+want to redirect the \TPS output to /dev/null, i.e., call
+\begin{alltt}
+lisp -I whatever/tps/tps3.dxl
+     -- -javainterface cd whatever/tps/java \(\setminus\); java TpsStart > /dev/null
+\end{alltt}
+since the output the user needs to see shows up in the Java window.
+Furthermore, if you want to continue to use the shell from which you
+started {\TPS}, use \& to start run it in the background:
+\begin{alltt}
+lisp -I whatever/tps/tps3.dxl
+     -- -javainterface cd whatever/tps/java \(\setminus\); java TpsStart > /dev/null \&
+\end{alltt}
+
+There are other command line arguments which can be sent to TpsStart.
+These must be preceeded by the command line argument -other so
+that {\TPS} can distinguish these from the shell command used to
+start the java interface.
+
+Some command line arguments control the size of fonts.
+For example,
+\begin{alltt}
+lisp -I whatever/tps/tps3.dxl
+     -- -javainterface cd whatever/tps/java \(\setminus\); java TpsStart -other -big > /dev/null \&
+\end{alltt}
+tells Java to use the bigger sized fonts.  The command line argument
+-x2 tells Java to multiply the font size by two.
+The command line argument -x4 tells Java to multiply the font size by four.
+
+The command line argument `-nopopups' will make the Java interface
+act more like the X window interface.  First, there will be a Text Field
+at the bottom of the Java window used to enter commands.  Second, the
+user is prompted for input using this TextField instead of prompting
+the user via a popup window.  For example,
+\begin{alltt}
+lisp -I whatever/tps/tps3.dxl
+     -- -javainterface cd whatever/tps/java \(\setminus\); java TpsStart -other -nopopups > /dev/null \&
+\end{alltt}
+Note that to enter commands into the TextField, the user may need
+to focus on the TextField by clicking on it.
+
+Finally, there are command line arguments `-maxChars', `-rightOffset',
+`-bottomOffset', `-screenx', and `-screeny'.  Each of these should be
+immediately followed by a non-negative integer.  For example,
+\begin{alltt}
+lisp -I whatever/tps/tps3.dxl
+     -- -javainterface cd whatever/tps/java \(\setminus\); java TpsStart
+     -other -maxChars 50000 -rightOffset 20 -bottomOffset 30 -screenx 900 -screeny 500 > /dev/null \&
+\end{alltt}
+starts the Java interface with a buffer size big enough to hold 50000 characters,
+20 pixels of extra room at the right of the output window, 30 pixels of extra
+room at the bottom of the output window, and an initial window size of 900 by 500 pixels.
+These command line arguments are useful since the optimal default values may vary with
+different machines and different operating systems.
+
+Another way to run {\TPS} using the java interface is to start
+{\TPS} without the `-javainterface' command line, then
+use the {\TPS} command \indexcommand{JAVAWIN} to start the Java interface.
+Once the command \indexcommand{JAVAWIN} is executed, all interaction
+with this {\TPS} must be conducted via the Java interface.
+For \indexcommand{JAVAWIN} to work, the flag \indexflag{JAVA-COMM}
+must be set appropriately in the file {\tt tps3.sys} (or {\tt etps.sys}
+for {\ETPS}) before the image file for {\TPS}{or {\ETPS}} is built.
+For example, in Unix, {\tt tps3.sys} should contain a line like
+\begin{alltt}
+(defvar java-comm `cd whatever/tps/java ; java TpsStart')
+\end{alltt}
+In Windows, {\tt tps3.sys} should contain a line like
+\begin{alltt}
+(defvar java-comm `java -classpath C:\\whatever\\TPS\\java TpsStart')
+\end{alltt}
+
+Note: Resizing the main Java window for {\TPS} will automatically
+adjust the value of the flag \indexflag{RIGHTMARGIN}.
+
+\section{Using {\TPS} within Gnu Emacs}
+
+The following will produce output within Emacs, which may be useful as an
+alternative to creating a script file.
+
+First start up Emacs, then type {\tt M-x shell} (where M-x is meta-x, or more
+likely escape-x), then {\tt tps3} (or whatever alias you have defined to start
+up {\TPS}). It is advisable to make your first commands {\tt style generic} and
+{\tt save-flags-and-work {\it filename}}, so that the output will be readable
+and a work file will be written.
+
+Then you can use {\TPS} as normal (except that where you would normally type
+{\tt \^G <Return>} to abort a command, you must now type {\tt \^Q\^G<return>}).
+
+At the end of your session, you can rename the buffer with {\tt M-x rename-buffer}
+and save it with {\tt \^X\^S}. Then type {\tt exit} twice: once to leave {\TPS} and once
+to leave the shell.
+
+Conversely, depending on the particular local configuration of your
+version of Lisp, you may be able to run Emacs from within {\TPS}, using
+the \indexmexpr{LEDIT} command.
+
+
+\section{Running {\TPS} in Batch Mode or from \indexother{Omega}}
+
+There are two methods of batch processing in {\TPS}: work files and UNIFORM-SEARCH. Both of them are invoked
+by command line switches when {\TPS} is first started.
+
+When in batch mode, {\TPS} will write to a file {\tt tps-batch-jobs} in your home directory
+to confirm that the job has begun, and again to confirm that it has ended.
+
+The point of these switches is that they can be used to run {\TPS} with the Unix commands {\tt at}, {\tt batch} and {\tt cron},
+without requiring interaction from the user.
+
+Note: it is possible that your Lisp handles switches on the command line differently. For example, Allegro Lisp uses {\tt --}
+to separate switches for Lisp itself and switches for the core image, so in Allegro all of the examples below should begin
+{\tt tps -- } rather than {\tt tps }.
+
+\subsection{Batch Processing Work Files}
+
+{\TPS} has a command line switch \indexother{-batch} which allows the user to run a work file.
+Assuming that {\tt tps} is the command which starts {\TPS} on your system, and that you have a work
+file {\tt foo.work} in your home directory, the command
+\begin{tpsexample}
+tps -batch foo
+\end{tpsexample}
+is equivalent to starting {\TPS}, typing {\tt execute-file foo}, and then exiting {\TPS} when the work file finishes.
+
+To redirect the output of this process to a file {\tt bar}, use
+\begin{tpsexample}
+tps -batch foo -outfile bar
+\end{tpsexample}
+This will redirect the lisp streams {\tt *standard-output*}, {\tt *debug-io*}, {\tt *terminal-io*} and {\tt *error-output*}
+to the file {\tt bar}. To redirect absolutely everything, use the Unix redirection commands > and >> instead. The file
+{\tt /dev/null/} is a valid output file.
+
+Examples:
+\begin{tpsexample}
+tps -batch thm266
+{\it runs thm266.work through tps3, showing the output on the terminal.}
+tps -batch thm266 -outfile thm266.script
+{\it does the same but directs the output to thm266.script.}
+tps -batch thm266 -outfile /dev/null
+{\it does the same but discards the output.}
+\end{tpsexample}
+
+\subsection{Interactive/Omega Batch Processing}
+
+The \indexother{-omega} switch allows the user to start TPS, run a work file, interact with TPS and then save the
+resulting proof on exiting TPS. As the name suggests, this switch is used by the Omega system
+(see \cite{Benzmuller97} and \cite{Benzmuller98b}).
+When this switch is present, the -outfile switch is used to name the resulting proof file.
+The saved proof will be the current version of whichever proof was active at the end of the work file.
+If -outfile is omitted, TPS will use `<proofname>-result.prf' as the filename.
+If there is no dproof created by the workfile, the saved proof will be
+whichever proof is current when the user types EXIT, and it will be named
+`tps-omega.prf'
+
+Example:
+\begin{tpsexample}
+tps -omega -batch thm266 -outfile thm266
+{\it starts TPS, runs thm266.work and leaves the TPS window open for the user to interact;
+when the user exits, TPS will write a file thm266.prf}
+\end{tpsexample}
+
+\subsection{Batch Processing With UNIFORM-SEARCH}
+
+The command line switch \indexother{-problem} tells {\TPS} to run \indexcommand{UNIFORM-SEARCH} on the given problem (which
+must be the name of a gwff either in the library or internal to {\TPS}). The user can also specify the mode and
+searchlist to be used, with the \indexother{-mode} and \indexother{-slist} switches. If either of these is omitted,
+the mode UNIFORM-SEARCH-MODE and the searchlist UNIFORM-SEARCH-2 will be used by default.
+
+The switch {\tt -outfile} may be used to redirect output, as in the example above. Other output may be generated by
+specifying the \indexother{-record} switch, which takes no arguments, and which forces {\TPS} to call DATEREC and SAVEPROOF
+after the proof is finished. {\tt -record} will also insert into the library the mode which is generated by
+UNIFORM-SEARCH.
+
+Examples:
+\begin{tpsexample}
+tps -problem x2138
+{\it Search for a proof of X2138 using the default mode and searchlist; send output to the standard output}
+tps -problem x2138 -mode mode-x2138 -record -outfile x2138.script
+{\it Search as above, but use mode-x2138 to set all the flags that are not set by the default searchlist.
+Send the output to x2138.script, and when the search is finished call daterec, save x2138.prf and insert
+the new mode x2138-test-mode into the library}
+tps -problem difficult-problem -mode my-mode -slist my-slist -record >> /dev/null/
+{\it Search for a proof of difficult-problem, fixing all of the flags in my-mode and varying the flags in my-slist
+as specified by that searchlist. If a proof is found, record it, the time taken, and the successful mode, but throw
+away all other output.}
+\end{tpsexample}
+
+\section{Calling {\TPS} from Other Programs}
+
+The command line switches
+\indexother{-service} and \indexother{-lservice}
+start {\TPS} in a way that accepts requests to prove theorems automatically for
+other programs.  Both command line switches connect with other programs
+via sockets used to communicate requests and responses.
+Descriptions of programming with sockets can be found on the web.
+Performing a search for `sockets' via Google (for example) yields millions of results.
+We will assume some familiarity with communication via sockets here.
+
+With respect to {\TPS} started with \indexother{-service} and \indexother{-lservice}
+there are two relevant sockets: {\tt inout} and {\tt serv}.
+The socket {\tt serv} is intended to connect {\TPS} with \indexother{MathWeb}
+(see the website {\tt http://www.mathweb.org/})
+but is practically unused by {\TPS} at the moment.
+All the information described here
+is communicated via the {\tt inout} socket.
+The only difference between the command line switches
+\indexother{-service} and \indexother{-lservice}
+involve how these sockets are initialized.
+
+For the purposes of this description, we refer
+to the program calling {\TPS} as the `client'.
+We assume the client is running on a machine called {\tt clienthost}.
+
+\subsection{Establishing Connections}
+
+Assume the client has two passive sockets {\tt clientio} and {\tt clientserv}
+at port numbers {\tt clientioport} and {\tt clientservport}, respectively.
+Start {\TPS} with \indexother{-service} as follows:
+\begin{alltt}
+tps -service <clienthost> <clientioport> <clientservport>
+\end{alltt}
+{\TPS} will connect to the client via the given hostname and port numbers
+establishing the {\TPS} sockets {\tt inout} and {\tt serv}.
+
+To use the command line switch \indexother{-lservice}
+we must assume the client and {\TPS} are running on the same machine.
+(The `l' in \indexother{-lservice} stands for `local'.)
+Assume the client has a passive socket
+with port number {\tt clientport1}.  On the same machine start {\TPS} with
+\indexother{-lservice} as follows:
+\begin{alltt}
+tps -lservice <clientport1>
+\end{alltt}
+After initialization {\TPS} will open two new ports {\tt inout} and {\tt serv}
+and send the port numbers to the client via {\tt clientport1}.
+These port number are sent as a character string of the form
+`{\tt (inoutport servport})'.
+The client should take these values and connect to the sockets {\tt inout} and {\tt serv}.
+At this point the communication between the client and {\TPS} works the same
+way as with \indexother{-service}.
+
+\subsection{Socket Communication}
+
+The client and {\TPS} is communicate messages via the established sockets
+using a sequence of bytes (ASCII characters).  The special byte {\tt 128}
+(character {\tt \%null}) indicates the end of a message.
+
+\subsection{Ping-Pong Protocol}
+
+Before sending requests to {\TPS} the client must first
+follow a ping-pong protocol.  The client sends a message
+{\tt (PING <clientname>}) via the {\tt inout} socket.
+{\TPS} should respond with
+{\tt (<clientname> PONG <TPSname>}).
+The client reads this and begins sending requests to
+{\TPS} using the identifier {\tt <TPSname>}.
+
+\subsection{Requests}
+
+Every request is of the form
+{\tt (<TPSname> <request> . . .})
+and is sent to {\TPS} via the {\tt inout} socket.
+The requests the client can send to {\TPS} are as follows:
+\begin{description}
+\item[{\tt DIY}]	 Try to prove a theorem.
+
+\item[{\tt BASIC-DIY}]	 Try to prove a theorem without using special rules (like RULEP).
+
+\item[{\tt KILL}]	 Kill a {\TPS} process.
+
+\item[{\tt ADJUSTTIME}]	  Adjust the time remaining for a {\TPS} process.
+\end{description}
+
+The format for {\tt DIY} and {\tt BASIC-DIY} requests are as follows:
+\begin{alltt}
+(<TPSname> [DIY|BASIC-DIY] <procname> <servcomms> <proofoutline> <TPSmode> <DEFAULT-MS> <timeout>)
+\end{alltt}
+The name {\tt <procname>} is a string the client chooses to identify this particular request.
+Assume {\tt <servcomms>} is NIL (in general it could be a list of commands to send to MathWeb).
+The {\tt <proofoutline>} is in the form of a `defsavedproof'.  In general you can
+get such a form by obtaining the proof outline in {\TPS}, performing \indexcommand{saveproof}
+into a file {\tt foo.prf} and then examining the file {\tt foo.prf}.
+A simple example is
+\begin{alltt}
+ & (defsavedproof FOTR
+ &  (4 2 29)
+ &  (assertion `TRUTH')
+ &  (nextplan-no 2)
+ &  (plans ((100)))
+ &  (lines (100 NIL `TRUTH' PLAN1 () NIL))
+ &  0 () (comment `') (locked NIL))
+\end{alltt}
+which represents the proof outline
+\begin{alltt}
+
+               ...
+(100) \( \assert \truth \) & PLAN1
+\end{alltt}
+The value of {\tt <TPSmode>} should be the name of a mode in {\TPS}.
+The value of {\tt <DEFAULT-MS>} can be used to override the value of
+the flag \indexflag{DEFAULT-MS} in the mode {\tt <TPSmode>}.  If {\tt <DEFAULT-MS>}
+is NIL, then the value of the flag \indexflag{DEFAULT-MS} is set by {\tt <TPSmode>}.
+{\tt <timeout>} is the number of seconds {\TPS} should try to search for a proof
+before giving up.
+
+After the client sends a {\tt DIY} or {\tt BASIC-DIY} request with name {\tt <procname>},
+the client can later kill the request or allow the request more time to succeed.
+The {\tt KILL} request has the format
+\begin{alltt}
+(<TPSname> KILL <procname>)
+\end{alltt}
+The {\tt ADJUSTTIME} request has the format
+\begin{alltt}
+(<TPSname> ADJUSTTIME <procname> <seconds>)
+\end{alltt}
+This {\tt ADJUSTTIME} request will add the value {\tt <seconds>}
+to the time remaining for the process {\tt <procname>}.  (Note that
+{\tt <seconds>} may be negative.)
+
+When a {\tt DIY} or {\tt BASIC-DIY} request has finished (either due to success, failure or timeout),
+then the message returned via the {\tt inout} socket will be
+\begin{alltt}
+(<procname> <proof> <printedproof>)
+\end{alltt}
+where {\tt <proof>} is the proof in the `defsavedproof' format (with no remaining planned lines if the request succeeded)
+and {\tt <printedproof>} is the result of the {\TPS} command \indexcommand{PALL}.
+
+\subsection{Example}
+
+Consider a quick example where the client is running under Allegro Lisp
+on the host jtps.math.cmu.edu.
+
+Client:
+\begin{alltt}
+>(setq clientio (acl-socket:make-socket :connect :passive))
+\#<MULTIVALENT stream socket waiting for connection at */34032 \ \#x722d43aa>
+>(setq clientserv (acl-socket:make-socket :connect :passive))
+\#<MULTIVALENT stream socket waiting for connection at */34033 \ \#x722d58ea>
+\end{alltt}
+
+Start {\TPS} on jtps.math.cmu.edu:
+\begin{alltt}
+tps -service jtps.math.cmu.edu 34032 34033
+\end{alltt}
+
+Client:
+\begin{alltt}
+>(setq inout (acl-socket:accept-connection clientio))
+\#<MULTIVALENT stream socket connected from jtps.math.cmu.edu/34032 to
+  jtps.math.cmu.edu/34034 \ \#x722d820a>
+>(setq serv (acl-socket:accept-connection clientserv))
+\#<MULTIVALENT stream socket connected from jtps.math.cmu.edu/34033 to
+  jtps.math.cmu.edu/34035 \ \#x7231f6ba>
+> (defun send-info (s)
+    (format inout `\(\sim\)S' s)
+    (write-char \#\(\setminus\)%null inout)
+    (force-output inout))
+SEND-INFO
+> (defun read-msg ()
+     (let ((ret `'))
+       (do ((z (read-char inout nil nil) (read-char inout nil nil)))
+           ((eq z \#\(\setminus\)%null) ret)
+         (setq ret (format nil `\(\sim\)d\(\sim\)d' ret z)))))
+READ-MSG
+> (send-info '(PING CLIENTNAME))
+NIL
+> (setq rets (read-msg))
+`(CLIENTNAME PONG |TPSjjtps.math.cmu.edu-3287332390|)
+'
+> (setq ret (read-from-string rets))
+(CLIENTNAME PONG |TPSjjtps.math.cmu.edu-3287332390|)
+> (setq tpsname (caddr ret))
+|TPSjjtps.math.cmu.edu-3287332390|
+> (send-info (list tpsname 'DIY `TRUEPROCNAME' nil '(defsavedproof FOTR
+  (4 3 3)
+  (assertion `TRUTH')
+  (nextplan-no 2)
+  (plans ((100)))
+  (lines
+    (100 NIL `TRUTH' PLAN1 () NIL)
+  ) 0
+  ( )
+    (comment `')
+    (locked NIL)
+    NIL
+  )
+  'MS98-HO-MODE NIL 5))
+NIL
+> (setq rets (read-msg))
+``(\"TRUEPROCNAME\(\setminus\)'' \(\setminus\)''(defsavedproof FOTR
+  (4 3 3)
+  (assertion \(\setminus\setminus\setminus\)''TRUTH\(\setminus\setminus\setminus\)'')
+  (nextplan-no 3)
+  (plans NIL)
+  (lines
+    (1 NIL \(\setminus\setminus\setminus\)''TRUTH\(\setminus\setminus\setminus\)'' \(\setminus\setminus\setminus\)''Truth\(\setminus\setminus\setminus\)'' () NIL)
+) 0
+( )
+  (comment \(\setminus\setminus\setminus\)''\(\setminus\setminus\setminus\)'')
+  (locked NIL)
+  NIL
+)
+\(\setminus\)'' \(\setminus\)''
+(1)   !  TRUTH                                               Truth\(\setminus\)'')
+'
+> (setq ret (read-from-string rets))
+(`TRUEPROCNAME' `(defsavedproof FOTR
+  (4 3 3)
+  (assertion \(\setminus\)''TRUTH\(\setminus\)'')
+  (nextplan-no 3)
+  (plans NIL)
+  (lines
+    (1 NIL \(\setminus\)"TRUTH\" \(\setminus\)"Truth\(\setminus\)" () NIL)
+) 0
+( )
+  (comment \(\setminus\)"\(\setminus\)")
+  (locked NIL)
+  NIL
+)
+' `
+(1)   !  TRUTH                                               Truth')
+> (send-info (list tpsname 'DIY `FALSEPROCNAME' nil '(defsavedproof FOFA
+    (4 3 3)
+    (assertion `FALSEHOOD')
+    (nextplan-no 2)
+    (plans ((100)))
+    (lines
+      (100 NIL `FALSEHOOD' PLAN1 () NIL)
+    ) 0
+  ( )
+    (comment `` ``)
+    (locked NIL)
+    NIL
+  )
+  'MS98-HO-MODE NIL 5))
+NIL
+> (setq rets (read-msg))
+``(\(\setminus\)"FALSEPROCNAME\(\setminus\)" \(\setminus\)"(defsavedproof FOFA
+  (4 3 3)
+  (assertion \(\setminus\setminus\setminus\)''FALSEHOOD\(\setminus\setminus\setminus\)'')
+  (nextplan-no 2)
+  (plans ((100)))
+  (lines
+    (100 NIL \(\setminus\setminus\setminus\)''FALSEHOOD\(\setminus\setminus\setminus\)'' PLAN1 () NIL)
+) 0
+( )
+  (comment \(\setminus\setminus\setminus\)''\(\setminus\setminus\setminus\)'')
+  (locked NIL)
+  NIL
+)
+\(\setminus\)" \(\setminus\)"
+               ...
+(100) !  FALSEHOOD                                            PLAN1\(\setminus\)")
+"
+> (setq ret (read-from-string rets))
+("FALSEPROCNAME" "(defsavedproof FOFA
+  (4 3 3)
+  (assertion \(\setminus\)"FALSEHOOD\(\setminus\)")
+  (nextplan-no 2)
+  (plans ((100)))
+  (lines
+    (100 NIL \(\setminus\)"FALSEHOOD\(\setminus\)" PLAN1 () NIL)
+) 0
+( )
+  (comment \(\setminus\)"\(\setminus\)")
+  (locked NIL)
+  NIL
+)
+" "
+               ...
+(100) !  FALSEHOOD                                            PLAN1")
+\end{alltt}
+
+\section{Starting {\TPS} as an Online Server}\label{tps-server}\index{server}\index{web server}
+
+Under Allegro Lisp 5.0 or greater,
+{\TPS}{and {\ETPS}} can be started as a web server for use online.
+Once everything is set up and the server is started,
+remote users will be able to access {\TPS}
+via a browser (possibly using
+a user id and password) and communicate with {\TPS} via
+a Java interface.
+
+\subsection{Setting up the Online Server}
+
+The following steps are necessary to set up the {\TPS} server
+in a Unix or Linux operating system.  Analogous steps
+are necessary for setting up the {\TPS} server for MS Windows.
+
+\begin{enumerate}
+\item We start by assuming {\ETPS}, {\TPS} and the Java files
+have already been compiled.
+
+\item Create a directory for the server, e.g.
+{\tt /home/theorem/tpsonline}
+Move to this directory.
+
+\item To set up the user id's and passwords, start {\TPS}
+in the new directory.
+
+\item The id and password information will be saved in the file named by
+the flag \indexflag{USER-PASSWD-FILE}.  The default value
+is \indexother{user-passwd}.  It is recommended that
+you not change the value of this flag from its default.
+
+\item From within {\TPS}, run the command \indexcommand{SETUP-ONLINE-ACCESS}.
+\begin{alltt}
+<1>setup-online-access
+\end{alltt}
+The command \indexcommand{SETUP-ONLINE-ACCESS} will ask you for
+a series of user id's and passwords for remote access
+to {\TPS} and {\ETPS}.  It will also ask if you
+wish to allow anonymous users to be able to remotely run {\TPS} or {\ETPS}.
+The user id's and passwords
+are unrelated to the user id's and passwords created and used by the operating
+system.  The following is an example where two students are given
+id's and passwords for {\ETPS} and anonymous users are allowed to remotely
+run {\TPS}.
+\begin{alltt}
+<0>setup-online-access
+Allow ETPS Anonymous Access To Everyone? [No]>no
+Add a userid?  [Yes]>
+
+User Id  [`']>`student1'
+Password  [`']>`password1'
+Added user student1
+Add another userid?  [Yes]>
+
+User Id  [`']>`student2'
+Password  [`']>`password2'
+Added user student2
+Add another userid?  [Yes]>n
+Allow TPS Anonymous Access To Everyone? [No]>y
+Although anyone can run TPS
+You may still wish to add specific users which will be allowed to save files
+in a directory.
+Add a userid?  [Yes]>n
+\end{alltt}
+A file named \indexfile{user-passwd} (or, in general,
+a name given by the value of \indexflag{USER-PASSWD-FILE})
+should have been created.
+
+\item Exit {\TPS}.
+
+\item Copy or link the java directory (with the compiled Java class files)
+into the tpsonline directory.
+\end{enumerate}
+
+\subsection{Starting or Restarting the Online Server}
+
+To start the {\TPS} server, make sure you are in the directory
+with the user-password file.
+You may be able to start the {\TPS} server by using
+the shell script \indexfile{run-tpsserver}, which is included
+in the distribution.
+In general, start {\TPS}{or {\ETPS}} as a server using the following
+pattern:
+\begin{alltt}
+<lisp> -I <tpsdir>/tps3.dxl -- -server <tpsdir>/tps3.dxl <tpsdir>/etps.dxl
+\end{alltt}
+<lisp> should be the name of the lisp executable (e.g., lisp or alisp8).
+<tpsdir> should be the directory where the {\TPS} and {\ETPS} image files are located.
+If the server starts successfully, a directory named `logs' for log files
+should be created.  One can explicitly give a different name for the log directory
+using the -logdir command line switch as follows:
+\begin{alltt}
+<lisp> -I <tpsdir>/tps3.dxl -- -server <tpsdir>/tps3.dxl <tpsdir>/etps.dxl -logdir <logdirname>
+\end{alltt}
+
+Once the server is started, it can be accessed on the web using the URL
+`http://<machine-name>:29090/'.  The number `29090' is the default
+port number used by the {\TPS} server.  If this port number is not free,
+then the {\TPS} server will fail to start.  In this case, you can
+explicitly provide a different port number using the -port command line
+switch as follows:
+\begin{alltt}
+<lisp> -I <tpsdir>/tps3.dxl -- -server <tpsdir>/tps3.dxl <tpsdir>/etps.dxl -port <portnum>
+\end{alltt}
+In this case, the {\TPS} web server can be accessed via a browser using
+the URL `http://<machine-name>:<portnum>/'.  If you wish to link to
+the web server from an HTML file on another web site, use an href anchor
+as follows:
+\begin{alltt}
+<A HREF=`http://<matchine-name>:<portnum>/'>Click here to run TPS or ETPS online</A>
+\end{alltt}
+
+When a remote user accesses {\TPS} or {\ETPS} online via the {\TPS} web server,
+a directory for that user is created (or a directory named `anonymous' if it is being
+run without a user id and password).  Files may be saved by the remote user
+in this directory.
+
+It should be noted that an anonymous remote user is allowed to do less.
+For example, an anonymous user cannot start {\TPS} or {\ETPS} using a command
+line prompt.  Instead, they are forced to rely on menus to execute allowed
+commands and popup prompts to enter other information.  This prevents
+an anonymous user from executing arbitrary commands.
+
+One possible use of the {\TPS} server is to allow students in a class
+to use {\ETPS} to complete class assignments without having
+{\ETPS} installed on their computer.  This is discussed further in
+section \ref{etps-class-server}.
+
+\section{Preparing ETPS for classroom use}
+
+Building {\ETPS} is just like building {\TPS}, except that one should type {\tt make etps}
+rather than {\tt make tps}.  Before calling {\tt make etps}
+make sure the bin directory is empty because the compiled files for
+tps won't work right for etps.
+The modules of {\ETPS} are just a subset of those for {\TPS}.
+
+If you wish to use {\ETPS} for a class, there are some things you might
+want to change.
+
+To determine for which exercises students may use
+\indexcommand{ADVICE} and commands such as {\tt RULEP}, set the
+\indexother{allowed-cmd-p} attributes appropriately. For example, in
+the definitions in \indexfile{ml2-theorems.lisp}, we find the \indexother{allowed-cmd-p}
+attributes set to \indexother{ALLOW-ALL}, so for these exercises the
+students may use all the facilities of {\ETPS}. On the other hand, in
+\indexfile{ml1-theorems.lisp} they are set to \indexother{ALLOW-RULEP}, which
+allows everything except advice.
+
+If you desire different inference rules, see chapter \ref{rules} for
+tips on defining and compiling new ones, and examine the {\it .rules} files
+which have been used to define the current rules. Then put your new files into
+a new {\TPS} package, and load that package when building or compiling
+{\ETPS}.
+
+\subsection{Starting ETPS as an Online Server for a Class}\label{etps-class-server}
+
+Following the instructions in section \ref{tps-server}, a teacher
+can start {\TPS} as a web server.  Using the command \indexcommand{SETUP-ONLINE-ACCESS}
+as described in section \ref{tps-server}, the teacher can enter
+a list of student user id's and passwords.  This allows students to
+log in through the {\TPS} web server and start {\ETPS}.  This will create
+a directory on the server machine for this student.  Files relevant to
+recording scores for this student are saved in this directory.
+
+\subsection{Grades}
+
+
+When a student completes an
+exercise and executes the \indexcommand{DONE} command,
+a message recording that fact can be appended to the end of a
+file to which students have write access.
+The path and name of this file
+is given by the value of the flag \indexflag{score-file}.
+The flag \indexflag{score-file} should be set in
+the common initialization file \indexfile{etps.ini}
+which is loaded by every user of {\ETPS}.
+The distributed \indexfile{etps.ini} file contains the
+following line:
+\begin{alltt}
+;*; (setq score-file `/afs/andrew/mcs/math/etps/records/etps-spring03.scores')
+\end{alltt}
+If you want \indexfile{etps.ini} to set \indexflag{score-file},
+then you should remove ;*;
+from the beginning of this line to uncomment it.
+This (if uncommented) will set the flag \indexflag{score-file}
+to the same value for every user of {\ETPS}.
+Appropriate adjustments in the pathname should be made.
+
+If you prefer to have students with different userid's
+to have different score files, you can use
+the following option instead.
+The distributed \indexfile{etps.ini} file also contains these lines:
+\begin{alltt}
+;*; (setq score-file (concatenate 'string
+;*;     `/afs/andrew/mcs/math/etps/records/' (string (status-userid))
+;*;     `/etps-spring03.scores'))
+\end{alltt}
+If the user's userid is pa01, when this is read {\ETPS}
+will set the flag \indexflag{score-file} to
+\begin{alltt}
+`/afs/andrew/mcs/math/etps/records/pa01/etps-spring04.scores'
+\end{alltt}
+If you use this option, you will need to use a utility
+to combine the score files for the different students in
+the class.
+
+The {\tt GRADER} program (for which there is a separate manual)
+can be used to process the
+grades in a file which is the value of the
+{\tt GRADER} flag \indexflag{etps-file}.
+This should be the same as the value of
+the {\ETPS} flag \indexflag{score-file}
+if all the students write to the same file.
+Otherwise, it can be a file into which all the
+students' files have been collected.
+The sample line in the \indexfile{grader.ini}
+file setting \indexflag{etps-file} should be edited
+by changing the pathname appropriately.
+
+\subsection{Security}
+
+Note: On a Unix system, you can use {\ETPS} as a setuid program to allow
+students to write to their score files, i.e., so that any process
+running {\ETPS} has full access to the files, while other processes do
+not.  However, this may be an excessive precaution, since each message
+issued by the {\ETPS} \indexcommand{DONE} command has a special
+encryption number used to ensure security.  Thus a student cannot edit
+the score file to make it appear that he or she has completed an
+exercise.  The routines in the {\tt GRADER} package check the encryption
+number to make sure the information in that line of the score file is
+valid.
+
+Checksums are generated for all saved proofs
+when the \indexflag{EXPERTFLAG} flag is set to NIL, but not when it is set to T.
+This means that students should be unable to manually edit a saved partial proof
+and fool {\ETPS} into thinking that it's complete; it also means that proofs
+saved in {\TPS} with \indexflag{EXPERTFLAG} T cannot be reloaded into {\ETPS}
+with \indexflag{EXPERTFLAG} NIL.
+
+
+\subsection{Diagnosing Problems in ETPS}
+
+{\ETPS} catches errors so that when there are problems one does
+not get an error message, and is not thrown to the debugger.
+To change this, run {\ETPS} as a user on the expertlist (which is in the Makefile),
+set \indexflag{EXPERTFLAG} to T, and set the variable \indexother{*trap-errors*} to
+nil as follows:
+\begin{alltt}
+(setq *trap-errors* nil)
+\end{alltt}
+
+\section{Interruptions and Emergencies}
+
+This section consists mostly of implementation-dependent information,
+although some of the following will work in most situations.
+The following control characters will work in most circumstances:
+
+\begin{description}
+\item[] {\tt \^G <Return>} (i.e. type one followed by the other) will abort the current process.
+
+\item[] {\tt <Return>} will stop a mating search and drop into the mate top level. When you
+leave the mate top level, the mating search will attempt to continue (of course,
+if you've made drastic changes, it may fail).
+
+\item[] {\tt \^Z} will suspend lisp; you can then kill the job if necessary, or put it into
+the background with {\tt bg}
+
+\item[] {\tt \^C} will interrupt and throw you into the lisp break package
+\end{description}
+
+You can save a core image with the \indexcommand{TPS3-SAVE} command, as follows:
+
+\begin{tpsexample}
+<24>setflag save-file `mycore.exe'
+<25>tps3-save
+\end{tpsexample}
+
+You should also save the flag settings, since when you restart {\TPS} with
+this core image it will re-read the \indexfile{tps3.ini} file and may reset some flags.
+
+In Allegro Common lisp, if you get the {\tt <cl>} prompt, the following are
+some of the possible responses:
+
+\begin{description}
+\item[] {\tt :help} to see all the options
+
+\item[] {\tt :cont} to attempt to continue
+
+\item[] {\tt :out} to get back to top level
+
+\item[] {\tt :res} to get back to top level
+
+\item[] {\tt (exit)} to kill {\TPS}
+\end{description}
+
+In CMU common lisp, if you get the {\tt 0]} debugger prompt, the command
+{\tt q} will get you back to the top level, and the command {\tt h} will
+list all the other options available.
+
+If {\TPS} crashes, or you discover a bug, use the \indexcommand{BUG-SAVE} command
+to save the current state. Give your bug a name, and describe it (possibly
+cut and paste the error message that was produced into the `comments' field).
+This will save all the flag settings, the timing information, the history and
+the current proof, in such a way that one can use \indexcommand{BUG-RESTORE}
+to return to the same error at another time. Bugs are, by default, saved to
+\indexflag{DEFAULT-BUG-DIR}, although they can be saved to \indexflag{DEFAULT-LIB-DIR}
+by setting flag \indexflag{USE-DEFAULT-BUG-DIR} to NIL. There are also commands to list,
+delete and examine the comments field of bugs (\indexcommand{BUG-LIST}, \indexcommand{BUG-DELETE}
+and \indexcommand{BUG-HELP}, respectively); these correspond to library commands \indexcommand{LIST-OF-LIBOBJECTS},
+\indexcommand{DELETE} and \indexcommand{SHOW-HELP}.
+
+\section{How to produce manuals}
+At the present time, to produce printed manuals, you must have the
+Scribe text-processing system and a Postscript printer.
+
+Enter the directory which corresponds to the manual you wish to make,
+ then run Scribe on the file
+{\tt manual}.  For example, if you wish to make the manual for {\ETPS}, do
+
+\begin{alltt}
+\% cd doc/etps
+\% scribe manual
+\end{alltt}
+
+If you are using {\ETPS} as part of a course, you may wish to modify
+the files in that directory to tailor it toward the inference rules
+of your system.
+
+To produce the facilities guide, which lists all commands, flags, modes,
+etc., you can use the {\TPS} command \indexcommand{SCRIBE-DOC}.
+% \comment{or \indexcommand{SCRIBE-CATS}.}
+However, it may be easiest to use the
+files in the directory {\it whatever/tps/doc/facilities}
+(i.e., something like {\it /usr/tps/doc/facilities}). To do this,
+you will use the file \indexfile{facilities.lisp} for a long and pretty comprehensive
+manual, or \indexfile{facilities-short.lisp} for a shorter version which excludes some of the
+obscurer TPS objects.
+Use \indexfile{facilities-cmd.lisp} for the shortest manual of all, which contains only commands
+and flags (i.e. the short facilities guide
+without information on tactics, tacticals, binders, abbreviations, types,
+subjects, modes, events, styles, grader commands etc). It also prints with
+narrower page margins. To produce this manual, replace `-short'
+with `-cmd' in the following. At the time of writing, manual-cmd.mss ran to 90 pages,
+manual-short.mss was 156 pages, and manual.mss was 246 pages.
+
+If you want a very short manual containing just a little information,
+(such as a summary of a new search procedure) use facilities-temp. Edit
+facilities-temp.lisp to contain just the categories you wish, and
+FLAG. In TPS
+tload `whatever/tps/doc/facilities/facilities-temp.lisp'
+Then edit whatever/tps/doc/facilities/facilities-temp.mss
+to eliminate all the flags you do not want in this manual, and
+scribe the file.
+
+Part of the lisp function in the file specifies the output file; EDIT
+THAT PATHNAME to put the file into the facilities directory.
+Then proceed as follows (to make the short manual)
+\begin{alltt}
+\% tps3
+<2>tload `whatever/tps/doc/facilities/facilities-short.lisp'
+Written file whatever/tps/doc/facilities/facilities-short.mss
+T
+<3>exit
+\% cd whatever/tps/doc/facilities
+\% scribe manual-short
+\end{alltt}
+
+If you were making the full manual, use the files \indexfile{facilities.lisp},
+\indexfile{facilities.mss}, and \indexfile{manual.mss} in place of \indexfile{facilities-short.lisp},
+\indexfile{facilities-short.mss}, and \indexfile{manual-short.mss}, respectively. Similarly,
+for the very short manual, use \indexfile{facilities-cmd.lisp},
+\indexfile{facilities-cmd.mss}, and \indexfile{manual-cmd.mss}.
+
+Note: If you use a {\TPS} core image into which you have already loaded
+certain wffs from your library, these will show up in the facilities
+guide.
+
+This information is also in the file \indexfile{doc/facilities/README}.
+
+\subsection{HTML manuals}
+
+The information in the facilities guide can also be output in a rudimentary HTML format
+by using the command \indexcommand{HTML-DOC}. You will need to provide TPS with the name
+of an empty directory which has about 10MB of free space; the main page of the manual
+will be the file \indexfile{index.html} in that directory.
+
+Also, HTML documentation for {\ETPS} can be generated by using the command
+\indexcommand{HTML-DOC} from within {\ETPS}.
+
+\section{Miscellaneous Information}
+
+The common \indexfile{tps3.ini} and \indexfile{etps.ini} files are used to set the default values
+of some flags for a particular site.
+The setting of LATEX-PREAMBLE
+refers to input files tps.sty, tps.tex and vpd.tex, which are part of the {\TPS} distribution.
+This is currently set using the value of sys-dir.
+You could change the settings of these flags in  the ini files, but you probably won't need to.
+The following commands from LATEX-PREAMBLE should not be changed, since
+TPS relies on them:
+\begin{tpsexample}
+\(\setminus\setminus\)def\(\setminus\setminus\)endf\{\(\setminus\setminus\)end\{document\}\}
+\(\setminus\setminus\)newcommand\{\(\setminus\setminus\)markhack\}[1]\{\(\setminus\setminus\)vspace*\{-0.6in\}\{\#1\}\(\setminus\setminus\)vspace*\{0.35in\}\(\setminus\setminus\)markright\{\{\#1\}\}\}
+\end{tpsexample}
+
+
+If you have access to the Scribe text-processing system,
+you can change the documentation for {\ETPS} as appropriate (found in
+the directory {\it doc/etps} and give it to students.  Note that in
+its present form there are some CMU-specific assumptions made,
+and it contains a listing of the inference rules as used in classes here.
+
+You might want to employ a different scheme for grading.  The file
+\indexfile{etps-events.lisp} defines how the results of each exercise are
+output to the score file.  See Chapter \ref{events} for information
+on how to define events.

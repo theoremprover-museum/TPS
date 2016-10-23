@@ -1,0 +1,6 @@
+You must be in the  pa01:tpsguest group to have access to TPS on andrew.
+
+Source /afs/andrew/mcs/math/etps/tps/tps.cshrc in your ~/.cshrc file
+on Andrew
+This will set up aliases for you, so that tps3 will
+start up TPS without you having to remember the exact path name.

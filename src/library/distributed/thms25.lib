@@ -1,0 +1,42 @@
+(:name THM250
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Monday, February 17, 1997 at 16:38:32."
+:description "FORALL R(OAA) FORALL S(OAA).TRCL(OAA(OAA)) [R(OAA) PAIRUNION(OAA(OAA)(OAA)) S(OAA)] =(O(OAA)(OAA)) TRCL(OAA(OAA)).TRCL(OAA(OAA)) R(OAA) PAIRUNION(OAA(OAA)(OAA)) TRCL(OAA(OAA)) S(OAA)"
+:needed-objects   (PAIRUNION TRCL)
+:mhelp "thm about TRCL"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM252C
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Friday, March 28, 1997 at 16:35:33."
+:description "FORALL h(O(OAA)) FORALL r(OAA) FORALL s(OAA).REL-PROP-CLOSURE(OAA(OAA)(O(OAA))) h(O(OAA)) [r(OAA) PAIRUNION(OAA(OAA)(OAA)) s(OAA)] =(O(OAA)(OAA)) REL-PROP-CLOSURE(OAA(OAA)(O(OAA))) h(O(OAA)).REL-PROP-CLOSURE(OAA(OAA)(O(OAA))) h(O(OAA)) r(OAA) PAIRUNION(OAA(OAA)(OAA)) REL-PROP-CLOSURE(OAA(OAA)(O(OAA))) h(O(OAA)) s(OAA)"
+:needed-objects   (PAIRUNION REL-PROP-CLOSURE)
+:mhelp "THM250, generalised to any sort of closure"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM252
+:type GWFF
+:context UNCLASSIFIED
+:keywords (PROVEN WITH-EQUALITY WITH-DEFN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Friday, February 28, 1997 at 13:41:05."
+:description "FORALL PROP(O(OAA)) FORALL R(OAA) FORALL S(OAA).CLOSURE(OAA(OAA)(O(OAA))) PROP(O(OAA)) [R(OAA) PAIRUNION(OAA(OAA)(OAA)) S(OAA)] =(O(OAA)(OAA)) CLOSURE(OAA(OAA)(O(OAA))) PROP(O(OAA)).CLOSURE(OAA(OAA)(O(OAA))) PROP(O(OAA)) R(OAA) PAIRUNION(OAA(OAA)(OAA)) CLOSURE(OAA(OAA)(O(OAA))) PROP(O(OAA)) S(OAA)"
+:needed-objects   (PAIRUNION CLOSURE)
+:mhelp "THM250, generalised to any sort of closure"
+:other-attributes NIL
+:other-remarks "
+")
+
+

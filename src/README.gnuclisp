@@ -1,0 +1,24 @@
+            NOTES ON INSTALLING TPS USING GNU CLISP
+
+1. This document assumes that you have installed a version of GNU CLISP 
+   on your system. For further information visit the web sites
+
+   http://clisp.cons.org/
+   
+   Users of MacOSX 10.2 (or later) can obtain a binary distribution
+   of GNU CLISP through Fink http://fink.sourceforge.net/.
+   
+2. Read the file README.unix in your tps top level directory and follow 
+   the full procedure as described.
+
+3. After you have successfully compiled tps, you can start tps or etps 
+   by issuing one of the following commands in your tps directory.
+
+clisp -M tps3.mem
+
+clisp -M etps3.mem
+
+   You may wish to edit the executable file "run-tps3gnuclisp" to point 
+   to your tps directory. Then, the following command will start tps.
+   
+./run-tps3gnuclisp

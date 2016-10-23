@@ -1,0 +1,379 @@
+(:name THM120
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:18."
+:description "EXISTS R(O(OI)(OI)) TRANSITIVE(O(O(OI)(OI))) R(O(OI)(OI))"
+:needed-objects   (TRANSITIVE)
+:mhelp "There exists a transitive relation on sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM120A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Monday, June  2, 1997 at 14:30:11."
+:description "EXISTS R(O(OI)(OI)).~R(O(OI)(OI)) [LAMBDA x(I) TRUTH] [LAMBDA x(I) FALSEHOOD] AND TRANSITIVE(O(O(OI)(OI))) R(O(OI)(OI))"
+:needed-objects   (TRANSITIVE)
+:mhelp "Variant of THM120 designed to eliminate trivial proof. Subset is one such relation."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM120B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, June 26, 1997 at 16:21:39."
+:description "EXISTS R(O(OI)(OI)).~R(O(OI)(OI)) [LAMBDA x(I) TRUTH] [LAMBDA x(I) FALSEHOOD] AND REFLEXIVE(O(O(OI)(OI))) R(O(OI)(OI)) AND TRANSITIVE(O(O(OI)(OI))) R(O(OI)(OI))"
+:needed-objects   (TRANSITIVE REFLEXIVE)
+:mhelp "Variant of THM120a designed to eliminate trivial proof. Subset is one such relation."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM120C
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:19."
+:description "EXISTS r^28(OI(OI)(OI)) EXISTS r^27(OI(OI)(OI)).~[LAMBDA w^1(OI) LAMBDA w^2(OI) FORALL w^2(I) [LAMBDA w^3(OI) LAMBDA w^4(OI) LAMBDA w^5(I).r^27(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I) OR r^28(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I)] w^1(OI) w^2(OI) w^2(I)] [LAMBDA x(I) TRUTH] [LAMBDA x(I) FALSEHOOD] AND REFLEXIVE(O(O(OI)(OI))) [LAMBDA w^1(OI) LAMBDA w^2(OI) FORALL w^2(I) [LAMBDA w^3(OI) LAMBDA w^4(OI) LAMBDA w^5(I).r^27(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I) OR r^28(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I)] w^1(OI) w^2(OI) w^2(I)] AND TRANSITIVE(O(O(OI)(OI))).LAMBDA w^1(OI) LAMBDA w^2(OI) FORALL w^2(I) [LAMBDA w^3(OI) LAMBDA w^4(OI) LAMBDA w^5(I).r^27(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I) OR r^28(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I)] w^1(OI) w^2(OI) w^2(I)"
+:needed-objects   (REFLEXIVE TRANSITIVE)
+:mhelp "variant of thm120b in which the proper primitive substitutions have already been made."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM120D
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:20."
+:description "EXISTS r^28(OI(OI)(OI)) EXISTS r^27(OI(OI)(OI)).REFLEXIVE(O(O(OI)(OI))) [LAMBDA w^1(OI) LAMBDA w^2(OI) FORALL w^2(I) [LAMBDA w^3(OI) LAMBDA w^4(OI) LAMBDA w^5(I).r^27(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I) OR r^28(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I)] w^1(OI) w^2(OI) w^2(I)] AND TRANSITIVE(O(O(OI)(OI))) [LAMBDA w^1(OI) LAMBDA w^2(OI) FORALL w^2(I) [LAMBDA w^3(OI) LAMBDA w^4(OI) LAMBDA w^5(I).r^27(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I) OR r^28(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I)] w^1(OI) w^2(OI) w^2(I)] AND ~[LAMBDA w^1(OI) LAMBDA w^2(OI) FORALL w^2(I) [LAMBDA w^3(OI) LAMBDA w^4(OI) LAMBDA w^5(I).r^27(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I) OR r^28(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I)] w^1(OI) w^2(OI) w^2(I)] [LAMBDA x(I) TRUTH].LAMBDA x(I) FALSEHOOD"
+:needed-objects   (REFLEXIVE TRANSITIVE)
+:mhelp "Variant of thm120c with matrix rearranged"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM120E
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS r^28(OI(OI)(OI)) EXISTS r^27(OI(OI)(OI)).REFLEXIVE(O(O(OI)(OI))) [LAMBDA w^1(OI) LAMBDA w^2(OI) FORALL w^2(I) [LAMBDA w^3(OI) LAMBDA w^4(OI) LAMBDA w^5(I).r^27(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I) OR r^28(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I)] w^1(OI) w^2(OI) w^2(I)] AND TRANSITIVE(O(O(OI)(OI))) [LAMBDA w^1(OI) LAMBDA w^2(OI) FORALL w^2(I) [LAMBDA w^3(OI) LAMBDA w^4(OI) LAMBDA w^5(I).r^27(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I) OR r^28(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I)] w^1(OI) w^2(OI) w^2(I)] AND ~[LAMBDA w^1(OI) LAMBDA w^2(OI) FORALL w^2(I) [LAMBDA w^3(OI) LAMBDA w^4(OI) LAMBDA w^5(I).r^27(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I) OR r^28(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I)] w^1(OI) w^2(OI) w^2(I)] [LAMBDA x(I).p(O) OR ~p(O)].LAMBDA x(I).p(O) AND ~p(O)"
+:needed-objects   (REFLEXIVE TRANSITIVE)
+:mhelp "variant of thm120d"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM120F
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS r^28(OI(OI)(OI)) EXISTS r^27(OI(OI)(OI)).TRANSITIVE(O(O(OI)(OI))) [LAMBDA w^1(OI) LAMBDA w^2(OI) FORALL w^2(I) [LAMBDA w^3(OI) LAMBDA w^4(OI) LAMBDA w^5(I).r^27(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I) OR r^28(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I)] w^1(OI) w^2(OI) w^2(I)] AND REFLEXIVE(O(O(OI)(OI))) [LAMBDA w^1(OI) LAMBDA w^2(OI) FORALL w^2(I) [LAMBDA w^3(OI) LAMBDA w^4(OI) LAMBDA w^5(I).r^27(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I) OR r^28(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I)] w^1(OI) w^2(OI) w^2(I)] AND ~[LAMBDA w^1(OI) LAMBDA w^2(OI) FORALL w^2(I) [LAMBDA w^3(OI) LAMBDA w^4(OI) LAMBDA w^5(I).r^27(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I) OR r^28(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I)] w^1(OI) w^2(OI) w^2(I)] [LAMBDA x(I).p(O) OR ~p(O)].LAMBDA x(I).p(O) AND ~p(O)"
+:needed-objects   (TRANSITIVE REFLEXIVE)
+:mhelp "Variant of THM120C"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM120G
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS r^28(OI(OI)(OI)) EXISTS r^27(OI(OI)(OI)).TRANSITIVE(O(O(OI)(OI))) [LAMBDA w^1(OI) LAMBDA w^2(OI) FORALL w^2(I) [LAMBDA w^3(OI) LAMBDA w^4(OI) LAMBDA w^5(I).r^27(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I) OR r^28(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I)] w^1(OI) w^2(OI) w^2(I)] AND REFLEXIVE(O(O(OI)(OI))).LAMBDA w^1(OI) LAMBDA w^2(OI) FORALL w^2(I) [LAMBDA w^3(OI) LAMBDA w^4(OI) LAMBDA w^5(I).r^27(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I) OR r^28(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I)] w^1(OI) w^2(OI) w^2(I)"
+:needed-objects   (TRANSITIVE REFLEXIVE)
+:mhelp "Simpler form of thm120c"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM120H
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS R(O(OI)(OI)).~R(O(OI)(OI)) [LAMBDA x(I) TRUTH] [LAMBDA x(I) FALSEHOOD] AND REFLEXIVE(O(O(OI)(OI))) R(O(OI)(OI)) AND TRANSITIVE(O(O(OI)(OI))) R(O(OI)(OI)) AND FORALL X(OI) FORALL Y(OI).R(O(OI)(OI)) X(OI) Y(OI) AND R(O(OI)(OI)) Y(OI) X(OI) IMPLIES X(OI) =(O(OI)(OI)) Y(OI)"
+:needed-objects   (REFLEXIVE TRANSITIVE)
+:mhelp "Stronger version of THM120"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM120I
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS R(O(OI)(OI)).REFLEXIVE(O(O(OI)(OI))) R(O(OI)(OI)) AND TRANSITIVE(O(O(OI)(OI))) R(O(OI)(OI)) AND FORALL X(OI) FORALL Y(OI).R(O(OI)(OI)) X(OI) Y(OI) AND R(O(OI)(OI)) Y(OI) X(OI) IMPLIES X(OI) EQUIVS(O(OI)(OI)) Y(OI)"
+:needed-objects   (REFLEXIVE TRANSITIVE)
+:mhelp "Harder version of THM120"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM120J
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS R(O(OI)(OI)).~R(O(OI)(OI)) [LAMBDA x(I).P(O) OR ~P(O)] [LAMBDA x(I).P(O) AND ~P(O)] AND REFLEXIVE(O(O(OI)(OI))) R(O(OI)(OI)) AND TRANSITIVE(O(O(OI)(OI))) R(O(OI)(OI))"
+:needed-objects   (REFLEXIVE TRANSITIVE)
+:mhelp "variant of thm120b"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM120K
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS R(O(OI)(OI)).REFLEXIVE(O(O(OI)(OI))) R(O(OI)(OI)) AND TRANSITIVE(O(O(OI)(OI))) R(O(OI)(OI)) AND FORALL X(OI) FORALL Y(OI).R(O(OI)(OI)) X(OI) Y(OI) AND R(O(OI)(OI)) Y(OI) X(OI) IMPLIES X(OI) EQUIVS1(O(OI)(OI)) Y(OI)"
+:needed-objects   (REFLEXIVE TRANSITIVE EQUIVS1)
+:mhelp "Same as Bishop's THM120I-1;
+thm120i using EQUIVS1 instead of EQUIVS"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM121
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Successful mode for automatic proof found automatically."
+:proof-date "Thursday, September 25, 2003 at 14:46:46."
+:description "FORALL r(OO) FORALL p(OA) FORALL q(OA) EXISTS h(O).r(OO) h(O) EQUIV r(OO).FORALL x(A).p(OA) x(A) OR q(OA) x(A)"
+:needed-objects   NIL
+:mhelp "Test theorem for nested primitive substitutions"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM122
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:22."
+:description "EXISTS R(O(OI)(OI)).FORALL u(OI) FORALL v(OI) [R(O(OI)(OI)) u(OI) v(OI) IMPLIES FORALL z(I).u(OI) z(I) IMPLIES v(OI) z(I)] AND REFLEXIVE(O(O(OI)(OI))) R(O(OI)(OI)) AND TRANSITIVE(O(O(OI)(OI))) R(O(OI)(OI))"
+:needed-objects   (REFLEXIVE TRANSITIVE)
+:mhelp "Related to THM120B"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM122C
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS r^28(OI(OI)(OI)) EXISTS r^27(OI(OI)(OI)).FORALL u(OI) FORALL v(OI) [[LAMBDA w^1(OI) LAMBDA w^2(OI) FORALL w^2(I) [LAMBDA w^3(OI) LAMBDA w^4(OI) LAMBDA w^5(I).r^27(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I) OR r^28(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I)] w^1(OI) w^2(OI) w^2(I)] u(OI) v(OI) IMPLIES FORALL z(I).u(OI) z(I) IMPLIES v(OI) z(I)] AND REFLEXIVE(O(O(OI)(OI))) [LAMBDA w^1(OI) LAMBDA w^2(OI) FORALL w^2(I) [LAMBDA w^3(OI) LAMBDA w^4(OI) LAMBDA w^5(I).r^27(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I) OR r^28(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I)] w^1(OI) w^2(OI) w^2(I)] AND TRANSITIVE(O(O(OI)(OI))).LAMBDA w^1(OI) LAMBDA w^2(OI) FORALL w^2(I) [LAMBDA w^3(OI) LAMBDA w^4(OI) LAMBDA w^5(I).r^27(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I) OR r^28(OI(OI)(OI)) w^3(OI) w^4(OI) w^5(I)] w^1(OI) w^2(OI) w^2(I)"
+:needed-objects   (TRANSITIVE REFLEXIVE)
+:mhelp "Related to THM122; essentially has the primitive substitutions already made."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM123
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:22."
+:description "FORALL p(O) EXISTS f(OO) f(OO) p(O)"
+:needed-objects   NIL
+:mhelp "Trivial theorem to test TPS"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM123B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:23."
+:description "FORALL p(O) EXISTS f(OO).~f(OO) p(O)"
+:needed-objects   NIL
+:mhelp "Trivial theorem to test TPS"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM124
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, May 18, 2004 at 13:42:06."
+:description "EXISTS f(OO).f(OO) [p(O) AND ~p(O)] AND ~f(OO).p(O) OR ~p(O)"
+:needed-objects   NIL
+:mhelp "Example to show the need for primitive substitutions which introduce negation"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM125A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:24."
+:description "FORALL a(I) FORALL b(I) FORALL c(I) FORALL P(OI) EXISTS m(OI) EXISTS n(OI).[m(OI) a(I) OR n(OI) a(I)] AND [P(OI) b(I) OR n(OI) b(I)] AND.m(OI) c(I) OR ~P(OI) c(I)"
+:needed-objects   NIL
+:mhelp "Trivial theorem to test how TPS mates flexible-flexible pairs; also see THM125B."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM125B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:24."
+:description "FORALL a(I) FORALL b(I) FORALL c(I) FORALL P(OI) EXISTS m(OI) EXISTS n(OI).[n(OI) a(I) OR m(OI) a(I)] AND [P(OI) b(I) OR n(OI) b(I)] AND.m(OI) c(I) OR ~P(OI) c(I)"
+:needed-objects   NIL
+:mhelp "Trivial theorem to test how TPS mates flexible-flexible pairs; also see THM125A"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM125C
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:25."
+:description "FORALL a(I) FORALL b(I) FORALL c(I) FORALL P(OI) EXISTS m(OI) EXISTS n(OI).[m(OI) a(I) OR n(OI) a(I)] AND [P(OI) b(I) OR n(OI) b(I)] AND [m(OI) c(I) OR ~P(OI) c(I)] AND FORALL x(I).n(OI) x(I) EQUIV ~P(OI) x(I)"
+:needed-objects   NIL
+:mhelp "Trivial theorem to test how TPS mates flexible-flexible pairs; like THM125A; compare with THM125D, which is very similar but much harder for TPS."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM125D
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:26."
+:description "FORALL a(I) FORALL b(I) FORALL c(I) FORALL P(OI) EXISTS m(OI) EXISTS n(OI).[n(OI) a(I) OR m(OI) a(I)] AND [P(OI) b(I) OR n(OI) b(I)] AND [m(OI) c(I) OR ~P(OI) c(I)] AND FORALL x(I).n(OI) x(I) EQUIV ~P(OI) x(I)"
+:needed-objects   NIL
+:mhelp "Trivial theorem to test how TPS mates flexible-flexible pairs; like THM125B; compare with THM125C"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM126
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Monday, January  4, 1999 at 12:34:09."
+:description "FORALL h1(BG) FORALL h2(AB) FORALL s1(OG) FORALL f1(GGG) FORALL s2(OB) FORALL f2(BBB) FORALL s3(OA) FORALL f3(AAA).HOM2(O(BBB)(OB)(GGG)(OG)(BG)) h1(BG) s1(OG) f1(GGG) s2(OB) f2(BBB) AND HOM2(O(AAA)(OA)(BBB)(OB)(AB)) h2(AB) s2(OB) f2(BBB) s3(OA) f3(AAA) IMPLIES HOM2(O(AAA)(OA)(GGG)(OG)(AG)) [h2(AB) COMPOSE(AG(BG)(AB)) h1(BG)] s1(OG) f1(GGG) s3(OA) f3(AAA)"
+:needed-objects   (HOM2 -CLOSED2 MAPS COMPOSE)
+:mhelp "The composition of homomorphisms of binary  operators is a homomorphism. Suggested by Boyer et al JAR 2 page 284."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM126A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:27."
+:description "FORALL h1(BG) FORALL h2(AB) FORALL s1(OG) FORALL f1(GGG) FORALL s2(OB) FORALL f2(BBB) FORALL s3(OA) FORALL f3(AAA).~HOM2(O(AAA)(OA)(GGG)(OG)(AG)) [h2(AB) COMPOSE(AG(BG)(AB)) h1(BG)] s1(OG) f1(GGG) s3(OA) f3(AAA) IMPLIES ~.HOM2(O(BBB)(OB)(GGG)(OG)(BG)) h1(BG) s1(OG) f1(GGG) s2(OB) f2(BBB) AND HOM2(O(AAA)(OA)(BBB)(OB)(AB)) h2(AB) s2(OB) f2(BBB) s3(OA) f3(AAA)"
+:needed-objects   (MAPS2 -CLOSED2 MAPS HOM2 COMPOSE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM127
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:29."
+:description "f(II) COMPOSE(II(II)(II)) g(II) =(O(II)(II)) g(II) COMPOSE(II(II)(II)) f(II) IMPLIES.P(OI) [f(II).g(II) a(I)] IMPLIES P(OI).g(II).f(II) a(I)"
+:needed-objects   (COMPOSE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM128
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:29."
+:description "f(II) COMPOSE(II(II)(II)) g(II) =(O(II)(II)) g(II) COMPOSE(II(II)(II)) f(II) IMPLIES.P(OI) [f(II).f(II).g(II) a(I)] IMPLIES P(OI).g(II).f(II).f(II) a(I)"
+:needed-objects   (COMPOSE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM129
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:30."
+:description "IND AND FORALL x(I) +(OIII) 0(I) x(I) x(I) AND FORALL x(I) FORALL y(I) FORALL z(I) [+(OIII) y(I) x(I) z(I) IMPLIES +(OIII) [S(II) y(I)] x(I).S(II) z(I)] IMPLIES FORALL y(I) FORALL x(I) EXISTS z(I) +(OIII) y(I) x(I) z(I)"
+:needed-objects   (IND)
+:mhelp "Induction theorem for addition. +xyz means [x+y=z]. Previously called PRED-EX1."
+:other-attributes NIL
+:other-remarks "
+")
+
+

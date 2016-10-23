@@ -1,0 +1,40 @@
+THE BBOLD SYMBOL FONT
+
+6 APRIL 1994
+
+This distribution contains the bbold symbol font:
+
+   INSTALL      bbgreeku.mf  bbold.dtx    bbold17.mf   bbold8.mf    
+   README       bbligs.mf    bbold.mf     bbold5.mf    bbold9.mf
+   bbbase.mf    bblower.mf   bbold10.mf   bbold6.mf    bbparams.mf
+   bbgreekl.mf  bbnum.mf     bbold12.mf   bbold7.mf    bbpunc.mf
+   bbupper.mf
+
+To install the fonts, you should:
+
+ * run METAFONT on the fonts, for example under Unix you say:
+
+      mf "\mode=localfont; input bbold5;"
+      mf "\mode=localfont; input bbold6;"
+      mf "\mode=localfont; input bbold7;"
+      mf "\mode=localfont; input bbold8;"
+      mf "\mode=localfont; input bbold9;"
+      mf "\mode=localfont; input bbold12;"
+      mf "\mode=localfont; input bbold17;"
+
+ * move bbold*.tfm into a TeX font metrics directory
+
+ * move bbold*.*pk into a TeX bitmaps directory
+
+If you want to use the bbold font in LaTeX2e, you should:
+
+ * run LaTeX2e on bbold.dtx
+
+ * move bbold.sty and Ubbold.fd into a TeX inputs directory
+
+ * read the documentation in bbold.dvi
+
+This file should only be distributed as part of the bbold
+distribution.
+
+Copyright 1994 Alan Jeffrey

@@ -1,0 +1,70 @@
+(:name CT22
+:type GWFF
+:context UNCLASSIFIED
+:keywords (PROVEN WITH-EQUALITY WITHOUT-DEFN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, June 11, 1997 at 16:07:41."
+:description "~EXISTS p(OO).p(OO) [p(OO) =(O(OO)(OO)) p(OO)] AND ~p(OO).p(OO) =(O(OO)(OO)) p(OO)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CT23
+:type GWFF
+:context UNCLASSIFIED
+:keywords (PROVEN WITH-EQUALITY WITHOUT-DEFN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, June 11, 1997 at 16:09:00."
+:description "FORALL x(I) EXISTS f(II).f(II) x(I) =(OII) x(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CT26
+:type GWFF
+:context UNCLASSIFIED
+:keywords (PROVEN WITH-EQUALITY WITHOUT-DEFN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, June 11, 1997 at 16:11:21."
+:description "FORALL x(O) FORALL y(O).x(O) =(OOO) y(O) =(OOO).y(O) =(OOO) x(O)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CT28
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, June 11, 1997 at 16:12:57."
+:description "~EXISTS g(OAA) FORALL f(OA) EXISTS j(A).g(OAA) j(A) =(O(OA)(OA)) f(OA)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name CT31
+:type GWFF
+:context UNCLASSIFIED
+:keywords (PROVEN WITH-EQUALITY WITHOUT-DEFN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, June 11, 1997 at 16:30:24."
+:description "~EXISTS g(OAA) FORALL f(OA) EXISTS j(A).g(OAA) j(A) =(O(OA)(OA)) f(OA) =(OOO).f(OA) =(O(OA)(OA)) f(OA)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

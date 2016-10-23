@@ -1,0 +1,44 @@
+;;; ******************************************************************* ;;;
+;;;         (c) Copyrighted 1988 by Carnegie Mellon University.         ;;;
+;;;                        All rights reserved.                         ;;;
+;;;         This code was written as part of the TPS project.           ;;;
+;;;   If you want to use this code or any part of TPS, please contact   ;;;
+;;;               Peter B. Andrews (Andrews@CS.CMU.EDU)                 ;;;
+;;; ******************************************************************* ;;;
+;;; Updated contexts 7/20/87 DAN
+(context rules-2-prop)
+
+(defirule cases
+  (lines (d1 (h) () "A or B")
+	 (h2 (h) (h2) "A" ("Case 1" () (d1)))
+	 (p3 (h) (h2) "C")
+	 (h4 (h) (h4) "B" ("Case 2" () (d1)))
+	 (p5 (h) (h4) "C")
+	 (p6 (h) () "C" ("Cases" () (d1 p3 p5))))
+  (itemshelp
+   (d1 "Line with Disjunction")
+   (h2 "Line with Assumption for Case 1 (Left Disjunct)")
+   (p3 "Conclusion in Case 1")
+   (h4 "Line with Assumption for Case 2 (Right Disjunct)")
+   (p5 "Conclusion in Case 2")
+   (p6 "Conclusion for Both Cases")
+   ("A(O)" "Left Disjunct")
+   ("B(O)" "Right Disjunct")
+   ("C(O)" "Conclusion"))
+  (support-transformation ((p6 d1 'ss)) ((p3 h2 'ss) (p5 h4 'ss)))
+  (mhelp "Rule of Cases."))
+
+(defirule indirect1
+  (lines (h1 (h) (h1) "not A" ("Assume negation" () ()))
+	 (p2 (h) (h1) "B and not B" )
+	 (p3 (h) () "A" ("Indirect" () (p2))))
+  (support-transformation ((p3 'ss)) ((p2 h1 'ss)))
+  (itemshelp (h1 "Line with Assumed Negation")
+	     (p2 "Line with Contradiction")
+	     (p3 "Line to be Proven by Contradiction")
+	     ("A(O)" "Assertion to be Proven by Contradiction")
+	     ("B(O)" "Positive Conjunct of Contradictory Assertion"))
+  (mhelp "Rule of Indirect Proof Using One Contradictory Line."))
+
+
+

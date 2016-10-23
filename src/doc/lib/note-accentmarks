@@ -1,0 +1,9 @@
+	Note: older version of logic.bib had Godel as Godel
+and Gerard Huet as Gerard Huet. The control characters ^D and ^K
+produced the accent marks. Someday we may have printers which will do
+this again.
+
+Umlauts and accents
+Use ovp (overprint)
+G@ovp(o)"del prints Godel with an umlaut over the o
+G@ovp(e)'rard may print Gerard with an accent over the e

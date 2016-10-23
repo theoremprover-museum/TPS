@@ -1,0 +1,32 @@
+/home/theorem/project/doc/user/files.dir
+
+manual
+refs
+proving
+	auto-mode
+	tps-auto
+flags
+	testtop
+	searchanalysis
+wffs
+library
+ms-guide
+	mtree
+unification
+rewrite
+	rewrite-top
+translations
+	tactics
+	natetr
+models
+output
+	monitor
+events
+rules
+	rule-example
+set-up
+
+
+
+
+

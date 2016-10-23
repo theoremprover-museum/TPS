@@ -1,0 +1,70 @@
+;;; ******************************************************************* ;;;
+;;;         (c) Copyrighted 1988 by Carnegie Mellon University.         ;;;
+;;;                        All rights reserved.                         ;;;
+;;;         This code was written as part of the TPS project.           ;;;
+;;;   If you want to use this code or any part of TPS, please contact   ;;;
+;;;               Peter B. Andrews (Andrews@CS.CMU.EDU)                 ;;;
+;;; ******************************************************************* ;;;
+;;; Updated context 7/21/87 DAN
+(context rules-4-quant)
+
+;only used in ml1-logic module, which is not normally loaded
+
+(defirule ugen
+  (lines (p1 (h) () "A")
+	 (p2 (h) () "forall x. A" ("UGen" ("x") (p1))))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (restrictions (not-free-in-hyps "x") (is-variable "x"))
+  (itemshelp (p1 "Line with Scope of Universal Quantifier")
+	     (p2 "Universally Quantified Line")
+	     ("A(O)" "Scope of Universal Quantifier")
+	     ("x" "Universally Quantified Variable"))
+  (mhelp "Rule of Universal Generalization."))
+
+
+
+(defirule ui
+  (lines (d1 (h) () "forall x. A")
+	 (d2 (h) () "`(S t x A)" ("UI" ("t") (d1))))
+  (restrictions (is-variable "x") (free-for "t" "x" "A(O)"))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss d1)))
+  (itemshelp (d1 "Universally Quantified Line")
+	     (d2 "Instantiated Line")
+	     ("x(I)" "Universally Quantified Variable")
+	     ("A(O)" "Scope of Universal Quantifier")
+	     ("t(I)" "Substitution Term")
+	     (S "Assertion of Instantiated Line"))
+  (mhelp "Rule of Universal Instantiation."))
+
+
+(defirule rulec
+  (lines (d1 (h) () "exists x. B")
+	 (h2 (h) (h2) "B" ("Choose" ("x") (d1)))
+	 (p3 (h) (h2) "A")
+	 (p4 (h) () "A" ("RuleC" () (d1 p3))))
+  (support-transformation ((p4 d1 'ss)) ((p3 h2 'ss)))
+  (restrictions (not-free-in-hyps "x")
+		(is-variable "x")
+		(not-free-in "x" "A(O)"))
+  (itemshelp (d1 "Existentially Quantified Line")
+	     (h2 "Hypothesis with Chosen Variable")
+	     (p3 "Conclusion with Additional Hypothesis")
+	     (p4 "Conclusion without Additional Hypothesis")
+	     ("x(I)" "Existentially Quantified Variable")
+	     ("B(O)" "Scope of Existential Quantifier")
+	     ("A(O)" "Conclusion to be Proven Using Existentially Quantified Line"))
+  (mhelp "Rule of Choice (RuleC)"))
+
+(defirule egen
+  (lines (p1 (h) () "`(S t x A)")
+	 (p2 (h) () "exists x. A" ("EGen" ("t") (p1))))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (restrictions (is-variable "x") (free-for "t" "x" "A(O)"))
+  (itemshelp (p1 "Line without Existential Quantifier")
+	     (p2 "Existentially Quantified Line")
+	     ("x" "Existentially Quantified Variable")
+	     ("A(O)" "Scope of Existential Quantifier")
+	     ("t" "Term to be Generalized Upon")
+	     (S "Assertion of Line to be Generalized"))
+  (mhelp "Rule of Existential Generalization."))
+

@@ -1,0 +1,3290 @@
+(:name AC
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA c(A(OA)) FORALL X(OA).EXISTS x(A) X(OA) x(A) IMPLIES X(OA).c(A(OA)) X(OA)"
+:needed-objects   NIL
+:mhelp "Axiom of Choice as a predicate on Choice functions"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(A(OA))"))
+:other-remarks "
+")
+
+
+(:name ARRCAT
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA P(OAA) LAMBDA C(AAA) LAMBDA L(AA) LAMBDA R(AA).FORALL x(A) FORALL y(A) FORALL z(A) [P(OAA) x(A) y(A) AND P(OAA) y(A) z(A) IMPLIES P(OAA) x(A) [C(AAA) y(A) z(A)] AND P(OAA) [C(AAA) x(A) y(A)] z(A) AND C(AAA) [C(AAA) x(A) y(A)] z(A) =(OAA) C(AAA) x(A).C(AAA) y(A) z(A)] AND FORALL x(A) [P(OAA) [L(AA) x(A)] x(A) AND P(OAA) x(A) [R(AA) x(A)] AND P(OAA) [L(AA) x(A)] [L(AA) x(A)] AND P(OAA) [R(AA) x(A)].R(AA) x(A)] AND FORALL x(A) FORALL y(A) [P(OAA) x(A) y(A) IMPLIES P(OAA) [R(AA) x(A)] y(A) AND P(OAA) x(A).L(AA) y(A)] AND FORALL x(A) FORALL u(A).[P(OAA) [L(AA) x(A)] u(A) IMPLIES C(AAA) [L(AA) x(A)] u(A) =(OAA) u(A)] AND [P(OAA) [R(AA) x(A)] u(A) IMPLIES C(AAA) [R(AA) x(A)] u(A) =(OAA) u(A)] AND [P(OAA) u(A) [L(AA) x(A)] IMPLIES C(AAA) u(A) [L(AA) x(A)] =(OAA) u(A)] AND.P(OAA) u(A) [R(AA) x(A)] IMPLIES C(AAA) u(A) [R(AA) x(A)] =(OAA) u(A)"
+:needed-objects   NIL
+:mhelp "Arrows-only category.
+
+[ARRCAT COMPATIBILITY-RELATION(OAA) COMPOSITION(AAA) LEFT-ID(AA) RIGHT-ID(AA)]"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(AA)(AA)(AAA)(OAA)"))
+:other-remarks "
+")
+
+
+(:name BIJECTION
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(AB) FORALL x(B) FORALL y(B).f(AB) x(B) =(OAA) f(AB) y(B) IMPLIES x(B) =(OBB) y(B)"
+:needed-objects   NIL
+:mhelp "true if f(AB) is a bijection"
+:other-attributes ((TYPELIST ("A" "B")) (TYPE "O(AB)"))
+:other-remarks "
+")
+
+
+(:name CHOICE-COVERING
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA S(O(OA)) EXISTS f(OAA) FORALL x(A).S(O(OA)) [f(OAA) x(A)] AND f(OAA) x(A) x(A)"
+:needed-objects   NIL
+:mhelp "A covering of a type with a choice function taking elements to a covering set"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(O(OA))"))
+:other-remarks "
+")
+
+
+(:name CLOSEDUNDER
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA P(OA) LAMBDA f(AA) FORALL x(A).P(OA) x(A) IMPLIES P(OA).f(AA) x(A)"
+:needed-objects   NIL
+:mhelp "Indicates that a set is closed under a function"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(AA)(OA)"))
+:other-remarks "
+")
+
+
+(:name COMMUTES
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(AA) LAMBDA g(AA).f(AA) COMPOSE(AA(AA)(AA)) g(AA) =(O(AA)(AA)) g(AA) COMPOSE(AA(AA)(AA)) f(AA)"
+:needed-objects   (COMPOSE)
+:mhelp "COMMUTES f g means [f COMPOSE g] = [g COMPOSE f]"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(AA)(AA)"))
+:other-remarks "
+")
+
+
+(:name COVERING
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA S(O(OA)) FORALL x(A) EXISTS p(OA).S(O(OA)) p(OA) AND p(OA) x(A)"
+:needed-objects   NIL
+:mhelp "A collection of sets covers a type if every member of the type is in one of the sets."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(O(OA))"))
+:other-remarks "
+")
+
+
+(:name D2-X5309
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA h(I(OI)) LAMBDA z(I) FORALL X(OI).h(I(OI)) X(OI) =(OII) z(I) IMPLIES ~X(OI) z(I)"
+:needed-objects   NIL
+:mhelp "Another possible diagonal set for X5309.
+This is based on Dana Scott's suggestion at CADE 17
+for using the inverse of h and the usual proof of
+the surjective cantor theorem.  Essentially,
+we can represent the inverse of h(I(OI)) by
+lambda y(I) lambda z(I) . exists X(OI) . h X = y and X z
+This leads to the diagonal set here by using z for both y and z
+and negating the body of the above defn.
+
+The first diagonal set was IDIAG h.  It appears that
+D2-X5309 h is the complement of IDIAG h.  I do have a proof
+using this diagonal set."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPE "OI(I(OI))"))
+:other-remarks "
+")
+
+
+(:name DEDEKIND-CUT
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA W(OBB) LAMBDA C(OB).EXISTS q(B) C(OB) q(B) AND EXISTS r(B) [~C(OB) r(B)] AND FORALL q(B) FORALL r(B).C(OB) q(B) AND W(OBB) q(B) r(B) IMPLIES C(OB) r(B)"
+:needed-objects   NIL
+:mhelp "WRT a relation W(OBB) (thought of as an ordering), C(OB) is a
+Dedekind cut if it is nonempty, not full, and upward closed.
+
+NOTE(!!!):  I meant to define this with downward closed instead of
+upward.  (The defn with downward closed is DDEDEKIND-CUT.)
+The interpretation of the gwff's THM568, THM569 and THM570
+are affected by this (in the sense that infs are actually sups, etc).
+The corrected versions are THM571, THM572"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("B")) (TYPE "O(OB)(OBB)"))
+:other-remarks "
+")
+
+
+(:name DEPAPP
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA F(OBA) LAMBDA x(A) IOTA(B(OB)).LAMBDA y(B) F(OBA) x(A) y(B)"
+:needed-objects   NIL
+:mhelp "DEPAPP is application for DEPEXP.
+So, [DEPAPP F(OBA) x(A)](B).  And we should be able to prove
+P x implies Q x [DEPAPP F x].  Unfortunately I must use
+the description operator to define this."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "BA(OBA)"))
+:other-remarks "
+")
+
+
+(:name DEPEXP
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA P(OA) LAMBDA Q(OBA) LAMBDA F(OBA).FORALL x(A) [P(OA) x(A) IMPLIES EXISTS y(B).Q(OBA) x(A) y(B) AND F(OBA) x(A) y(B)] AND FORALL x(A) FORALL y(B).F(OBA) x(A) y(B) IMPLIES P(OA) x(A) AND Q(OBA) x(A) y(B) AND FORALL z(B).F(OBA) x(A) z(B) IMPLIES y(B) =(OBB) z(B)"
+:needed-objects   NIL
+:mhelp "As in PREDEXP, except the codomain
+predicate Q is dependent on the argument.  So, we have
+[PREDEXP P(OA) Q(OBA)](O(OBA)) is the set of functions (as graphs)
+taking x with [P x] to y with [Q x y]"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "O(OBA)(OBA)(OA)"))
+:other-remarks "
+")
+
+
+(:name DISJ-COLL-NONEMPTY-SETS
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA S(O(OA)).FORALL p(OA) [S(O(OA)) p(OA) IMPLIES EXISTS z(A) p(OA) z(A)] AND FORALL x(A) FORALL p(OA) FORALL q(OA).S(O(OA)) p(OA) AND S(O(OA)) q(OA) AND p(OA) x(A) AND q(OA) x(A) IMPLIES p(OA) =(O(OA)(OA)) q(OA)"
+:needed-objects   NIL
+:mhelp "Disjoint collection of nonempty sets"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(O(OA))"))
+:other-remarks "
+")
+
+
+(:name DISJOINT-COLLECTION
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA s(O(OA)) FORALL x(A) FORALL p(OA) FORALL q(OA).s(O(OA)) p(OA) AND s(O(OA)) q(OA) AND p(OA) x(A) AND q(OA) x(A) IMPLIES p(OA) =(O(OA)(OA)) q(OA)"
+:needed-objects   NIL
+:mhelp "Disjoint collection of sets -- like a partition of a subset of a type."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(O(OA))"))
+:other-remarks "
+")
+
+
+(:name DOWN-CLOSED
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA R(OAA) LAMBDA S(OA) FORALL u(A) FORALL v(A).R(OAA) u(A) v(A) AND S(OA) v(A) IMPLIES S(OA) u(A)"
+:needed-objects   NIL
+:mhelp "Downward closed set wrt a relation R"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(OA)(OAA)"))
+:other-remarks "
+")
+
+
+(:name EPS-1
+:type ABBR
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X0(BA) X0(BA)"
+:needed-objects   NIL
+:mhelp "Component 1 of the tuple of simply typed versions of the PRODABBR EPS"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "BA(BA)"))
+:other-remarks "
+")
+
+
+(:name EQCLASSES2
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA u(OAA) LAMBDA v(OA) EXISTS x(A).v(OA) =(O(OA)(OA)) u(OAA) x(A)"
+:needed-objects   NIL
+:mhelp "takes an equiv reln on type A and gives set of equiv classes of type (OA)"
+:other-attributes ((TYPELIST ("A")) (TYPE "O(OA)(OAA)"))
+:other-remarks "
+")
+
+
+(:name EQRELN
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA r(OAA).REFLEXIVE(O(OAA)) r(OAA) AND SYMMETRIC(O(OAA)) r(OAA) AND TRANSITIVE(O(OAA)) r(OAA)"
+:needed-objects   (REFLEXIVE SYMMETRIC TRANSITIVE)
+:mhelp "Predicate for equivalence relations"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(OAA)"))
+:other-remarks "
+")
+
+
+(:name EQUALPERS
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA p(OAA) LAMBDA q(OAA).PER(O(OAA)) p(OAA) AND p(OAA) =(O(OAA)(OAA)) q(OAA)"
+:needed-objects   (PER)
+:mhelp "Equality between Pers, so this is a partial identity on (OAA)."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(OAA)(OAA)"))
+:other-remarks "
+")
+
+
+(:name FEQ
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(AB) LAMBDA x(B) LAMBDA y(B).f(AB) x(B) =(OAA) f(AB) y(B)"
+:needed-objects   NIL
+:mhelp "equiv reln on type B induced by f(AB)"
+:other-attributes ((TYPELIST ("A" "B")) (TYPE "OBB(AB)"))
+:other-remarks "
+")
+
+
+(:name FEQCL
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(AB) LAMBDA x(OB) IOTA(A(OA)).LAMBDA z(A) EXISTS y(B).x(OB) y(B) AND f(AB) y(B) =(OAA) z(A)"
+:needed-objects   NIL
+:mhelp "lifts f(AB) to a function (A(OB)) on equiv classes induced by f"
+:other-attributes ((TYPELIST ("A" "B")) (TYPE "A(OB)(AB)"))
+:other-remarks "
+")
+
+
+(:name FINITE-SET-EXT
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X(OA) FORALL P(O(OA)).FORALL E(OA) [~EXISTS t(A) E(OA) t(A) IMPLIES P(O(OA)) E(OA)] AND FORALL Y(OA) FORALL x(A) FORALL Z(OA) [P(O(OA)) Y(OA) AND Z(OA) EQUIVS(O(OA)(OA)) Y(OA) ADD1(OAA(OA)) x(A) IMPLIES P(O(OA)) Z(OA)] IMPLIES P(O(OA)) X(OA)"
+:needed-objects   (ADD1)
+:mhelp "Definition of finite set that builds in extensionality.
+Compare this to the definition of FINITE1."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(OA)"))
+:other-remarks "
+")
+
+
+(:name FINITE-SET-SUBSET-EXT
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X(OA) FORALL P(O(OA)).FORALL E(OA) [~EXISTS t(A) E(OA) t(A) IMPLIES P(O(OA)) E(OA)] AND FORALL Y(OA) FORALL x(A) FORALL Z(OA) [P(O(OA)) Y(OA) AND Z(OA) SUBSET(O(OA)(OA)) Y(OA) ADD1(OAA(OA)) x(A) IMPLIES P(O(OA)) Z(OA)] IMPLIES P(O(OA)) X(OA)"
+:needed-objects   (ADD1)
+:mhelp "Definition of finite set that builds in extensionality using subsets.
+Compare this to the definition of FINITE1."
+:other-attributes ((FACE FINITE-SET) (FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(OA)"))
+:other-remarks "
+")
+
+
+(:name FST2
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA z(OBA) LAMBDA s(A) EXISTS t(B) z(OBA) s(A) t(B)"
+:needed-objects   NIL
+:mhelp "FST2 is the first projection corresponding to PAIR2.
+This is pairing restricted to set types."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "OA(OBA)"))
+:other-remarks "
+")
+
+
+(:name FUN
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(BA) LAMBDA S(OA) LAMBDA T(OB) FORALL x(A).S(OA) x(A) IMPLIES T(OB).f(BA) x(A)"
+:needed-objects   NIL
+:mhelp "fun f S T means f maps S into T"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "O(OB)(OA)(BA)"))
+:other-remarks "
+")
+
+
+(:name FUNC
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA g(AB) LAMBDA p(OB) LAMBDA q(OA) FORALL x(B).p(OB) x(B) IMPLIES q(OA).g(AB) x(B)"
+:needed-objects   NIL
+:mhelp "FUNC g(AB) p(OB) q(OA) means g is a function from p to q (or, restricts to such a function)
+"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "O(OA)(OB)(AB)"))
+:other-remarks "
+")
+
+
+(:name FUNCEXP
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(BA) LAMBDA g(CD) LAMBDA h(AC).f(BA) COMPOSE(BD(AD)(BA)).h(AC) COMPOSE(AD(CD)(AC)) g(CD)"
+:needed-objects   (COMPOSE)
+:mhelp ""
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B" "C" "D")) (TYPE "BD(AC)(CD)(BA)"))
+:other-remarks "
+")
+
+
+(:name FUNCPAIR-1
+:type ABBR
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X0(BA) LAMBDA X1(CA) X0(BA)"
+:needed-objects   NIL
+:mhelp "Component 1 of the tuple of simply typed versions of the PRODABBR FUNCPAIR"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B" "C")) (TYPE "BA(CA)(BA)"))
+:other-remarks "
+")
+
+
+(:name FUNCPAIR-2
+:type ABBR
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X0(BA) LAMBDA X1(CA) X1(CA)"
+:needed-objects   NIL
+:mhelp "Component 2 of the tuple of simply typed versions of the PRODABBR FUNCPAIR"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B" "C")) (TYPE "CA(CA)(BA)"))
+:other-remarks "
+")
+
+
+(:name FUNCPROD-1
+:type ABBR
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X0(BA) LAMBDA X1(DC) LAMBDA X2(A) LAMBDA X3(C) X0(BA) X2(A)"
+:needed-objects   NIL
+:mhelp "Component 1 of the tuple of simply typed versions of the PRODABBR FUNCPROD"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B" "C" "D")) (TYPE "BCA(DC)(BA)"))
+:other-remarks "
+")
+
+
+(:name FUNCPROD-2
+:type ABBR
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X0(BA) LAMBDA X1(DC) LAMBDA X2(A) X1(DC)"
+:needed-objects   NIL
+:mhelp "Component 2 of the tuple of simply typed versions of the PRODABBR FUNCPROD"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B" "C" "D")) (TYPE "DCA(DC)(BA)"))
+:other-remarks "
+")
+
+
+(:name FUNCTOR
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA P1(OBB) LAMBDA C1(BBB) LAMBDA L1(BB) LAMBDA R1(BB) LAMBDA P2(OAA) LAMBDA C2(AAA) LAMBDA L2(AA) LAMBDA R2(AA) LAMBDA F(AB).ARRCAT(O(BB)(BB)(BBB)(OBB)) P1(OBB) C1(BBB) L1(BB) R1(BB) AND ARRCAT(O(AA)(AA)(AAA)(OAA)) P2(OAA) C2(AAA) L2(AA) R2(AA) AND FORALL x(B) FORALL y(B) [P1(OBB) x(B) y(B) IMPLIES P2(OAA) [F(AB) x(B)] [F(AB) y(B)] AND C2(AAA) [F(AB) x(B)] [F(AB) y(B)] =(OAA) F(AB).C1(BBB) x(B) y(B)] AND FORALL x(B).F(AB) [L1(BB) x(B)] =(OAA) L2(AA) [F(AB) x(B)] AND F(AB) [R1(BB) x(B)] =(OAA) R2(AA).F(AB) x(B)"
+:needed-objects   (ARRCAT)
+:mhelp "FUNCTOR between ARRCAT (arrows-only categories).
+[FUNCTOR COMPAT1 COMPOSE1 LID1 RID1 COMPAT2 COMPOSE2 LID2 RID2 ARRFUNCT]"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "O(AB)(AA)(AA)(AAA)(OAA)(BB)(BB)(BBB)(OBB)"))
+:other-remarks "
+")
+
+
+(:name GLB
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA P(OA) LAMBDA R(OAA) LAMBDA S(OA) LAMBDA x(A).P(OA) x(A) AND FORALL y(A) [S(OA) y(A) IMPLIES R(OAA) x(A) y(A)] AND FORALL z(A).P(OA) z(A) AND FORALL y(A) [S(OA) y(A) IMPLIES R(OAA) z(A) y(A)] IMPLIES R(OAA) z(A) x(A)"
+:needed-objects   NIL
+:mhelp "Greatest Lower Bound -- this is essentially the same as the
+abbr INF, but is relative to a set, not a type."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OA(OA)(OAA)(OA)"))
+:other-remarks "
+")
+
+
+(:name ID
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(A) x(A)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "AA"))
+:other-remarks "
+")
+
+
+(:name IMAGE
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(AB) LAMBDA y(A) EXISTS x(B).f(AB) x(B) =(OAA) y(A)"
+:needed-objects   NIL
+:mhelp "Image of a function.  Note that if the function is an equivalence relation,
+E(OAA), then [image E](O(OA)) is the set of equivalence classes."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "OA(AB)"))
+:other-remarks "
+")
+
+
+(:name IND-PER
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA s(OB) LAMBDA p(OAAB) LAMBDA q(AB) LAMBDA r(AB) FORALL x(B).s(OB) x(B) IMPLIES p(OAAB) x(B) [q(AB) x(B)].r(AB) x(B)"
+:needed-objects   NIL
+:mhelp "Takes a predicate and a PER and builds a function space
+PER from the predicate to the PER."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "O(AB)(AB)(OAAB)(OB)"))
+:other-remarks "
+")
+
+
+(:name INJ-FN-GRAPH
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA r(OBA).FORALL x(A) EXISTS y(B) r(OBA) x(A) y(B) AND FORALL x(A) FORALL y1(B) FORALL y2(B) [r(OBA) x(A) y1(B) AND r(OBA) x(A) y2(B) IMPLIES y1(B) =(OBB) y2(B)] AND FORALL x1(A) FORALL x2(A) FORALL y(B).r(OBA) x1(A) y(B) AND r(OBA) x2(A) y(B) IMPLIES x1(A) =(OAA) x2(A)"
+:needed-objects   NIL
+:mhelp "Graph of an injective function"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "O(OBA)"))
+:other-remarks "
+")
+
+
+(:name KER
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(AB) LAMBDA x(B) LAMBDA y(B).f(AB) x(B) =(OAA) f(AB) y(B)"
+:needed-objects   NIL
+:mhelp "Kernel equivalence relation of a function"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "OBB(AB)"))
+:other-remarks "
+")
+
+
+(:name LC-RELN
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA R(OAA).REFLEXIVE(O(OAA)) R(OAA) AND FORALL u(A) FORALL v(A) FORALL w(A).R(OAA) u(A) w(A) AND R(OAA) v(A) w(A) IMPLIES R(OAA) u(A) v(A)"
+:needed-objects   (REFLEXIVE)
+:mhelp "A relation that is reflexive and satisfies u R w and v R w implies u R v.
+This is a generalization of an equivalence relation (as the second property is
+implied by symmetry and transitivity).  I'm calling this a 'left congruence relation',
+though this is probably a terribly misleading name."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(OAA)"))
+:other-remarks "
+")
+
+
+(:name LEASTCLOSEDUNDER
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(AA) LAMBDA x(A) FORALL p(OA).CLOSEDUNDER(O(AA)(OA)) p(OA) f(AA) IMPLIES p(OA) x(A)"
+:needed-objects   (CLOSEDUNDER)
+:mhelp "The least set closed under a function"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OA(AA)"))
+:other-remarks "
+")
+
+
+(:name LEQ
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(AA) LAMBDA u(A) LAMBDA v(A) FORALL R(OAA).FORALL x(A) R(OAA) x(A) x(A) AND FORALL x(A) FORALL y(A) [R(OAA) x(A) y(A) IMPLIES R(OAA) x(A).f(AA) y(A)] IMPLIES R(OAA) u(A) v(A)"
+:needed-objects   NIL
+:mhelp "A definition of less-than-or-equal-to wrt a 'successor' operation f"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OAA(AA)"))
+:other-remarks "
+")
+
+
+(:name LIN-ORD
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA R(OAA).PAR-ORD(O(OAA)) R(OAA) AND FORALL x(A) FORALL y(A).R(OAA) x(A) y(A) OR R(OAA) y(A) x(A)"
+:needed-objects   (PAR-ORD)
+:mhelp "Linear Order"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(OAA)"))
+:other-remarks "
+")
+
+
+(:name MAXIMAL
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA Q(OAA) LAMBDA S(OA) LAMBDA x(A).S(OA) x(A) AND FORALL y(A).S(OA) y(A) AND Q(OAA) x(A) y(A) IMPLIES Q(OAA) y(A) x(A)"
+:needed-objects   NIL
+:mhelp "Maximal element of a subset wrt a relation (usually a partial ordering)"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OA(OA)(OAA)"))
+:other-remarks "
+")
+
+
+(:name NEGATION
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA p(O).~p(O)"
+:needed-objects   NIL
+:mhelp "This is equivalent to NOT, or ~, but is defined as
+an abbreviation because the current parser reads ~ in prefix, even when it
+is intended to stand alone, for example, as an argument to a function."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPE "OO"))
+:other-remarks "
+")
+
+
+(:name PA-LESSEQ-IND
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA 0(A) LAMBDA P(AAA) LAMBDA W(OAA).FORALL x(A) W(OAA) x(A) 0(A) AND FORALL x(A) FORALL y(A) FORALL u(A) FORALL v(A).W(OAA) x(A) y(A) AND W(OAA) u(A) v(A) IMPLIES W(OAA) [P(AAA) x(A) u(A)].P(AAA) y(A) v(A)"
+:needed-objects   NIL
+:mhelp "An inductive definition of the <= relation assuming type A is
+the initial pairing algebra $ generated by 0 and P."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(OAA)(AAA)A"))
+:other-remarks "
+")
+
+
+(:name PAIR2
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(OA) LAMBDA y(OB) LAMBDA s(A) LAMBDA t(B).x(OA) s(A) AND y(OB) t(B)"
+:needed-objects   NIL
+:mhelp "PAIR2 is a pairing operation restricted to set-typed objects.
+[PAIR2 x(OA) y(OB)](O(OBA)) is a pair of x and y.
+The advantage over the more general approaches which work at
+every type is that we do not need descriptions to define FST and SND."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "OBA(OB)(OA)"))
+:other-remarks "
+")
+
+
+(:name PAIRINTERSECT
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA R(OAA) LAMBDA S(OAA) LAMBDA x(A) LAMBDA y(A).R(OAA) x(A) y(A) AND S(OAA) x(A) y(A)"
+:needed-objects   NIL
+:mhelp "intersection of two relations"
+:other-attributes ((FO-SINGLE-SYMBOL T) (INFIX 10) (TYPELIST ("A")) (TYPE "OAA(OAA)(OAA)"))
+:other-remarks "
+")
+
+
+(:name PAIRSETUNION
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA F(O(OAA)) LAMBDA x(A) LAMBDA y(A) EXISTS R(OAA) R(OAA) x(A) y(A)"
+:needed-objects   NIL
+:mhelp "set union for relations"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OAA(O(OAA))"))
+:other-remarks "
+")
+
+
+(:name PARTITION-C
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA s(O(OA)).FORALL p(OA) [s(O(OA)) p(OA) IMPLIES EXISTS z(A) p(OA) z(A)] AND FORALL x(A) EXISTS p(OA) [s(O(OA)) p(OA) AND p(OA) x(A)] AND FORALL x(A) FORALL y(A) FORALL p(OA) FORALL q(OA).s(O(OA)) p(OA) AND s(O(OA)) q(OA) AND p(OA) x(A) AND q(OA) x(A) AND p(OA) y(A) IMPLIES q(OA) y(A)"
+:needed-objects   NIL
+:mhelp "Alternative definition of partition -- separating existence
+
+and uniqueness"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(O(OA))"))
+:other-remarks "
+")
+
+
+(:name PER
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA r(OAA).SYMMETRIC(O(OAA)) r(OAA) AND TRANSITIVE(O(OAA)) r(OAA)"
+:needed-objects   (SYMMETRIC TRANSITIVE)
+:mhelp "PER -- Partial Equivalence Relation -- Relation which is symmetric and transitive (but not nec. refl.)"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(OAA)"))
+:other-remarks "
+")
+
+
+(:name PER-DEP-PROD
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA p(OAA) LAMBDA p2(OBBA) LAMBDA f(BA) LAMBDA g(BA) FORALL x(A) FORALL y(A).p(OAA) x(A) y(A) IMPLIES p2(OBBA) x(A) [f(BA) x(A)].g(BA) y(A)"
+:needed-objects   NIL
+:mhelp "Takes a PER and a PER-IND-PER (per indexed by the first per
+and returns a PER on the dependent function space."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "O(BA)(BA)(OBBA)(OAA)"))
+:other-remarks "
+")
+
+
+(:name PER-IND-PER
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA p(OAA) LAMBDA p2(OBBA).FORALL x(A) [p(OAA) x(A) x(A) IMPLIES PER(O(OBB)).p2(OBBA) x(A)] AND FORALL x(A) FORALL y(A).p(OAA) x(A) y(A) IMPLIES p2(OBBA) x(A) =(O(OBB)(OBB)) p2(OBBA) y(A)"
+:needed-objects   (PER)
+:mhelp "If P is a per, then [PER-IND-PER P] is a predicate
+recognizing per's which are indexed over the domain of P
+in such a way that respects the equivalence relation induced
+by P on the domain of P."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "O(OBBA)(OAA)"))
+:other-remarks "
+")
+
+
+(:name PERCLOSURE
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA r(OAA) TCLOSURE152(OAA(OAA)).SCLOSURE(OAA(OAA)) r(OAA)"
+:needed-objects   (TCLOSURE152 SCLOSURE)
+:mhelp "Symmetric Transitive Closure of a relation"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OAA(OAA)"))
+:other-remarks "
+")
+
+
+(:name PETER-INDEQS
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA 0(I) LAMBDA S(II) LAMBDA PSI(III).FORALL n(I) [PSI(III) 0(I) n(I) =(OII) S(II) n(I)] AND FORALL m(I) [PSI(III) [S(II) m(I)] 0(I) =(OII) PSI(III) m(I).S(II) 0(I)] AND FORALL m(I) FORALL n(I).PSI(III) [S(II) m(I)] [S(II) n(I)] =(OII) PSI(III) m(I).PSI(III) [S(II) m(I)] n(I)"
+:needed-objects   NIL
+:mhelp "Three recursive equations defining Peter's function (see appendix A of Barendregt's Lambda Calculus book).
+This is a modification of Ackermann's function."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPE "O(III)(II)I"))
+:other-remarks "
+")
+
+
+(:name PLUS-INDEQS
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA 0(I) LAMBDA S(II).FORALL n(I) [n(I) PLUS-LIBCONST(III) 0(I) =(OII) n(I)] AND FORALL n(I) FORALL m(I).n(I) PLUS-LIBCONST(III) S(II) m(I) =(OII) S(II).n(I) PLUS-LIBCONST(III) m(I)"
+:needed-objects   (PLUS-LIBCONST)
+:mhelp "Inductive equations for +."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPE "O(II)I"))
+:other-remarks "
+")
+
+
+(:name PREDEXP
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA P(OA) LAMBDA Q(OB) LAMBDA F(OBA).FORALL x(A) [P(OA) x(A) IMPLIES EXISTS y(B).Q(OB) y(B) AND F(OBA) x(A) y(B)] AND FORALL x(A) FORALL y(B).F(OBA) x(A) y(B) IMPLIES P(OA) x(A) AND Q(OB) y(B) AND FORALL z(B).F(OBA) x(A) z(B) IMPLIES y(B) =(OBB) z(B)"
+:needed-objects   NIL
+:mhelp "Takes P(OA) and Q(OB) to [PREDEXP P Q](O(OBA)), intended
+as the set of functions from P to Q (represented by graphs).
+The problem with using functions and (O(BA)) -- as I would prefer --
+is that 'equality' on [PREDEXP P Q] would not be equality of functions,
+but of restricted functions.  This way I avoid making equality an
+explicit relation (it is inherited from (O(OBA))).
+
+Of course, an alternative such as [PREDEXP2 P(OA) EP(OAA) Q(OB) EQ(OBB)](O(BA))
+and [PREDEXP2-E P EP Q EQ](O(BA)(BA)) is probably worth exploring."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "O(OBA)(OB)(OA)"))
+:other-remarks "
+")
+
+
+(:name PREDFST
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA P(OA) LAMBDA Q(OB) LAMBDA z(O(OBA)) IOTA(A(OA)).LAMBDA x(A).LAMBDA u(A) EXISTS y(B) [LAMBDA v(B) [P(OA) u(A) AND Q(OB) v(B) AND z(O(OBA)) =(O(O(OBA))(O(OBA))) LAMBDA w(OBA) w(OBA) u(A) v(B)] =(O(OB)(OB)) LAMBDA v(B).y(B) =(OBB) v(B)] =(O(OA)(OA)) LAMBDA u(A).x(A) =(OAA) u(A)"
+:needed-objects   NIL
+:mhelp "Implements the first projection for PREDPROD by taking P, Q, z(O(OBA)) to something
+of type A via the description operator"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "A(O(OBA))(OB)(OA)"))
+:other-remarks "
+")
+
+
+(:name PREDPROD
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA P(OA) LAMBDA Q(OB) LAMBDA z(O(OBA)) EXISTS x(A).LAMBDA u(A) EXISTS y(B) [LAMBDA v(B) [P(OA) u(A) AND Q(OB) v(B) AND z(O(OBA)) =(O(O(OBA))(O(OBA))) LAMBDA w(OBA) w(OBA) u(A) v(B)] =(O(OB)(OB)) LAMBDA v(B).y(B) =(OBB) v(B)] =(O(OA)(OA)) LAMBDA u(A).x(A) =(OAA) u(A)"
+:needed-objects   NIL
+:mhelp "Product of Predicates P(OA) and Q(OB) giving a (PxQ)(O(O(OAB)))"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "O(O(OBA))(OB)(OA)"))
+:other-remarks "
+")
+
+
+(:name PREDSND
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA P(OA) LAMBDA Q(OB) LAMBDA z(O(OBA)) IOTA(B(OB)).LAMBDA y(B).LAMBDA v(B) [P(OA) [PREDFST(A(O(OBA))(OB)(OA)) P(OA) Q(OB) z(O(OBA))] AND Q(OB) v(B) AND z(O(OBA)) =(O(O(OBA))(O(OBA))) LAMBDA w(OBA) w(OBA) [PREDFST(A(O(OBA))(OB)(OA)) P(OA) Q(OB) z(O(OBA))] v(B)] =(O(OB)(OB)) LAMBDA v(B).y(B) =(OBB) v(B)"
+:needed-objects   (PREDFST)
+:mhelp "Implements the second projection for PREDPROD by taking P, Q, z(O(OBA)) to something
+of type B via the description operator"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "B(O(OBA))(OB)(OA)"))
+:other-remarks "
+")
+
+
+(:name PROJ1
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(A) LAMBDA y(B) x(A)"
+:needed-objects   NIL
+:mhelp "PROJ1 x y is x.  It's the obvious projection."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "ABA"))
+:other-remarks "
+")
+
+
+(:name Q0AND
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(O) LAMBDA y(O) Q(O(O(OOO))(O(OOO))) [LAMBDA z(OOO) z(OOO) Q0T(O) Q0T(O)].LAMBDA z(OOO) z(OOO) x(O) y(O)"
+:needed-objects   (Q0T)
+:mhelp ""
+:other-attributes ((TYPE "OOO"))
+:other-remarks "
+")
+
+
+(:name Q0AXIOM1
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL g(OO) Q(OOO) [Q0AND(OOO) [g(OO) Q0T(O)].g(OO) Q0F(O)].Q0PI(O(OO)) g(OO)"
+:needed-objects   (Q0T Q0AND Q0F Q0PI)
+:mhelp ""
+:other-attributes ((TYPE "O"))
+:other-remarks "
+")
+
+
+(:name Q0AXIOM2
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL h(OA) FORALL x(A) FORALL y(A) Q0IMPLIES(OOO) [Q(OAA) x(A) y(A)].Q(OOO) [h(OA) x(A)].h(OA) y(A)"
+:needed-objects   (Q0IMPLIES)
+:mhelp ""
+:other-attributes ((TYPELIST ("A")) (TYPE "O"))
+:other-remarks "
+")
+
+
+(:name Q0AXIOM3
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL f(AB) FORALL g(AB) Q(OOO) [Q(O(AB)(AB)) f(AB) g(AB)].Q0PI(O(OB)).LAMBDA x(B) Q(OAA) [f(AB) x(B)].g(AB) x(B)"
+:needed-objects   (Q0PI)
+:mhelp ""
+:other-attributes ((TYPELIST ("A" "B")) (TYPE "O"))
+:other-remarks "
+")
+
+
+(:name Q0F
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "Q(O(OO)(OO)) [LAMBDA x(O) Q0T(O)].LAMBDA x(O) x(O)"
+:needed-objects   (Q0T)
+:mhelp ""
+:other-attributes ((TYPE "O"))
+:other-remarks "
+")
+
+
+(:name Q0IMPLIES
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(O) LAMBDA y(O) Q(OOO) x(O).Q0AND(OOO) x(O) y(O)"
+:needed-objects   (Q0AND)
+:mhelp ""
+:other-attributes ((TYPE "OOO"))
+:other-remarks "
+")
+
+
+(:name Q0NOT
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "Q(OOO) Q0F(O)"
+:needed-objects   (Q0F)
+:mhelp ""
+:other-attributes ((TYPE "OO"))
+:other-remarks "
+")
+
+
+(:name Q0PI
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "Q(O(OA)(OA)).LAMBDA x(A) Q0T(O)"
+:needed-objects   (Q0T)
+:mhelp ""
+:other-attributes ((TYPELIST ("A")) (TYPE "O(OA)"))
+:other-remarks "
+")
+
+
+(:name Q0RULE-R
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(A) FORALL y(A).Q(OAA) x(A) y(A) IMPLIES x(A) =(OAA) y(A)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((TYPELIST ("A")) (TYPE "O"))
+:other-remarks "
+")
+
+
+(:name Q0T
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "Q(O(OOO)(OOO)) Q(OOO) Q(OOO)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((TYPE "O"))
+:other-remarks "
+")
+
+
+(:name RCLOSURE
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA r(OAA) LAMBDA x(A) LAMBDA y(A).r(OAA) x(A) y(A) OR x(A) =(OAA) y(A)"
+:needed-objects   NIL
+:mhelp "Reflexive closure of a relation"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OAA(OAA)"))
+:other-remarks "
+")
+
+
+(:name REFLEXIVE
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA r(OAA) FORALL x(A) r(OAA) x(A) x(A)"
+:needed-objects   NIL
+:mhelp "Predicate for reflexive relations"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(OAA)"))
+:other-remarks "
+")
+
+
+(:name RELNEXP
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA R(OAA) LAMBDA S(OBB) LAMBDA f(BA) LAMBDA g(BA) FORALL x(A) FORALL y(A).R(OAA) x(A) y(A) IMPLIES S(OBB) [f(BA) x(A)].g(BA) y(A)"
+:needed-objects   NIL
+:mhelp "RELNEXP R S relates functions which send R-related values to the S-related values"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "O(BA)(BA)(OBB)(OAA)"))
+:other-remarks "
+")
+
+
+(:name RS-INJ-FN-GRAPH
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA R(OAA) LAMBDA S(OBB) LAMBDA f(OBA).FORALL x(A) EXISTS y(B) f(OBA) x(A) y(B) AND FORALL x(A) FORALL y1(B) FORALL y2(B) [f(OBA) x(A) y1(B) AND f(OBA) x(A) y2(B) IMPLIES S(OBB) y1(B) y2(B)] AND FORALL x1(A) FORALL x2(A) FORALL y(B).f(OBA) x1(A) y(B) AND f(OBA) x2(A) y(B) IMPLIES R(OAA) x1(A) x2(A)"
+:needed-objects   NIL
+:mhelp "Generalization of the notion of a graph of an injective function,
+in which we use relations R on the domain and S on the codomain instead of equality."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "O(OBA)(OBB)(OAA)"))
+:other-remarks "
+")
+
+
+(:name RS-SURJ-FN-GRAPH
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA R(OBB) LAMBDA g(OBA).FORALL x(B) EXISTS y(A) g(OBA) y(A) x(B) AND FORALL y(A) FORALL x1(B) FORALL x2(B) [g(OBA) y(A) x1(B) AND g(OBA) y(A) x2(B) IMPLIES R(OBB) x1(B) x2(B)] AND FORALL y(A) EXISTS x(B) g(OBA) y(A) x(B)"
+:needed-objects   NIL
+:mhelp "Generalization of the notion of a graph of an surjective function,
+in which we use relation R on the codomain instead of equality."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "O(OBA)(OBB)"))
+:other-remarks "
+")
+
+
+(:name RSCLOSURE
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA r(OAA) LAMBDA x(A) LAMBDA y(A).r(OAA) x(A) y(A) OR r(OAA) y(A) x(A) OR x(A) =(OAA) y(A)"
+:needed-objects   NIL
+:mhelp "Reflexive-Symmetric closure"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OAA(OAA)"))
+:other-remarks "
+")
+
+
+(:name RUBIN17
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(A(OA)) LAMBDA x(A).~SETUNION(OA(O(OA))) [SETINTERSECT(O(OA)(O(O(OA)))).LAMBDA w(O(OA)).w(O(OA)) [LAMBDA y(A) FALSEHOOD] AND FORALL B(OA) [w(O(OA)) B(OA) IMPLIES w(O(OA)).B(OA) ADD1(OAA(OA)) f(A(OA)).LAMBDA x(A).~B(OA) x(A)] AND FORALL C(O(OA)).C(O(OA)) SUBSET(O(O(OA))(O(OA))) w(O(OA)) IMPLIES w(O(OA)).SETUNION(OA(O(OA))) C(O(OA))] x(A)"
+:needed-objects   (ADD1)
+:mhelp "This is an abbreviation for a concept involved in the proof of AC17 => AC1
+in Rubin and Rubin p. 17.  (Note that the proof actually shows AC17 => WO.)  Here's an attempt to describe the
+concept:  Given a function f(A(OA)), we can use ordinal induction to define
+A0 = empty, A1 = {f [COMPLEMENT A0]}, A2 = A1 U {f [COMPLEMENT A1]}, . . .,
+taking unions at limit ordinals.  RUBIN17 f is the set
+of sets given by {A0, A1, A2, . . . }.  Note that this
+set of sets is well-ordered by inclusion."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OA(A(OA))"))
+:other-remarks "
+")
+
+
+(:name S-JOIN-CLOS
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA 0($) LAMBDA P($$$) LAMBDA JOIN(O$$$).FORALL x($) JOIN(O$$$) x($) 0($) x($) AND FORALL y($) JOIN(O$$$) 0($) y($) y($) AND FORALL x($) FORALL y($) FORALL z($) FORALL u($) FORALL v($) FORALL w($).JOIN(O$$$) x($) y($) z($) AND JOIN(O$$$) u($) v($) w($) IMPLIES JOIN(O$$$) [P($$$) x($) u($)] [P($$$) y($) v($)].P($$$) z($) w($)"
+:needed-objects   NIL
+:mhelp "The closure conditions of the JOIN relation on the initial pairing algebra $.
+SEE ALSO: S-ALG, S-JOIN-IND."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPE "O(O$$$)($$$)$"))
+:other-remarks "
+")
+
+
+(:name S-JOIN-IND
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA 0($) LAMBDA P($$$) LAMBDA JOIN(O$$$) FORALL R(O$$$).S-JOIN-CLOS(O(O$$$)($$$)$) 0($) P($$$) R(O$$$) IMPLIES JOIN(O$$$) SUBRELN3(O(O$$$)(O$$$)) R(O$$$)"
+:needed-objects   (S-JOIN-CLOS SUBRELN3)
+:mhelp "The JOIN relation is the smallest relation satisfying the proper closure conditions.  
+SEE ALSO: S-ALG, S-JOIN-CLOS."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPE "O(O$$$)($$$)$"))
+:other-remarks "
+")
+
+
+(:name SCLOSURE
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA r(OAA) LAMBDA x(A) LAMBDA y(A).r(OAA) x(A) y(A) OR r(OAA) y(A) x(A)"
+:needed-objects   NIL
+:mhelp "Symmetric closure of a relation"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OAA(OAA)"))
+:other-remarks "
+")
+
+
+(:name SETPAIR
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(A) LAMBDA y(A) LAMBDA v(A).v(A) =(OAA) x(A) OR v(A) =(OAA) y(A)"
+:needed-objects   NIL
+:mhelp "Takes a pair of arguments of type A
+and returns a set (type (OA)) containing
+the two arguments"
+:other-attributes ((TYPELIST ("A")) (TYPE "OAAA"))
+:other-remarks "
+")
+
+
+(:name SND2
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA z(OBA) LAMBDA t(B) EXISTS s(A) z(OBA) s(A) t(B)"
+:needed-objects   NIL
+:mhelp "SND2 is the second projection correspondint to PAIR2.
+This is pairing restricted to set types."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "OB(OBA)"))
+:other-remarks "
+")
+
+
+(:name STRANGE-HO-ABBR
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA S(O(OII)) LAMBDA x(I) LAMBDA y(I) FORALL p(OII).S(O(OII)) p(OII) AND p(OII) x(I) y(I) IMPLIES p(OII) y(I) x(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPE "OII(O(OII))"))
+:other-remarks "
+")
+
+
+(:name SUBRELN2
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA R(OBA) LAMBDA S(OBA) FORALL a(A) FORALL b(B).R(OBA) a(A) b(B) IMPLIES S(OBA) a(A) b(B)"
+:needed-objects   NIL
+:mhelp "Subset for binary relations"
+:other-attributes ((FACE SUBSET) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (INFIX 8) (TYPELIST ("A" "B")) (TYPE "O(OBA)(OBA)"))
+:other-remarks "
+")
+
+
+(:name SURJ-FN-GRAPH
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA r(OBA).FORALL x(A) EXISTS y(B) r(OBA) x(A) y(B) AND FORALL y(B) EXISTS x(A) r(OBA) x(A) y(B) AND FORALL x(A) FORALL y1(B) FORALL y2(B).r(OBA) x(A) y1(B) AND r(OBA) x(A) y2(B) IMPLIES y1(B) =(OBB) y2(B)"
+:needed-objects   NIL
+:mhelp "Graph of a surjective function"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "O(OBA)"))
+:other-remarks "
+")
+
+
+(:name SYMMETRIC
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA r(OAA) FORALL x(A) FORALL y(A).r(OAA) x(A) y(A) IMPLIES r(OAA) y(A) x(A)"
+:needed-objects   NIL
+:mhelp "Predicate for symmetric relations"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(OAA)"))
+:other-remarks "
+")
+
+
+(:name TCLOSURE152
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA r(OAA) LAMBDA x(A) LAMBDA y(A) FORALL q(OA).FORALL w(A) [r(OAA) x(A) w(A) IMPLIES q(OA) w(A)] AND FORALL v(A) FORALL w(A) [q(OA) v(A) AND r(OAA) v(A) w(A) IMPLIES q(OA) w(A)] IMPLIES q(OA) y(A)"
+:needed-objects   NIL
+:mhelp "Transitive closure defined as in THM152"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OAA(OAA)"))
+:other-remarks "
+")
+
+
+(:name TEST
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(A).x(A) =(OAA) x(A)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O"))
+:other-remarks "
+")
+
+
+(:name TRANSITIVE
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA r(OAA) FORALL x(A) FORALL y(A) FORALL z(A).r(OAA) x(A) y(A) AND r(OAA) y(A) z(A) IMPLIES r(OAA) x(A) z(A)"
+:needed-objects   NIL
+:mhelp "Predicate for transitive relations"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(OAA)"))
+:other-remarks "
+")
+
+
+(:name TRANSPOSE-1
+:type ABBR
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X0(CBA) X0(CBA)"
+:needed-objects   NIL
+:mhelp "Component 1 of the tuple of simply typed versions of the PRODABBR TRANSPOSE"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B" "C")) (TYPE "CBA(CBA)"))
+:other-remarks "
+")
+
+
+(:name TRANSPOSEI-1
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X0(TBA) LAMBDA X1(A) LAMBDA X2(B) EPS-1(TB(TB)) [FUNCPROD-1(TBBA(BB)(TBA)) X0(TBA) ID(BB) X1(A) X2(B)].FUNCPROD-2(BBA(BB)(TBA)) X0(TBA) ID(BB) X1(A) X2(B)"
+:needed-objects   (EPS-1 FUNCPROD-1 FUNCPROD-2 ID)
+:mhelp "Component 1 of the tuple of simply typed versions of the PRODABBR TRANSPOSEI"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B" "T")) (TYPE "TBA(TBA)"))
+:other-remarks "
+")
+
+
+(:name TWIST-1
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X0(A) LAMBDA X1(B) X1(B)"
+:needed-objects   NIL
+:mhelp "Component 1 of the tuple of simply typed versions of the PRODABBR TWIST"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "BBA"))
+:other-remarks "
+")
+
+
+(:name TWIST-2
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X0(A) LAMBDA X1(B) X0(A)"
+:needed-objects   NIL
+:mhelp "Component 2 of the tuple of simply typed versions of the PRODABBR TWIST"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "ABA"))
+:other-remarks "
+")
+
+
+(:name WELL-ORD
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA R(OAA) FORALL X(OA).EXISTS z(A) X(OA) z(A) IMPLIES EXISTS z(A).X(OA) z(A) AND FORALL x(A) [X(OA) x(A) IMPLIES R(OAA) z(A) x(A)] AND FORALL y(A).X(OA) y(A) AND FORALL x(A) [X(OA) x(A) IMPLIES R(OAA) y(A) x(A)] IMPLIES y(A) =(OAA) z(A)"
+:needed-objects   NIL
+:mhelp "Well-Ordering -- Defined here by saying every nonempty
+set has a unique 'least' elt.  THM542 - THM546 show this implies
+the relation is a linear order.  An alternative definition would
+be to say the relation is antisymmetric and every nonempty set
+has a 'least' elt. - Chad"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(OAA)"))
+:other-remarks "
+")
+
+
+(:name WELL-ORD-2
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA R(OAA).ANTISYMMETRIC(O(OAA)) R(OAA) AND FORALL X(OA).EXISTS z(A) X(OA) z(A) IMPLIES EXISTS z(A).X(OA) z(A) AND FORALL x(A).X(OA) x(A) IMPLIES R(OAA) z(A) x(A)"
+:needed-objects   (ANTISYMMETRIC)
+:mhelp "Well-Ordering.  Defined here by saying the relation is ANTISYMMETRIC
+and every nonempty set has a 'least' element.  See also WELL-ORD."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(OAA)"))
+:other-remarks "
+")
+
+
+(:name FINITESET
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA e(OA) FORALL X(O(OA)).X(O(OA)) [LAMBDA y(A) FALSEHOOD] AND FORALL x(OA) [X(O(OA)) x(OA) IMPLIES FORALL t(A).e(OA) t(A) IMPLIES X(O(OA)).x(OA) UNION(OA(OA)(OA)) UNITSET(OAA) t(A)] IMPLIES X(O(OA)) e(OA)"
+:needed-objects   NIL
+:mhelp "Predicate for finite sets without using natural numbers."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(OA)"))
+:other-remarks "
+")
+
+
+(:name FINITESUBSET
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA e(OA) LAMBDA x(OA).FINITESET(O(OA)) e(OA) AND e(OA) SUBSET(O(OA)(OA)) x(OA)"
+:needed-objects   (FINITESET)
+:mhelp "Domain Theory Slides"
+:other-attributes ((FO-SINGLE-SYMBOL T) (INFIX 8) (TYPELIST ("A")) (TYPE "O(OA)(OA)"))
+:other-remarks "
+")
+
+
+(:name T0SPACE
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X(OA) LAMBDA O(O(OA)).FORALL Y(OA) [O(O(OA)) Y(OA) IMPLIES Y(OA) SUBSET(O(OA)(OA)) X(OA)] AND O(O(OA)) X(OA) AND O(O(OA)) [LAMBDA x(A) FALSEHOOD] AND FORALL K(O(OA)) [K(O(OA)) SUBSET(O(O(OA))(O(OA))) O(O(OA)) IMPLIES O(O(OA)).SETUNION(OA(O(OA))) K(O(OA))] AND FORALL Y(OA) FORALL Z(OA) [O(O(OA)) Y(OA) AND O(O(OA)) Z(OA) IMPLIES O(O(OA)).Y(OA) INTERSECT(OA(OA)(OA)) Z(OA)] AND FORALL x(A).X(OA) x(A) IMPLIES FORALL y(A).X(OA) y(A) IMPLIES.FORALL Y(OA) [O(O(OA)) Y(OA) IMPLIES.Y(OA) x(A) EQUIV Y(OA) y(A)] IMPLIES x(A) =(OAA) y(A)"
+:needed-objects   NIL
+:mhelp "T0 topological space.  I am not making use of an existing definition
+of TOPOLOGY in TPS for two reasons.  First, the definition assumes
+the underlying set is the whole type.  Second, and more importantly,
+the existing definition is terribly awkward.  For example, to say the
+empty set is open, the existing definition includes
+FORALL R(OA) [R = LAMBDA x(A) FALSEHOOD IMPLIES X R]
+instead of the more obvious X [lambda x(A) FALSEHOOD].
+
+"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(O(OA))(OA)"))
+:other-remarks "
+")
+
+
+(:name SET-TOPOLOGY
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA A(O(OA)) LAMBDA U(O(OA)).U(O(OA)) SUBSET(O(O(OA))(O(OA))) A(O(OA)) AND FORALL x(OA).U(O(OA)) x(OA) IMPLIES EXISTS e(OA).e(OA) FINITESUBSET(O(OA)(OA)) x(OA) AND FORALL y(OA).A(O(OA)) y(OA) AND e(OA) SUBSET(O(OA)(OA)) y(OA) IMPLIES U(O(OA)) y(OA)"
+:needed-objects   (FINITESUBSET FINITESET)
+:mhelp "Defines a topology on a set of sets A(O(OA)) with subbasis
+given by sets {X(OA) | E FINITESUBSET X and A X}  for some FINITESET E
+(not necessarily in A)."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(O(OA))(O(OA))"))
+:other-remarks "
+")
+
+
+(:name SET-CTS
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA A(O(OA)) LAMBDA B(O(OB)) LAMBDA f(OB(OA)).FORALL x(OA) [A(O(OA)) x(OA) IMPLIES B(O(OB)).f(OB(OA)) x(OA)] AND FORALL e(OB).e(OB) FINITESUBSET(O(OB)(OB)) SETUNION(OB(O(OB))) B(O(OB)) IMPLIES SET-TOPOLOGY(O(O(OA))(O(OA))) A(O(OA)).LAMBDA x(OA).A(O(OA)) x(OA) AND e(OB) SUBSET(O(OB)(OB)) f(OB(OA)) x(OA)"
+:needed-objects   (FINITESUBSET SET-TOPOLOGY)
+:mhelp "Domain Theory Slides"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "O(OB(OA))(O(OB))(O(OA))"))
+:other-remarks "
+")
+
+
+(:name T0CTS
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA S(OA) LAMBDA N(O(OA)) LAMBDA T(OB) LAMBDA O(O(OB)) LAMBDA f(BA).T0SPACE(O(O(OA))(OA)) S(OA) N(O(OA)) AND T0SPACE(O(O(OB))(OB)) T(OB) O(O(OB)) AND FORALL x(A) [S(OA) x(A) IMPLIES T(OB).f(BA) x(A)] AND FORALL W(OB).O(O(OB)) W(OB) IMPLIES N(O(OA)).LAMBDA x(A) W(OB).f(BA) x(A)"
+:needed-objects   (T0SPACE)
+:mhelp "Definition of continuity for a general t0space. 
+Of course, this is the same as for a general topological space,
+but I want to emphasize that I'm only working with T0 spaces."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "O(BA)(O(OB))(OB)(O(OA))(OA)"))
+:other-remarks "
+")
+
+
+(:name INVERSE-HOMEOMORPHISMS
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA S(OA) LAMBDA N(O(OA)) LAMBDA T(OB) LAMBDA O(O(OB)) LAMBDA f(BA) LAMBDA g(AB).T0CTS(O(BA)(O(OB))(OB)(O(OA))(OA)) S(OA) N(O(OA)) T(OB) O(O(OB)) f(BA) AND T0CTS(O(AB)(O(OA))(OA)(O(OB))(OB)) T(OB) O(O(OB)) S(OA) N(O(OA)) g(AB) AND f(BA) COMPOSE(BB(AB)(BA)) g(AB) =(O(BB)(BB)) LAMBDA y(B) y(B) AND g(AB) COMPOSE(AA(BA)(AB)) f(BA) =(O(AA)(AA)) LAMBDA x(A) x(A)"
+:needed-objects   (T0CTS COMPOSE)
+:mhelp "Definition of when f and g are cts and inverses
+of one another, so that T0-spaces are homeomorphic"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "O(AB)(BA)(O(OB))(OB)(O(OA))(OA)"))
+:other-remarks "
+")
+
+
+(:name HOMEOMORPHIC
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA S(OA) LAMBDA N(O(OA)) LAMBDA T(OB) LAMBDA O(O(OB)) EXISTS f(BA) EXISTS g(AB) INVERSE-HOMEOMORPHISMS(O(AB)(BA)(O(OB))(OB)(O(OA))(OA)) S(OA) N(O(OA)) T(OB) O(O(OB)) f(BA) g(AB)"
+:needed-objects   (INVERSE-HOMEOMORPHISMS)
+:mhelp "When two T0 Spaces are homeomorphic"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "O(O(OB))(OB)(O(OA))(OA)"))
+:other-remarks "
+")
+
+
+(:name DIRECTED-SUBSET
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X(OA) LAMBDA R(OAA) LAMBDA U(OA).U(OA) SUBSET(O(OA)(OA)) X(OA) AND EXISTS y(A) U(OA) y(A) AND FORALL y(A) FORALL z(A) EXISTS w(A).R(OAA) y(A) w(A) AND R(OAA) z(A) w(A)"
+:needed-objects   NIL
+:mhelp "A directed subset (wrt a binary relation [usually a partial ordering] R)
+is a nonempty set so that whenever x and y are in the set, then there is a z with
+x R z and y R z."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(OA)(OAA)(OA)"))
+:other-remarks "
+")
+
+
+(:name ACS
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA C(O(OA)).FORALL X(O(OA)) [X(O(OA)) SUBSET(O(O(OA))(O(OA))) C(O(OA)) IMPLIES C(O(OA)).SETINTERSECT(OA(O(OA))) X(O(OA))] AND FORALL D(O(OA)).DIRECTED-SUBSET(O(O(OA))(O(OA)(OA))(O(OA))) C(O(OA)) [LAMBDA x(OA) LAMBDA y(OA).x(OA) SUBSET(O(OA)(OA)) y(OA)] D(O(OA)) IMPLIES C(O(OA)).SETUNION(OA(O(OA))) D(O(OA))"
+:needed-objects   (DIRECTED-SUBSET)
+:mhelp "Algebraic Closure System.  Set of sets closed under
+arbitrary intersections and directed unions."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(O(OA))"))
+:other-remarks "
+")
+
+
+(:name SET-PROD-T
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA A(O(OA)) LAMBDA B(O(OB)) LAMBDA z(O(O(OB)(OA))) EXISTS x(OA).A(O(OA)) x(OA) AND EXISTS y(OB).B(O(OB)) y(OB) AND FORALL r(O(OB)(OA)).z(O(O(OB)(OA))) r(O(OB)(OA)) EQUIV EXISTS d(OA) EXISTS e(OB).d(OA) FINITESUBSET(O(OA)(OA)) x(OA) AND e(OB) FINITESUBSET(O(OB)(OB)) y(OB) AND FORALL u(OA) FORALL v(OB).r(O(OB)(OA)) u(OA) v(OB) EQUIV d(OA) =(O(OA)(OA)) u(OA) AND e(OB) =(O(OB)(OB)) v(OB)"
+:needed-objects   (FINITESUBSET)
+:mhelp "Domain Theory Slides.
+SET-PROD-T A B is the set
+  {{d~e | d << x and e << y} | x in A and y in B}
+where d~e is the relation betwen types (OA) and (OB)
+that only relates d to e.
+
+This is changed from the definition in the slides by
+changing the way pairs are represented."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "O(O(O(OB)(OA)))(O(OB))(O(OA))"))
+:other-remarks "
+")
+
+
+(:name T-PI1
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA t(O(O(OB)(OA))) SETUNION(OA(O(OA))).LAMBDA d(OA) EXISTS r(O(OB)(OA)).t(O(O(OB)(OA))) r(O(OB)(OA)) AND r(O(OB)(OA)) d(OA).LAMBDA y(B) FALSEHOOD"
+:needed-objects   NIL
+:mhelp "Domain Theory Slides.
+Categorical Considerations.
+First Product Projection."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "OA(O(O(OB)(OA)))"))
+:other-remarks "
+")
+
+
+(:name T-PI2
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA t(O(O(OB)(OA))) SETUNION(OB(O(OB))).LAMBDA e(OB) EXISTS r(O(OB)(OA)).t(O(O(OB)(OA))) r(O(OB)(OA)) AND r(O(OB)(OA)) [LAMBDA x(A) FALSEHOOD] e(OB)"
+:needed-objects   NIL
+:mhelp "Domain Theory Slides.
+Categorical Considerations.
+Second Product Projection."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "OB(O(O(OB)(OA)))"))
+:other-remarks "
+")
+
+
+(:name T-FPAIR
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(OA(OC)) LAMBDA g(OB(OC)) LAMBDA w(OC) LAMBDA r(O(OB)(OA)) EXISTS d(OA) EXISTS e(OB).d(OA) FINITESUBSET(O(OA)(OA)) f(OA(OC)) w(OC) AND e(OB) FINITESUBSET(O(OB)(OB)) g(OB(OC)) w(OC) IMPLIES FORALL u(OA) FORALL v(OB).r(O(OB)(OA)) u(OA) v(OB) EQUIV u(OA) =(O(OA)(OA)) d(OA) AND v(OB) =(O(OB)(OB)) e(OB)"
+:needed-objects   (FINITESUBSET)
+:mhelp "Domain Theory Slides.
+Categorical Considerations.
+Explicit pairing operator for functions."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B" "C")) (TYPE "O(O(OB)(OA))(OC)(OB(OC))(OA(OC))"))
+:other-remarks "
+")
+
+
+(:name EQUAL-PARTIALS
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA A(OA) LAMBDA f(BA) LAMBDA g(BA) FORALL x(A).A(OA) x(A) IMPLIES f(BA) x(A) =(OBB) g(BA) x(A)"
+:needed-objects   NIL
+:mhelp "Domain Theory Slides.
+This is a test for equality of functions on a restricted
+domain.  Since every function is total on the type, we
+think of these as being equal as partial functions on the
+type, only defined on the given domain."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "O(BA)(BA)(OA)"))
+:other-remarks "
+")
+
+
+(:name SET-COPROD-T
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA A(O(OA)) LAMBDA B(O(OB)) LAMBDA S(O(O(OB)(OA))).EXISTS X(OA) [A(O(OA)) X(OA) AND FORALL G(O(OB)(OA)).S(O(O(OB)(OA))) G(O(OB)(OA)) IMPLIES EXISTS x(A).X(OA) x(A) AND FORALL U(OA).U(OA) x(A) IMPLIES G(O(OB)(OA)) U(OA).LAMBDA y(B) FALSEHOOD] OR EXISTS Y(OB).B(O(OB)) Y(OB) AND FORALL G(O(OB)(OA)).S(O(O(OB)(OA))) G(O(OB)(OA)) IMPLIES EXISTS y(B).Y(OB) y(B) AND FORALL V(OB).V(OB) y(B) IMPLIES G(O(OB)(OA)) [LAMBDA x(A) FALSEHOOD] V(OB)"
+:needed-objects   NIL
+:mhelp "Domain Theory Slides.
+Categorical Considerations.
+Coproducts."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "O(O(O(OB)(OA)))(O(OB))(O(OA))"))
+:other-remarks "
+")
+
+
+(:name INJ1-T
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA A(O(OA)) LAMBDA B(O(OB)) LAMBDA X(OA) LAMBDA G(O(OB)(OA)) EXISTS x(A).X(OA) x(A) AND FORALL U(OA).U(OA) x(A) IMPLIES G(O(OB)(OA)) U(OA).LAMBDA y(B) FALSEHOOD"
+:needed-objects   NIL
+:mhelp "Domain Theory Slides.
+Categorical Considerations.
+Coproduct Injections."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "O(O(OB)(OA))(OA)(O(OB))(O(OA))"))
+:other-remarks "
+")
+
+
+(:name INJ2-T
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA A(O(OA)) LAMBDA B(O(OB)) LAMBDA Y(OB) LAMBDA G(O(OB)(OA)) EXISTS y(B).Y(OB) y(B) AND FORALL V(OB).V(OB) y(B) IMPLIES G(O(OB)(OA)) [LAMBDA x(A) FALSEHOOD] V(OB)"
+:needed-objects   NIL
+:mhelp "Domain Theory Slides.
+Categorical Considerations.
+Coproduct Injections."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "O(O(OB)(OA))(OB)(O(OB))(O(OA))"))
+:other-remarks "
+")
+
+
+(:name PAIR-UNP-ALG
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA Z(A) LAMBDA P(AAA) LAMBDA L(AA) LAMBDA R(AA).L(AA) Z(A) =(OAA) Z(A) AND R(AA) Z(A) =(OAA) Z(A) AND FORALL x(A) FORALL y(A) [L(AA) [P(AAA) x(A) y(A)] =(OAA) x(A)] AND FORALL x(A) FORALL y(A) [R(AA) [P(AAA) x(A) y(A)] =(OAA) y(A)] AND FORALL t(A).~[t(A) =(OAA) Z(A)] EQUIV t(A) =(OAA) P(AAA) [L(AA) t(A)].R(AA) t(A)"
+:needed-objects   NIL
+:mhelp "Axioms for Pairing/Unpairing Algebra.  - Dana Scott's Domain Theory Notes"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(AA)(AA)(AAA)A"))
+:other-remarks "
+")
+
+
+(:name SEQ-AX
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA Z(A) LAMBDA L(AA) FORALL X(OA).EXISTS t(A) [X(OA) t(A) AND FORALL u(A).X(OA) u(A) IMPLIES X(OA).L(AA) u(A)] IMPLIES X(OA) Z(A)"
+:needed-objects   NIL
+:mhelp "Sequentiality Axiom for a Pairing Unpairing Algebra -- Dana Scott's Domain Theory Notes"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(AA)A"))
+:other-remarks "
+")
+
+
+(:name COI
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA Z(A) LAMBDA P(AAA) LAMBDA L(AA) LAMBDA R(AA) FORALL X(OA).FORALL t(A) FORALL u(A) [X(OA) [P(AAA) t(A) u(A)] IMPLIES [t(A) =(OAA) Z(A) EQUIV u(A) =(OAA) Z(A)] AND X(OA) [P(AAA) [L(AA) t(A)].L(AA) u(A)] AND X(OA).P(AAA) [R(AA) t(A)].R(AA) u(A)] IMPLIES FORALL t(A) FORALL u(A).X(OA) [P(AAA) t(A) u(A)] IMPLIES t(A) =(OAA) u(A)"
+:needed-objects   NIL
+:mhelp "CoInduction Axiom for Pairing Unpairing Algebras - Dana Scott's Domain Theory Notes"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(AA)(AA)(AAA)A"))
+:other-remarks "
+")
+
+
+(:name PU-LT
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA Z(A) LAMBDA P(AAA) LAMBDA L(AA) LAMBDA R(AA) LAMBDA x(A) LAMBDA y(A) EXISTS X(OA).X(OA) [P(AAA) x(A) y(A)] AND FORALL t(A) FORALL u(A).X(OA) [P(AAA) t(A) u(A)] IMPLIES [u(A) =(OAA) Z(A) IMPLIES t(A) =(OAA) Z(A)] AND X(OA) [P(AAA) [L(AA) t(A)].L(AA) u(A)] AND X(OA).P(AAA) [R(AA) t(A)].R(AA) u(A)"
+:needed-objects   NIL
+:mhelp "Partial Ordering on CoInductive Pairing Unpairing Algebras.  - Dana Scott's Domain Theory Notes"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OAA(AA)(AA)(AAA)A"))
+:other-remarks "
+")
+
+
+(:name PAR-ORD
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA P(OAA).TRANSITIVE(O(OAA)) P(OAA) AND REFLEXIVE(O(OAA)) P(OAA) AND ANTISYMMETRIC(O(OAA)) P(OAA)"
+:needed-objects   (TRANSITIVE REFLEXIVE ANTISYMMETRIC)
+:mhelp "Partial Order.  Hard to believe this is not defined elsewhere."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(OAA)"))
+:other-remarks "
+")
+
+
+(:name PU-S
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA Z(A) LAMBDA P(AAA) LAMBDA L(AA) LAMBDA R(AA) LAMBDA s(A) FORALL X(OA).X(OA) Z(A) AND FORALL x(A) FORALL y(A) [X(OA) x(A) AND X(OA) y(A) IMPLIES X(OA).P(AAA) x(A) y(A)] IMPLIES X(OA) s(A)"
+:needed-objects   NIL
+:mhelp "Smallest pairing-unpairing subalgebra of a pairing-unpairing algebra ($)"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OA(AA)(AA)(AAA)A"))
+:other-remarks "
+")
+
+
+(:name PU-N
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA Z(A) LAMBDA P(AAA) LAMBDA L(AA) LAMBDA R(AA) LAMBDA n(A) FORALL X(OA).X(OA) Z(A) AND FORALL x(A) [X(OA) x(A) IMPLIES X(OA).P(AAA) x(A) Z(A)] IMPLIES X(OA) n(A)"
+:needed-objects   NIL
+:mhelp "Definition of the natural numbers (N) as a subset of a pairing-unpairing algebra.
+From Dana Scott's Domain Theory Class."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OA(AA)(AA)(AAA)A"))
+:other-remarks "
+")
+
+
+(:name PU-DDC
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA Z(A) LAMBDA P(AAA) LAMBDA L(AA) LAMBDA R(AA) LAMBDA D(OA).D(OA) Z(A) AND FORALL x(A) [D(OA) x(A) IMPLIES FORALL y(A).PU-LT(OAA(AA)(AA)(AAA)A) Z(A) P(AAA) L(AA) R(AA) y(A) x(A) IMPLIES D(OA) y(A)] AND FORALL x(A) FORALL y(A).D(OA) x(A) AND D(OA) y(A) IMPLIES EXISTS z(A).D(OA) z(A) IMPLIES PU-LT(OAA(AA)(AA)(AAA)A) Z(A) P(AAA) L(AA) R(AA) x(A) z(A) AND PU-LT(OAA(AA)(AA)(AAA)A) Z(A) P(AAA) L(AA) R(AA) y(A) z(A)"
+:needed-objects   (PU-LT)
+:mhelp "Directed/Down-Closed Sets -- from Dana Scott's Domain Theory notes about Pairing-Unpairing Algebras"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(OA)(AA)(AA)(AAA)A"))
+:other-remarks "
+")
+
+
+(:name PU-BRACK
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA Z(A) LAMBDA P(AAA) LAMBDA L(AA) LAMBDA R(AA) LAMBDA X(OA) LAMBDA u(A).L(AA) u(A) =(OAA) Z(A) AND X(OA).R(AA) u(A)"
+:needed-objects   NIL
+:mhelp "bracket in pair-unp algebras"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OA(OA)(AA)(AA)(AAA)A"))
+:other-remarks "
+")
+
+
+(:name PU-HAT
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA Z(A) LAMBDA P(AAA) LAMBDA L(AA) LAMBDA R(AA) LAMBDA x(A) LAMBDA y(A) FORALL X(OA).X(OA) x(A) AND FORALL z(A) [X(OA) z(A) IMPLIES X(OA).L(AA) z(A)] IMPLIES EXISTS v(A).X(OA) v(A) AND R(AA) v(A) =(OAA) y(A)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OAA(AA)(AA)(AAA)A"))
+:other-remarks "
+")
+
+
+(:name PU-BRACK-*
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA Z(A) LAMBDA P(AAA) LAMBDA L(AA) LAMBDA R(AA) LAMBDA X(OA) LAMBDA x(A).PU-HAT(OAA(AA)(AA)(AAA)A) Z(A) P(AAA) L(AA) R(AA) x(A) SUBSET(O(OA)(OA)) X(OA)"
+:needed-objects   (PU-HAT)
+:mhelp "2.3.4 Ex (iii) of Dana Scott's Domain Theory Notes as defn of <X>*"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OA(OA)(AA)(AA)(AAA)A"))
+:other-remarks "
+")
+
+
+(:name PU-APP
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA Z(A) LAMBDA P(AAA) LAMBDA L(AA) LAMBDA R(AA) LAMBDA F(OA) LAMBDA X(OA) LAMBDA y(A) EXISTS x(A).PU-BRACK-*(OA(OA)(AA)(AA)(AAA)A) Z(A) P(AAA) L(AA) R(AA) X(OA) x(A) AND F(OA).P(AAA) x(A) y(A)"
+:needed-objects   (PU-BRACK-*)
+:mhelp "Interpretation of Application in Sequential Algebra Models of Untyped Lambda Calculus.
+Dana Scott's Domain Theory Notes"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OA(OA)(OA)(AA)(AA)(AAA)A"))
+:other-remarks "
+")
+
+
+(:name PU-LAM
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA Z(A) LAMBDA P(AAA) LAMBDA L(AA) LAMBDA R(AA) LAMBDA PHI(OA(OA)) LAMBDA u(A).u(A) =(OAA) Z(A) OR EXISTS x(A) EXISTS y(A).u(A) =(OAA) P(AAA) x(A) y(A) AND PHI(OA(OA)) [PU-HAT(OAA(AA)(AA)(AAA)A) Z(A) P(AAA) L(AA) R(AA) x(A)] y(A)"
+:needed-objects   (PU-HAT)
+:mhelp "Interpretation of Abstraction in Sequential Algebra Models of Untyped Lambda Calculus.
+Dana Scott's Domain Theory Notes"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OA(OA(OA))(AA)(AA)(AAA)A"))
+:other-remarks "
+")
+
+
+(:name PU-CTS
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA Z(A) LAMBDA P(AAA) LAMBDA L(AA) LAMBDA R(AA) LAMBDA PHI(OA(OA)) FORALL X(OA) FORALL z(A).PHI(OA(OA)) X(OA) z(A) EQUIV EXISTS x(A).PU-BRACK-*(OA(OA)(AA)(AA)(AAA)A) Z(A) P(AAA) L(AA) R(AA) X(OA) x(A) AND PHI(OA(OA)) [PU-HAT(OAA(AA)(AA)(AAA)A) Z(A) P(AAA) L(AA) R(AA) x(A)] z(A)"
+:needed-objects   (PU-HAT PU-BRACK-*)
+:mhelp "Exercise 2.3.5 of Dana Scott's Domain Theory Notes as Defn of Cty in a
+Pairing Unpairing Algebra."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(OA(OA))(AA)(AA)(AAA)A"))
+:other-remarks "
+")
+
+
+(:name SEQ-ALG
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA Z(A) LAMBDA P(AAA) LAMBDA L(AA) LAMBDA R(AA).PAIR-UNP-ALG(O(AA)(AA)(AAA)A) Z(A) P(AAA) L(AA) R(AA) AND SEQ-AX(O(AA)A) Z(A) L(AA)"
+:needed-objects   (PAIR-UNP-ALG SEQ-AX)
+:mhelp "Sequential Algebra"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(AA)(AA)(AAA)A"))
+:other-remarks "
+")
+
+
+(:name PU-PROD
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA Z(A) LAMBDA P(AAA) LAMBDA L(AA) LAMBDA R(AA) LAMBDA X(OA) LAMBDA Y(OA) LAMBDA z(A) EXISTS x(A) EXISTS y(A).X(OA) x(A) AND Y(OA) y(A) AND z(A) =(OAA) P(AAA) x(A) y(A)"
+:needed-objects   NIL
+:mhelp "Products in Pairing Unpairing Algebras"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OA(OA)(OA)(AA)(AA)(AAA)A"))
+:other-remarks "
+")
+
+
+(:name PU-SETLEFT
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA Z(A) LAMBDA P(AAA) LAMBDA L(AA) LAMBDA R(AA) LAMBDA X(OA) LAMBDA y(A) EXISTS z(A) X(OA).P(AAA) y(A) z(A)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OA(OA)(AA)(AA)(AAA)A"))
+:other-remarks "
+")
+
+
+(:name PU-SETRIGHT
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA Z(A) LAMBDA P(AAA) LAMBDA L(AA) LAMBDA R(AA) LAMBDA X(OA) LAMBDA z(A) EXISTS y(A) X(OA).P(AAA) y(A) z(A)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OA(OA)(AA)(AA)(AAA)A"))
+:other-remarks "
+")
+
+
+(:name PU-CA
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA Z(A) LAMBDA P(AAA) LAMBDA L(AA) LAMBDA R(AA) FORALL D(OA).D(OA) SUBSET(O(OA)(OA)) PU-S(OA(AA)(AA)(AAA)A) Z(A) P(AAA) L(AA) R(AA) IMPLIES EXISTS t(A).FORALL s(A) [PU-S(OA(AA)(AA)(AAA)A) Z(A) P(AAA) L(AA) R(AA) s(A) IMPLIES.PU-LT(OAA(AA)(AA)(AAA)A) Z(A) P(AAA) L(AA) R(AA) s(A) t(A) EQUIV D(OA) s(A)] AND FORALL u(A).FORALL s(A) [PU-S(OA(AA)(AA)(AAA)A) Z(A) P(AAA) L(AA) R(AA) s(A) IMPLIES.PU-LT(OAA(AA)(AA)(AAA)A) Z(A) P(AAA) L(AA) R(AA) s(A) u(A) EQUIV D(OA) s(A)] IMPLIES u(A) =(OAA) t(A)"
+:needed-objects   (PU-DDC PU-LT PU-S)
+:mhelp "Completeness Axiom characterizing T (the final unpairing algebra).
+From Dana Scott's Domain Theory Notes."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(AA)(AA)(AAA)A"))
+:other-remarks "
+")
+
+
+(:name PU-B
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA Z(A) LAMBDA P(AAA) LAMBDA L(AA) LAMBDA R(AA) LAMBDA b(A) FORALL X(OA).X(OA) Z(A) AND FORALL x(A) [X(OA) x(A) IMPLIES X(OA) [P(AAA) x(A) Z(A)] AND X(OA).P(AAA) x(A).P(AAA) Z(A) Z(A)] IMPLIES X(OA) b(A)"
+:needed-objects   NIL
+:mhelp "Definition of B (the initial (0,1,1)-algebra) as a subset of a sequential algebra.
+From Dana Scott's Domain Theory Notes."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OA(AA)(AA)(AAA)A"))
+:other-remarks "
+")
+
+
+(:name PU-SUBTREES
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA Z(A) LAMBDA P(AAA) LAMBDA L(AA) LAMBDA R(AA) LAMBDA t(A) LAMBDA s(A) EXISTS b(A) EXISTS u(A).s(A) =(OAA) P(AAA) b(A) u(A) AND FORALL X(OA).X(OA) [P(AAA) Z(A) t(A)] AND FORALL c(A) FORALL v(A) [X(OA) [P(AAA) c(A) v(A)] IMPLIES X(OA) [P(AAA) [P(AAA) c(A) Z(A)].L(AA) v(A)] AND X(OA).P(AAA) [P(AAA) c(A).P(AAA) Z(A) Z(A)].R(AA) v(A)] IMPLIES X(OA).P(AAA) b(A) u(A)"
+:needed-objects   NIL
+:mhelp "Definition of Subtrees of a tree in a Sequential Algebra.
+From Dana Scott's Domain Theory Notes."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OAA(AA)(AA)(AAA)A"))
+:other-remarks "
+")
+
+
+(:name PU-POS-SUBTREES
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA Z(A) LAMBDA P(AAA) LAMBDA L(AA) LAMBDA R(AA) LAMBDA D(OA) LAMBDA b(A) LAMBDA u(A) EXISTS t(A).D(OA) t(A) AND PU-SUBTREES(OAA(AA)(AA)(AAA)A) Z(A) P(AAA) L(AA) R(AA) t(A).P(AAA) b(A) u(A)"
+:needed-objects   (PU-SUBTREES)
+:mhelp "PU-POS-SUBTREES Z P L R takes a subset D of the Pairing Unpairing Algebra <Z, P, L, R>
+and a position b (i.e., member of PU-B Z P L R) to the set of trees given by taking the subtree in position b of
+each tree in D.  From Dana Scott's Domain Theory Notes on Pairing Unpairing Algebras."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OAA(OA)(AA)(AA)(AAA)A"))
+:other-remarks "
+")
+
+
+(:name PU-SDDC
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA Z(A) LAMBDA P(AAA) LAMBDA L(AA) LAMBDA R(AA) LAMBDA D(OA).PU-DDC(O(OA)(AA)(AA)(AAA)A) Z(A) P(AAA) L(AA) R(AA) D(OA) AND FORALL b(A).PU-B(OA(AA)(AA)(AAA)A) Z(A) P(AAA) L(AA) R(AA) b(A) IMPLIES EXISTS n(A).PU-N(OA(AA)(AA)(AAA)A) Z(A) P(AAA) L(AA) R(AA) n(A) IMPLIES PU-POS-SUBTREES(OAA(OA)(AA)(AA)(AAA)A) Z(A) P(AAA) L(AA) R(AA) [PU-POS-SUBTREES(OAA(OA)(AA)(AA)(AAA)A) Z(A) P(AAA) L(AA) R(AA) D(OA) b(A)] n(A) =(O(OA)(OA)) UNITSET(OAA) Z(A)"
+:needed-objects   (PU-DDC PU-B PU-N PU-POS-SUBTREES)
+:mhelp "Definition of Sequential DDC's from Dana Scott's Domain Theory Notes on Pairing Unpairing Algebras."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(OA)(AA)(AA)(AAA)A"))
+:other-remarks "
+")
+
+
+(:name SEQ-CA
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA Z(A) LAMBDA P(AAA) LAMBDA L(AA) LAMBDA R(AA) FORALL D(OA).PU-SDDC(O(OA)(AA)(AA)(AAA)A) Z(A) P(AAA) L(AA) R(AA) D(OA) IMPLIES SIGMA1(O(OA)).LAMBDA t(A) FORALL s(A).PU-S(OA(AA)(AA)(AAA)A) Z(A) P(AAA) L(AA) R(AA) s(A) IMPLIES.PU-LT(OAA(AA)(AA)(AAA)A) Z(A) P(AAA) L(AA) R(AA) s(A) t(A) EQUIV D(OA) s(A)"
+:needed-objects   (PU-SDDC PU-S PU-LT)
+:mhelp "Sequential Completeness Axiom from Dana Scott's Domain Theory Notes on Pairing Unpairing Algebras."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(AA)(AA)(AAA)A"))
+:other-remarks "
+")
+
+
+(:name ANTISYMMETRIC
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA R(OAA) FORALL x(A) FORALL y(A).R(OAA) x(A) y(A) AND R(OAA) y(A) x(A) IMPLIES x(A) =(OAA) y(A)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(OAA)"))
+:other-remarks "
+")
+
+
+(:name ALG02
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA 0(A) LAMBDA P(AAA).FORALL x(A) FORALL y(A) FORALL u(A) FORALL v(A) [P(AAA) x(A) u(A) =(OAA) P(AAA) y(A) v(A) IMPLIES x(A) =(OAA) y(A) AND u(A) =(OAA) v(A)] AND FORALL x(A) FORALL y(A).~.P(AAA) x(A) y(A) =(OAA) 0(A)"
+:needed-objects   NIL
+:mhelp "(0, 2) algebra"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(AAA)A"))
+:other-remarks "
+")
+
+
+(:name ALG01
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA Z(A) LAMBDA S(AA).FORALL x(A) FORALL y(A) [S(AA) x(A) =(OAA) S(AA) y(A) IMPLIES x(A) =(OAA) y(A)] AND FORALL x(A).~.S(AA) x(A) =(OAA) Z(A)"
+:needed-objects   NIL
+:mhelp "(0, 1)-algebra"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(AA)A"))
+:other-remarks "
+")
+
+
+(:name ALG011
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA Z(A) LAMBDA S1(AA) LAMBDA S2(AA).FORALL x(A) FORALL y(A) [S1(AA) x(A) =(OAA) S1(AA) y(A) IMPLIES x(A) =(OAA) y(A)] AND FORALL x(A) FORALL y(A) [S2(AA) x(A) =(OAA) S2(AA) y(A) IMPLIES x(A) =(OAA) y(A)] AND FORALL x(A) FORALL y(A) [~.S1(AA) x(A) =(OAA) S2(AA) y(A)] AND FORALL x(A) [~.S1(AA) x(A) =(OAA) Z(A)] AND FORALL x(A).~.S2(AA) x(A) =(OAA) Z(A)"
+:needed-objects   NIL
+:mhelp "(0, 1, 1)-algebra"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(AA)(AA)A"))
+:other-remarks "
+")
+
+
+(:name S-ALG
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA 0($) LAMBDA P($$$).FORALL x($) FORALL y($) [~.P($$$) x($) y($) =(O$$) 0($)] AND FORALL x($) FORALL y($) FORALL u($) FORALL v($) [P($$$) x($) u($) =(O$$) P($$$) y($) v($) IMPLIES x($) =(O$$) y($) AND u($) =(O$$) v($)] AND FORALL X(O$).X(O$) 0($) AND FORALL x($) FORALL y($) [X(O$) x($) AND X(O$) y($) IMPLIES X(O$).P($$$) x($) y($)] IMPLIES FORALL x($) X(O$) x($)"
+:needed-objects   NIL
+:mhelp "$"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("$")) (TYPE "O($$$)$"))
+:other-remarks "
+")
+
+
+(:name S-JOIN
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA 0(A) LAMBDA P(AAA) LFP3(OAAA(OAAA(OAAA))(O(OAAA))) [LAMBDA R(OAAA) TRUTH].LAMBDA R(OAAA) LAMBDA x(A) LAMBDA y(A) LAMBDA z(A).x(A) =(OAA) 0(A) AND y(A) =(OAA) z(A) OR y(A) =(OAA) 0(A) AND x(A) =(OAA) z(A) OR EXISTS x1(A) EXISTS x2(A) EXISTS y1(A) EXISTS y2(A) EXISTS z1(A) EXISTS z2(A).x(A) =(OAA) P(AAA) x1(A) x2(A) AND y(A) =(OAA) P(AAA) y1(A) y2(A) AND z(A) =(OAA) P(AAA) z1(A) z2(A) AND R(OAAA) x1(A) y1(A) z1(A) AND R(OAAA) x2(A) y2(A) z2(A)"
+:needed-objects   (LFP3)
+:mhelp "Join relation for $ (not as a function to avoid descriptions)"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OAAA(AAA)A"))
+:other-remarks "
+")
+
+
+(:name S-INCL
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA 0(A) LAMBDA P(AAA) LAMBDA x(A) LAMBDA y(A) S-JOIN(OAAA(AAA)A) 0(A) P(AAA) x(A) y(A) y(A)"
+:needed-objects   (S-JOIN)
+:mhelp "Inclusion for $"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OAA(AAA)A"))
+:other-remarks "
+")
+
+
+(:name S-DUC
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA 0(A) LAMBDA P(AAA) LAMBDA D(OA).D(OA) 0(A) AND FORALL x(A) FORALL y(A) [D(OA) y(A) AND S-INCL(OAA(AAA)A) 0(A) P(AAA) x(A) y(A) IMPLIES D(OA) x(A)] AND FORALL x(A) FORALL y(A) FORALL z(A).D(OA) x(A) AND D(OA) y(A) AND S-JOIN(OAAA(AAA)A) 0(A) P(AAA) x(A) y(A) z(A) IMPLIES D(OA) z(A)"
+:needed-objects   (S-JOIN S-INCL)
+:mhelp "nonempty subsets of $ that are downward closed and binary union (join) closed"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(OA)(AAA)A"))
+:other-remarks "
+")
+
+
+(:name COALG02
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X0(OC) LAMBDA X1(OC) LAMBDA L(CC) LAMBDA R(CC).FORALL z(C) [X0(OC) z(C) EQUIV ~X1(OC) z(C)] AND FORALL z(C).X0(OC) z(C) IMPLIES L(CC) z(C) =(OCC) z(C) AND R(CC) z(C) =(OCC) z(C)"
+:needed-objects   NIL
+:mhelp "Coalgebra of type (0,2)"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("C")) (TYPE "O(CC)(CC)(OC)(OC)"))
+:other-remarks "
+")
+
+
+(:name S-T-L
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA 0(A) LAMBDA P(AAA) LAMBDA D(OA) LAMBDA x(A).x(A) =(OAA) 0(A) OR EXISTS y(A) D(OA).P(AAA) x(A) y(A)"
+:needed-objects   NIL
+:mhelp "Left operator for T as DUC-sets of $"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OA(OA)(AAA)A"))
+:other-remarks "
+")
+
+
+(:name S-T-R
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA 0(A) LAMBDA P(AAA) LAMBDA D(OA) LAMBDA y(A).y(A) =(OAA) 0(A) OR EXISTS x(A) D(OA).P(AAA) x(A) y(A)"
+:needed-objects   NIL
+:mhelp "Right operator for T as DUC-sets of $"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OA(OA)(AAA)A"))
+:other-remarks "
+")
+
+
+(:name LFP3
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA CL(O(OCBA)) LAMBDA F(OCBA(OCBA)) LAMBDA a(A) LAMBDA b(B) LAMBDA c(C) FORALL R(OCBA).CL(O(OCBA)) R(OCBA) AND F(OCBA(OCBA)) R(OCBA) SUBRELN3(O(OCBA)(OCBA)) R(OCBA) IMPLIES R(OCBA) a(A) b(B) c(C)"
+:needed-objects   (SUBRELN3)
+:mhelp "Least fixed point for a monotone operator on a closure system of tertiary relns."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B" "C")) (TYPE "OCBA(OCBA(OCBA))(O(OCBA))"))
+:other-remarks "
+")
+
+
+(:name LFP2
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA CL(O(OBA)) LAMBDA F(OBA(OBA)) LAMBDA a(A) LAMBDA b(B) FORALL R(OBA).CL(O(OBA)) R(OBA) AND F(OBA(OBA)) R(OBA) SUBRELN2(O(OBA)(OBA)) R(OBA) IMPLIES R(OBA) a(A) b(B)"
+:needed-objects   (SUBRELN2)
+:mhelp "Least fixed point for a monotone operator on a closure system of binary relns."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "OBA(OBA(OBA))(O(OBA))"))
+:other-remarks "
+")
+
+
+(:name LFP1
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA CL(O(OA)) LAMBDA F(OA(OA)) LAMBDA a(A) FORALL R(OA).CL(O(OA)) R(OA) AND F(OA(OA)) R(OA) SUBSET(O(OA)(OA)) R(OA) IMPLIES R(OA) a(A)"
+:needed-objects   NIL
+:mhelp "Least fixed point for a monotone function on a closure system of sets."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "OA(OA(OA))(O(OA))"))
+:other-remarks "
+")
+
+
+(:name CLOS-SYS1
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA CL(O(OA)) FORALL S(O(OA)).S(O(OA)) SUBSET(O(O(OA))(O(OA))) CL(O(OA)) IMPLIES CL(O(OA)).SETINTERSECT(OA(O(OA))) S(O(OA))"
+:needed-objects   NIL
+:mhelp "Closure system of sets"
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(O(OA))"))
+:other-remarks "
+")
+
+
+(:name CLOS-SYS2
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA CL(O(OBA)) FORALL S(O(OBA)).S(O(OBA)) SUBSET(O(O(OBA))(O(OBA))) CL(O(OBA)) IMPLIES CL(O(OBA)).LAMBDA a(A) LAMBDA b(B) FORALL R(OBA).S(O(OBA)) R(OBA) IMPLIES R(OBA) a(A) b(B)"
+:needed-objects   NIL
+:mhelp "closure system of binary relations"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "O(O(OBA))"))
+:other-remarks "
+")
+
+
+(:name CLOS-SYS3
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA CL(O(OCBA)) FORALL S(O(OCBA)).S(O(OCBA)) SUBSET(O(O(OCBA))(O(OCBA))) CL(O(OCBA)) IMPLIES CL(O(OCBA)).LAMBDA a(A) LAMBDA b(B) LAMBDA c(C) FORALL R(OCBA).S(O(OCBA)) R(OCBA) IMPLIES R(OCBA) a(A) b(B) c(C)"
+:needed-objects   NIL
+:mhelp "Closure system of tertiary relns"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B" "C")) (TYPE "O(O(OCBA))"))
+:other-remarks "
+")
+
+
+(:name SUBRELN3
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA R(OCBA) LAMBDA S(OCBA) FORALL a(A) FORALL b(B) FORALL c(C).R(OCBA) a(A) b(B) c(C) IMPLIES S(OCBA) a(A) b(B) c(C)"
+:needed-objects   NIL
+:mhelp "Subset for tertiary relations"
+:other-attributes ((FACE SUBSET) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (INFIX 8) (TYPELIST ("A" "B" "C")) (TYPE "O(OCBA)(OCBA)"))
+:other-remarks "
+")
+
+
+(:name MONOTONE2
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA CL(O(OBA)) LAMBDA F(OBA(OBA)).FORALL R(OBA) [CL(O(OBA)) R(OBA) IMPLIES CL(O(OBA)).F(OBA(OBA)) R(OBA)] AND FORALL R(OBA) FORALL S(OBA).CL(O(OBA)) R(OBA) AND CL(O(OBA)) S(OBA) AND R(OBA) SUBRELN2(O(OBA)(OBA)) S(OBA) IMPLIES F(OBA(OBA)) R(OBA) SUBRELN2(O(OBA)(OBA)) F(OBA(OBA)) S(OBA)"
+:needed-objects   (SUBRELN2)
+:mhelp "Monotone function on a class of binary relations"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B")) (TYPE "O(OBA(OBA))(O(OBA))"))
+:other-remarks "
+")
+
+
+(:name MONOTONE3
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA CL(O(OCBA)) LAMBDA F(OCBA(OCBA)).FORALL R(OCBA) [CL(O(OCBA)) R(OCBA) IMPLIES CL(O(OCBA)).F(OCBA(OCBA)) R(OCBA)] AND FORALL R(OCBA) FORALL S(OCBA).CL(O(OCBA)) R(OCBA) AND CL(O(OCBA)) S(OCBA) AND R(OCBA) SUBRELN3(O(OCBA)(OCBA)) S(OCBA) IMPLIES F(OCBA(OCBA)) R(OCBA) SUBRELN3(O(OCBA)(OCBA)) F(OCBA(OCBA)) S(OCBA)"
+:needed-objects   (SUBRELN3)
+:mhelp "Monotone function on a class of tertiary relations"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A" "B" "C")) (TYPE "O(OCBA(OCBA))(O(OCBA))"))
+:other-remarks "
+")
+
+
+(:name MONOTONE1
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA CL(O(OA)) LAMBDA F(OA(OA)).FORALL R(OA) [CL(O(OA)) R(OA) IMPLIES CL(O(OA)).F(OA(OA)) R(OA)] AND FORALL R(OA) FORALL S(OA).CL(O(OA)) R(OA) AND CL(O(OA)) S(OA) AND R(OA) SUBSET(O(OA)(OA)) S(OA) IMPLIES F(OA(OA)) R(OA) SUBSET(O(OA)(OA)) F(OA(OA)) S(OA)"
+:needed-objects   NIL
+:mhelp "Monotone function of a class of sets"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(OA(OA))(O(OA))"))
+:other-remarks "
+")
+
+
+(:name -CLOSED
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA k(AA) LAMBDA u(OA) MAPS(O(OA)(OA)(AA)) k(AA) u(OA) u(OA)"
+:needed-objects   (MAPS)
+:mhelp "[k -closed u] means that the set u is closed under k."
+:other-attributes ((PRINTNOTYPE T) (INFIX 9) (TYPELIST ("A")) (TYPE "O(OA)(AA)"))
+:other-remarks "
+")
+
+
+(:name -CLOSED2
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA k(AAA) LAMBDA u(OA) MAPS2(O(OA)(OA)(OA)(AAA)) k(AAA) u(OA) u(OA) u(OA)"
+:needed-objects   (MAPS2)
+:mhelp "[k -closed2 u] means that the set u is closed under the binary function k."
+:other-attributes ((PRINTNOTYPE T) (INFIX 9) (TYPELIST ("A")) (TYPE "O(OA)(AAA)"))
+:other-remarks "
+")
+
+
+(:name -OPEN
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA T(O(OA)) LAMBDA P(OA) T(O(OA)) P(OA)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (INFIX 12) (TYPE "(O(OA))(O(OA))"))
+:other-remarks "
+")
+
+
+(:name ADD1
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA p(OA) LAMBDA x(A) LAMBDA t(A).p(OA) t(A) OR t(A) =(OAA) x(A)"
+:needed-objects   NIL
+:mhelp "Operator which adds one element to a set"
+:other-attributes ((FACE +) (PRINTNOTYPE T) (INFIX 12) (TYPELIST ("A")) (TYPE "OAA(OA)"))
+:other-remarks "
+")
+
+
+(:name ADDPAIR
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA k(OBA) LAMBDA x(A) LAMBDA y(B) LAMBDA u(A) LAMBDA v(B).k(OBA) u(A) v(B) OR u(A) =(OAA) x(A) AND v(B) =(OBB) y(B)"
+:needed-objects   NIL
+:mhelp "[ADDPAIR k x y] is the result of adding
+the ordered pair <x,y> to the set k of ordered pairs."
+:other-attributes ((FACE +) (PRINTNOTYPE T) (TYPELIST ("A" "B")) (TYPE "OBABA(OBA)"))
+:other-remarks "
+")
+
+
+(:name APR1
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA h(BAA) LAMBDA p(A(AAA)) h(BAA) [LEFT1(A(A(AAA))) p(A(AAA))].RIGHT1(A(A(AAA))) p(A(AAA))"
+:needed-objects   (LEFT1 RIGHT1)
+:mhelp "[APR1 h p] is the result of Applying h to the PaiR p"
+:other-attributes ((FACE |'|) (PRINTNOTYPE T) (INFIX 12) (TYPELIST ("A" "B")) (TYPE "B(A(AAA))(BAA)"))
+:other-remarks "
+")
+
+
+(:name ASSOCIATIVE
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA P(AAA) FORALL x(A) FORALL y(A) FORALL z(A).P(AAA) [P(AAA) x(A) y(A)] z(A) =(OAA) P(AAA) x(A).P(AAA) y(A) z(A)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(AAA)"))
+:other-remarks "
+")
+
+
+(:name COMPOSE
+:type ABBR
+:context TPS-THEOREMS
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(AB) LAMBDA g(BG) LAMBDA x(G) f(AB).g(BG) x(G)"
+:needed-objects   NIL
+:mhelp "Composition of functions"
+:other-attributes ((PRINTNOTYPE T) (INFIX 12) (TYPELIST ("A" "B" "G")) (TYPE "AG(BG)(AB)"))
+:other-remarks "
+")
+
+
+(:name DDEDEKIND-CUT
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA W(OBB) LAMBDA C(OB).EXISTS q(B) C(OB) q(B) AND EXISTS r(B) [~C(OB) r(B)] AND FORALL q(B) FORALL r(B).C(OB) r(B) AND W(OBB) q(B) r(B) IMPLIES C(OB) q(B)"
+:needed-objects   NIL
+:mhelp "WRT a relation W(OBB) (thought of as an ordering), C(OB) is a
+Dedekind cut if it is nonempty, not full, and downward closed."
+:other-attributes ((FACE D E D E K I N D - C U T) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPELIST ("B")) (TYPE "O(OB)(OBB)"))
+:other-remarks "
+")
+
+
+(:name EMPTY
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA s(OA) FORALL x(A).~s(OA) x(A)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(OA)"))
+:other-remarks "
+")
+
+
+(:name ENDLESS
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA r(OAA).FORALL x(A) EXISTS w(A) r(OAA) x(A) w(A) AND IRREFLEXIVE(O(OAA)) r(OAA) AND TRANSITIVE(O(OAA)) r(OAA)"
+:needed-objects   (IRREFLEXIVE TRANSITIVE)
+:mhelp "A set is infinite if there is an ENDLESS relation on it"
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(OAA)"))
+:other-remarks "
+")
+
+
+(:name EQUIV-CLASSES-OF
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA r(OAA) LAMBDA p(OA) EXISTS x(A).p(OA) EQUIVS(O(OA)(OA)) r(OAA) x(A)"
+:needed-objects   NIL
+:mhelp "EQUIV-CLASSES-OF r p means that p is one 
+ of the equvalence classes of r (if r is an equivalence relation"
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(OA)(OAA)"))
+:other-remarks "
+")
+
+
+(:name EQUIV-REL-ON
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA r(OAA) LAMBDA s(OA).r(OAA) REFLEXIVE-ON(O(OA)(OAA)) s(OA) AND SYMMETRIC(O(OAA)) r(OAA) AND TRANSITIVE(O(OAA)) r(OAA)"
+:needed-objects   (REFLEXIVE-ON SYMMETRIC TRANSITIVE)
+:mhelp "r EQUIV-REL-ON s means that r is an equivalence relation
+ on the set s"
+:other-attributes ((PRINTNOTYPE T) (INFIX 9) (TYPELIST ("A")) (TYPE "O(OA)(OAA)"))
+:other-remarks "
+")
+
+
+(:name FINITE1
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA p(OA) FORALL w(O(OA)).w(O(OA)) [LAMBDA x(A) FALSEHOOD] AND FORALL r(OA) FORALL x(A) [w(O(OA)) r(OA) IMPLIES w(O(OA)).r(OA) ADD1(OAA(OA)) x(A)] IMPLIES w(O(OA)) p(OA)"
+:needed-objects   (ADD1)
+:mhelp "An elegant definition of finiteness"
+:other-attributes ((FACE FINITE) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(OA)"))
+:other-remarks "
+")
+
+
+(:name FINITE1+
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA p(OA) FORALL w(O(OA)).FORALL x(A) w(O(OA)) [UNITSET(OAA) x(A)] AND FORALL r(OA) FORALL x(A) [w(O(OA)) r(OA) IMPLIES w(O(OA)).r(OA) ADD1(OAA(OA)) x(A)] IMPLIES w(O(OA)) p(OA)"
+:needed-objects   (ADD1)
+:mhelp "FINITE1+ p means p is finite but nonempty."
+:other-attributes ((FACE FINITE+) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(OA)"))
+:other-remarks "
+")
+
+
+(:name FINITE1B
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL F(BB).INJECTIVE(O(BB)) F(BB) IMPLIES SURJECTIVE(O(BB)) F(BB)"
+:needed-objects   (INJECTIVE SURJECTIVE)
+:mhelp "Was called FINITE1 in TPS2, where B was a type variable"
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPE "O"))
+:other-remarks "
+")
+
+
+(:name FINITE1C
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL F(CC).INJECTIVE(O(CC)) F(CC) IMPLIES SURJECTIVE(O(CC)) F(CC)"
+:needed-objects   (INJECTIVE SURJECTIVE)
+:mhelp "Was called FINITE1 in TPS2, where C was a type variable"
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPE "O"))
+:other-remarks "
+")
+
+
+(:name GROUP5
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA P(AAA) LAMBDA E(A) LAMBDA J(AA).ASSOCIATIVE(O(AAA)) P(AAA) AND FORALL x(A) [P(AAA) E(A) x(A) =(OAA) x(A)] AND FORALL y(A).P(AAA) [J(AA) y(A)] y(A) =(OAA) E(A)"
+:needed-objects   (ASSOCIATIVE)
+:mhelp "[GROUP5 P E J] means that P is a group operation 
+with E as identity and J as inverse"
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(AA)A(AAA)"))
+:other-remarks "
+")
+
+
+(:name HOM
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA k(AB) LAMBDA r(OB) LAMBDA f(BB) LAMBDA s(OA) LAMBDA g(AA).f(BB) -CLOSED(O(OB)(BB)) r(OB) AND g(AA) -CLOSED(O(OA)(AA)) s(OA) AND MAPS(O(OA)(OB)(AB)) k(AB) r(OB) s(OA) AND FORALL x(B).r(OB) x(B) IMPLIES k(AB) [f(BB) x(B)] =(OAA) g(AA).k(AB) x(B)"
+:needed-objects   (-CLOSED MAPS)
+:mhelp "[hom k r f s g] means that k is a homomorphism from <r,f> to <s,g>, where f is an operator on r and g is an operator on s."
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A" "B")) (TYPE "O(AA)(OA)(BB)(OB)(AB)"))
+:other-remarks "
+")
+
+
+(:name HOM2
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA k(AB) LAMBDA r(OB) LAMBDA f(BBB) LAMBDA s(OA) LAMBDA g(AAA).f(BBB) -CLOSED2(O(OB)(BBB)) r(OB) AND g(AAA) -CLOSED2(O(OA)(AAA)) s(OA) AND MAPS(O(OA)(OB)(AB)) k(AB) r(OB) s(OA) AND FORALL x(B) FORALL y(B).r(OB) x(B) AND r(OB) y(B) IMPLIES k(AB) [f(BBB) x(B) y(B)] =(OAA) g(AAA) [k(AB) x(B)].k(AB) y(B)"
+:needed-objects   (-CLOSED2 MAPS)
+:mhelp "[hom2 k r f s g] means that k is a homomorphism from <r,f> to <s,g>, where f is a binary operator on r and g is a binary operator on s."
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A" "B")) (TYPE "O(AAA)(OA)(BBB)(OB)(AB)"))
+:other-remarks "
+")
+
+
+(:name HOMOM2
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA k(AB) LAMBDA f(BBB) LAMBDA g(AAA) FORALL x(B) FORALL y(B).k(AB) [f(BBB) x(B) y(B)] =(OAA) g(AAA) [k(AB) x(B)].k(AB) y(B)"
+:needed-objects   NIL
+:mhelp "[homom2 k f g] means that k is a homomorphism from things of type B to things of type A, where f and g are binary operators."
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A" "B")) (TYPE "O(AAA)(BBB)(AB)"))
+:other-remarks "
+")
+
+
+(:name IN
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(A) LAMBDA p(OA) p(OA) x(A)"
+:needed-objects   NIL
+:mhelp "membership relation"
+:other-attributes ((FACE EPSILON) (FO-SINGLE-SYMBOL EPSILON) (PRINTNOTYPE T) (INFIX 10) (TYPELIST ("A")) (TYPE "O(OA)A"))
+:other-remarks "
+")
+
+
+(:name IND
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL p(OI).p(OI) 0(I) AND FORALL x(I) [p(OI) x(I) IMPLIES p(OI).S(II) x(I)] IMPLIES FORALL x(I) p(OI) x(I)"
+:needed-objects   NIL
+:mhelp "Induction axiom"
+:other-attributes ((PRINTNOTYPE T) (TYPE "O"))
+:other-remarks "
+")
+
+
+(:name INJECTIVE
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(AB) FORALL x(B) FORALL y(B).f(AB) x(B) =(OAA) f(AB) y(B) IMPLIES x(B) =(OBB) y(B)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A" "B")) (TYPE "O(AB)"))
+:other-remarks "
+")
+
+
+(:name INREL1
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA p(A(AAA)) LAMBDA r(OAA) r(OAA) [LEFT1(A(A(AAA))) p(A(AAA))].RIGHT1(A(A(AAA))) p(A(AAA))"
+:needed-objects   (LEFT1 RIGHT1)
+:mhelp "INREL1 p r means that the ordered pair p 
+(with components of the same type) is in the binary relation r"
+:other-attributes ((FACE EPSILON) (FO-SINGLE-SYMBOL EPSILON) (PRINTNOTYPE T) (INFIX 10) (TYPELIST ("A")) (TYPE "O(OAA)(A(AAA))"))
+:other-remarks "
+")
+
+
+(:name IRREFLEXIVE
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA R(OAA) FORALL x(A).~R(OAA) x(A) x(A)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(OAA)"))
+:other-remarks "
+")
+
+
+(:name ISPAIR1
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA p(A(AAA)).p(A(AAA)) =(O(A(AAA))(A(AAA))) LEFT1(A(A(AAA))) p(A(AAA)) PAIR1(A(AAA)AA) RIGHT1(A(A(AAA))) p(A(AAA))"
+:needed-objects   (PAIR1 LEFT1 RIGHT1)
+:mhelp "[IsPair1] means that p is an ordered pair."
+:other-attributes ((FACE |IsPair|) (PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(A(AAA))"))
+:other-remarks "
+")
+
+
+(:name ITERATE
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(AA) LAMBDA g(AA) FORALL p(O(AA)).p(O(AA)) [LAMBDA u(A) u(A)] AND FORALL j(AA) [p(O(AA)) j(AA) IMPLIES p(O(AA)).f(AA) COMPOSE(AA(AA)(AA)) j(AA)] IMPLIES p(O(AA)) g(AA)"
+:needed-objects   (COMPOSE)
+:mhelp "[ITERATE f g] means that g can be obtained by composing f with itself zero or more times"
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(AA)(AA)"))
+:other-remarks "
+")
+
+
+(:name ITERATE+
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(AA) LAMBDA g(AA) FORALL p(O(AA)).p(O(AA)) f(AA) AND FORALL j(AA) [p(O(AA)) j(AA) IMPLIES p(O(AA)).f(AA) COMPOSE(AA(AA)(AA)) j(AA)] IMPLIES p(O(AA)) g(AA)"
+:needed-objects   (COMPOSE)
+:mhelp "[ITERATE+ f g] means that g is a composition of one or more copies of f"
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(AA)(AA)"))
+:other-remarks "
+")
+
+
+(:name LEFT1
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA p(A(AAA)) p(A(AAA)).LAMBDA x(A) LAMBDA y(A) x(A)"
+:needed-objects   NIL
+:mhelp "Left component of an ordered pair of objects of the same type"
+:other-attributes ((FACE LEFT) (PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "A(A(AAA))"))
+:other-remarks "
+")
+
+
+(:name MAPS
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA k(AB) LAMBDA u(OB) LAMBDA v(OA) FORALL x(B).u(OB) x(B) IMPLIES v(OA).k(AB) x(B)"
+:needed-objects   NIL
+:mhelp "[maps k u v] means that the function k maps the set u into the set v."
+:other-attributes ((TYPELIST ("A" "B")) (TYPE "O(OA)(OB)(AB)"))
+:other-remarks "
+")
+
+
+(:name MAPS2
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA k(ABG) LAMBDA u(OG) LAMBDA v(OB) LAMBDA z(OA) FORALL x(G) FORALL y(B).u(OG) x(G) AND v(OB) y(B) IMPLIES z(OA).k(ABG) x(G) y(B)"
+:needed-objects   NIL
+:mhelp "[maps2 k u v z] means that the binary function k maps uXv into z."
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A" "B" "G")) (TYPE "O(OA)(OB)(OG)(ABG)"))
+:other-remarks "
+")
+
+
+(:name NULLSET
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(A) FALSEHOOD"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "OA"))
+:other-remarks "
+")
+
+
+(:name PAIR1
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(A) LAMBDA y(A) LAMBDA g(AAA) g(AAA) x(A) y(A)"
+:needed-objects   NIL
+:mhelp "Ordered pair of objects of the same type"
+:other-attributes ((FACE PAIR) (PRINTNOTYPE T) (INFIX 12) (TYPELIST ("A")) (TYPE "A(AAA)AA"))
+:other-remarks "
+")
+
+
+(:name PAIRUNION
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA AA(OAA) LAMBDA BB(OAA) LAMBDA xx(A) LAMBDA yy(A).AA(OAA) xx(A) yy(A) OR BB(OAA) xx(A) yy(A)"
+:needed-objects   NIL
+:mhelp "union of a set of pairs"
+:other-attributes ((FACE UNION) (INFIX 12) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "OAA(OAA)(OAA)"))
+:other-remarks "
+")
+
+
+(:name PARTITIONS
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA p(O(OA)) LAMBDA s(OA).FORALL a(OA) [p(O(OA)) a(OA) IMPLIES EXISTS x(A) a(OA) x(A)] AND s(OA) EQUIVS(O(OA)(OA)) SETUNION(OA(O(OA))) p(O(OA)) AND FORALL b(OA) FORALL c(OA).p(O(OA)) b(OA) AND p(O(OA)) c(OA) AND EXISTS x(A) [b(OA) x(A) AND c(OA) x(A)] IMPLIES b(OA) =(O(OA)(OA)) c(OA)"
+:needed-objects   NIL
+:mhelp "p PARTITIONS s means p is a partition of s"
+:other-attributes ((PRINTNOTYPE T) (INFIX 9) (TYPELIST ("A")) (TYPE "O(OA)(O(OA))"))
+:other-remarks "
+")
+
+
+(:name PRODUCT
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA p(OA) LAMBDA q(OB) LAMBDA x(A) LAMBDA y(B).p(OA) x(A) AND q(OB) y(B)"
+:needed-objects   NIL
+:mhelp "Cartesian product of sets"
+:other-attributes ((FACE X) (PRINTNOTYPE T) (INFIX 12) (TYPELIST ("A" "B")) (TYPE "OBA(OB)(OA)"))
+:other-remarks "
+")
+
+
+(:name PROPERSUBSET
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA P(OA) LAMBDA R(OA).P(OA) SUBSET(O(OA)(OA)) R(OA) AND EXISTS x(A).~P(OA) x(A) AND R(OA) x(A)"
+:needed-objects   NIL
+:mhelp "Proper subset"
+:other-attributes ((FACE PROPERSUBSET) (FO-SINGLE-SYMBOL PROPERSUBSET) (PRINTNOTYPE T) (INFIX 8) (TYPELIST ("A")) (TYPE "O(OA)(OA)"))
+:other-remarks "
+")
+
+
+(:name RANGE
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(AB) LAMBDA y(A) EXISTS x(B).f(AB) x(B) =(OAA) y(A)"
+:needed-objects   NIL
+:mhelp "the range of the function"
+:other-attributes ((TYPELIST ("A" "B")) (TYPE "OA(AB)"))
+:other-remarks "
+")
+
+
+(:name REFLEXIVE-ON
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA r(OAA) LAMBDA s(OA) FORALL x(A).s(OA) x(A) IMPLIES r(OAA) x(A) x(A)"
+:needed-objects   NIL
+:mhelp "r REFLEXIVE-ON s means the relation r is reflexive on the set s"
+:other-attributes ((PRINTNOTYPE T) (INFIX 9) (TYPELIST ("A")) (TYPE "O(OA)(OAA)"))
+:other-remarks "
+")
+
+
+(:name REL-PROP-CLOSURE
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA h(O(OBA)) LAMBDA r(OBA) LAMBDA x(A) LAMBDA y(B) FORALL p(OBA).r(OBA) SUBRELATION(O(OBA)(OBA)) p(OBA) AND h(O(OBA)) p(OBA) IMPLIES p(OBA) x(A) y(B)"
+:needed-objects   (SUBRELATION)
+:mhelp "The REL-PROP-CLOSURE of a relation r 
+under a property h is the intersection of all relations p which
+include r and have the property h."
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A" "B")) (TYPE "OBA(OBA)(O(OBA))"))
+:other-remarks "
+")
+
+
+(:name RIGHT1
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA p(A(AAA)) p(A(AAA)).LAMBDA x(A) LAMBDA y(A) y(A)"
+:needed-objects   NIL
+:mhelp "Right component of an ordered pair of objects of the same type"
+:other-attributes ((FACE RIGHT) (PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "A(A(AAA))"))
+:other-remarks "
+")
+
+
+(:name SETDIFF
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA u(OA) LAMBDA v(OA) LAMBDA x(A).u(OA) x(A) AND ~v(OA) x(A)"
+:needed-objects   NIL
+:mhelp "set difference"
+:other-attributes ((FACE -) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (INFIX 8) (TYPELIST ("A")) (TYPE "OA(OA)(OA)"))
+:other-remarks "
+")
+
+
+(:name SETPAIRSINTERSECT
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA s(O(OBA)) LAMBDA x(A) LAMBDA y(B) FORALL p(OBA).s(O(OBA)) p(OBA) IMPLIES p(OBA) x(A) y(B)"
+:needed-objects   NIL
+:mhelp "Intersection of a set of binary relations"
+:other-attributes ((FACE SETINTERSECT) (FO-SINGLE-SYMBOL ??) (PRINTNOTYPE T) (TYPELIST ("A" "B")) (TYPE "OBA(O(OBA))"))
+:other-remarks "
+")
+
+
+(:name SIGMA1A
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA p(OA) EXISTS y(A).p(OA) y(A) AND FORALL z(A).p(OA) z(A) IMPLIES y(A) =(OAA) z(A)"
+:needed-objects   NIL
+:mhelp "Another predicate asserting that a
+set is a unit set. Related to SIGMA1. See 5306 in TTTP."
+:other-attributes ((FACE CAPSIGMA SUP1 SUP1) (PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(OA)"))
+:other-remarks "
+")
+
+
+(:name SUBRELATION
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA p(OBA) LAMBDA r(OBA) FORALL x(A) FORALL y(B).p(OBA) x(A) y(B) IMPLIES r(OBA) x(A) y(B)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((FACE SUBSET) (PRINTNOTYPE T) (INFIX 8) (TYPELIST ("A" "B")) (TYPE "O(OBA)(OBA)"))
+:other-remarks "
+")
+
+
+(:name SUBTRACTPAIR
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA k(OAB) LAMBDA x(B) LAMBDA y(A) LAMBDA u(B) LAMBDA v(A).k(OAB) u(B) v(A) AND ~.u(B) =(OBB) x(B) AND v(A) =(OAA) y(A)"
+:needed-objects   NIL
+:mhelp "[SUBTRACTPAIR k x y] is the result of deleting 
+the ordered pair <x,y> from the set k of ordered pairs."
+:other-attributes ((FACE -) (PRINTNOTYPE T) (TYPELIST ("A" "B")) (TYPE "OABAB(OAB)"))
+:other-remarks "
+")
+
+
+(:name SURJECTION
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA f(AB) LAMBDA r(OB) LAMBDA s(OA) FORALL y(A).s(OA) y(A) IMPLIES EXISTS x(B).r(OB) x(B) AND y(A) =(OAA) f(AB) x(B)"
+:needed-objects   NIL
+:mhelp "SURJECTION f r s means that f is a surjection of r onto s;
+i.e., f maps r onto s"
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPELIST ("A" "B")) (TYPE "O(OA)(OB)(AB)"))
+:other-remarks "
+")
+
+
+(:name TC2
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA r(OAA) LAMBDA x(A) LAMBDA y(A) FORALL q(OA).FORALL w(A) [r(OAA) x(A) w(A) IMPLIES q(OA) w(A)] AND FORALL u(A) FORALL v(A) [q(OA) u(A) AND r(OAA) u(A) v(A) IMPLIES q(OA) v(A)] IMPLIES q(OA) y(A)"
+:needed-objects   NIL
+:mhelp "Alternative definition of transitive closure of a relation"
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "OAA(OAA)"))
+:other-remarks "
+")
+
+
+(:name TOPSPACE
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA T(O(OA)).FORALL S(O(OA)) [S(O(OA)) SUBSET(O(O(OA))(O(OA))) T(O(OA)) IMPLIES T(O(OA)).SETUNION(OA(O(OA))) S(O(OA))] AND FORALL P(OA) FORALL Q(OA).T(O(OA)) P(OA) AND T(O(OA)) Q(OA) IMPLIES T(O(OA)).P(OA) INTERSECT(OA(OA)(OA)) Q(OA)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(O(OA))"))
+:other-remarks "
+")
+
+
+(:name TRANSITIVE-CLOSURE
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA r(OAA) LAMBDA x(A) LAMBDA y(A) FORALL p(OAA).r(OAA) SUBRELATION(O(OAA)(OAA)) p(OAA) AND TRANSITIVE(O(OAA)) p(OAA) IMPLIES p(OAA) x(A) y(A)"
+:needed-objects   (SUBRELATION TRANSITIVE)
+:mhelp ""
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "OAA(OAA)"))
+:other-remarks "
+")
+
+
+(:name TRCL
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA r1(OAA) LAMBDA x1(A) LAMBDA y1(A) FORALL p1(OAA).r1(OAA) SUBRELATION(O(OAA)(OAA)) p1(OAA) AND TRANSITIVE(O(OAA)) p1(OAA) IMPLIES p1(OAA) x1(A) y1(A)"
+:needed-objects   (SUBRELATION TRANSITIVE)
+:mhelp ""
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "OAA(OAA)"))
+:other-remarks "
+")
+
+
+(:name UUNITSET
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(A) LAMBDA y(A).y(A) =(OAA) x(A)"
+:needed-objects   NIL
+:mhelp "Unitset, defined in the alternative way"
+:other-attributes ((FACE SCRIPTU) (PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "OAA"))
+:other-remarks "
+")
+
+
+(:name PEANO1
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL u(I) [~.S(II) u(I) =(OII) 0(I)] AND FORALL v(I) FORALL w(I) [S(II) v(I) =(OII) S(II) w(I) IMPLIES v(I) =(OII) w(I)] AND IND"
+:needed-objects   (IND)
+:mhelp "Peano's Postulates when we assume
+all individuals are natural numbers."
+:other-attributes ((FACE PEANO) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPE "O"))
+:other-remarks "
+")
+
+
+(:name EVEN1
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA n(I) FORALL p(OI).p(OI) 0(I) AND FORALL x(I) [p(OI) x(I) IMPLIES p(OI).S(II).S(II) x(I)] IMPLIES p(OI) n(I)"
+:needed-objects   NIL
+:mhelp "Definition of even when we think of natural numbers
+as having type iota"
+:other-attributes ((FACE EVEN) (FO-SINGLE-SYMBOL T) (TYPE "OI"))
+:other-remarks "
+")
+
+
+(:name ODD1
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA n(I).~EVEN1(OI) n(I)"
+:needed-objects   (EVEN1)
+:mhelp "Definition of odd when we think of natural numbers
+as having type iota"
+:other-attributes ((FACE ODD) (FO-SINGLE-SYMBOL T) (TYPE "OI"))
+:other-remarks "
+")
+
+
+(:name CONNECTED
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA OPEN(O(OA)) LAMBDA X(OA).~SEPARATED(O(OA)(O(OA))) OPEN(O(OA)) X(OA)"
+:needed-objects   (SEPARATED)
+:mhelp "connected subset of a topological space"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(OA)(O(OA))"))
+:other-remarks "
+")
+
+
+(:name DISJOINT
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X(OA) LAMBDA Y(OA) FORALL z(A).~X(OA) z(A) OR ~Y(OA) z(A)"
+:needed-objects   NIL
+:mhelp "disjoint sets"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(OA)(OA)"))
+:other-remarks "
+")
+
+
+(:name SEPARATED
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA OPEN(O(OA)) LAMBDA X(OA) EXISTS A(OA) EXISTS B(OA).OPEN(O(OA)) A(OA) AND OPEN(O(OA)) B(OA) AND A(OA) SUBSET(O(OA)(OA)) X(OA) AND B(OA) SUBSET(O(OA)(OA)) X(OA) AND EXISTS z(A) A(OA) z(A) AND EXISTS z(A) B(OA) z(A) AND FORALL z(A).~A(OA) z(A) OR ~B(OA) z(A)"
+:needed-objects   NIL
+:mhelp "separated topological space"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(OA)(O(OA))"))
+:other-remarks "
+")
+
+
+(:name SEPARATION
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA OPEN(O(OA)) LAMBDA X(OA) LAMBDA A(OA) LAMBDA B(OA).OPEN(O(OA)) A(OA) AND OPEN(O(OA)) B(OA) AND DISJOINT(O(OA)(OA)) A(OA) B(OA) AND X(OA) =(O(OA)(OA)) A(OA) UNION(OA(OA)(OA)) B(OA)"
+:needed-objects   (DISJOINT)
+:mhelp "topological separation"
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(OA)(OA)(OA)(O(OA))"))
+:other-remarks "
+")
+
+
+(:name TOPOLOGY-X
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X(O(OA)).X(O(OA)) [LAMBDA y(A) TRUTH] AND FORALL K(O(OA)) [K(O(OA)) SUBSET(O(O(OA))(O(OA))) X(O(OA)) IMPLIES X(O(OA)).SETUNION(OA(O(OA))) K(O(OA))] AND FORALL Y(OA) FORALL Z(OA).X(O(OA)) Y(OA) AND X(O(OA)) Z(OA) IMPLIES X(O(OA)).Y(OA) INTERSECT(OA(OA)(OA)) Z(OA)"
+:needed-objects   NIL
+:mhelp "A definition for topologies which assumes extensionality."
+:other-attributes ((FO-SINGLE-SYMBOL T) (TYPELIST ("A")) (TYPE "O(O(OA))"))
+:other-remarks "
+")
+
+
+(:name EQUIVS1
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA P(OA) LAMBDA R(OA) FORALL x(A).P(OA) x(A) =(OOO) R(OA) x(A)"
+:needed-objects   NIL
+:mhelp "equivs without EQUIV"
+:other-attributes ((FACE EQUIV SUPS) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (INFIX 5) (TYPELIST ("A")) (TYPE "O(OA)(OA)"))
+:other-remarks "
+")
+
+
+(:name FINITE2
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(OA).~INFINITE(O(OA)) x(OA)"
+:needed-objects   (INFINITE)
+:mhelp "another defn of finiteness"
+:other-attributes ((FACE FINITE) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(OA)"))
+:other-remarks "
+")
+
+
+(:name FIXPOINT
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA g(II) LAMBDA x(I).g(II) x(I) =(OII) x(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((TYPE "OI(II)"))
+:other-remarks "
+")
+
+
+(:name INFINITE
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA x(OA) EXISTS y(OA).y(OA) SUBSET(O(OA)(OA)) x(OA) AND EXISTS z(A) [x(OA) z(A) AND ~y(OA) z(A)] AND EXISTS f(AA).INJECTIVE(O(AA)) f(AA) AND FORALL z(A).x(OA) z(A) IMPLIES y(OA).f(AA) z(A)"
+:needed-objects   (INJECTIVE)
+:mhelp "another defn of infiniteness"
+:other-attributes ((FACE INFINITE) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(OA)"))
+:other-remarks "
+")
+
+
+(:name SUBSET1
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA r(OA) LAMBDA s(OA) EXISTS t(OA).r(OA) UNION(OA(OA)(OA)) t(OA) =(O(OA)(OA)) s(OA)"
+:needed-objects   NIL
+:mhelp "another defn of subset"
+:other-attributes ((FACE SUBSET) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (INFIX 5) (TYPELIST ("A")) (TYPE "O(OA)(OA)"))
+:other-remarks "
+")
+
+
+(:name UNIQUE-FIXPOINT
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA g(II) LAMBDA x(I).FIXPOINT(OI(II)) g(II) x(I) AND FORALL z(I).FIXPOINT(OI(II)) g(II) z(I) IMPLIES x(I) =(OII) z(I)"
+:needed-objects   (FIXPOINT)
+:mhelp ""
+:other-attributes ((TYPE "OI(II)"))
+:other-remarks "
+")
+
+
+(:name TRANSITIVE1
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA R(OAA) FORALL X(A) FORALL Y(A) FORALL Z(A).R(OAA) X(A) Y(A) AND R(OAA) Y(A) Z(A) IMPLIES R(OAA) X(A) Z(A)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((TYPELIST ("A")) (TYPE "O(OAA)"))
+:other-remarks "
+")
+
+

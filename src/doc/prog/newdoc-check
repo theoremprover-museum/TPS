@@ -1,0 +1,10 @@
+		NEWDOC-CHECK
+
+Copies of new documentation which has been installed
+in the main manual but not yet checked by Andrews
+should be put into the file newdoc-check
+in the same directory. This will make it easy to see what
+was added. Everything in this file should be completely
+redundant. Its contents should be deleted as soon as
+they have been checked.
+--------------------------------------------------------------

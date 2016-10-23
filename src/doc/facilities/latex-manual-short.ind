@@ -1,0 +1,1936 @@
+\begin{theindex}
+
+  \item <=, 127
+  \item =, 131
+  \item ?, {\bf MExpr}, 13
+  \item ??, {\bf MExpr}, 13
+  \item \% , 128
+  \item \textasciicircum , 90, 95, 102, 112
+  \item \textasciicircum P, {\bf MExpr}, 18
+  \item \textasciicircum PN, {\bf MExpr}, 18
+  \item \textasciicircum \textasciicircum , 102
+
+  \indexspace
+
+  \item 0, 90, 95, 100, 112
+
+  \indexspace
+
+  \item A, 112
+  \item AB, 116
+  \item AB*, {\bf MExpr}, 32
+  \item AB*, {\bf Rule}, 49
+  \item AB-PLAN-TAC, {\bf Tactic}, 73
+  \item AB-SLINE-TAC, {\bf Tactic}, 73
+  \item ABBR, 117, 146
+  \item ABBREVIATIONS, {\bf MExpr}, 13
+  \item ABE, {\bf MExpr}, 32
+  \item ABE, {\bf Rule}, 49
+  \item ABNORM, 117
+  \item ABSURD, {\bf MExpr}, 32
+  \item ABSURD, {\bf Rule}, 48
+  \item ABSURD-TAC, {\bf Tactic}, 66
+  \item ABU, {\bf MExpr}, 32
+  \item ABU, {\bf Rule}, 50
+  \item ABU-TAC, {\bf Tactic}, 73
+  \item ACTIVATE-RULES, {\bf MExpr}, 35
+  \item ACTIVE-THEORY, {\bf MExpr}, 35
+  \item ADD-ALL-LIT, 99
+  \item ADD-ALL-OB, 99
+  \item ADD-BESTMODE, 141
+  \item ADD-CONN, 86, 94, 96
+  \item ADD-CONN*, 86, 94
+  \item ADD-DPAIR, 102
+  \item ADD-DPAIRS-TO-NODE, 102
+  \item ADD-DPAIRS-TO-UTREE, 102
+  \item ADD-EXT-LEMMAS, 86
+  \item ADD-FLAG, 105
+  \item ADD-FLAG*, 105
+  \item ADD-FLAG-TO-MODE, 154
+  \item ADD-FUNCTION, 105
+  \item ADD-GOODMODES, 138
+  \item ADD-HYPS, {\bf MExpr}, 28
+  \item ADD-KEYWORD, 141
+  \item ADD-STUDENTS, 287
+  \item ADD-SUBDIRECTORIES, {\bf Flag}, 274
+  \item ADD-SUBJECTS, 105
+  \item ADD-TRUTH, {\bf Flag}, 194
+  \item ADDED-CONN, 289
+  \item ADDED-CONN-ENABLED, {\bf Flag}, 205
+  \item ADVICE, {\bf MExpr}, 27
+  \item ADVICE-ASKED, 290
+  \item ADVICE-ASKED-ENABLED, {\bf Flag}, 266
+  \item ADVICE-FILE, {\bf Flag}, 266
+  \item ALIAS, {\bf MExpr}, 15
+  \item ALIASES, 287
+  \item ALL+, 58
+  \item ALL+TAC, {\bf Tactic}, 61
+  \item ALL-, 58
+  \item ALL-TAC, {\bf Tactic}, 61
+  \item ALLOW-NONLEAF-CONNS, {\bf Flag}, 250
+  \item ALLSCOPEFLAG, {\bf Flag}, 184
+  \item ALPHA-LOWER-FLAG, {\bf Flag}, 180
+  \item ALTER-GRADE, 286
+  \item AND, 121, 130
+  \item AND+, 59
+  \item AND+TAC, {\bf Tactic}, 61
+  \item AND-, 59
+  \item AND-TAC, {\bf Tactic}, 61
+  \item APP*-REWRITE-DEPTH, {\bf Flag}, 254
+  \item APPEND-WFF, {\bf MExpr}, 20
+  \item APPEND-WFFS, {\bf MExpr}, 20
+  \item APPLY-MATCH, {\bf Flag}, 240
+  \item APPLY-SUBST, 100
+  \item APPLY-SUBSTS, 86
+  \item ARE-WE-USING, {\bf MExpr}, 29
+  \item ARR, 115
+  \item ARR*, 115
+  \item ARR1, 116
+  \item ARR1*, 116
+  \item ASRB, 112
+  \item ASRB*, 113
+  \item ASSEMBLE-FILE, {\bf MExpr}, 41
+  \item ASSEMBLE-MOD, {\bf MExpr}, 41
+  \item ASSERT, {\bf MExpr}, 30
+  \item ASSERT-LEMMAS, {\bf Flag}, 200
+  \item ASSERT-RRULES, {\bf Flag}, 183
+  \item ASSERT2, {\bf MExpr}, 30
+  \item ASSIGN-VAR, 108
+  \item ASSL, 112
+  \item ASSL*, 114
+  \item ASSOC-LEFT, {\bf MExpr}, 30
+  \item ASSOC-LEFT, {\bf Rule}, 44
+  \item ASSR, 112
+  \item ASSR*, 114
+  \item ATOMVALFLAG, {\bf Flag}, 184
+  \item AUTO-GENERATE-HYPS, {\bf Flag}, 183
+  \item AUTO-KEYWORDS, {\bf Flag}, 276
+  \item AUTO-LIB-DIR, {\bf Flag}, 276
+  \item AUTO-SUGGEST, {\bf MExpr}, 22
+  \item AUTO-TAC, {\bf Tactic}, 61
+
+  \indexspace
+
+  \item BACKCHAIN-LEMMA-TAC, {\bf Tactic}, 66
+  \item BACKUP-LIB-DIR, {\bf Flag}, 275
+  \item BAD-VAR-CONNECTED-PRUNE, {\bf Flag}, 259
+  \item BASE-TYPE, {\bf Flag}, 257
+  \item BASIC-PROP*-TAC, {\bf Tactic}, 66
+  \item BASIC-PROP-TAC, {\bf Tactic}, 67
+  \item BEGIN-PRFW, {\bf MExpr}, 10
+  \item BETA*, {\bf MExpr}, 34
+  \item BETA*, {\bf Rule}, 53
+  \item BETA-ETA-SEPARATE-TAC, {\bf Tactic}, 78
+  \item BETA-ETA-TOGETHER-TAC, {\bf Tactic}, 78
+  \item BETA-ONLY-TAC, {\bf Tactic}, 78
+  \item BLANK-LINES-INSERTED, {\bf Flag}, 184
+  \item BOOK-TAC, {\bf Tactic}, 61
+  \item BREADTH-FIRST-SEARCH, 103
+  \item BREAK-AT-QUANTIFIERS, {\bf Flag}, 214
+  \item BUG-DELETE, {\bf MExpr}, 42
+  \item BUG-HELP, {\bf MExpr}, 42
+  \item BUG-LIST, {\bf MExpr}, 42
+  \item BUG-RESTORE, {\bf MExpr}, 42
+  \item BUG-SAVE, {\bf MExpr}, 42
+  \item BUILD, {\bf MExpr}, 41
+  \item BUILD-MATCH, {\bf Flag}, 272
+  \item BUILD-PROOF-HIERARCHY, {\bf MExpr}, 16
+
+  \indexspace
+
+  \item CAL-PERCENTAGE, {\bf Flag}, 268
+  \item CALCULATE-GRADE, 288
+  \item CALL, 82
+  \item CASES, {\bf MExpr}, 30
+  \item CASES, {\bf Rule}, 45
+  \item CASES-TAC, {\bf Tactic}, 67
+  \item CASES3, {\bf MExpr}, 31
+  \item CASES3, {\bf Rule}, 45
+  \item CASES4, {\bf MExpr}, 31
+  \item CASES4, {\bf Rule}, 45
+  \item CD, 151
+  \item CHANGE-BASE-TYPE, 108
+  \item CHANGE-KEYWORDS, 141
+  \item CHANGE-PROVABILITY, 139
+  \item CHANGE-SEQUENCE, 287
+  \item CHANGE-WEIGHT, 288
+  \item CHANGED-FLAGS, 153
+  \item CHARDOC, {\bf MExpr}, 14
+  \item CHARSIZE, {\bf Flag}, 185
+  \item CHECK-NEEDED-OBJECTS, 139
+  \item CHECK-STRUCTURE, {\bf MExpr}, 27
+  \item CHG-VARS, 286
+  \item CHOOSE-BRANCH, 96
+  \item CJFORM, 89, 93, 111
+  \item CLASS-DIRECTION, {\bf Flag}, 276
+  \item CLASS-DISJ-TAC, {\bf Tactic}, 67
+  \item CLASS-SCHEME, 146
+  \item CLASS-SCHEME, {\bf Flag}, 277
+  \item CLASSIFY-CLASS, 142
+  \item CLASSIFY-ITEM, 142, 151
+  \item CLAUSE-FORM, 118
+  \item CLEANUP, {\bf MExpr}, 15
+  \item CLEANUP-RULEC, {\bf Flag}, 183
+  \item CLEANUP-SAME, {\bf Flag}, 183
+  \item CLOAD, {\bf MExpr}, 37
+  \item CLOAD-MODULES, {\bf MExpr}, 37
+  \item CLOSE-MATEVPW, {\bf MExpr}, 28
+  \item CLOSE-TESTWIN, 103
+  \item CLOSE-TESTWIN, {\bf MExpr}, 23
+  \item CMRG, 113
+  \item CMRG*, 114
+  \item CMUT, 113
+  \item CMUT*, 114
+  \item CNF, 118
+  \item CNTOP, 113
+  \item COLLECT-HELP, {\bf MExpr}, 14
+  \item COMMAND, 290
+  \item COMMAND-ENABLED, {\bf Flag}, 266
+  \item COMMAND-FILE, {\bf Flag}, 266
+  \item COMMENT, 287
+  \item COMPARE-MODES, 154
+  \item COMPILE-LIST, {\bf MExpr}, 37
+  \item COMPILED-EXTENSION, {\bf Flag}, 270
+  \item COMPL, {\bf MExpr}, 37
+  \item COMPLEMENT, 128
+  \item COMPLETE-P, 86, 93, 96
+  \item COMPLETE-TRANSFORM*-TAC, {\bf Tactic}, 61
+  \item COMPLETE-TRANSFORM-TAC, {\bf Tactic}, 62
+  \item COMPLETION-OPTIONS, {\bf Flag}, 182
+  \item COMPOSE, 82
+  \item CONCEPT, 291
+  \item CONCEPT-S, 291
+  \item COND, 127
+  \item COND-PROBABILITY, 109
+  \item CONNS-ADDED, 97
+  \item CONSIDERED-CONN, 289
+  \item CONSIDERED-CONN-ENABLED, {\bf Flag}, 205
+  \item CONSTANTS, 117
+  \item CONTINUE, 103
+  \item CONTR, 58
+  \item CONTRACT-TAC, {\bf Tactic}, 62
+  \item COPY-CLASS-SCHEME, 151
+  \item COPY-LIBDIR, 137
+  \item COPY-LIBFILE, 137
+  \item COPY-LIBOBJECT, 139
+  \item COPY-MODE, 154
+  \item COUNT-LINES, {\bf MExpr}, 29
+  \item COUNTSUBS-FIRST, {\bf Flag}, 241
+  \item COURSE-NAME, {\bf Flag}, 268
+  \item CP, 151
+  \item CREATE-CLASS-SCHEME, 142
+  \item CREATE-GRADEFILE, 286
+  \item CREATE-LIB-DIR, 137
+  \item CREATE-LIB-SUBDIR, 138
+  \item CREATE-LIBCLASS, 143
+  \item CREATE-SUBPROOF, {\bf MExpr}, 21
+  \item CUT, 58
+  \item CUTFREE-TO-EDAG, 57
+  \item CW, 89, 110
+  \item CWD, 89
+  \item CWS, 89
+
+  \indexspace
+
+  \item D, 90, 95, 96, 112
+  \item DATEREC, {\bf MExpr}, 36
+  \item DB, 119
+  \item DEACTIVATE-RULES, {\bf MExpr}, 35
+  \item DEACTIVATE-THEORY, {\bf MExpr}, 35
+  \item DEASSERT-LEMMAS, {\bf MExpr}, 23
+  \item DEC, 58
+  \item DEC+TAC, {\bf Tactic}, 62
+  \item DEDUCT, {\bf MExpr}, 31
+  \item DEDUCT, {\bf Rule}, 45
+  \item DEDUCT-TAC, {\bf Tactic}, 67
+  \item DEFAULT-BUG-DIR, {\bf Flag}, 277
+  \item DEFAULT-EXPAND, {\bf Flag}, 201
+  \item DEFAULT-LIB-DIR, {\bf Flag}, 275
+  \item DEFAULT-LIBFILE-TYPE, {\bf Flag}, 275
+  \item DEFAULT-LIBINDEX-TYPE, {\bf Flag}, 275
+  \item DEFAULT-MATE, {\bf Flag}, 201
+  \item DEFAULT-MS, {\bf Flag}, 202
+  \item DEFAULT-OB, {\bf Flag}, 198
+  \item DEFAULT-PENALTY-FN, {\bf Flag}, 268
+  \item DEFAULT-TACTIC, {\bf Flag}, 245
+  \item DEFAULT-WFFEQ, {\bf Flag}, 183
+  \item DEL-DUP-CONNS, 90
+  \item DELAY-SETVARS, {\bf Flag}, 259
+  \item DELETE, 57, 106, 139
+  \item DELETE, {\bf MExpr}, 28
+  \item DELETE*, {\bf MExpr}, 28
+  \item DELETE-BESTMODE, 142
+  \item DELETE-HYPS, {\bf MExpr}, 28
+  \item DELETE-LIB-DIR, 138
+  \item DELETE-LIBFILE, 138
+  \item DELETE-RRULE, {\bf MExpr}, 35
+  \item DELETE-STUDENT, 287
+  \item DELWEAK, 110
+  \item DEPTH, {\bf MExpr}, 16
+  \item DESCR, {\bf  Theorem}, 122
+  \item DESCRIBE, 153
+  \item DESCRIBE*, 153
+  \item DESTROY, 136, 151
+  \item DISABLE-EVENTS, {\bf MExpr}, 36
+  \item DISJ-EQUIV-TAC, {\bf Tactic}, 67
+  \item DISJ-IMP, {\bf MExpr}, 31
+  \item DISJ-IMP, {\bf Rule}, 46
+  \item DISJ-IMP-L, {\bf MExpr}, 31
+  \item DISJ-IMP-L, {\bf Rule}, 46
+  \item DISJ-IMP-R, {\bf MExpr}, 31
+  \item DISJ-IMP-R, {\bf Rule}, 46
+  \item DISJ-IMP-TAC, {\bf Tactic}, 67
+  \item DISPLAY, 287
+  \item DISPLAY-TIME, {\bf MExpr}, 37
+  \item DISPLAYFILE, {\bf MExpr}, 41
+  \item DISPLAYWFF, {\bf Flag}, 185
+  \item DISSOLVE, {\bf Flag}, 250
+  \item DIST-CTR, 113
+  \item DIST-CTR*, 114
+  \item DIST-EXP, 113
+  \item DIST-EXP*, 114
+  \item DIY, {\bf MExpr}, 23
+  \item DIY-L, {\bf MExpr}, 23
+  \item DIY-L-WITH-TIMEOUT, {\bf MExpr}, 23
+  \item DIY-TAC, {\bf Tactic}, 62
+  \item DIY-WITH-TIMEOUT, {\bf MExpr}, 24
+  \item DIY2, {\bf MExpr}, 24
+  \item DIY2-INIT-TIME-LIMIT, {\bf Flag}, 202
+  \item DIY2-L, {\bf MExpr}, 24
+  \item DIY2-NUM-ITERATIONS, {\bf Flag}, 202
+  \item DIY2-TIME-INCREASE-FACTOR, {\bf Flag}, 202
+  \item DJFORM, 111
+  \item DL, 113
+  \item DNEG, 58, 113
+  \item DNEG*, 114
+  \item DNEG-IMITATION, {\bf Flag}, 241
+  \item DO-GRADES, {\bf MExpr}, 10
+  \item DONE, {\bf MExpr}, 15
+  \item DONE-EXC, 290
+  \item DONE-EXC-ENABLED, {\bf Flag}, 266
+  \item DP, 85
+  \item DP*, 85
+  \item DP=, 85
+  \item DPAIRSET, 146
+  \item DPTREE, 85
+  \item DR, 113
+  \item DROP-MIN, {\bf Flag}, 268
+  \item DUE-DATE-FLAG, {\bf Flag}, 268
+  \item DUE-DATES, 287
+  \item DUP-ALL, 85
+  \item DUP-ALLOWED, {\bf Flag}, 205
+  \item DUP-AND-IMITATE, 94
+  \item DUP-AND-PROJECT, 94
+  \item DUP-AND-SUBST-EXISTS, 94
+  \item DUP-AND-SUBST-FORALL, 94
+  \item DUP-NODE, 94
+  \item DUP-OUTER, 85
+  \item DUP-VAR, 85, 94
+  \item DUPE, 289
+  \item DUPE-ENABLED, {\bf Flag}, 205
+  \item DUPE-VAR, 289
+  \item DUPE-VAR-ENABLED, {\bf Flag}, 205
+  \item DUPLICATE-SUPPORT-TAC, {\bf Tactic}, 80
+  \item DUPLICATION-STRATEGY, {\bf Flag}, 195
+  \item DUPLICATION-STRATEGY-PFD, {\bf Flag}, 195
+  \item DUPW, 119
+  \item DW, 110
+  \item DW*, 110
+
+  \indexspace
+
+  \item ECHO, {\bf MExpr}, 27
+  \item ECONJ, {\bf MExpr}, 31
+  \item ECONJ, {\bf Rule}, 46
+  \item ECONJ*-TAC, {\bf Tactic}, 67
+  \item ECONJ-NAME, {\bf Flag}, 195
+  \item ECONJ-TAC, {\bf Tactic}, 67
+  \item ED, {\bf MExpr}, 10
+  \item EDEF, {\bf MExpr}, 34
+  \item EDEF, {\bf Rule}, 53
+  \item EDEF-TAC, {\bf Tactic}, 73
+  \item EDILL, 119
+  \item EDISJ-NAME, {\bf Flag}, 195
+  \item EDITOR, 156
+  \item EDPPWFFLAG, {\bf Flag}, 255
+  \item EDPRINTDEPTH, {\bf Flag}, 256
+  \item EDWIN-CURRENT, {\bf Flag}, 256
+  \item EDWIN-CURRENT-HEIGHT, {\bf Flag}, 256
+  \item EDWIN-CURRENT-WIDTH, {\bf Flag}, 256
+  \item EDWIN-TOP, {\bf Flag}, 256
+  \item EDWIN-TOP-HEIGHT, {\bf Flag}, 256
+  \item EDWIN-TOP-WIDTH, {\bf Flag}, 256
+  \item EDWIN-VPFORM, {\bf Flag}, 256
+  \item EDWIN-VPFORM-HEIGHT, {\bf Flag}, 256
+  \item EDWIN-VPFORM-WIDTH, {\bf Flag}, 257
+  \item EGEN, {\bf MExpr}, 33
+  \item EGEN, {\bf Rule}, 50
+  \item EGEN-TAC, {\bf Tactic}, 73
+  \item ELIM-DEFNS, {\bf Flag}, 185
+  \item ELIM-DEFNS-TAC, {\bf Tactic}, 62
+  \item ELIMINATE-ALL-RULEP-APPS, {\bf MExpr}, 26
+  \item ELIMINATE-CONJ*-RULEP-APPS, {\bf MExpr}, 27
+  \item ELIMINATE-RULEP-LINE, {\bf MExpr}, 27
+  \item EMPTY-DUP-INFO-NAME, {\bf Flag}, 195
+  \item END-PRFW, {\bf MExpr}, 10
+  \item ENEG, {\bf MExpr}, 32
+  \item ENEG, {\bf Rule}, 48
+  \item ENEG-TAC, {\bf Tactic}, 68
+  \item ENVIRONMENT, {\bf MExpr}, 13
+  \item EP, 119
+  \item EPROOF-NAME, {\bf Flag}, 195
+  \item EPROOF-UTREE, 100
+  \item EPROOFLIST, {\bf MExpr}, 24
+  \item EQFUNC, 58
+  \item EQFUNC-TAC, {\bf Tactic}, 62
+  \item EQO, 58
+  \item EQO-TAC, {\bf Tactic}, 62
+  \item EQP, 127
+  \item EQUALITY-PLAN-TAC, {\bf Tactic}, 75
+  \item EQUALITY-SLINE-TAC, {\bf Tactic}, 75
+  \item EQUIV, 127
+  \item EQUIV+, 59
+  \item EQUIV+TAC, {\bf Tactic}, 62
+  \item EQUIV-, 59
+  \item EQUIV-DISJ-TAC, {\bf Tactic}, 68
+  \item EQUIV-EQ, {\bf MExpr}, 33
+  \item EQUIV-EQ, {\bf Rule}, 51
+  \item EQUIV-EQ-CONTR, {\bf MExpr}, 33
+  \item EQUIV-EQ-CONTR, {\bf Rule}, 51
+  \item EQUIV-EQ-CONTR*, {\bf MExpr}, 33
+  \item EQUIV-EQ-CONTR*, {\bf Rule}, 51
+  \item EQUIV-EQ-CONTR-TAC, {\bf Tactic}, 78
+  \item EQUIV-EQ-EXPD, {\bf MExpr}, 33
+  \item EQUIV-EQ-EXPD, {\bf Rule}, 51
+  \item EQUIV-EQ-EXPD*, {\bf MExpr}, 33
+  \item EQUIV-EQ-EXPD*, {\bf Rule}, 51
+  \item EQUIV-EQ-EXPD-TAC, {\bf Tactic}, 78
+  \item EQUIV-IMPLICS, {\bf MExpr}, 31
+  \item EQUIV-IMPLICS, {\bf Rule}, 46
+  \item EQUIV-IMPLICS-TAC, {\bf Tactic}, 68
+  \item EQUIV-TAC, {\bf Tactic}, 62
+  \item EQUIV-WFFS, {\bf MExpr}, 34
+  \item EQUIV-WFFS, {\bf Rule}, 53
+  \item EQUIV-WFFS-PLAN-TAC, {\bf Tactic}, 77
+  \item EQUIV-WFFS-SLINE-TAC, {\bf Tactic}, 77
+  \item EQUIVS, 128
+  \item EQUIVWFFS+, 58
+  \item EQUIVWFFS+TAC, {\bf Tactic}, 62
+  \item EQUIVWFFS-, 59
+  \item EQUIVWFFS-TAC, {\bf Tactic}, 63
+  \item ERROR, 290
+  \item ERROR-ENABLED, {\bf Flag}, 266
+  \item ERROR-FILE, {\bf Flag}, 266
+  \item ETA*, {\bf MExpr}, 34
+  \item ETA*, {\bf Rule}, 53
+  \item ETA-RULE, {\bf Flag}, 241
+  \item ETAB, 117
+  \item ETAC, 117
+  \item ETAN, 117
+  \item ETAX, 117
+  \item ETD, 84, 92
+  \item ETP, 84, 92
+  \item ETPS-FILE, {\bf Flag}, 268
+  \item ETPS-GRADE, 287
+  \item ETR-AUTO-SUGGEST, {\bf MExpr}, 23
+  \item ETR-INFO, 86
+  \item ETR-NAT, 173
+  \item ETREE-NAT, 93
+  \item ETREE-NAT, {\bf MExpr}, 25
+  \item ETREE-NAT-VERBOSE, {\bf Flag}, 239
+  \item ETREES, 159
+  \item EUNIF1, 59
+  \item EUNIF1-TAC, {\bf Tactic}, 63
+  \item EUNIF2, 59
+  \item EUNIF2-TAC, {\bf Tactic}, 63
+  \item EVENT-CYCLE, {\bf Flag}, 266
+  \item EVENTS, 175
+  \item EVENTS-ENABLED, {\bf Flag}, 266
+  \item EXCLUDING-GC-TIME, {\bf Flag}, 205
+  \item EXECUTE-FILE, {\bf MExpr}, 18
+  \item EXERCISE, {\bf MExpr}, 15
+  \item EXHAUSTIVE-SEARCH, 103
+  \item EXISTS, 129
+  \item EXISTS+, 60
+  \item EXISTS+TAC, {\bf Tactic}, 63
+  \item EXISTS-, 60
+  \item EXISTS-LEMMA-TAC, {\bf Tactic}, 73
+  \item EXISTS-TAC, {\bf Tactic}, 63
+  \item EXISTS1, 129
+  \item EXISTSN, 129
+  \item EXIT, {\bf MExpr}, 15
+  \item EXP, 85
+  \item EXPAND-ALL-DERIVED-RULES, 57
+  \item EXPAND-ALL-INITS-AND-REFLS, 57
+  \item EXPAND-ETREE, 87
+  \item EXPAND-EXISTS, 94
+  \item EXPAND-FORALL, 94
+  \item EXPAND-IMITATE, 94
+  \item EXPAND-LEAVES, 99
+  \item EXPAND-PROJECT, 94
+  \item EXPAND-SUBST, 94
+  \item EXPAND=, 117
+  \item EXPAND=*, 117
+  \item EXPANSION-NAME, {\bf Flag}, 195
+  \item EXPERTFLAG, {\bf Flag}, 270
+  \item EXPLAIN, {\bf MExpr}, 17
+  \item EXPUNGE, 90
+  \item EXPUNGE-OLD, 91
+  \item EXT, {\bf  Theorem}, 122
+  \item EXT-LEIB, {\bf  Theorem}, 122
+  \item EXT-MATE, {\bf MExpr}, 11
+  \item EXT-MATE-RECOMPUTE-JFORMS, {\bf Flag}, 178
+  \item EXT-SEARCH, 169
+  \item EXT-SEARCH-LIMIT, {\bf Flag}, 221
+  \item EXT-SEQ, {\bf MExpr}, 11
+  \item EXT=, {\bf MExpr}, 33
+  \item EXT=, {\bf Rule}, 52
+  \item EXT=-PLAN-TAC, {\bf Tactic}, 76
+  \item EXT=-SLINE-TAC, {\bf Tactic}, 76
+  \item EXT=-TAC, {\bf Tactic}, 78
+  \item EXT=0, {\bf MExpr}, 34
+  \item EXT=0, {\bf Rule}, 52
+  \item EXT=0-TAC, {\bf Tactic}, 78
+  \item EXTFUNC, 59
+  \item EXTFUNC+TAC, {\bf Tactic}, 63
+  \item EXTO, 59
+  \item EXTO+TAC, {\bf Tactic}, 63
+  \item EXTRACT-TEST-INFO, {\bf MExpr}, 37
+
+  \indexspace
+
+  \item FAILTAC, 82
+  \item FALSE-, 60
+  \item FALSE-NAME, {\bf Flag}, 196
+  \item FALSE-TAC, {\bf Tactic}, 63
+  \item FALSEHOOD, 130
+  \item FB, 90, 95, 112
+  \item FETCH, 106, 137, 151
+  \item FETCH-DOWN, 143
+  \item FETCH-LIBCLASS, 143
+  \item FETCH-LIBCLASS*, 143
+  \item FETCH-UP, 143
+  \item FF-DELAY, {\bf Flag}, 215
+  \item FI, 90, 95, 112
+  \item FILETYPE, {\bf MExpr}, 37
+  \item FILLINEFLAG, {\bf Flag}, 185
+  \item FIND-BEST-MODE, 103
+  \item FIND-DUP-MODES, 142
+  \item FIND-GENERATED-CLASS, 149
+  \item FIND-LINE, {\bf MExpr}, 17
+  \item FIND-MODE, 155
+  \item FIND-NESTING, 102
+  \item FIND-PROVABLE, 137
+  \item FINDPROOF, {\bf MExpr}, 19
+  \item FINISH-SAVE, {\bf MExpr}, 19
+  \item FINISHED-P, {\bf Tactic}, 80
+  \item FINITE, 127
+  \item FIRST-ORDER, {\bf Flag-Mode}, 284
+  \item FIRST-ORDER-MODE-MS, {\bf Flag}, 205
+  \item FIRST-ORDER-MODE-PARSE, {\bf Flag}, 258
+  \item FIRST-ORDER-PRINT-MODE, {\bf Flag}, 185
+  \item FIX-MODES, 139
+  \item FLUSHLEFTFLAG, {\bf Flag}, 185
+  \item FORALL, 129
+  \item FORALLN, 129
+
+  \indexspace
+
+  \item GENERATE-CLASS-SCHEME, 144, 149
+  \item GENERATE-JAVA-MENUS, {\bf MExpr}, 37
+  \item GENERIC, 291
+  \item GENERIC-STRING, 291
+  \item GO, 86, 99, 100, 104
+  \item GO, {\bf MExpr}, 27
+  \item GO-INSTRUCTIONS, {\bf Flag}, 246
+  \item GO2, 60
+  \item GO2, {\bf MExpr}, 28
+  \item GO2-TAC, {\bf Tactic}, 63
+  \item GOODMODES, {\bf Flag}, 270
+  \item GOTO, 90, 95, 96, 100
+  \item GOTO-CLASS, 144
+  \item GR-EXIT, 286
+  \item GR-FILENAMES, 176
+  \item GR-LEAVE, 286
+  \item GR-MISC, 176
+  \item GR-REVIEW, 286
+  \item GRADE-DIR, {\bf Flag}, 268
+  \item GRADE-FILE, {\bf Flag}, 268
+  \item GWFF, 146
+
+  \indexspace
+
+  \item HEAD, 119
+  \item HELP, {\bf MExpr}, 13
+  \item HELP*, {\bf MExpr}, 13
+  \item HELP-GROUP, {\bf MExpr}, 13
+  \item HELP-LIST, {\bf MExpr}, 14
+  \item HIGHER-ORDER, {\bf Flag-Mode}, 284
+  \item HISTORY, {\bf MExpr}, 11
+  \item HISTORY-SIZE, {\bf Flag}, 182
+  \item HLINE-JUSTIFICATION, {\bf Flag}, 273
+  \item HPATH-THRESHOLD, {\bf Flag}, 215
+  \item HTML-DOC, {\bf MExpr}, 14
+  \item HVARS, 119
+  \item HYP, {\bf MExpr}, 30
+  \item HYP, {\bf Rule}, 44
+
+  \indexspace
+
+  \item I, 132
+  \item IB, 116
+  \item ICONJ, {\bf MExpr}, 31
+  \item ICONJ, {\bf Rule}, 46
+  \item ICONJ*-TAC, {\bf Tactic}, 68
+  \item ICONJ-TAC, {\bf Tactic}, 68
+  \item IDEF, {\bf MExpr}, 34
+  \item IDEF, {\bf Rule}, 53
+  \item IDEF-TAC, {\bf Tactic}, 74
+  \item IDISJ-LEFT, {\bf MExpr}, 31
+  \item IDISJ-LEFT, {\bf Rule}, 46
+  \item IDISJ-LEFT-TAC, {\bf Tactic}, 68
+  \item IDISJ-RIGHT, {\bf MExpr}, 31
+  \item IDISJ-RIGHT, {\bf Rule}, 47
+  \item IDISJ-RIGHT-TAC, {\bf Tactic}, 68
+  \item IDISJ-TAC, {\bf Tactic}, 68
+  \item IDTAC, 82
+  \item IFTHEN, 82
+  \item ILL, 119
+  \item IMITATE, 94
+  \item IMITATION-FIRST, {\bf Flag}, 241
+  \item IMP-DISJ, {\bf MExpr}, 31
+  \item IMP-DISJ, {\bf Rule}, 47
+  \item IMP-DISJ-L, {\bf MExpr}, 31
+  \item IMP-DISJ-L, {\bf Rule}, 47
+  \item IMP-DISJ-R, {\bf MExpr}, 31
+  \item IMP-DISJ-R, {\bf Rule}, 47
+  \item IMP-DISJ-TAC, {\bf Tactic}, 69
+  \item IMP-NAME, {\bf Flag}, 196
+  \item IMPLICS-EQUIV, {\bf MExpr}, 31
+  \item IMPLICS-EQUIV, {\bf Rule}, 47
+  \item IMPLICS-EQUIV-TAC, {\bf Tactic}, 69
+  \item IMPLIES, 121, 130
+  \item IMPLIES+, 60
+  \item IMPLIES+TAC, {\bf Tactic}, 63
+  \item IMPLIES-, 60
+  \item IMPLIES-TAC, {\bf Tactic}, 63
+  \item IMPORT-CLASS, 149
+  \item IMPORT-NEEDED-OBJECTS, 139
+  \item IMPORTANT, 160
+  \item IN-TEX-MATH-MODE, {\bf Flag}, 187
+  \item INCLUDE-COINDUCTION-PRINCIPLE, {\bf Flag}, 259
+  \item INCLUDE-INDUCTION-PRINCIPLE, {\bf Flag}, 260
+  \item INCOMP-MATING, 289
+  \item INCOMP-MATING-ENABLED, {\bf Flag}, 206
+  \item INDIRECT, {\bf MExpr}, 31
+  \item INDIRECT, {\bf Rule}, 47
+  \item INDIRECT-DISJ-PLINE-TAC, {\bf Tactic}, 69
+  \item INDIRECT-EXISTS-PLINE-TAC, {\bf Tactic}, 69
+  \item INDIRECT-TAC, {\bf Tactic}, 69
+  \item INDIRECT1, {\bf MExpr}, 31
+  \item INDIRECT1, {\bf Rule}, 47
+  \item INDIRECT2, {\bf MExpr}, 31
+  \item INDIRECT2, {\bf Rule}, 48
+  \item INDIRECT2-TAC, {\bf Tactic}, 69
+  \item INEG, {\bf MExpr}, 32
+  \item INEG, {\bf Rule}, 49
+  \item INEG-TAC, {\bf Tactic}, 69
+  \item INESS-PLINE-TAC, {\bf Tactic}, 80
+  \item INFIX-NOTATION, {\bf Flag}, 187
+  \item INFO-EXERCISES, 287
+  \item INIT, 59, 96
+  \item INIT-DIALOGUE, {\bf Flag}, 270
+  \item INIT-DIALOGUE-FN, {\bf Flag}, 270
+  \item INIT-MATING, 86
+  \item INIT-TAC, {\bf Tactic}, 64
+  \item INITEQ, 59
+  \item INITEQ-TAC, {\bf Tactic}, 64
+  \item INITIAL-BKTRACK-LIMIT, {\bf Flag}, 196
+  \item INPUT-ERROR, 290
+  \item INPUT-ERROR-ENABLED, {\bf Flag}, 267
+  \item INPUT-ERROR-FILE, {\bf Flag}, 267
+  \item INSERT, 106, 139
+  \item INSERT-GRADES, 286
+  \item INSERT-TPTP, 140
+  \item INSERT-TPTP*, 140
+  \item INST, 117
+  \item INST1, 117
+  \item INSTALL, 117
+  \item INSTALL-REC, 117
+  \item INTERNAL-NAMES, 159
+  \item INTERNALIZE+, 59
+  \item INTERNALIZE+TAC, {\bf Tactic}, 64
+  \item INTERNALIZE-, 59
+  \item INTERNALIZE-TAC, {\bf Tactic}, 64
+  \item INTERPRET, 109
+  \item INTERRUPT-ENABLE, {\bf Flag}, 203
+  \item INTERSECT, 128
+  \item INTRODUCE-GAP, 57
+  \item INTRODUCE-GAP, {\bf MExpr}, 29
+  \item IOTA, 131
+  \item ISTYLE, 291
+  \item ITRUTH, {\bf MExpr}, 32
+  \item ITRUTH, {\bf Rule}, 48
+
+  \indexspace
+
+  \item JAVA-COMM, {\bf Flag}, 270
+  \item JAVAWIN, {\bf MExpr}, 43
+  \item JFORMS, 174
+
+  \indexspace
+
+  \item KEY, 134, 153
+  \item KILL, 97
+
+  \indexspace
+
+  \item L, 90, 95, 112
+  \item LAM, 59
+  \item LAMBDA, 129
+  \item LAMBDA*, {\bf MExpr}, 34
+  \item LAMBDA*, {\bf Rule}, 54
+  \item LAMBDA-CONV, {\bf Flag}, 259
+  \item LAMBDA-TAC, {\bf Tactic}, 64
+  \item LAST-MODE-NAME, {\bf Flag}, 180
+  \item LATE-EXERCISES, 287
+  \item LATEX-DOC, {\bf MExpr}, 14
+  \item LATEX-EMULATION, {\bf Flag}, 187
+  \item LATEX-POSTAMBLE, {\bf Flag}, 191
+  \item LATEX-PREAMBLE, {\bf Flag}, 191
+  \item LATEX-QUICK-REF, {\bf MExpr}, 14
+  \item LCONTR*, {\bf MExpr}, 34
+  \item LCONTR*, {\bf Rule}, 54
+  \item LCONTR*-BETA, {\bf MExpr}, 35
+  \item LCONTR*-BETA, {\bf Rule}, 54
+  \item LCONTR*-BETA-TAC, {\bf Tactic}, 78
+  \item LCONTR*-ETA, {\bf MExpr}, 35
+  \item LCONTR*-ETA, {\bf Rule}, 54
+  \item LCONTR*-ETA-TAC, {\bf Tactic}, 78
+  \item LCONTR*-TAC, {\bf Tactic}, 79
+  \item LCONTR*-VARY-TAC, {\bf Tactic}, 79
+  \item LEAF-NAME, {\bf Flag}, 196
+  \item LEAST-SEARCH-DEPTH, {\bf MExpr}, 26
+  \item LEAVE, 57, 84, 92, 96, 100, 103, 107, 110, 134, 149, 153, 286
+  \item LEDIT, {\bf MExpr}, 37
+  \item LEFTMARGIN, {\bf Flag}, 185
+  \item LEIBNIZ-SUB-CHECK, {\bf Flag}, 241
+  \item LEIBNIZ=-PLAN-TAC, {\bf Tactic}, 76
+  \item LEIBNIZ=-SLINE-TAC, {\bf Tactic}, 76
+  \item LEMMA, {\bf MExpr}, 30
+  \item LEMMA, {\bf Rule}, 44
+  \item LET, {\bf MExpr}, 34
+  \item LET, {\bf Rule}, 52
+  \item LETA, 118
+  \item LETTER-GRADE, 288
+  \item LETTER-GRADE-FILE, {\bf Flag}, 269
+  \item LETTER-GRADE-FLAG, {\bf Flag}, 269
+  \item LEXP, 118
+  \item LEXPD*, {\bf MExpr}, 35
+  \item LEXPD*, {\bf Rule}, 54
+  \item LEXPD*-BETA, {\bf MExpr}, 35
+  \item LEXPD*-BETA, {\bf Rule}, 54
+  \item LEXPD*-BETA-TAC, {\bf Tactic}, 79
+  \item LEXPD*-ETA, {\bf MExpr}, 35
+  \item LEXPD*-ETA, {\bf Rule}, 54
+  \item LEXPD*-ETA-TAC, {\bf Tactic}, 79
+  \item LEXPD*-TAC, {\bf Tactic}, 79
+  \item LEXPD*-VARY-TAC, {\bf Tactic}, 79
+  \item LIB, {\bf MExpr}, 11
+  \item LIB-ABBR, 117
+  \item LIB-BESTMODE-FILE, {\bf Flag}, 275
+  \item LIB-CONST, 146
+  \item LIB-KEYWORD-FILE, {\bf Flag}, 275
+  \item LIB-MASTERINDEX-FILE, {\bf Flag}, 275
+  \item LIBDIR, 148
+  \item LIBFILES, 134
+  \item LIBOBJECTS-IN-FILE, 134
+  \item LIBRARY, 177
+  \item LINE-COMMENT, {\bf MExpr}, 21
+  \item LISP-IMPLEMENTATION-TYPE, {\bf Flag}, 271
+  \item LIST, 153
+  \item LIST-OF-LIBOBJECTS, 134
+  \item LIST-RRULES, {\bf MExpr}, 35
+  \item LIST-RULES, {\bf MExpr}, 14
+  \item LIST-RULES*, {\bf MExpr}, 14
+  \item LIT-NAME, {\bf Flag}, 250
+  \item LIVE-LEAVES, 97
+  \item LN, 151
+  \item LNORM, 118
+  \item LNORM-BETA, 118
+  \item LNORM-ETA, 118
+  \item LOAD-SLOW, {\bf MExpr}, 37
+  \item LOAD-WARN-P, {\bf Flag}, 271
+  \item LOADED-MODS, {\bf MExpr}, 40
+  \item LOADKEY, {\bf MExpr}, 15
+  \item LOCALLEFTFLAG, {\bf Flag}, 185
+  \item LOCATE, 150
+  \item LOCK-LINE, {\bf MExpr}, 29
+  \item LOWERCASERAISE, {\bf Flag}, 258
+  \item LS, 151
+  \item LS, {\bf MExpr}, 41
+  \item LS-ITEMS*, 150
+
+  \indexspace
+
+  \item MACHINE-INSTANCE, {\bf Flag}, 271
+  \item MACHINE-TYPE, {\bf Flag}, 271
+  \item MAINTAIN, 176
+  \item MAKE-ABBREV-RRULE, {\bf MExpr}, 35
+  \item MAKE-ASSERT-A-HYP, {\bf MExpr}, 29
+  \item MAKE-INVERSE-RRULE, {\bf MExpr}, 35
+  \item MAKE-NICE, {\bf Tactic}, 80
+  \item MAKE-ROOM, {\bf Tactic}, 80
+  \item MAKE-RRULE, 116
+  \item MAKE-THEORY, {\bf MExpr}, 35
+  \item MAKE-WFFOPS-LABELS, {\bf Flag}, 189
+  \item MATCH, 100
+  \item MATCH-PAIR, 101
+  \item MATE, {\bf MExpr}, 11
+  \item MATE-FFPAIR, {\bf Flag}, 206
+  \item MATE-SUBSUMED-TEST, 289
+  \item MATE-SUBSUMED-TEST-ENABLED, {\bf Flag}, 206
+  \item MATE-SUBSUMED-TRUE, 289
+  \item MATE-SUBSUMED-TRUE-ENABLED, {\bf Flag}, 206
+  \item MATE-UP-TO-NNF, {\bf Flag}, 250
+  \item MATH-LOGIC-2-MODE, {\bf Flag-Mode}, 285
+  \item MATING-CHANGED, 289
+  \item MATING-CHANGED-ENABLED, {\bf Flag}, 206
+  \item MATING-NAME, {\bf Flag}, 196
+  \item MATING-SEARCH, 160
+  \item MATING-VERBOSE, {\bf Flag}, 203
+  \item MATINGSTREE-NAME, {\bf Flag}, 239
+  \item MAX-BINDER-COMPUTATION, {\bf Flag}, 253
+  \item MAX-CONSTRAINT-SIZE, {\bf Flag}, 260
+  \item MAX-DOMAIN-SIZE, {\bf Flag}, 253
+  \item MAX-DUP-PATHS, {\bf Flag}, 241
+  \item MAX-MATES, {\bf Flag}, 209
+  \item MAX-NUM-CONSTRAINTS, {\bf Flag}, 260
+  \item MAX-PRIM-DEPTH, {\bf Flag}, 260
+  \item MAX-PRIM-LITS, {\bf Flag}, 261
+  \item MAX-SEARCH-DEPTH, {\bf Flag}, 242
+  \item MAX-SEARCH-LIMIT, {\bf Flag}, 208
+  \item MAX-SUBSTS-PROJ, {\bf Flag}, 273
+  \item MAX-SUBSTS-PROJ-TOTAL, {\bf Flag}, 273
+  \item MAX-SUBSTS-QUICK, {\bf Flag}, 273
+  \item MAX-SUBSTS-VAR, {\bf Flag}, 274
+  \item MAX-UTREE-DEPTH, {\bf Flag}, 242
+  \item MAXIMIZE-FIRST, {\bf Flag}, 215
+  \item MBED-AL, 114
+  \item MBED-AR, 115
+  \item MBED-E, 115
+  \item MBED-E1, 115
+  \item MBED-F, 115
+  \item MBED-IL, 115
+  \item MBED-IR, 115
+  \item MBED-L, 115
+  \item MBED-OL, 115
+  \item MBED-OR, 115
+  \item MBED-QL, 115
+  \item MBED-QR, 115
+  \item MBED=L, 115
+  \item MBED=R, 115
+  \item MEASUREMENTS, {\bf Flag}, 215
+  \item MERGE-MINIMIZE-MATING, {\bf Flag}, 239
+  \item MERGE-PROOFS, {\bf MExpr}, 21
+  \item MERGE-TREE, 89, 93
+  \item META-BDVAR-NAME, {\bf Flag}, 257
+  \item META-LABEL-NAME, {\bf Flag}, 189
+  \item META-VAR-NAME, {\bf Flag}, 257
+  \item MIN-PRIM-DEPTH, {\bf Flag}, 261
+  \item MIN-PRIM-LITS, {\bf Flag}, 261
+  \item MIN-PROP, {\bf Tactic}, 64
+  \item MIN-QUANT-ETREE, {\bf Flag}, 209
+  \item MIN-QUANTIFIER-SCOPE, {\bf Flag}, 196
+  \item MIN-QUICK-DEPTH, {\bf Flag}, 242
+  \item MIN-SCOPE, 119
+  \item MINIMAL-P, 86
+  \item MKDIR, 151
+  \item ML, {\bf Flag-Mode}, 285
+  \item MOD-STATUS, 85
+  \item MODE, 146, 154
+  \item MODE1, 146
+  \item MODELS, {\bf MExpr}, 11
+  \item MODEREC, {\bf MExpr}, 42
+  \item MODES-GWFFS, 146
+  \item MODIFY-BESTMODE, 142
+  \item MODIFY-GAPS, {\bf MExpr}, 29
+  \item MODIFY-GRADE, 287
+  \item MODULES, {\bf MExpr}, 40
+  \item MONITOR, {\bf MExpr}, 24
+  \item MONITORFLAG, {\bf Flag}, 203
+  \item MONITORLIST, {\bf MExpr}, 24
+  \item MONSTRO, {\bf MExpr}, 28
+  \item MONSTRO-TAC, {\bf Tactic}, 64
+  \item MOVE, {\bf MExpr}, 29
+  \item MOVE*, {\bf MExpr}, 29
+  \item MOVE-LIBFILE, 138
+  \item MOVE-LIBOBJECT, 140
+  \item MP, {\bf MExpr}, 32
+  \item MP, {\bf Rule}, 48
+  \item MP-TAC, {\bf Tactic}, 69
+  \item MRG, 113
+  \item MRG*, 114
+  \item MS-DIR, {\bf Flag}, 242
+  \item MS-INIT-PATH, {\bf Flag}, 206
+  \item MS-SPLIT, {\bf Flag}, 206
+  \item MS03-7, 171
+  \item MS03-DUP-METHOD, {\bf Flag}, 221
+  \item MS03-LIFT, 93
+  \item MS03-QUICK-EUNIFICATION-LIMIT, {\bf Flag}, 222
+  \item MS03-SOLVE-RIGID-PARTS, {\bf Flag}, 222
+  \item MS03-SOLVE-RIGID-PARTS-ALLOW-RECONNECTS, {\bf Flag}, 222
+  \item MS03-USE-JFORMS, {\bf Flag}, 222
+  \item MS03-USE-SET-CONSTRAINTS, {\bf Flag}, 222
+  \item MS03-VERBOSE, {\bf Flag}, 222
+  \item MS03-WEIGHT-BANNED-SELS, {\bf Flag}, 223
+  \item MS03-WEIGHT-CHANGE-DUPS, {\bf Flag}, 223
+  \item MS03-WEIGHT-DISJ-EUNIF, {\bf Flag}, 223
+  \item MS03-WEIGHT-DISJ-MATE, {\bf Flag}, 223
+  \item MS03-WEIGHT-DISJ-UNIF, {\bf Flag}, 223
+  \item MS03-WEIGHT-DUP-VAR, {\bf Flag}, 224
+  \item MS03-WEIGHT-EUNIF1, {\bf Flag}, 224
+  \item MS03-WEIGHT-EUNIF2, {\bf Flag}, 224
+  \item MS03-WEIGHT-FLEXFLEXDIFF, {\bf Flag}, 224
+  \item MS03-WEIGHT-FLEXFLEXDIFF-O, {\bf Flag}, 224
+  \item MS03-WEIGHT-FLEXFLEXSAME, {\bf Flag}, 224
+  \item MS03-WEIGHT-FLEXFLEXSAME-O, {\bf Flag}, 225
+  \item MS03-WEIGHT-FLEXRIGID-BRANCH, {\bf Flag}, 225
+  \item MS03-WEIGHT-FLEXRIGID-EQN, {\bf Flag}, 225
+  \item MS03-WEIGHT-FLEXRIGID-FLEXEQN, {\bf Flag}, 225
+  \item MS03-WEIGHT-FLEXRIGID-MATE, {\bf Flag}, 225
+  \item MS03-WEIGHT-FLEXRIGID-NOEQN, {\bf Flag}, 225
+  \item MS03-WEIGHT-FLEXRIGID-O, {\bf Flag}, 226
+  \item MS03-WEIGHT-IMITATE, {\bf Flag}, 226
+  \item MS03-WEIGHT-OCCURS-CHECK, {\bf Flag}, 226
+  \item MS03-WEIGHT-PRIMSUB-FALSEHOOD, {\bf Flag}, 226
+  \item MS03-WEIGHT-PRIMSUB-FIRST-AND, {\bf Flag}, 226
+  \item MS03-WEIGHT-PRIMSUB-FIRST-EQUALS, {\bf Flag}, 226
+  \item MS03-WEIGHT-PRIMSUB-FIRST-EXISTS, {\bf Flag}, 226
+  \item MS03-WEIGHT-PRIMSUB-FIRST-FORALL, {\bf Flag}, 227
+  \item MS03-WEIGHT-PRIMSUB-FIRST-NOT-EQUALS, {\bf Flag}, 227
+  \item MS03-WEIGHT-PRIMSUB-FIRST-NOT-PROJ, {\bf Flag}, 227
+  \item MS03-WEIGHT-PRIMSUB-FIRST-OR, {\bf Flag}, 227
+  \item MS03-WEIGHT-PRIMSUB-FIRST-PROJ, {\bf Flag}, 227
+  \item MS03-WEIGHT-PRIMSUB-NEXT-AND, {\bf Flag}, 227
+  \item MS03-WEIGHT-PRIMSUB-NEXT-EQUALS, {\bf Flag}, 227
+  \item MS03-WEIGHT-PRIMSUB-NEXT-EXISTS, {\bf Flag}, 227
+  \item MS03-WEIGHT-PRIMSUB-NEXT-FORALL, {\bf Flag}, 228
+  \item MS03-WEIGHT-PRIMSUB-NEXT-NOT-EQUALS, {\bf Flag}, 228
+  \item MS03-WEIGHT-PRIMSUB-NEXT-NOT-PROJ, {\bf Flag}, 228
+  \item MS03-WEIGHT-PRIMSUB-NEXT-OR, {\bf Flag}, 228
+  \item MS03-WEIGHT-PRIMSUB-NEXT-PROJ, {\bf Flag}, 228
+  \item MS03-WEIGHT-PRIMSUB-TRUTH, {\bf Flag}, 228
+  \item MS03-WEIGHT-PROJECT, {\bf Flag}, 228
+  \item MS03-WEIGHT-RIGID-MATE, {\bf Flag}, 229
+  \item MS03-WEIGHT-RIGIDRIGID-EQN, {\bf Flag}, 229
+  \item MS03-WEIGHT-RIGIDRIGID-FLEXEQN, {\bf Flag}, 229
+  \item MS03-WEIGHT-RIGIDRIGID-NOEQN, {\bf Flag}, 229
+  \item MS03-WEIGHT-RIGIDRIGIDDIFF-O, {\bf Flag}, 229
+  \item MS03-WEIGHT-RIGIDRIGIDSAME-O, {\bf Flag}, 229
+  \item MS04-2, 171
+  \item MS04-ALLOW-FLEX-EUNIFS, {\bf Flag}, 230
+  \item MS04-ALLOW-FLEXRIGID-PROJ-MATE, {\bf Flag}, 230
+  \item MS04-BACKTRACK-METHOD, {\bf Flag}, 230
+  \item MS04-CHECK-UNIF-DEPTH, {\bf Flag}, 230
+  \item MS04-DELAY-FLEXRIGID-MATES, {\bf Flag}, 230
+  \item MS04-DELAY-UNIF-CONSTRAINTS, {\bf Flag}, 231
+  \item MS04-DUP-EARLY, {\bf Flag}, 231
+  \item MS04-DUP-WEIGHT, {\bf Flag}, 231
+  \item MS04-EAGER-UNIF-SUBST, {\bf Flag}, 231
+  \item MS04-INCR-DEPTH, {\bf Flag}, 231
+  \item MS04-INITIAL-DEPTH, {\bf Flag}, 231
+  \item MS04-LIFT, 93
+  \item MS04-MAX-DELAYED-CONNS, {\bf Flag}, 232
+  \item MS04-MAX-DEPTH, {\bf Flag}, 232
+  \item MS04-MAX-DUPS, {\bf Flag}, 232
+  \item MS04-MAX-EUNIF1S, {\bf Flag}, 232
+  \item MS04-MAX-EUNIF2S, {\bf Flag}, 232
+  \item MS04-MAX-FLEX-EUNIFS, {\bf Flag}, 232
+  \item MS04-MAX-FLEXRIGID-MATES, {\bf Flag}, 232
+  \item MS04-MAX-FLEXRIGID-NEG-MATES, {\bf Flag}, 233
+  \item MS04-MAX-FLEXRIGID-NEG-PROJ-MATES, {\bf Flag}, 233
+  \item MS04-MAX-FLEXRIGID-PROJ-MATES, {\bf Flag}, 233
+  \item MS04-MAX-IMITS, {\bf Flag}, 233
+  \item MS04-MAX-PRIMSUB-AND, {\bf Flag}, 233
+  \item MS04-MAX-PRIMSUB-EQUALS, {\bf Flag}, 233
+  \item MS04-MAX-PRIMSUB-EXISTS, {\bf Flag}, 234
+  \item MS04-MAX-PRIMSUB-FORALL, {\bf Flag}, 234
+  \item MS04-MAX-PRIMSUB-NOT, {\bf Flag}, 234
+  \item MS04-MAX-PRIMSUB-NOT-EQUALS, {\bf Flag}, 234
+  \item MS04-MAX-PRIMSUB-NOT-PROJ, {\bf Flag}, 234
+  \item MS04-MAX-PRIMSUB-OR, {\bf Flag}, 234
+  \item MS04-MAX-PRIMSUB-PROJ, {\bf Flag}, 235
+  \item MS04-MAX-PROJS, {\bf Flag}, 235
+  \item MS04-MAX-RIGID-MATES, {\bf Flag}, 235
+  \item MS04-MP-OPTIONS, {\bf Flag}, 235
+  \item MS04-PRENEX-PRIMSUBS, {\bf Flag}, 235
+  \item MS04-SEMANTIC-PRUNING, {\bf Flag}, 235
+  \item MS04-SOLVE-UNIF-DEPTH, {\bf Flag}, 236
+  \item MS04-TRACE, {\bf Flag}, 236
+  \item MS04-USE-SEMANTICS, {\bf Flag}, 236
+  \item MS04-USE-SET-CONSTRAINTS, {\bf Flag}, 236
+  \item MS04-VERBOSE, {\bf Flag}, 236
+  \item MS04-WEIGHT-ADD-SET-CONSTRAINT, {\bf Flag}, 236
+  \item MS04-WEIGHT-DELAY-UNIF, {\bf Flag}, 237
+  \item MS04-WEIGHT-EUNIF-DECS, {\bf Flag}, 237
+  \item MS04-WEIGHT-EUNIF-DIFF-HEADS, {\bf Flag}, 237
+  \item MS04-WEIGHT-FLEX-EUNIF, {\bf Flag}, 237
+  \item MS04-WEIGHT-FLEXRIGID-PROJ-MATE, {\bf Flag}, 237
+  \item MS04-WEIGHT-MULTIPLE-EUNIF1S, {\bf Flag}, 237
+  \item MS04-WEIGHT-MULTIPLE-EUNIF2S, {\bf Flag}, 238
+  \item MS04-WEIGHT-MULTIPLE-MATES, {\bf Flag}, 238
+  \item MS04-WEIGHT-PRIMSUB-FIRST-NOT, {\bf Flag}, 238
+  \item MS04-WEIGHT-PRIMSUB-NEXT-NOT, {\bf Flag}, 238
+  \item MS04-WEIGHT-PRIMSUB-NEXTTP, {\bf Flag}, 238
+  \item MS04-WEIGHT-PRIMSUB-OCCURS-CONST, {\bf Flag}, 238
+  \item MS04-WEIGHT-SOLVE-SET-CONSTRAINTS, {\bf Flag}, 239
+  \item MS88, 86, 163
+  \item MS88-SUB, 87
+  \item MS89, 87, 163
+  \item MS90-3, 87, 164
+  \item MS90-3-DUP-STRATEGY, {\bf Flag}, 209
+  \item MS90-3-QUICK, {\bf Flag}, 242
+  \item MS90-9, 87, 165
+  \item MS91-6, 88, 165
+  \item MS91-7, 88, 166
+  \item MS91-DEEP, {\bf Flag-Mode}, 282
+  \item MS91-INTERLEAVE, {\bf Flag}, 210
+  \item MS91-NODUPS, {\bf Flag-Mode}, 282
+  \item MS91-ORIGINAL, {\bf Flag-Mode}, 283
+  \item MS91-PREFER-SMALLER, {\bf Flag}, 210
+  \item MS91-SIMPLEST, {\bf Flag-Mode}, 283
+  \item MS91-TIME-BY-VPATHS, {\bf Flag}, 211
+  \item MS91-WEIGHT-LIMIT-RANGE, {\bf Flag}, 211
+  \item MS92-9, 88, 167
+  \item MS93-1, 89, 168
+  \item MS98-1, 89, 169
+  \item MS98-BASE-PRIM, {\bf Flag}, 215
+  \item MS98-DUP, 89
+  \item MS98-DUP-BELOW-PRIMSUBS, {\bf Flag}, 215
+  \item MS98-DUP-PRIMSUBS, {\bf Flag}, 216
+  \item MS98-EXTERNAL-REWRITES, {\bf Flag}, 216
+  \item MS98-FIRST-FRAGMENT, {\bf Flag}, 216
+  \item MS98-FORCE-H-O, {\bf Flag}, 216
+  \item MS98-FRAGMENT-ORDER, {\bf Flag}, 216
+  \item MS98-INIT, {\bf Flag}, 217
+  \item MS98-LOW-MEMORY, {\bf Flag}, 217
+  \item MS98-MAX-COMPONENTS, {\bf Flag}, 217
+  \item MS98-MAX-PRIMS, {\bf Flag}, 217
+  \item MS98-MEASURE, {\bf Flag}, 217
+  \item MS98-MERGE-DAGS, {\bf Flag}, 218
+  \item MS98-MINIMALITY-CHECK, {\bf Flag}, 218
+  \item MS98-MINOR, 169
+  \item MS98-NUM-OF-DUPS, {\bf Flag}, 218
+  \item MS98-POLLUTE-GLOBAL-REWRITES, {\bf Flag}, 218
+  \item MS98-PRIM, 89
+  \item MS98-PRIMSUB-COUNT, {\bf Flag}, 218
+  \item MS98-REW-PRIMSUBS, {\bf Flag}, 218
+  \item MS98-REWRITE-DEPTH, {\bf Flag}, 219
+  \item MS98-REWRITE-MODEL, {\bf Flag}, 219
+  \item MS98-REWRITE-PRUNE, {\bf Flag}, 219
+  \item MS98-REWRITE-SIZE, {\bf Flag}, 219
+  \item MS98-REWRITE-UNIF, {\bf Flag}, 219
+  \item MS98-REWRITES, {\bf Flag}, 219
+  \item MS98-TRACE, {\bf Flag}, 219
+  \item MS98-UNIF-HACK, {\bf Flag}, 220
+  \item MS98-UNIF-HACK2, {\bf Flag}, 220
+  \item MS98-USE-COLORS, {\bf Flag}, 220
+  \item MS98-VALID-PAIR, {\bf Flag}, 220
+  \item MS98-VARIABLE-ORDER, {\bf Flag}, 220
+  \item MS98-VERBOSE, {\bf Flag}, 221
+  \item MSV-OFF, {\bf Flag-Mode}, 285
+  \item MSV-ON, {\bf Flag-Mode}, 285
+  \item MT-DEFAULT-OB-MATE, {\bf Flag}, 199
+  \item MT-DUPS-PER-QUANT, {\bf Flag}, 178
+  \item MT-SUBSUMPTION-CHECK, {\bf Flag}, 199
+  \item MT94-11, 99
+  \item MT94-12, 99
+  \item MT94-12-TRIGGER, {\bf Flag}, 199
+  \item MT95-1, 99
+  \item MTREE, 160
+  \item MTREE, {\bf MExpr}, 11
+  \item MTREE-FILTER-DUPS, {\bf Flag}, 200
+  \item MTREE-STOP-IMMEDIATELY, {\bf Flag}, 200
+  \item MTREE-TOP, 160
+  \item MU, 127
+  \item MU-BIND, 129
+  \item MV, 152
+
+  \indexspace
+
+  \item NAIVE, {\bf Flag-Mode}, 282
+  \item NAME, 111
+  \item NAME-DPAIR, 101
+  \item NAME-PRIM, 85, 118
+  \item NAME-SKOLEM-FN, {\bf Flag}, 265
+  \item NAT, 127
+  \item NAT-ETREE, {\bf MExpr}, 25
+  \item NAT-ETREE-VERSION, {\bf Flag}, 239
+  \item NATREE-DEBUG, {\bf Flag}, 239
+  \item NC, 127
+  \item NEG, 118
+  \item NEG-AND-ELIM-TAC, {\bf Tactic}, 70
+  \item NEG-AND-PLAN-TAC, {\bf Tactic}, 70
+  \item NEG-AND-SLINE-TAC, {\bf Tactic}, 70
+  \item NEG-ATOM-ELIM-TAC, {\bf Tactic}, 70
+  \item NEG-EQUAL-ELIM-TAC, {\bf Tactic}, 70
+  \item NEG-EQUAL-SLINE-TAC, {\bf Tactic}, 76
+  \item NEG-EQUIV-SLINE-TAC, {\bf Tactic}, 77
+  \item NEG-EXISTS-ELIM-DUP-TAC, {\bf Tactic}, 70
+  \item NEG-EXISTS-ELIM-SIMPLE-TAC, {\bf Tactic}, 70
+  \item NEG-EXP-PLAN-TAC, {\bf Tactic}, 74
+  \item NEG-EXP-SLINE-TAC, {\bf Tactic}, 74
+  \item NEG-IMP-ELIM-TAC, {\bf Tactic}, 70
+  \item NEG-IMP-PLAN-TAC, {\bf Tactic}, 70
+  \item NEG-IMP-SLINE-TAC, {\bf Tactic}, 71
+  \item NEG-NAME, {\bf Flag}, 196
+  \item NEG-NEG-ELIM-TAC, {\bf Tactic}, 71
+  \item NEG-NEG-PLAN-TAC, {\bf Tactic}, 71
+  \item NEG-NEG-SLINE-TAC, {\bf Tactic}, 71
+  \item NEG-OR-ELIM-DUP-TAC, {\bf Tactic}, 71
+  \item NEG-OR-ELIM-SIMPLE-TAC, {\bf Tactic}, 71
+  \item NEG-OR-PLAN-TAC, {\bf Tactic}, 71
+  \item NEG-OR-SLINE-TAC, {\bf Tactic}, 71
+  \item NEG-PLINE-P-TAC, {\bf Tactic}, 80
+  \item NEG-PRIM-SUB, {\bf Flag}, 262
+  \item NEG-REW-PLAN-TAC, {\bf Tactic}, 77
+  \item NEG-REW-SLINE-TAC, {\bf Tactic}, 77
+  \item NEG-SEL-PLAN-TAC, {\bf Tactic}, 74
+  \item NEG-SEL-SLINE-TAC, {\bf Tactic}, 74
+  \item NEG-SLINE-P-TAC, {\bf Tactic}, 80
+  \item NEG-UNIV-ELIM-TAC, {\bf Tactic}, 71
+  \item NEW-DEFS, 117
+  \item NEW-ITEM, {\bf Flag}, 269
+  \item NEW-MATING-AFTER-DUP, {\bf Flag}, 203
+  \item NEW-OPTION-SET-LIMIT, {\bf Flag}, 211
+  \item NEW-SEARCHLIST, 105
+  \item NEWS, {\bf MExpr}, 16
+  \item NEWS-DIR, {\bf Flag}, 271
+  \item NNF, 118
+  \item NNF, {\bf MExpr}, 32
+  \item NNF, {\bf Rule}, 49
+  \item NNF-EXPAND, {\bf MExpr}, 32
+  \item NNF-EXPAND, {\bf Rule}, 49
+  \item NNF-TAC, {\bf Tactic}, 80
+  \item NO-GOAL, 82
+  \item NOMONITOR, {\bf MExpr}, 24
+  \item NOOP, 86, 110
+  \item NORMALIZE-PROOF, {\bf MExpr}, 26
+  \item NOT, 130
+  \item NOT-TAC, {\bf Tactic}, 64
+  \item NTH-SON, 101
+  \item NUM-FRPAIRS, {\bf Flag}, 209
+  \item NUM-HPATHS, 90, 93, 111
+  \item NUM-OF-DUPS, {\bf Flag}, 274
+  \item NUM-VPATHS, 90, 93, 111
+  \item NUMBER-OF-STUDENTS, 288
+
+  \indexspace
+
+  \item O, 85, 111, 132
+  \item OCCURS-CHECK, {\bf Flag}, 206
+  \item OK, 110
+  \item OLD-GRADE-FILE, {\bf Flag}, 269
+  \item OLD-TOTALS-GRADE-FILE, {\bf Flag}, 269
+  \item OMDOC-ASSERTION, {\bf MExpr}, 15
+  \item OMDOC-AUT-CREATOR, {\bf Flag}, 181
+  \item OMDOC-CATALOGUE, {\bf Flag}, 181
+  \item OMDOC-CLASS-SCHEME, {\bf MExpr}, 15
+  \item OMDOC-LIB, {\bf MExpr}, 15
+  \item OMDOC-PROOF, {\bf MExpr}, 15
+  \item OMDOC-RIGHTS, {\bf Flag}, 181
+  \item OMDOC-SOURCE, {\bf Flag}, 182
+  \item OMDOC-TRC-CREATOR, {\bf Flag}, 182
+  \item OMDOC-TYPE, {\bf Flag}, 182
+  \item ONE, 127
+  \item OOPS, {\bf MExpr}, 14
+  \item OP, 119
+  \item OPEN-MATEVPW, {\bf MExpr}, 28
+  \item OPEN-TESTWIN, 104
+  \item OPTIONS-GENERATE-ARG, {\bf Flag}, 211
+  \item OPTIONS-GENERATE-FN, {\bf Flag}, 211
+  \item OPTIONS-GENERATE-UPDATE, {\bf Flag}, 212
+  \item OPTIONS-VERBOSE, {\bf Flag}, 212
+  \item OR, 121, 130
+  \item OR+, 59
+  \item OR+TAC, {\bf Tactic}, 64
+  \item OR-, 59
+  \item OR-LEMMA-LEFT-TAC, {\bf Tactic}, 71
+  \item OR-LEMMA-RIGHT-TAC, {\bf Tactic}, 72
+  \item OR-LEMMA-TAC, {\bf Tactic}, 72
+  \item OR-TAC, {\bf Tactic}, 64
+  \item ORDER-COMPONENTS, {\bf Flag}, 250
+  \item ORELSE, 82
+  \item ORGANIZE, {\bf MExpr}, 38
+  \item OTL-VARS, 156
+  \item OUTLINE, 157
+
+  \indexspace
+
+  \item P, 84, 92, 101, 110
+  \item PACK-STAT, {\bf MExpr}, 41
+  \item PAGELENGTH, {\bf Flag}, 187
+  \item PAGEWIDTH, {\bf Flag}, 188
+  \item PALL, 58, 101
+  \item PALL, {\bf MExpr}, 17
+  \item PARSING, 175
+  \item PATCH-FILE, {\bf Flag}, 269
+  \item PAUSE, {\bf MExpr}, 19
+  \item PBRIEF, {\bf MExpr}, 17
+  \item PCLASS, 144
+  \item PCLASS-SCHEME-TREE, 144
+  \item PCLASS-TREE, 144
+  \item PDEEP, 84, 92
+  \item PDOWN, 150
+  \item PELT, 107
+  \item PELT-REC, 108
+  \item PELTS, 108
+  \item PELTS-REC, 108
+  \item PENALTY-FNS, 288
+  \item PENALTY-FOR-EACH-PRIMSUB, {\bf Flag}, 212
+  \item PENALTY-FOR-MULTIPLE-PRIMSUBS, {\bf Flag}, 212
+  \item PENALTY-FOR-MULTIPLE-SUBS, {\bf Flag}, 212
+  \item PENALTY-FOR-ORDINARY-DUP, {\bf Flag}, 213
+  \item PERMUTE-RRULES, {\bf MExpr}, 36
+  \item PFENNING*-TAC, {\bf Tactic}, 64
+  \item PFENNING-TAC, {\bf Tactic}, 65
+  \item PFNAT, {\bf MExpr}, 26
+  \item PICK, 97
+  \item PINTERSECT, 144, 150
+  \item PINTERSECT*, 144, 150
+  \item PIY, {\bf MExpr}, 24
+  \item PIY2, {\bf MExpr}, 25
+  \item PJ, 111
+  \item PL, {\bf MExpr}, 17
+  \item PL*, {\bf MExpr}, 17
+  \item PLAN, {\bf MExpr}, 29
+  \item PLINE, {\bf MExpr}, 17
+  \item PLINE-TAC, {\bf Tactic}, 65
+  \item PM-NODE, 97
+  \item PMTR, 97
+  \item PMTR*, 98
+  \item PMTR-FLAT, 98
+  \item PMUT, 113
+  \item PMUT*, 114
+  \item PNTR, {\bf MExpr}, 26
+  \item POB, 98
+  \item POB-LITS, 98
+  \item POB-NODE, 98
+  \item POP, {\bf MExpr}, 11
+  \item POTR, 98
+  \item POTR*-FLAT, 98
+  \item POTR-FLAT, 98
+  \item POWERSET, 128
+  \item PP, 84, 92, 101, 110
+  \item PP*, 101
+  \item PPATH, 98
+  \item PPATH*, 98
+  \item PPDEEP, 84, 92
+  \item PPF, 84, 92
+  \item PPLAN, 58
+  \item PPLAN, {\bf MExpr}, 17
+  \item PPNODE, 84
+  \item PPWFFLAG, {\bf Flag}, 186
+  \item PR00-ALLOW-SUBNODE-CONNS, {\bf Flag}, 262
+  \item PR00-MAX-SUBSTS-VAR, {\bf Flag}, 262
+  \item PR00-NUM-ITERATIONS, {\bf Flag}, 262
+  \item PR00-REQUIRE-ARG-DEPS, {\bf Flag}, 262
+  \item PR97C-MAX-ABBREVS, {\bf Flag}, 262
+  \item PR97C-PRENEX, {\bf Flag}, 262
+  \item PRESS-DOWN, 104
+  \item PRESS-DOWN-2, 104
+  \item PRIM-ALL, 85
+  \item PRIM-BDTYPES, {\bf Flag}, 262
+  \item PRIM-BDTYPES-AUTO, {\bf Flag}, 263
+  \item PRIM-OUTER, 85
+  \item PRIM-PREFIX, {\bf Flag}, 263
+  \item PRIM-QUANTIFIER, {\bf Flag}, 207
+  \item PRIM-SINGLE, 85
+  \item PRIM-SUB, 85
+  \item PRIM-SUBST, 116
+  \item PRIMSUB, 289
+  \item PRIMSUB-ENABLED, {\bf Flag}, 207
+  \item PRIMSUB-METHOD, {\bf Flag}, 263
+  \item PRIMSUB-VAR-SELECT, {\bf Flag}, 274
+  \item PRIMSUBS, 175
+  \item PRINT-COMBINED-EGENS, {\bf Flag}, 184
+  \item PRINT-COMBINED-UGENS, {\bf Flag}, 184
+  \item PRINT-COMBINED-UIS, {\bf Flag}, 184
+  \item PRINT-COMMENTS, {\bf Flag}, 193
+  \item PRINT-DEEP, {\bf Flag}, 196
+  \item PRINT-DOTS, {\bf Flag}, 183
+  \item PRINT-LIT-NAME, {\bf Flag}, 251
+  \item PRINT-MATING-COUNTER, {\bf Flag}, 210
+  \item PRINT-META, {\bf Flag}, 189
+  \item PRINT-N-DIGITS, {\bf Flag}, 269
+  \item PRINT-NODENAMES, {\bf Flag}, 197
+  \item PRINT-PROOF-STRUCTURE, {\bf MExpr}, 17
+  \item PRINT-UNTIL-UI-OR-EGEN, {\bf Flag}, 184
+  \item PRINT-WEAK, {\bf Flag}, 189
+  \item PRINTDEPTH, {\bf Flag}, 186
+  \item PRINTEDTFILE, {\bf Flag}, 190
+  \item PRINTEDTFLAG, {\bf Flag}, 190
+  \item PRINTEDTFLAG-SLIDES, {\bf Flag}, 190
+  \item PRINTEDTOPS, {\bf Flag}, 190
+  \item PRINTING, 157
+  \item PRINTING-TEX, 158
+  \item PRINTLINEFLAG, {\bf Flag}, 183
+  \item PRINTMATEFILE, {\bf Flag}, 190
+  \item PRINTMATEFLAG, {\bf Flag}, 190
+  \item PRINTMATEFLAG-SLIDES, {\bf Flag}, 191
+  \item PRINTMATEOPS, {\bf Flag}, 191
+  \item PRINTPROOF, {\bf MExpr}, 20
+  \item PRINTTYPES, {\bf Flag}, 186
+  \item PRINTTYPES-ALL, {\bf Flag}, 186
+  \item PRINTVPDFLAG, {\bf Flag}, 251
+  \item PROBABILITY, 109
+  \item PROBLEMS, {\bf MExpr}, 14
+  \item PROJECT, 94
+  \item PROOF-ACTION, 290
+  \item PROOF-ACTION-ENABLED, {\bf Flag}, 267
+  \item PROOF-COMMENT, {\bf MExpr}, 22
+  \item PROOF-FILE, {\bf Flag}, 267
+  \item PROOFLIST, 58
+  \item PROOFLIST, {\bf MExpr}, 22
+  \item PROOFW-ACTIVE, {\bf Flag}, 178
+  \item PROOFW-ACTIVE+NOS, {\bf Flag}, 178
+  \item PROOFW-ACTIVE+NOS-HEIGHT, {\bf Flag}, 179
+  \item PROOFW-ACTIVE+NOS-WIDTH, {\bf Flag}, 179
+  \item PROOFW-ACTIVE-HEIGHT, {\bf Flag}, 179
+  \item PROOFW-ACTIVE-WIDTH, {\bf Flag}, 179
+  \item PROOFW-ALL, {\bf Flag}, 179
+  \item PROOFW-ALL-HEIGHT, {\bf Flag}, 179
+  \item PROOFW-ALL-WIDTH, {\bf Flag}, 179
+  \item PROP-CJFORM, 111
+  \item PROP-ELIM-RULES-TAC, {\bf Tactic}, 65
+  \item PROP-INTRO-RULES-TAC, {\bf Tactic}, 65
+  \item PROP-MSEARCH, 87
+  \item PROP-PRIM, {\bf Tactic}, 72
+  \item PROP-STRATEGY, {\bf Flag}, 207
+  \item PROPOSITIONAL, {\bf Tactic}, 72
+  \item PROVE, 58
+  \item PROVE, {\bf MExpr}, 16
+  \item PRT-PRIM, 118
+  \item PRUNE, 97, 102
+  \item PRUNING, {\bf Flag}, 243
+  \item PRW, {\bf MExpr}, 18
+  \item PS, 110
+  \item PSCHEMES, 145
+  \item PSCHEMES, {\bf MExpr}, 42
+  \item PSEQ, {\bf MExpr}, 22
+  \item PSEQ-USE-LABELS, {\bf Flag}, 197
+  \item PSEQL, {\bf MExpr}, 22
+  \item PSH, 84, 92
+  \item PSIZE, 108
+  \item PSTATUS, 58
+  \item PSTATUS, {\bf MExpr}, 30
+  \item PT, 110
+  \item PTREE, 84
+  \item PTREE*, 84
+  \item PTREE-FILE, 84
+  \item PULL-NEG, 118
+  \item PULLNEG, {\bf MExpr}, 32
+  \item PULLNEG, {\bf Rule}, 49
+  \item PULLNEG-TAC, {\bf Tactic}, 72
+  \item PUP, 150
+  \item PUSH, {\bf MExpr}, 11
+  \item PUSH-NEG, 118
+  \item PUSH-UP, 104
+  \item PUSH-UP-2, 104
+  \item PUSHNEG, {\bf MExpr}, 32
+  \item PUSHNEG, {\bf Rule}, 49
+  \item PUSHNEG-TAC, {\bf Tactic}, 72
+  \item PW, {\bf MExpr}, 18
+  \item PWD, 150
+  \item PWSCOPE, {\bf MExpr}, 18
+  \item PWTYPES, {\bf MExpr}, 18
+
+  \indexspace
+
+  \item QLOAD, {\bf MExpr}, 38
+  \item QRY, 99
+  \item QUANTIFICATIONAL, {\bf Tactic}, 74
+  \item QUERY-USER, {\bf Flag}, 203
+  \item QUICK-DEFINE, 105
+  \item QUICK-REF, {\bf MExpr}, 15
+  \item QUIET, {\bf Flag-Mode}, 284
+  \item QUIET-EVENTS, {\bf Flag}, 267
+  \item QUIETLY-USE-DEFAULTS, {\bf Flag}, 246
+
+  \indexspace
+
+  \item R, 90, 95, 112
+  \item RANK-EPROOF-FN, {\bf Flag}, 208
+  \item RE-READ, {\bf Flag-Mode}, 280
+  \item READ-LLOAD-SOURCES-P, {\bf Flag}, 271
+  \item REC-MS-FILE, {\bf Flag}, 204
+  \item REC-MS-FILENAME, {\bf Flag}, 204
+  \item RECONSIDER, 58
+  \item RECONSIDER, {\bf MExpr}, 16
+  \item RECONSIDER-FN, {\bf Flag}, 213
+  \item RECORDFLAGS, {\bf Flag}, 275
+  \item RECURSION, 127
+  \item RED, 118
+  \item REDUCE-DOUBLE-NEG, {\bf Flag}, 243
+  \item REFL, 59
+  \item REFL+TAC, {\bf Tactic}, 65
+  \item REFL=, {\bf  Theorem}, 122
+  \item REFL=-TAC, {\bf Tactic}, 76
+  \item REFORMAT, 140
+  \item REINDEX, 140
+  \item REM, 85, 111
+  \item REM-CONN, 87, 94
+  \item REM-CONN*, 87, 95
+  \item REM-FLAG, 105
+  \item REM-FLAG*, 105
+  \item REM-LAST-CONN, 87
+  \item REM-NODE, 97
+  \item REMARK, {\bf MExpr}, 16
+  \item REMOVE-ALL-ASSIGNMENTS, 109
+  \item REMOVE-FLAG-FROM-MODE, 154
+  \item REMOVE-GOODMODES, 140
+  \item REMOVE-LEIBNIZ, {\bf Flag}, 240
+  \item REMOVE-TRAILING-DIR, {\bf Flag}, 276
+  \item REMOVED-CONN, 289
+  \item REMOVED-CONN-ENABLED, {\bf Flag}, 207
+  \item REN-VAR-FN, {\bf Flag}, 257
+  \item RENAME-ALL-BD-VARS, {\bf Flag}, 257
+  \item RENAME-CLASS, 152
+  \item RENAME-LIBDIR, 138
+  \item RENAME-LIBFILE, 138
+  \item RENAME-OBJECT, 140
+  \item RENUMBER-LEAVES, {\bf Flag}, 240
+  \item RENUMBERALL, {\bf MExpr}, 29
+  \item REPEAT, 82
+  \item RESET, {\bf MExpr}, 15
+  \item RESOLVE-CONFLICT, {\bf Flag}, 246
+  \item RESTORE-ETREE, 85
+  \item RESTORE-MASTERINDEX, 137
+  \item RESTORE-WORK, {\bf MExpr}, 19
+  \item RESTOREPROOF, 60
+  \item RESTOREPROOF, {\bf MExpr}, 19
+  \item RESTRICT-MATING-TAC, {\bf Tactic}, 80
+  \item RESUME-INSERT-GRADES, 287
+  \item RESUME-SAVE, {\bf MExpr}, 19
+  \item RESURRECT, 97
+  \item RETAIN-INITIAL-TYPE, {\bf Flag}, 186
+  \item RETRIEVE-FILE, 137
+  \item REVIEW, {\bf MExpr}, 11
+  \item REVISE-DEFAULTS, 105
+  \item REW-EQUIV, 116
+  \item REWRITE, {\bf MExpr}, 11
+  \item REWRITE-DEFNS, {\bf Flag}, 197
+  \item REWRITE-EQUALITIES, {\bf Flag}, 258
+  \item REWRITE-EQUIVS, {\bf Flag}, 264
+  \item REWRITE-IN, {\bf MExpr}, 11
+  \item REWRITE-NAME, {\bf Flag}, 197
+  \item REWRITE-PLINE-P-TAC, {\bf Tactic}, 65
+  \item REWRITE-PLINE-TAC, {\bf Tactic}, 65
+  \item REWRITE-SLINE-P-TAC, {\bf Tactic}, 81
+  \item REWRITE-SLINE-TAC, {\bf Tactic}, 65
+  \item REWRITE-SUPP*, {\bf MExpr}, 36
+  \item REWRITE-SUPP*, {\bf Rule}, 55
+  \item REWRITE-SUPP1, {\bf MExpr}, 36
+  \item REWRITE-SUPP1, {\bf Rule}, 55
+  \item REWRITING, {\bf MExpr}, 11
+  \item REWRITING-AUTO-DEPTH, {\bf Flag}, 254
+  \item REWRITING-AUTO-GLOBAL-SORT, {\bf Flag}, 254
+  \item REWRITING-AUTO-MAX-WFF-SIZE, {\bf Flag}, 254
+  \item REWRITING-AUTO-MIN-DEPTH, {\bf Flag}, 254
+  \item REWRITING-AUTO-SEARCH-TYPE, {\bf Flag}, 255
+  \item REWRITING-AUTO-SUBSTS, {\bf Flag}, 255
+  \item REWRITING-AUTO-TABLE-SIZE, {\bf Flag}, 255
+  \item REWRITING-RELATION-SYMBOL, {\bf Flag}, 253
+  \item RIGHTMARGIN, {\bf Flag}, 186
+  \item RIGID-PATH-CK, {\bf Flag}, 243
+  \item RM, 152
+  \item RM-DPAIR, 102
+  \item ROOT-CLASS, 145
+  \item RP, 116
+  \item RPALL, 117
+  \item RRULE, 147
+  \item RULE-ERROR, 290
+  \item RULE-ERROR-ENABLED, {\bf Flag}, 267
+  \item RULE-ERROR-FILE, {\bf Flag}, 267
+  \item RULEC, {\bf MExpr}, 33
+  \item RULEC, {\bf Rule}, 50
+  \item RULEC-TAC, {\bf Tactic}, 74
+  \item RULEC1, {\bf MExpr}, 33
+  \item RULEC1, {\bf Rule}, 50
+  \item RULEP, {\bf MExpr}, 32
+  \item RULEP-MAINFN, {\bf Flag}, 255
+  \item RULEP-TAC, {\bf Tactic}, 72
+  \item RULEP-WFFEQ, {\bf Flag}, 265
+  \item RULEQ-PLAN-TAC, {\bf Tactic}, 74
+  \item RULEQ-SLINE-TAC, {\bf Tactic}, 74
+  \item RULES, {\bf Flag-Mode}, 279
+  \item RULES-MOD, 177
+  \item RW, 111
+
+  \indexspace
+
+  \item S, 133
+  \item SAIL, 292
+  \item SAME, {\bf MExpr}, 30
+  \item SAME, {\bf Rule}, 44
+  \item SAME-TAC, {\bf Tactic}, 72
+  \item SAT, 119
+  \item SAVE, 111
+  \item SAVE-ETREE, 85
+  \item SAVE-FILE, {\bf Flag}, 271
+  \item SAVE-FLAG-RELEVANCY-INFO, 153
+  \item SAVE-FLAGS-AND-WORK, {\bf MExpr}, 19
+  \item SAVE-INTERVAL, {\bf Flag}, 189
+  \item SAVE-SUBPROOF, {\bf MExpr}, 19
+  \item SAVE-WORK, {\bf MExpr}, 20
+  \item SAVE-WORK-ON-START-UP, {\bf Flag}, 189
+  \item SAVE-WORK-P, {\bf Flag}, 190
+  \item SAVEPROOF, 60
+  \item SAVEPROOF, {\bf MExpr}, 20
+  \item SAVING-WORK, 159
+  \item SCALE-DOWN, 106
+  \item SCALE-UP, 106
+  \item SCOPE, {\bf Flag}, 186
+  \item SCORE-FILE, {\bf Flag}, 267
+  \item SCRIBE, 291
+  \item SCRIBE-ALL-WFFS, 134
+  \item SCRIBE-DOC, {\bf Flag-Mode}, 278
+  \item SCRIBE-DOC, {\bf MExpr}, 15
+  \item SCRIBE-DOC-FIRST-ORDER, {\bf Flag-Mode}, 278
+  \item SCRIBE-EDWFF, {\bf Flag-Mode}, 281
+  \item SCRIBE-LINE-WIDTH, {\bf Flag}, 191
+  \item SCRIBE-MATEWFF, {\bf Flag-Mode}, 281
+  \item SCRIBE-OTL, {\bf Flag-Mode}, 279
+  \item SCRIBE-POSTAMBLE, {\bf Flag}, 192
+  \item SCRIBE-PREAMBLE, {\bf Flag}, 192
+  \item SCRIBELIBDIR, 135
+  \item SCRIBELIBFILE, 135
+  \item SCRIBEPROOF, 60
+  \item SCRIBEPROOF, {\bf MExpr}, 20
+  \item SCRIPT, {\bf MExpr}, 20
+  \item SEARCH, 135
+  \item SEARCH, {\bf MExpr}, 14
+  \item SEARCH-COMPLETE-PATHS, {\bf Flag}, 207
+  \item SEARCH-ORDER, 104
+  \item SEARCH-ORDER, {\bf MExpr}, 25
+  \item SEARCH-TIME-LIMIT, {\bf Flag}, 208
+  \item SEARCH2, 135
+  \item SEARCHLISTS, 106
+  \item SEL, 86
+  \item SELECTION-NAME, {\bf Flag}, 197
+  \item SEMANTIC-BOUNDS, 174
+  \item SEQ-TO-NAT, {\bf MExpr}, 22
+  \item SEQLIST, {\bf MExpr}, 22
+  \item SEQUENCE, 82
+  \item SET, 153
+  \item SET-BACKGROUND-EPROOF, {\bf MExpr}, 27
+  \item SET-EPROOF, {\bf MExpr}, 25
+  \item SET-SEARCH-TREE, 86
+  \item SETEQUIV, 128
+  \item SETFLAG, 153
+  \item SETFLAGS1, 153
+  \item SETFLAGS2, 154
+  \item SETINTERSECT, 128
+  \item SETUNION, 128
+  \item SETUP-ONLINE-ACCESS, {\bf MExpr}, 38
+  \item SETUP-SLIDE-STYLE, {\bf MExpr}, 21
+  \item SHORT-HELP, {\bf Flag}, 183
+  \item SHORT-SITE-NAME, {\bf Flag}, 271
+  \item SHOW, 135, 150
+  \item SHOW*-WFF, 135
+  \item SHOW-ALL-LIBOBJECTS, {\bf Flag}, 276
+  \item SHOW-ALL-PACKAGES, {\bf Flag}, 181
+  \item SHOW-ALL-WFFS, 135, 150
+  \item SHOW-ASSIGNMENTS, 108
+  \item SHOW-BESTMODE, 142
+  \item SHOW-BESTMODE-THMS, 142
+  \item SHOW-CURRENT-PLAN, {\bf Tactic}, 81
+  \item SHOW-DPAIRSET, 102
+  \item SHOW-EXP-TERMS, 92
+  \item SHOW-EXP-VARS, 92
+  \item SHOW-HELP, 135, 150
+  \item SHOW-KEYWORDS, 141
+  \item SHOW-MATING, 87, 93, 97
+  \item SHOW-NEW-BESTMODES, 142
+  \item SHOW-OBJECTS-IN-FILE, 136
+  \item SHOW-OPTION-TREE, 85
+  \item SHOW-PLANS, {\bf Tactic}, 81
+  \item SHOW-RELEVANCE-PATHS, 154
+  \item SHOW-SEARCHLIST, 106
+  \item SHOW-SEL-VARS, 93
+  \item SHOW-SKOLEM, {\bf Flag}, 198
+  \item SHOW-SUBSTS, 87, 97
+  \item SHOW-TIME, {\bf Flag}, 210
+  \item SHOW-TIMING, 136
+  \item SHOW-WFF, 136, 150
+  \item SHOW-WFF\& HELP, 136, 150
+  \item SHOW-WFFS-IN-FILE, 136
+  \item SHOWNOTYPES, {\bf MExpr}, 18
+  \item SHOWTYPES, {\bf MExpr}, 18
+  \item SIB, 97
+  \item SIGMA1, 127
+  \item SIMPLIFY, 101
+  \item SIMPLIFY-PLAN, {\bf MExpr}, 36
+  \item SIMPLIFY-PLAN, {\bf Rule}, 55
+  \item SIMPLIFY-PLAN*, {\bf MExpr}, 36
+  \item SIMPLIFY-PLAN*, {\bf Rule}, 55
+  \item SIMPLIFY-SUPP, {\bf MExpr}, 36
+  \item SIMPLIFY-SUPP, {\bf Rule}, 55
+  \item SIMPLIFY-SUPP*, {\bf MExpr}, 36
+  \item SIMPLIFY-SUPP*, {\bf Rule}, 55
+  \item SK1, 119
+  \item SK3, 119
+  \item SKOLEM-DEFAULT, {\bf Flag}, 198
+  \item SKOLEM-SELECTION-NAME, {\bf Flag}, 198
+  \item SLIDEPROOF, {\bf MExpr}, 21
+  \item SLIDES-PREAMBLE, {\bf Flag}, 186
+  \item SLIDES-TURNSTILE-INDENT, {\bf Flag}, 193
+  \item SLIDES-TURNSTYLE-INDENT, {\bf Flag}, 193
+  \item SLINE-TAC, {\bf Tactic}, 66
+  \item SLIST, 147
+  \item SOLVE, 109
+  \item SORT, 140
+  \item SORT-FN, 288
+  \item SOURCE-EXTENSION, {\bf Flag}, 271
+  \item SOURCE-PATH, {\bf Flag}, 272
+  \item SPONSOR, {\bf MExpr}, 30
+  \item SPRING-CLEAN, 140
+  \item SQUEEZE, 58
+  \item SQUEEZE, {\bf MExpr}, 29
+  \item START-TIME, 289
+  \item START-TIME-ENABLED, {\bf Flag}, 207
+  \item STATISTICAL-OPTIONS, {\bf Flag}, 269
+  \item STATISTICS, 287
+  \item STATS, 90, 101
+  \item STOP-AT-TSN, {\bf Flag}, 243
+  \item STOP-SAVE, {\bf MExpr}, 20
+  \item STOP-TIME, 290
+  \item STOP-TIME-ENABLED, {\bf Flag}, 207
+  \item STYLE, {\bf Flag}, 180
+  \item SUB, 86, 117
+  \item SUB-ETREE, 86
+  \item SUB=-TAC, {\bf Tactic}, 66
+  \item SUBEQ, 113
+  \item SUBEQ*, 114
+  \item SUBFORMULAS, 119
+  \item SUBIM, 113
+  \item SUBIM*, 114
+  \item SUBJECTS, 154
+  \item SUBPROOF, {\bf MExpr}, 30
+  \item SUBSET, 121, 127
+  \item SUBST, 95, 117
+  \item SUBST-EQUIV, {\bf MExpr}, 32
+  \item SUBST-EQUIV, {\bf Rule}, 48
+  \item SUBST-EXISTS, 95
+  \item SUBST-FORALL, 95
+  \item SUBST-STACK, 101
+  \item SUBST=, {\bf MExpr}, 34
+  \item SUBST=, {\bf Rule}, 52
+  \item SUBST=-BACKCHAIN-LEMMA-TAC, {\bf Tactic}, 73
+  \item SUBST=-TAC, {\bf Tactic}, 76
+  \item SUBST=L, {\bf MExpr}, 34
+  \item SUBST=L, {\bf Rule}, 52
+  \item SUBST=L-TAC, {\bf Tactic}, 76
+  \item SUBST=R, {\bf MExpr}, 34
+  \item SUBST=R, {\bf Rule}, 52
+  \item SUBST=R-TAC, {\bf Tactic}, 77
+  \item SUBSTITUTE, {\bf MExpr}, 33
+  \item SUBSTITUTE, {\bf Rule}, 51
+  \item SUBSTYP, 117
+  \item SUBSUMPTION-CHECK, {\bf Flag}, 243
+  \item SUBSUMPTION-DEPTH, {\bf Flag}, 243
+  \item SUBSUMPTION-NODES, {\bf Flag}, 244
+  \item SUCC, 127
+  \item SUGGEST, {\bf MExpr}, 28
+  \item SUGGESTS, 174
+  \item SUMMARY, {\bf MExpr}, 16
+  \item SUPPORT-NUMBERS, {\bf Flag}, 193
+  \item SUPPRESS-FLAGS, {\bf Flag}, 181
+  \item SUPPRESS-FLAGS-LIST, {\bf Flag}, 181
+  \item SUPPRESS-IRRELEVANCE-WARNINGS, {\bf Flag}, 180
+  \item SYM=, {\bf  Theorem}, 122
+  \item SYM=, {\bf MExpr}, 34
+  \item SYM=, {\bf Rule}, 53
+  \item SYM=-TAC, {\bf Tactic}, 77
+  \item SYMSIMP-TAC, {\bf Tactic}, 74
+  \item SYS-LOAD, {\bf MExpr}, 38
+  \item SYSTEM, 177
+
+  \indexspace
+
+  \item T5302, {\bf  Theorem}, 122
+  \item T5310, {\bf  Theorem}, 122
+  \item T5310A, {\bf  Theorem}, 122
+  \item TABLEAU, {\bf MExpr}, 18
+  \item TACMODE, {\bf Flag}, 246
+  \item TACTIC-VERBOSE, {\bf Flag}, 246
+  \item TACTICS, 173
+  \item TACUSE, {\bf Flag}, 246
+  \item TAG-CONN-FN, {\bf Flag}, 200
+  \item TAG-MATING-FN, {\bf Flag}, 200
+  \item TERMS, 86
+  \item TEST, {\bf MExpr}, 12
+  \item TEST-EASIER-IF-HIGH, {\bf Flag}, 247
+  \item TEST-EASIER-IF-LOW, {\bf Flag}, 247
+  \item TEST-EASIER-IF-NIL, {\bf Flag}, 247
+  \item TEST-EASIER-IF-T, {\bf Flag}, 247
+  \item TEST-FASTER-IF-HIGH, {\bf Flag}, 247
+  \item TEST-FASTER-IF-LOW, {\bf Flag}, 247
+  \item TEST-FASTER-IF-NIL, {\bf Flag}, 248
+  \item TEST-FASTER-IF-T, {\bf Flag}, 248
+  \item TEST-FIX-UNIF-DEPTHS, {\bf Flag}, 248
+  \item TEST-INCREASE-TIME, {\bf Flag}, 248
+  \item TEST-INIT, {\bf MExpr}, 38
+  \item TEST-INITIAL-TIME-LIMIT, {\bf Flag}, 248
+  \item TEST-MAX-SEARCH-VALUES, {\bf Flag}, 249
+  \item TEST-MODIFY, {\bf Flag}, 272
+  \item TEST-NEXT-SEARCH-FN, {\bf Flag}, 249
+  \item TEST-REDUCE-TIME, {\bf Flag}, 249
+  \item TEST-THEOREMS, {\bf Flag}, 272
+  \item TEST-TOP, 156
+  \item TEST-VERBOSE, {\bf Flag}, 249
+  \item TESTWIN-HEIGHT, {\bf Flag}, 249
+  \item TESTWIN-WIDTH, {\bf Flag}, 249
+  \item TEX, 292
+  \item TEX-1, 292
+  \item TEX-1-OTL, {\bf Flag-Mode}, 279
+  \item TEX-1-POSTAMBLE, {\bf Flag}, 192
+  \item TEX-1-PREAMBLE, {\bf Flag}, 192
+  \item TEX-ALL-WFFS, 136
+  \item TEX-BREAK-BEFORE-SYMBOLS, {\bf Flag}, 188
+  \item TEX-LINE-WIDTH, {\bf Flag}, 192
+  \item TEX-MIMIC-SCRIBE, {\bf Flag}, 188
+  \item TEX-OTL, {\bf Flag-Mode}, 280
+  \item TEX-POSTAMBLE, {\bf Flag}, 192
+  \item TEX-PREAMBLE, {\bf Flag}, 192
+  \item TEXFORMAT, {\bf Flag}, 251
+  \item TEXLIBDIR, 136
+  \item TEXLIBFILE, 136
+  \item TEXPROOF, 60
+  \item TEXPROOF, {\bf MExpr}, 21
+  \item THAT, 129
+  \item THEN, 83
+  \item THEN*, 83
+  \item THEN**, 83
+  \item THEORY, 147
+  \item TIDY-PROOF, {\bf MExpr}, 26
+  \item TIMING-NAMED, {\bf Flag}, 208
+  \item TLIST, {\bf MExpr}, 39
+  \item TLOAD, {\bf MExpr}, 39
+  \item TOTAL-NUM-OF-DUPS, {\bf Flag}, 244
+  \item TOTALS-GRADE-FILE, {\bf Flag}, 269
+  \item TP, 119
+  \item TPS-TEST, {\bf MExpr}, 39
+  \item TPS-TEST2, {\bf MExpr}, 40
+  \item TPS3-SAVE, {\bf MExpr}, 40
+  \item TPSTEX, {\bf Flag}, 192
+  \item TRANSFER-LINES, {\bf MExpr}, 22
+  \item TRANSMIT, 161
+  \item TREAT-HLINES-AS-DLINES, {\bf Flag}, 273
+  \item TRUE+, 59
+  \item TRUE+TAC, {\bf Tactic}, 66
+  \item TRUE-NAME, {\bf Flag}, 198
+  \item TRUTH, 130
+  \item TRUTH-TAC, {\bf Tactic}, 73
+  \item TRUTHP-REWRITE-PLAN-TAC, {\bf Tactic}, 73
+  \item TRUTHVALUES-HACK, {\bf Flag}, 198
+  \item TRY, 83
+  \item TURNSTILE-INDENT, {\bf Flag}, 193
+  \item TURNSTILE-INDENT-AUTO, {\bf Flag}, 194
+  \item TURNSTYLE-INDENT, {\bf Flag}, 194
+  \item TURNSTYLE-INDENT-AUTO, {\bf Flag}, 194
+  \item TYPE-IOTA-MODE, {\bf Flag}, 258
+  \item TYPESUBST, {\bf MExpr}, 33
+
+  \indexspace
+
+  \item UGEN, {\bf MExpr}, 33
+  \item UGEN, {\bf Rule}, 50
+  \item UGEN-TAC, {\bf Tactic}, 74
+  \item UI, {\bf MExpr}, 33
+  \item UI, {\bf Rule}, 50
+  \item UI-HERBRAND-LIMIT, {\bf Flag}, 265
+  \item UI-HERBRAND-TAC, {\bf Tactic}, 75
+  \item UI-TAC, {\bf Tactic}, 75
+  \item ULNORM, 118
+  \item UNALIAS, {\bf MExpr}, 16
+  \item UNARR, 116
+  \item UNARR*, 116
+  \item UNARR1, 116
+  \item UNARR1*, 116
+  \item UNASSIGN-VAR, 109
+  \item UNCLASSIFY-CLASS, 145
+  \item UNCLASSIFY-ITEM, 145
+  \item UNDO, 112
+  \item UNI-SEARCH-HEURISTIC, {\bf Flag}, 244
+  \item UNIF-COUNTER, {\bf Flag}, 244
+  \item UNIF-COUNTER-OUTPUT, {\bf Flag}, 245
+  \item UNIF-DEPTHS, 155
+  \item UNIF-NODEPTHS, 155
+  \item UNIF-PROBLEM, 102
+  \item UNIF-SUBSUMED-TEST, 290
+  \item UNIF-SUBSUMED-TEST-ENABLED, {\bf Flag}, 208
+  \item UNIF-SUBSUMED-TRUE, 290
+  \item UNIF-SUBSUMED-TRUE-ENABLED, {\bf Flag}, 208
+  \item UNIF-TRIGGER, {\bf Flag}, 245
+  \item UNIFICATION, 173
+  \item UNIFORM-SEARCH, {\bf MExpr}, 12
+  \item UNIFORM-SEARCH-L, {\bf MExpr}, 12
+  \item UNIFY, 86, 97
+  \item UNIFY, {\bf MExpr}, 12
+  \item UNIFY-VERBOSE, {\bf Flag}, 245
+  \item UNION, 128
+  \item UNITSET, 127
+  \item UNIVERSAL-GOAL-P, {\bf Tactic}, 81
+  \item UNIXLIB, {\bf MExpr}, 13
+  \item UNIXLIB-SHOWPATH, {\bf Flag}, 180
+  \item UNLOADED-MODS, {\bf MExpr}, 41
+  \item UNLOCK-LINE, {\bf MExpr}, 29
+  \item UNNEC-EXP-TAC, {\bf Tactic}, 75
+  \item UNREWRITE-PLAN*, {\bf MExpr}, 36
+  \item UNREWRITE-PLAN*, {\bf Rule}, 55
+  \item UNREWRITE-PLAN1, {\bf MExpr}, 36
+  \item UNREWRITE-PLAN1, {\bf Rule}, 55
+  \item UNSCRIPT, {\bf MExpr}, 20
+  \item UNSPONSOR, {\bf MExpr}, 30
+  \item UNSPONSOR-TAC, {\bf Tactic}, 81
+  \item UNTYPED-LAMBDA-CALCULUS, {\bf Flag}, 258
+  \item UNUSE, {\bf MExpr}, 41
+  \item UP, 90, 95, 97
+  \item UPDATE, 154
+  \item UPDATE-KEYWORDS, 141
+  \item UPDATE-LIBDIR, 138
+  \item UPDATE-PROVABILITY, 142
+  \item UPDATE-RELEVANT, 154
+  \item USE, {\bf MExpr}, 41
+  \item USE-DEFAULT-BUG-DIR, {\bf Flag}, 277
+  \item USE-DIY, {\bf Flag}, 204
+  \item USE-DOT, {\bf Flag}, 187
+  \item USE-EXT-LEMMAS, {\bf Flag}, 204
+  \item USE-FAST-PROP-SEARCH, {\bf Flag}, 204
+  \item USE-INTERNAL-PRINT-MODE, {\bf Flag}, 187
+  \item USE-RRULES, {\bf MExpr}, 36
+  \item USE-RRULES, {\bf Rule}, 56
+  \item USE-RULEP, {\bf Flag}, 265
+  \item USE-RULEP-TAC, {\bf Tactic}, 81
+  \item USE-SYMSIMP, {\bf Flag}, 265
+  \item USE-SYMSIMP-TAC, {\bf Tactic}, 81
+  \item USE-TACTIC, {\bf MExpr}, 27
+  \item USE-THEORY, {\bf MExpr}, 36
+  \item USE-WINDOW-STYLE, {\bf Flag}, 188
+  \item USER-PASSWD-FILE, {\bf Flag}, 267
+  \item UTREE, 102
+  \item UTREE*, 102
+
+  \indexspace
+
+  \item VALID, 119
+  \item VARY-MODE, 106
+  \item VERBOSE-REWRITE-JUSTIFICATION, {\bf Flag}, 254
+  \item VP, 90, 93, 111
+  \item VPD, 90, 93, 111
+  \item VPD-BRIEF, {\bf Flag}, 251
+  \item VPD-FILENAME, {\bf Flag}, 251
+  \item VPD-LIT-NAME, {\bf Flag}, 252
+  \item VPD-PTYPES, {\bf Flag}, 252
+  \item VPD-STYLE, {\bf Flag}, 252
+  \item VPD-VPFPAGE, {\bf Flag}, 252
+  \item VPDTEX, {\bf Flag}, 193
+  \item VPETREE, 90
+  \item VPF, 112
+  \item VPFORM-LABELS, {\bf Flag}, 252
+  \item VPFORM-TEX-MAGNIFICATION, {\bf Flag}, 252
+  \item VPFORM-TEX-NEST, {\bf Flag}, 252
+  \item VPFORM-TEX-PREAMBLE, {\bf Flag}, 253
+  \item VPT, 90, 112
+  \item VPW-HEIGHT, {\bf Flag}, 253
+  \item VPW-WIDTH, {\bf Flag}, 253
+
+  \indexspace
+
+  \item WEAKEN, 58
+  \item WEIGHT-A-COEFFICIENT, {\bf Flag}, 213
+  \item WEIGHT-A-FN, {\bf Flag}, 213
+  \item WEIGHT-B-COEFFICIENT, {\bf Flag}, 213
+  \item WEIGHT-B-FN, {\bf Flag}, 214
+  \item WEIGHT-C-COEFFICIENT, {\bf Flag}, 214
+  \item WEIGHT-C-FN, {\bf Flag}, 214
+  \item WFF-PRIMS, 174
+  \item WFFP, 120
+  \item WHICH-CONSTRAINTS, {\bf Flag}, 264
+  \item WINDOW-PROPS, 158
+  \item WINDOW-STYLE, {\bf Flag}, 188
+  \item WRITE-RULE, {\bf MExpr}, 41
+
+  \indexspace
+
+  \item X2106, {\bf  Theorem}, 122
+  \item X2107, {\bf  Theorem}, 122
+  \item X2108, {\bf  Theorem}, 123
+  \item X2109, {\bf  Theorem}, 123
+  \item X2110, {\bf  Theorem}, 123
+  \item X2111, {\bf  Theorem}, 123
+  \item X2112, {\bf  Theorem}, 123
+  \item X2113, {\bf  Theorem}, 123
+  \item X2114, {\bf  Theorem}, 123
+  \item X2115, {\bf  Theorem}, 123
+  \item X2116, {\bf  Theorem}, 123
+  \item X2117, {\bf  Theorem}, 123
+  \item X2118, {\bf  Theorem}, 123
+  \item X2119, {\bf  Theorem}, 123
+  \item X2120, {\bf  Theorem}, 123
+  \item X2121, {\bf  Theorem}, 123
+  \item X2122, {\bf  Theorem}, 123
+  \item X2123, {\bf  Theorem}, 123
+  \item X2124, {\bf  Theorem}, 123
+  \item X2125, {\bf  Theorem}, 124
+  \item X2126, {\bf  Theorem}, 124
+  \item X2127, {\bf  Theorem}, 124
+  \item X2128, {\bf  Theorem}, 124
+  \item X2129, {\bf  Theorem}, 124
+  \item X2130, {\bf  Theorem}, 124
+  \item X2131, {\bf  Theorem}, 124
+  \item X2132, {\bf  Theorem}, 124
+  \item X2133, {\bf  Theorem}, 124
+  \item X2134, {\bf  Theorem}, 124
+  \item X2135, {\bf  Theorem}, 124
+  \item X2136, {\bf  Theorem}, 124
+  \item X2137, {\bf  Theorem}, 124
+  \item X2138, {\bf  Theorem}, 124
+  \item X5200, {\bf  Theorem}, 124
+  \item X5201, {\bf  Theorem}, 124
+  \item X5202, {\bf  Theorem}, 125
+  \item X5203, {\bf  Theorem}, 125
+  \item X5204, {\bf  Theorem}, 125
+  \item X5205, {\bf  Theorem}, 125
+  \item X5206, {\bf  Theorem}, 125
+  \item X5207, {\bf  Theorem}, 125
+  \item X5208, {\bf  Theorem}, 125
+  \item X5209, {\bf  Theorem}, 125
+  \item X5210, {\bf  Theorem}, 125
+  \item X5211, {\bf  Theorem}, 125
+  \item X5212, {\bf  Theorem}, 125
+  \item X5303, {\bf  Theorem}, 125
+  \item X5304, {\bf  Theorem}, 125
+  \item X5305, {\bf  Theorem}, 125
+  \item X5308, {\bf  Theorem}, 125
+  \item X5309, {\bf  Theorem}, 125
+  \item X5310, {\bf  Theorem}, 125
+  \item X5500, {\bf  Theorem}, 125
+  \item X6004, {\bf  Theorem}, 126
+  \item X6101, {\bf  Theorem}, 126
+  \item X6104, {\bf  Theorem}, 126
+  \item X6105, {\bf  Theorem}, 126
+  \item X6106, {\bf  Theorem}, 126
+  \item X6201, {\bf  Theorem}, 126
+  \item X8030A, {\bf  Theorem}, 126
+  \item XTERM, 292
+  \item XTERM-ANSI-BOLD, {\bf Flag}, 188
+  \item XTR, 112
+
+  \indexspace
+
+  \item ZERO, 127
+
+\end{theindex}

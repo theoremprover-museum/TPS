@@ -1,0 +1,59 @@
+===================================================================
+	
+		TPSFLAGS-DONE FILE
+Initials: 	Flag	Neutral value	Date
+===================================================================
+See /afs/cs/project/tps/admin/bugsdir/testmode.lib for setting neutral values  of flags added/altered. Use while bug-testing.Some of the settings as saved by bug-save in this mode are specific to MS. 
+===================================================================
+MB MACHINE-INSTANCE neutral value ""	Added 28th Mar, 1995
+***************
+MB 	DEFAULT-EXPAND  	none 	Added Feb 21st, 1995
+	DEFAULT-MATE       	PFD   	Added Feb 21st, 1995
+***************
+MB		ORDER-COMPONENTS	NIL	Jan 13th, 1995
+New value: T-REVERSED / PATHNUM-REVERSED.
+***************
+MB		SUNIL'S FAST PROPL. PROVER	Sep 29, 1994
+New flag, USE-FAST-PROP-SEARCH nil
+***************
+HX	renamed TRUTHVALUES to TRUTHVALUES-HACK	TRUTHVALUES NIL
+********************************
+HX added	Nil	 MIN-QUANT-ETREE 		Aug 21?94
+*****************
+MB added	TEST-FIX-UNIF-DEPTHS	NIL		
+*******************
+HX              DUPLICATION-STRATEGY-PFD           AUG 16th, 94
+DUP-OUTER
+****************
+MB		library WARNINGS			1994 Aug 4
+LOAD-WARN-P t
+*************
+MB		TURNSTILE-*				Jun 7, 1994
+TURNSTILE-INDENT-AUTO 	FIX
+
+TURNSTILE-INDENT 12
+====================================================================
+MB		ETA & BETA				Jun 2, 1994
+Added  	lambda-conv 	neutral  is BETA-ETA-TOGETHER
+**************************
+HX      Implement MAX-DUP-PATHS Infinity
+===============================================================
+HX	RIGID-PATH-CK                           31 Mar 1994
+T for MS88, NIL for MS90-3
+=======================================================
+MB		More MS91 FIXES			1st Mar 1994
+Added flags PENALTY-FOR-ORDINARY-DUP: 0
+	OPTIONS-GENERATE-FN:	ADD-OPTIONS-ORIGINAL
+	OPTIONS-GENERATE-ARG:	75
+	OPTIONS-GENERATE-UPDATE:IDENT-ARG
+	WEIGHT-B-FN : SIMPLE-WEIGHT-B-FN
+======================================================================
+Added MONITORFLAG:  NIL   1993
+----------------------------------------------------------------
+PRIM-BDTYPES-AUTO: REPLACE
+***************************8888
+Added 	RECONSIDER-FN:	DOUBLE-WEIGHT
+	WEIGHT-C-FN:	OPTION-SET-NUM-VPATHS
+=======================================================
+countsubs-first NIL
+=====================================================MODE============

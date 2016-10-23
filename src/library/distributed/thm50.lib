@@ -1,0 +1,28 @@
+(:name THM50-A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:24."
+:description "[P(O) EQUIV Q(O) EQUIV R(O)] IMPLIES.P(O) EQUIV.Q(O) EQUIV R(O)"
+:needed-objects   NIL
+:mhelp "one direction of thm50"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM50Q
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:30:26."
+:description "FORALL P(O) FORALL Q(O) FORALL R(O).P(O) EQUIV Q(O) EQUIV R(O) EQUIV.P(O) EQUIV.Q(O) EQUIV R(O)"
+:needed-objects   NIL
+:mhelp "quantified version of thm50"
+:other-attributes NIL
+:other-remarks "
+")
+
+

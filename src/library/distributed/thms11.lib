@@ -1,0 +1,361 @@
+(:name THM112B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:14."
+:description "FORALL P(OI) EXISTS m^9(OI(II)) EXISTS m^10(OI(II)).FORALL w^1(I) [m^9(OI(II)) [LAMBDA x(I) x(I)] w^1(I) OR m^10(OI(II)) [LAMBDA x(I) x(I)] w^1(I)] AND FORALL G(II) FORALL H(II).FORALL w^1(I) [m^9(OI(II)) G(II) w^1(I) OR m^10(OI(II)) G(II) w^1(I)] AND FORALL w^1(I) [m^9(OI(II)) H(II) w^1(I) OR m^10(OI(II)) H(II) w^1(I)] IMPLIES FORALL w^1(I) [m^9(OI(II)) [LAMBDA x(I) G(II).H(II) x(I)] w^1(I) OR m^10(OI(II)) [LAMBDA x(I) G(II).H(II) x(I)] w^1(I)] AND FORALL Y(I).P(OI) Y(I) IMPLIES P(OI).G(II) Y(I)"
+:needed-objects   (COMPOSE)
+:mhelp "Variant of THM112a with primsubs applied."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM112D
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, June  5, 2002 at 16:25:29."
+:description "FORALL P(OI) EXISTS m^9(OI(II)) EXISTS m^10(OI(II)).FORALL w^1(I) [m^9(OI(II)) [LAMBDA x(I) x(I)] w^1(I) OR m^10(OI(II)) [LAMBDA x(I) x(I)] w^1(I)] AND FORALL G(II) FORALL H(II).FORALL w^1(I) [m^9(OI(II)) G(II) w^1(I) OR m^10(OI(II)) G(II) w^1(I)] AND FORALL w^1(I) [m^9(OI(II)) G(II) w^1(I) OR m^10(OI(II)) G(II) w^1(I)] AND FORALL w^1(I) [m^9(OI(II)) H(II) w^1(I) OR m^10(OI(II)) H(II) w^1(I)] IMPLIES FORALL w^1(I) [m^9(OI(II)) [LAMBDA x(I) G(II).H(II) x(I)] w^1(I) OR m^10(OI(II)) [LAMBDA x(I) G(II).H(II) x(I)] w^1(I)] AND FORALL Y(I).P(OI) Y(I) IMPLIES P(OI).G(II) Y(I)"
+:needed-objects   NIL
+:mhelp "THM112E with appropriate primitive substitutions and quantifier
+duplication applied. Should be easy.
+Good for testing the basic matingsearch procedure in
+contexts where most atoms start with predicate variables."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM112E
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, June  6, 2002 at 12:32:48."
+:description "FORALL P(OI) EXISTS M(O(II)).M(O(II)) [LAMBDA x(I) x(I)] AND FORALL G(II) FORALL H(II).M(O(II)) G(II) AND M(O(II)) H(II) IMPLIES M(O(II)) [LAMBDA x(I) G(II).H(II) x(I)] AND FORALL Y(I).P(OI) Y(I) IMPLIES P(OI).G(II) Y(I)"
+:needed-objects   NIL
+:mhelp "Like THM112F, but excludes a trivial proof"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM112F
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, June  5, 2002 at 16:40:12."
+:description "FORALL P(OI) EXISTS M(O(II)) FORALL G(II) FORALL H(II).M(O(II)) G(II) AND M(O(II)) H(II) IMPLIES M(O(II)) [LAMBDA x(I) G(II).H(II) x(I)] AND FORALL Y(I).P(OI) Y(I) IMPLIES P(OI).G(II) Y(I)"
+:needed-objects   NIL
+:mhelp "On every set there exists a set of functions which is closed under composition.
+Example from CADE8"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM115-SUB
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA w(I) FORALL z(I).f(II) z(I) =(OII) w(I) IMPLIES P(OI) z(I)"
+:needed-objects   NIL
+:mhelp "the correct substitution for A in THM115"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM115A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Wednesday, June  5, 2002 at 16:11:06."
+:description "EXISTS A(OI).FORALL x(I) [A(OI) [f(II) x(I)] IMPLIES P(OI) x(I)] AND.P(OI) a(I) AND FORALL x(I) FORALL y(I) [f(II) x(I) =(OII) f(II) y(I) IMPLIES x(I) =(OII) y(I)] IMPLIES EXISTS z(I) A(OI) z(I)"
+:needed-objects   NIL
+:mhelp "Sunil's example. 
+The second conjunct is there only to force us to consider non empty sets
+as substitutions for A.
+The correct substitution for A is the wff THM115-SUB."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM116
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL X(OA) FORALL Y(OA) [X(OA) SUBSET(O(OA)(OA)) Y(OA) IMPLIES K(OA(OA)) X(OA) SUBSET(O(OA)(OA)) K(OA(OA)) Y(OA)] IMPLIES K(OA(OA)) [SETUNION(OA(O(OA))).LAMBDA P(OA).P(OA) SUBSET(O(OA)(OA)) K(OA(OA)) P(OA)] EQUIVS(O(OA)(OA)) SETUNION(OA(O(OA))).LAMBDA P(OA).P(OA) SUBSET(O(OA)(OA)) K(OA(OA)) P(OA)"
+:needed-objects   NIL
+:mhelp "Fixed point theorem. Easier version of THM2."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM116A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL X(OA) FORALL Y(OA) [FORALL x(A) [X(OA) x(A) IMPLIES Y(OA) x(A)] IMPLIES FORALL x(A).K(OA(OA)) X(OA) x(A) IMPLIES K(OA(OA)) Y(OA) x(A)] IMPLIES FORALL x(A).K(OA(OA)) [LAMBDA x(A) EXISTS S(OA).FORALL x(A) [S(OA) x(A) IMPLIES K(OA(OA)) S(OA) x(A)] AND S(OA) x(A)] x(A) IMPLIES EXISTS S(OA).FORALL x(A) [S(OA) x(A) IMPLIES K(OA(OA)) S(OA) x(A)] AND S(OA) x(A)"
+:needed-objects   NIL
+:mhelp "Part of THM116"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM116B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL X(OA) FORALL Y(OA) [FORALL x(A) [X(OA) x(A) IMPLIES Y(OA) x(A)] IMPLIES FORALL x(A).K(OA(OA)) X(OA) x(A) IMPLIES K(OA(OA)) Y(OA) x(A)] IMPLIES FORALL x(A).EXISTS S(OA) [FORALL x(A) [S(OA) x(A) IMPLIES K(OA(OA)) S(OA) x(A)] AND S(OA) x(A)] IMPLIES K(OA(OA)) [LAMBDA x(A) EXISTS S(OA).FORALL x(A) [S(OA) x(A) IMPLIES K(OA(OA)) S(OA) x(A)] AND S(OA) x(A)] x(A)"
+:needed-objects   NIL
+:mhelp "Other part of THM116; related to THM2"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM116C
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL X(OA) FORALL Y(OA) [FORALL x(A) [X(OA) x(A) IMPLIES Y(OA) x(A)] IMPLIES FORALL x(A).K(OA(OA)) X(OA) x(A) IMPLIES K(OA(OA)) Y(OA) x(A)] IMPLIES FORALL x(A).K(OA(OA)) [LAMBDA x(A) EXISTS S(OA).FORALL x(A) [S(OA) x(A) IMPLIES K(OA(OA)) S(OA) x(A)] AND S(OA) x(A)] x(A) EQUIV EXISTS S(OA).FORALL x(A) [S(OA) x(A) IMPLIES K(OA(OA)) S(OA) x(A)] AND S(OA) x(A)"
+:needed-objects   NIL
+:mhelp "Fixed point theorem. Easier version of THM2."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM117A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) FORALL z(I) [E(OII) z(I) x(I) IMPLIES EXISTS y(I).E(OII) y(I) x(I) AND FORALL w(I).R(OII) y(I) w(I) IMPLIES ~E(OII) w(I) x(I)] AND FORALL s(I) FORALL x(I) [FORALL y(I) [E(OII) y(I) s(I) AND R(OII) x(I) y(I) IMPLIES P(OI) y(I)] IMPLIES P(OI) x(I)] IMPLIES FORALL x(I).E(OII) x(I) s(I) IMPLIES P(OI) x(I)"
+:needed-objects   NIL
+:mhelp "One form of transfinite induction due to Bailin and Barker-Plummer; E means membership; R is a well-founded relation."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM117B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:16."
+:description "FORALL x(OI) FORALL z(I) [x(OI) z(I) IMPLIES EXISTS y(I).x(OI) y(I) AND FORALL w(I).R(OII) y(I) w(I) IMPLIES ~x(OI) w(I)] AND FORALL x1(I) [FORALL y1(I) [s(OI) y1(I) AND R(OII) x1(I) y1(I) IMPLIES P(OI) y1(I)] IMPLIES P(OI) x1(I)] IMPLIES FORALL x2(I).s(OI) x2(I) IMPLIES P(OI) x2(I)"
+:needed-objects   NIL
+:mhelp "TRANSFINITE INDUCTION theorem of Bailin and Barker-Plummer;
+see Z-Match paper JAR 11 (1993) page 396;
+if R is a well-founded relation and P is an inductive property over R restricted to s, 
+then everything in s has property P; here R y w means y > w."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM117C
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:17."
+:description "FORALL x(OI) FORALL z(I) [x(OI) z(I) IMPLIES EXISTS y(I).x(OI) y(I) AND FORALL w(I).R(OII) y(I) w(I) IMPLIES ~x(OI) w(I)] AND FORALL x1(I) [FORALL y1(I) [s(OI) y1(I) AND R(OII) x1(I) y1(I) IMPLIES P(OI) y1(I)] IMPLIES P(OI) x1(I)] IMPLIES FORALL x2(I).s(OI) x2(I) IMPLIES P(OI) x2(I)"
+:needed-objects   (IN)
+:mhelp "TRANSFINITE INDUCTION theorem of Bailin and Barker-Plummer;
+see Z-Match paper JAR 11 (1993) page 396;
+if R is a well-founded relation and P is an inductive property over R restricted to s, 
+then everything in s has property P; here R y w means y > w."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM118
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "~EXISTS h(I(OI)).FORALL x(I) E^1(OII) x(I) x(I) AND FORALL p(OI) FORALL q(OI) [E^2(O(OI)(OI)) p(OI) q(OI) IMPLIES.p(OI) [h(I(OI)) p(OI)] EQUIV q(OI).h(I(OI)) q(OI)] AND FORALL p(OI) FORALL q(OI).E^1(OII) [h(I(OI)) p(OI)] [h(I(OI)) q(OI)] IMPLIES E^2(O(OI)(OI)) p(OI) q(OI)"
+:needed-objects   NIL
+:mhelp "A variant of X5309, a form of Cantor's Theorem using injectivity. E denotes equality. The needed properties of E are made part of this theorem."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM119
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, June  3, 1997 at 16:24:03."
+:description "~.FORALL z(I) [[P(OI) z(I) OR R(OI) z(I)] AND Q(OI) z(I)] AND FORALL x(I) EXISTS y(I) [P(OI) x(I) OR ~Q(OI) x(I) OR ~Q(OI) y(I) OR ~Q(OI) c(I) OR ~Q(OI) d(I)] AND.~P(OI) a(I) OR ~P(OI) b(I)"
+:needed-objects   NIL
+:mhelp "Example from Issar where path-focused duplication of the form
+(1 2) does not succeed, while (2 (1 1 ...)) does succeed."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name SUBF
+:type GWFF
+:context NIL
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X(I).S(OI) X(I) AND ~G(OII) X(I) X(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name SUBM111
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA G(II) FORALL X(I).P(OI) X(I) IMPLIES P(OI).G(II) X(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name SUBMB111
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA G(II) FORALL X(I).~P(OI) X(I) OR P(OI).G(II) X(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name SUBP1
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA U(OI) U(OI) J(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name SUBP2
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA U(OI).~U(OI) J(I)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM110
+:type GWFF
+:context NIL
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL S(OI).~S(OI) GRE(O(O(OI))(OI)) POWERSET(O(OI)(OI)) S(OI)"
+:needed-objects   (GRE)
+:mhelp "(THIS IS THE GENERAL CANTOR THEOREM FOR SETS)
+(ESSENTIALLY THE SAME AS THM43)
+(EXPANSION TERMS
+ (SUBF FOR F<OI> - LAMBDA X(I).[S(OI) X] AND NOT .G(OII) X X)
+ (SUBP1 FOR P<O<OI>> - LAMBDA U(OI). U .J(I))
+ (SUBP2 FOR P<O<OI>> - LAMBDA U(OI). NOT. U.J(I)))
+GRE isn't defined anywhere, so I've guessed a definition. MB"
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM111
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 15:18:54."
+:description "FORALL P(OI) EXISTS M(O(II)) FORALL G(II) FORALL H(II).M(O(II)) G(II) AND M(O(II)) H(II) IMPLIES M(O(II)) [LAMBDA Z(I) G(II).H(II) Z(I)] AND FORALL Y(I).P(OI) Y(I) IMPLIES P(OI).G(II) Y(I)"
+:needed-objects   NIL
+:mhelp "(THERE IS A SET OF FUNCTIONS ON P CLOSED UNDER COMPOSITION)
+(EXPANSION TERM
+ (SUBM111 FOR M - LAMBDA G(II) FORALL X(I)[[P X] IMPLIES [P [G X])"
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM113
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 15:18:55."
+:description "FORALL P(OI) EXISTS M(O(II)) FORALL G(II).M(O(II)) G(II) IMPLIES M(O(II)) [LAMBDA Z(I) G(II).G(II) Z(I)] AND FORALL Y(I).P(OI) Y(I) IMPLIES P(OI).G(II) Y(I)"
+:needed-objects   NIL
+:mhelp "(WEAKER FORM OF THM111)
+(THERE IS A SET OF FUNCTIONS ON P CLOSED UNDER COMPOSITION)
+(EXPANSION TERM
+ (SUBM111 FOR M - LAMBDA G(II) FORALL X(I)[[P X] IMPLIES [P [G X])"
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM114
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 15:18:55."
+:description "P(O) AND [P(O) IMPLIES Q(O)] IMPLIES Q(O)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+

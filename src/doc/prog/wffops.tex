@@ -1,0 +1,914 @@
+\chapter{Well-formed formulae operators}
+
+\section{Operations on Wffs}
+
+By definition, operations on wffs differ from commands in that they
+return a meaningful value, usually another wff or a truth value.  While
+commands are usually given at the top-level, operations are usually
+used inside the editor.  In other respects, operations on wffs are very
+similar to commands in \tps.  The types of the arguments and the type of
+the result must be specified in the declaration of a {\it wffop}.
+Moreover, help for the arguments and help for the wffop itself is
+available.  Arguments for wffops may be typed exactly the way arguments
+for commands are:  one at a time after a short help message.
+
+You may frequently have to refer to chapter ~\ref{toplev}, since it will
+be assumed below that you have a general idea of how the \TPS top-level
+interprets commands.
+
+\subsection{Arguments to Wffops}
+In principle, arguments to (or results of) wffops can have any type
+defined inside \tps.  There are some argument types which are mainly
+used for wffops and rarely or not at all for commands.  They are the following
+\begin{description}
+\item [\indexargtypes{GWFF}] A generalized wff.
+
+\item [\indexargtypes{BOOLEAN}] {\tt NIL} for ``false'', anything else for ``true''.
+Internally these are converted {\tt NIL} and {\tt T} first.  In particular,
+if a wffop has been declared to return an object of type {\tt BOOLEAN},
+this wffop may return anything, but {\tt NIL} is printed as {\tt NIL}, while
+everything else is printed as {\tt T}.
+
+\item [\indexargtypes{TYPESYM}] A type symbol (in string representation).  This is
+extremely useful for error messages (inside \indexfunction{THROWFAIL}).
+For example, the type inference program may contain a line
+%\begin{tpsexample}
+\begin{verbatim}
+(throwfail "Type " (t1.typesym) " does not match " (t2.typesym))
+\end{verbatim}
+%\end{tpsexample}
+For most settings of the \indexflag{STYLE} flag, this will print the types as true
+greek subscripts.
+
+\item [\indexargtypes{GVAR}] A general variable.  This is only one of
+a whole class of possible subtypes of wffs ({\tt GWFF}).  The {\tt GETFN} for
+these special kinds of wffs can easily be described using the function
+\indexfunction{GETWFF-SUBTYPE}, which takes a predicate as the first argument,
+an {\tt RWFF} as the second.
+\end{description}
+
+As an example for the definition of a subtype of {\tt GWFF} serves the definition
+of {\tt GVAR}:
+\begin{verbatim}
+(deftype gvar
+  (getfn (getwff-subtype 'gvar-p gvar))
+  (testfn gvar-p)
+  (printfn printwffhere)
+  (side-effects t)
+  (no-side-effects edwff)
+  (mhelp "	A gwff which must be a logical variable"))
+\end{verbatim}
+
+\subsection{Defining Wffops}\label{defwffop}
+The format for defining a wffop is very similar to that for defining a
+MExpr.  The function that does the definition is called
+\indexfunction{DEFWFFOP}.  The general format is ({\tt {}} enclose optional
+arguments)
+\begin{verbatim}
+(DefWffop <name>
+	{(ArgTypes <type1> <type2> ...)}
+	(ResultType <type>)
+	{(ArgNames <name1> <name2> ...)}
+	{(ArgHelp <help1> <help2> ...)}
+	{(Applicable-Q <fnspec>)}
+	{(Applicable-P <fnspec>)}
+        {(WffArgTypes <type> ... <type>)}
+        {(Wffop-Type <type>)}
+        {(Wffop-Typelist (<typesymbol> ... <typesymbol>))}
+        {(DefaultFns <fnspec1> <fnspec2> ...)}
+        {(MainFns <fnspec1> <fnspec2> ...)}
+        {(Replaces <wffop>)}
+        {(Print-Op <boolean>)}
+        {(Multiple-Recursion <boolean>)}
+	{(MHelp "<comment>")})
+\end{verbatim}
+
+The keywords {\tt ArgTypes}, {\tt ArgNames}, {\tt ArgHelp}, {\tt DefaultFns},
+{\tt MainFns} and {\tt MHelp} have the
+same meaning as for commands (MExprs).  See Section ~\ref{mexprargs}.
+You have to mention {\tt ArgNames} before {\tt Applicable-P}, if you want to make
+use of the argnames without explicitly using lambda.
+The other keywords are as follows:
+
+\begin{description}
+\item [{\tt RESULTTYPE}] is the only non-optional part of the declaration and
+is used for printing the result of the wffop.
+
+\item [{\tt APPLICABLE-Q}] is a ``quick'' predicate (see Section ~\ref{quickslow})
+to decide whether the wffop is applicable to a given set of arguments.
+If omitted (or explicitly stated to be \indexfunction{TRUEFN}), it means that the
+wffop can always be applied.
+
+\item [{\tt APPLICABLE-P}] is a ``slow'' predicate
+which is supposed to check thoroughly whether the wffop is applicable.
+Again, if one wants to state explicitly that a wffop is always applicable,
+use \indexfunction{TRUEFN}.
+
+\item [{\tt WFFARGTYPES}] There must be exactly as many {\it type} entries, as there
+are arguments to the {\it wffop}.  Each {\it type} entry may be either a
+type (in string format) or {\tt NIL}, which is used for arguments which
+are not {\tt gwffs}.
+
+\item [{\tt WFFOP-TYPE}] specifies a {\it type} in string format, which is the
+type of the result the {\it wffop}, or {\tt NIL}, if the result is not a
+{\it gwff}.
+
+{\tt WFFOP-TYPELIST} \\ A list of type symbols which are to be considered
+type variables in the definition of the {\it wffop}.
+
+\item [{\tt REPLACES}] The wffop being defined is to replace some previously defined
+wffop. This is used extremely rarely.
+
+\item [{\tt PRINT-OP}] This is set to {\tt T} for printing operations (which are 
+usually defined using the macro \indexother{DEFPRTOP}, which sets this 
+property automatically). By default, this property has value {\tt NIL}.
+
+\item [{\tt MULTIPLE-RECURSION}]  seems to be set to {\tt T} for most tests of
+equality and {\tt NIL} everywhere else. I'm not entirely sure what it's for.
+\end{description}
+
+Here are some example which may shed more light onto the subject.
+
+%\begin{tpsexample}
+\begin{verbatim}
+
+(defwffop substitute-l-term-var
+  (argtypes gwff gvar gwff)
+  (resulttype gwff)
+  (argnames term var inwff)
+  (arghelp "term" "var" "inwff")
+  (wffargtypes "A" "A" "B")		; TERM and VAR are of type A
+  (wffop-type "B")			; INWFF and result of type B
+  (wffop-typelist "A" "B")		; where A and B may be any types.
+  (mhelp "..."))
+
+(defwffop lexpd
+  (argtypes gvar gwff gwff occ-list)
+  (resulttype gwff)
+  (argnames var term inwff occurs)
+  (arghelp "lambda variable" "term to be extracted" "contracted form"
+	   "occurrences to be extracted")
+  (wffargtypes "A" "A" "B" NIL)		; TERM and VAR are of type A,
+					; INWFF is of type B, OCCURS is not
+  (wffop-type "B")			; a gwff, result is of type B,
+  (wffop-typelist "A" "B")		; where A and B may be any types.
+  (applicable-p (lambda (var term inwff occurs)
+		  (declare (ignore inwff occurs))
+		  (type-equal term var)))
+  (mhelp "..."))
+
+(defwffop substitute-types
+  (argtypes typealist gwff)
+  (resulttype gwff)
+  (argnames alist gwff)
+  (arghelp "alist of types" "gwff")
+  (mhelp "Substitute for types from list ((old . new) ...) in gwff."))
+
+\end{verbatim}
+%\end{tpsexample}
+
+\subsection{Defining Recursive Wffops}
+
+The category \indexother{wffrec\%} is for recursive wff functions. 
+Such operations are defined with the \indexfunction{defwffrec} function;
+they have only three properties: {\tt ARGNAMES}, {\tt MHELP}
+and {\tt MULTIPLE-RECURSION}.
+
+The point of this is that we needed a way of saving the 
+{\tt ARGNAME} information for functions which
+use an \indexfunction{APPLY-LABEL}, but are not wffops themselves.
+These are defined as wffrecs.
+
+Some examples: 
+
+%\begin{tpsexample}
+\begin{verbatim}
+(defwffrec gwff-q
+  (argnames gwff))
+
+(defun gwff-q (gwff)
+  (cond ((label-p gwff) (apply-label gwff (gwff-q gwff)))
+	((lsymbol-p gwff) t)
+	((atom gwff) nil)
+	((and (boundwff-p gwff) (gvar-p (caar gwff)) (gwff-q (cdr gwff))))
+	((and (gwff-q (car gwff)) (gwff-q (cdr gwff))))))
+
+(defwffrec wffeq-def1
+  (argnames wff1 wff2 varstack switch)
+  (multiple-recursion t))
+ 
+; the function wffeq-def1 is pages long, so it's not quoted here. Look 
+; in file wffequ2.lisp for details.
+
+\end{verbatim}
+%\end{tpsexample}
+
+\subsection{Defining a Function Performing a Wffop}
+There are some necessary restrictions on how to define proper wffops,
+other conventions are simply a matter of style.
+The following are general guidelines,
+which do not address the definition of flavors (see Section ~\ref{defflavors}).
+
+\begin{enumerate}
+\item All arguments to a wffop may be assumed to be of the correct type, when
+the function is invoked.  This does not mean, that the function never
+should check for an error, but at least the function does not have to check
+whether an argument is well-formed, or whether an argument is a logical
+variable and not an application.
+
+\item Most user-level wffops get by without using any ``slow'' predicates for
+constituents of a gwff.  Use the ``quick'' predicate and assume that
+the argument is a gwff.
+
+\item Make the name of a wffop as descriptive as possible.  The user will rarely
+have to type this long name, since he will normally invoke wffops in the
+editor, where they can be given short aliases.  See section ~\ref{EDOPS}.
+
+\item When using auxiliary functions, make sure their name can be easily related
+to the name of the main function.
+
+\item Check the wff operations in the TPS3 Facilities Guide for Programmers and
+Users before defining new functions. In particular, you should often use
+\indexfunction{GAR} and \indexfunction{GDR} instead of car and cdr to 
+manipulate wffs, since the wffs may have labels.
+
+\item Always make sure you are invoking the ``quick'' test in the correct order,
+since later tests rely on the fact that earlier tests failed.
+\end{enumerate}
+
+\subsection{Quick Test versus Slow Test}\label{quickslow}
+Most predicates which test for certain kinds of subformulas come in two
+incarnations: as a ``quick'' test and a ``slow'' test.  As a general
+convention that should never be violated, both functions have the same
+name except for the last character, which is {\tt -Q} for the quick
+test and {\tt -P} for the slow test.
+
+As a rule of thumb, quick predicates may assume a very restricted kind
+of argument (e.g. a literal atom), but may not work recursively down
+into the formula.  Slow predicates, however, may assume nothing about
+the argument (they should always work), and often have to do a recursion
+to see whether the predicate is true of the argument.
+
+Quick predicates are most useful when in recursive functions that implement
+a wffop.  Slow predicates are chiefly called inside the editor to test
+that certain transformations or applications will be legal, {\it before they
+are performed}.  Speed is usually not important when working in the editor,
+but wffops in general should be optimized for speed, since time does make
+a difference in automatic mode.
+
+A list of the most useful quick predicates in the order in which they must
+be called is supplied here.  See the comments attached to the predicates
+in the source file if this list is unclear or ambiguous.
+
+{\bf It is absolutely essential to understand the role of quick
+predicates and the order of their invocation to write bug-free code!}
+
+\begin{description}
+\item [\indexfunction{LABEL-Q} {\it gwff}] tests for a label.  The standard action in this
+case is {\tt (APPLY-LABEL GWFF ({\it wffop} {\it arg1} ... {\it argn}))} where
+{\it wffop} is the wffop we are defining and {\it arg1} through {\it argn} are
+its arguments. Always call this first, since any given argument may be a label.
+
+\item [\indexfunction{LSYMBOL-Q} {\it gwff}] tests for a logical symbol.  This could either
+be a variable, constant, or abbreviation. This must come after the test for {\it label}, 
+but does not assume anything else.  There are several subtypes of {\it lsymbol} which
+assume that their argument is a {\it lsymbol} and must be called in the
+following order:
+\begin{description}
+\item [\indexfunction{LOGCONST-Q} {\it gwff}] a logical constant, which must have been declared
+with {\tt DEF-LOGCONST.}
+
+\item [\indexfunction{PROPSYM-Q} {\it gwff}] a proper symbol, that is something that has not
+been declared a constant or abbreviation.
+
+\item [\indexfunction{PMPROPSYM-Q} {\it gwff}] a polymorphic proper symbol (higher-order mode only).
+
+\item [\indexfunction{PMABBREV-Q} {\it gwff}] a polymorphic abbreviation (higher-order mode only).
+
+\item [\indexfunction{ABBREV-Q} {\it gwff} ] an abbreviation.
+\end{description}
+
+\item [\indexfunction{BOUNDWFF-Q}] 
+Test whether the wff starts with a binder (of any type) and
+assumes that we already know that it is neither {\it label} nor
+a {\it lsymbol} (in Lisp terms: it must be a {\tt CONS} cell). Access the
+bound variable with {\tt CAAR,} the binder with {\tt CDAR,} the scope of the binder
+with {\tt CDR.}  Construct a new bound formula with {\tt (CONS (CONS {\it bdvar} {\it binder})
+{\it scope})}.
+
+\item [{\tt T}] This is the ``otherwise'' case, i.e. we have an application.
+Access the ``function'' part with {\tt CAR,} the ``argument'' part with
+{\tt CDR.}  Construct a new application with {\tt (CONS {\it function} {\it argument})}.
+Remember also that all functions and predicates are curried.
+
+\end{description}
+
+\begin{center}
+{\bf Examples of Wffops}
+\end{center}
+
+The following examples are taken from actual code\footnote{As of July 7th, 1994}.
+%\begin{verbatim, LineWidth 80, LeftMargin -4}
+%\begin{Text, Indent 1inch}
+\begin{verbatim}
+
+The following are two different substitution functions
+SUBSTITUTE-TERM-VAR (currently in wffsub1.lisp) 
+substitutes a term for a variable, but gives
+and error if the term is not free for the variable in the wff.
+SUBSTITUTE-L-TERM-VAR (currently in wffsub2.lisp) 
+also substitutes a term for a variable,
+but renames bound variables if a name conflict occurs.
+There may be a global variable, say SUBST-FN, whose value is
+the function used for substitution by default, or there may be a function
+SUBSTITUTE, which checks certain flags to determine which function
+to call.
+
+(defwffop substitute-term-var
+  (argtypes gwff gvar gwff)
+  (wffargtypes "A" "A" "B")
+  (resulttype gwff)
+  (wffop-type "B")
+  (wffop-typelist "A" "B")
+  (argnames term var inwff)
+  (arghelp "term" "var" "inwff")
+  (applicable-p (lambda (term var inwff) (free-for term var inwff)))
+  (mhelp
+   "Substitute a term for the free occurrences of variable in a gwff."))
+
+(defun substitute-term-var (term var inwff)
+  "This function should be used with extreme caution. There's an underlying
+  assumption that TERM is free for VAR in INWFF (which is true if TERM is
+  a new variable)."
+  (or (subst-term-var-rec (intern-subst term var) var inwff)
+      inwff))
+
+(defun subst-term-var-rec (term var inwff)
+  (cond ((label-q inwff)
+	 (apply-label inwff (subst-term-var-rec term var inwff)))
+	((lsymbol-q inwff) (if (eq var inwff) term nil))
+	((boundwff-q inwff)
+	 (if (eq (caar inwff) var) nil
+	     (let ((new-wff (subst-term-var-rec term var (cdr inwff))))
+	       (if new-wff (cons (car inwff) new-wff) nil))))
+	(t (let ((left (or (subst-term-var-rec term var (car inwff))
+			   (car inwff)))
+		 (right (or (subst-term-var-rec term var (cdr inwff))
+			    (cdr inwff))))
+	     (unless (and (eq left (car inwff)) (eq right (cdr inwff)))
+		     (cons left right))))))
+
+(defwffop substitute-l-term-var
+  (argtypes gwff gvar gwff)
+  (wffargtypes "A" "A" "B")
+  (resulttype gwff)
+  (wffop-type "B")
+  (wffop-typelist "A" "B")
+  (argnames term var inwff)
+  (arghelp "term" "var" "inwff")
+  (mhelp
+   "Substitute a term for the free occurrences of variable in a gwff.
+Bound variables may be renamed, using the function in the global
+variable REN-VAR-FN."))
+
+(defun substitute-l-term-var (term var inwff)
+  (or (subst-l-term-rec (intern-subst term var) var inwff) inwff))
+
+LCONTR (currently in wfflmbd2.lisp)
+does a Lambda-contraction.  Notice the use of
+THROWFAIL and the use of general predicates like LAMBDA-BD-P
+rather than testing directly whether a given wff is bound by
+Lambda.  This way, the function works, even if the CAR fo
+the application is a label!
+
+(defwffop lcontr
+  (argtypes gwff)
+  (wffargtypes "A")
+  (resulttype gwff)
+  (wffop-type "A")
+  (wffop-typelist "A")
+  (argnames reduct)
+  (arghelp "gwff (reduct)")
+  (applicable-p reduct-p)
+  (mhelp "Lambda-contract a top-level reduct.
+Bound variables may be renamed using REN-VAR-FN"))
+
+(defun lcontr (reduct)
+  (cond ((label-q reduct) (apply-label reduct (lcontr reduct)))
+	((lsymbol-q reduct)
+	 (throwfail "Cannot Lambda-contract " (reduct . gwff)
+		    ", a logical symbol."))
+	((boundwff-q reduct)
+	 (throwfail "Cannot Lambda-contract " (reduct . gwff)
+		    ", a bound wff."))
+	(t (if (lambda-bd-p (car reduct))
+	       (substitute-l-term-var (cdr reduct) (gar (car reduct))
+				      (gdr (car reduct)))
+	       (throwfail "Top-level application " (reduct . gwff)
+			  " is not of the form [LAMBDA x A]t.")))))
+
+FREE-FOR is a simple example of a predicate on wffs.
+Here, the type of the result is declared to be BOOLEAN.
+
+(defwffop free-for
+  (argtypes gwff gvar gwff)
+  (resulttype boolean)
+  (argnames term var inwff)
+  (arghelp "term" "var" "inwff")
+  (applicable-q (lambda (term var inwff) (declare (ignore inwff))
+			(type-equal term var)))
+  (applicable-p (lambda (term var inwff) (declare (ignore inwff))
+			(type-equal term var)))
+  (mhelp "Tests whether a term is free for a variable in a wff."))
+
+(defun free-for (term var inwff)
+  (cond ((label-q inwff)
+	 (apply-label inwff (free-for term var inwff)))
+  	((lsymbol-q inwff) t)
+	((boundwff-q inwff)
+	 (cond ((eq (caar inwff) var) t)
+	       ((free-in (caar inwff) term)
+		(not (free-in var (cdr inwff))))
+	       (t (free-for term var (cdr inwff)))))
+	(t (and (free-for term var (car inwff))
+		(free-for term var (cdr inwff))))))
+
+TYPE (currently in wffprim.lisp) 
+returns the type of the argument.  The name is a very
+troublesome one and we may eventually need to change it globally so as not
+to conflict with Common Lisp.
+
+(defwffop type
+	(argtypes gwff)
+	(resulttype typesym)
+	(argnames gwff)
+	(arghelp "gwff")
+	(mhelp "Return the type of a gwff."))
+
+(defun type (gwff)
+  (cond ((label-q gwff) (apply-label gwff (type gwff)))
+	((lsymbol-q gwff) (get gwff 'type))
+	((boundwff-q gwff) (boundwfftype gwff))
+	(t (type-car (type (car gwff))))))
+
+The following are a sequence of functions which instantiate abbreviations.
+One can either instantiate a certain abbreviation everywhere
+(INSTANTIATE-DEFN), instantiate all abbreviations (not recursively)
+(INSTANTIATE-ALL), or instantiate the first abbreviates, counting
+from left to right (INSTANTIATE-1).
+The functions are implemented by one master function, one of whose
+arguments is a predicate to be applied to an abbreviation.  This
+predicate should return something non-NIL, if this occurrence is to be
+instantiated, NIL otherwise.
+Notice the subcases inside LSYMBOL-Q and the order of the quick
+predicates in the OR clause.
+
+
+(defwffop instantiate-defn
+  (argtypes symbol gwff)
+  (resulttype gwff)
+  (argnames gabbr inwff)
+  (arghelp "abbrev" "inwff")
+  (applicable-p (lambda (gabbr inwff) (declare (ignore inwff))
+			(or (abbrev-p gabbr) (pmabbsym-p gabbr))))
+  (mhelp "Instantiate all occurrences of an abbreviation.
+The occurrences will be lambda-contracted, but not lambda-normalized."))
+
+(defun instantiate-defn (gabbr inwff)
+  (instantiate-definitions 
+   inwff #'(lambda (abbsym chkarg) (eq abbsym chkarg)) gabbr))
+
+
+(defwffop instantiate-all
+  (argtypes gwff symbollist)
+  (resulttype gwff)
+  (argnames inwff exceptions)
+  (arghelp "inwff" "exceptions")
+  (defaultfns (lambda (&rest rest)
+		(mapcar #'(lambda (argdefault arg) 
+			    (if (eq arg '$) argdefault arg))
+			'($ NIL) rest)))
+  (mhelp "Instantiate all definitions, except the ones specified
+in the second argument."))
+
+(defun instantiate-all (inwff exceptions)
+  (instantiate-definitions
+   inwff #'(lambda (abbsym chkarg) (not (memq abbsym chkarg))) exceptions))
+
+(defwffop instantiate-1
+  (argtypes gwff)
+  (resulttype gwff)
+  (argnames inwff)
+  (arghelp "inwff")
+  (mhelp "Instantiate the first abbreviation, left-to-right."))
+
+(defun instantiate-1 (inwff)
+  (let ((oneflag nil))
+    (declare (special oneflag))
+    (instantiate-definitions
+     inwff #'(lambda (abbsym chkarg)
+	       (declare (ignore abbsym chkarg) (special oneflag))
+	       (prog1 (not oneflag) (setq oneflag t)))
+     nil)))
+
+(defwffrec instantiate-definitions
+  (argnames inwff chkfn chkarg))
+
+(defun instantiate-definitions (inwff chkfn chkarg)
+  (cond ((label-q inwff)
+	 (apply-label inwff (instantiate-definitions inwff chkfn chkarg)))
+	((lsymbol-q inwff)
+	 (cond ((or (logconst-q inwff) (propsym-q inwff) (pmpropsym-q inwff))
+		inwff)
+	       ((pmabbrev-q inwff)
+		(if (funcall chkfn (get inwff 'stands-for) chkarg)
+		    (get-pmdefn inwff) inwff))
+	       ((abbrev-q inwff)
+		(if (funcall chkfn inwff chkarg) (get-defn inwff) inwff))))
+	((boundwff-q inwff)
+	 (if (and (anyabbrev-q (binding inwff))
+		  (funcall chkfn (binding inwff) chkarg))
+	     (get-def-binder (binding inwff) (bindvar inwff) (gdr inwff))
+	     (cons (car inwff)
+		   (instantiate-definitions (gdr inwff) chkfn chkarg))))
+	(t (let ((newcar (instantiate-definitions (car inwff) chkfn chkarg)))
+	     (if (and (lambda-bd-p newcar) (not (lambda-bd-p (car inwff))))
+		 (lcontr (cons newcar
+			       (instantiate-definitions (cdr inwff)
+							chkfn chkarg)))
+		 (cons newcar
+		       (instantiate-definitions (cdr inwff) chkfn chkarg)))))))
+
+\end{verbatim}
+
+\section{The formula editor}\label{EDOPS}
+
+The formula editor is in many ways very similar to the top-level of
+\tps.  The main difference is that we have an entity called 
+``current wff'' or \indexData{edwff}, which can be operated on.
+All the regular top-level commands can still be executed, but we
+can now also call any {\it wffop} directly.  If we want the {\it wffop} to
+act on the {\it edwff}, we can specify {\tt EDWFF} which is a legal
+{\it gwff} inside the editor.  
+
+This process is made even easier through the introduction of {\it edops}.
+An \indexData{edop} is very similar to a {\it wffop}, but it ties into the
+structure of the editor in two very important ways:  One argument can be
+singled out, so that it will always be the {\it edwff}, and secondly the
+{\it edop} will specify what happens to the result of the operations, which
+is often the new {\it edwff}.  This is particularly useful for operations
+which take one argument and return one wff as a value, like
+lambda-normalization. It helps to give edops and wffops different names;
+the name of a wffop should be longer and more descriptive than the name of
+the edop for which it is an alias.
+
+\section{Example of Playing with a Jform in the Editor}
+
+%\begin{tpsexample}
+\begin{verbatim}
+<Ed9>sub x2115
+<Ed10>neg
+<Ed13>cjform
+(AND ((FORALL x<I>) (OR ((FORALL y<I>) LIT0) ((FORALL z<I>) LIT1))) 
+ ((FORALL u<I>) ((EXISTS v<I>) (OR LIT2 (AND LIT3 LIT4)))) 
+ ((FORALL w<I>) (OR LIT5 LIT6)) ((EXISTS u<I>) ((FORALL v<I>) (OR LIT7 LIT8))))
+
+<Ed14>edwff
+(AND ((FORALL x<I>) (OR ((FORALL y<I>) LIT0) ((FORALL z<I>) LIT1))) 
+ ((FORALL u<I>) ((EXISTS v<I>) (OR LIT2 (AND LIT3 LIT4))))
+ ((FORALL w<I>) (OR LIT5 LIT6)) ((EXISTS u<I>) ((FORALL v<I>) (OR LIT7 LIT8))))
+
+<Ed15>(setq aa edwff)
+(AND ((FORALL x<I>) (OR ((FORALL y<I>) LIT0) ((FORALL z<I>) LIT1))) 
+ ((FORALL u<I>) ((EXISTS v<I>) (OR LIT2 (AND LIT3 LIT4))))
+ ((FORALL w<I>) (OR LIT5 LIT6)) ((EXISTS u<I>) ((FORALL v<I>) (OR LIT7 LIT8))))
+
+<Ed16>aa
+(AND ((FORALL x<I>) (OR ((FORALL y<I>) LIT0) ((FORALL z<I>) LIT1)))
+ ((FORALL u<I>) ((EXISTS v<I>) (OR LIT2 (AND LIT3 LIT4))))
+ ((FORALL w<I>) (OR LIT5 LIT6)) ((EXISTS u<I>) ((FORALL v<I>) (OR LIT7 LIT8))))
+
+<Ed17>(auto::jform-parent aa)
+NIL
+vp
+<Ed19>(setq bb (auto::conjunction-components aa))
+(((FORALL x<I>) (OR ((FORALL y<I>) LIT0) ((FORALL z<I>) LIT1)))
+ ((FORALL u<I>) ((EXISTS v<I>) (OR LIT2 (AND LIT3 LIT4))))
+ ((FORALL w<I>) (OR LIT5 LIT6)) ((EXISTS u<I>) ((FORALL v<I>) (OR LIT7 LIT8))))
+
+<Ed20>(length bb)
+4
+<Ed21>(car bb)
+((FORALL x<I>) (OR ((FORALL y<I>) LIT0) ((FORALL z<I>) LIT1)))
+
+<Ed22>(cadr bb)
+((FORALL u<I>) ((EXISTS v<I>) (OR LIT2 (AND LIT3 LIT4))))
+
+<Ed23>(auto::jform-parent (car bb))
+(AND ((FORALL x<I>) (OR ((FORALL y<I>) LIT0) ((FORALL z<I>) LIT1))) 
+ ((FORALL u<I>) ((EXISTS v<I>) (OR LIT2 (AND LIT3 LIT4)))) 
+ ((FORALL w<I>) (OR LIT5 LIT6)) ((EXISTS u<I>) ((FORALL v<I>) (OR LIT7 LIT8))))
+
+<Ed24>(setq cc '((FORALL x<I>) (OR ((FORALL y<I>) LIT0) ((FORALL z<I>) LIT1))))
+((FORALL X<I>) (OR ((FORALL Y<I>) LIT0) ((FORALL Z<I>) LIT1)))
+
+<Ed26>bb
+(((FORALL x<I>) (OR ((FORALL y<I>) LIT0) ((FORALL z<I>) LIT1)))
+ ((FORALL u<I>) ((EXISTS v<I>) (OR LIT2 (AND LIT3 LIT4))))
+ ((FORALL w<I>) (OR LIT5 LIT6)) ((EXISTS u<I>) ((FORALL v<I>) (OR LIT7 LIT8))))
+
+<Ed27>(car bb)
+((FORALL x<I>) (OR ((FORALL y<I>) LIT0) ((FORALL z<I>) LIT1)))
+
+<Ed28>cc
+((FORALL X<I>) (OR ((FORALL Y<I>) LIT0) ((FORALL Z<I>) LIT1)))
+
+(These look the same, but they are quite different.)
+\end{verbatim}
+%\end{tpsexample}
+
+\section{Defining an EDOP}
+
+An {\it edop} does not define an operation on wffs, it simply
+{\bf refers} to one.  Thus typically we have a {\it wffop} associated
+with every {\it edop}, and the {\it edop} inherits almost all of its
+properties from the associated {\it wffop}, in particular the
+help, the argument types, the {\it applicable} predicates etc.
+
+A definition of an {\it edop} itself then looks as follows
+({\tt {}} enclose optional arguments)
+\begin{verbatim}
+(DefEdop <name>
+	{(Alias <wffop>)}
+	(Result-> <destination>)
+	{(Edwff-Argname <name>)}
+        {(DefaultFns <fnspec1> <fnspec2> ...)}
+        {(Move-Fn <fnspec>)}
+	{(MHelp "<comment>")})
+\end{verbatim}
+
+In the above definition, the properties have the following meanings:
+
+\begin{description}
+\item [{\tt ALIAS}] This is the name of the {\it wffop} this {\it edop} refers to.  It must
+be properly declared using the {\tt DEFWFFOP} declaration.
+
+\item [{\tt RESULT->}] This provides part of the added power of {\it edops}.  {\it destination}
+indicates what to do with the result of applying the {\it wffop} in {\tt ALIAS}
+to the arguments.  {\it destination} can be any of the following:
+\begin{description}
+\item [{\it omitted}] If omitted, the appropriate print function for the type of
+result returned by the {\tt ALIAS} {\it wffop} will be applied to the result.
+
+\item [{\tt EDWFF}] This means that the result of the operation is made the new
+current wff ({\it edwff}) in the editor.
+
+\item [{\tt EXECUTE}] This means that the result of the operation is a list of
+editor commands which are to be executed.  This may seem strange, but
+is actually very useful for commands like {\tt FI} (find the first infix operator),
+or {\tt ED?} (move to edit the first ill-formed subpart).  The argument
+type \indexargtypes{ED-COMMAND} was introduced for this purpose only.
+
+\item [{\it fnspec}] If the value is none of the above, but is specified, it is
+assumed to be an arbitrary function of one argument, which is applied
+to the result returned by the {\it edop}.
+\end{description}
+
+\item [{\tt EDWFF-ARGNAME}] This is the name of the argument that will be filled with the
+{\it edwff}; see the {\tt ARGNAME} property of MExprs, in section ~\ref{mexprargs}, 
+for more information.
+
+\item [{\tt DEFAULTFNS}] See the arguments for MExprs, in section ~\ref{mexprargs}.
+
+\item [{\tt MOVE-FN}] This means that the result of the operation will be the new current
+wff and moreover that the operation qualifies as a ``move'', namely
+that we should store what we currently have before executing the command,
+and then use {\it replace-fn} on the value returned after then next {\tt 0} or {\tt $\hat{}$}. 
+For example, the editor command {\tt A} moves to the ``function part'' of an 
+application.  Moreover, when we return via {\tt 0} or {\tt $\hat{}$}, we need to replace 
+this ``function part''.
+
+\end{description}
+
+\section{Useful functions}
+A useful function in defining {\it edops} is \indexfunction{EDSEARCH}.
+{\wt EDSEARCH {\it gwff} {\it predicate}} will go through {\it gwff} from left
+to right and test at every subformula, whether {\it predicate} is
+true of that subformula.  If such a subformula is found, {\it EDSEARCH}
+will return a list of editor moving commands which will move down
+to this subformula.  If the predicate is true of the {\it gwff} itself,
+{\tt EDSEARCH} will return {\wt (P)}, the command to print the current wff.
+If no subformula satisfying
+{\it predicate} is found, {\tt EDSEARCH} will return {\tt NIL}.  For example
+
+\begin{verbatim}
+
+(defedop fb
+  (alias find-binder)
+  (result-> execute)
+  (mhelp "Find the first binder (left to right)")
+  (edwff-argname gwff))
+
+(defwffop find-binder
+  (argtypes gwff)
+  (resulttype edcommand)
+  (argnames gwff)
+  (arghelp "gwff")
+  (mhelp "Find the first binder (left to right)"))
+
+(defun find-binder (gwff) (edsearch gwff (function boundwff-p)))
+
+\end{verbatim}
+
+\section{Examples}
+
+Consider the following examples.\footnote{As taken from the code, 7th July 1994.}
+
+\begin{verbatim}
+
+(defedop ib
+  (alias instantiate-binder)
+  (result-> edwff)
+  (edwff-argname bdwff))
+
+(defwffop instantiate-binder
+  (argtypes gwff gwff)
+  (resulttype gwff)
+  (argnames term bdwff)
+  (arghelp "term" "bound wff")
+  (applicable-p (lambda (term bdwff)
+		  (and (ae-bd-wff-p bdwff) (type-equal (gar bdwff) term))))
+  (mhelp
+   "Instantiate a top-level universal or existential binder with a term."))
+
+(defun instantiate-binder (term bdwff)
+  (cond ((label-q bdwff)
+	 (apply-label bdwff (instantiate-binder term bdwff)))
+	((lsymbol-q bdwff)
+	 (throwfail "Cannot instantiate " (bdwff . gwff)
+		    ", a logical symbol."))
+	((boundwff-q bdwff)
+	 (cond ((ae-bd-wff-p bdwff)
+		(substitute-l-term-var term (caar bdwff) (cdr bdwff)))
+	       (t
+		(throwfail "Instantiate only existential or universal quantifiers," t
+			   "not " ((cdar bdwff) . fsym) "."))))
+	(t (throwfail "Cannot instantiate an application."))))
+
+(defedop subst
+  (alias substitute-l-term-var)
+  (result-> edwff)
+  (edwff-argname inwff))
+
+(defedop db
+  (alias delete-leftmost-binder)
+  (result-> execute)
+  (edwff-argname gwff))
+
+(defwffop delete-leftmost-binder
+  (argtypes gwff)
+  (resulttype ed-command)
+  (argnames gwff)
+  (arghelp "gwff")
+  (mhelp "Delete the leftmost binder in a wff."))
+
+(defun delete-leftmost-binder (gwff)
+  (let ((bdwff-cmds (find-binder gwff)))
+    (append (ldiff bdwff-cmds (member 'p bdwff-cmds))
+	    `(sub (delete-binder edwff)))))
+
+
+(defwffop delete-binder
+  (argtypes gwff)
+  (resulttype gwff)
+  (argnames bdwff)
+  (arghelp "bound wff")
+  (applicable-q ae-bd-wff-p)
+  (applicable-q ae-bd-wff-p)
+  (mhelp "Delete a top-level universal or existential binder."))
+
+(defun delete-binder (bdwff)
+  (cond ((label-q bdwff)
+	 (apply-label bdwff (delete-binder bdwff)))
+	((lsymbol-q bdwff)
+	 (throwfail "Cannot delete binder from " (bdwff . gwff)
+		    ", a logical symbol."))
+	((boundwff-q bdwff)
+	 (cdr bdwff))
+	(t (throwfail "Cannot delete binder from an application."))))
+
+\end{verbatim}
+
+\subsection{Global Parameters and Flags}
+The following are the flags and parameters controlling the output 
+of the editing session. Note that there are also editor windows,
+which have separate flags; type {\tt SEARCH "EDWIN" T} to see a list of these.
+
+\begin{description}
+\item [\indexflag{PRINTEDTFILE}]  The name of the file in which wffs are recorded.
+
+\item [\indexflag{PRINTEDTFLAG}] 
+If {\tt T}, a copy of the current editing in {\tt ED} will be printed into
+the file given by {\tt PRINTEDTFILE}. The prompt will also be changed to {\tt -ED}
+or {\tt }ED+.
+
+\item [\indexflag{PRINTEDTFLAG-SLIDES}]  As {\tt PRINTEDTFLAG}, but the output is
+in Scribe 18-point style.
+
+\item [\indexflag{PRINTEDTOPS}]  contains the name of a function which tests whether
+or not to print a particular wff to the {\tt PRINTEDTFILE}.
+
+\item [\indexflag{VPD-FILENAME}]  is the equivalent of {\tt PRINTEDTFILE} for vertical
+path diagrams.
+
+\item [\indexflag{PRINTVPDFLAG}]  is the equivalent of {\tt PRINTEDTFLAG} for
+vertical path diagrams.
+\end{description}
+The flags and parameters listed below
+are the counterparts of flags described in full detail on page
+~\ref{printflag}.  They have the identical meaning, except that they
+are effective in the editor, while their counterparts are effective on
+the top-level of \tps.
+\begin{description}
+\item [\indexflag{EDPPWFFLAG}] 
+If {\tt T}, wffs in the editor will generally be pretty-printed.  Default is {\tt NIL}.
+
+\item [\indexflag{EDPRINTDEPTH}] 
+The value used as \indexflag{PRINTDEPTH} within the formula editor.  It is 
+initialized to {\tt 0}.
+
+\end{description}
+
+\section{The formula parser}
+
+\subsection{Data Structures}
+\begin{description}
+
+\item [\indexData{ByteStream}]
+This list stores essentially the printing characters which are in its
+input.  {\tt CR}, {\tt LF}, and {\tt TAB} characters are replaced with a space.  The
+ending {\tt ESC} does not appear in this list.  All elements are {\tt INTERN}
+identifiers. See the function \indexfunction{bytestream-tty} in {\it wffing.lisp}.
+
+\item [\indexData{RdCList}]
+This data structure appears to be all but obsolete; the last remnants 
+of it are in the file {\it wffing.lisp}. {\tt RdC} refers to the Concept terminal.
+This list contains either integers between 0 and 127, lists containing
+precisely one of 0, 1, or 3, or the identifier \indexData{CRLF}.  The lists
+represent character set switches, the integers represent characters,
+and {\tt CRLF} represents a carriage return/line feed combination.
+
+\item [\indexData{LexList}]
+This is a list of lexical objects, i.e. it contains name for logical
+objects which will appear in the fully parsed formula.  It also
+contains the brackets "[","]", and ".".  It also contains the type
+symbols from the initial input.  These are distinguishable from the
+other items in the list since they are stored as lists.  Hence,
+LexList is a "flat" list of these three things.
+
+\item [\indexData{TypeAssoc}]
+This is an association list which associates to those identifiers in
+the LexList which got a type, that type.  This is necessary so that an
+identifier which is typed explicitly at one place in the formula can
+have that type attributed to it at other non-typed occurrences.
+
+\item [\indexData{GroupList}]
+This is essentially the same as {\tt LexList}, except that the bracket
+identifiers are removed, and nested s-expressions are used to denote
+groupings. Type symbols are also "attached" to the identifier
+preceding it.  Hence a GroupList contains only logical identifiers -
+some with types and some without - grouped in a hierarchical fashion.
+
+\item [\indexData{PreWff}]
+This data structure is like that of the wff structure, except that not
+all items are correctly typed yet.  The full prefix organization is
+present in this formula.  The types for polymorphic definitions,
+however, are not yet computed.
+\end{description}
+
+\subsection{Processing}
+
+Input is first processed into {\tt ByteStream}s and then into {\tt LexList}s
+by the function \indexfunction{LexScan}.
+
+\indexfunction{GroupScan} now operates on {\tt LexList} in order to construct the
+{\tt GroupList}.  This function has no arguments and uses a special
+variable, called \indexparameter{LexList}, to communicate with
+recursive calls to itself.  {\tt GroupScan} is also responsible for building
+the {\tt TypeAssoc} list.
+
+\indexfunction{InfixScan} converts a {\tt GroupList} into a {\tt PreWff}.
+This requires using
+the standard infix parser.  \indexfunction{MakeTerm} is used to build the prefix
+subformulas of the input. 
+
+Now that all logical items appear in their final positions, the actual
+types of polymorphic abbreviations can be determined.  This is the job
+of \indexfunction{FinalScan}.  This function takes a {\tt PreWff} and 
+returns with a {\tt WFF}.
+
+This is not a very efficient algorithm. A few of the passes could be joined
+together, and a few might be made more efficient by using destructive
+changes.  The parser, however, is rather easy to upgrade.
+
+

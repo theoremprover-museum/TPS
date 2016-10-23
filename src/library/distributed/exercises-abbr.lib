@@ -1,0 +1,14 @@
+(:name X5309A
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "~EXISTS h(I(OI)) INJECTIVE(O(I(OI))) h(I(OI))"
+:needed-objects   (INJECTIVE)
+:mhelp "Another form of X5309, which is the Injective Cantor Theorem"
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPE "O"))
+:other-remarks "
+")
+
+

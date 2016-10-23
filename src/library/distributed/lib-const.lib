@@ -1,0 +1,44 @@
+(:name LESS
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "If we want a constant LESS to be infix and given face LESSEQ."
+:other-attributes ((FACE LESSEQ) (PRINTNOTYPE T) (INFIX 10) (TYPELIST "B") (TYPE "OBB"))
+:other-remarks "
+")
+
+
+(:name PLUS-LIBCONST
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "A lib const for the binary operation of PLUS.  There is already one named PLUS,
+but this may be confused with the abbr PLUS in the library."
+:other-attributes ((FACE +) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (INFIX 10) (TYPELIST "A") (TYPE "AAA"))
+:other-remarks "
+")
+
+
+(:name INFIX-LESS
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "This is an arbitrary binary relation with no definition,
+but it will print out as < in infix position."
+:other-attributes ((FACE <) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (INFIX 10) (TYPELIST "A") (TYPE "OAA"))
+:other-remarks "
+")
+
+

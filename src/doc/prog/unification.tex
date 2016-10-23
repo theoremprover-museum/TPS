@@ -1,0 +1,108 @@
+\chapter{Unification}
+
+The relevant files are: {\it ms90-3-node.lisp}, {\it ms90-3-unif*.lisp}, 
+{\it node.lisp}, {\it unif*.lisp}
+
+\TPS has four unification algorithms, two for first-order logic and
+two for the full type theory. Here we are mainly concerned with the two
+type theory ones, which differ as follows:
+
+\begin{itemize}
+\item UN88 is called by those procedures which do not use
+path-focused duplication, and by the \TPS UNIFY top level.
+Each variable is a symbol. We use lazy reduction. Head normal form.
+General implementation. Can use different strategies for searching the
+unification tree. Default breadth-first. Requires storing almost the
+entire tree.
+When called from mating-search, we search for a success node or generate the
+tree to a pre-determined maximum depth.
+
+\item UN90 is called by those procedures which do use
+path-focused duplication. No interactive interface exists now.
+Each variable has the form (symbol . number)
+Terms are reduced to $\lambda$-normal form as in Huet's paper.
+Depth-first search. Stores only non-failure leaf node.
+Does not store the entire unification tree.
+When called from mating-search, we search for the first non-failure node
+within the pre-determined maximum depth.  Search for a success node 
+only when the mating is complete.
+Major drawback: Needs modification to implement subsumption. 
+\end{itemize}
+
+
+\section{Data Structures}
+\section{Computing Head Normal Form}
+\section{Control Structure}
+\section{First-Order Unification}
+\section{Subsumption Checking}
+There is a subsumption checker for UN88 which uses the slot {\tt subsumed} in 
+each node of the unification tree; this is implemented in the file {\it unif-subs.lisp}.
+The subsumption-checker is passed the new node and a list of other nodes which 
+might subsume it. If \indexflag{SUBSUMPTION-CHECK} is NIL, it returns immediately.
+Otherwise, it first checks the flags \indexflag{SUBSUMPTION-NODES} and \indexflag{SUBSUMPTION-DEPTH}
+and eliminates all nodes from the list that do not fit the criteria established by these two flags 
+(so it might, for example, pick out just those nodes at a depth of less than ten which lie 
+either on the path to the new node or at the leaves of the current unification tree). Since
+it is possible to add new disagreement pairs to the leaves of the tree under some conditions,
+it also rejects any nodes that do not represent the same original set of disagreement pairs
+as the new node.
+
+Then it computes a hash function, somewhat similar to Goedel-numbering, by considering each wff
+in the set of disagreement pairs at a node. The hash function has to ignore variables, because
+we want to catch nodes that are the same up to a change in the h-variables that have been introduced.
+These hash numbers are calculated once and then stored
+in the {\tt subsumed} slot in the following format: for a dpairset 
+%\begin{tpsexample}
+\begin{verbatim}
+((A1 . B1) (A2 . B2) ...)
+\end{verbatim}
+%\end{tpsexample}
+we first calculate the hash numbers for each wff, and generate the following list:
+%\begin{tpsexample}
+\begin{verbatim}
+(((#A1 . #B1) (A1 . B1)) ((#A2 . #B2) (A2 . B2)) ...)
+\end{verbatim}
+%\end{tpsexample}
+Then, for each disagreement pair, if \#Bi < \#Ai we replace it with ((\#Bi . \#Ai) (Bi . Ai)).
+Finally, we sort the list lexicographically by the pairs of hash numbers and store it in the
+{\tt subsumed} slot. In future, if we return to this node, we can just read off the hash
+function without recalculating it.
+
+Now \TPS compares the dotted pairs of numbers from the hash functions of the new and old node.
+If those for the new node are equal to, or a superset of, those for the old node, then we need
+to do some more detailed checking. This is the point at which \TPS prints a "?", if \indexflag{UNIFY-VERBOSE}
+is not SILENT. Otherwise we know there is no subsumption and proceed to the next node.
+
+If there is still a possibility of subsumption, the next thing to do is to enumerate all the 
+ways in which the old node might be considered a subset of the new one. If we are lucky, 
+each dotted pair of numbers in a given node will be different from each other and from all other dotted pairs
+at that node, and there will only be one way in which this could happen. If we aren't so lucky (if 
+there are several disagreement pairs that get the same pair of hash numbers, or if there is a 
+disagreement pair where the hash numbers for both wffs are the same), there may
+be multiple ways to think about. For each possible way, we output two disagreement pair lists, which 
+will be the entire old node and that subset of the new node to which it might correspond, ordered 
+so that the nth element of one is supposed to compare to the nth element of the other, for all n.
+
+Next, for each one of these possible ways, we take the two disagreement pair sets given, and begin
+to rename the h-variables in them. We start at the left of both sets, and build up a substitution as we move rightwards,
+comparing each term to the other symbol-by-symbol.
+(Note that we are only replacing variables with other variables.) 
+If we reach the end of the term without contradicting ourselves, we output a
+"!" and the new node is subsumed. If we fail (because the substitution is inconsistent, or because we reach 
+two different variables neither of which is an h-variable), we fail immediately
+and go on to the next arrangement, if there is one.
+
+Subsumption-checking can be very slow; set the flag \indexflag{SUBSUMPTION-DEPTH} with care.
+Because of this, it was necessary to add time-checking to unification (it was previously only 
+done between considering connections). The functions {\tt unify}, {\tt unify-ho-rec} and
+{\tt subsumption-check} now check the time if they are called from within a procedure that 
+uses time limits (and in order to implement this, many other unification functions have 
+been given optional "start-time" and "time-limit" arguments that they do nothing 
+with except passing them on to the next function).
+
+\section{Notes}
+
+The code that \TPS uses to handle double-negations is part of the unification 
+code. See \indexfunction{imitation-eta} in the file \indexfile{unif-match.lisp}
+
+

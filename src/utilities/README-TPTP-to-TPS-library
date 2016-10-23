@@ -1,0 +1,91 @@
+## Converting TPTP Problems to TPS Library items.
+
+You need to have a Prolog interpreter installed prior to using the TPTP2X
+utility. SWIPL for instance.
+Important note: versions prior to SWIPL 5.10.1 may cause some TPTP Problems
+not to be processed by TPTP2X. SWIPL 5.8.2 could not handle the following
+ones: CSR130^1, CSR144^1, CSR153^1 and SYN000^2. With SWIPL 5.10.1 and a 64bit
+architecture, you may have to rebuild SWIPL and disable the package "xpce".
+See SWI-Prolog website and the build file.
+Problems SYO000^*, SYO***^*.0* and SYO***^*.0* are not meant to be used with
+an automated theorem prover. TPTP2X may not even be able to translate them.
+ 
+1. Download the latest version of TPTP Library, including the TPTP2X utility.
+
+2. Once extracted, install TPTP2X, using the tptp2X_install script (in
+Prolog). Example:
+[your terminal] whatever/TPTP-v5.0.0/TPTP2X% ./tptp2X_install
+Follow the instructions. See an example below:
+--------------------------------------------------------------------
+                This is the tptp2X installation
+
+All paths must be absolute.
+Press return to accept the default values in []s
+--------------------------------------------------------------------
+The TPTP directory must contain the TPTP2X directory.
+TPTP directory        [/home/remyc/TPTP-v5.1.0] :
+--------------------------------------------------------------------
+The Prolog dialect must be one of :
+    eclipse, yap, swi, sicstus, quintus, generic
+Prolog dialect        [eclipse] : swi
+--------------------------------------------------------------------
+The Prolog interpreter must be an executable.
+Prolog interpreter    [/usr/bin/swipl] :
+--------------------------------------------------------------------
+tcsh shell         : /usr/bin/tcsh
+gawk or awk is required for quietness modes 1 and 2.
+gawk or awk path      [/usr/bin/awk] :
+--------------------------------------------------------------------
+Answer y for formats you want, n you don't, or a if you want all
+Do you want the bliksem format? [yna] : a
+--------------------------------------------------------------------
+                tptp2X installation complete
+--------------------------------------------------------------------
+
+3. In the TPTP2X directory, replace the original format.tps by the one
+avaibable in the utilities directory. Example:
+mv format.tps format.tps.old
+mv whatever/utilities/format.tps whatever/TPTP-v5.0.0/TPTP2X/
+
+4. Use TPTP2X on THF problems, whose name have the following structure:
+DOM***^*.p.
+To convert a specific Problem, use the syntax:
+./tptp2X -f tps <the problem you need> (e.g. ALG268^4, whithout quotes)
+To convert every THF problem, you can use:
+./tptp2X -f tps "whatever/TPTP-v5.0.0/Problems/**/*^*.p" (Note the quotes)
+
+The converted files will be in whatever/TPTP-v5.0.0/TPTP2X/tps.
+
+7. Create the needed library (sub)directories to receive the converted
+TPTP theorems. You can either use the CREATE-LIB-SUBDIR command, or manually
+create the directories, an empty libindex.rec file and a copied
+keywords.rec file.
+
+6. In your tps3.ini file, or directly inside of a TPS instance, set the flag
+AUTO-LIB-DIR to the destination library directory. For instance, if you want
+to convert the ALG Problems of TPTP, you may set the flag to
+"your-lib-directory/ALG/".
+Example:
+(set-flag 'auto-lib-dir
+"/afs/andrew.cmu.edu/mcs/math/TPS/tpslib/chretien/tptp/ALG/")
+
+7. In TPS, use the library command INSERT-TPTP* to automatically convert a
+directory of .tps files (converted TPTP problems) into TPS library
+items. Example:
+insert-tptp* "whatever/TPTP-v5.0.0/TPTP2X/tps/ALG"
+
+You can also use the INSERT-TPTP command to insert only one problem at a
+time. Example:
+insert-tptp "whatever/TPTP-v5.0.0/TPTP2X/tps/ALG/ALG268^4.tps" "ALG2684.lib"
+"ALG2684"
+
+The last argument provides a suffix added to every abbreviation or theorem, in
+order to prevent any conflit with buil-in TPS items.
+
+8. The newly created items are usually called "con-<suffix>" (for conjecture)
+or "thm-<suffix>", the suffix being the last argument of INSERT-TPTP or the
+name of the library file, if you used INSERT-TPTP*.
+
+
+
+

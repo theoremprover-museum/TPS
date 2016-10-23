@@ -1,0 +1,1202 @@
+%!PS-Adobe-2.0
+%%Title: etps-andrew.mss
+%%DocumentFonts: (atend)
+%%Creator: Peter Andrews and Scribe 8.2
+%%CreationDate: 2 November 2002 18:17
+%%Pages: (atend)
+%%EndComments
+% PostScript Prelude for Scribe.
+/BS {/SV save def 0.0 792.0 translate .01 -.01 scale} bind def
+/ES {showpage SV restore} bind def
+/SC {setrgbcolor} bind def
+/FMTX matrix def
+/RDF {WFT SLT 0.0 eq 
+  {SSZ 0.0 0.0 SSZ neg 0.0 0.0 FMTX astore}
+  {SSZ 0.0 SLT neg sin SLT cos div SSZ mul SSZ neg 0.0 0.0 FMTX astore}
+  ifelse makefont setfont} bind def
+/SLT 0.0 def
+/SI { /SLT exch cvr def RDF} bind def
+/WFT /Courier findfont def
+/SF { /WFT exch findfont def RDF} bind def
+/SSZ 1000.0 def
+/SS { /SSZ exch 100.0 mul def RDF} bind def
+/AF { /WFT exch findfont def /SSZ exch 100.0 mul def RDF} bind def
+/MT /moveto load def
+/XM {currentpoint exch pop moveto} bind def
+/UL {gsave newpath moveto dup 2.0 div 0.0 exch rmoveto
+   setlinewidth 0.0 rlineto stroke grestore} bind def
+/LH {gsave newpath moveto setlinewidth
+   0.0 rlineto
+   gsave stroke grestore} bind def
+/LV {gsave newpath moveto setlinewidth
+   0.0 exch rlineto
+   gsave stroke grestore} bind def
+/BX {gsave newpath moveto setlinewidth
+   exch
+   dup 0.0 rlineto
+   exch 0.0 exch neg rlineto
+   neg 0.0 rlineto
+   closepath
+   gsave stroke grestore} bind def
+/BX1 {grestore} bind def
+/BX2 {setlinewidth 1 setgray stroke grestore} bind def
+/PB {/PV save def newpath translate
+    100.0 -100.0 scale pop /showpage {} def} bind def
+/PE {PV restore} bind def
+/GB {/PV save def newpath translate rotate
+    div dup scale 100.0 -100.0 scale
+    /showpage {} def
+    /letter {} def
+    /lettersmall {} def
+    /note {} def
+    /setpagedevice {pop} def
+    } bind def
+/GE {PV restore} bind def
+/FB {dict dup /FontMapDict exch def begin} bind def
+/FM {cvn exch cvn exch def} bind def
+/FE {end /original-findfont /findfont load def  /findfont
+   {dup FontMapDict exch known{FontMapDict exch get} if
+   original-findfont} def} bind def
+/BC {gsave moveto dup 0 exch rlineto exch 0 rlineto neg 0 exch rlineto closepath clip} bind def
+/EC /grestore load def
+/SH /show load def
+/MX {exch show 0.0 rmoveto} bind def
+/W {0 32 4 -1 roll widthshow} bind def
+/WX {0 32 5 -1 roll widthshow 0.0 rmoveto} bind def
+/RC {100.0 -100.0 scale
+612.0 0.0 translate
+-90.0 rotate
+.01 -.01 scale} bind def
+/URC {100.0 -100.0 scale
+90.0 rotate
+-612.0 0.0 translate
+.01 -.01 scale} bind def
+/RCC {100.0 -100.0 scale
+0.0 -792.0 translate 90.0 rotate
+.01 -.01 scale} bind def
+/URCC {100.0 -100.0 scale
+-90.0 rotate 0.0 792.0 translate
+.01 -.01 scale} bind def
+%%EndProlog
+%%Page: 1 1
+
+61200 79200 BS
+0 SI
+13 /Times-Bold AF
+23972 8071 MT
+(Using ETPS on Andrew)SH
+10 /Times-Roman AF
+8200 10444 MT
+(Remember that your work)
+339 W( on)338 W
+/Times-Bold SF
+21919 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+24824 XM
+(exercises, like other exercises, is to be done independently unless)338 W
+7200 11821 MT
+(collaboration is specifically authorized. You are obligated to work on these exercises without help from other)202 W
+7200 13198 MT
+(people, documents)
+86 W( which contain specific solutions, or programs which could be used to generate solutions to the)85 W
+7200 14575 MT
+(exercises. You need to think about these exercises for yourself in order to learn from them.)SH
+12 /Times-Bold AF
+7200 18259 MT
+(0. Documentation)SH
+10 /Times-Roman AF
+8200 19636 MT
+(To use)25 W
+/Times-Bold SF
+11194 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+13786 XM
+(efficiently, you should be familiar with the)25 W
+/Times-Bold SF
+31348 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+33940 XM
+(manual. The postscript file for this manual)
+25 W( can be)26 W
+7200 21013 MT
+(found at:)SH
+7200 22390 MT
+(http://gtps.math.cmu.edu/tps-mans.html)SH
+/Times-Bold SF
+8200 24869 MT
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+10767 XM
+(online documentation is at:)SH
+7200 26246 MT
+(http://gtps.math.cmu.edu/htmldoc-etps)SH
+12 /Times-Bold AF
+7200 29930 MT
+(1. Starting ETPS)SH
+10 SS 
+8200 31307 MT
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+10768 XM
+(can be run on Unix-based Andrew workstations.  You may find that you can also run it on)
+1 W( other Unix-based)SH
+7200 32684 MT
+(workstations which are connected to the campus network.)SH
+8200 35163 MT
+(If you are not logged in on an Andrew workstation, you should do)SH
+7200 36540 MT
+(klog <andrew userid> -c andrew.cmu.edu)SH
+7200 37917 MT
+(so that)SH
+/Times-Bold SF
+10089 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+12656 XM
+(will be able to write in the score file when you execute the DONE command.)SH
+8200 40396 MT
+(You should run)SH
+/Times-Bold SF
+14672 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+17239 XM
+(from a private directory, where the files you will be creating cannot be read by others.)SH
+8200 42875 MT
+(To start)SH
+/Times-Bold SF
+11533 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+14100 XM
+(on Andrew, do the following:)SH
+/Courier SF
+8200 45354 MT
+(/afs/andrew/mcs/math/etps/bin/etps)SH
+/Times-Roman SF
+8200 47833 MT
+(To make things easier, add the line)SH
+/Courier SF
+7200 49210 MT
+(source /afs/andrew/mcs/math/etps/etps.cshrc)SH
+/Times-Roman SF
+7200 50587 MT
+(to your ~/.cshrc file.  This will set up aliases for you, so that the command)SH
+/Courier SF
+7200 51964 MT
+(etps)SH
+/Times-Roman SF
+7200 53341 MT
+(will start up)SH
+/Times-Bold SF
+12228 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+14795 XM
+(without you having to remember the exact path name.)SH
+12 /Times-Bold AF
+7200 57025 MT
+(2. Using ETPS under X11)SH
+10 /Times-Roman AF
+8200 58402 MT
+(The Unix X11-window system makes it possible for)
+82 W( you to run)83 W
+/Times-Bold SF
+34632 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+37282 XM
+(in a window with fonts that have special)83 W
+7200 59779 MT
+(symbols for the logical connectives and quantifiers. Formulas will appear just as they do in the textbook.)SH
+11 /Times-Bold AF
+7200 63396 MT
+(2.1. Setting the Fontpath)SH
+10 /Times-Roman AF
+8200 64773 MT
+(If you sourced the file /afs/andrew/mcs/math/etps/etps.cshrc in your ~/.cshrc file, it will)
+50 W( tell your X server where)49 W
+7200 66150 MT
+(the fonts are.  If you did not source it, you should place the line)SH
+/Courier SF
+7200 67805 MT
+(/afs/andrew/mcs/math/etps/etps.Xclients)SH
+/Times-Roman SF
+7200 69522 MT
+(in your ~/.Xclients file or your ~/.xinitrc file \050if you are using one\051, or issue that command at the shell)
+37 W( prompt once)38 W
+7200 70899 MT
+(the window system has started up.  Alternatively, just issue the command:)SH
+ES
+%%Page: 2 2
+
+61200 79200 BS
+0 SI
+10 /Times-Roman AF
+30350 4286 MT
+(2)SH
+30350 75600 MT
+(2)SH
+/Courier SF
+7200 7824 MT
+(xset +fp /afs/andrew.cmu.edu/mcs/math/etps/fonts/decfonts/)SH
+/Times-Roman SF
+7200 9201 MT
+(or)SH
+/Courier SF
+7200 10578 MT
+(/usr/misc/bin/xset fp+ /afs/andrew.cmu.edu/mcs/math/etps/fonts/decfonts/)SH
+/Times-Roman SF
+(.)SH
+11 /Times-Bold AF
+7200 14195 MT
+(2.2. XETPS and XETPS-BIG)SH
+10 /Times-Roman AF
+8200 15572 MT
+(The file /afs/andrew/mcs/math/etps/etps.cshrc \050which you)
+115 W( should have sourced in your ~/.cshrc file\051 has set up)114 W
+7200 16949 MT
+(two aliases for using)2 W
+/Times-Bold SF
+15708 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+18278 XM
+(under X11.  The first is)3 W
+/Courier SF
+27878 XM
+(xetps)SH
+/Times-Roman SF
+(. Just)
+256 W( issue this at the shell prompt, and a window will be)3 W
+7200 18326 MT
+(started with)SH
+/Times-Bold SF
+12144 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+14711 XM
+(running inside.  Click with the mouse to place the left corner of the window.)SH
+8200 20805 MT
+(If you do not have an alias set up for)SH
+/Courier SF
+23086 XM
+(xetps)SH
+/Times-Roman SF
+(, you can start it up with the command:)SH
+/Courier SF
+7200 22182 MT
+(xterm -geometry 80x54 -rw -fn vtsingle -fb)
+139 W( vtsymbold -sb -n ETPS -T ETPS -e)138 W
+7200 23559 MT
+(/afs/andrew/mcs/math/etps/bin/etps &)SH
+/Times-Roman SF
+8200 26038 MT
+(Once the window)
+10 W( has appeared and)11 W
+/Times-Bold SF
+22704 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+25282 XM
+(has started, you need to tell)11 W
+/Times-Bold SF
+36541 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+39119 XM
+(that you want to use the special fonts)11 W
+7200 27415 MT
+(for output.  At the)SH
+/Times-Bold SF
+14644 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+17211 XM
+(prompt, issue the command)SH
+/Courier SF
+7200 28792 MT
+(<0> setflag style)SH
+/Times-Roman SF
+7200 30169 MT
+(then, at the subsequent prompt)SH
+/Courier SF
+7200 31546 MT
+(xterm)SH
+/Times-Roman SF
+7200 32923 MT
+(If you have followed all the steps above, the special symbols should appear when any wffs are printed by)SH
+/Times-Bold SF
+49525 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+(.)SH
+8200 35402 MT
+(The second alias for running)2 W
+/Times-Bold SF
+19902 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+22471 XM
+(under X11 is)2 W
+/Courier SF
+27893 XM
+(xetps-big)SH
+/Times-Roman SF
+(. This)
+254 W( uses very)
+2 W( large X fonts, and the window will)1 W
+7200 36779 MT
+(take up most of your screen.)SH
+8200 39258 MT
+(If you resize your)18 W
+/Times-Bold SF
+15603 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+18188 XM
+(X-window and make it wider or narrower, you will want to change the setting)
+18 W( of the flag)19 W
+/Courier SF
+7200 40635 MT
+(rightmargin)SH
+/Times-Roman SF
+(. This)
+414 W( is normally set at 79 for 80 column output.  For example, if you change the window to be)81 W
+7200 42012 MT
+(only 50 columns wide, issue the command)SH
+/Courier SF
+7200 43389 MT
+(<1> setflag rightmargin)SH
+/Times-Roman SF
+7200 44766 MT
+(then at the prompt enter)SH
+/Courier SF
+7200 46143 MT
+(49)SH
+11 /Times-Bold AF
+7200 49760 MT
+(2.3. Proofwindows)SH
+10 /Times-Roman AF
+8200 51137 MT
+(Once you have)
+66 W( started)67 W
+/Courier SF
+17630 XM
+(xetps)SH
+/Times-Roman SF
+(, you will probably wish to use the BEGIN-PRFW command to start up windows)67 W
+7200 52514 MT
+(containing the current subproof and the complete proof.  You will need to)
+56 W( iconify the lower window or move it up)55 W
+7200 53891 MT
+(on your screen by the)
+196 W( usual methods for manipulating X-windows so that you will have room to issue)197 W
+/Times-Bold SF
+51683 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+7200 55268 MT
+(commands.)SH
+12 /Times-Bold AF
+7200 58952 MT
+(3. Running ETPS Remotely)SH
+10 /Times-Roman AF
+8200 60329 MT
+(While)SH
+/Times-Bold SF
+10947 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+13567 XM
+(can be installed on many computers, you must use the)53 W
+/Times-Bold SF
+35956 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+38576 XM
+(which is installed on)
+53 W( Andrew in order)52 W
+7200 61706 MT
+(to get credit for your work when you issue the DONE command.)SH
+8200 64185 MT
+(If you wish to run)3 W
+/Times-Bold SF
+15631 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+18201 XM
+(remotely, you can connect by telnet or ssh from)
+3 W( your local machine to one of the Andrew)4 W
+7200 65562 MT
+("unix servers" and run)27 W
+/Times-Bold SF
+16511 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+19105 XM
+(there. The Unix servers are set up to allow multiple users and)
+27 W( are named unix1, unix2,)26 W
+7200 66939 MT
+(unix3, ... .)SH
+ES
+%%Page: 3 3
+
+61200 79200 BS
+0 SI
+10 /Times-Roman AF
+30350 4286 MT
+(3)SH
+30350 75600 MT
+(3)SH
+11 /Times-Bold AF
+7200 7937 MT
+(3.1. Using Muptime)SH
+10 /Times-Roman AF
+8200 9314 MT
+(When you log in to a unix server, you will)
+6 W( want to choose the one which is least loaded.  To find out which one to)7 W
+7200 10691 MT
+(use, log into any of them with the userid)SH
+/Times-Bold SF
+23588 XM
+(muptime)SH
+/Times-Roman SF
+(, as follows:)SH
+/Courier SF
+7200 12346 MT
+(% telnet -l muptime unix7.andrew.cmu.edu)SH
+/Times-Roman SF
+8200 14825 MT
+(Each of the machines will be listed, along with their current loads.)
+110 W( Choose)
+469 W( the machine with the lowest load.)109 W
+7200 16202 MT
+(You will then have to open a new connection to the machine you select.)SH
+8200 18681 MT
+(You can also issue the)SH
+/Courier SF
+17393 XM
+(muptime)SH
+/Times-Roman SF
+21843 XM
+(command while logged in under your own userid and get the same information.)SH
+11 /Times-Bold AF
+7200 22298 MT
+(3.2. Xhost)SH
+10 /Times-Roman AF
+8200 23675 MT
+(If you select unix17 \050for example\051, you may need to issue the command)SH
+/Courier SF
+7200 25052 MT
+(xhost unix17.andrew.cmu.edu)SH
+/Times-Roman SF
+7200 26429 MT
+(on your local machine \050provided that it has X-windows\051 so that it will)
+112 W( permit unix17 to open a window on your)113 W
+7200 27806 MT
+(screen when you run)110 W
+/Courier SF
+16193 XM
+(xetps)SH
+/Times-Roman SF
+19553 XM
+(as described above. If you are using ssh instead of telnet, this)
+110 W( will probably not be)109 W
+7200 29183 MT
+(necessary.)SH
+11 /Times-Bold AF
+7200 32800 MT
+(3.3. An Alternative to etps.cshrc)SH
+10 /Times-Roman AF
+8200 34177 MT
+(If you will be connecting to an Andrew workstation from another)
+49 W( machine, you may find that the xset command)50 W
+7200 35554 MT
+(in etps.cshrc)
+194 W( causes confusion for the local machine, resulting in error messages. In this case, you can source)193 W
+7200 36931 MT
+(/afs/andrew.cmu.edu/mcs/math/etps/etps-no-xset.cshrc instead)
+201 W( of /afs/andrew.cmu.edu/mcs/math/etps/etps.cshrc in)202 W
+7200 38308 MT
+(your ~/.cshrc file.  In this case, your font path will not automatically contain the)37 W
+/Times-Bold SF
+39959 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+42562 XM
+(fonts when you do log on to)36 W
+7200 39685 MT
+(an Andrew workstation, but an)
+67 W( alias)68 W
+/Courier SF
+22296 XM
+(get-etps-fonts)SH
+/Times-Roman SF
+31014 XM
+(is defined in etps-no-xset.cshrc, so you can simply issue)68 W
+7200 41062 MT
+(the command)SH
+/Courier SF
+12866 XM
+(get-etps-fonts)SH
+/Times-Roman SF
+21516 XM
+(when you log onto an Andrew workstation to run)SH
+/Times-Bold SF
+41486 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+(.)SH
+11 /Times-Bold AF
+7200 44679 MT
+(3.4. Running XETPS Remotely with the ETPS Fonts)SH
+10 /Times-Roman AF
+8200 46056 MT
+(If you)
+18 W( run)17 W
+/Times-Bold SF
+12501 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+15085 XM
+(remotely using a Unix server, you can always use the GENERIC style to display wffs. However,)17 W
+7200 47433 MT
+(if X-windows are available on your local machine, it may)
+55 W( be worth your while to set things up so that you can use)56 W
+7200 48810 MT
+(the style XTERM to display wffs, particularly as the wffs you deal with become more complex. You will)
+82 W( need to)81 W
+7200 50187 MT
+(install the fonts on the local machine, and probably adjust the font path, in order to use)SH
+/Courier SF
+42113 XM
+(xetps)SH
+/Times-Roman SF
+45363 XM
+(successfully.)SH
+8200 52666 MT
+(If your local machine is a PC running some version of)
+96 W( Windows, you may be able to use XWin32 to bring up)97 W
+7200 54043 MT
+(simulated X-windows on your local machine.  The details involved may vary)
+115 W( somewhat for different versions of)114 W
+7200 55420 MT
+(Windows, but here is some potentially helpful information from students who have done this previously:)SH
+/Times-Bold SF
+7200 58250 MT
+(3.4.1. One Student's Experience Running XETPS on a Windows Machine)SH
+/Times-Roman SF
+8200 59627 MT
+(I got the fonts for)31 W
+/Times-Bold SF
+15604 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+18202 XM
+(to work on my Windows machine! It was actually really simple. All)
+31 W( I did was download)32 W
+7200 61004 MT
+(all the fonts)
+108 W( from /afs/andrew.cmu.edu/mcs/math/etps/fonts to the font directory for XWin32, which is by default)107 W
+7200 62381 MT
+(C:\134Program Files\134StarNet\134X-Win32 5.1\134Fonts\134.  Then, from the Configuration screen for X-Win32)
+222 W( \050X-Config\051,)223 W
+7200 63758 MT
+(under the Font tab, I selected each of the font paths it listed and hit the "Make FONTS.DIR" button.)SH
+8200 66237 MT
+(After that, XETPS worked fine with the fonts and all.)SH
+8200 68716 MT
+(I think I actually did more than was necessary to get it to work, since I don't think you need)
+28 W( ALL the fonts in the)27 W
+/Times-Bold SF
+7200 70093 MT
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+9912 XM
+(font directory, just whichever vtsymbol font)145 W
+/Times-Bold SF
+28697 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+31409 XM
+(uses, but I'm not)
+145 W( sure which since there are around 5)146 W
+7200 71470 MT
+(different vtsymbol fonts in there and I didn't take time to see exactly what was needed.)SH
+ES
+%%Page: 4 4
+
+61200 79200 BS
+0 SI
+10 /Times-Roman AF
+30350 4286 MT
+(4)SH
+30350 75600 MT
+(4)SH
+/Times-Bold SF
+7200 7870 MT
+(3.4.2. Another Student's Experience Running XETPS on a Windows Machine)SH
+/Times-Roman SF
+8200 9247 MT
+(Ftp all the fonts and the font.dir \050although I)
+141 W( think font.dir's not necessary\051 from the decfonts directory to the)140 W
+7200 10624 MT
+(XWin32\134lib\134fonts\134etps-fonts directory, where you have created the etps-fonts directory.)SH
+8200 13103 MT
+(Go through the described method of adding fonts to the directory described in the README file)
+129 W( for xwin32,)130 W
+7200 14480 MT
+(which is:  run X-config, add this newly-created font dir)
+57 W( etps-fonts to the path \050the "Font" tab in the newest version)56 W
+7200 15857 MT
+(5.03\051, rebuild font.dir \050click on apply button\051, close and restart XWin32, and)
+104 W( proceed as usual \050setenv DISPLAY)105 W
+7200 17234 MT
+(<hostname>:0.0, xetps, etc.\051.)SH
+8200 19713 MT
+(This at least worked on my home machine.  I am not sure if we)
+56 W( have enough of the permissions necessary to do)55 W
+7200 21090 MT
+(this in the cluster.)SH
+8200 23569 MT
+(Now, when you setflag style to xterm again, it should work.)SH
+/Times-Bold SF
+7200 26399 MT
+(3.4.3. Another Student's Experience Running XETPS on a Windows Machine)SH
+/Times-Roman SF
+8200 27776 MT
+(I finally got things to work running XETPS remotely with XWin32 as described above. The key step was to)145 W
+7200 29153 MT
+(source /afs/andrew.cmu.edu/mcs/math/etps/etps-no-xset.cshrc)SH
+7200 30530 MT
+(instead of /afs/andrew.cmu.edu/mcs/math/etps/etps.cshrc.)SH
+12 /Times-Bold AF
+7200 34214 MT
+(4. Aborting a Command)SH
+10 /Times-Roman AF
+8200 35591 MT
+(Respond to a prompt for an argument with)20 W
+/Courier SF
+25636 XM
+(ABORT)SH
+/Times-Roman SF
+28906 XM
+(to abort the current command and return to the top)
+20 W( level.  You)19 W
+7200 36968 MT
+(can also use the control character)67 W
+/Courier SF
+21154 XM
+(CTRL-C)SH
+/Times-Roman SF
+25072 XM
+(or)SH
+/Courier SF
+26223 XM
+(CTRL-G)SH
+/Times-Roman SF
+30141 XM
+(\050depending on what machine and version of LISP is being)68 W
+7200 38345 MT
+(used\051 to interrupt)SH
+/Times-Bold SF
+14338 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+16905 XM
+(and return to the top level.)SH
+12 /Times-Bold AF
+7200 42029 MT
+(5. Stopping ETPS)SH
+10 /Times-Roman AF
+8200 43406 MT
+(To temporarily suspend)137 W
+/Times-Bold SF
+18360 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+(, use the control character)137 W
+/Courier SF
+31914 XM
+(CTRL-Z)SH
+/Times-Roman SF
+(. Then)
+524 W( you)
+137 W( can restart)136 W
+/Times-Bold SF
+45525 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+48228 XM
+(with the Unix)136 W
+7200 44783 MT
+(command)SH
+/Courier SF
+11407 XM
+(fg)SH
+/Times-Roman SF
+(. Of)
+276 W( course, if you are running)13 W
+/Times-Bold SF
+25319 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+27899 XM
+(in an X-window, you should not need to suspend it. You)
+13 W( can just)14 W
+7200 46160 MT
+(make it into an icon.)SH
+8200 48639 MT
+(To kill)67 W
+/Times-Bold SF
+11279 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+(, use the)66 W
+/Courier SF
+17349 XM
+(EXIT)SH
+/Times-Roman SF
+20065 XM
+(command from within)66 W
+/Times-Bold SF
+29457 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+(, or use the Unix)66 W
+/Courier SF
+38992 XM
+(kill)SH
+/Times-Roman SF
+41708 XM
+(command from outside)66 W
+/Times-Bold SF
+51433 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+(.)SH
+7200 50016 MT
+(Warning: it)
+304 W( is possible to start multiple versions of)27 W
+/Times-Bold SF
+28248 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+30842 XM
+(and leave them hanging around.  This is)
+27 W( a bad idea, since)28 W
+7200 51393 MT
+(those that you are not using will be a drag on the system, slowing things down considerably.)SH
+12 /Times-Bold AF
+7200 55077 MT
+(6. Filenames)SH
+10 /Times-Roman AF
+8200 56454 MT
+(In the Unix system, filenames are case sensitive.  When you enter a filename in)112 W
+/Times-Bold SF
+41901 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+(, it will be translated to)112 W
+7200 57831 MT
+(lower case)143 W
+/Times-Italic SF
+11984 XM
+(unless you enclose the filename in double quotes)144 W
+/Times-Roman SF
+(. For)
+538 W( example, if you answer)144 W
+/Courier SF
+45440 XM
+(X2106.WoRK)SH
+/Times-Roman SF
+51834 XM
+(when)SH
+7200 59208 MT
+(prompted for a filename,)255 W
+/Times-Bold SF
+18412 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+21233 XM
+(will interpret this as)254 W
+/Courier SF
+30471 XM
+(x2106.work)SH
+/Times-Roman SF
+(, but the entry)254 W
+/Courier SF
+43292 XM
+("X2106.WoRK")SH
+/Times-Roman SF
+50996 XM
+(will be)254 W
+7200 60585 MT
+(interpreted as)SH
+/Courier SF
+12865 XM
+(X2106.WoRK)SH
+/Times-Roman SF
+(, just as you entered it.)SH
+12 /Times-Bold AF
+7200 64269 MT
+(7. Tex, Scribe and Printing)SH
+10 /Times-Roman AF
+8200 65646 MT
+(The command)60 W
+/Courier SF
+14320 XM
+(TEXPROOF)SH
+/Times-Roman SF
+19431 XM
+(works just as described in the)61 W
+/Times-Bold SF
+31851 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+34479 XM
+(manual. Once)
+372 W( you have created your ".tex" file)61 W
+7200 67023 MT
+(on Andrew, however, you should just start TeX by, for example,)SH
+/Courier SF
+7200 68678 MT
+(% tex x2106)SH
+7200 69709 MT
+(This is TeX, Version 3.1415 \050C version 6.1\051)SH
+7200 70740 MT
+(\050x2106.tex \050/afs/andrew.cmu.edu/mcs/math/etps/sun4_55/doc/lib/tps.tex\051\051)SH
+7200 71771 MT
+([1])SH
+ES
+%%Page: 5 5
+
+61200 79200 BS
+0 SI
+10 /Times-Roman AF
+30350 4286 MT
+(5)SH
+30350 75600 MT
+(5)SH
+/Courier SF
+7200 7824 MT
+(Output written on x2106.dvi \0501 page, 1212 bytes\051.)SH
+7200 8855 MT
+(Transcript written on x2106.log.)SH
+/Times-Roman SF
+7200 10572 MT
+(This will produce the file x2106.dvi, and you can use the system command dvips to create x2106.ps from this:)SH
+/Courier SF
+7200 12227 MT
+(dvips x2106)SH
+/Times-Roman SF
+7200 13944 MT
+(To print such a file,)
+18 W( do the following, replacing)17 W
+/Times-Italic SF
+26549 XM
+(printer)SH
+/Times-Roman SF
+29594 XM
+(with the name of one of the Postscript printers such as birch,)17 W
+7200 15321 MT
+(pine, etc.)SH
+/Courier SF
+7200 17036 MT
+(% lpr -P)SH
+/Times-Italic SF
+(printer)SH
+/Courier SF
+15378 XM
+(x2106.ps)SH
+/Times-Roman SF
+8200 19515 MT
+(You can look at the file after running tex but before printing it with the command)SH
+/Courier SF
+7200 21170 MT
+(xdvi x2106)SH
+/Times-Roman SF
+7200 22887 MT
+(Exit xdvi with the command "q".)SH
+8200 25366 MT
+(To create output suitable for LaTeX rather than TeX,)
+181 W( set the flag)182 W
+/Courier SF
+36508 XM
+(LATEX-EMULATION)SH
+/Times-Roman SF
+45940 XM
+(to T while you are)182 W
+7200 26743 MT
+(running)SH
+/Times-Bold SF
+10561 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+(.)SH
+8200 29222 MT
+(Alternatively, you can use the)121 W
+/Courier SF
+21025 XM
+(SCRIBEPROOF)SH
+/Times-Roman SF
+27996 XM
+(command in)121 W
+/Times-Bold SF
+33460 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+36148 XM
+(to produce a file such as)
+121 W( x2106.mss, run it)120 W
+7200 30599 MT
+(through scribe with the command "scribe x2106" to produce the file x2106.ps. Scribe is not available)
+161 W( on some)162 W
+7200 31976 MT
+(machine types.)SH
+8200 34455 MT
+(The default device for Andrew's Scribe is Postscript,)
+31 W( and Scribe will produce a file with the extension ".ps", e.g.,)30 W
+7200 35832 MT
+("x2106.ps".)SH
+12 /Times-Bold AF
+7200 39516 MT
+(8. Possible Problems)SH
+10 /Times-Roman AF
+8200 40893 MT
+(Various)SH
+/Times-Bold SF
+12024 XM
+(E)SH
+9 SS 
+(TPS)SH
+10 /Times-Roman AF
+14999 XM
+(commands involve writing files.)
+408 W( These)
+1068 W( commands include DONE, SAVEPROOF, and)409 W
+7200 42270 MT
+(TEXPROOF. Unfortunately,)
+512 W( it quite)
+131 W( often happens that the fileservers which handle the directory in which you)130 W
+7200 43647 MT
+(wish to write are down.  This is especially common at night, when the backing-up of AFS)
+46 W( volumes is done.  When)47 W
+7200 45024 MT
+(this happens, you will get an error message saying something like "Clisp)
+149 W( error trapped".  If this occurs, try the)148 W
+7200 46401 MT
+(following:)SH
+9200 47740 MT
+(1.)SH
+10200 XM
+(Try storing the file on your local workstation disk instead of AFS.  As an example, instead of)SH
+/Courier SF
+10200 49395 MT
+(texproof "x2106.tex")SH
+/Times-Roman SF
+10200 51112 MT
+(try)SH
+/Courier SF
+10200 52767 MT
+(texproof "/usr/tmp/x2106.tex")SH
+/Times-Roman SF
+10200 54484 MT
+(.)SH
+9200 56242 MT
+(2.)SH
+10200 XM
+(Later, after the fileservers are back up, you can copy the file to your home directory on AFS.)SH
+9200 58000 MT
+(3.)SH
+10200 XM
+(If the DONE command has failed, use SAVEPROOF to save)
+16 W( your proof, then later you can restore the)17 W
+10200 59105 MT
+(proof and try the DONE command again.)SH
+ES
+%%Page: i 6
+
+61200 79200 BS
+0 SI
+10 /Times-Roman AF
+30461 4286 MT
+(i)SH
+30461 75600 MT
+(i)SH
+12 /Times-Bold AF
+26033 8004 MT
+(Table of Contents)SH
+11 SS 
+8850 9172 MT
+(0. Documentation)SH
+53450 XM
+(1)SH
+8850 10340 MT
+(1. Starting ETPS)SH
+53450 XM
+(1)SH
+8850 11508 MT
+(2. Using ETPS under X11)SH
+53450 XM
+(1)SH
+10 SS 
+10700 12588 MT
+(2.1. Setting the Fontpath)SH
+53500 XM
+(1)SH
+10700 13668 MT
+(2.2. XETPS and XETPS-BIG)SH
+53500 XM
+(2)SH
+10700 14748 MT
+(2.3. Proofwindows)SH
+53500 XM
+(2)SH
+11 SS 
+8850 15916 MT
+(3. Running ETPS Remotely)SH
+53450 XM
+(2)SH
+10 SS 
+10700 16996 MT
+(3.1. Using Muptime)SH
+53500 XM
+(3)SH
+10700 18076 MT
+(3.2. Xhost)SH
+53500 XM
+(3)SH
+10700 19156 MT
+(3.3. An Alternative to etps.cshrc)SH
+53500 XM
+(3)SH
+10700 20236 MT
+(3.4. Running XETPS Remotely with the ETPS Fonts)SH
+53500 XM
+(3)SH
+12700 21316 MT
+(3.4.1. One Student's Experience Running XETPS on a Windows Machine)SH
+53500 XM
+(3)SH
+12700 22396 MT
+(3.4.2. Another Student's Experience Running XETPS on a Windows Machine)SH
+53500 XM
+(4)SH
+12700 23476 MT
+(3.4.3. Another Student's Experience Running XETPS on a Windows Machine)SH
+53500 XM
+(4)SH
+11 SS 
+8850 24644 MT
+(4. Aborting a Command)SH
+53450 XM
+(4)SH
+8850 25812 MT
+(5. Stopping ETPS)SH
+53450 XM
+(4)SH
+8850 26980 MT
+(6. Filenames)SH
+53450 XM
+(4)SH
+8850 28148 MT
+(7. Tex, Scribe and Printing)SH
+53450 XM
+(4)SH
+8850 29316 MT
+(8. Possible Problems)SH
+53450 XM
+(5)SH
+ES
+%%Trailer
+%%Pages: 6
+%%DocumentFonts: Times-Roman Times-Bold Courier Times-Italic

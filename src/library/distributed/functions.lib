@@ -1,0 +1,56 @@
+(:name FN-THM-1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, September 17, 1998 at 11:14:40."
+:description "FORALL F(BA) FORALL G(CB).INJECTIVE(O(BA)) F(BA) AND INJECTIVE(O(CB)) G(CB) IMPLIES INJECTIVE(O(CA)).G(CB) COMPOSE(CA(BA)(CB)) F(BA)"
+:needed-objects   (INJECTIVE COMPOSE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name FN-THM-2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, September 17, 1998 at 11:14:56."
+:description "FORALL F(BA) FORALL G(CB).SURJECTIVE(O(BA)) F(BA) AND SURJECTIVE(O(CB)) G(CB) IMPLIES SURJECTIVE(O(CA)).G(CB) COMPOSE(CA(BA)(CB)) F(BA)"
+:needed-objects   (SURJECTIVE COMPOSE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name FN-THM-3
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, September 17, 1998 at 11:15:12."
+:description "FORALL F(BA) FORALL G(CB).INJECTIVE(O(CA)) [G(CB) COMPOSE(CA(BA)(CB)) F(BA)] IMPLIES INJECTIVE(O(BA)) F(BA)"
+:needed-objects   (INJECTIVE COMPOSE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name FN-THM-4
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, September 17, 1998 at 11:15:30."
+:description "FORALL F(BA) FORALL G(CB).SURJECTIVE(O(CA)) [G(CB) COMPOSE(CA(BA)(CB)) F(BA)] IMPLIES SURJECTIVE(O(CB)) G(CB)"
+:needed-objects   (SURJECTIVE COMPOSE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

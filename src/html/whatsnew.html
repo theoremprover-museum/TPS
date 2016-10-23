@@ -1,0 +1,289 @@
+<html>
+<head>
+<title>What's New in TPS and ETPS</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+<H1> What's New in TPS and ETPS
+</H1>  <p></p>
+<hr><p></p>
+
+New distribution copies of the code for TPS and ETPS are made
+periodically and can be retrieved  by users who accept the
+<A HREF="tps-dist-agree-msg">distribution
+agreement</A>.  (To download a copy of TPS, see <A HREF="tps-sys.html">here</A>.)
+
+
+If you are interested in a feature that has been added since the last distribution, please contact 
+andrews@cmu.edu.<p></p>
+<hr>
+<H2> Release notes for distribution copy of 2011 February 28:</H2>
+<UL>
+<li> <b> Compatibility with SBCL </b>
+<UL>
+<li> TPS now runs under Steel Bank Common Lisp (SBCL). 
+</ul>
+</ul>
+<hr>
+<H2> Release notes for distribution copy of 2011 February 3:</H2>
+<UL>
+<li> <b> CASC Facilities </b>
+<UL>
+<li> The distribution now contains a directory casc with instructions and 
+facilities for running TPS in the CASC competition.
+</ul>
+</ul>
+<hr>
+<H2> Release notes for distribution copy of 2011 January 26:</H2>
+<UL>
+<li> <b> CMUCL Compatibility </b>
+<UL>
+<li> TPS has been adjusted to be compatible with CMUCL (CMU Common Lisp) version 20.
+</ul>
+</ul>
+<hr>
+<H2> Release notes for distribution copy of June 24th 2004:</H2>
+<UL>
+<li> <b> Automatic Search </b>
+<UL>
+<li> New search procedures MS03-7 and MS04-2 which search for proofs of theorems in extensional type theory
+  using extensional expansion dags.
+<li> Added support for searching with set constraints to MS98-1, MS03-7 and MS04-2.
+<li> Setting PRIMSUB-METHOD to PR00 will cause TPS to use unification to determine a set substitution
+  and make nonleaf connections (up to negation normal form).
+</ul>
+<li> <b> Extensional Proofs </b>
+<UL>
+<li> New top level EXT-SEQ for manipulating extensional sequent calculus derivations.
+<li> New top level EXT-MATE for manipulating extensional expansion dags.
+</ul>
+<li> <b> Inference Rules for Natural Deduction</b>
+<UL>
+<li> LIST-RULES*: Show important inference rules with intermediate rule definitions.
+<li> ADD-HYPS, DELETE-HYPS : Add/Delete hypotheses for a line.
+<li> TYPESUBST : Substitute for type variables in a line.
+<li> MAKE-ASSERT-A-HYP: Changes a line which is justified by 'Assert' to a hypothesis which
+ can be discharged.
+<li> NNF, NNF-EXPAND: Converts a line to or from negation normal form.
+<li> ELIMINATE-CONJ*-RULEP-APPS, ELIMINATE-ALL-RULEP-APPS, ELIMINATE-RULEP-LINE: Replaces applications
+ of RuleP (and certain other proposition rules) in favor of basic propositional rules.
+<li> ITRUTH: Rule to justify the formula TRUTH (without using RuleP).
+</ul>
+<li> <b> Libraries and Modes </b>
+<UL>
+<li> Library directories can be modified by CREATE-LIB-DIR, CREATE-LIB-SUBDIR, DELETE-LIB-DIR,
+     RENAME-LIBDIR, COPY-LIBDIR, UPDATE-LIB-DIR, IMPORT-NEEDED-OBJECTS and CHECK-NEEDED-OBJECTS 
+<li> Users can create library classification schemes to organize the library and store these schemes in the library.
+<li> UNIXLIB : A new library top level with a unix-style interface using a library classification scheme.
+<li> GOODMODES : Support for saving a list of theorems with modes which prove them.
+<li> When the user sets a mode, all important flags are now set to their default values unless explicitly set by the mode.
+</ul>
+<li> <b> Proof Translations </b>
+<UL>
+<li> There is a new version of NAT-ETREE for translating from a normal natural deduction
+  proof to an expansion proof.
+<li> CUTFREE-TO-EDAG : EXT-SEQ command which translates from a cut-free extensional sequent derivation to a extensional expansion proof.
+<li> ETREE-NAT : EXT-MATE command which translates from an extensional expansion proof to a natural deduction proof.
+</ul>
+<li> <b> Misc. </b>
+<UL>
+<li> There is a new Java interface for TPS and ETPS.
+<li> Support for using TPS under Microsoft Windows.
+<li> Support for using TPS as an external service (e.g., by Omega).
+<li> Support for using TPS as a web server to allow online use.
+<li> New top level MODELS for experimenting with standard models with finitely many individuals.
+<li> The flags ALLOW-NONLEAF-CONNS and DISSOLVE can be used to allow connections between
+  nodes which are not atoms (e.g. connections between disjunctions).
+<li> Properties have been added to flags noting which flags are relevant or irrelevant given other flag settings.
+  If the user sets a flag that is irrelevant, TPS issues a warning.
+  The review command UPDATE-RELEVANT allows the user to set a flag and then all relevant flags.
+<li> SAVE-ETREE, RESTORE-ETREE: Saves and restores expansion trees.
+<li> Implemented dissolution which modifies a jform to remove connections listed in the value of DISSOLVE.
+<li> Support for including lemmas in expansion proofs (in particular, extensionality lemmas and set existence lemmas).
+<li> DEASSERT-LEMMAS, NORMALIZE-PROOF : Combine a proof with proofs of lemmas used and attempt to normalize the natural deduction proof.
+</ul>
+</ul>
+<hr>
+<H2> Release notes for distribution copy of June 16th 1998:</H2>
+<UL>
+<li>SKOLEM-DEFAULT NIL (meaning "use selection nodes instead of Skolemizing") now works.
+<li>TPS-TEST can now modify the modes it uses in a uniform way, using the flag TEST-MODIFY.
+<li>MS91-INTERLEAVE allows the search procedure to make primitive substitutions a few at a time,
+instead of doing them all at once.
+<li>New flag PRINTTYPES-ALL implemented.
+<li>PBRIEF summarises a natural deduction proof by omitting some of the unimportant details.
+<li>REWRITE-EQUIVS changes the way in which equivalence is rewritten by the mating procedure.
+<li>New search procedure MS98.
+<li>Merging has been made faster by making the minimization of the mating an optional feature, 
+rather than always attempting to do it.
+<li>New commands PTREE, PTREE* and PTREE-FILE print the etree in a tree format.
+<li>Library objects now contain keywords such as HIGHER-ORDER and WITH-EQUALITY, which allow for 
+faster searching and categorization within the library.
+<li>ADD-SUBDIRECTORIES has been completely rewritten, and now works with Lucid CL as well as Allegro CL and CMU CL.
+<li>Added SUPPRESS-FLAGS, which allows the user to suppress all mention of a user-definable list of 
+uninteresting flags.
+<li>Various small improvements to manuals, help messages, etc.
+<li>Various minor bug fixes.
+</ul>
+<hr>
+<H2> Release notes for  distribution copy of October 30th 1997:</H2>
+<UL>
+<li>Dual instantiation of definitions and equalities has been implemented (see forthcoming paper).
+<li>New methods for primitive substitution (discussed in the same paper) have also been implemented.
+<li>New command TPS-TEST allows for a test run through a batch of proofs without requiring interaction
+from the user.
+<li>Major changes to the library facilities: both the default and backup directories may now be lists 
+of directories. Multiple definitions of the same object are allowed, and the user is asked which definition
+to use when such objects are loaded. SHOW-TIMING can now show the proof times for all instances of a
+given object.
+<li>Library objects are now stored with a PROVABILITY property, allowing for fast searches to find provable
+(or unprovable) theorems.
+<li>TPS now supports rewrite rules (for interactive proofs only). These may be bidirectional and/or polymorphic,
+and may invoke arbitrary functions to test for applicability of the rule and to clean up afterwards 
+(e.g. applying lambda-normalization after each application).
+<li>Rewrite rules can be bundled into THEORIES for ease of use. Many theories can be stored in memory, to
+be activated or deactivated as needed.
+<li>Unification is now timed separately, so the user can see how much of the search time was spent on unification.
+<li>The command UNIFORM-SEARCH has been improved.
+<li>It is now possible to find out, during a proof search but without interrupting it,
+the time that TPS has spent searching for a proof.
+<li>The new command FINDPROOF searches through saved proof files for a proof of a given theorem.
+<li>The flags SHORT-HELP and ALPHA-LOWER-FLAG reformat the output from HELP, ? and ?? in a more readable manner.
+<li>Command completion of an ambiguous command now offers a list of possible completions instead of just failing.
+<li>The command OOPS allows the user to make minor changes in the previous command without retyping it.
+<li>ND Proofs containing assertions of reflexivity or transitivity of equality can now be rewritten automatically into
+a form that can be translated by NAT-ETREE.
+<li>The command AUTO-SUGGEST takes a ND proof and makes (not necessarily completely correct) suggestions about how to
+set the flags for an automatic proof.
+<li>Help messages are now available for flag settings as well as for flags.
+<li>The command PAUSE allows greater user control over execution of work files.
+<li>TeX output can now be formatted for LaTeX.
+<li>TPS can now be run on a problem from the command line in "batch mode", with the output being sent to a file.
+<li>The VPT command can now produce TeX output with the literal names in boxes.
+<li>SKOLEM-DEFAULT SK3 and SKOLEM-DEFAULT NIL (corresponding, respectively, 
+to skolemizing over just the free variables and to using selection nodes instead of skolemization) now work properly.
+</ul>
+<hr>
+<H2> Release notes for  distribution copy of June 18th 1996:</H2>
+<UL>
+<LI> <b>Interactive Proofs</b>
+<ul>
+<LI> Proofs, and lines within proofs, can now have comments attached to them.
+<LI> Commands SAVE-SUBPROOF, CREATE-SUBPROOF, MERGE-PROOFS and TRANSFER-LINES allow
+easy manipulation of partial proofs (e.g. pasting the proof of a lemma into a larger proof).
+<LI> Command FIND-LINE looks for lines of a given form within a proof.
+<LI> New command DIY-L for automatic proof of lemmas within an interactive proof.
+<LI> New interactive proof commands ECONJ*, ICONJ*, UGEN*, CASES3, CASES4, ASSOC-LEFT, RULEC1, SUBST-EQUIV,
+IDISJ-LEFT, IDISJ-RIGHT.
+<LI> New implementation of NAT-ETREE, allowing easier conversion of natural deduction proofs
+to eproofs.
+</ul>
+<LI> <b>Unification</b>
+<ul>
+<LI> Implementation of variable depth bounds in unification via MAX-SUBSTS-VAR
+and its associated flags, bringing the time for THM15B (in the JAR paper) down from 2.5 hours 
+to 1 minute.
+<LI> Improved unification output via flags UNIF-COUNTER and UNIF-TRIGGER.
+<LI> UN90 now allows breadth-first unification as well as depth-first.
+<LI> Improvements to the unification routines; new flag DNEG-IMITATION, plus implementation
+of a subsumption-checker, bringing the time for THM15B (in the JAR paper) down from 2.5 hours 
+to 5 minutes.
+<LI> New unification command UTREE* prints the unification tree in a tree format.
+<LI> New unification command PP* prints detailed information about unification problems
+(are they linear, monadic, second order, etc...?).
+</ul>
+<LI> <b>Automatic Proof Search</b>
+<ul>
+<LI> Implementation of variable time bounds for searches with primitive substitutions.
+<LI> New (optional) method for generating primitive substitutions, by counting the number of
+literals as well as the number of quantifiers. Governed by the flag PRIMSUB-METHOD.
+</ul>
+<LI> <b>Other Stuff</b>
+<ul>
+<LI> SCRIBEPROOF and TEXPROOF now allow more user control over the output format.
+<LI> The SEARCH command now allows searches of all objects in the library.
+<LI> SAVEPROOF now saves all related abbreviations as well.
+<LI> New editor command PRIM-SUBST simulates the mate command PRIM-SINGLE in the editor.
+</ul>
+</UL>
+<p></p>
+<hr>
+<H2> Release notes for  distribution copy of April 26th 1995:</H2>
+<UL>
+<LI> The new commands BUG-SAVE and BUG-RESTORE provide a uniform way to store information
+about bugs in TPS. New commands BUG-LIST, BUG-HELP show all the stored information about
+bugs.
+<LI> The new matingstree top level has been implemented.
+<LI> New editor commands to delete left or right scope of a binary connective.
+<LI> New editor commands to embed the current wff under a connective or binder.
+<LI> Pop-up windows can now use a different font from the main window.
+<LI> Literals which are copies of each other can now be labelled as such: e.g., copies of
+LEAF7 will be labelled LEAF7.1, LEAF7.2, etc.
+<LI> It is now possible to print the proof structure as a tree rather than a list.
+<LI> Mating searches can now be interrupted cleanly, and it is possible to continue searching
+after such an interrupt.
+<LI> Searches in the <i>test</i> top level now behave in a similar way to the <i>mate</i>
+top level; this makes <i>test</i> more intuitive to use.
+<LI> There is a new setting for ORDER-COMPONENTS which orders the conjunctions 
+in a vpform from largest to smallest.
+<LI> It is now possible to save unification problems created during mating search
+in the library, and to restore them later. 
+</ul>
+<p></p>
+<hr>
+<H2> Release notes for  distribution copy of November 11th 1994:</H2>
+<UL>
+<LI> Natural deduction proofs now have the variables relabelled to make them more readable
+(in particular, the same variable will not be used twice with different types, and superscripts
+are eliminated where possible).
+<LI> All known bugs in proof search have been fixed.
+<LI> There is a new command <i>^PN</i>, which prints active lines in full and abbreviates other
+lines to just the line number.
+<LI> There is a new flag <i>ETREE-NAT-VERBOSE</i> which controls the output of <i>ETREE-NAT</i>
+and can redirect it to the proofwindows.
+<LI> <i>SCRIPT</i> files can now be produced in Scribe or TeX format.
+<LI> Library files can now be sorted, with the <i>SORT</i> command.
+<LI> The <i>KEY</i> command can now be used on the library, to find all library objects 
+containing a given string.
+<LI> Beta and eta conversion can now be done either separately or together or (in the case of 
+eta conversion) not at all. This applies to both interactive and automatic proofs.
+<LI> MS90-3 now handles truth values properly.
+<LI> <i>EQUIV-EQ</i> now generates more useful default values.
+<LI> The hypotheses for a new lemma no longer have to be the same as those of the conclusion (they can now be a subset).
+<LI> The manuals have been heavily rewritten and updated.
+<LI> A new flag <i>TURNSTILE-INDENT-AUTO</i> allows the user to improve the formatting of printed proofs.
+<LI> There are new commands to reindex the library and purge it of backup files, 
+and damaged library files can be salvaged automatically.
+<LI> If TPS is given a mode name or a gwff name which it does not recognise, it will now automatically 
+ask whether to search the library for an object of that name.
+<LI> <i>MOVE*</i> now works properly.
+<LI> The backtracking strategy for MS90-* has been made more efficient.
+<LI> MS90-* now always prefers to duplicate the innermost quantifier of a jform.
+<LI> The new <i>TPS-TEST</i> command allows long runs, without user intervention, in which many 
+proofs are completed and all the timing details are recorded in a file.
+<LI> Files in the patch file are now not loaded unless they have been changed since the last time 
+TPS was built; this allows one patch file to work for many different versions of TPS all built 
+at different times.
+<LI> The new command <i>ETP</i> prints the shallow formula at all nodes of an etree.
+<LI> The <i>test</i> top level has been considerably expanded, and it is now possible for TPS 
+to automatically construct appropriate searchlists for either improving a correct mode, or finding
+a correct mode.
+<LI> The <i>test</i> top level will now fix the unification depths to the correct value as soon as 
+it finds a proof, rather than continuing to vary them.
+<LI> The flag <i>MIN-QUANT-ETREE</i> was implemented.
+<LI> The flag <i>LAST-MODE-NAME</i> was implemented; TPS now records the name of the current mode 
+when <i>DATEREC</i> is called.
+<LI> The library command <i>SHOW-TIMING</i> was implemented; this prints out all the timing records
+for a given theorem in the library.
+<LI> The command <i>COMPARE-MODES</i> was implemented.
+<LI> TPS can now measure garbage collecting time in Lucid CL.
+<LI> The proofwindows, editor windows, etc. are now available in Lucid CL.
+<LI> The problem in which an empty option set was generated many times in each MS91 search has been fixed.
+</UL>
+
+<p></p>
+<hr>
+<p></p>
+<A HREF="tps-mans.html"><IMG ALT="Prev" WIDTH=30 HEIGHT=30 SRC="docsleft.gif"></A><A HREF="tps.html"><IMG ALT="Top" WIDTH=30 HEIGHT=30 SRC="docsupar.gif"></A><A HREF="tps-eg.html"><img ALT="Next" WIDTH=30 HEIGHT=30 src="docsrigh.gif"></A><img ALT="  " WIDTH=30 HEIGHT=30 src="empty.gif">
+</body>
+</html>

@@ -1,0 +1,28 @@
+(:name GRP-COMM
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) P(OIII) e(I) x(I) x(I) AND FORALL y(I) P(OIII) y(I) e(I) y(I) AND FORALL z(I) P(OIII) z(I) z(I) e(I) AND FORALL x(I) FORALL y(I) FORALL z(I) FORALL xy(I) FORALL yz(I) FORALL xyz(I) [P(OIII) x(I) y(I) xy(I) AND P(OIII) y(I) z(I) yz(I) IMPLIES.P(OIII) xy(I) z(I) xyz(I) EQUIV Px(OII) yz(I) xyz(I)] IMPLIES.P(OIII) a(I) b(I) ab(I) IMPLIES P(OIII) b(I) a(I) ab(I)"
+:needed-objects   NIL
+:mhelp "Group is abelian iff every element has order 2"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GRP-COMM2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:14:52."
+:description "FORALL x(I) [P(III) e(I) x(I) =(OII) x(I)] AND FORALL y(I) [P(III) y(I) e(I) =(OII) y(I)] AND FORALL z(I) [P(III) z(I) z(I) =(OII) e(I)] AND FORALL x(I) FORALL y(I) FORALL z(I) [P(III) [P(III) x(I) y(I)] z(I) =(OII) P(III) x(I).P(III) y(I) z(I)] IMPLIES FORALL a(I) FORALL b(I).P(III) a(I) b(I) =(OII) P(III) b(I) a(I)"
+:needed-objects   NIL
+:mhelp "Group is abelian iff every element has order 2"
+:other-attributes NIL
+:other-remarks "
+")
+
+

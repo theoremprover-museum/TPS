@@ -1,0 +1,40 @@
+;;; ******************************************************************* ;;;
+;;;         (c) Copyrighted 1988 by Carnegie Mellon University.         ;;;
+;;;                        All rights reserved.                         ;;;
+;;;         This code was written as part of the TPS project.           ;;;
+;;;   If you want to use this code or any part of TPS, please contact   ;;;
+;;;               Peter B. Andrews (Andrews@CS.CMU.EDU)                 ;;;
+;;; ******************************************************************* ;;;
+;;; Updated contexts 7/20/87 DAN
+(context rules-1-misc)
+
+(defirule hyp
+  (lines (h1 () (h1) "A" ("Hyp" () ()))
+	 (p2 (h) () "B"))
+  (itemshelp (h1 "Line with Hypothesis")
+	     (p2 "Line to be Proven using Hypothesis")
+	     ("A(O)" "Hypothesis")
+	     ("B(O)" "Theorem to be Proven with extra Hypothesis"))
+  (support-transformation ((p2 'ss)) ((p2 h1 'ss)))
+  (mhelp "Introduce a new hypothesis line into the proof outline."))
+
+(defirule lemma
+  (lines (p1 (h1) () "A")
+	 (p2 (h2) () "B"))
+  (itemshelp (p1 "Line with Lemma")
+	     (p2 "Line to be Proven Using Lemma")
+	     ("A(O)" "Assertion of Lemma")
+	     ("B(O)" "Assertion of Line to be Proven"))
+  (support-transformation ((p2 'ss)) ((p2 p1 'ss) (p1 'ss)))
+;  (hyp-restrict 'h1-subset-h2)
+  (mhelp "Introduce a Lemma."))
+
+(defirule same
+  (lines (d1 (h) () "A")
+	 (p2 (h) () "A" ("Same as" () (d1))))
+  (support-transformation ((p2 d1 'ss)) ())
+  (itemshelp (d1 "Lower Line")
+	     (p2 "Higher Line")
+	     ("A(O)" "Assertion of Both Lines"))
+  (mhelp "Use the fact that two lines are identical to justify a planned line."))
+

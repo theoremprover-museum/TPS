@@ -1,0 +1,112 @@
+(:name MAPSET
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA F(OAA(OAA)) LAMBDA S(O(OAA)) LAMBDA R(OAA) EXISTS Q(OAA).S(O(OAA)) Q(OAA) AND R(OAA) =(O(OAA)(OAA)) F(OAA(OAA)) Q(OAA)"
+:needed-objects   NIL
+:mhelp "map a function (OAA(OAA)) onto a set of relations of type (OAA)"
+:other-attributes ((FACE MAPSET) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(OAA)(O(OAA))(OAA(OAA))"))
+:other-remarks "
+")
+
+
+(:name SETPAIRUNION
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA S(O(OAA)) LAMBDA x(A) LAMBDA y(A) EXISTS R(OAA).S(O(OAA)) R(OAA) AND R(OAA) x(A) y(A)"
+:needed-objects   NIL
+:mhelp "union of a set of relations"
+:other-attributes ((FACE SETUNION) (FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "OAA(O(OAA))"))
+:other-remarks "
+")
+
+
+(:name THM253
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL S(O(OAA)).TRCL(OAA(OAA)) [SETPAIRUNION(OAA(O(OAA))) S(O(OAA))] =(O(OAA)(OAA)) TRCL(OAA(OAA)).SETPAIRUNION(OAA(O(OAA))).MAPSET(O(OAA)(O(OAA))(OAA(OAA))) TRCL(OAA(OAA)) S(O(OAA))"
+:needed-objects   (SETPAIRUNION MAPSET TRCL)
+:mhelp "thm250, generalised to infinite sets"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM253-A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL S(O(OAA)).TRCL(OAA(OAA)) [SETPAIRUNION(OAA(O(OAA))) S(O(OAA))] SUBRELATION(O(OAA)(OAA)) TRCL(OAA(OAA)).SETPAIRUNION(OAA(O(OAA))).MAPSET(O(OAA)(O(OAA))(OAA(OAA))) TRCL(OAA(OAA)) S(O(OAA))"
+:needed-objects   (SETPAIRUNION MAPSET TRCL SUBRELATION)
+:mhelp "half of thm253"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM253-B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL S(O(OAA)).TRCL(OAA(OAA)) [SETPAIRUNION(OAA(O(OAA))).MAPSET(O(OAA)(O(OAA))(OAA(OAA))) TRCL(OAA(OAA)) S(O(OAA))] SUBRELATION(O(OAA)(OAA)) TRCL(OAA(OAA)).SETPAIRUNION(OAA(O(OAA))) S(O(OAA))"
+:needed-objects   (SETPAIRUNION MAPSET TRCL SUBRELATION)
+:mhelp "the other half of thm253"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM254
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL PROP(O(OAA)) FORALL S(O(OAA)).CLOSURE(OAA(OAA)(O(OAA))) PROP(O(OAA)) [SETPAIRUNION(OAA(O(OAA))) S(O(OAA))] =(O(OAA)(OAA)) CLOSURE(OAA(OAA)(O(OAA))) PROP(O(OAA)).SETPAIRUNION(OAA(O(OAA))).MAPSET(O(OAA)(O(OAA))(OAA(OAA))) [CLOSURE(OAA(OAA)(O(OAA))) PROP(O(OAA))] S(O(OAA))"
+:needed-objects   (SETPAIRUNION CLOSURE MAPSET)
+:mhelp "THM253, generalised to any sort of closure"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM254-A
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL PROP(O(OAA)) FORALL S(O(OAA)).CLOSURE(OAA(OAA)(O(OAA))) PROP(O(OAA)) [SETPAIRUNION(OAA(O(OAA))) S(O(OAA))] SUBRELATION(O(OAA)(OAA)) CLOSURE(OAA(OAA)(O(OAA))) PROP(O(OAA)).SETPAIRUNION(OAA(O(OAA))).MAPSET(O(OAA)(O(OAA))(OAA(OAA))) [CLOSURE(OAA(OAA)(O(OAA))) PROP(O(OAA))] S(O(OAA))"
+:needed-objects   (SETPAIRUNION CLOSURE MAPSET SUBRELATION)
+:mhelp "THM253-A, generalised to any sort of closure"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM254-B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL PROP(O(OAA)) FORALL S(O(OAA)).CLOSURE(OAA(OAA)(O(OAA))) PROP(O(OAA)) [SETPAIRUNION(OAA(O(OAA))).MAPSET(O(OAA)(O(OAA))(OAA(OAA))) [CLOSURE(OAA(OAA)(O(OAA))) PROP(O(OAA))] S(O(OAA))] SUBRELATION(O(OAA)(OAA)) CLOSURE(OAA(OAA)(O(OAA))) PROP(O(OAA)).SETPAIRUNION(OAA(O(OAA))) S(O(OAA))"
+:needed-objects   (SETPAIRUNION CLOSURE MAPSET SUBRELATION)
+:mhelp "THM253-B, generalised to any sort of closure"
+:other-attributes NIL
+:other-remarks "
+")
+
+

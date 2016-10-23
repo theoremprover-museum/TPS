@@ -1,0 +1,64 @@
+;;; ******************************************************************* ;;;
+;;;         (c) Copyrighted 1988 by Carnegie Mellon University.         ;;;
+;;;                        All rights reserved.                         ;;;
+;;;         This code was written as part of the TPS project.           ;;;
+;;;   If you want to use this code or any part of TPS, please contact   ;;;
+;;;               Peter B. Andrews (Andrews@CS.CMU.EDU)                 ;;;
+;;; ******************************************************************* ;;;
+;;; Updated contexts 7/20/87 DAN
+(context rules-2-prop)
+
+(defirule implics-equiv
+  (lines (p1 (h) () "[P implies R] and [R implies P]")
+         (p2 (h) () "P equiv R" ("ImpEquiv" () (p1))))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (itemshelp (p1 "Line with Implications in Both Directions")
+	     (p2 "Line with Equivalence")
+	     ("P(O)" "Left Equivalent")
+    	     ("R(O)" "Right Equivalent"))
+  (mhelp "Rule to convert twin implications into an equivalence."))
+
+(context rules-7-defn)
+
+(defirule equiv-wffs
+  (lines (d1 (h) () "P(O)")
+	 (d2 (h) () "R(O)" ("EquivWffs" () (d1))))
+  (restrictions (wffeq-def "P(O)" "R(O)"))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Lower Line")
+	     (d2 "Higher Line")
+	     ("P(O)" "Wff of Lower Line")
+	     ("R(O)" "Wff of Higher Line"))
+  (mhelp
+"Rule to assert equivalence of lines up to definition."))
+
+;*;(context subst-rules)
+;*;
+;*;(defirule subst-equal
+;*;  (lines (p1 (h) () "P(O)")
+;*;	 (d2 (h) () "s(A) = t(A)")
+;*;	 (d3 (h) () "R(O)" ("Subst=" () (p1 d2))))
+;*;  (support-transformation (('pp d2 'ss)) ((p1 'ss) ('pp d3 'ss p1 d2)))
+;*;  (itemshelp (p1 "Line before Substituting Some Occurrences")
+;*;	     (d2 "Line with Equality")
+;*;	     (d3 "Line after Substituting Some Occurrences")
+;*;	     ("P(O)" "Formula Before Substitution")
+;*;	     ("R(O)" "Formula After Substitution")
+;*;	     ("s(A)" "Left-Hand Side of Equality")
+;*;	     ("t(A)" "Right-Hand Side of Equality"))
+;*;  (restrictions (subst-some-occs "s(A)" "P(O)" "t(A)" "R(O)"))
+;*;  (mhelp "Substitution of Equality.  If the equality goes in the other
+;*;direction, you should use symmetry of equality (ASSERT SYM=) and Modus
+;*;Ponens (MP)."))
+;*;
+;*;(context misc-rules)
+
+;*; Subsumed by ASSERT command
+;*;
+;*;(defirule descr
+;*;  (lines (d1 (h) () "[IOTA [Q(OAA) Y(A)]] = Y"
+;*;	("Description Theorem" () ())))
+;*;  (support-transformation (('pp 'ss)) (('pp 'ss)))
+;*;  (itemshelp (p1 "Instance of the Description Theorem")
+;*;	     ("Y(A)" "Described Wff"))
+;*;  (mhelp "Rule to state an instance of the Description Theorem."))

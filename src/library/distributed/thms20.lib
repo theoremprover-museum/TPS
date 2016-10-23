@@ -1,0 +1,70 @@
+(:name THM200
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:29:33."
+:description "A(O) IMPLIES B(O) IMPLIES A(O) IMPLIES A(O) IMPLIES B(O) IMPLIES B(O)"
+:needed-objects   NIL
+:mhelp "Nepejvoda's problem; supposedly a difficult ND problem."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM201
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:29:33."
+:description "FORALL r(OAA) REFLEXIVE(O(OAA)).TRCL-BBP(OAA(OAA)) r(OAA)"
+:needed-objects   (REFLEXIVE TRCL-BBP)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM202
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:29:33."
+:description "FORALL r(OAA) FORALL x(A) FORALL y(A).r(OAA) x(A) y(A) IMPLIES TRCL-BBP(OAA(OAA)) r(OAA) x(A) y(A)"
+:needed-objects   (TRCL-BBP)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM203
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 17:29:34."
+:description "FORALL r(OAA) FORALL T(OAA(OAA)).REFLEXIVE(O(OAA)) [T(OAA(OAA)) r(OAA)] AND [TRANSITIVE(O(OAA)) [T(OAA(OAA)) r(OAA)] AND FORALL x(A) FORALL y(A).r(OAA) x(A) y(A) IMPLIES T(OAA(OAA)) r(OAA) x(A) y(A)] IMPLIES FORALL x(A) FORALL y(A).TRCL-BBP(OAA(OAA)) r(OAA) x(A) y(A) IMPLIES T(OAA(OAA)) r(OAA) x(A) y(A)"
+:needed-objects   (TRANSITIVE REFLEXIVE TRCL-BBP)
+:mhelp "B&B-P's defn of TRCL is the minimal transitive reflexive relation containing r"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM204
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, June 10, 1997 at 15:26:45."
+:description "FORALL r(OAA) TRANSITIVE(O(OAA)).TRCL-BBP(OAA(OAA)) r(OAA)"
+:needed-objects   (TRCL-BBP TRANSITIVE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+

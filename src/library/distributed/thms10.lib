@@ -1,0 +1,232 @@
+(:name THM104
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Thursday, July 10, 1997 at 14:06:11."
+:description "FORALL X(A) FORALL Z(A).UNITSET(OAA) X(A) =(O(OA)(OA)) UNITSET(OAA) Z(A) IMPLIES X(A) =(OAA) Z(A)"
+:needed-objects   NIL
+:mhelp "Example from 1989 JAR paper CHOL. Unitset is injective. Like THM7."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM108
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Friday, February  5, 1999 at 11:44:06."
+:description "FORALL w(OA) FORALL y(OA) FORALL z(OA).w(OA) INTERSECT(OA(OA)(OA)) COMPLEMENT(OA(OA)) z(OA) SUBSET(O(OA)(OA)) y(OA) AND z(OA) SETDIFF(OA(OA)(OA)) y(OA) =(O(OA)(OA)) NULLSET(OA) IMPLIES w(OA) SUBSET(O(OA)(OA)) y(OA)"
+:needed-objects   (NULLSET SETDIFF)
+:mhelp "21-127 exam problem requiring case analysis. REWRITE-EQUAL-EXT 
+ drastically affects performance."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM109
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL X(A) FORALL Z(A).UUNITSET(OAA) X(A) =(O(OA)(OA)) UUNITSET(OAA) Z(A) IMPLIES X(A) =(OAA) Z(A)"
+:needed-objects   (UUNITSET)
+:mhelp "Similar to THM104 but with alternative definition of unitset"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM100-TPS2
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:15:02."
+:description "P(OBAAAA) S(A) S(A) S(A) S(A) O(B) AND FORALL T(B) [P(OBAAAA) S(A) N(A) S(A) N(A) T(B) IMPLIES P(OBAAAA) N(A) N(A) S(A) N(A).A(BB) T(B)] AND FORALL T1(B) [P(OBAAAA) N(A) N(A) S(A) N(A) T1(B) IMPLIES P(OBAAAA) S(A) N(A) S(A) N(A).A(BB) T1(B)] AND FORALL T2(B) [P(OBAAAA) S(A) S(A) N(A) S(A) T2(B) IMPLIES P(OBAAAA) N(A) S(A) N(A) S(A).A(BB) T2(B)] AND FORALL T3(B) [P(OBAAAA) N(A) S(A) N(A) S(A) T3(B) IMPLIES P(OBAAAA) S(A) S(A) N(A) S(A).A(BB) T3(B)] AND FORALL T4(B) [P(OBAAAA) S(A) S(A) S(A) N(A) T4(B) IMPLIES P(OBAAAA) N(A) N(A) S(A) N(A).W(BB) T4(B)] AND FORALL T5(B) [P(OBAAAA) N(A) N(A) S(A) N(A) T5(B) IMPLIES P(OBAAAA) S(A) S(A) S(A) N(A).W(BB) T5(B)] AND FORALL T6(B) [P(OBAAAA) S(A) S(A) N(A) S(A) T6(B) IMPLIES P(OBAAAA) N(A) N(A) N(A) S(A).W(BB) T6(B)] AND FORALL T7(B) [P(OBAAAA) N(A) N(A) N(A) S(A) T7(B) IMPLIES P(OBAAAA) S(A) S(A) N(A) S(A).W(BB) T7(B)] AND FORALL X(A) FORALL Y(A) FORALL U(B) [P(OBAAAA) S(A) X(A) S(A) Y(A) U(B) IMPLIES P(OBAAAA) N(A) X(A) N(A) Y(A).G(BB) U(B)] AND FORALL X1(A) FORALL Y1(A) FORALL V(B) [P(OBAAAA) N(A) X1(A) N(A) Y1(A) V(B) IMPLIES P(OBAAAA) S(A) X1(A) S(A) Y1(A).G(BB) V(B)] AND FORALL T8(B) [P(OBAAAA) S(A) N(A) S(A) S(A) T8(B) IMPLIES P(OBAAAA) N(A) N(A) S(A) N(A).C(BB) T8(B)] AND FORALL T9(B) [P(OBAAAA) N(A) N(A) S(A) N(A) T9(B) IMPLIES P(OBAAAA) S(A) N(A) S(A) S(A).C(BB) T9(B)] AND FORALL U1(B) [P(OBAAAA) S(A) S(A) N(A) S(A) U1(B) IMPLIES P(OBAAAA) N(A) S(A) N(A) N(A).C(BB) U1(B)] AND FORALL V1(B) [P(OBAAAA) N(A) S(A) N(A) N(A) V1(B) IMPLIES P(OBAAAA) S(A) S(A) N(A) S(A).C(BB) V1(B)] IMPLIES EXISTS Z(B) P(OBAAAA) N(A) N(A) N(A) N(A) Z(B)"
+:needed-objects   NIL
+:mhelp "1982-SEP-06 RAN OUT OF FREE STORAGE  
+RUNCOUNT 1331.4718 CONSCOUNT 2774583  
+SYSTEM TPS1  
+GENVPATHMATES GENVPATHMATES4  
+NEXTBADPATH NEXTBADPATH3  
+BESTPAIRS1RST BESTPAIRS1RST3  
+PATH-SEARCHLENGTH 5  
+EQUIV-CHOICE T  
+EQHEURISTIC  
+INITDEPTH 2  
+UNIDEPTH 3  
+PRINTFLAG ARCS  
+ 
+ 
+DATES  "
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM100A
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:15:03."
+:description "P(OBAAAA) S(A) S(A) S(A) S(A) O(B) AND FORALL T(B) [P(OBAAAA) S(A) N(A) S(A) N(A) T(B) IMPLIES P(OBAAAA) N(A) N(A) S(A) N(A).L(BB) T(B)] AND FORALL T1(B) [P(OBAAAA) N(A) N(A) S(A) N(A) T1(B) IMPLIES P(OBAAAA) S(A) N(A) S(A) N(A).L(BB) T1(B)] AND FORALL T2(B) [P(OBAAAA) S(A) S(A) N(A) S(A) T2(B) IMPLIES P(OBAAAA) N(A) S(A) N(A) S(A).L(BB) T2(B)] AND FORALL T3(B) [P(OBAAAA) N(A) S(A) N(A) S(A) T3(B) IMPLIES P(OBAAAA) S(A) S(A) N(A) S(A).L(BB) T3(B)] AND FORALL T4(B) [P(OBAAAA) S(A) S(A) S(A) N(A) T4(B) IMPLIES P(OBAAAA) N(A) N(A) S(A) N(A).W(BB) T4(B)] AND FORALL T5(B) [P(OBAAAA) N(A) N(A) S(A) N(A) T5(B) IMPLIES P(OBAAAA) S(A) S(A) S(A) N(A).W(BB) T5(B)] AND FORALL T6(B) [P(OBAAAA) S(A) S(A) N(A) S(A) T6(B) IMPLIES P(OBAAAA) N(A) N(A) N(A) S(A).W(BB) T6(B)] AND FORALL T7(B) [P(OBAAAA) N(A) N(A) N(A) S(A) T7(B) IMPLIES P(OBAAAA) S(A) S(A) N(A) S(A).W(BB) T7(B)] AND FORALL X(A) FORALL Y(A) FORALL U(B) [P(OBAAAA) S(A) X(A) S(A) Y(A) U(B) IMPLIES P(OBAAAA) N(A) X(A) N(A) Y(A).G(BB) U(B)] AND FORALL X1(A) FORALL Y1(A) FORALL V(B) [P(OBAAAA) N(A) X1(A) N(A) Y1(A) V(B) IMPLIES P(OBAAAA) S(A) X1(A) S(A) Y1(A).G(BB) V(B)] AND FORALL T8(B) [P(OBAAAA) S(A) N(A) S(A) S(A) T8(B) IMPLIES P(OBAAAA) N(A) N(A) S(A) N(A).D(BB) T8(B)] AND FORALL T9(B) [P(OBAAAA) N(A) N(A) S(A) N(A) T9(B) IMPLIES P(OBAAAA) S(A) N(A) S(A) S(A).D(BB) T9(B)] AND FORALL U1(B) [P(OBAAAA) S(A) S(A) N(A) S(A) U1(B) IMPLIES P(OBAAAA) N(A) S(A) N(A) N(A).D(BB) U1(B)] AND FORALL V1(B) [P(OBAAAA) N(A) S(A) N(A) N(A) V1(B) IMPLIES P(OBAAAA) S(A) S(A) N(A) S(A).D(BB) V1(B)] IMPLIES EXISTS Z(B) P(OBAAAA) N(A) N(A) N(A) N(A) Z(B)"
+:needed-objects   NIL
+:mhelp "A NAIVE FORMALIZATION OF THE PROBLEM OF MOVING MAN WOLF GOAT CABBAGE FROM SOUTH TO NORTH SIDE OF RIVER  
+BOAT HOLDS ONLY MAN AND ONE OTHER ITEM  
+P SPECIFIES LOCATIONS OF MAN WOLF GOAT CABBAGE AND STATUS OF STATE VARIABLE  
+L MEANS GO ALONE  
+W MEANS TAKE WOLF  
+G MEANS TAKE GOAT  
+D MEANS TAKE CABBAGE  
+NEEDS QUANTIFIERS DUPLICATED ONCE  
+SEEMS TOO HARD BUT MIGHT BE FEASIBLE WITH A GOOD SET-OF-SUPPORT HEURISTIC  
+ 
+REMARK  "
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM100B
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:15:05."
+:description "P(OBAAAA) S(A) S(A) S(A) S(A) O(B) AND FORALL T(B) [P(OBAAAA) S(A) N(A) S(A) N(A) T(B) IMPLIES P(OBAAAA) N(A) N(A) S(A) N(A).L(BB) T(B)] AND FORALL t(B) [P(OBAAAA) N(A) N(A) S(A) N(A) t(B) IMPLIES P(OBAAAA) S(A) N(A) S(A) N(A).L(BB) t(B)] AND FORALL T(B) [P(OBAAAA) S(A) S(A) N(A) S(A) T(B) IMPLIES P(OBAAAA) N(A) S(A) N(A) S(A).L(BB) T(B)] AND FORALL T(B) [P(OBAAAA) N(A) S(A) N(A) S(A) T(B) IMPLIES P(OBAAAA) S(A) S(A) N(A) S(A).L(BB) T(B)] AND FORALL T(B) [P(OBAAAA) S(A) S(A) S(A) N(A) T(B) IMPLIES P(OBAAAA) N(A) N(A) S(A) N(A).W(BB) T(B)] AND FORALL T(B) [P(OBAAAA) N(A) N(A) S(A) N(A) T(B) IMPLIES P(OBAAAA) S(A) S(A) S(A) N(A).W(BB) T(B)] AND FORALL T(B) [P(OBAAAA) S(A) S(A) N(A) S(A) T(B) IMPLIES P(OBAAAA) N(A) N(A) N(A) S(A).W(BB) T(B)] AND FORALL T(B) [P(OBAAAA) N(A) N(A) N(A) S(A) T(B) IMPLIES P(OBAAAA) S(A) S(A) N(A) S(A).W(BB) T(B)] AND FORALL X(A) FORALL Y(A) FORALL U(B) [P(OBAAAA) S(A) X(A) S(A) Y(A) U(B) IMPLIES P(OBAAAA) N(A) X(A) N(A) Y(A).G(BB) U(B)] AND FORALL X1(A) FORALL Y1(A) FORALL V(B) [P(OBAAAA) N(A) X1(A) N(A) Y1(A) V(B) IMPLIES P(OBAAAA) S(A) X1(A) S(A) Y1(A).G(BB) V(B)] AND FORALL T(B) [P(OBAAAA) S(A) N(A) S(A) S(A) T(B) IMPLIES P(OBAAAA) N(A) N(A) S(A) N(A).D(BB) T(B)] AND FORALL T(B) [P(OBAAAA) N(A) N(A) S(A) N(A) T(B) IMPLIES P(OBAAAA) S(A) N(A) S(A) S(A).D(BB) T(B)] AND FORALL U1(B) [P(OBAAAA) S(A) S(A) N(A) S(A) U1(B) IMPLIES P(OBAAAA) N(A) S(A) N(A) N(A).D(BB) U1(B)] AND FORALL V1(B) [P(OBAAAA) N(A) S(A) N(A) N(A) V1(B) IMPLIES P(OBAAAA) S(A) S(A) N(A) S(A).D(BB) V1(B)] IMPLIES EXISTS Z(B) P(OBAAAA) N(A) N(A) N(A) N(A) Z(B)"
+:needed-objects   NIL
+:mhelp NIL
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM101
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:15:06."
+:description "FORALL x(I) P(OII) x(I) x(I) AND FORALL x(I) FORALL y(I) FORALL z(I) [P(OII) x(I) y(I) AND P(OII) z(I) y(I) IMPLIES P(OII) x(I) z(I)] IMPLIES FORALL u(I) FORALL v(I) FORALL w(I).P(OII) u(I) v(I) AND P(OII) v(I) w(I) IMPLIES P(OII) u(I) w(I)"
+:needed-objects   NIL
+:mhelp "1983-MAR-16 COMPLETE PROOF  
+RUNCOUNT 35.46545 CONSCOUNT 150901  
+SYSTEM TPS1  
+GENVPATHMATES GENVPATHMATES4  
+NEXTBADPATH NEXTBADPATH3  
+BESTPAIRS1RST BESTPAIRS1RST3  
+PATH-SEARCHLENGTH 5  
+EQUIV-CHOICE T  
+EQHEURISTIC  
+INITDEPTH 2  
+UNIDEPTH 3  
+PRINTFLAG ARCS  
+ 
+ 
+DATES  "
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM102
+:type GWFF
+:context NIL
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 14:15:07."
+:description "FORALL x(I) R(OII) x(I) b(I) AND FORALL y(I) [EXISTS z(I) R(OII) y(I) z(I) IMPLIES R(OII) a(I) y(I)] IMPLIES EXISTS u(I) FORALL v(I) R(OII) u(I) v(I)"
+:needed-objects   NIL
+:mhelp "EXERCISE X2114 FROM LOGIC NOTES  
+ 
+REMARK  "
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM103
+:type GWFF
+:context NIL
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL X(A) FORALL Y(A) FORALL U(A) FORALL V(A).X(A) ORDPAIR(O(OA)AA) Y(A) EQUIVS(O(O(OA))(O(OA))) U(A) ORDPAIR(O(OA)AA) V(A) EQUIV X(A) =(OAA) U(A) AND Y(A) =(OAA) V(A)"
+:needed-objects   (ORDPAIR)
+:mhelp "1984-JUN-13 LENGTHY INTERACTIVE PROOF WITH SOME EASY CASES LEFT UNDONE  
+ 
+DATES  "
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM104-TPS2
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 15:18:53."
+:description "FORALL X(A) FORALL U(A).UNITSET(OAA) X(A) =(O(OA)(OA)) UNITSET(OAA) U(A) IMPLIES X(A) =(OAA) U(A)"
+:needed-objects   NIL
+:mhelp "NOT PROVABLE AUTOMATICALLY BY TPS  
+ALTHOUGH CRUCIAL INSTANTIATION TERM CONTAINS NO CONNECTIVES OR QUANTIFIERS  
+ 
+REMARK  "
+:other-attributes "Originally from a TPS2 library file - may need to be edited."
+:other-remarks "
+")
+
+
+(:name THM105
+:type GWFF
+:context NIL
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL x(I) P(OIII) e(I) x(I) x(I) AND FORALL y(I) P(OIII) y(I) e(I) y(I) AND FORALL z(I) P(OIII) z(I) z(I) e(I) AND FORALL x(I) FORALL y(I) FORALL z(I) FORALL xy(I) FORALL yz(I) FORALL xyz(I) [P(OIII) x(I) y(I) xy(I) AND P(OIII) y(I) z(I) yz(I) IMPLIES.P(OIII) xy(I) z(I) xyz(I) EQUIV P(OIII) x(I) yz(I) xyz(I)] IMPLIES.P(OIII) a(I) b(I) ab(I) IMPLIES P(OIII) b(I) a(I) ab(I)"
+:needed-objects   NIL
+:mhelp "A GROUP IS COMMUTATIVE IF EVERY SQUARE IS THE IDENTITY  
+SUGGESTED BY LUSK  
+ 
+REMARK  "
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+
+(:name THM107
+:type GWFF
+:context NIL
+:keywords (WITH-EQUALITY WITHOUT-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 15:18:53."
+:description "[LAMBDA P(BB(BB)(BB)) FORALL X(BB) FORALL Y(BB) FORALL Z(BB).P(BB(BB)(BB)) [P(BB(BB)(BB)) X(BB) Y(BB)] Z(BB) =(O(BB)(BB)) P(BB(BB)(BB)) X(BB).P(BB(BB)(BB)) Y(BB) Z(BB)].LAMBDA F(BB) LAMBDA G(BB) LAMBDA W(B) F(BB).G(BB) W(B)"
+:needed-objects   NIL
+:mhelp "1985-AUG-18 COMPLETE AUTOMATIC PROOF  
+ 
+RUNCOUNT 3.7816093 CONSCOUNT 24273  
+SYSTEM TPS1  
+GENVPATHMATES GENVPATHMATES4  
+NEXTBADPATH NEXTBADPATH3  
+BESTPAIRS1RST BESTPAIRS1RST3  
+PATH-SEARCHLENGTH 5  
+EQUIV-CHOICE T  
+EQHEURISTIC T  
+INITDEPTH 2  
+UNIDEPTH 3  
+PRINTFLAG ARCS  
+ 
+ 
+DATES  "
+:other-attributes "Originally from a TPS2 library file"
+:other-remarks "
+")
+
+

@@ -1,0 +1,557 @@
+A cut elimination algorithm is worked out in Frank's
+Thesis.  First he defines a notion of expansion development
+(a sort of sequent calculus for sets of expansion trees
+with rules for quantifiers, merging, and cuts).
+Then he gives reductions on expansion developments with
+the hope that these reductions result in an expansion tree.
+Frank's algorithm is not currently implemented as part of TPS.
+Of course, there are many ways of representing cuts and performing
+cut elimination.
+
+\subsection{An Example of a Loop in a Cut Elimination Algorithm}
+
+One approach we tried (Chad, Summer 2001)
+was to include explicit
+CUT and MERGE nodes in expansion trees, defining redexes,
+and doing cut elimination by contracting redexes.
+This section contains a brief outline of the approach
+and an example that shows how a loop can occur.
+
+A CUT node is of the form
+$$\etrca{CUT}{}{C^*}{}{B^*}{}{B^{**}}$$
+where $C^*$ has shallow formula $C$,
+and $B^*$ and $B^{**}$ have the same shallow
+formula, but opposite polarity.  The
+polarity and shallow formula
+of the CUT node is the same as the
+polarity of the shallow formula of $C^*$.
+The deep formula of the cut node is
+$$deep(C^*) \land [deep(B^*) \lor deep(B^{**})]$$
+A MERGE node is of the form
+$$\etrba{MERGE}{}{A^*}{}{A^{**}}$$
+where $A^*$ and $A^{**}$ have the same polarity
+and same shallow formula $A$.  The shallow
+formula of the MERGE node is also $A$.
+The polarity is also inherited from the children.
+The deep formula is given by
+$$deep(A^*) \land deep(A^{**}).$$
+
+With these nodes, the translation from a natural deduction proof
+(see subsection \ref{ceb-nat-etr})
+can now be extended to translate backward coercions.
+Ignoring hypothesis for simplicity,
+suppose we have a backward coercion
+$$ \ianc{B\Uparrow}{B\downarrow}{bcoercion}$$
+a negative expansion tree $C^*$ with shallow
+formula $C$, and a positive expansion tree $B^*$
+with shallow formula $B$.  By induction hypothesis,
+we can obtain an appropriate positive expansion tree
+$B^{**}$ with shallow formula $B$.  Then the algorithm
+returns
+$$\etrca{CUT}{}{C^*}{}{B^*}{}{B^{**}}$$
+
+There is one more modification required in the algorithm.
+When translating a hypothesis line, we used the merge algorithm
+on expansion trees.  However, merge is not defined on expansion
+trees containing CUT nodes.  So, instead we make an explicit
+MERGE node with the two trees as children.  The actual merging
+would be done during cut/merge elimination.  That is,  if
+we are translating a hypothesis line
+$$A_1,\ldots, A_n \vdash A_j,$$
+then we must start with positive expansion trees $A_i^{**}$,
+a positive expansion tree $A_i^{*}$,
+and a negative expansion tree $C^*$.
+Instead of associating the hypothesis line with the merge
+of $A_i^{*}$ and $A_i^{**}$, we now associate the line
+with the node
+$$\etrba{MERGE}{}{A_i^{*}}{}{A_i^{**}}$$
+
+The most interesting case is eliminating a CUT between
+a selection and an expansion node.  There may be
+multiple expansion nodes and the acyclicity of the dependency
+relation may affect the order in which the expansion terms
+are processed.  We were trying to reduce such a CUT
+by doing a global merge of two modified expansion trees.
+Suppose the expansion tree is $Q$ and contains a CUT node
+of the form
+$$\etrca{CUT}{}{C}{}{\sel{}{\forall x . A(x)}{a}{P(a):A(a)}}{}
+{\gexpnode{}{\forall x . A(x)}{t_1}{P_1:A(t_1)}{t_n}{P_n:A(t_n)}}$$
+Let us use the notation $Q[CUT]$ to indicate this CUT node inside the
+larger tree $Q$.
+Assuming we do not have a problem with acyclicity, the CUT node
+should reduce as follows:
+$$\etrba{MERGE}{}{\{t_1/a\} Q[CUT1]}{}{Q[CUT2]}$$
+where $CUT1$ is
+$$\etrca{CUT1}{}{C}{}{P(t_1):A(t_1)}{}{P_1:A(t_1)}$$
+and $CUT2$ is
+$$\etrca{CUT2}{}{C}{}{\sel{}{\forall x . A(x)}{a}{P:A(a)}}{}
+{\gexpnode{}{\forall x . A(x)}{t_2}{P_2:A(t_2)}{t_n}{P_n:A(t_n)}}.$$
+
+However, this leads to a loop as in the following simple example.
+Consider the following proof of 
+$$ \forall \,x_{\greeki} \forall \,y_{\greeki} \,A_{\greeko\greeki\greeki} \,x \,y \supset \,A \,a_{\greeki} \,a \land \,A \,b_{\greeki} \,b$$
+using the lemma
+$$ \forall \,z_{\greeki} \,A_{\greeko\greeki\greeki} \,z \,z.$$
+
+\vbox{\indent
+\linenumbox {(1)}\hypnumbox {1}\turnstile\partformula{$ \forall \,x_{\greeki} \forall \,y_{\greeki} \,A_{\greeko\greeki\greeki} \,x \,y$}\lastformula\judgelink{Hyp}
+}\filbreak
+\vbox{\indent
+\linenumbox {(2)}\hypnumbox {1}\turnstile\partformula{$ \forall \,y_{\greeki} \,A_{\greeko\greeki\greeki} \,z_{\greeki} \,y$}\lastformula\judgelink{UI:\ $  \,z_{\greeki}$\  1}
+}\filbreak
+\vbox{\indent
+\linenumbox {(3)}\hypnumbox {1}\turnstile\partformula{$ \,A_{\greeko\greeki\greeki} \,z_{\greeki} \,z$}\lastformula\judgelink{UI:\ $  \,z_{\greeki}$\  2}
+}\filbreak
+\vbox{\indent
+\linenumbox {(4)}\hypnumbox {1}\turnstile\partformula{$ \forall \,z_{\greeki} \,A_{\greeko\greeki\greeki} \,z \,z$}\lastformula\judgelink{UGen:\ $  \,z_{\greeki}$\  3}
+}\filbreak
+\vbox{\indent
+\linenumbox {(5)}\hypnumbox {1}\turnstile\partformula{$ \,A_{\greeko\greeki\greeki} \,a_{\greeki} \,a$}\lastformula\judgelink{UI:\ $  \,a_{\greeki}$\  4}
+}\filbreak
+\vbox{\indent
+\linenumbox {(6)}\hypnumbox {1}\turnstile\partformula{$ \,A_{\greeko\greeki\greeki} \,b_{\greeki} \,b$}\lastformula\judgelink{UI:\ $  \,b_{\greeki}$\  4}
+}\filbreak
+\vbox{\indent
+\linenumbox {(7)}\hypnumbox {1}\turnstile\partformula{$ \,A_{\greeko\greeki\greeki} \,a_{\greeki} \,a \land \,A \,b_{\greeki} \,b$}\lastformula\judgelink{Conj: 5 6}
+}\filbreak
+\vbox{\indent
+\linenumbox {(8)}\hypnumbox {}\turnstile\partformula{$ \forall \,x_{\greeki} \forall \,y_{\greeki} \,A_{\greeko\greeki\greeki} \,x \,y \supset \,A \,a_{\greeki} \,a \land \,A \,b_{\greeki} \,b$}\lastformula\judgelink{Deduct: 7}
+}\filbreak
+
+When translating this proof we obtain a tree $Q$ with two cut nodes
+$$\etrca{CUT1}{}{R_1}{}{\etraa{SEL1}{c}{P_1(c):A\, c\, c}}{}{\etraa{EXP1}{a}{P_2:A\, a\, a}}$$
+and
+$$\etrca{CUT2}{}{R_2}{}{\etraa{SEL2}{d}{P_3(d):A\, d\, d}}{}{\etraa{EXP2}{b}{P_4:A\, b\, b}}$$
+corresponding to the two applications of the lemma in line 4.
+Contracting $CUT1$ gives
+$$\etrba{MERGE}{}{\{a/c\}Q[CUT3]}{}{Q[CUT4]}$$
+where $CUT3$ and $CUT4$ are
+$$\etrca{CUT3}{}{\{a/c\}R_1}{}{P_1(a):A\, a\, a}{}{P_2:A\, a\, a}$$
+and
+$$\etrca{CUT4}{}{R_1}{}{\etraa{SEL3}{c}{P_1(c):A\, c\, c}}{}{EXP3}.$$
+Both $CUT3$ and $CUT4$ are easy to eliminate.
+($CUT3$ can be replaced by $\{a/c\}R_1$ and
+$CUT4$ can be replaced by $R_1$, with appropriate
+changes to the complete mating.)
+However, note that $CUT2$ appears in both sides of the merge in
+$$\etrba{MERGE}{}{\{a/c\}Q[CUT3]}{}{Q[CUT4]}.$$
+Let us call these two occurrences $CUT2.1$ and $CUT2.2$.
+Eventually, we will want to reduce one of these cuts
+in some reduced tree $Q'[CUT2.1][CUT2.2]$.  Suppose we
+reduce $CUT2.1$.  Similar to the reduction of $CUT1$ above,
+this will copy $CUT2.2$ so that there are $CUT2.2.1$ and
+$CUT2.2.2$.  The loop is evident.
+
+It is conceivable that we could get around this loop by
+developing a notion of ``expansion DAG'' (directed acyclic graph)
+so that the CUT would not actually be duplicated.  But it isn't
+clear that this would eliminate all such loops.  
+
+Also, there are
+some technical problems with the reductions above.  For instance,
+a selection node may get copied, which means the result will be
+a tree with two selection nodes that use {\it the same} selected
+variable.  This doesn't seem to be a serious problem because we
+could probably allow such a situation whenever the least common
+ancestor of two such selection nodes is a MERGE node.  But these
+details would have to be worked out to make this approach work.
+
+\subsection{Cut and Mix Elimination in this Sequent Calculus}\label{ftree-seq-mix-elim}
+
+There is a cut elimination algorithm implemented for the
+sequent calculus described in section~\ref{ftree-seq}.
+Suppose we have an instance
+of the cut rule:
+
+$$\ibnc{\above{\DD_1}{\Gamma_1\rightarrow A,\Delta_1}}{\above{\DD_2}{A,\Gamma_2\rightarrow \Delta_2}}{\Gamma_1,\Gamma_2\rightarrow \Delta_1,\Delta_2}{cut}$$
+
+A cut elimination algorithm should take cut-free derivations $\DD_1$
+and $\DD_2$ and return a cut-free derivation $\EE$ of 
+$\Gamma_1,\Gamma_2\rightarrow\Delta_1,\Delta_2$.
+This is usually done by a recursive algorithm on the two
+derivations where at each step either one of the derivations
+gets smaller, or the cut formula gets smaller (while the
+derivations may get much larger).  Since we have an explicit
+$merge$ (contraction) rule, we have the following problematic case.
+Suppose $\DD_1$ ends with an application of $merge$:
+$$\ianc{\above{\DD_3}{\Gamma_1\rightarrow A,A,\Delta_1}}{\Gamma_1\rightarrow A,\Delta_1}{merge-}$$
+where $A$ is the cut formula.  Also, suppose $A$ is the principal formula of $\DD_2$.
+The most natural way to handle this case is to first perform cut elimination
+on $\DD_3$ and $\DD_2$, giving a cut-free derivation
+$$\above{\DD_5}{\Gamma_1,\Gamma_2\rightarrow A,\Delta_1,\Delta_2}$$
+Then we could call cut elimination again with $\DD_5$ and $\DD_2$
+to obtain a cut-free derivation
+$$\above{\DD_6}{\Gamma_1,\Gamma_2,\Gamma_2\rightarrow \Delta_1,\Delta_2,\Delta_2}$$
+With some applications of $focus$ and $merge$ to shuffle and merge the formulas,
+we would have the cut-free derivation of
+$$\above{\DD_7}{\Gamma_1,\Gamma_2\rightarrow \Delta_1,\Delta_2}$$
+we desire.  {\it However,} the derivation $\DD_5$ will in general be
+bigger than $\DD_3$, while the cut formula $A$ remains the same.
+So, this recursive call to cut elimination may not terminate (even with
+a first-order derivation). % closed-thm1.prf gives an example
+
+We can get around this problem by performing mix-elimination 
+(as did Gentzen ~\cite{Gentzen69}) instead of cut-elimination.
+Because we care about the order of formulas in the sequent,
+mix elimination is complicated.  The main functions are
+\indexfunction{ftree-seq-mix-elim-1} and \indexfunction{ftree-seq-mix-elim-principal}.
+To understand mix elimination, 
+first consider a few generic examples:
+
+
+Suppose we have two cut-free derivations of
+$$B\rightarrow A,C$$
+and
+$$D,A\rightarrow E$$
+where $A$ is the mix formula, in negative position $0$ in the
+first sequent and positive position $1$ in the second sequent.
+Mix elimination might return a cut-free derivation of
+$$B,D\rightarrow C,E$$
+along with two lists of indices
+\begin{enumerate}
+\item $((t\; . \; 0) \; (nil\; . \; 0))$ (indicating that $B$ corresponds
+to the $0$'th positive formula of the first sequent, and
+$D$ corresponds to the $0$'th positive formula of the second sequent)
+\item $((t\; . \; 1) \; (nil\; . \; 0))$ (indicating that $C$ corresponds
+to negative position $1$ in the first sequent and
+$E$ corresponds to negative position $0$ in the second sequent)
+\end{enumerate}
+We say ``might'' because the return value depends, of course,
+on the given derivations, not just the sequents.
+Other possible outputs include a cut-free derivation of
+$$B\rightarrow C,C$$
+with two lists of indices
+\begin{enumerate}
+\item $((t\; . \; 0))$ (again, $B$ corresponds to positive position $0$ in
+the first sequent), and
+\item $((t\; . \; 1)\; (t\; . \; 1))$ (both occurrences of $C$ correspond
+to negative position $1$ in the first sequent).
+\end{enumerate}
+
+The point is that we have eliminated the two mix formulas
+(two occurrences of $A$) and retain only residues of the other
+formulas in the two given sequents.  The other formulas may occur
+several times, or not at all.  The lists of indices indicate
+where the formulas originally occured.  An ``index'' is a pair
+$(<bool>\; . \; <nat>)$ where
+\begin{itemize}
+\item If $<bool>$ is $t$, the formula is the residue of a formula
+in the first sequent.
+\item If $<bool>$ is $nil$, the formula is the residue of a formula
+in the second sequent.
+\item $<nat>$ is a natural number indicating the position of the
+formula in the first or second sequent.
+\end{itemize}
+
+For another example, given two cut-free derivations of
+$$B,C\rightarrow A,A,D$$
+and
+$$E,A,F\rightarrow G$$
+with mix formulas
+might return
+\begin{itemize}
+\item
+\begin{itemize}
+\item a cut-free derivation of $C,F,E\rightarrow G,D$,
+\item positive indices $((t\; .\; 1)\; (nil\; .\; 2)\; (nil \; . \; 0))$,
+and
+\item negative indices $((nil\; . \;0)\; (t\; . \; 2))$
+\end{itemize}
+\item or,
+\begin{itemize}
+\item a cut-free derivation of $B,B\rightarrow G$,
+\item positive indices $((t\; . \;0)\; (t\; . \; 0))$, and
+\item negative indices $((nil \; . \; 0))$
+\end{itemize}
+\item or,
+\begin{itemize}
+\item a cut-free derivation of $F,E\rightarrow D,D$,
+\item positive indices $((nil\; . \; 2)\; (nil\; . \; 0))$, and
+\item negative indices $((t\; . \; 2)\; (t \; . \; 2))$.
+\end{itemize}
+\end{itemize}
+
+In general, we start with two derivations
+$$\above{\DD_1}{\Gamma_1\rightarrow \Delta_1}$$
+and
+$$\above{\DD_2}{\Gamma_2\rightarrow \Delta_2}$$
+and two lists $(i_1\cdots i_k)$ and $(j_1\cdots j_l)$
+of natural numbers.  The natural numbers give us
+the positions of the mix formulas in $\Delta_1$ and $\Gamma_2$.
+Let $\Delta_1$ be a list
+$(A_1 \cdots A_n)$ and $\Gamma_2$ be a list
+$(B_1 \cdots B_m)$.  The mix formulas are
+$A_{i_r}$ and $B_{j_s}$.  These formulas should have
+a common reduct with respect to $\lambda$-reduction,
+expanding abbreviations, and expansion equalities
+using either extensionality or Leibniz.
+Mix elimination returns a cut-free derivation of
+$$\Gamma\rightarrow\Delta$$
+and two lists of $indl^+$ and $indl^-$
+of indices indicating the preimage of
+the formulas in $\Gamma$ and $\Delta$.
+$\Gamma$ and $indl^+$ are lists of the same length.
+For each $B$ in $\Gamma$ there is a corresponding
+index $(b . j)$ where either $b$ is $t$
+and $j$ is the position of $B$ in $\Gamma_1$
+or $b$ is $nil$ and $j\not\in\{j_1,\ldots, j_l\}$ is the position of
+$B$ in $\Gamma_2$.
+Similarly, $\Delta$ and $indl^-$ have the same length.
+For each $A$ in $\Delta$ there is a corresponding index
+$(a . i)$ where either $a$ is $t$ and $i\not\in\{i_1,\ldots, i_k\}$ is the position
+of $A$ in $\Delta_2$
+or $a$ is $nil$ and $i$ is the position of $A$ in $\Delta_2$.
+
+The main function which attempts to eliminate all cuts from
+a derivation is \indexfunction{ftree-seq-cut-elim}.
+This is a simple recursive algorithm which first eliminates
+cuts from premisses, then either imitates the rule
+or, if the rule was $cut$, uses mix elimination to obtain
+a cut-free derivation from the cut-free derivations of the
+premisses.  That is,
+given two derivations
+$$\above{\DD_1}{\Gamma_1\rightarrow A,\Delta_1}$$
+and
+$$\above{\DD_2}{A,\Gamma_2\rightarrow \Delta_2}$$
+we call mix elimination with these derivations
+and two lists of positions $(0)$ and $(0)$.
+Mix elimination returns a cut-free derivation of
+$\Gamma\rightarrow\Delta$
+and two lists of indices.
+Using the indices and the $focus$, $weaken$, and $merge$ rules, we can
+shuffle the formulas in $\Gamma$ and $\Delta$
+to obtain a derivation of
+$\Gamma_1,\Gamma_2\rightarrow \Delta_1,\Delta_2$.
+This final shuffling is performed by
+\indexfunction{ftree-seq-mix-elim-finish}.
+
+\subsection{The Mix Elimination Algorithm}
+
+The mix elimination algorithm works by recursion on the two
+given derivations.  Suppose we are given two cut-free derivations
+$$\above{\DD_1}{\Gamma_1\rightarrow \Delta_1}$$
+and
+$$\above{\DD_2}{\Gamma_2\rightarrow \Delta_2}$$
+and two lists $nl_1 = (i_1\cdots i_k)$ and $nl_2 = (j_1\cdots j_l)$
+indicating the positions of the mix formulas in $\Delta_1$
+and $\Gamma_2$.
+
+There are several cases to consider:
+
+\begin{itemize}
+\item {\bf Mix Formula Does Not Occur}.  That is, $nl_1 = nil$ or $nl_2 = nil$.
+If $nl_1$ is $nil$, then we can return
+\begin{itemize}
+\item $$\above{\DD_1}{\Gamma_1\rightarrow\Delta_1}$$
+\item $((t\; .\; 0)\; \cdots \; (t\; . \; (n - 1)))$ where $n$ is the length of $\Gamma_1$
+\item $((t\; .\; 0)\; \cdots \; (t\; . \; (m - 1)))$ where $m$ is the length of $\Delta_1$
+\end{itemize}
+The indices indicate that every formula is the residual of a formula from
+the first sequent.
+If $nl_2$ is $nil$, we can return $\DD_2$ and indices which indicate
+all the formulas are residuals of the second sequent.
+\item {\bf INIT}  Suppose $\DD_1$ is an initial sequent $A\rightarrow A$.
+($A$ must be the mix formula, or $nl_1$ must be $nil$.)
+Ideally, we would like to return $\DD_2$, and replace the indices
+for the mix formula occurrences in $\Gamma_2$ by the index $(t\; .\; 0)$
+indicating the positive $A$ from $\DD_1$.
+The only problem is that each occurrence of the mix formula in
+$\Gamma_2$ is a $B$ equal to $A$ only in the sense that the
+two formulas have a common reduct with respect to
+$\lambda$-reduction
+and expansions of abbreviations and equalities.
+The function \indexfunction{ftree-seq-replace-equivwffs} replaces
+each such $B$ by $A$ in $\DD_2$.
+We can handle $\DD_2$ initial similarly.
+\item {\bf FOCUS, WEAKEN, MERGE}  If either $\DD_1$ or $\DD_2$ is
+a $focus$, $weaken$, or $merge$ step, we can simply recursively
+call with the premiss and the positions shuffled appropriately.
+\item {\bf REWRITES}  If either $\DD_1$ or $\DD_2$
+is a $\lambda$, $EQUIVWFFS$, $Leibniz=$, or $Ext=$ rewrite,
+and the mix formula is the principal formula, we can usually simply
+recursively call the algorithm with the premiss and the same positions.
+This is possible because we are only maintaining that the mix formulas
+are the same up to having a common reduct via such rewriting steps.
+The actual rewriting is done in the INIT step.
+
+{\bf Exception:  Nonanalytic Uses of Extensionality}  Suppose one
+occurrence of the mix formula is $A[=]$
+and another occurrence of the mix formula is 
+$A[\forall q\; . \; q \; M_\greeko \;\limplies\; q\; N_\greeko].$
+If $A[=]$ is the principal formula of an $Ext=$ rewrite, then 
+$$A[\equiv]$$ and $$A[\forall q\; . \; q \; M_\greeko \;\limplies\; q\; N_\greeko]$$
+{\it do not} have a common reduct.  The recursion fails at such a step.
+In general this problem occurs when one instance of equality
+is expanded as Leibniz and another corresponding instance is
+expanded as (functional or propositional) extensionality.
+The real problem is that the extensionality rules by themselves
+without cut
+do not give a complete calculus for extensional higher-order logic.
+To get a cut-free extensional calculus, one needs to be able to
+have initial sequents (i.e., ``mate'') {\em modulo equations}
+and then use decomposition rules and extensionality rules to
+solve the introduced equations.
+Benzmuller's thesis gives rules for handling extensionality
+in the context of resolution.
+The case for sequent calculi should be described in upcoming technical reports by
+Benzmuller, Brown and Kohlhase.
+There should also be information in Chad E. Brown's thesis.
+\item {\bf NONPRINCIPAL LOGICAL RULE}  If either $\DD_1$ or $\DD_2$
+ends with a logical rule and the principal formula is not a mix formula,
+then we can recursively call mix elimination on the premisses and
+imitate the rule.  For example, if $\DD_1$ is
+$$\ibnc{\above{\DD_{11}}{\Gamma_{11}\rightarrow A,\Delta_{11}}}{\above{\DD_{12}}{\Gamma_{12}\rightarrow B,\Delta_{12}}}{\Gamma_{11},\Gamma_{12}\rightarrow A\land B,\Delta_{11},\Delta_{12}}{\land-}$$
+the function \indexfunction{ftree-seq-invert-position-list}
+uses the positions of the mix formulas in
+$$A\land B,\Delta_{11},\Delta_{12}$$
+to find the positions of the mix formulas in
+$\Delta_{11}$ and $\Delta_{12}$.
+Using this we can call mix elimination twice to obtain
+$$\above{\DD_3}{\Gamma_3\rightarrow\Delta_3}$$
+and
+$$\above{\DD_4}{\Gamma_4\rightarrow\Delta_4}$$
+The function \indexfunction{ftree-seq-mix-elim-imitate-rule}
+finishes this case.  First, \indexfunction{ftree-seq-bring-to-front} uses
+structural rules to bring the residuals of $A$ and $B$ to the front of
+$\Delta_3$ and $\Delta_4$, so we have
+$$\above{\DD'_3}{\Gamma_3\rightarrow A,\Delta'_3}$$
+and
+$$\above{\DD'_4}{\Gamma_4\rightarrow B,\Delta'_4}$$
+At this point, we apply the $\land-$ rule:
+$$\ibnc{\above{\DD'_{3}}{\Gamma_3\rightarrow A,\Delta'_3}}{\above{\DD'_4}{\Gamma_4\rightarrow B,\Delta'_4}}{\Gamma_3,\Gamma_4\rightarrow A\land B,\Delta'_3,\Delta'_4}{\land-}$$
+and compute the indices of the residuals.
+\item {\bf PRINCIPAL} The final, and most important case, is when both mix formulas
+are principal.  This is handled by the function
+\indexfunction{ftree-seq-mix-elim-principal}.
+\end{itemize}
+
+In each of the cases above, one of the derivations gets smaller
+in the recursive call.
+The case when both mix formulas are principal is complicated
+by the need to perform several recursive calls, requiring us
+to adjust and compose the indices as we go along.  The cases
+for each connective and quantifier are described next.
+
+\begin{itemize}
+\item $\top$,$\bot$:  This cannot happen, because the only
+way $\top$ can be positive principal in $\DD_2$ is if the
+last step is $focus$, $weaken$, or $merge$, which were handled
+above.  Similarly, if $\bot$ is negative principal in $\DD_1$,
+then it must end with a $focus$, $weaken$, or $merge$.
+\item $REW(\equiv)$:  $\DD_1$ is
+$$\ianc{\above{\DD_{11}}{\Gamma_1\rightarrow [A\limplies B]\land [B\limplies A],\Delta_1}}{\Gamma_1\rightarrow A\equiv B,\Delta_1}{REW(\equiv)-}$$
+$\DD_2$ is
+$$\ianc{\above{\DD_{21}}{[A\limplies B]\land [B\limplies A],\Gamma_2\rightarrow \Delta_2}}{A\equiv B,\Gamma_2\rightarrow \Delta_2}{REW(\equiv)+}$$
+First we recursively call mix elimination for all the unexpanded formulas $A'\equiv B'$
+with $\DD_1$ and $\DD_{21}$ (smaller than $\DD_2$)
+giving $\DD_3$:
+$$[A\limplies B]\land [B\limplies A],\Gamma_3\rightarrow \Delta_3$$
+Next, recursively call mix elimination for all the unexpanded formulas $A'\equiv B'$ with $\DD_{11}$ (smaller than $\DD_1$) and $\DD_2$
+giving $\DD_4$:
+$$\Gamma_4\rightarrow [A\limplies B]\land [B\limplies A],\Delta_4$$
+Finally, we can call mix elimination for the two occurrences of the
+``smaller'' mix formula $[A\limplies B]\land [B\limplies A]$
+with $\DD_4$ and $\DD_3$ 
+giving
+$\DD_5$:
+$$\Gamma_5\rightarrow \Delta_5$$
+Of course, with if we weigh $\equiv$ more than $\land$ and $\limplies$,
+we can say $[A\limplies B]\land [B\limplies A]$ is ``smaller'' than $A\equiv B$.
+So, this case does not cause a problem with termination.
+The hard part is tracing the residuals to return the proper indices.
+Each formula in $C$ in $\Gamma_5$ is either the residual of some
+$C$ in $\Gamma_4$ or $C$ in $\Gamma_3$.  If the preimage is in $\Gamma_4$,
+then $C$ is a residual of a $C$ in $\Gamma_1$ or $\Gamma_2$.  Once
+we compute the preimage of the preimage, we have the proper index.
+
+The following diagram is helpful when trying to compute preimages:
+$$\ibnc{\ibnc{\DD_{11}}{\DD_2}{\DD_4}{elim}}{\ibnc{\DD_1}{\DD_{21}}{\DD_3}{elim}}{\DD_5}{elim}$$
+\item $EXP-,SEL+$ or $SEL-,EXP+$:  Suppose $\DD_1$ is
+$$\ianc{\above{\DD_{11}}{\Gamma_1\rightarrow A(t),\Delta_1}}{\Gamma_1\rightarrow \exists x A(x),\Delta_1}{EXP-^t}$$
+and $\DD_2$ is
+$$\ianc{\above{\DD_{21}}{A(a),\Gamma_2\rightarrow \Delta_2}}{\exists x A(x),\Gamma_2\rightarrow \Delta_2}{SEL+^a}$$
+As described in the $REW(\equiv)$ case,
+we must first eliminate all the nonprincipal occurrences
+of the mix formulas by recursive calls using $\DD_1$ and $\DD_{21}$
+to obtain $\DD_3(a)$:
+$$A(a),\Gamma_3\rightarrow \Delta_3$$
+and with $\DD_{11}$ and $\DD_2$ to obtain $\DD_4$:
+$$\Gamma_4\rightarrow A(t),\Delta_4$$
+Then we substitute $t$ for $a$ in $\DD_3(a)$ to obtain $\DD_3(t)$,
+and recursively call to eliminate the two occurrences of
+$A(t)$ using $\DD_4$ and $\DD_3(t)$.
+
+{\bf Remark About Termination:}  Usually $A(t)$ will be ``smaller''
+than $\exists x A(x)$.  But, of course, in higher order logic there
+are cases where the formula is most certainly not smaller.
+The most obvious example is when $A$ is $\exists \; x_\greeko \; x$
+and $t$ is also $\exists \; x_\greeko\; x$, so that
+$A(t)$ is actually the same as $\exists x A(x)$.
+We don't actually know whether the algorithm always
+terminates.
+
+As in the $REW(\equiv)$ case,
+computing the indices involves computing preimages of preimages
+using the following diagram
+$$\ibnc{\ibnc{\DD_{11}}{\DD_2}{\DD_4}{elim}}{\ibnc{\DD_1}{\DD_{21}}{\DD_3}{elim}}{\DD_5}{elim}$$
+The $SEL-,EXP+$ case is similar.
+\item $\lnot$:  This case is relatively simple, we first make two
+recursive calls to eliminate the nonprincipal occurrences of the
+mix formula $\lnot A$ giving $\DD_3$:
+$$\Gamma_3\rightarrow A,\Delta_3$$
+and $\DD_4$:
+$$A,\Gamma_4\rightarrow \Delta_4$$
+Finally, we eliminate the two occurrences of $A$ (smaller than $\lnot A$)
+in $\DD_3$ and $\DD_4$ (the order is the opposite of the previous cases).
+Again, the indices are preimages of preimages, though we must
+be careful to account for the changes in lengths of the two sides
+as $\lnot A$ in the final sequents and $A$ in the premisses are on opposite
+sides.  The diagram that applies here is
+$$\ibnc{\ibnc{\DD_1}{\DD_{21}}{\DD_3}{elim}}{\ibnc{\DD_1}{\DD_{21}}{\DD_4}{elim}}{\DD_5}{elim}$$
+\item $\land$:  There are three relevant premisses here.
+$\DD_1$ has the form
+$$\ibnc{\above{\DD_{11}}{\Gamma_{11}\rightarrow A,\Delta_{11}}}{\above{\DD_{12}}{\Gamma_{12}\rightarrow B,\Delta_{12}}}{\Gamma_{11},\Gamma_{12}\rightarrow A\land B,\Delta_{11},\Delta_{12}}{\land-}$$
+and $\DD_2$ has the form
+$$\ianc{\above{\DD_{21}}{A,B,\Gamma\rightarrow \Delta}}{A\land B,\Gamma\rightarrow \Delta}{\land+}$$
+Recursive calls eliminate the nonprincipal occurrences of the
+mix formula.
+\begin{itemize}
+\item $\DD_3$: ($\DD_1$ mix $\DD_{21}$ to eliminate $A\land B$) 
+$\Gamma_3\rightarrow\Delta_3$
+where $\Gamma_3$ contains residuals of $A$ and $B$.
+\item $\DD_4$: ($\DD_{11}$ mix $\DD_2$ to eliminate $A\land B$) $\Gamma_4\rightarrow \Delta_4$
+where $\Delta_4$ contains residuals of $A$
+\item $\DD_5$: ($\DD_{12}$ mix $\DD_2$ to eliminate $A\land B$) $\Gamma_5\rightarrow \Delta_5$
+where $\Delta_5$ contains residuals of $B$
+\item $\DD_6$: ($\DD_5$ mix $\DD_3$ to eliminate residuals of $B$)
+$\Gamma_6\rightarrow\Delta_6$
+where $\Gamma_6$ contains residuals of $A$
+\item $\DD_7$: ($\DD_4$ mix $\DD_6$ to eliminate residuals of $A$)
+$\Gamma_7\rightarrow\Delta_7$
+where there are no residuals of $A$, $B$, or $A\land B$.
+\end{itemize}
+Since there were more recursive calls in this case, we must
+compute preimages of preimages of preimages in some cases,
+and preimages of preimages in other cases, as indicated by the following
+diagram:
+$$\ibnc{\ibnc{\DD_{11}}{\DD_2}{\DD_4}{}}
+{\ibnc{\ibnc{\DD_{12}}{\DD_2}{\DD_5}{}}{\ibnc{\DD_1}{\DD_{21}}{\DD_3}{}}
+{\DD_6}{}}{\DD_7}{}$$
+Each wff in the sequent proven by $\DD_7$ can be traced back to
+a non-mix formula in either $\DD_1$ or $\DD_2$ using this diagram.
+\item $\lor$:  This case is similar to the $\land$ case, but $\DD_1$
+has one premiss and $\DD_2$ has two premisses.   $\DD_1$ is
+$$\ianc{\above{\DD_{11}}{\Gamma\rightarrow A,B,\Delta}}{\Gamma\rightarrow A\lor B,\Delta}{\lor-}$$
+and $\DD_2$ is
+$$\ibnc{\above{\DD_{21}}{A,\Gamma_1\rightarrow \Delta_1}}{\above{\DD_{22}}{B,\Gamma_2\rightarrow \Delta_2}}{A\lor B,\Gamma_1,\Gamma_2\rightarrow \Delta_1,\Delta_2}{\lor+}$$
+The following diagram indicates the order of the recursive calls.
+$$\ibnc{\ibnc{\ibnc{\DD_{11}}{\DD_2}{\DD_4}{}}{\ibnc{\DD_1}{\DD_{22}}{\DD_5}{}}
+{\DD_6}{}}{\ibnc{\DD_1}{\DD_{21}}{\DD_3}{}}{\DD_7}{}$$
+\item $\limplies$:
+This is similar to the $\lor$ case.  The following diagram
+indicates the order of the recursive calls.
+$$\ibnc{\ibnc{\DD_1}{\DD_{21}}{\DD_3}{}}
+{\ibnc{\ibnc{\DD_{11}}{\DD_2}{\DD_4}{}}{\ibnc{\DD_1}{\DD_{22}}{\DD_5}{}}{\DD_6}{}}
+{\DD_7}{}$$
+\end{itemize}
+

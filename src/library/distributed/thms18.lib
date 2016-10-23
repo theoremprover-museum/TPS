@@ -1,0 +1,142 @@
+(:name THM180
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:56."
+:description "FORALL x(A) FORALL y(A).LEFT1(A(A(AAA))) [x(A) PAIR1(A(AAA)AA) y(A)] =(OAA) x(A)"
+:needed-objects   (LEFT1 PAIR1)
+:mhelp "Basic theorem about pairing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM181
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:57."
+:description "FORALL x(A) FORALL y(A).RIGHT1(A(A(AAA))) [x(A) PAIR1(A(AAA)AA) y(A)] =(OAA) y(A)"
+:needed-objects   (RIGHT1 PAIR1)
+:mhelp "Basic theorem about pairing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM182
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:57."
+:description "FORALL x(A) FORALL y(A) FORALL u(A) FORALL v(A).x(A) PAIR1(A(AAA)AA) y(A) =(O(A(AAA))(A(AAA))) u(A) PAIR1(A(AAA)AA) v(A) EQUIV x(A) =(OAA) u(A) AND y(A) =(OAA) v(A)"
+:needed-objects   (PAIR1)
+:mhelp "Basic theorem about pairing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM183
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:58."
+:description "FORALL r(OAA) FORALL x(A) FORALL y(A).r(OAA) APR1(O(A(AAA))(OAA)) [x(A) PAIR1(A(AAA)AA) y(A)] EQUIV r(OAA) x(A) y(A)"
+:needed-objects   (APR1 PAIR1)
+:mhelp "Basic theorem about pairing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM184
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:58."
+:description "FORALL r(OAA).FORALL x(A) FORALL y(A) r(OAA) x(A) y(A) EQUIV FORALL p(A(AAA)).r(OAA) APR1(O(A(AAA))(OAA)) p(A(AAA))"
+:needed-objects   (APR1)
+:mhelp "Basic theorem about representing relations in terms of ordered pairs.
+  Essentially the same as THM148"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM185
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:44:59."
+:description "FORALL r(OAA).EXISTS x(A) EXISTS y(A) r(OAA) x(A) y(A) EQUIV EXISTS p(A(AAA)).r(OAA) APR1(O(A(AAA))(OAA)) p(A(AAA))"
+:needed-objects   (APR1)
+:mhelp "Basic theorem about representing relations in terms of ordered pairs.
+  Essentially the same as THM149"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM186
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:00."
+:description "ISPAIR1(O(A(AAA))).x(A) PAIR1(A(AAA)AA) y(A)"
+:needed-objects   (ISPAIR1 PAIR1)
+:mhelp "Basic theorem about pairing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM187
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:01."
+:description "FORALL p(A(AAA)).ISPAIR1(O(A(AAA))) p(A(AAA)) IMPLIES LEFT1(A(A(AAA))) p(A(AAA)) PAIR1(A(AAA)AA) RIGHT1(A(A(AAA))) p(A(AAA)) =(O(A(AAA))(A(AAA))) p(A(AAA))"
+:needed-objects   (ISPAIR1 PAIR1 LEFT1 RIGHT1)
+:mhelp "Basic theorem about pairing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM188
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL p(A(AAA)) FORALL q(A(AAA)).ISPAIR1(O(A(AAA))) p(A(AAA)) AND ISPAIR1(O(A(AAA))) q(A(AAA)) AND LEFT1(A(A(AAA))) p(A(AAA)) =(OAA) LEFT1(A(A(AAA))) q(A(AAA)) AND RIGHT1(A(A(AAA))) p(A(AAA)) =(OAA) RIGHT1(A(A(AAA))) q(A(AAA)) IMPLIES p(A(AAA)) =(O(A(AAA))(A(AAA))) q(A(AAA))"
+:needed-objects   (ISPAIR1 LEFT1 RIGHT1)
+:mhelp "Basic theorem about pairing"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM189
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN PROVEN AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability "Automatic expansion proof and translation to natural deduction"
+:proof-date "Tuesday, April 27, 1999 at 16:45:02."
+:description "FORALL r(OAAAA).FORALL p(A(AAA)) FORALL q(A(AAA)) [r(OAAAA) APR1(OAA(A(AAA))(OAAAA)) p(A(AAA)) APR1(O(A(AAA))(OAA)) q(A(AAA)) IMPLIES p(A(AAA)) =(O(A(AAA))(A(AAA))) q(A(AAA))] IMPLIES FORALL x1(A) FORALL y1(A) FORALL x2(A) FORALL y2(A).r(OAAAA) x1(A) y1(A) x2(A) y2(A) IMPLIES x1(A) =(OAA) x2(A) AND y1(A) =(OAA) y2(A)"
+:needed-objects   (APR1)
+:mhelp "Basic theorem about pairing"
+:other-attributes NIL
+:other-remarks "
+")
+
+

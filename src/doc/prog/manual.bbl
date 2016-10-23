@@ -1,0 +1,126 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{GMW79}
+
+\bibitem[ABB00]{Andrews00a}
+Peter~B. Andrews, Matthew Bishop, and Chad~E. Brown.
+\newblock System description: Tps: A theorem proving system for type theory.
+\newblock In David McAllester, editor, {\em Proceedings of the 17th
+  International Conference on Automated Deduction}, volume 1831 of {\em Lecture
+  Notes in Artificial Intelligence}, pages 164--169, Pittsburgh, PA, USA, 2000.
+  Springer-Verlag.
+\newblock \newline http://dx.doi.org/10.1007/10721959\underline{ }11.
+
+\bibitem[ABI{\etalchar{+}}96]{Andrews95b}
+Peter~B. Andrews, Matthew Bishop, Sunil Issar, Dan Nesmith, Frank Pfenning, and
+  Hongwei Xi.
+\newblock {{\sc TPS}}: A theorem proving system for classical type theory.
+\newblock {\em Journal of Automated Reasoning}, 16:321--353, 1996.
+\newblock Reprinted in \cite{Benzmuller2008d}. \newline
+  http://dx.doi.org/10.1007/BF00252180.
+
+\bibitem[And89]{Andrews89}
+Peter~B. Andrews.
+\newblock On connections and higher-order logic.
+\newblock {\em Journal of Automated Reasoning}, 5:257--291, 1989.
+\newblock Reprinted in \cite{Benzmuller2008d}.
+
+\bibitem[And01]{Andrews99}
+Peter~B. Andrews.
+\newblock Classical type theory.
+\newblock In Alan Robinson and Andrei Voronkov, editors, {\em Handbook of
+  Automated Reasoning}, volume~2, chapter~15, pages 965--1007. Elsevier
+  Science, 2001.
+
+\bibitem[BA98]{Bishop98}
+Matthew Bishop and Peter~B. Andrews.
+\newblock Selectively instantiating definitions.
+\newblock In Claude Kirchner and H{\'{e}}l{\`{e}}ne Kirchner, editors, {\em
+  Proceedings of the 15th International Conference on Automated Deduction},
+  volume 1421 of {\em Lecture Notes in Artificial Intelligence}, pages
+  365--380, Lindau, Germany, 1998. Springer-Verlag.
+\newblock \newline http://dx.doi.org/10.1007/BFb0054272.
+
+\bibitem[BBP93]{Bailin93}
+Sidney~C. Bailin and Dave Barker-Plummer.
+\newblock {Z}-match: An inference rule for incrementally elaborating set
+  instantiations.
+\newblock {\em Journal of Automated Reasoning}, 11:391--428, 1993.
+\newblock Errata: JAR 12 (1994), 411--412.
+
+\bibitem[BBSS08]{Benzmuller2008d}
+Christoph Benzm{\"u}ller, Chad~E. Brown, J{\"{o}}rg Siekmann, and Richard
+  Statman, editors.
+\newblock {\em Reasoning in Simple Type Theory. Festschrift in Honour of Peter
+  B. Andrews on his 70$^{th}$ Birthday}.
+\newblock College Publications, King's College London, 2008.
+\newblock Reviewed in Bulletin of Symbolic Logic 16 (3), September 2010,
+  409-411. \newline http://www.collegepublications.co.uk/logic/mlf/?00010.
+
+\bibitem[BF93]{Bledsoe93}
+W.~W. Bledsoe and Guohui Feng.
+\newblock Set-{V}ar.
+\newblock {\em Journal of Automated Reasoning}, 11:293--314, 1993.
+
+\bibitem[Bis99]{Bishop99a}
+Matthew Bishop.
+\newblock {\em Mating Search Without Path Enumeration}.
+\newblock PhD thesis, Department of Mathematical Sciences, Carnegie Mellon
+  University, April 1999.
+\newblock Department of Mathematical Sciences Research Report No.\ 99--223.
+
+\bibitem[Ble77]{Bledsoe77}
+W.~W. Bledsoe.
+\newblock Set variables.
+\newblock In {\em Proceedings of the 5th International Joint Conference on
+  Artificial Intelligence{, IJCAI-77}}, pages 501--510, MIT, Cambridge, MA,
+  1977. IJCAI.
+
+\bibitem[Ble79]{Bledsoe79}
+W.~W. Bledsoe.
+\newblock A maximal method for set variables in automatic theorem proving.
+\newblock In J.~E. Hayes, Donald Michie, and L.~I. Mikulich, editors, {\em
+  Machine Intelligence 9}, pages 53--100. Ellis Harwood Ltd., Chichester, and
+  John Wiley \& Sons, 1979.
+
+\bibitem[Ble83]{Bledsoe83}
+W.~W. Bledsoe.
+\newblock Using examples to generate instantiations of set variables.
+\newblock In {\em Proceedings of the Eighth International Joint Conference on
+  Artificial Intelligence}, pages 892--901, Karlsruhe, Germany, 1983. IJCAI.
+
+\bibitem[Bro04]{Brown2004a}
+Chad~E. Brown.
+\newblock {\em Set Comprehension in {C}hurch's Type Theory}.
+\newblock PhD thesis, Department of Mathematical Sciences, Carnegie Mellon
+  University, 2004.
+
+\bibitem[Fel86]{Felty86}
+Amy~P. Felty.
+\newblock Using extended tactics to do proof transformations.
+\newblock Technical Report MS-CIS--86--89, Department of Computer and
+  Information Science, University of Pennsylvania, 1986.
+
+\bibitem[Gen69]{Gentzen69}
+Gerhard Gentzen.
+\newblock {\em The Collected Papers of {G}erhard {G}entzen}.
+\newblock North-Holland Publishing Co., Amsterdam, 1969.
+\newblock Edited by M. E. Szabo.
+
+\bibitem[GMW79]{Gordon79}
+Michael~J. Gordon, Arthur~J. Milner, and Christopher~P. Wadsworth.
+\newblock {\em {E}dinburgh {LCF}. A Mechanised Logic of Computation}, volume~78
+  of {\em Lecture Notes in Computer Science}.
+\newblock Springer-Verlag, 1979.
+
+\bibitem[MR93]{Murray93}
+Neil~V. Murray and Erik Rosenthal.
+\newblock Dissolution: Making paths vanish.
+\newblock {\em Journal of the ACM}, 40(3):504--535, July 1993.
+
+\bibitem[Pfe87]{Pfenning86}
+Frank Pfenning.
+\newblock {\em Proof Transformations in Higher-Order Logic}.
+\newblock PhD thesis, Carnegie Mellon University, 1987.
+\newblock 156 pp.
+
+\end{thebibliography}

@@ -1,0 +1,196 @@
+(:name GVB-APP-PROP-1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL f(I) FORALL g(I) FORALL x(I).GVB-FUNCTION f(I) AND x(I) GVB-IN GVB-DOMAIN f(I) IMPLIES GVB-APPLY g(I) [GVB-APPLY f(I) x(I)] =(OII) GVB-APPLY [g(I) GVB-COMPOSE f(I)] x(I)"
+:needed-objects   (GVB-FUNCTION GVB-IN GVB-DOMAIN GVB-APPLY GVB-COMPOSE)
+:mhelp "Lemma 26 from Boyer et al."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-AX-ITERATE
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GVB-ITERATE f(I) g(I) EQUIV FORALL p(I).f(I) GVB-IN p(I) AND FORALL j(I) [j(I) GVB-IN p(I) IMPLIES j(I) GVB-COMPOSE f(I) GVB-IN p(I)] IMPLIES g(I) GVB-IN p(I)"
+:needed-objects   (GVB-COMPOSE GVB-IN GVB-ITERATE)
+:mhelp ""
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPE "OII"))
+:other-remarks "
+")
+
+
+(:name GVB-AX-ITERATE-2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GVB-ITERATE f(I) g(I) EQUIV FORALL p(I).f(I) GVB-IN p(I) AND FORALL j(I) [j(I) GVB-IN p(I) AND GVB-M [j(I) GVB-COMPOSE f(I)] IMPLIES j(I) GVB-COMPOSE f(I) GVB-IN p(I)] IMPLIES g(I) GVB-IN p(I)"
+:needed-objects   (GVB-COMPOSE GVB-IN GVB-ITERATE GVB-M)
+:mhelp ""
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPE "OII"))
+:other-remarks "
+")
+
+
+(:name GVB-COMP-PROP-1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL f(I) FORALL g(I) FORALL h(I).f(I) GVB-COMPOSE [g(I) GVB-COMPOSE h(I)] =(OII) f(I) GVB-COMPOSE g(I) GVB-COMPOSE h(I)"
+:needed-objects   (GVB-COMPOSE)
+:mhelp "I hope this is true."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-COMP-PROP-2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL f(I) FORALL g(I).GVB-M f(I) AND GVB-M g(I) IMPLIES GVB-M.f(I) GVB-COMPOSE g(I)"
+:needed-objects   (GVB-COMPOSE GVB-M)
+:mhelp "I hope this is true."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-FST-PROP-1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL a(I) FORALL b(I).GVB-M a(I) AND GVB-M b(I) IMPLIES GVB-FIRST [GVB-OP a(I) b(I)] =(OII) a(I)"
+:needed-objects   (GVB-M GVB-OP GVB-FIRST)
+:mhelp "A property of FST. Takes 90 lines to prove."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-OP-PROP-1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL a(I) FORALL b(I) FORALL c(I) FORALL d(I).GVB-M a(I) AND GVB-M b(I) AND GVB-M c(I) AND GVB-M d(I) AND GVB-OP a(I) b(I) =(OII) GVB-OP c(I) d(I) IMPLIES a(I) =(OII) c(I) AND b(I) =(OII) d(I)"
+:needed-objects   (GVB-M GVB-OP)
+:mhelp "A property of OP. Takes 114 lines to prove."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-OP-PROP-2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF FIRST-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "GVB-M.GVB-OP a(I) b(I)"
+:needed-objects   (GVB-M GVB-OP)
+:mhelp "A property of OP. Takes 2 lines to prove."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-SND-PROP-1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL a(I) FORALL b(I).GVB-M a(I) AND GVB-M b(I) IMPLIES GVB-SECOND [GVB-OP a(I) b(I)] =(OII) b(I)"
+:needed-objects   (GVB-M GVB-OP GVB-FIRST GVB-SECOND)
+:mhelp "A property of SND. Takes 90 lines to prove."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-THM15B
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL f(I).EXISTS g(I) [GVB-ITERATE f(I) g(I) AND EXISTS x(I).GVB-APPLY g(I) x(I) =(OII) x(I) AND FORALL z(I).GVB-APPLY g(I) z(I) =(OII) z(I) IMPLIES z(I) =(OII) x(I)] IMPLIES EXISTS y(I).GVB-APPLY f(I) y(I) =(OII) y(I)"
+:needed-objects   (GVB-APPLY GVB-ITERATE)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-THM15B-1
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL f(I).GVB-FUNCTION f(I) AND EXISTS g(I) [GVB-FUNCTION g(I) AND.GVB-ITERATE f(I) g(I) AND EXISTS x(I).GVB-M x(I) AND.GVB-APPLY g(I) x(I) =(OII) x(I) AND FORALL z(I).GVB-M z(I) AND GVB-APPLY g(I) z(I) =(OII) z(I) IMPLIES z(I) =(OII) x(I)] IMPLIES EXISTS y(I).GVB-M y(I) AND GVB-APPLY f(I) y(I) =(OII) y(I)"
+:needed-objects   (GVB-APPLY GVB-ITERATE GVB-M GVB-FUNCTION)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name GVB-THM15B-2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL f(I).GVB-M f(I) AND GVB-FUNCTION f(I) AND EXISTS g(I) [GVB-ITERATE f(I) g(I) AND GVB-M g(I) AND GVB-FUNCTION g(I) AND EXISTS x(I).x(I) GVB-IN GVB-DOMAIN f(I) AND x(I) GVB-IN GVB-DOMAIN g(I) AND.GVB-APPLY g(I) x(I) =(OII) x(I) AND FORALL z(I).GVB-APPLY g(I) z(I) =(OII) z(I) IMPLIES z(I) =(OII) x(I)] IMPLIES EXISTS y(I).GVB-APPLY f(I) y(I) =(OII) y(I)"
+:needed-objects   (GVB-APPLY GVB-ITERATE GVB-M GVB-DOMAIN GVB-FUNCTION GVB-IN)
+:mhelp ""
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM15B-EXISTS
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS P(I) FORALL g(I).g(I) GVB-IN P(I) EQUIV f(I) GVB-COMPOSE g(I) =(OII) g(I) GVB-COMPOSE f(I) AND GVB-M g(I)"
+:needed-objects   (GVB-M GVB-IN GVB-COMPOSE)
+:mhelp "The existence of the set we need."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM15B-EXISTS-2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS P(I) FORALL g(I).GVB-M g(I) IMPLIES.g(I) GVB-IN P(I) EQUIV f(I) GVB-COMPOSE g(I) =(OII) g(I) GVB-COMPOSE f(I)"
+:needed-objects   (GVB-M GVB-IN GVB-COMPOSE)
+:mhelp "The existence of the set we need."
+:other-attributes NIL
+:other-remarks "
+")
+
+

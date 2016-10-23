@@ -1,0 +1,39 @@
+%%%LateX manual.
+%%Preamble
+\documentclass[a4paper,10pt]{report}
+\usepackage{makeidx}
+\usepackage{listings}
+\usepackage{alltt}
+\usepackage[T1]{fontenc}
+\usepackage{xstring}
+\lstset{breaklines=true,language=Lisp}
+
+
+\makeindex
+
+%define the title
+\author{Peter Andrews\\
+Sunil Issar\\
+Dan Nesmith\\
+Frank Pfenning\\
+Hongwei Xi\\
+Matthew Bishop\\
+Chad E.~Brown\\
+R\'{e}my Chr\'{e}tien}
+\title{TPS3 Facilities Guide for Users}
+
+%%Document
+\begin{document}
+\input{tps}
+\input{tpsdoc}
+
+
+\maketitle
+
+\tableofcontents
+\include{latex-preamble}
+\include{latex-facilities-cmd}
+
+\printindex
+\end{document}
+

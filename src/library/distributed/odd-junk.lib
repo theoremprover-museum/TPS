@@ -1,0 +1,28 @@
+(:name OMEGA-EXAMPLE
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS o(OOO) [o(OOO) TRUTH TRUTH AND o(OOO) FALSEHOOD FALSEHOOD AND ~o(OOO) FALSEHOOD TRUTH AND ~o(OOO) TRUTH FALSEHOOD] AND FORALL m(OO).m(OO) TRUTH EQUIV m(OO).TRUTH IMPLIES TRUTH"
+:needed-objects   NIL
+:mhelp "Odd example from a draft of integrating TPS and Omega"
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name OMEGA-EXAMPLE2
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS o(OOO) [o(OOO) TRUTH TRUTH AND ~o(OOO) FALSEHOOD FALSEHOOD AND ~o(OOO) FALSEHOOD TRUTH AND ~o(OOO) TRUTH FALSEHOOD] AND FORALL m(OO).m(OO) TRUTH EQUIV m(OO).TRUTH IMPLIES TRUTH"
+:needed-objects   NIL
+:mhelp "A variant of omega-example."
+:other-attributes NIL
+:other-remarks "
+")
+
+

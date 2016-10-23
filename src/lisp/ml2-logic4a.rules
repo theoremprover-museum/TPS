@@ -1,0 +1,81 @@
+;;; ******************************************************************* ;;;
+;;;         (c) Copyrighted 1988 by Carnegie Mellon University.         ;;;
+;;;                        All rights reserved.                         ;;;
+;;;         This code was written as part of the TPS project.           ;;;
+;;;   If you want to use this code or any part of TPS, please contact   ;;;
+;;;               Peter B. Andrews (Andrews@CS.CMU.EDU)                 ;;;
+;;; ******************************************************************* ;;;
+;;; updated contexts 7/20/87 DAN
+(context rules-2-prop)
+	
+(defirule disj-imp
+  (lines (d1 (h) () "~A or B")
+	 (d2 (h) () "A implies B" ("Disj-Imp" () (d1))))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Line with Disjunction")
+	     (d2 "Line with Implication")
+	     ("A(O)" "Antecedent of Implication")
+	     ("B(O)" "Succedent of Implication"))
+  (mhelp "Rule to replace a disjunction by an implication."))
+
+(defirule imp-disj
+  (lines (d1 (h) () "A implies B")
+	 (d2 (h) () "~A or B" ("Imp-Disj" () (d1))))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Line with Implication")
+	     (d2 "Line with Disjunction")
+	     ("A(O)" "Antecedent of Implication")
+	     ("B(O)" "Succedent of Implication"))
+  (mhelp "Rule to replace an implication by a disjunction."))
+
+;*;(context quant-rules)
+
+;;; These two should subsume the next two. 
+;;; Nice to have, but not crucial. Include in CLISP. cpk
+;;;
+;*;(defirule ab-p
+;*;  (lines (p1 (h) () "`(ab-change Q(B) x(A))")
+;*;	 (p2 (h) () "Q(B)" ("AB" ("x(A)") (p1))))
+;*;  (restrictions (not-free-in "y(A)" "`(gdr Q(B))"))
+;*;  (support-transformation ((p2 'ss)) ((p1 'ss)))
+;*;  (itemshelp (p1 "Lower Bound Wff Line")
+;*;	     (p2 "Higher Bound Wff Line")
+;*;	     ("x(A)" "Bound Variable in Higher Line")
+;*;	     ("Q(B)" "Higher Bound Wff")
+;*;	     (AB-CHANGE "Lower Bound Wff"))
+;*;  (mhelp "Rule to change a top level occurrence of a bound variable."))
+;*;
+;*;(defirule ab-d
+;*;  (lines (p1 (h) () "Q(B)")
+;*;	 (p2 (h) () "`(ab-change Q(B) y(A))" ("AB" ("y(A)") (p1))))
+;*;  (restrictions (not-free-in "y(A)" "`(gdr Q(B))"))
+;*;  (support-transformation ((p2 'ss)) ((p1 'ss)))
+;*;  (itemshelp (p1 "Lower Bound Wff Line")
+;*;	     (p2 "Higher Bound Wff Line")
+;*;	     ("y(A)" "Bound Variable in Higher Line")
+;*;	     ("Q(B)" "Lower Bound Wff")
+;*;	     (AB-CHANGE "Higher Bound Wff"))
+;*;  (mhelp "Rule to change a top level occurrence of a bound variable."))
+
+;*; Subsumed under AB-P and AB-D
+
+(context rules-4-quant)
+
+(defirule abu
+  (lines (p1 (h) () "forall y(A). `(S y x(A) A)")
+	 (p2 (h) () "forall x(A). A" ("AB" ("x(A)") (p1))))
+  (restrictions (free-for "y(A)" "x(A)" "A(O)")
+		(is-variable "y(A)") (is-variable "x(A)")
+		(not-free-in "y(A)" "A(O)"))
+  (support-transformation ((p2 'ss)) ((p1 'ss)))
+  (itemshelp (p1 "Lower Universally Quantified Line")
+	     (p2 "Higher Universally Quantified Line")
+	     ("x(A)" "Universally Quantified Variable in Higher Line")
+	     ("A(O)" "Scope of Quantifier in Higher Line")
+	     ("y(A)" "Universally Quantified Variable in Lower Line")
+	     (S "Scope of Quantifer in Lower Line"))
+  (mhelp "Rule to change a top level occurrence of a universally quantified
+ variable."))
+
+
+

@@ -1,0 +1,202 @@
+@Marker(Library,Index,Dover)
+
+@Comment<
+Use @StdIndexCategory to define a index category with secondary
+entries, standard naming conventions, and facecode T.
+>
+@TextForm{StdIndexCategory={@IndexCategory<RefName="Index@Parm(Text)",
+		IndexName=@ParmQuote(Text),FaceCode="T">}}
+
+@Comment<
+Use @StdIndexCategory2 if you don't want the secondary entries
+>
+@TextForm{StdIndexCategory2={@IndexCategory<RefName="Index@Parm(Text)",
+		IndexName=@ParmQuote(Text),Secondary="No",FaceCode="T">}}
+
+@Comment<
+Use @StdIndexCategoryA to define a index category with secondary
+entries, standard naming conventions, and no facecode.
+>
+@TextForm{StdIndexCategoryA={@IndexCategory<RefName="Index@Parm(Text)",
+		IndexName=@ParmQuote(Text)>}}
+
+@Comment<
+Use @StdIndexCategoryA2 if you don't want the secondary entries
+>
+@TextForm{StdIndexCategoryA2={@IndexCategory<RefName="Index@Parm(Text)",
+		IndexName=@ParmQuote(Text),Secondary="No">}}
+
+@TextForm{StdIndexCategory3={@IndexCategory<RefName="Index@Parm(Text)",
+	Secondary="No">}}
+
+@Comment<
+Use @IndexCategory as follows:
+@IndexCategory(RefName="The name you use in the text",
+	IndexName="The name after the comma in the index",
+	SecondaryName="The heading for the secondary index entries",
+	FaceCode="The Facecode for all words of this category, e.g T, or I",
+	Secondary="No" [if you don't want secondary index entries,
+			leave it out otherwise]
+	Prefix="Text to be prefixed to the argument in the manual")
+Every argument except for the "RefName" is optional.  Note, that
+you have to omit "Secondary" if you want secondary index entries.
+If you omit the "FaceCode", the usual "FaceCode" from the text will be assumed.
+If the "IndexName" is omitted, nothing will follow the index entry.
+>
+
+@Form(IndexCategory=<@~
+@TextForm(@Parm(RefName)={@Imbed(Prefix,def "@Parm(Prefix)")@Imbed(FaceCode,
+  def "@Begin(@Parm(FaceCode))@Quote(@Parm(Text))@End(@Parm(FaceCode))",
+ undef "@Quote(@Parm(Text))")@IndexEntry(
+	 key='@Quote(@Parm(Text)) @Imbed(IndexName, def "@Parm(IndexName)")',
+	 text='@Imbed(FaceCode,
+  def "@Begin(@Parm(FaceCode))@Quote(@Parm(Text))@End(@Parm(FaceCode))",
+ undef "@Quote(@Parm(Text))")@Imbed(IndexName, def ",@ @ @Parm(IndexName)")',
+	 Number)@Imbed(Secondary, undef 
+	"@IndexSecondary(Primary='@Imbed(SecondaryName,
+			def [@Parm(SecondaryName)],
+			undef [@Imbed(IndexName, def '@Parm(IndexName)s',
+						 undef '@Parm(RefName)s')])',
+			Secondary='@Imbed(FaceCode,
+  def [@Begin(@Parm(FaceCode))@Quote(@Parm(Text))@End(@Parm(FaceCode))],
+		 undef [@Quote(@Parm(Text))])')")})>)
+
+@Comment<
+	These lines take care of the macros for addressing the index.
+	IndexEnv was copied from the User Manual Supplement for
+	Scribe Version 3A .
+	The macros below were copied from page 170 of the Scribe
+	Format Designer's Guide, 2nd Edition.
+
+	>
+
+@Define(IndexEnv, Break, CRBreak, Fill, BlankLines Kept,
+	Font SmallBodyFont, FaceCode R, Spread 0, Spacing 1,
+	Spaces Kept, LeftMargin 8, Indent -8,
+	Columns 2, ColumnMargin 0.5inch,
+	LineWidth 3inches, Boxed)
+
+@TextForm{
+	IndexPrimary = [@ind1{q='@parm{text} 1',
+			r=@parmquote{text}}],
+
+	Index = [@ind1{q='@parm{text} 1',
+			r='@parm{text}',
+			s="@parmvalue{page}" }]}
+
+@Form{
+	IndexSecondary = [@IndexPrimary@parmquote(primary)@~
+			  @ind1{q='@parm{Primary} 2 @parm{Secondary}',
+				r="@ @ @ @ @ @parm{Secondary}",
+				s="@parmvalue{page}"}],
+
+	SeeAlso = [@ind1{q='@parm{Primary} 3 @parm{Other}',
+			 r='@ @ @ @ @ @ @ See also',
+			 s=@parmquote{Other}}],
+	See = [@IndexEntry{key='@parm<Primary>, See @parm<Other>',
+			   entry='@parm<Primary>, See @parm<Other>'}],
+	ind1 = [@IndexEntry{key=@parmquote{q}, Entry=@parmquote{r}
+			@imbed(s, def ", number=@parmquote{s}")}] }
+
+
+@Marker(Library,Index,Postscript)
+
+@Comment<
+Use @StdIndexCategory to define a index category with secondary
+entries, standard naming conventions, and facecode T.
+>
+@TextForm{StdIndexCategory={@IndexCategory<RefName="Index@Parm(Text)",
+		IndexName=@ParmQuote(Text),FaceCode="T">}}
+
+@Comment<
+Use @StdIndexCategory2 if you don't want the secondary entries
+>
+@TextForm{StdIndexCategory2={@IndexCategory<RefName="Index@Parm(Text)",
+		IndexName=@ParmQuote(Text),Secondary="No",FaceCode="T">}}
+
+@Comment<
+Use @StdIndexCategoryA to define a index category with secondary
+entries, standard naming conventions, and no facecode.
+>
+@TextForm{StdIndexCategoryA={@IndexCategory<RefName="Index@Parm(Text)",
+		IndexName=@ParmQuote(Text)>}}
+
+@Comment<
+Use @StdIndexCategoryA2 if you don't want the secondary entries
+>
+@TextForm{StdIndexCategoryA2={@IndexCategory<RefName="Index@Parm(Text)",
+		IndexName=@ParmQuote(Text),Secondary="No">}}
+
+@TextForm{StdIndexCategory3={@IndexCategory<RefName="Index@Parm(Text)",
+	Secondary="No">}}
+
+@Comment<
+Use @IndexCategory as follows:
+@IndexCategory(RefName="The name you use in the text",
+	IndexName="The name after the comma in the index",
+	SecondaryName="The heading for the secondary index entries",
+	FaceCode="The Facecode for all words of this category, e.g T, or I",
+	Secondary="No" [if you don't want secondary index entries,
+			leave it out otherwise]
+	Prefix="Text to be prefixed to the argument in the manual")
+Every argument except for the "RefName" is optional.  Note, that
+you have to omit "Secondary" if you want secondary index entries.
+If you omit the "FaceCode", the usual "FaceCode" from the text will be assumed.
+If the "IndexName" is omitted, nothing will follow the index entry.
+>
+
+@Form(IndexCategory=<@~
+@TextForm(@Parm(RefName)={@Imbed(Prefix,def "@Parm(Prefix)")@Imbed(FaceCode,
+  def "@Begin(@Parm(FaceCode))@Quote(@Parm(Text))@End(@Parm(FaceCode))",
+ undef "@Quote(@Parm(Text))")@IndexEntry(
+	 key='@Quote(@Parm(Text)) @Imbed(IndexName, def "@Parm(IndexName)")',
+	 text='@Imbed(FaceCode,
+  def "@Begin(@Parm(FaceCode))@Quote(@Parm(Text))@End(@Parm(FaceCode))",
+ undef "@Quote(@Parm(Text))")@Imbed(IndexName, def ",@ @ @Parm(IndexName)")',
+	 Number)@Imbed(Secondary, undef 
+	"@IndexSecondary(Primary='@Imbed(SecondaryName,
+			def [@Parm(SecondaryName)],
+			undef [@Imbed(IndexName, def '@Parm(IndexName)s',
+						 undef '@Parm(RefName)s')])',
+			Secondary='@Imbed(FaceCode,
+  def [@Begin(@Parm(FaceCode))@Quote(@Parm(Text))@End(@Parm(FaceCode))],
+		 undef [@Quote(@Parm(Text))])')")})>)
+
+@Comment<
+	These lines take care of the macros for addressing the index.
+	IndexEnv was copied from the User Manual Supplement for
+	Scribe Version 3A .
+	The macros below were copied from page 170 of the Scribe
+	Format Designer's Guide, 2nd Edition.
+
+	>
+
+@Define(IndexEnv, Break, CRBreak, Fill, BlankLines Kept,
+	size 8, FaceCode R, Spread 0, Spacing 1,
+	Spaces Kept, LeftMargin 8, Indent -8,
+	Columns 2, ColumnMargin 0.5inch,
+	LineWidth 3inches, Boxed)
+
+@TextForm{
+	IndexPrimary = [@ind1{q='@parm{text} 1',
+			r=@parmquote{text}}],
+
+	Index = [@ind1{q='@parm{text} 1',
+			r='@parm{text}',
+			s="@parmvalue{page}" }]}
+
+@Form{
+	IndexSecondary = [@IndexPrimary@parmquote(primary)@~
+			  @ind1{q='@parm{Primary} 2 @parm{Secondary}',
+				r="@ @ @ @ @ @parm{Secondary}",
+				s="@parmvalue{page}"}],
+
+	SeeAlso = [@ind1{q='@parm{Primary} 3 @parm{Other}',
+			 r='@ @ @ @ @ @ @ See also',
+			 s=@parmquote{Other}}],
+	See = [@IndexEntry{key='@parm<Primary>, See @parm<Other>',
+			   entry='@parm<Primary>, See @parm<Other>'}],
+	ind1 = [@IndexEntry{key=@parmquote{q}, Entry=@parmquote{r}
+			@imbed(s, def ", number=@parmquote{s}")}] }
+
+

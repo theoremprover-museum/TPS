@@ -1,0 +1,211 @@
+(:name EXISTS1B
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA P(OA) EXISTS X(A).P(OA) X(A) AND FORALL Y(A).P(OA) Y(A) IMPLIES X(A) =(OAA) Y(A)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(OA)"))
+:other-remarks "
+")
+
+
+(:name GRE
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X(OA) LAMBDA Y(OB) EXISTS Z(OA).Z(OA) SUBSET(O(OA)(OA)) X(OA) AND EQP(O(OA)(OB)) Y(OB) Z(OA)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A" "B")) (INFIX 12) (TYPE "O(OB)(OA)"))
+:other-remarks "
+")
+
+
+(:name GROUP-1
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA P(AAA) LAMBDA E(A) LAMBDA J(AA).ASSOCIATIVE(O(AAA)) P(AAA) AND FORALL x(A) [P(AAA) E(A) x(A) =(OAA) x(A)] AND FORALL y(A).P(AAA) [J(AA) y(A)] y(A) =(OAA) E(A)"
+:needed-objects   (ASSOCIATIVE)
+:mhelp "[GROUP-1 P E J] means that P is a group operation 
+with E as identity and J as inverse"
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(AA)A(AAA)"))
+:other-remarks "
+")
+
+
+(:name GROUP-2
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA Q(AAA).ASSOCIATIVE(O(AAA)) Q(AAA) AND FORALL X(A) FORALL Y(A).EXISTS U(A) [Q(AAA) X(A) U(A) =(OAA) Y(A)] AND EXISTS V(A).Q(AAA) V(A) X(A) =(OAA) Y(A)"
+:needed-objects   (ASSOCIATIVE)
+:mhelp ""
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (TYPE "O(AAA)"))
+:other-remarks "
+")
+
+
+(:name GT
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (INFIX 12) (FACE ">") (TYPELIST ("A")) (TYPE "OAA"))
+:other-remarks "
+")
+
+
+(:name ITERATES
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITHOUT-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA G(AA) LAMBDA F(AA) FORALL P(O(AA)).P(O(AA)) F(AA) AND FORALL H(AA) [P(O(AA)) H(AA) IMPLIES P(O(AA)).LAMBDA T(A) F(AA).H(AA) T(A)] IMPLIES P(O(AA)) G(AA)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (INFIX 12) (TYPE "O(AA)(AA)"))
+:other-remarks "
+")
+
+
+(:name LESSEQ
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (INFIX 12) (FACE "<=") (TYPELIST ("A")) (TYPE "OAA"))
+:other-remarks "
+")
+
+
+(:name LT
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp "Less than"
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (INFIX 12) (FACE "<") (TYPELIST ("A")) (TYPE "OAA"))
+:other-remarks "
+")
+
+
+(:name MINUS
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (INFIX 12) (FACE "-") (TYPELIST ("A")) (TYPE "AAA"))
+:other-remarks "
+")
+
+
+(:name ORDPAIR
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X(A) LAMBDA Y(A) LAMBDA Z(OA).Z(OA) =(O(OA)(OA)) UNITSET(OAA) X(A) OR FORALL W(A).Z(OA) W(A) EQUIV W(A) =(OAA) X(A) OR W(A) =(OAA) Y(A)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (INFIX 12) (TYPE "O(OA)AA"))
+:other-remarks "
+")
+
+
+(:name PAIR
+:type ABBR
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA X(A) LAMBDA Y(A) LAMBDA G(AAA) G(AAA) X(A) Y(A)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (INFIX 12) (TYPE "A(AAA)AA"))
+:other-remarks "
+")
+
+
+(:name PLUS-CONST
+:type LIB-CONST
+:context UNCLASSIFIED
+:keywords NIL
+:provability NIL
+:proof-date NIL
+:description NIL
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (INFIX 12) (FACE "+") (TYPELIST ("A")) (TYPE "AAA"))
+:other-remarks "
+")
+
+
+(:name SET-EXTEN
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "FORALL P(OB) FORALL Q(OB) EXISTS X(B).[P(OB) X(B) EQUIV Q(OB) X(B)] IMPLIES P(OB) =(O(OB)(OB)) Q(OB)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("B")) (TYPE "O"))
+:other-remarks "
+")
+
+
+(:name SETPRODUCT
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITH-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA U(OA) LAMBDA V(OA) LAMBDA K(A(AAA)) EXISTS X(A) EXISTS Y(A).U(OA) X(A) AND U(OA) Y(A) AND K(A(AAA)) =(O(A(AAA))(A(AAA))) X(A) PAIR(A(AAA)AA) Y(A)"
+:needed-objects   (PAIR)
+:mhelp ""
+:other-attributes ((PRINTNOTYPE T) (TYPELIST ("A")) (INFIX 12) (TYPE "O(A(AAA))(OA)(OA)"))
+:other-remarks "
+")
+
+
+(:name SURJECTIVE
+:type ABBR
+:context UNCLASSIFIED
+:keywords (UNPROVEN WITH-EQUALITY WITHOUT-DEFN NO-AUTO-PROOF HIGHER-ORDER SK-FIRST-ORDER)
+:provability NIL
+:proof-date NIL
+:description "LAMBDA F(AB) FORALL Y(A) EXISTS X(B).F(AB) X(B) =(OAA) Y(A)"
+:needed-objects   NIL
+:mhelp ""
+:other-attributes ((FO-SINGLE-SYMBOL T) (PRINTNOTYPE T) (TYPELIST ("A" "B")) (TYPE "O(AB)"))
+:other-remarks "
+")
+
+

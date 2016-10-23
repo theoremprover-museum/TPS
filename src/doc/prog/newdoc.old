@@ -1,0 +1,262 @@
+		NEWDOC
+
+Documentation not quite ready to go into manuals
+goes into newdoc in the appropriate directory.
+If it's not quite clear which manual it goes into,
+or if it needs to be divided up, put it into
+/afs/cs/project/tps/tps/doc/user/newdoc
+
+
+
+================================================================
+/afs/cs/project/tps/tps/doc/prog/newdoc
+
+                      HELP FOR TPS3 MAINTAINERS
+		Information not yet in TPS Programmer's Manual
+
+=====================================================================
+Messages from oldmail.hg which may or may not contain information
+which should  be added to the documentation
+
+   6?  29 Sep 92 "Dan Nesmith" <ne... Re: STATUS and PREDECESSOR  (5004)
+  47?   2 Aug 93 HongWei_Xi@ATPS.T... introduce duplicate names for ... (1400)
+  51?  17 Aug 93 HongWei_Xi@CTPS.T... MST93-2 (777)
+  63?  28 Aug 93 Dan Nesmith <nesm... Re: make-higher-order-expansions (2926)
+
+----------
+
+---- Message 6 (5004 chars) is ----
+To: Peter.Andrews@K.GP.CS.CMU.EDU
+Cc: issar@K.GP.CS.CMU.EDU, hwxi@K.GP.CS.CMU.EDU, mbishop@K.GP.CS.CMU.EDU
+Subject: Re: STATUS and PREDECESSOR 
+In-Reply-To: Your message of "Fri, 25 Sep 92 16:05:44 EDT."
+             <1992.9.25.20.0.41.Peter.Andrews@K.GP.CS.CMU.EDU> 
+Date: Tue, 29 Sep 92 16:34:36 +0100
+Message-Id: <29531.717780876@js-sfbslc10.cs.uni-sb.de>
+From: "Dan Nesmith" <nesmith@cs.uni-sb.de>
+
+
+Your message dated: Fri, 25 Sep 92 16:05:44 EDT
+>	Can you please explain what the slots STATUS and PREDECESSOR
+>in the structure current-topnode are for? (Of course, maybe we should
+>have a meeting with Sunil to have a discussion about this.)
+
+Sorry it took so long to reply.  At first glance, I thought this was
+something to do with unification.
+
+current-topnode is a variable whose value, while you are in
+the mating-search top-level, is the node of the expansion tree that you
+are currently looking at.  Commands like D (down), UP, ^ (move to root),
+use and change the value of this variable (see etrees-wffops, mating-top, 
+mating-move).  
+
+Actually, the unification top-level uses this same variable name, of course
+rebinding it during the duration of the top-level (so there's no real
+conflict).
+
+Now, STATUS and PREDECESSOR are actually slots in every expansion tree
+node (defined in etrees-labels).  
+
+Each etree node has a status, which is a nonnegative integer.  0 means
+that the etree node should be ignored (as if it and its descendants
+were not in the tree), while positive values indicate the node is active,
+and (potentially) the higher the value, the more important it is.  
+By the etree's status, you could rank certain expansions as more interesting
+than others.  I don't think that is now being used anywhere.
+Originally, this status was kept in a slot in each etree node.  I didn't 
+really like this, because then you can't share etree nodes among different
+"virtual" expansion trees.  For example, during the MS90-9 search procedures,
+there is really just one expansion tree, which contains all of the 
+expansions.  There are, however, many "virtual" expansion trees, that is,
+expansion trees with the same root, but with different subsets of the
+expansions "turned on".  Each one of these virtual trees is kept in a
+separate eproof structure.  For this reason, the statuses are actually
+kept in a hashtable in the eproof structure as well, so changing the status
+of a node in one virtual tree doesn't affect its status in other trees. 
+E.g.,
+Assume we have a tree with root expansion node EXP0, and children LEAF1, LEAF2.
+Then we have potentially 3 virtual trees: one where LEAF1 has positive status
+and LEAF2 has 0 (is not there); one where LEAF2 positive status and LEAF1 has 0;
+and one where both LEAF1 and LEAF2 have positive status (are thus both
+considered in the proof process).  Functions that do things like create the
+jform use the status to decide which nodes belong and which don't.
+
+Because statuses are now kept separate from the nodes themselves, the STATUS 
+slot is an anachronism, and actually can now be removed (delete the form
+"(status 1)" from the file etrees-labels.lisp).
+
+PREDECESSOR is related.  This is a symbol, the name of the etree node from
+which this node originated.  For example, suppose we have a leaf node LEAF0.
+If we deepen this node, then we will get something like EXP0 as a result.  Its
+PREDECESSOR slot will be LEAF0. If we then change the status of all its 
+expansions to 0, then this node is effectively a leaf node again, and it 
+will be printed out with the name LEAF0 as before.  E.g.
+<34>mate "exists y P y" 
+
+DEEPEN (YESNO): Deepen? [Yes]>no
+
+<Mate35>etd
+
+LEAF0   EXISTS y(I) P(OI) y
+
+<Mate36>dp
+
+EXP0
+<Mate37>etd
+
+EXP0   LEAF1    y^0(I)
+LEAF1   P(OI) y^0(I)
+
+<Mate38>1
+
+LEAF1
+<Mate39>mod-status 0
+
+
+<Mate40>up
+
+LEAF0
+<Mate41>etd
+
+LEAF0   EXISTS y(I) P(OI) y
+
+
+PREDECESSOR is also used in case a node's name is not found in the
+statuses hashtable; so effectively a node can inherit the status of the
+node from which it was created.
+
+Dan
+
+---- Message 47 (1400 chars) is ----
+Return-Path: <HongWei_Xi@ATPS.TPS.CS.CMU.EDU>
+Received: from ATPS.TPS.CS.CMU.EDU by K.GP.CS.CMU.EDU id aa03994;
+          2 Aug 93 18:23:54 EDT
+Received: from ATPS.TPS.CS.CMU.EDU by ATPS.TPS.CS.CMU.EDU id aa03051;
+          2 Aug 93 18:23:39 EDT
+To: andrews@ATPS.TPS.CS.CMU.EDU
+cc: mbishop@ATPS.TPS.CS.CMU.EDU, hwxi@ATPS.TPS.CS.CMU.EDU
+Subject: introduce duplicate names for flags
+Date: Mon, 02 Aug 93 18:23:23 -0400
+Message-ID: <3049.744330203@ATPS.TPS.CS.CMU.EDU>
+From: HongWei_Xi@ATPS.TPS.CS.CMU.EDU
+
+Now I have built up a macro "defsynonym", which
+can be used to define synonyms for flags. 
+
+The following is the comment I put around my code
+.
+;;;defsynonym is used to define synonym name for a flag. The usage is
+;;;very simple. For example,
+;;;(defsynonym SUBNAME 
+;;;            (synonym TRUENAME)
+;;;            (replace-old T)
+;;;            (mhelp "SUBNAME is a synonym for the flag TRUENAME".))
+;;;defines SUBNAME as a synonym for the flag TRUENAME.Since replace-old
+;;;is true, SUBNAME will be recorded instead of TRUENAME; Otherwise, 
+;;;SUBNAME won't be recorded(in this case SUBNANE behaves almost like 
+;;;an alias.
+
+When you change the value of either SUBNAME or TRUENAME, the other
+will be changed to the same vaule. (the 'change' may be caused by using
+MODE command.) 
+
+I temprarily put my code in 
+/afs/cs/user/hwxi/hxlisp/flagnames/names.lisp 
+until the performance is over.
+
+
+
+
+
+---- Message 51 (777 chars) is ----
+Return-Path: <HongWei_Xi@CTPS.TPS.CS.CMU.EDU>
+Received: from CTPS.TPS.CS.CMU.EDU by K.GP.CS.CMU.EDU id aa29168;
+          17 Aug 93 19:19:08 EDT
+Received: from CTPS.TPS.CS.CMU.EDU by CTPS.TPS.CS.CMU.EDU id aa08965;
+          17 Aug 93 19:18:14 EDT
+To: andrews@CTPS.TPS.CS.CMU.EDU
+cc: mbishop@CTPS.TPS.CS.CMU.EDU, hwxi@K.GP.CS.CMU.EDU
+Subject: MST93-2
+Date: Tue, 17 Aug 93 19:18:05 -0400
+Message-ID: <8963.745629485@CTPS.TPS.CS.CMU.EDU>
+From: HongWei_Xi@CTPS.TPS.CS.CMU.EDU
+
+I changed the command MST93-2 so that it can be 
+used in the same way as MATE command. You don't
+need to call INIT when you enter MST93-2 toplevel;
+But you have to do it after using SUB command in
+MST93-2 toplevel. 
+
+In order to share more tps3 code, I modified 
+mating-tiop.lisp.
+
+
+
+
+  -- Hongwei --
+
+
+
+---- Message 63 (2926 chars) is ----
+Return-Path: <@CTPS.TPS.CS.CMU.EDU,@iraun1.ira.uka.de:nesmith@cs.uni-sb.de>
+Received: from CTPS.TPS.CS.CMU.EDU by K.GP.CS.CMU.EDU id aa01290;
+          29 Aug 93 8:56:51 EDT
+Received: from iraun1.ira.uka.de by CTPS.TPS.CS.CMU.EDU id aa03126;
+          29 Aug 93 7:59:46 EDT
+Received: from uni-sb.de by iraun1.ira.uka.de with SMTP (PP) 
+          id <09799-0@iraun1.ira.uka.de>; Sat, 28 Aug 1993 11:10:28 +0200
+Organization: Universitaet des Saarlandes D-66041 Saarbruecken, Germany
+Received: from cs.uni-sb.de with SMTP by uni-sb.de (5.65++/UniSB-2.2/930818) 
+          id AA19270; Sat, 28 Aug 93 11:10:53 +0200
+Received: from js-sfbgate.cs.uni-sb.de with SMTP 
+          by cs.uni-sb.de (5.64/UniSB-2.3/930811) id AA01621;
+          Sat, 28 Aug 93 11:10:51 +0200
+Received: from js-sfbslc10.cs.uni-sb.de with SMTP 
+          by js-sfbsun.cs.uni-sb.de (5.65b/UniSB-2.2/DFKI-1.0/061991) 
+          id AA21560; Sat, 28 Aug 93 11:10:48 +0200
+Received: from js-sfbslc10.cs.uni-sb.de with SMTP 
+          by js-sfbslc10.cs.uni-sb.de (5.65b/UniSB-1.0/DFKI-1.0/061991) 
+          id AA04439; Sat, 28 Aug 93 11:10:45 +0200
+To: HongWei_Xi@CTPS.TPS.CS.CMU.EDU
+Cc: andrews@CTPS.TPS.CS.CMU.EDU, mbishop@CTPS.TPS.CS.CMU.EDU
+Subject: Re: make-higher-order-expansions
+In-Reply-To: Your message of "Fri, 27 Aug 93 13:26:02 EDT." <1300.746472362@CTPS.TPS.CS.CMU.EDU>
+Date: Sat, 28 Aug 93 11:10:43 +0200
+Message-Id: <4437.746529043@js-sfbslc10.cs.uni-sb.de>
+From: Dan Nesmith <nesmith@cs.uni-sb.de>
+
+Your message dated: Fri, 27 Aug 93 13:26:02 EDT
+>After calling deepen-to-literals*, we know
+>the slot "SKOLEM-CONSTANTS" attached to 
+>CURRENT-EPROOF gets updated. So calling
+>make-higher-order-expansions will update
+>CURRENT-EPROOF. But when we call the function
+>add-ho-exps-to-option-tree, we don't update
+>the slot "SKOLEM-CONSTANTS" in the EPROOF
+>attached to a OPTION-TREE. This means, calling
+>SK-CONST-P may give you a false result while
+>ms90-9 (or ms89) mating search is used.
+>
+>This results in some trouble when I try to prove
+>x5310. My fix is to update the slot "SKOLEM-CONSTANTS"
+>of the EPROOF attached to a option-tree whenever the tree
+>is created (by using make-new-option-tree-node). 
+>
+>I haven't fully understood the code for option-trees, so
+>please tell me your opinion about the fix. Is it safe?
+>
+
+Yes, I think that would be correct.  I can't see why one wouldn't
+want to update the list.  I think this may be the result of a confusion
+between Sunil and me.  In the expansion tree, you can always tell
+that something is a skolem-constant, because it is skolem-p.  So in
+that sense the skolem-constants slot is not really necessary.
+
+But Sunil didn't want to extend to unification to handle skolem-constants
+directly, therefore requiring that they are stripped out into 
+normal-looking symbols.  That means that in unification, sk-const-p
+is necessary, and that depends on the skolem-constants slot of
+the eproof.
+
+Dan
+

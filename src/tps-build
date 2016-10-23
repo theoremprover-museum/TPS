@@ -1,0 +1,3 @@
+#!/bin/csh -f
+umask 0111
+make tps_build $*

@@ -1,0 +1,54 @@
+(:name THM603
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITHOUT-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "EXISTS r(OIII).FORALL n(I) r(OIII) 0(I) n(I) [S(II) n(I)] AND FORALL m(I) FORALL k(I) [r(OIII) m(I) [S(II) 0(I)] k(I) IMPLIES r(OIII) [S(II) m(I)] 0(I) k(I)] AND FORALL m(I) FORALL n(I) FORALL k(I) FORALL l(I) [r(OIII) [S(II) m(I)] n(I) l(I) IMPLIES.r(OIII) m(I) l(I) k(I) IMPLIES r(OIII) [S(II) m(I)] [S(II) n(I)] k(I)] AND FORALL T(OIII).FORALL n(I) T(OIII) 0(I) n(I) [S(II) n(I)] AND FORALL m(I) FORALL k(I) [T(OIII) m(I) [S(II) 0(I)] k(I) IMPLIES T(OIII) [S(II) m(I)] 0(I) k(I)] AND FORALL m(I) FORALL n(I) FORALL k(I) FORALL l(I) [T(OIII) [S(II) m(I)] n(I) l(I) IMPLIES.T(OIII) m(I) l(I) k(I) IMPLIES T(OIII) [S(II) m(I)] [S(II) n(I)] k(I)] IMPLIES FORALL x(I) FORALL y(I) FORALL z(I).r(OIII) x(I) y(I) z(I) IMPLIES T(OIII) x(I) y(I) z(I)"
+:needed-objects   NIL
+:mhelp "Existence of least relation which is the graph of the Pe'ter Function
+(related to the Ackermann function - not primitive recursive).
+
+Statman suggested I experiment with the Ackermann function to investigate
+quantificational depth."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM604
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITHOUT-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "IND AND [FORALL n(I) R(OIII) 0(I) n(I) [S(II) n(I)] AND FORALL m(I) FORALL k(I) [R(OIII) m(I) [S(II) 0(I)] k(I) IMPLIES R(OIII) [S(II) m(I)] 0(I) k(I)] AND FORALL m(I) FORALL n(I) FORALL k(I) FORALL l(I).R(OIII) [S(II) m(I)] n(I) l(I) IMPLIES.R(OIII) m(I) l(I) k(I) IMPLIES R(OIII) [S(II) m(I)] [S(II) n(I)] k(I)] IMPLIES FORALL x(I) FORALL y(I) EXISTS z(I) R(OIII) x(I) y(I) z(I)"
+:needed-objects   (IND)
+:mhelp "A relation satisfying the properties of the graph of the Pe'ter Function
+is total.
+
+Statman suggested I (Chad) experiment with the Ackermann function to investigate
+quantificational depth."
+:other-attributes NIL
+:other-remarks "
+")
+
+
+(:name THM605
+:type GWFF
+:context UNCLASSIFIED
+:keywords (WITH-EQUALITY WITH-DEFN UNPROVEN NO-AUTO-PROOF HIGHER-ORDER SK-HIGHER-ORDER)
+:provability NIL
+:proof-date NIL
+:description "IND AND INJECTIVE(O(II)) S(II) AND FORALL n(I) [~.S(II) n(I) =(OII) 0(I)] IMPLIES EXISTS r(OIII).FORALL n(I) r(OIII) 0(I) n(I) [S(II) n(I)] AND FORALL m(I) FORALL k(I) [r(OIII) m(I) [S(II) 0(I)] k(I) IMPLIES r(OIII) [S(II) m(I)] 0(I) k(I)] AND FORALL m(I) FORALL n(I) FORALL k(I) FORALL l(I) [r(OIII) [S(II) m(I)] n(I) l(I) IMPLIES.r(OIII) m(I) l(I) k(I) IMPLIES r(OIII) [S(II) m(I)] [S(II) n(I)] k(I)] AND FORALL x(I) FORALL y(I) EXISTS1B(O(OI)).LAMBDA z(I) r(OIII) x(I) y(I) z(I)"
+:needed-objects   (IND INJECTIVE EXISTS1B)
+:mhelp "There exists a functional relation defining the (recursive but not
+primitive recursive) Pe'ter Function.
+
+Statman suggested I (Chad) experiment with the Ackermann function to investigate
+quantificational depth."
+:other-attributes NIL
+:other-remarks "
+")
+
+

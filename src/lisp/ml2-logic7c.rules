@@ -1,0 +1,70 @@
+;;; ******************************************************************* ;;;
+;;;         (c) Copyrighted 1988 by Carnegie Mellon University.         ;;;
+;;;                        All rights reserved.                         ;;;
+;;;         This code was written as part of the TPS project.           ;;;
+;;;   If you want to use this code or any part of TPS, please contact   ;;;
+;;;               Peter B. Andrews (Andrews@CS.CMU.EDU)                 ;;;
+;;; ******************************************************************* ;;;
+;;; Updated context 7/20/87 DAN
+
+(context rules-6-equality)
+ 
+(defirule let
+  (lines  (d1 (h) () "A(A) = A(A)" ("Refl=" () ()))
+	  (d2 (h) () "exists x(A). x = A(A)" ("EGen" ("x(A)") (d1)))
+	  (h3 (h) (h3) "x(A) = A(A)" ("Choose" ("x(A)") ()))
+	  (p4 (h) (h3) "C")
+	  (p5 (h) () "C" ("RuleC" () (d2 p4))))
+  (support-transformation ((p5 'ss)) ((p4 'ss  d1 d2 h3)))
+  (restrictions (not-free-in-hyps "x(A)")
+		(is-variable "x(A)")
+		(not-free-in "x(A)" "C(O)"))
+  (itemshelp (d1  "Auxiliary line with reflexivity")
+	     (d2 "Auxiliary existential line")
+	     (h3  "Line where variable is chosen")
+	     (p4  "New Plan Line")
+	     (p5 "Plan Line")
+	     ("x(A)" "Variable")
+	     ("A(A)" "Term"))
+  (mhelp "Bind a  variable to a term.")) 
+
+
+(context RULES-8-LAMBDA)
+
+(defirule lambda*
+  (lines (d1 (h) () "A(O)")
+	 (d2 (h) () "B(O)" ("Lambda=" () (d1))))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Lower Line")
+	     (d2 "Higher Line")
+	     ("A(O)" "Wff on Lower Line")
+	     ("B(O)" "Wff on Higher Line"))
+  (restrictions (wffeq-ab-lambda "A(O)" "B(O)"))
+  (mhelp "Rule to infer a line from one which is equal up to lambda conversion
+using both beta and eta rules and alphabetic change of bound variables."))
+
+(defirule beta*
+  (lines (d1 (h) () "A(O)")
+	 (d2 (h) () "B(O)" ("Beta Rule" () (d1))))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Lower Line")
+	     (d2 "Higher Line")
+	     ("A(O)" "Wff on Lower Line")
+	     ("B(O)" "Wff on Higher Line"))
+  (restrictions (wffeq-ab-beta "A(O)" "B(O)"))
+  (mhelp "Rule to infer a line from one which is equal up to lambda conversion
+using beta rule (but NOT eta rule) and alphabetic change of bound variables."))
+
+(defirule eta*
+  (lines (d1 (h) () "A(O)")
+	 (d2 (h) () "B(O)" ("Eta Rule" () (d1))))
+  (support-transformation (('pp d1 'ss)) (('pp d2 'ss)))
+  (itemshelp (d1 "Lower Line")
+	     (d2 "Higher Line")
+	     ("A(O)" "Wff on Lower Line")
+	     ("B(O)" "Wff on Higher Line"))
+  (restrictions (wffeq-ab-eta "A(O)" "B(O)"))
+  (mhelp "Rule to infer a line from one which is equal up to lambda conversion
+using eta rule (but NOT beta rule) and alphabetic change of bound variables."))
+
+
